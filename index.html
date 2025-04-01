@@ -1209,7 +1209,7 @@
                     <a href="contact.html" class="cta-button">Start Testing Now</a>
                 </div>
                 <div class="hero-image">
-                    <img src="./assets/images/logo.png" alt="VelocityQA Logo" class="logo-image" onerror="console.log('Image failed to load')">
+                    <img src="./assets/images/logo.png" alt="VelocityQA Logo" class="logo-image" onerror="console.error('Image failed:', this.src); this.style.display='none';"
                 </div>
             </div>
         </div>
