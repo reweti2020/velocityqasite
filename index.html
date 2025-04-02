@@ -3,134 +3,1094 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelocityQA - Brutal Testing for Startups in 2025</title>
+    <title>VelocityQA - Brutal Testing for Startups</title>
     <style>
         :root {
-            /* Primary Colors */
-            --primary: #121620;       /* Dark navy/black - primary background */
-            --primary-dark: #0a0d14;  /* Slightly darker navy - secondary background */
-            --orange: #ff6b00;        /* Brand orange - CTAs, highlights, action items */
-            --teal: #20C5C6;          /* Brand teal - accents, secondary elements */
-            --silver: #D1D5DB;        /* Silver - text on dark backgrounds, logo text */
-
-            /* Interface Colors */
-            --text: #f8fafc;          /* Light text for dark mode */
-            --text-light: #94a3b8;    /* Secondary text for dark mode */
-            --bg-light: #0f172a;      /* Dark background */
-            --card: #1e293b;          /* Card background */
-            --border: #334155;        /* Border color */
-        }
-
-        [data-theme="light"] {
-            /* Light mode color overrides */
+            --primary: #0052cc;
+            --primary-dark: #003d99;
+            --secondary: #ff5500;
             --text: #1e293b;
             --text-light: #64748b;
             --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
             --card: #ffffff;
+            --card-dark: #1e293b;
             --border: #e2e8f0;
+            --border-dark: #334155;
+            --success: #10b981;
+            --error: #ef4444;
+            --orange: #ff6b00;
+            --teal: #20C5C6;  /* Added teal color from the logo */
+        }
+
+        [data-theme="dark"] {
+            --text: #f8fafc;
+            --text-light: #94a3b8;
+            --bg-light: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: 
-                background-color 0.3s ease, 
-                color 0.3s ease, 
-                border-color 0.3s ease;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background-color: var(--bg-light);
             color: var(--text);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Existing styles from the original document */
-        /* (Copy the entire CSS from the previous index.html, 
-           replacing color variables with the new ones from :root) */
-        /* Example of color updates:
-           - Replace old `--primary` with new `var(--primary)`
-           - Replace old `--orange` with `var(--orange)`
-           - Replace old `--teal` with `var(--teal)` 
-        */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-        /* 2025 Design Trend Enhancements */
+        /* Header Styles */
+        header {
+            padding: 1.5rem 0;
+            position: relative;
+            background-color: var(--card);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-svg {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--teal);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--teal);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--orange);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background-color: #e85d00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
         
-        /* Soft 3D and Depth Enhancements */
-        .package-card, 
-        .feature-card, 
-        .testimonial-card {
-            transition: 
-                transform 0.4s ease, 
-                box-shadow 0.4s ease;
-            will-change: transform, box-shadow;
+        .cta-button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover:after {
+            left: 100%;
         }
 
-        .package-card:hover, 
-        .feature-card:hover, 
-        .testimonial-card:hover {
-            transform: translateY(-10px) perspective(1000px) rotateX(2deg);
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #e6f0ff 100%);
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .parallax-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--text-light) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            transform: translateZ(-10px) scale(1.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero-title span {
+            color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(32, 197, 198, 0.8);  /* Using teal color with opacity */
+            z-index: -1;
+            transform: translateX(-100%);
+            animation: highlightIn 0.8s 0.5s forwards;
+        }
+
+        @keyframes highlightIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s 0.8s forwards;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .logo-container-hero {
+            max-width: 300px;
+            transform: translateZ(20px);
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+            transition: transform 0.5s ease-out;
+        }
+
+        .hero-image:hover .logo-container-hero {
+            transform: translateZ(40px) scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--card);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .feature-card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background-color: var(--teal);  /* Changed to teal */
+            transition: height 0.6s ease;
+        }
+
+        .feature-card.animate:before {
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: var(--teal);  /* Changed to teal */
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-icon:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(32, 197, 198, 0.1);  /* Changed to teal with opacity */
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon:after {
+            width: 100%;
+            height: 100%;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .package-card {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
             box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.1),
-                0 10px 20px rgba(32, 197, 198, 0.1);
+                20px 20px 30px -10px rgba(0, 0, 0, 0.1),
+                -2px -2px 10px rgba(255, 255, 255, 0.1);
         }
 
-        /* Accessibility Improvements */
-        a, button {
-            transition: 
-                color 0.3s ease,
-                background-color 0.3s ease,
-                transform 0.2s ease;
+        .package-card:hover::before {
+            opacity: 1;
         }
 
-        a:focus, 
-        button:focus {
-            outline: 2px solid var(--teal);
-            outline-offset: 3px;
+        .package-tag {
+            position: absolute;
+            top: 12px;
+            right: -30px;
+            background-color: var(--teal);  /* Changed to teal */
+            color: white;
+            padding: 0.25rem 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
         }
 
-        /* Minimal Motion Considerations */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.001ms !important;
-                transition-duration: 0.001ms !important;
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .package-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--teal);  /* Changed to teal */
+            transition: width 0.3s ease;
+        }
+
+        .package-card:hover .package-title::after {
+            width: 100%;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .package-card:hover .package-price {
+            transform: scale(1.05);
+        }
+
+        .package-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            flex-grow: 1;
+        }
+
+        .package-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .package-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .package-feature svg {
+            margin-right: 0.5rem;
+            color: var(--teal);  /* Changed to teal */
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .package-card:hover .package-feature svg {
+            transform: scale(1.2);
+            color: var(--orange);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 0;
+            background-color: var(--card);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), var(--teal));  /* Changed to teal */
+            z-index: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            opacity: 0.5;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .process-step.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--teal);  /* Changed to teal */
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-step.active .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(32, 197, 198, 0.4);  /* Changed to teal */
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0%;
+            height: 0%;
+            background-color: var(--teal);  /* Changed to teal */
+            border-radius: 50%;
+            opacity: 0.3;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .process-step.active .step-number::after {
+            width: 70px;
+            height: 70px;
+        }
+
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: var(--border);
+            z-index: 0;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .step-description {
+            color: var(--text-light);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+        
+        .comparison-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .comparison-summary {
+            margin-top: 3rem;
+        }
+        
+        .comparison-summary h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .difference-item {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .difference-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .difference-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(32, 197, 198, 0.1);  /* Changed to teal */
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);  /* Changed to teal */
+        }
+        
+        .difference-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+        
+        .difference-item p {
+            color: var(--text-light);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content:before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            font-size: 6rem;
+            color: var(--teal);  /* Changed to teal */
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .testimonial-content:before {
+            opacity: 0.2;
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            z-index: 1;
+            transition: left 0.8s ease;
+        }
+
+        .testimonial-card:hover::after {
+            left: 100%;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover .testimonial-author {
+            transform: translateX(5px);
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover .author-image {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(32, 197, 198, 0.4);  /* Changed to teal */
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .author-role {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);  /* Changed to teal */
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            background-color: var(--orange);
+            color: white;
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo-container {
+            height: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--teal);  /* Changed to teal */
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link a:hover {
+            color: var(--teal);  /* Changed to teal */
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            color: var(--teal);  /* Changed to teal */
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Mobile nav */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Custom Cursor */
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(32, 197, 198, 0.2);  /* Changed to teal */
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cursor-follower.active {
+            opacity: 1;
+        }
+
+        .cursor-follower.hover-link {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(32, 197, 198, 0.1);  /* Changed to teal */
+        }
+
+        .cursor-follower.hover-button {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(32, 197, 198, 0.15);  /* Changed to teal */
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-follower {
+                display: none;
             }
         }
 
-        /* Progressive Disclosure */
-        .hidden-content {
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: 
-                opacity 0.5s ease,
-                max-height 0.5s ease;
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .process-step:after {
+                display: none;
+            }
         }
 
-        .hidden-content.revealed {
-            opacity: 1;
-            max-height: 500px;
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--card);
+                flex-direction: column;
+                justify-content: center;
+                z-index: 999;
+                transition: right 0.3s;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .logo-svg {
+                height: 32px;
+            }
+            
+            .logo-container-hero {
+                max-width: 200px;
+            }
+            
+            .footer-logo-container {
+                height: 24px;
+            }   
+
+            .features + .packages {
+                padding-top: 1rem;
+           }
         }
 
-        /* Additional Sustainability Indicators */
-        img, svg {
-            max-width: 100%;
-            height: auto;
-            transition: filter 0.3s ease;
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .feature-card, .package-card, .testimonial-card {
+                padding: 1.5rem;
+            }
         }
 
-        img:hover, svg:hover {
-            filter: brightness(1.1) contrast(1.1);
+        /* Minimal motion styles */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+            }
         }
     </style>
 </head>
 <body data-theme="dark">
     <div class="cursor-follower"></div>
     
-    <div class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light Mode">
+    <div class="theme-toggle" id="themeToggle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -144,71 +1104,745 @@
         </svg>
     </div>
 
-    <!-- Rest of the body content remains EXACTLY the same as the original index.html -->
-    <!-- (Copy the entire body content from the original index.html file) -->
-    <!-- Only the style block and script block should have any modifications -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <!-- Neural Circuit Logo SVG -->
+                    <svg class="logo-svg" width="160" height="40" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions -->
+                        <defs>
+                            <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FF6B00" />
+                                <stop offset="100%" stop-color="#FF9248" />
+                            </linearGradient>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        
+                        <!-- Dark Background Element -->
+                        <circle cx="30" cy="30" r="30" fill="#121620" />
+                        
+                        <!-- Neural Network Grid (simplified for header) -->
+                        <circle cx="30" cy="18" r="1" fill="#D1D5DB" />
+                        <circle cx="18" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="42" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="15" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="30" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="45" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="30" cy="48" r="1" fill="#D1D5DB" />
+                        
+                        <!-- Main Circuit/Data Path -->
+                        <path d="M30 48L30 36L18 24L30 18" stroke="url(#neuralGradient)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glow)" />
+                        
+                        <!-- Neural Nodes -->
+                        <circle cx="30" cy="48" r="3" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="30" cy="36" r="3" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="18" cy="24" r="3" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="30" cy="18" r="3" fill="#20C5C6" filter="url(#glow)" />
+                        
+                        <!-- Data Pulse Animations -->
+                        <circle cx="30" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="24" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="30" to="18" dur="3s" begin="1s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <!-- Company Name -->
+                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                        </text>
+                    </svg>
+                </div>
+                
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#packages" class="nav-link">Packages</a>
+                    <a href="#process" class="nav-link">Process</a>
+                    <a href="#pricing" class="nav-link">Why Choose Us</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    <a href="contact.html" class="cta-button">Contact Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="parallax-bg">
+            <div class="parallax-dots"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">We <span>Break</span> Your App So Your Users Won't</h1>
+                    <p class="hero-subtitle">Finding critical bugs before they find your customers. One recent startup: 50+ UI and workflow issues identified in just 2 hours of testing.</p>
+                    <a href="contact.html" class="cta-button">Start Testing Now</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Neural Circuit Logo for Hero -->
+                    <div class="logo-container-hero">
+                        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Definitions -->
+                            <defs>
+                                <linearGradient id="neuralGradientHero" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#FF6B00" />
+                                    <stop offset="100%" stop-color="#FF9248" />
+                                </linearGradient>
+                                <filter id="glowHero" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            
+                            <!-- Dark Background Element -->
+                            <rect x="70" y="70" width="160" height="160" rx="80" fill="#121620" />
+                            
+                            <!-- Neural Network Grid -->
+                            <circle cx="150" cy="90" r="3" fill="#D1D5DB" />
+                            <circle cx="110" cy="120" r="3" fill="#D1D5DB" />
+                            <circle cx="190" cy="120" r="3" fill="#D1D5DB" />
+                            <circle cx="100" cy="160" r="3" fill="#D1D5DB" />
+                            <circle cx="150" cy="160" r="3" fill="#D1D5DB" />
+                            <circle cx="200" cy="160" r="3" fill="#D1D5DB" />
+                            <circle cx="150" cy="200" r="3" fill="#D1D5DB" />
+                            
+                            <!-- Connection Lines -->
+                            <line x1="150" y1="90" x2="110" y2="120" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="150" y1="90" x2="190" y2="120" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="110" y1="120" x2="100" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="110" y1="120" x2="150" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="190" y1="120" x2="150" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="190" y1="120" x2="200" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="100" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="150" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            <line x1="200" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
+                            
+                            <!-- Main Circuit/Data Path -->
+                            <path d="M150 200L150 160L110 120L150 90" stroke="url(#neuralGradientHero)" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glowHero)" />
+                            
+                            <!-- Neural Nodes -->
+                            <circle cx="150" cy="200" r="6" fill="#FF6B00" filter="url(#glowHero)" />
+                            <circle cx="150" cy="160" r="6" fill="#FF6B00" filter="url(#glowHero)" />
+                            <circle cx="110" cy="120" r="6" fill="#FF6B00" filter="url(#glowHero)" />
+                            <circle cx="150" cy="90" r="6" fill="#20C5C6" filter="url(#glowHero)" />
+                            
+                            <!-- Data Pulse Animations -->
+                            <circle cx="150" cy="180" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowHero)">
+                                <animate attributeName="cy" from="200" to="160" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="130" cy="140" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowHero)">
+                                <animate attributeName="cx" from="150" to="110" dur="3s" begin="1s" repeatCount="indefinite" />
+                                <animate attributeName="cy" from="160" to="120" dur="3s" begin="1s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="130" cy="105" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowHero)">
+                                <animate attributeName="cx" from="110" to="150" dur="3s" begin="2s" repeatCount="indefinite" />
+                                <animate attributeName="cy" from="120" to="90" dur="3s" begin="2s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">No Bureaucracy. Just Results.</h2>
+            <p class="section-description">We've streamlined our testing process to deliver maximum value in the shortest time possible.</p>
+            
+            <div class="process-steps">
+                <div class="process-line"></div>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Tell Us What to Break</h3>
+                    <p class="step-description">Brief us on your app and priorities. We'll quote a fixed fee with no hidden costs. Pay as you go with 14-day terms.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">We Get Access</h3>
+                    <p class="step-description">Provide credentials and basic context. Unlike enterprise services that waste weeks on setup, we're testing within hours.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">We Break it Thoroughly</h3>
+                    <p class="step-description">We test like your most difficult users – clicking what shouldn't be clicked, entering what shouldn't be entered.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Direct Reporting</h3>
+                    <p class="step-description">Receive straightforward reports with screenshots, videos, and issues. No vague descriptions or meaningless metrics – just what's broken and how to fix it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose VelocityQA?</h2>
+            <p class="section-description">We provide startup-focused testing services that improve your app and save you money. No unnecessary complexity, just results.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Pay As You Go</h3>
+                    <p class="feature-description">No expensive contracts or retainers. Our flexible pay-as-you-go model with 14-day terms means you only pay for actual testing time, not someone waiting for development to finish.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Fast Turnaround</h3>
+                    <p class="feature-description">Get results in days, not weeks. We reduced one medical app's testing cycle from 2 weeks to just 4 days, with smoke testing completed in only 2 days.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Brutal Honesty</h3>
+                    <p class="feature-description">We test to break, using your app like your worst customer would. We find the missing links, workflow gaps, and UI issues that developers miss and users hate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="packages" id="packages">
+        <div class="container">
+            <h2 class="section-title">Testing Packages</h2>
+            <p class="section-description">Choose the testing package that fits your needs. All packages include clear bug reports with steps to reproduce and suggested fixes.</p>
+            
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-tag">Popular</div>
+                    <h3 class="package-title">Quick App Explorer</h3>
+                    <div class="package-price">$450</div>
+                    <p class="package-description">Rapid assessment revealing critical issues. Perfect for testing a new feature or getting quick feedback before a sprint demo.</p>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>24-hour turnaround</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Cross-device crash identification</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Core user journey validation</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>New-user friction point detection</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="cta-button">Get Started</a>
+                </div>
+                
+                <div class="package-card">
+                    <h3 class="package-title">Crash Detector</h3>
+                    <div class="package-price">$575</div>
+                    <p class="package-description">Systematic hunt for stability issues and platform-specific bugs. We recently found an Android-only crash not present in iOS testing.</p>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>24-hour turnaround</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Comprehensive OS and device coverage</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>UI layout assessment</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Severity classification based on user impact</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="cta-button">Get Started</a>
+                </div>
+                
+                <div class="package-card">
+                    <h3 class="package-title">Flow Finder</h3>
+                    <div class="package-price">$850</div>
+                    <p class="package-description">End-to-end testing of critical user workflows. Identifies bottlenecks, dead-ends, and logic errors that frustrate users and damage trust.</p>
+                    <div class="package-features">
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>36-hour turnaround</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Multiple variations of flow testing</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Edge case and boundary testing</span>
+                        </div>
+                        <div class="package-feature">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Detailed evidence with reproduction steps</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Why Startups Choose Us</h2>
+            <p class="section-description">Our focused approach delivers better results at a fraction of the cost of traditional testing options.</p>
+            
+            <div class="comparison-wrapper">                
+                <div class="comparison-summary">
+                    <div class="difference-grid">
+                        <div class="difference-item">
+                            <div class="difference-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <polyline points="1 20 1 14 7 14"></polyline>
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                </svg>
+                            </div>
+                            <h4>Get to Market Faster</h4>
+                            <p>We reduced a medical app's testing cycle from 2 weeks to 4 days, accelerating their release by 65%.</p>
+                        </div>
+                        
+                        <div class="difference-item">
+                            <div class="difference-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 16v-4"></path>
+                                    <path d="M12 8h.01"></path>
+                                </svg>
+                            </div>
+                            <h4>Save Critical Resources</h4>
+                            <p>Our focused testing costs a fraction of a full-time QA ($75K-$120K annually) while delivering more targeted results.</p>
+                        </div>
+                        
+                        <div class="difference-item">
+                            <div class="difference-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <h4>Bugs Found Quickly</h4>
+                            <p>For one startup's MVP dashboard, we identified 50+ UI and workflow issues in the first 2 hours of testing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-description">Don't just take our word for it. Here's what clients have to say about our testing services.</p>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>VelocityQA has streamlined our release process, enabling our team to launch multiple new in-app features while maintaining an impressive 4.8 App Store rating.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">CEO</div>
+                            <div class="author-role">Health App</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>She is an absolute rockstar in QA. Her ability to identify issues early, streamline workflows, and drive efficiency has had a significant impact on our projects.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Technical Lead</div>
+                            <div class="author-role">Technology Startup</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>We've benefitted significantly from VelocityQA's work, with major improvements to the frequency and stability of production releases.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Head of Product</div>
+                            <div class="author-role">Medical App</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to Break Your App?</h2>
+            <p class="cta-description">Let us find the issues before your users do. Our testing experts are ready to put your app through its paces.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button cta-button-primary">Start Testing Now</a>
+                <a href="#packages" class="cta-button cta-button-secondary">View Packages</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <!-- Footer Neural Circuit Logo -->
+                    <div class="footer-logo-container">
+                        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Definitions -->
+                            <defs>
+                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#FF6B00" />
+                                    <stop offset="100%" stop-color="#FF9248" />
+                                </linearGradient>
+                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="1" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            
+                            <!-- Neural Circuit (simplified for footer) -->
+                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
+                            
+                            <!-- Neural Nodes -->
+                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
+                            
+                            <!-- Company Name -->
+                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#features">Features</a></li>
+                        <li class="footer-link"><a href="#packages">Packages</a></li>
+                        <li class="footer-link"><a href="#process">Our Process</a></li>
+                        <li class="footer-link"><a href="#pricing">Why Choose Us</a></li>
+                        <li class="footer-link"><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#packages">Quick App Explorer</a></li>
+                        <li class="footer-link"><a href="#packages">Crash Detector</a></li>
+                        <li class="footer-link"><a href="#packages">Flow Finder</a></li>
+                        <li class="footer-link"><a href="contact.html">Custom Testing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>info@velocityqa.com</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div>(555) 123-4567</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            Nigel Street<br>
+                            Brisbane, QLD 4301<br>
+                            Australia
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Existing script from the original document 
-        // (Copy the entire script, with these additional enhancements)
-
-        // 2025 Accessibility and Performance Enhancements
-        function setupAccessibilityFeatures() {
-            // Keyboard navigation for mobile menu
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
-            
-            mobileMenuToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    navLinks.classList.toggle('active');
-                }
-            });
-
-            // Add aria labels to interactive elements
-            document.querySelectorAll('.nav-link, .cta-button').forEach(el => {
-                if (!el.getAttribute('aria-label')) {
-                    el.setAttribute('aria-label', el.textContent);
-                }
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
             });
         }
-
-        // Performance and Sustainability Tracking
-        function trackPerformance() {
-            if ('performance' in window) {
-                const pageLoadTime = performance.now();
-                console.log(`Page load time: ${pageLoadTime}ms`);
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
                 
-                window.addEventListener('load', () => {
-                    const loadTime = performance.now() - pageLoadTime;
-                    console.log(`Total load time: ${loadTime}ms`);
-                });
-            }
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
         }
-
-        // Progressive Enhancement
-        function setupProgressiveDisclosure() {
-            const toggleButtons = document.querySelectorAll('.toggle-content');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetId = button.getAttribute('data-target');
-                    const targetContent = document.getElementById(targetId);
+        
+        // Feature Cards Animation
+        const featureCards = document.querySelectorAll('.feature-card');
+        
+        const observeFeatures = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 150);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        featureCards.forEach(card => {
+            observeFeatures.observe(card);
+        });
+        
+        // Process Steps Animation
+        const processSteps = document.querySelectorAll('.process-step');
+        const processLine = document.querySelector('.process-line');
+        
+        const observeProcess = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                processSteps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('active');
+                    }, index * 300);
+                });
+                
+                if (processLine) {
+                    setTimeout(() => {
+                        processLine.style.width = '100%';
+                    }, 300);
+                }
+            }
+        }, { threshold: 0.3 });
+        
+        if (processSteps.length > 0 && processLine) {
+            observeProcess.observe(document.querySelector('.process-steps'));
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
                     
-                    if (targetContent) {
-                        targetContent.classList.toggle('revealed');
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Custom cursor
+        const cursor = document.querySelector('.cursor-follower');
+        
+        if (cursor && window.matchMedia('(hover: hover)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                if (!cursor.classList.contains('active')) {
+                    setTimeout(() => {
+                        cursor.classList.add('active');
+                    }, 500);
+                }
+            });
+            
+            // Add hover effects for links and buttons
+            const links = document.querySelectorAll('a, button');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    if (link.classList.contains('cta-button')) {
+                        cursor.classList.add('hover-button');
+                    } else {
+                        cursor.classList.add('hover-link');
                     }
                 });
+                
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-link', 'hover-button');
+                });
+            });
+            
+            // Hide cursor when it leaves the window
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
+            
+            document.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+            });
+        } else if (cursor) {
+            // If not a hover device, hide the cursor completely
+            cursor.style.display = 'none';
+        }
+        
+        // Parallax effect for hero section
+        const heroSection = document.querySelector('.hero');
+        const parallaxBg = document.querySelector('.parallax-dots');
+        
+        if (heroSection && parallaxBg && window.matchMedia('(hover: hover)').matches) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                parallaxBg.style.transform = `translateX(${x * 30}px) translateY(${y * 30}px) scale(1.5)`;
             });
         }
-
-        // Initialize 2025 Enhancements
-        document.addEventListener('DOMContentLoaded', () => {
-            setupAccessibilityFeatures();
-            trackPerformance();
-            setupProgressiveDisclosure();
-        });
-
-        // Existing script code remains the same
     </script>
 </body>
-</html>
+</html>  
+
