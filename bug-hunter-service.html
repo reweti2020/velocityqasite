@@ -862,8 +862,117 @@
                     
                     <p>Unlike enterprise testing services that require weeks of setup and documentation, we can begin testing your application immediately with minimal overhead, delivering results within the same day for most applications.</p>
                 </div>
-                <div class="service-image">
-                    <img src="/api/placeholder/600/400" alt="Bug Hunter Testing Process" style="background-color: #121620; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: bold;" />
+                <// This is the replacement code for bug-hunter-service.html
+// Replace:
+<div class="service-image">
+    <img src="/api/placeholder/600/400" alt="Bug Hunter Testing Process" style="background-color: #121620; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: bold;" />
+</div>
+
+// With:
+<div class="service-image">
+    <svg width="100%" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+        
+        <!-- App UI Background -->
+        <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
+        
+        <!-- Browser Chrome -->
+        <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
+        <circle cx="120" cy="65" r="6" fill="#ef4444" />
+        <circle cx="140" cy="65" r="6" fill="#f59e0b" />
+        <circle cx="160" cy="65" r="6" fill="#10b981" />
+        
+        <!-- Grid pattern for detail -->
+        <g opacity="0.05">
+            <rect x="120" y="100" width="360" height="1" fill="#ffffff" />
+            <rect x="120" y="140" width="360" height="1" fill="#ffffff" />
+            <rect x="120" y="180" width="360" height="1" fill="#ffffff" />
+            <rect x="120" y="220" width="360" height="1" fill="#ffffff" />
+            <rect x="120" y="260" width="360" height="1" fill="#ffffff" />
+            <rect x="120" y="300" width="360" height="1" fill="#ffffff" />
+            
+            <rect x="120" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="180" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="240" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="300" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="360" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="420" y="100" width="1" height="200" fill="#ffffff" />
+            <rect x="480" y="100" width="1" height="200" fill="#ffffff" />
+        </g>
+        
+        <!-- UI Elements -->
+        <rect x="140" y="120" width="120" height="20" rx="4" fill="#334155" />
+        <rect x="140" y="150" width="180" height="20" rx="4" fill="#334155" />
+        <rect x="140" y="180" width="150" height="20" rx="4" fill="#334155" />
+        
+        <rect x="340" y="120" width="120" height="80" rx="4" fill="#334155" />
+        
+        <rect x="140" y="220" width="320" height="40" rx="4" fill="#334155" />
+        <rect x="140" y="280" width="200" height="40" rx="4" fill="#334155" />
+        <rect x="360" y="280" width="100" height="40" rx="4" fill="#FF6B00" />
+        
+        <!-- Magnifying Glass -->
+        <circle cx="400" cy="160" r="30" fill="none" stroke="#20C5C6" stroke-width="6" />
+        <line x1="420" y1="180" x2="450" y2="210" stroke="#20C5C6" stroke-width="6" stroke-linecap="round" />
+        
+        <!-- Bug Elements -->
+        <g id="bug1" transform="translate(180, 170)">
+            <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+            <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <animateTransform attributeName="transform" 
+                type="translate" 
+                from="180, 170" 
+                to="180, 170" 
+                dur="4s" 
+                values="180, 170; 180, 150; 200, 150; 200, 170; 180, 170" 
+                repeatCount="indefinite" />
+        </g>
+        
+        <g id="bug2" transform="translate(370, 240)">
+            <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+            <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <animateTransform attributeName="transform" 
+                type="translate" 
+                from="370, 240" 
+                to="370, 240" 
+                dur="5s" 
+                values="370, 240; 390, 240; 390, 260; 370, 260; 370, 240" 
+                repeatCount="indefinite" />
+        </g>
+        
+        <g id="bug3" transform="translate(300, 300)">
+            <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+            <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+            <animateTransform attributeName="transform" 
+                type="translate" 
+                from="300, 300" 
+                to="300, 300" 
+                dur="6s" 
+                values="300, 300; 320, 300; 320, 280; 300, 280; 300, 300" 
+                repeatCount="indefinite" />
+        </g>
+        
+        <!-- Target Pulse Animation -->
+        <circle cx="180" cy="170" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+            <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        
+        <circle cx="370" cy="240" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+            <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        
+        <circle cx="300" cy="300" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+            <animate attributeName="r" from="16" to="30" dur="1.5s" begin="1s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="1s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+</div>
                 </div>
             </div>
         </div>
