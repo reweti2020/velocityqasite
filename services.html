@@ -6,8 +6,8 @@
     <title>Services - VelocityQA</title>
     <style>
         :root {
-            --primary: #0052cc;
-            --primary-dark: #003d99;
+            --primary: #121620;
+            --primary-dark: #0a0d14;
             --secondary: #ff5500;
             --text: #1e293b;
             --text-light: #64748b;
@@ -20,7 +20,8 @@
             --success: #10b981;
             --error: #ef4444;
             --orange: #ff6b00;
-            --teal: #20C5C6;  /* Added teal color from the logo */
+            --teal: #20C5C6;
+            --silver: #D1D5DB;
         }
 
         [data-theme="dark"] {
@@ -53,7 +54,7 @@
 
         /* Header Styles */
         header {
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: relative;
             background-color: var(--card);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -72,8 +73,14 @@
         }
 
         .logo-svg {
-            height: 40px;
+            height: 54px;
             width: auto;
+        }
+
+        .logo-svg text {
+            font-weight: 700;
+            font-size: 18px;
+            filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
         }
 
         .nav-links {
@@ -149,7 +156,7 @@
         .page-header {
             padding: 4rem 0;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);
+            background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -239,7 +246,7 @@
             height: 200px;
             width: 100%;
             object-fit: cover;
-            background-color: var(--primary-dark);
+            background-color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -523,7 +530,7 @@
         /* CTA Section */
         .cta-section {
             padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);
+            background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             text-align: center;
         }
@@ -750,7 +757,7 @@
             }
 
             .logo-svg {
-                height: 32px;
+                height: 44px;
             }
 
             .footer-logo-container {
@@ -819,7 +826,7 @@
             <nav>
                 <div class="logo-container">
                     <!-- Neural Circuit Logo SVG -->
-                    <svg class="logo-svg" width="160" height="40" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="logo-svg" width="200" height="54" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
                         <!-- Definitions -->
                         <defs>
                             <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -832,44 +839,44 @@
                             </filter>
                         </defs>
                         
-                        <!-- Dark Background Element -->
-                        <circle cx="30" cy="30" r="30" fill="#121620" />
+                        <!-- Enlarged Dark Background Circle -->
+                        <circle cx="36" cy="30" r="34" fill="#121620" />
                         
-                        <!-- Neural Network Grid (simplified for header) -->
-                        <circle cx="30" cy="18" r="1" fill="#D1D5DB" />
-                        <circle cx="18" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="42" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="15" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="30" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="45" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="30" cy="48" r="1" fill="#D1D5DB" />
+                        <!-- Neural Network Grid (adjusted positions) -->
+                        <circle cx="36" cy="18" r="1" fill="#D1D5DB" />
+                        <circle cx="24" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="48" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="21" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="36" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="51" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="36" cy="48" r="1" fill="#D1D5DB" />
                         
-                        <!-- Main Circuit/Data Path -->
-                        <path d="M30 48L30 36L18 24L30 18" stroke="url(#neuralGradient)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glow)" />
+                        <!-- Main Circuit/Data Path (adjusted) -->
+                        <path d="M36 48L36 36L24 24L36 18" stroke="url(#neuralGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow)" />
                         
-                        <!-- Neural Nodes -->
-                        <circle cx="30" cy="48" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="30" cy="36" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="18" cy="24" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="30" cy="18" r="3" fill="#20C5C6" filter="url(#glow)" />
+                        <!-- Neural Nodes (enlarged) -->
+                        <circle cx="36" cy="48" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="36" cy="36" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="24" cy="24" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="36" cy="18" r="3.5" fill="#20C5C6" filter="url(#glow)" />
                         
-                        <!-- Data Pulse Animations -->
-                        <circle cx="30" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                        <!-- Data Pulse Animations (adjusted) -->
+                        <circle cx="36" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
                             <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
                         </circle>
                         
-                        <circle cx="24" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="30" to="18" dur="3s" begin="1s" repeatCount="indefinite" />
+                        <circle cx="30" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
                             <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
                         </circle>
                         
-                        <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                        <circle cx="30" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="24" to="36" dur="3s" begin="2s" repeatCount="indefinite" />
                             <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
                         </circle>
                         
-                        <!-- Company Name -->
-                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                        <!-- Company Name (adjusted position) -->
+                        <text x="82" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
                             <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
                         </text>
                     </svg>
