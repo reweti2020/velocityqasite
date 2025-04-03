@@ -6,8 +6,8 @@
     <title>Contact Us - VelocityQA</title>
     <style>
         :root {
-            --primary: #0052cc;
-            --primary-dark: #003d99;
+            --primary: #121620;
+            --primary-dark: #0a0d14;
             --secondary: #ff5500;
             --text: #1e293b;
             --text-light: #64748b;
@@ -20,7 +20,7 @@
             --success: #10b981;
             --error: #ef4444;
             --orange: #ff6b00;
-            --teal: #20C5C6;  /* Added teal color from the logo */
+            --teal: #20C5C6;
         }
 
         [data-theme="dark"] {
@@ -72,8 +72,14 @@
         }
 
         .logo-svg {
-            height: 40px;
+            height: 48px;
             width: auto;
+        }
+
+        .logo-svg text {
+            font-weight: 700;
+            font-size: 18px;
+            filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
         }
 
         .nav-links {
@@ -149,7 +155,7 @@
         .page-header {
             padding: 4rem 0;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);
+            background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             position: relative;
             overflow: hidden;
@@ -241,8 +247,55 @@
             resize: vertical;
         }
 
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--teal);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--teal);
+        }
+
+        .radio-item label {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .custom-package-input {
+            margin-top: 0.75rem;
+            margin-left: 2.25rem;
+            width: calc(100% - 2.25rem);
+        }
+
         .submit-button {
-            background-color: var(--teal);
+            background-color: var(--orange);
             color: white;
             font-weight: 600;
             font-size: 1rem;
@@ -254,9 +307,9 @@
         }
 
         .submit-button:hover {
-            background-color: #1bb0b1;
+            background-color: #e85d00;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(32, 197, 198, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
         }
 
         .contact-info {
@@ -580,7 +633,7 @@
             }
 
             .logo-svg {
-                height: 32px;
+                height: 40px;
             }
 
             .footer-logo-container {
@@ -643,7 +696,7 @@
             <nav>
                 <div class="logo-container">
                     <!-- Neural Circuit Logo SVG -->
-                    <svg class="logo-svg" width="160" height="40" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="logo-svg" width="180" height="48" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
                         <!-- Definitions -->
                         <defs>
                             <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -693,7 +746,7 @@
                         </circle>
                         
                         <!-- Company Name -->
-                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
                             <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
                         </text>
                     </svg>
@@ -741,19 +794,45 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="package" class="form-label">Interested Package</label>
-                            <select id="package" name="package" class="form-select">
-                                <option value="">Select a package (optional)</option>
-                                <option value="quick-app-explorer">Quick App Explorer</option>
-                                <option value="crash-detector">Crash Detector</option>
-                                <option value="flow-finder">Flow Finder</option>
-                                <option value="custom">Custom Solution</option>
-                            </select>
+                            <label class="form-label">What services are you interested in?</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="quick-app-explorer" name="package[]" value="quick-app-explorer">
+                                    <label for="quick-app-explorer">Quick App Explorer ($450)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="crash-detector" name="package[]" value="crash-detector">
+                                    <label for="crash-detector">Crash Detector ($575)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="flow-finder" name="package[]" value="flow-finder">
+                                    <label for="flow-finder">Flow Finder ($850)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Service Type</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="standard-package" name="service-type" value="standard" checked>
+                                    <label for="standard-package">Standard Packages (as selected above)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="tailored-package" name="service-type" value="tailored">
+                                    <label for="tailored-package">Tailored Package (custom testing solution)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
+                                    <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
+                                    <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours (optional)" min="1">
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" name="message" class="form-textarea" required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project and testing needs" required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-button">Send Message</button>
@@ -901,6 +980,23 @@
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <p>We primarily test on real devices to ensure accurate results. Our testing fleet includes various iOS and Android devices across different operating system versions. However, we also leverage emulators for preliminary testing and edge cases, particularly for older OS versions or uncommon device configurations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does your blocked hours option work?</span>
+                        <div class="faq-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour. This is ideal for quick smoke tests, last-minute pre-release validation, or ongoing testing throughout your development cycle. Hours can be used as needed, and we'll provide detailed reporting on how the time was utilized.</p>
                         </div>
                     </div>
                 </div>
@@ -1078,6 +1174,27 @@
             });
         });
         
+        // Show/hide the hours input based on service type selection
+        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+        const hoursInput = document.getElementById('hours-needed');
+        
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'blocked-hours') {
+                    hoursInput.style.display = 'block';
+                } else {
+                    hoursInput.style.display = 'none';
+                }
+            });
+        });
+        
+        // Initialize display state
+        if (document.getElementById('blocked-hours').checked) {
+            hoursInput.style.display = 'block';
+        } else {
+            hoursInput.style.display = 'none';
+        }
+        
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         
@@ -1089,6 +1206,9 @@
                 // For demo purposes, we'll just show a success message
                 alert('Thank you for your message! We will get back to you shortly.');
                 contactForm.reset();
+                
+                // Reset hours input display
+                hoursInput.style.display = 'none';
             });
         }
     </script>
