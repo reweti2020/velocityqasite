@@ -892,10 +892,10 @@
     </div>
     
     <!-- Slide-in element from right side -->
-    <div style="position: fixed; right: 0; top: 30%; z-index: 100; transform: translateX(0); transition: transform 0.3s ease-out; max-width: 300px;">
+    <div id="slide-panel" style="position: fixed; right: 0; top: 30%; z-index: 100; transform: translateX(100%); transition: transform 0.5s ease-out; max-width: 300px;">
         <!-- Tab/Handle -->
-        <div style="background: linear-gradient(to bottom, #121620, #1e293b); width: 40px; height: 120px; border-radius: 8px 0 0 8px; position: absolute; left: -40px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+        <div id="slide-handle" style="background: linear-gradient(to bottom, #121620, #1e293b); width: 40px; height: 120px; border-radius: 8px 0 0 8px; position: absolute; left: -40px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); cursor: pointer;">
+            <svg id="slide-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(0deg); transition: transform 0.3s ease;">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
         </div>
@@ -1453,6 +1453,48 @@
                 localStorage.setItem('theme', newTheme);
             });
         }
+        
+        // Slide Panel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidePanel = document.getElementById('slide-panel');
+            const slideHandle = document.getElementById('slide-handle');
+            const slideArrow = document.getElementById('slide-arrow');
+            let isPanelOpen = false;
+            
+            // Function to toggle panel state
+            function togglePanel() {
+                if (isPanelOpen) {
+                    slidePanel.style.transform = 'translateX(100%)';
+                    slideArrow.style.transform = 'rotate(0deg)';
+                } else {
+                    slidePanel.style.transform = 'translateX(0)';
+                    slideArrow.style.transform = 'rotate(180deg)';
+                }
+                isPanelOpen = !isPanelOpen;
+            }
+            
+            // Add click event to handle
+            slideHandle.addEventListener('click', togglePanel);
+            
+            // Auto slide-in after page load
+            setTimeout(function() {
+                togglePanel(); // Slide in
+                
+                // Auto slide-out after 8 seconds
+                setTimeout(function() {
+                    togglePanel(); // Slide out
+                    
+                    // Periodically slide in/out every 30 seconds
+                    setInterval(function() {
+                        togglePanel(); // Slide in
+                        
+                        setTimeout(function() {
+                            togglePanel(); // Slide out
+                        }, 8000);
+                    }, 30000);
+                }, 8000);
+            }, 2000);
+        });
     </script>
 </body>
 </html>
