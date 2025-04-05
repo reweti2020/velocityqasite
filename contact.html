@@ -1384,18 +1384,32 @@
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would typically send the form data to your server
-                // For demo purposes, we'll just show a success message
-                alert('Thank you for your message! We will get back to you shortly.');
-                contactForm.reset();
-                
-                // Reset hours input display
-                hoursInput.style.display = 'none';
-            });
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Don't prevent default - allow form to submit to Formspree
+        // e.preventDefault(); <- Remove this line
+        
+        // No alerts needed as Formspree will handle the submission
+        // The code below is optional - you can add a visual indicator if desired
+        
+        // Set a flag in localStorage to show a success message when the user returns
+        localStorage.setItem('formSubmitted', 'true');
+        
+        // No need to reset the form - it will be handled by the page reload
+        // No need to hide hours input - this will be handled by the page reload
+    });
+}
+
+// Optional: Check if returning from form submission to show success message
+window.addEventListener('load', function() {
+    if (localStorage.getItem('formSubmitted') === 'true') {
+        // Clear the flag
+        localStorage.removeItem('formSubmitted');
+        
+        // Show success message
+        alert('Thank you for your message! We will get back to you shortly.');
+    }
+});
         }
     </script>
 </body>
