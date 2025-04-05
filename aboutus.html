@@ -242,12 +242,15 @@
         .highlights {
             display: flex;
             gap: 2rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
+            flex-wrap: wrap; /* Added in case of smaller screens */
+            justify-content: center; /* Center items if they wrap */
         }
 
         .highlight-item {
-            flex: 1;
+            flex: 1 250px;;
             text-align: center;
+            padding: 1rem;
         }
 
         .highlight-number {
@@ -845,7 +848,7 @@
                     <div class="team-info">
                         <h3 class="team-name">Nina</h3>                                                                                                                                                                                                                                                                                                                                                   
                         <div class="team-role">Founder & Lead QA Strategist</div>
-                        <p class="team-bio">Nina has 10+ years experience, Her philosophy is simple: if she can break it in testing, a user, competitor, or external event will break it in production.</p>
+                        <p class="team-bio">Nina has 10+ years testing experience, Her philosophy is simple: if she can break it in testing, a user, competitor, or external event will break it in production.</p>
                         <div class="team-social">
                             <a href="#" class="team-social-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1161,3 +1164,5 @@
     </script>
 </body>
 </html>
+
+
