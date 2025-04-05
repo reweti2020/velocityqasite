@@ -1,0 +1,80 @@
+<a href="#main-content" class="skip-to-content">Skip to content</a>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo-container">
+                <!-- Neural Circuit Logo SVG -->
+                <svg class="logo-svg" width="300" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Definitions -->
+                    <defs>
+                        <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#FF6B00" />
+                            <stop offset="100%" stop-color="#FF9248" />
+                        </linearGradient>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="1" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    
+                    <!-- Enlarged Dark Background Circle -->
+                    <circle cx="36" cy="30" r="34" fill="#121620" />
+                    
+                    <!-- Neural Network Grid (adjusted positions) -->
+                    <circle cx="36" cy="18" r="1" fill="#D1D5DB" />
+                    <circle cx="24" cy="24" r="1" fill="#D1D5DB" />
+                    <circle cx="48" cy="24" r="1" fill="#D1D5DB" />
+                    <circle cx="21" cy="36" r="1" fill="#D1D5DB" />
+                    <circle cx="36" cy="36" r="1" fill="#D1D5DB" />
+                    <circle cx="51" cy="36" r="1" fill="#D1D5DB" />
+                    <circle cx="36" cy="48" r="1" fill="#D1D5DB" />
+                    
+                    <!-- Main Circuit/Data Path (adjusted) -->
+                    <path d="M36 48L36 36L24 24L36 18" stroke="url(#neuralGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow)" />
+                    
+                    <!-- Neural Nodes (enlarged) -->
+                    <circle cx="36" cy="48" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                    <circle cx="36" cy="36" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                    <circle cx="24" cy="24" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                    <circle cx="36" cy="18" r="3.5" fill="#20C5C6" filter="url(#glow)" />
+                    
+                    <!-- Data Pulse Animations (adjusted) -->
+                    <circle cx="36" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                        <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    
+                    <circle cx="30" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                        <animate attributeName="cx" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                        <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                    </circle>
+                    
+                    <circle cx="30" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                        <animate attributeName="cx" from="24" to="36" dur="3s" begin="2s" repeatCount="indefinite" />
+                        <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
+                    </circle>
+                    
+                    <!-- Company Name (adjusted position) -->
+                    <text x="82" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="24">
+                        <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                    </text>
+                </svg>
+            </div>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-links" id="navLinks" role="navigation">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#packages" class="nav-link">Packages</a>
+                <a href="index.html#process" class="nav-link">Process</a>
+                <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="contact.html" class="cta-button">Contact Us</a>
+            </div>
+        </nav>
+    </div>
+</header>
