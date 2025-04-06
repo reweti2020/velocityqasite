@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - VelocityQA</title>
-    <style>
+<style>
         :root {
             --primary: #0052cc;
             --primary-dark: #003d99;
@@ -76,7 +76,7 @@
             width: auto;
         }
 
-                .logo-svg text {
+        .logo-svg text {
             font-weight: 700;
             font-size: 18px;
             filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
@@ -198,10 +198,14 @@
         }
 
         .about-image {
-            position: relative;
+            background-color: var(--bg-dark);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
 
         .about-image img {
@@ -269,6 +273,36 @@
         .highlight-text {
             font-size: 1rem;
             color: var(--text-light);
+        }
+
+        /* Logo in About section */
+        .logo-container-about {
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+            transition: transform 0.5s ease-out;
+        }
+
+        .logo-container-about:hover {
+            transform: translateY(-8px);
+        }
+
+        .about-company-name {
+            margin-top: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.5px;
+            filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .about-velocity {
+            color: #D1D5DB;
+        }
+
+        .about-qa {
+            color: #FF6B00;
         }
 
         /* Team Section */
@@ -705,43 +739,8 @@
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
             }
-        .logo-container-about {
-    max-width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: transform 0.5s ease-out;
-    padding: 2rem;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
-}
-
-.logo-container-about:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
-}
-
-.company-name {
-    margin-top: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.company-name .velocity {
-    color: #D1D5DB;
-}
-
-.company-name .qa {
-    color: #FF6B00;
-}
-
-.about-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
         }
+    </style>
     </style>
 </head>
 <body data-theme="dark">
