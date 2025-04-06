@@ -643,6 +643,42 @@
             transition: all 0.3s;
         }
 
+        /* Custom Cursor */
+.cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(32, 197, 198, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor-follower.active {
+    opacity: 1;
+}
+
+.cursor-follower.hover-link {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(32, 197, 198, 0.1);
+}
+
+.cursor-follower.hover-button {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(32, 197, 198, 0.15);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .cursor-follower {
+        display: none;
+    }
+}
+
         /* Media Queries */
         @media (max-width: 992px) {
             .about-grid {
@@ -744,6 +780,8 @@
     </style>
 </head>
 <body data-theme="dark">
+    <div class="cursor-follower"></div>
+    
     <div class="theme-toggle" id="themeToggle">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
@@ -1269,10 +1307,52 @@
                 localStorage.setItem('theme', newTheme);
             });
         }
-    </script>
+        // Custom cursor
+    const cursor = document.querySelector('.cursor-follower');
+
+    if (cursor && window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            if (!cursor.classList.contains('active')) {
+                setTimeout(() => {
+                    cursor.classList.add('active');
+                }, 500);
+            }
+        });
+        
+        // Add hover effects for links and buttons
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                if (link.classList.contains('cta-button')) {
+                    cursor.classList.add('hover-button');
+                } else {
+                    cursor.classList.add('hover-link');
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover-link', 'hover-button');
+            });
+        });
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('active');
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.classList.add('active');
+        });
+    } else if (cursor) {
+        // If not a hover device, hide the cursor completely
+        cursor.style.display = 'none';
+    }
+</script>
 </body>
 </html>
-
 
 
 
