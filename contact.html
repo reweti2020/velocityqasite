@@ -10,6 +10,18 @@
     <meta name="description" content="Get in touch with VelocityQA for professional QA testing services starting at $500. We offer bug finding, workflow testing, UI checks, and pre-release testing for startups.">
     
     <!-- Open Graph / Facebook -->
+    <meta property="og:type" content<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact VelocityQA | Expert QA Testing for Startups</title>
+    <meta name="title" content="Contact VelocityQA | Expert QA Testing for Startups">
+    <meta name="description" content="Get in touch with VelocityQA for professional QA testing services starting at $500. We offer bug finding, workflow testing, UI checks, and pre-release testing for startups.">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://velocityqa.com.au/contact.html">
     <meta property="og:title" content="Contact VelocityQA | Expert QA Testing for Startups">
@@ -775,6 +787,19 @@
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
             }
+            
+        .highlighted {
+               background-color: rgba(32, 197, 198, 0.1);
+               border-radius: var(--radius-md);
+               transition: background-color 0.5s ease;
+    }
+    
+        .form-sublabel {
+               font-size: 1rem;
+               font-weight: 600;
+               color: var(--text);
+               margin: 1.5rem 0 0.75rem;
+    }
         }
     </style>
 </head>
@@ -1585,7 +1610,61 @@
                             }, 5000);
                         }
                     });
-                </script>
-            </body>
-            </html>
+                    / Auto-check packages based on URL parameters
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if we have a package to auto-select from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageToSelect = urlParams.get('package');
+        
+        if (packageToSelect) {
+            // Try to find the checkbox with the corresponding ID
+            const checkbox = document.getElementById(packageToSelect);
+            
+            if (checkbox) {
+                // Check the box
+                checkbox.checked = true;
+                
+                // Scroll to the form section
+                const formSection = document.getElementById('contact');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Add visual feedback
+                checkbox.parentNode.classList.add('highlighted');
+                setTimeout(() => {
+                    checkbox.parentNode.classList.remove('highlighted');
+                }, 3000);
+                
+                // Show a notification
+                const notificationElement = document.createElement('div');
+                notificationElement.style.position = 'fixed';
+                notificationElement.style.top = '20px';
+                notificationElement.style.left = '50%';
+                notificationElement.style.transform = 'translateX(-50%)';
+                notificationElement.style.backgroundColor = 'var(--teal)';
+                notificationElement.style.color = 'white';
+                notificationElement.style.padding = '1rem 2rem';
+                notificationElement.style.borderRadius = 'var(--radius-md)';
+                notificationElement.style.boxShadow = 'var(--shadow-md)';
+                notificationElement.style.zIndex = '9999';
+                notificationElement.innerText = `${checkbox.labels[0].textContent} added to your form`;
+                
+                document.body.appendChild(notificationElement);
+                
+                setTimeout(() => {
+                    notificationElement.style.opacity = '0';
+                    notificationElement.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(notificationElement);
+                    }, 500);
+                }, 3000);
+            }
+        }
+      });
+   </script>
+</body>
+</html>
+                                            
+
                                             
