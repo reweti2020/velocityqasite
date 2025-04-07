@@ -3,9 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - VelocityQA</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact VelocityQA | Expert QA Testing for Startups</title>
+    <meta name="title" content="Contact VelocityQA | Expert QA Testing for Startups">
+    <meta name="description" content="Get in touch with VelocityQA for professional QA testing services starting at $500. We offer bug finding, workflow testing, UI checks, and pre-release testing for startups.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://velocityqa.com.au/contact.html">
+    <meta property="og:title" content="Contact VelocityQA | Expert QA Testing for Startups">
+    <meta property="og:description" content="Looking for reliable QA testing? Contact VelocityQA for expert bug finding, workflow testing, UI checks, and pre-release testing services tailored for startups.">
+    <meta property="og:image" content="https://velocityqa.com.au/images/velocityqa-og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://velocityqa.com.au/contact.html">
+    <meta property="twitter:title" content="Contact VelocityQA | Expert QA Testing for Startups">
+    <meta property="twitter:description" content="Looking for reliable QA testing? Contact VelocityQA for expert bug finding, workflow testing, UI checks, and pre-release testing services tailored for startups.">
+    <meta property="twitter:image" content="https://velocityqa.com.au/images/velocityqa-og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://velocityqa.com.au/contact.html">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="keywords" content="QA testing, startup testing, app testing, bug finding, workflow testing, UI testing, pre-release testing, MVP testing">
+    <meta name="author" content="VelocityQA">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0PBYFYX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-W0PBYFYX7Q');
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VelocityQA",
+      "url": "https://velocityqa.com.au",
+      "logo": "https://velocityqa.com.au/images/velocityqa-logo.png",
+      "description": "Professional QA testing services for startups, offering bug finding, workflow testing, UI checks, and pre-release testing.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "AU"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service",
+        "email": "info@velocityqa.com.au"
+      },
+      "sameAs": [
+        "https://www.facebook.com/velocityqa",
+        "https://www.twitter.com/velocityqa",
+        "https://www.linkedin.com/company/velocityqa"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://velocityqa.com.au"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://velocityqa.com.au/contact.html"
+      }]
+    }
+    </script>
+    
     <style>
+        /* CSS Theme Variables for Adaptive Dark/Light Modes */
         :root {
             --primary: #121620;
             --primary-dark: #0a0d14;
@@ -22,6 +113,16 @@
             --error: #ef4444;
             --orange: #ff6b00;
             --teal: #20C5C6;
+            
+            /* New 2025 design variables */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
         }
 
         [data-theme="dark"] {
@@ -57,7 +158,8 @@
             padding: 1.5rem 0;
             position: relative;
             background-color: var(--card);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
+            z-index: 100;
         }
 
         nav {
@@ -93,7 +195,7 @@
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: var(--transition-base);
             position: relative;
         }
 
@@ -121,10 +223,10 @@
             background-color: var(--orange);
             color: white;
             padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition-base);
             border: none;
             cursor: pointer;
             position: relative;
@@ -134,7 +236,7 @@
         .cta-button:hover {
             background-color: #e85d00;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
         
         .cta-button:after {
@@ -151,7 +253,6 @@
         .cta-button:hover:after {
             left: 100%;
         }
-
         /* Contact Page Specific Styles */
         .page-header {
             padding: 4rem 0;
@@ -177,6 +278,8 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .page-description {
@@ -184,6 +287,8 @@
             margin: 0 auto;
             font-size: 1.2rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         /* Process Timeline Section */
@@ -221,9 +326,14 @@
 
         .contact-form-container {
             background-color: var(--card);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-base);
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px);
         }
 
         .form-title {
@@ -250,12 +360,12 @@
             width: 100%;
             padding: 0.75rem 1rem;
             border: 1px solid var(--border);
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             background-color: var(--bg-light);
             color: var(--text);
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            transition: var(--transition-base);
         }
 
         .form-input:focus,
@@ -325,21 +435,21 @@
             font-size: 1rem;
             padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-base);
         }
 
         .submit-button:hover {
             background-color: #e85d00;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .form-disclaimer {
             margin-top: 1.5rem;
             padding: 1rem;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             background-color: rgba(32, 197, 198, 0.05);
             border-left: 3px solid var(--teal);
             font-size: 0.9rem;
@@ -349,12 +459,17 @@
         /* Testing Devices Visualization */
         .devices-container {
             background-color: var(--card);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
             height: 100%;
             display: flex;
             flex-direction: column;
+            transition: var(--transition-base);
+        }
+
+        .devices-container:hover {
+            transform: translateY(-5px);
         }
 
         .devices-title {
@@ -371,7 +486,6 @@
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         /* FAQ Section */
         .faq-section {
             padding: 5rem 0;
@@ -401,16 +515,16 @@
 
         .faq-item {
             background-color: var(--bg-light);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             overflow: hidden;
             margin-bottom: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
         }
 
         .faq-item:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-md);
         }
 
         .faq-question {
@@ -430,7 +544,7 @@
             padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
         }
 
         .faq-answer-content {
@@ -492,7 +606,7 @@
             height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            transition: background-color 0.3s;
+            transition: var(--transition-base);
         }
          .social-link svg {
              color: var(--silver);
@@ -544,7 +658,7 @@
             opacity: 0.7;
         }
 
-        /* Theme toggle */
+        /* Theme toggle - Improved for 2025 */
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -558,14 +672,14 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-md);
             z-index: 100;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition-base);
         }
 
         .theme-toggle:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Mobile nav */
@@ -585,7 +699,7 @@
             width: 100%;
             background-color: var(--text);
             border-radius: 3px;
-            transition: all 0.3s;
+            transition: var(--transition-base);
         }
 
         /* Media Queries */
@@ -654,7 +768,7 @@
             }
         }
 
-        /* Minimal motion styles */
+        /* Minimal motion styles - Accessibility improvement for 2025 */
         @media (prefers-reduced-motion: reduce) {
             * {
                 transition-duration: 0.001ms !important;
@@ -665,7 +779,7 @@
     </style>
 </head>
 <body data-theme="dark">
-    <div class="theme-toggle" id="themeToggle">
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -684,63 +798,66 @@
             <nav>
                 <div class="logo-container">
                     <!-- Neural Circuit Logo SVG -->
-                    <svg class="logo-svg" width="180" height="48" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Definitions -->
-                        <defs>
-                            <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#FF6B00" />
-                                <stop offset="100%" stop-color="#FF9248" />
-                            </linearGradient>
-                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="1" result="blur" />
-                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                            </filter>
-                        </defs>
-                        
-                        <!-- Dark Background Element -->
-                        <circle cx="30" cy="30" r="30" fill="#121620" />
-                        
-                        <!-- Neural Network Grid (simplified for header) -->
-                        <circle cx="30" cy="18" r="1" fill="#D1D5DB" />
-                        <circle cx="18" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="42" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="15" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="30" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="45" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="30" cy="48" r="1" fill="#D1D5DB" />
-                        
-                        <!-- Main Circuit/Data Path -->
-                        <path d="M30 48L30 36L18 24L30 18" stroke="url(#neuralGradient)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glow)" />
-                        
-                        <!-- Neural Nodes -->
-                        <circle cx="30" cy="48" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="30" cy="36" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="18" cy="24" r="3" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="30" cy="18" r="3" fill="#20C5C6" filter="url(#glow)" />
-                        
-                        <!-- Data Pulse Animations -->
-                        <circle cx="30" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <circle cx="24" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="30" to="18" dur="3s" begin="1s" repeatCount="indefinite" />
-                            <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
-                            <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <!-- Company Name -->
-                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
-                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                        </text>
-                    </svg>
+                    <a href="index.html" aria-label="VelocityQA homepage">
+                        <svg class="logo-svg" width="180" height="48" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Definitions -->
+                            <defs>
+                                <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#FF6B00" />
+                                    <stop offset="100%" stop-color="#FF9248" />
+                                </linearGradient>
+                                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="1" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            
+                            <!-- Dark Background Element -->
+                            <circle cx="30" cy="30" r="30" fill="#121620" />
+                            
+                            <!-- Neural Network Grid (simplified for header) -->
+                            <circle cx="30" cy="18" r="1" fill="#D1D5DB" />
+                            <circle cx="18" cy="24" r="1" fill="#D1D5DB" />
+                            <circle cx="42" cy="24" r="1" fill="#D1D5DB" />
+                            <circle cx="15" cy="36" r="1" fill="#D1D5DB" />
+                            <circle cx="30" cy="36" r="1" fill="#D1D5DB" />
+                            <circle cx="45" cy="36" r="1" fill="#D1D5DB" />
+                            <circle cx="30" cy="48" r="1" fill="#D1D5DB" />
+                            
+                            <!-- Main Circuit/Data Path -->
+                            <path d="M30 48L30 36L18 24L30 18" stroke="url(#neuralGradient)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glow)" />
+                            
+                            <!-- Neural Nodes -->
+                            <circle cx="30" cy="48" r="3" fill="#FF6B00" filter="url(#glow)" />
+                            <circle cx="30" cy="36" r="3" fill="#FF6B00" filter="url(#glow)" />
+                            <circle cx="18" cy="24" r="3" fill="#FF6B00" filter="url(#glow)" />
+                            <circle cx="30" cy="18" r="3" fill="#20C5C6" filter="url(#glow)" />
+                            
+                            <!-- Data Pulse Animations -->
+                            <circle cx="30" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                                <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="24" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                                <animate attributeName="cx" from="30" to="18" dur="3s" begin="1s" repeatCount="indefinite" />
+                                <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="24" cy="21" r="1.5" fill="#20C
+                            <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                                <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                                <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Company Name -->
+                            <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
+                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                            </text>
+                        </svg>
+                    </a>
                 </div>
                 
-                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -770,7 +887,7 @@
         <div class="container">
             <h2 class="process-title">How We Work With You</h2>
             <div class="process-container">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="width: 100%; height: 200px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" style="width: 100%; height: 200px;" aria-label="Process timeline showing 4 steps: Initial Contact, Consultation, Testing, and Reporting">
                     <!-- Gradient Definitions -->
                     <defs>
                         <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -862,9 +979,8 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-form-container">
@@ -873,17 +989,18 @@
                         <input type="hidden" name="_next" value="https://velocityqa.com.au/thank-you.html">
                         <div class="form-group">
                             <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                            <input type="text" id="name" name="name" class="form-input" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" required aria-required="true">
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label">What services are you interested in?</label>
-                            <div class="checkbox-group">
+                            <div class="checkbox-group" role="group" aria-labelledby="services-group">
+                                <div id="services-group" class="sr-only">Services you are interested in</div>
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="bug-hunter" name="package[]" value="bug-hunter">
                                     <label for="bug-hunter">Bug Hunter ($450)</label>
@@ -906,7 +1023,8 @@
                         <!-- Testing Environment Options -->
                         <div class="form-group">
                             <label class="form-label">Testing Environment (Select all that apply)</label>
-                            <div class="checkbox-group">
+                            <div class="checkbox-group" role="group" aria-labelledby="environments-group">
+                                <div id="environments-group" class="sr-only">Testing environments</div>
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="testflight" name="environment[]" value="testflight">
                                     <label for="testflight">Test Flight for iOS mobile testing</label>
@@ -928,7 +1046,8 @@
 
                         <div class="form-group">
                             <label class="form-label">Service Type</label>
-                            <div class="radio-group">
+                            <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
+                                <div id="service-type-group" class="sr-only">Service type selection</div>
                                 <div class="radio-item">
                                     <input type="radio" id="standard-package" name="service-type" value="standard" checked>
                                     <label for="standard-package">Standard Packages (as selected above)</label>
@@ -940,7 +1059,7 @@
                                 <div class="radio-item">
                                     <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
                                     <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
-                                    <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours (optional)" min="1">
+                                    <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours (optional)" min="1" aria-labelledby="blocked-hours">
                                 </div>
                                 <!-- Prepaid 10+ Hours Option -->
                                 <div class="radio-item">
@@ -952,7 +1071,7 @@
                         
                         <div class="form-group">
                             <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project and testing needs" required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project and testing needs" required aria-required="true"></textarea>
                         </div>
                         
                         <!-- Payment Terms Disclaimer -->
@@ -963,13 +1082,12 @@
                         <button type="submit" class="submit-button" style="margin-top: 1.5rem;">Send Message</button>
                     </form>
                 </div>
-                
                 <!-- Testing Devices Visualization -->
                 <div class="devices-container">
                     <h3 class="devices-title">Cross-Platform Testing</h3>
                     <p class="devices-description">We test your applications across all major platforms to ensure consistent quality.</p>
                     
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;">  
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;" aria-label="Illustration of cross-platform testing across multiple devices">  
                         <defs>  
                             <!-- Gradient Definitions -->  
                             <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
@@ -1150,268 +1268,311 @@
                             Cross-Platform Testing  
                         </text>  
                     </svg>
+
+                    <!-- FAQ Mini-Section -->
                     <div class="faq-section" style="padding-top: 2rem; padding-bottom: 0;">
-    <h3 class="devices-title">Frequently Asked Questions</h3>
-    <p class="devices-description">Common questions about our services</p>
-    
-    <div class="faq-container" style="max-width: 100%;">
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How quickly can you start testing my app?</span>
-                <div class="faq-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-content">
-                    <p>We can typically begin testing within 24 hours of receiving access to your application and a brief on your testing requirements.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Do you test on real devices or emulators?</span>
-                <div class="faq-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-content">
-                    <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How does your blocked hours option work?</span>
-                <div class="faq-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <div class="faq-answer-content">
-                    <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 1.5rem;">
-        <a href="./faq.html" class="cta-button">View All FAQs</a>
-    </div>
-</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div>
-                    <!-- Footer Neural Circuit Logo -->
-                    <div class="footer-logo-container">
-                        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Definitions -->
-                            <defs>
-                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="1" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
+                        <h3 class="devices-title">Frequently Asked Questions</h3>
+                        <p class="devices-description">Common questions about our services</p>
+                        
+                        <div class="faq-container" style="max-width: 100%;">
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
+                                    <span>How quickly can you start testing my app?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-1">
+                                    <div class="faq-answer-content">
+                                        <p>We can typically begin testing within 24 hours of receiving access to your application and a brief on your testing requirements.</p>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <!-- Neural Circuit (simplified for footer) -->
-                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
+                                    <span>Do you test on real devices or emulators?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-2">
+                                    <div class="faq-answer-content">
+                                        <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <!-- Neural Nodes -->
-                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
-                            
-                            <!-- Company Name -->
-                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
-                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                            </text>
-                        </svg>
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
+                                    <span>How does your blocked hours option work?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-3">
+                                    <div class="faq-answer-content">
+                                        <p>Our blocked hours option gives you maximum flexibility
+                                            <div class="faq-answer" id="faq-answer-3">
+                                                <div class="faq-answer-content">
+                                                    <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="text-align: center; margin-top: 1.5rem;">
+                                        <a href="./faq.html" class="cta-button">View All FAQs</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
+                </section>
+            
+                <footer>
+                    <div class="container">
+                        <div class="footer-container">
+                            <div>
+                                <!-- Footer Neural Circuit Logo -->
+                                <div class="footer-logo-container">
+                                    <a href="index.html" aria-label="VelocityQA homepage">
+                                        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Definitions -->
+                                            <defs>
+                                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stop-color="#FF6B00" />
+                                                    <stop offset="100%" stop-color="#FF9248" />
+                                                </linearGradient>
+                                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
+                                                    <feGaussianBlur stdDeviation="1" result="blur" />
+                                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                                </filter>
+                                            </defs>
+                                            
+                                            <!-- Neural Circuit (simplified for footer) -->
+                                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
+                                            
+                                            <!-- Neural Nodes -->
+                                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
+                                            
+                                            <!-- Company Name -->
+                                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                                            </text>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
+                                <div class="footer-social">
+                                    <a href="#" class="social-link" aria-label="Facebook">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-link" aria-label="Twitter">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-link" aria-label="LinkedIn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                            <rect x="2" y="9" width="4" height="12"></rect>
+                                            <circle cx="4" cy="4" r="2"></circle>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="footer-title">Quick Links</h3>
+                                <ul class="footer-links">
+                                    <li class="footer-link"><a href="index.html#features">Features</a></li>
+                                    <li class="footer-link"><a href="index.html#packages">Packages</a></li>
+                                    <li class="footer-link"><a href="index.html#process">Our Process</a></li>
+                                    <li class="footer-link"><a href="index.html#pricing">Why Choose Us</a></li>
+                                    <li class="footer-link"><a href="index.html#testimonials">Testimonials</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="footer-title">Services</h3>
+                                <ul class="footer-links">
+                                    <li class="footer-link"><a href="bug-hunter.html">Bug Hunter</a></li>
+                                    <li class="footer-link"><a href="user-journey-testing.html">User Journey Testing</a></li>
+                                    <li class="footer-link"><a href="system-auditor.html">System Auditor</a></li>
+                                    <li class="footer-link"><a href="precision-strike.html">Precision Strike</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h3 class="footer-title">Contact</h3>
+                                <ul class="footer-links">
+                                    <li class="footer-link"><a href="mailto:info@velocityqa.com.au">info@velocityqa.com.au</a></li>
+                                    <li class="footer-link"><a href="contact.html">Get in Touch</a></li>
+                                    <li class="footer-link"><a href="faq.html">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-bottom">
+                            <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="index.html#features">Features</a></li>
-                        <li class="footer-link"><a href="index.html#packages">Packages</a></li>
-                        <li class="footer-link"><a href="index.html#process">Our Process</a></li>
-                        <li class="footer-link"><a href="index.html#pricing">Why Choose Us</a></li>
-                        <li class="footer-link"><a href="index.html#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Services</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="bug-hunter.html">Bug Hunter</a></li>
-                        <li class="footer-link"><a href="user-journey-testing.html">User Journey Testing</a></li>
-                        <li class="footer-link"><a href="system-auditor.html">System Auditor</a></li>
-                        <li class="footer-link"><a href="precision-strike.html">Precision Strike</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Contact</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="mailto:info@velocityqa.com.au">info@velocityqa.com.au</a></li>
-                        <li class="footer-link"><a href="contact.html">Get in Touch</a></li>
-                        <li class="footer-link"><a href="faq.html">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
+                </footer>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
-        
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-        }
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
-        }
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+                <script>
+                    // Mobile Menu Toggle
+                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+                    const navLinks = document.getElementById('navLinks');
+                    
+                    if (mobileMenuToggle) {
+                        mobileMenuToggle.addEventListener('click', () => {
+                            navLinks.classList.toggle('active');
+                            const isExpanded = navLinks.classList.contains('active');
+                            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+                        });
+                    }
+                    
+                    // Theme Toggle with improved accessibility
+                    const themeToggle = document.getElementById('themeToggle');
+                    const htmlElement = document.documentElement;
+                    
+                    // Check for saved theme preference
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme) {
+                        htmlElement.setAttribute('data-theme', savedTheme);
+                        if (themeToggle) {
+                            themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+                        }
+                    }
+                    
+                    if (themeToggle) {
+                        themeToggle.addEventListener('click', () => {
+                            const currentTheme = htmlElement.getAttribute('data-theme');
+                            const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                            
+                            htmlElement.setAttribute('data-theme', newTheme);
+                            localStorage.setItem('theme', newTheme);
+                            themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+                        });
+                    }
+                    
+                    // FAQ Accordion with keyboard accessibility
+                    const faqItems = document.querySelectorAll('.faq-item');
+                    
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.faq-question');
+                        const answer = item.querySelector('.faq-answer');
+                        
+                        question.addEventListener('click', () => {
+                            toggleFAQ(item, question, answer);
+                        });
+                        
+                        // Keyboard accessibility
+                        question.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                toggleFAQ(item, question, answer);
+                            }
+                        });
+                    });
+                    
+                    function toggleFAQ(item, question, answer) {
+                        const isActive = item.classList.contains('faq-active');
+                        
+                        // Close all FAQs
+                        faqItems.forEach(faq => {
+                            const faqQuestion = faq.querySelector('.faq-question');
+                            faqQuestion.setAttribute('aria-expanded', 'false');
+                            faq.classList.remove('faq-active');
+                        });
+                        
+                        // If the clicked item wasn't active, open it
+                        if (!isActive) {
+                            item.classList.add('faq-active');
+                            question.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+                    
+                    // Show/hide the hours input based on service type selection
+                    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+                    const hoursInput = document.getElementById('hours-needed');
+                    
+                    serviceTypeRadios.forEach(radio => {
+                        radio.addEventListener('change', function() {
+                            if (this.value === 'blocked-hours') {
+                                hoursInput.style.display = 'block';
+                            } else {
+                                hoursInput.style.display = 'none';
+                            }
+                        });
+                    });
+                    
+                    // Initialize display state
+                    if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
+                        hoursInput.style.display = 'block';
+                    } else if (hoursInput) {
+                        hoursInput.style.display = 'none';
+                    }
+                    
+                    // Form Submission
+                    const contactForm = document.getElementById('contactForm');
+                    
+                    if (contactForm) {
+                        contactForm.addEventListener('submit', function(e) {
+                            // Don't prevent default - allow form to submit to Formspree
+                            
+                            // Set a flag in localStorage to show a success message when the user returns
+                            localStorage.setItem('formSubmitted', 'true');
+                        });
+                    }
             
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('faq-active');
-                
-                // Close all FAQs
-                faqItems.forEach(faq => {
-                    faq.classList.remove('faq-active');
-                });
-                
-                // If the clicked item wasn't active, open it
-                if (!isActive) {
-                    item.classList.add('faq-active');
-                }
-            });
-        });
-        
-        // Show/hide the hours input based on service type selection
-        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
-        const hoursInput = document.getElementById('hours-needed');
-        
-        serviceTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'blocked-hours') {
-                    hoursInput.style.display = 'block';
-                } else {
-                    hoursInput.style.display = 'none';
-                }
-            });
-        });
-        
-        // Initialize display state
-        if (document.getElementById('blocked-hours').checked) {
-            hoursInput.style.display = 'block';
-        } else {
-            hoursInput.style.display = 'none';
-        }
-        
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        // Don't prevent default - allow form to submit to Formspree
-        // e.preventDefault(); <- Remove this line
-        
-        // No alerts needed as Formspree will handle the submission
-        // The code below is optional - you can add a visual indicator if desired
-        
-        // Set a flag in localStorage to show a success message when the user returns
-        localStorage.setItem('formSubmitted', 'true');
-        
-        // No need to reset the form - it will be handled by the page reload
-        // No need to hide hours input - this will be handled by the page reload
-    });
-}
-
-// Optional: Check if returning from form submission to show success message
-window.addEventListener('load', function() {
-    if (localStorage.getItem('formSubmitted') === 'true') {
-        // Clear the flag
-        localStorage.removeItem('formSubmitted');
-        
-        // Show success message
-        alert('Thank you for your message! We will get back to you shortly.');
-    }
-});
-        }
-    </script>
-</body>
-</html>
+                    // Optional: Check if returning from form submission to show success message
+                    window.addEventListener('load', function() {
+                        if (localStorage.getItem('formSubmitted') === 'true') {
+                            // Clear the flag
+                            localStorage.removeItem('formSubmitted');
+                            
+                            // Show success message
+                            const messageElement = document.createElement('div');
+                            messageElement.style.position = 'fixed';
+                            messageElement.style.top = '20px';
+                            messageElement.style.left = '50%';
+                            messageElement.style.transform = 'translateX(-50%)';
+                            messageElement.style.backgroundColor = 'var(--success)';
+                            messageElement.style.color = 'white';
+                            messageElement.style.padding = '1rem 2rem';
+                            messageElement.style.borderRadius = 'var(--radius-md)';
+                            messageElement.style.boxShadow = 'var(--shadow-md)';
+                            messageElement.style.zIndex = '9999';
+                            messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
+                            
+                            document.body.appendChild(messageElement);
+                            
+                            setTimeout(() => {
+                                messageElement.style.opacity = '0';
+                                messageElement.style.transition = 'opacity 0.5s ease';
+                                setTimeout(() => {
+                                    document.body.removeChild(messageElement);
+                                }, 500);
+                            }, 5000);
+                        }
+                    });
+                </script>
+            </body>
+            </html>
+                                            
