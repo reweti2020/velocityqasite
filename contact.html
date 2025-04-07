@@ -528,7 +528,6 @@
         }
 
         .faq-question {
-            background-color: var(--bg-light);
             padding: 1.5rem;
             font-weight: 600;
             color: var(--text);
@@ -541,10 +540,9 @@
         }
 
         .faq-answer {
-            padding: 0;
             max-height: 0;
             overflow: hidden;
-            transition: var(--transition-smooth);
+            transition: max-height 0.3s ease-out;
         }
 
         .faq-answer-content {
@@ -775,19 +773,58 @@
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
             }
-            
+        }
+        
+        /* Package Selection Styles */
         .highlighted {
-               background-color: rgba(32, 197, 198, 0.1);
-               border-radius: var(--radius-md);
-               transition: background-color 0.5s ease;
-    }
-    
+            background-color: rgba(32, 197, 198, 0.1);
+            border-radius: var(--radius-md);
+            transition: background-color 0.5s ease;
+        }
+
         .form-sublabel {
-               font-size: 1rem;
-               font-weight: 600;
-               color: var(--text);
-               margin: 1.5rem 0 0.75rem;
-    }
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        /* Package Counter Badge */
+        .package-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background-color: white;
+            color: var(--orange);
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-left: 6px;
+            position: relative;
+            top: -1px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Clear Button Styles */
+        .clear-button {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition-base);
+        }
+
+        .clear-button:hover {
+            background-color: var(--bg-light);
+            color: var(--text);
         }
     </style>
 </head>
@@ -856,7 +893,6 @@
                                 <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
                             </circle>
                             
-                            <circle cx="24" cy="21" r="1.5" fill="#20C
                             <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
                                 <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
                                 <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
@@ -882,7 +918,7 @@
                     <a href="index.html#process" class="nav-link">Process</a>
                     <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
                     <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-                    <a href="contact.html" class="cta-button">Contact Us</a>
+                    <a href="contact.html" class="cta-button">Contact Us<span id="package-counter" class="package-badge hidden">0</span></a>
                 </div>
             </nav>
         </div>
@@ -1014,6 +1050,8 @@
                             <label class="form-label">What services are you interested in?</label>
                             <div class="checkbox-group" role="group" aria-labelledby="services-group">
                                 <div id="services-group" class="sr-only">Services you are interested in</div>
+                                
+                                <!-- Main Packages -->
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="bug-hunter" name="package[]" value="bug-hunter">
                                     <label for="bug-hunter">Bug Hunter ($450)</label>
@@ -1030,19 +1068,20 @@
                                     <input type="checkbox" id="precision-strike" name="package[]" value="precision-strike">
                                     <label for="precision-strike">Precision Strike ($100/hr)</label>
                                 </div>
-                        
-                        <!-- Micro Packages/Add-ons -->
-                        <h4 class="form-sublabel">Add-on Packages</h4>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="bug-verification" name="package[]" value="bug-verification">
-                            <label for="bug-verification">Bug Verification Package ($150)</label>
-                       </div>
-                      <div class="checkbox-item">
-                         <input type="checkbox" id="monthly-checkin" name="package[]" value="monthly-checkin">
-                        <label for="monthly-checkin">Monthly Check-In Testing ($275/month)</label>
-                    </div>
-                </div>
-             </div>
+                                
+                                <!-- Micro Packages/Add-ons -->
+                                <h4 class="form-sublabel">Add-on Packages</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="bug-verification" name="package[]" value="bug-verification">
+                                    <label for="bug-verification">Bug Verification Package ($150)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="monthly-checkin" name="package[]" value="monthly-checkin">
+                                    <label for="monthly-checkin">Monthly Check-In Testing ($275/month)</label>
+                                </div>
+                            </div>
+                            <button type="button" onclick="clearSelectedPackages()" class="clear-button" style="margin-top: 0.75rem;">Clear All Selections</button>
+                        </div>
 
                         <!-- Testing Environment Options -->
                         <div class="form-group">
@@ -1345,310 +1384,389 @@
                                 </div>
                                 <div class="faq-answer" id="faq-answer-3">
                                     <div class="faq-answer-content">
-                                        <p>Our blocked hours option gives you maximum flexibility
-                                            <div class="faq-answer" id="faq-answer-3">
-                                                <div class="faq-answer-content">
-                                                    <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div style="text-align: center; margin-top: 1.5rem;">
-                                        <a href="./faq.html" class="cta-button">View All FAQs</a>
+                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            
-                <footer>
-                    <div class="container">
-                        <div class="footer-container">
-                            <div>
-                                <!-- Footer Neural Circuit Logo -->
-                                <div class="footer-logo-container">
-                                    <a href="index.html" aria-label="VelocityQA homepage">
-                                        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- Definitions -->
-                                            <defs>
-                                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
-                                                    <stop offset="0%" stop-color="#FF6B00" />
-                                                    <stop offset="100%" stop-color="#FF9248" />
-                                                </linearGradient>
-                                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-                                                    <feGaussianBlur stdDeviation="1" result="blur" />
-                                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                                </filter>
-                                            </defs>
-                                            
-                                            <!-- Neural Circuit (simplified for footer) -->
-                                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
-                                            
-                                            <!-- Neural Nodes -->
-                                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
-                                            
-                                            <!-- Company Name -->
-                                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
-                                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                                            </text>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
-                                <div class="footer-social">
-                                    <a href="#" class="social-link" aria-label="Facebook">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="#" class="social-link" aria-label="Twitter">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="#" class="social-link" aria-label="LinkedIn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                            <rect x="2" y="9" width="4" height="12"></rect>
-                                            <circle cx="4" cy="4" r="2"></circle>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h3 class="footer-title">Quick Links</h3>
-                                <ul class="footer-links">
-                                    <li class="footer-link"><a href="index.html#features">Features</a></li>
-                                    <li class="footer-link"><a href="index.html#packages">Packages</a></li>
-                                    <li class="footer-link"><a href="index.html#process">Our Process</a></li>
-                                    <li class="footer-link"><a href="index.html#pricing">Why Choose Us</a></li>
-                                    <li class="footer-link"><a href="index.html#testimonials">Testimonials</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h3 class="footer-title">Services</h3>
-                                <ul class="footer-links">
-                                    <li class="footer-link"><a href="bug-hunter.html">Bug Hunter</a></li>
-                                    <li class="footer-link"><a href="user-journey-testing.html">User Journey Testing</a></li>
-                                    <li class="footer-link"><a href="system-auditor.html">System Auditor</a></li>
-                                    <li class="footer-link"><a href="precision-strike.html">Precision Strike</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h3 class="footer-title">Contact</h3>
-                                <ul class="footer-links">
-                                    <li class="footer-link"><a href="mailto:info@velocityqa.com.au">info@velocityqa.com.au</a></li>
-                                    <li class="footer-link"><a href="contact.html">Get in Touch</a></li>
-                                    <li class="footer-link"><a href="faq.html">FAQ</a></li>
-                                </ul>
-                            </div>
-                        </div>
                         
-                        <div class="footer-bottom">
-                            <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <a href="./faq.html" class="cta-button">View All FAQs</a>
                         </div>
                     </div>
-                </footer>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <!-- Footer Neural Circuit Logo -->
+                    <div class="footer-logo-container">
+                        <a href="index.html" aria-label="VelocityQA homepage">
+                            <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Definitions -->
+                                <defs>
+                                    <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#FF6B00" />
+                                        <stop offset="100%" stop-color="#FF9248" />
+                                    </linearGradient>
+                                    <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="1" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+                                
+                                <!-- Neural Circuit (simplified for footer) -->
+                                <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
+                                
+                                <!-- Neural Nodes -->
+                                <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                                <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
+                                
+                                <!-- Company Name -->
+                                <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
+                                    <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                                </text>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html#features">Features</a></li>
+                        <li class="footer-link"><a href="index.html#packages">Packages</a></li>
+                        <li class="footer-link"><a href="index.html#process">Our Process</a></li>
+                        <li class="footer-link"><a href="index.html#pricing">Why Choose Us</a></li>
+                        <li class="footer-link"><a href="index.html#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="bug-hunter.html">Bug Hunter</a></li>
+                        <li class="footer-link"><a href="user-journey-testing.html">User Journey Testing</a></li>
+                        <li class="footer-link"><a href="system-auditor.html">System Auditor</a></li>
+                        <li class="footer-link"><a href="precision-strike.html">Precision Strike</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="mailto:info@velocityqa.com.au">info@velocityqa.com.au</a></li>
+                        <li class="footer-link"><a href="contact.html">Get in Touch</a></li>
+                        <li class="footer-link"><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
             
-                <script>
-                    // Mobile Menu Toggle
-                    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-                    const navLinks = document.getElementById('navLinks');
-                    
-                    if (mobileMenuToggle) {
-                        mobileMenuToggle.addEventListener('click', () => {
-                            navLinks.classList.toggle('active');
-                            const isExpanded = navLinks.classList.contains('active');
-                            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
-                        });
-                    }
-                    
-                    // Theme Toggle with improved accessibility
-                    const themeToggle = document.getElementById('themeToggle');
-                    const htmlElement = document.documentElement;
-                    
-                    // Check for saved theme preference
-                    const savedTheme = localStorage.getItem('theme');
-                    if (savedTheme) {
-                        htmlElement.setAttribute('data-theme', savedTheme);
-                        if (themeToggle) {
-                            themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-                        }
-                    }
-                    
-                    if (themeToggle) {
-                        themeToggle.addEventListener('click', () => {
-                            const currentTheme = htmlElement.getAttribute('data-theme');
-                            const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                            
-                            htmlElement.setAttribute('data-theme', newTheme);
-                            localStorage.setItem('theme', newTheme);
-                            themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-                        });
-                    }
-                    
-                    // FAQ Accordion with keyboard accessibility
-                    const faqItems = document.querySelectorAll('.faq-item');
-                    
-                    faqItems.forEach(item => {
-                        const question = item.querySelector('.faq-question');
-                        const answer = item.querySelector('.faq-answer');
-                        
-                        question.addEventListener('click', () => {
-                            toggleFAQ(item, question, answer);
-                        });
-                        
-                        // Keyboard accessibility
-                        question.addEventListener('keydown', (e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                toggleFAQ(item, question, answer);
-                            }
-                        });
-                    });
-                    
-                    function toggleFAQ(item, question, answer) {
-                        const isActive = item.classList.contains('faq-active');
-                        
-                        // Close all FAQs
-                        faqItems.forEach(faq => {
-                            const faqQuestion = faq.querySelector('.faq-question');
-                            faqQuestion.setAttribute('aria-expanded', 'false');
-                            faq.classList.remove('faq-active');
-                        });
-                        
-                        // If the clicked item wasn't active, open it
-                        if (!isActive) {
-                            item.classList.add('faq-active');
-                            question.setAttribute('aria-expanded', 'true');
-                        }
-                    }
-                    
-                    // Show/hide the hours input based on service type selection
-                    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
-                    const hoursInput = document.getElementById('hours-needed');
-                    
-                    serviceTypeRadios.forEach(radio => {
-                        radio.addEventListener('change', function() {
-                            if (this.value === 'blocked-hours') {
-                                hoursInput.style.display = 'block';
-                            } else {
-                                hoursInput.style.display = 'none';
-                            }
-                        });
-                    });
-                    
-                    // Initialize display state
-                    if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
-                        hoursInput.style.display = 'block';
-                    } else if (hoursInput) {
-                        hoursInput.style.display = 'none';
-                    }
-                    
-                    // Form Submission
-                    const contactForm = document.getElementById('contactForm');
-                    
-                    if (contactForm) {
-                        contactForm.addEventListener('submit', function(e) {
-                            // Don't prevent default - allow form to submit to Formspree
-                            
-                            // Set a flag in localStorage to show a success message when the user returns
-                            localStorage.setItem('formSubmitted', 'true');
-                        });
-                    }
-            
-                    // Optional: Check if returning from form submission to show success message
-                    window.addEventListener('load', function() {
-                        if (localStorage.getItem('formSubmitted') === 'true') {
-                            // Clear the flag
-                            localStorage.removeItem('formSubmitted');
-                            
-                            // Show success message
-                            const messageElement = document.createElement('div');
-                            messageElement.style.position = 'fixed';
-                            messageElement.style.top = '20px';
-                            messageElement.style.left = '50%';
-                            messageElement.style.transform = 'translateX(-50%)';
-                            messageElement.style.backgroundColor = 'var(--success)';
-                            messageElement.style.color = 'white';
-                            messageElement.style.padding = '1rem 2rem';
-                            messageElement.style.borderRadius = 'var(--radius-md)';
-                            messageElement.style.boxShadow = 'var(--shadow-md)';
-                            messageElement.style.zIndex = '9999';
-                            messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
-                            
-                            document.body.appendChild(messageElement);
-                            
-                            setTimeout(() => {
-                                messageElement.style.opacity = '0';
-                                messageElement.style.transition = 'opacity 0.5s ease';
-                                setTimeout(() => {
-                                    document.body.removeChild(messageElement);
-                                }, 500);
-                            }, 5000);
-                        }
-                    });
-                    / Auto-check packages based on URL parameters
-    document.addEventListener('DOMContentLoaded', function() {
-        // Check if we have a package to auto-select from URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const packageToSelect = urlParams.get('package');
+            <div class="footer-bottom">
+                <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
         
-        if (packageToSelect) {
-            // Try to find the checkbox with the corresponding ID
-            const checkbox = document.getElementById(packageToSelect);
-            
-            if (checkbox) {
-                // Check the box
-                checkbox.checked = true;
-                
-                // Scroll to the form section
-                const formSection = document.getElementById('contact');
-                if (formSection) {
-                    formSection.scrollIntoView({ behavior: 'smooth' });
-                }
-                
-                // Add visual feedback
-                checkbox.parentNode.classList.add('highlighted');
-                setTimeout(() => {
-                    checkbox.parentNode.classList.remove('highlighted');
-                }, 3000);
-                
-                // Show a notification
-                const notificationElement = document.createElement('div');
-                notificationElement.style.position = 'fixed';
-                notificationElement.style.top = '20px';
-                notificationElement.style.left = '50%';
-                notificationElement.style.transform = 'translateX(-50%)';
-                notificationElement.style.backgroundColor = 'var(--teal)';
-                notificationElement.style.color = 'white';
-                notificationElement.style.padding = '1rem 2rem';
-                notificationElement.style.borderRadius = 'var(--radius-md)';
-                notificationElement.style.boxShadow = 'var(--shadow-md)';
-                notificationElement.style.zIndex = '9999';
-                notificationElement.innerText = `${checkbox.labels[0].textContent} added to your form`;
-                
-                document.body.appendChild(notificationElement);
-                
-                setTimeout(() => {
-                    notificationElement.style.opacity = '0';
-                    notificationElement.style.transition = 'opacity 0.5s ease';
-                    setTimeout(() => {
-                        document.body.removeChild(notificationElement);
-                    }, 500);
-                }, 3000);
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+        
+        // Theme Toggle with improved accessibility
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
             }
         }
-      });
-   </script>
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            });
+        }
+        
+        // FAQ Accordion with keyboard accessibility
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                toggleFAQ(item, question, answer);
+            });
+            
+            // Keyboard accessibility
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFAQ(item, question, answer);
+                }
+            });
+        });
+        
+        function toggleFAQ(item, question, answer) {
+            const isActive = item.classList.contains('faq-active');
+            
+            // Close all FAQs
+            faqItems.forEach(faq => {
+                const faqQuestion = faq.querySelector('.faq-question');
+                faqQuestion.setAttribute('aria-expanded', 'false');
+                faq.classList.remove('faq-active');
+            });
+            
+            // If the clicked item wasn't active, open it
+            if (!isActive) {
+                item.classList.add('faq-active');
+                question.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Show/hide the hours input based on service type selection
+        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+        const hoursInput = document.getElementById('hours-needed');
+        
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'blocked-hours') {
+                    hoursInput.style.display = 'block';
+                } else {
+                    hoursInput.style.display = 'none';
+                }
+            });
+        });
+        
+        // Initialize display state
+        if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
+            hoursInput.style.display = 'block';
+        } else if (hoursInput) {
+            hoursInput.style.display = 'none';
+        }
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Don't prevent default - allow form to submit to Formspree
+                
+                // Set a flag in localStorage to show a success message when the user returns
+                localStorage.setItem('formSubmitted', 'true');
+            });
+        }
+
+        // Optional: Check if returning from form submission to show success message
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('formSubmitted') === 'true') {
+                // Clear the flag
+                localStorage.removeItem('formSubmitted');
+                
+                // Show success message
+                const messageElement = document.createElement('div');
+                messageElement.style.position = 'fixed';
+                messageElement.style.top = '20px';
+                messageElement.style.left = '50%';
+                messageElement.style.transform = 'translateX(-50%)';
+                messageElement.style.backgroundColor = 'var(--success)';
+                messageElement.style.color = 'white';
+                messageElement.style.padding = '1rem 2rem';
+                messageElement.style.borderRadius = 'var(--radius-md)';
+                messageElement.style.boxShadow = 'var(--shadow-md)';
+                messageElement.style.zIndex = '9999';
+                messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
+                
+                document.body.appendChild(messageElement);
+                
+                setTimeout(() => {
+                    messageElement.style.opacity = '0';
+                    messageElement.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(messageElement);
+                    }, 500);
+                }, 5000);
+            }
+        });
+
+        // Auto-check packages based on URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize session storage for selected packages if not exists
+            if (!sessionStorage.getItem('selectedPackages')) {
+                sessionStorage.setItem('selectedPackages', JSON.stringify([]));
+            }
+            
+            // Check if we have a package to auto-select from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageToSelect = urlParams.get('package');
+            const isAddOperation = urlParams.get('add') === 'true';
+            
+            // Load any previously selected packages
+            const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+            
+            // Check boxes for all previously selected packages
+            selectedPackages.forEach(pkg => {
+                const checkbox = document.getElementById(pkg);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+            
+            // Add the new package if specified in URL
+            if (packageToSelect) {
+                // Add to session storage if not already there
+                if (isAddOperation && !selectedPackages.includes(packageToSelect)) {
+                    selectedPackages.push(packageToSelect);
+                    sessionStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
+                }
+                
+                // Try to find the checkbox with the corresponding ID
+                const checkbox = document.getElementById(packageToSelect);
+                
+                if (checkbox) {
+                    // Check the box
+                    checkbox.checked = true;
+                    
+                    // Scroll to the form section
+                    const formSection = document.getElementById('contact');
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Add visual feedback
+                    checkbox.parentNode.classList.add('highlighted');
+                    setTimeout(() => {
+                        checkbox.parentNode.classList.remove('highlighted');
+                    }, 3000);
+                    
+                    // Show a notification
+                    const notificationElement = document.createElement('div');
+                    notificationElement.style.position = 'fixed';
+                    notificationElement.style.top = '20px';
+                    notificationElement.style.left = '50%';
+                    notificationElement.style.transform = 'translateX(-50%)';
+                    notificationElement.style.backgroundColor = 'var(--teal)';
+                    notificationElement.style.color = 'white';
+                    notificationElement.style.padding = '1rem 2rem';
+                    notificationElement.style.borderRadius = 'var(--radius-md)';
+                    notificationElement.style.boxShadow = 'var(--shadow-md)';
+                    notificationElement.style.zIndex = '9999';
+                    notificationElement.innerText = `${checkbox.labels[0].textContent} added to your form`;
+                    
+                    document.body.appendChild(notificationElement);
+                    
+                    setTimeout(() => {
+                        notificationElement.style.opacity = '0';
+                        notificationElement.style.transition = 'opacity 0.5s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(notificationElement);
+                        }, 500);
+                    }, 3000);
+                }
+            }
+            
+            // Add event listeners to checkboxes to update session storage when changed
+            const packageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="package[]"]');
+            packageCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const packageId = this.id;
+                    const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+                    
+                    if (this.checked && !selectedPackages.includes(packageId)) {
+                        // Add to selected packages
+                        selectedPackages.push(packageId);
+                    } else if (!this.checked && selectedPackages.includes(packageId)) {
+                        // Remove from selected packages
+                        const index = selectedPackages.indexOf(packageId);
+                        if (index > -1) {
+                            selectedPackages.splice(index, 1);
+                        }
+                    }
+                    
+                    // Update session storage
+                    sessionStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
+                    
+                    // Update badge counters if they exist
+                    updatePackageBadge();
+                });
+            });
+            
+            // Update badge counter on page load
+            updatePackageBadge();
+        });
+        
+        // Function to update package badge counter
+        function updatePackageBadge() {
+            const badge = document.getElementById('package-counter');
+            if (!badge) return;
+            
+            const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+            badge.textContent = selectedPackages.length;
+            
+            if (selectedPackages.length > 0) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+        
+        // Clear all selected packages (optional feature)
+        function clearSelectedPackages() {
+            sessionStorage.setItem('selectedPackages', JSON.stringify([]));
+            
+            // Uncheck all checkboxes
+            const packageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="package[]"]');
+            packageCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Update badge counter
+            updatePackageBadge();
+        }
+    </script>
 </body>
 </html>
-                                            
