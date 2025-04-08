@@ -164,6 +164,9 @@
             --orange: #ff6b00;
             --teal: #20C5C6;
             --silver: #D1D5DB;
+            --radius-md: 8px;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-base: all 0.3s ease;
         }
 
         [data-theme="dark"] {
@@ -842,6 +845,44 @@
     }
 }
 
+        /* Floating Add Package Button */
+        .floating-add-button {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            background-color: var(--orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            border: none;
+            z-index: 99;
+            opacity: 0;
+        }
+
+        .floating-add-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .floating-add-button svg {
+            flex-shrink: 0;
+            margin-right: 0.75rem;
+        }
+
+        /* Prevent overlap with theme toggle on small screens */
+        @media (max-width: 768px) {
+            .floating-add-button {
+                bottom: 6rem;
+            }
+        }
+
         /* Media Queries */
         @media (max-width: 992px) {
             .service-description-grid {
@@ -977,6 +1018,16 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
     </div>
+
+    <!-- Floating Add Package Button -->
+    <a href="contact.html?package=user-journey&add=true" class="floating-add-button" id="addPackageButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+        <span>Add Package</span>
+    </a>
 
     <header>
         <div class="container">
@@ -1648,7 +1699,7 @@
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </div>
-                        <div><a href="mailto:info@velocityqa.com">info@velocityqa.com</a></div>
+                        <div><a href="/cdn-cgi/l/email-protection#86efe8e0e9c6f0e3eae9e5eff2fff7e7a8e5e9eb"><span class="__cf_email__" data-cfemail="f29b9c949db284979e9d919b868b8393dc919d9f">[email&#160;protected]</span></a></div>
                     </div>
                     <div class="footer-contact-item">
                         <div class="contact-icon">
@@ -1680,7 +1731,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1758,6 +1809,50 @@
         function toggleFAQ(element) {
             element.parentNode.classList.toggle('active');
         }
+        
+        // Initialize floating add package button
+        document.addEventListener('DOMContentLoaded', function() {
+            const addPackageButton = document.getElementById('addPackageButton');
+            
+            // Fade in the button
+            setTimeout(() => {
+                addPackageButton.style.opacity = '1';
+            }, 500);
+            
+            // Add notification when clicked
+            addPackageButton.addEventListener('click', function(e) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.textContent = "User Journey Testing package added to your selections";
+                notification.style.position = 'fixed';
+                notification.style.bottom = '2rem';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = 'var(--teal)';
+                notification.style.color = 'white';
+                notification.style.padding = '0.75rem 1.5rem';
+                notification.style.borderRadius = 'var(--radius-md)';
+                notification.style.boxShadow = 'var(--shadow-md)';
+                notification.style.zIndex = '9999';
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s ease';
+                
+                document.body.appendChild(notification);
+                
+                // Fade in
+                setTimeout(() => {
+                    notification.style.opacity = '1';
+                }, 10);
+                
+                // Fade out and remove after 3 seconds
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            });
+        });
     </script>
 </body>
 </html>
