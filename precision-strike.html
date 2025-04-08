@@ -910,19 +910,31 @@
 <body data-theme="dark">
     <div class="cursor-follower"></div>
     
-    <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    <!-- Add floating "Add hourly package" button after the theme toggle div -->
+<div class="theme-toggle" id="themeToggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+</div>
+
+<!-- Floating Add Hourly Package Button -->
+<div id="floating-add-button" style="position: fixed; right: -150px; bottom: 100px; z-index: 99; transition: all 0.3s ease-in-out;">
+    <a href="contact.html?package=blocked-hours&add=true" class="cta-button" style="display: flex; align-items: center; background-color: var(--orange); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); padding: 0.8rem 1.2rem; border-radius: 30px 0 0 30px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
-    </div>
+        Add Hourly Package
+    </a>
+</div>
 
     <header>
         <div class="container">
@@ -1042,7 +1054,7 @@
                     <span style="color: #D1D5DB; font-size: 0.9rem;">Perfect for <span style="color: #FF6B00;">sprint testing</span> cycles</span>
                 </li>
             </ul>
-            <a href="contact.html" class="cta-button" style="width: 100%; margin-top: 1rem; text-align: center; font-size: 0.9rem;">Book 10+ Hours</a>
+            <a href="contact.html?package=prepaid-hours&add=true" class="cta-button" style="width: 100%; margin-top: 1rem; text-align: center; font-size: 0.9rem;">Book 10+ Hours</a>
         </div>
     </div>
 
@@ -1530,7 +1542,7 @@
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </div>
-                        <div>info@velocityqa.com</div>
+                        <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="721b1c141d3204171e1d111b060b03135c111d1f">[email&#160;protected]</a></div>
                     </div>
                     <div class="footer-contact-item">
                         <div class="contact-icon">
@@ -1562,7 +1574,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1677,6 +1689,55 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
             }, 2000);
         });
     }
+    </script>
+    
+    <script>
+        // Floating Add Button Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingButton = document.getElementById('floating-add-button');
+            
+            // Show the button after a delay
+            setTimeout(function() {
+                floatingButton.style.right = '0';
+            }, 1500);
+            
+            // Add hover effect
+            floatingButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-10px)';
+            });
+            
+            floatingButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+            
+            // Show notification when clicked
+            floatingButton.querySelector('a').addEventListener('click', function() {
+                // Create notification
+                const notification = document.createElement('div');
+                notification.textContent = 'Hourly package added to your selections';
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = 'var(--teal)';
+                notification.style.color = 'white';
+                notification.style.padding = '1rem 2rem';
+                notification.style.borderRadius = '6px';
+                notification.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+                notification.style.zIndex = '9999';
+                
+                document.body.appendChild(notification);
+                
+                // Remove notification after 3 seconds
+                setTimeout(function() {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.5s ease';
+                    setTimeout(function() {
+                        document.body.removeChild(notification);
+                    }, 500);
+                }, 3000);
+            });
+        });
     </script>
     <script type="application/ld+json">
         {
