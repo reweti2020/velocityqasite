@@ -1481,7 +1481,7 @@
                 <div>
                     <h3 class="footer-title">Contact</h3>
                     <ul class="footer-links">
-                        <li class="footer-link"><a href="mailto:info@velocityqa.com.au">info@velocityqa.com.au</a></li>
+                        <li class="footer-link"><a href="/cdn-cgi/l/email-protection#2940474f46695f4c45464a405d505848074a464407485c"><span class="__cf_email__" data-cfemail="98f1f6fef7d8eefdf4f7fbf1ece1e9f9b6fbf7f5b6f9ed">[email&#160;protected]</span></a></li>
                         <li class="footer-link"><a href="contact.html">Get in Touch</a></li>
                         <li class="footer-link"><a href="faq.html">FAQ</a></li>
                     </ul>
@@ -1494,7 +1494,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1767,6 +1767,43 @@
             // Update badge counter
             updatePackageBadge();
         }
+
+        // Show/hide the hours input based on service type selection
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both inputs first
+                hoursInput.style.display = 'none';
+                document.getElementById('prepaid-hours-selector').style.display = 'none';
+                
+                // Show the appropriate input based on selection
+                if (this.value === 'blocked-hours') {
+                    hoursInput.style.display = 'block';
+                } else if (this.value === 'prepaid-hours') {
+                    document.getElementById('prepaid-hours-selector').style.display = 'block';
+                }
+            });
+        });
+
+        // Initialize the 10-hour blocks selector
+        const hourBlocksInput = document.getElementById('hour-blocks');
+        const totalHoursDisplay = document.getElementById('total-hours');
+
+        if (hourBlocksInput) {
+            hourBlocksInput.addEventListener('input', function() {
+                // Ensure the value is at least 1
+                if (this.value < 1) this.value = 1;
+                
+                // Calculate and display total hours
+                const blocks = parseInt(this.value) || 1;
+                totalHoursDisplay.textContent = blocks * 10;
+            });
+        }
+
+        // Initialize display state for prepaid hours selector
+        if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
+            document.getElementById('prepaid-hours-selector').style.display = 'block';
+        }
     </script>
 </body>
 </html>
+
