@@ -1648,6 +1648,44 @@
             // Check if we have a package to auto-select from URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const packageToSelect = urlParams.get('package');
+            
+            // If we have a specific service type to select (blocked-hours or prepaid-hours)
+            if (packageToSelect === 'blocked-hours' || packageToSelect === 'prepaid-hours') {
+                // Find the corresponding radio button and check it
+                const radioButton = document.getElementById(packageToSelect === 'blocked-hours' ? 'blocked-hours' : 'prepaid-hours');
+                if (radioButton) {
+                    radioButton.checked = true;
+                    
+                    // Manually trigger display of the appropriate input field
+                    if (packageToSelect === 'blocked-hours') {
+                        // Show the hours input for blocked hours
+                        const hoursInput = document.getElementById('hours-needed');
+                        if (hoursInput) {
+                            hoursInput.style.display = 'block';
+                        }
+                    } else if (packageToSelect === 'prepaid-hours') {
+                        // Show the prepaid hours selector
+                        const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                        if (prepaidSelector) {
+                            prepaidSelector.style.display = 'block';
+                        }
+                    }
+                    
+                    // Scroll to the form section after a short delay
+                    setTimeout(() => {
+                        const formSection = document.getElementById('contact');
+                        if (formSection) {
+                            formSection.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Highlight the selected option
+                            radioButton.parentNode.classList.add('highlighted');
+                            setTimeout(() => {
+                                radioButton.parentNode.classList.remove('highlighted');
+                            }, 3000);
+                        }
+                    }, 500);
+                }
+            }
             const isAddOperation = urlParams.get('add') === 'true';
             
             // Load any previously selected packages
@@ -1814,3 +1852,4 @@
     </script>
 </body>
 </html>
+
