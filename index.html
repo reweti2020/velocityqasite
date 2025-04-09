@@ -1085,64 +1085,113 @@
                         <p class="package-description">Rapid bug detection with same-day results. Perfect for pre-launch validation.</p>
                         <div class="package-buttons">
                             <a href="bug-hunter.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=bug-hunter" class="cta-button">Select Package</a>
+                            <a href="contact.html?package=bug-hunter&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
                     <div class="package-svg">
                         <!-- Bug Hunter SVG -->
-                        <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="bugGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Background Circle -->
-                            <circle cx="100" cy="100" r="90" fill="#1E293B" />
-                            
-                            <!-- Bug Body -->
-                            <ellipse cx="100" cy="110" rx="40" ry="50" fill="url(#bugGradient)" />
-                            
-                            <!-- Bug Head -->
-                            <circle cx="100" cy="60" r="25" fill="url(#bugGradient)" />
-                            
-                            <!-- Bug Eyes -->
-                            <circle cx="90" cy="55" r="5" fill="#1E293B" />
-                            <circle cx="110" cy="55" r="5" fill="#1E293B" />
-                            
-                            <!-- Bug Antennae -->
-                            <path d="M85 45 Q75 25 65 30" stroke="url(#bugGradient)" stroke-width="3" fill="none" />
-                            <path d="M115 45 Q125 25 135 30" stroke="url(#bugGradient)" stroke-width="3" fill="none" />
-                            
-                            <!-- Bug Legs -->
-                            <path d="M70 90 Q50 85 40 95" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            <path d="M70 110 Q40 110 30 125" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            <path d="M70 130 Q50 145 45 160" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            
-                            <path d="M130 90 Q150 85 160 95" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            <path d="M130 110 Q160 110 170 125" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            <path d="M130 130 Q150 145 155 160" stroke="url(#bugGradient)" stroke-width="4" fill="none" />
-                            
-                            <!-- Magnifying Glass -->
-                            <circle cx="140" cy="60" r="25" stroke="#20C5C6" stroke-width="4" fill="none" />
-                            <line x1="160" y1="80" x2="175" y2="95" stroke="#20C5C6" stroke-width="6" />
-                            
-                            <!-- Animation: Bug Wiggle -->
-                            <animateTransform 
-                                attributeName="transform"
-                                attributeType="XML"
-                                type="rotate"
-                                from="-2 100 100"
-                                to="2 100 100"
-                                dur="1s"
-                                repeatCount="indefinite"
-                                additive="sum"
-                                calcMode="spline"
-                                keySplines="0.5 0 0.5 1; 0.5 0 0.5 1"
-                                keyTimes="0; 0.5; 1"
-                            />
-                        </svg>
+<svg width="150" height="150" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+    
+    <!-- App UI Background -->
+    <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
+    
+    <!-- Browser Chrome -->
+    <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
+    <circle cx="120" cy="65" r="6" fill="#ef4444" />
+    <circle cx="140" cy="65" r="6" fill="#f59e0b" />
+    <circle cx="160" cy="65" r="6" fill="#10b981" />
+    
+    <!-- Grid pattern for detail -->
+    <g opacity="0.05">
+        <rect x="120" y="100" width="360" height="1" fill="#ffffff" />
+        <rect x="120" y="140" width="360" height="1" fill="#ffffff" />
+        <rect x="120" y="180" width="360" height="1" fill="#ffffff" />
+        <rect x="120" y="220" width="360" height="1" fill="#ffffff" />
+        <rect x="120" y="260" width="360" height="1" fill="#ffffff" />
+        <rect x="120" y="300" width="360" height="1" fill="#ffffff" />
+        
+        <rect x="120" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="180" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="240" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="300" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="360" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="420" y="100" width="1" height="200" fill="#ffffff" />
+        <rect x="480" y="100" width="1" height="200" fill="#ffffff" />
+    </g>
+    
+    <!-- UI Elements -->
+    <rect x="140" y="120" width="120" height="20" rx="4" fill="#334155" />
+    <rect x="140" y="150" width="180" height="20" rx="4" fill="#334155" />
+    <rect x="140" y="180" width="150" height="20" rx="4" fill="#334155" />
+    
+    <rect x="340" y="120" width="120" height="80" rx="4" fill="#334155" />
+    
+    <rect x="140" y="220" width="320" height="40" rx="4" fill="#334155" />
+    <rect x="140" y="280" width="200" height="40" rx="4" fill="#334155" />
+    <rect x="360" y="280" width="100" height="40" rx="4" fill="#FF6B00" />
+    
+    <!-- Magnifying Glass -->
+    <circle cx="400" cy="160" r="30" fill="none" stroke="#20C5C6" stroke-width="6" />
+    <line x1="420" y1="180" x2="450" y2="210" stroke="#20C5C6" stroke-width="6" stroke-linecap="round" />
+    
+    <!-- Bug Elements -->
+    <g id="bug1" transform="translate(180, 170)">
+        <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+        <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <animateTransform attributeName="transform" 
+            type="translate" 
+            from="180, 170" 
+            to="180, 170" 
+            dur="4s" 
+            values="180, 170; 180, 150; 200, 150; 200, 170; 180, 170" 
+            repeatCount="indefinite" />
+    </g>
+    
+    <g id="bug2" transform="translate(370, 240)">
+        <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+        <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <animateTransform attributeName="transform" 
+            type="translate" 
+            from="370, 240" 
+            to="370, 240" 
+            dur="5s" 
+            values="370, 240; 390, 240; 390, 260; 370, 260; 370, 240" 
+            repeatCount="indefinite" />
+    </g>
+    
+    <g id="bug3" transform="translate(300, 300)">
+        <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+        <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+        <animateTransform attributeName="transform" 
+            type="translate" 
+            from="300, 300" 
+            to="300, 300" 
+            dur="6s" 
+            values="300, 300; 320, 300; 320, 280; 300, 280; 300, 300" 
+            repeatCount="indefinite" />
+    </g>
+    
+    <!-- Target Pulse Animation -->
+    <circle cx="180" cy="170" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+        <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="370" cy="240" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+        <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="300" cy="300" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+        <animate attributeName="r" from="16" to="30" dur="1.5s" begin="1s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="1s" repeatCount="indefinite" />
+    </circle>
+</svg>
                     </div>
                 </div>
                 
@@ -1211,80 +1260,125 @@
                         <p class="package-description">Comprehensive testing of your app's critical user flows. Ensure your users have a smooth experience from start to finish.</p>
                         <div class="package-buttons">
                             <a href="user-journey-testing.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=user-journey" class="cta-button">Select Package</a>
+                            <a href="contact.html?package=user-journey&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
                     <div class="package-svg">
                         <!-- User Journey SVG -->
-                        <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Background Circle -->
-                            <circle cx="100" cy="100" r="90" fill="#1E293B" />
-                            
-                            <!-- Path/Journey Line -->
-                            <path d="M40 160 C60 120, 80 140, 100 100 C120 60, 140 80, 160 40" 
-                                  stroke="url(#journeyGradient)" 
-                                  stroke-width="6" 
-                                  fill="none" 
-                                  stroke-linecap="round"
-                                  stroke-dasharray="200"
-                                  stroke-dashoffset="200">
-                                <animate attributeName="stroke-dashoffset" 
-                                         from="200" 
-                                         to="0" 
-                                         dur="3s" 
-                                         begin="0s"
-                                         fill="freeze"
-                                         repeatCount="indefinite" />
-                            </path>
-                            
-                            <!-- Journey Points -->
-                            <circle cx="40" cy="160" r="10" fill="#20C5C6">
-                                <animate attributeName="opacity" 
-                                         values="0;1" 
-                                         dur="0.5s" 
-                                         begin="0s"
-                                         fill="freeze"
-                                         repeatCount="indefinite" />
-                            </circle>
-                            
-                            <circle cx="100" cy="100" r="10" fill="#20C5C6">
-                                <animate attributeName="opacity" 
-                                         values="0;1" 
-                                         dur="0.5s" 
-                                         begin="1.5s"
-                                         fill="freeze"
-                                         repeatCount="indefinite" />
-                            </circle>
-                            
-                            <circle cx="160" cy="40" r="10" fill="#20C5C6">
-                                <animate attributeName="opacity" 
-                                         values="0;1" 
-                                         dur="0.5s" 
-                                         begin="3s"
-                                         fill="freeze"
-                                         repeatCount="indefinite" />
-                            </circle>
-                            
-                            <!-- User Icon -->
-                            <circle cx="100" cy="70" r="15" fill="url(#journeyGradient)" />
-                            <circle cx="100" cy="40" r="10" fill="url(#journeyGradient)" />
-                            
-                            <!-- Moving Dot Along Path -->
-                            <circle r="8" fill="#FFFFFF">
-                                <animateMotion
-                                    path="M40 160 C60 120, 80 140, 100 100 C120 60, 140 80, 160 40"
-                                    dur="3s"
-                                    repeatCount="indefinite"
-                                    rotate="auto" />
-                            </circle>
-                        </svg>
+<svg width="150" height="150" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+    
+    <!-- Flow Lines and Connection Points -->
+    <path d="M100 200 C150 200, 200 100, 250 100 C300 100, 350 200, 400 200 C450 200, 500 300, 550 300" 
+          stroke="#20C5C6" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="0,0" />
+          
+    <!-- Animated Dot along the path -->
+    <circle cx="100" cy="200" r="5" fill="#ffffff">
+        <animateMotion 
+            dur="6s" 
+            repeatCount="indefinite" 
+            path="M0 0 C50 0, 100 -100, 150 -100 C200 -100, 250 0, 300 0 C350 0, 400 100, 450 100" />
+    </circle>
+    
+    <!-- Devices at each stage of the journey -->
+    <!-- Smartphone (starting point) -->
+    <g transform="translate(100, 200)">
+        <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333" />
+        <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b" />
+        <circle cx="0" cy="18" r="2" fill="#333333" />
+        <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+            <animate attributeName="r" from="20" to="30" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.2" to="0" dur="3s" repeatCount="indefinite" />
+        </circle>
+    </g>
+    
+    <!-- Tablet (second stage) -->
+    <g transform="translate(250, 100)">
+        <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333" />
+        <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b" />
+        <circle cx="0" cy="24" r="2" fill="#333333" />
+        <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+            <animate attributeName="r" from="20" to="30" dur="3s" begin="1s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="1s" repeatCount="indefinite" />
+        </circle>
+    </g>
+    
+    <!-- Laptop (third stage) -->
+    <g transform="translate(400, 200)">
+        <path d="M-35 -15 L35 -15 L35 15 L-35 15 Z" fill="#333333" />
+        <path d="M-32 -12 L32 -12 L32 12 L-32 12 Z" fill="#1e293b" />
+        <path d="M-40 16 L40 16 L36 25 L-36 25 Z" fill="#333333" />
+        <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+            <animate attributeName="r" from="20" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="2s" repeatCount="indefinite" />
+        </circle>
+    </g>
+    
+    <!-- Desktop (final stage) -->
+    <g transform="translate(550, 300)">
+        <rect x="-30" y="-25" width="60" height="40" rx="2" ry="2" fill="#333333" />
+        <rect x="-28" y="-23" width="56" height="36" rx="1" ry="1" fill="#1e293b" />
+        <rect x="-10" y="15" width="20" height="15" fill="#333333" />
+        <rect x="-20" y="30" width="40" height="3" fill="#333333" />
+        <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+            <animate attributeName="r" from="20" to="30" dur="3s" begin="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="3s" repeatCount="indefinite" />
+        </circle>
+    </g>
+    
+    <!-- User Icons at each stage -->
+    <!-- User Admin Icon -->
+    <g transform="translate(100, 150)">
+        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+        <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+        <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+        <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+    </g>
+    
+    <!-- User Icon -->
+    <g transform="translate(250, 50)">
+        <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+        <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+        <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+        <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+    </g>
+    
+    <!-- User Icon -->
+    <g transform="translate(400, 150)">
+        <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+        <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+        <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+        <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+    </g>
+    
+    <!-- User Admin Icon -->
+    <g transform="translate(550, 250)">
+        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+        <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+        <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+        <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+    </g>
+    
+    <!-- Flow Points with Labels -->
+    <circle cx="100" cy="200" r="10" fill="#FF6B00" />
+    <text x="100" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Login</text>
+    
+    <circle cx="250" cy="100" r="10" fill="#FF6B00" />
+    <text x="250" y="130" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Browse</text>
+    
+    <circle cx="400" cy="200" r="10" fill="#FF6B00" />
+    <text x="400" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Purchase</text>
+    
+    <circle cx="550" cy="300" r="10" fill="#FF6B00" />
+    <text x="550" y="330" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Confirm</text>
+    
+    <!-- Connecting User Role Lines -->
+    <line x1="100" y1="150" x2="100" y2="190" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="250" y1="50" x2="250" y2="90" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="400" y1="150" x2="400" y2="190" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="550" y1="250" x2="550" y2="290" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+</svg>
                     </div>
                 </div>
                 
@@ -1356,57 +1450,72 @@
                         <p class="package-description">Comprehensive system-wide testing to identify bugs, UX issues, and performance bottlenecks across your entire application.</p>
                         <div class="package-buttons">
                             <a href="system-auditor.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=system-auditor" class="cta-button">Select Package</a>
+                            <a href="contact.html?package=system-auditor&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
                     <div class="package-svg">
                         <!-- System Auditor SVG -->
-                        <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="auditGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Background Circle -->
-                            <circle cx="100" cy="100" r="90" fill="#1E293B" />
-                            
-                            <!-- System/Server Rack -->
-                            <rect x="60" y="40" width="80" height="120" rx="5" fill="url(#auditGradient)" />
-                            
-                            <!-- Server Units -->
-                            <rect x="70" y="50" width="60" height="15" rx="2" fill="#1E293B" />
-                            <rect x="70" y="75" width="60" height="15" rx="2" fill="#1E293B" />
-                            <rect x="70" y="100" width="60" height="15" rx="2" fill="#1E293B" />
-                            <rect x="70" y="125" width="60" height="15" rx="2" fill="#1E293B" />
-                            
-                            <!-- Server Lights -->
-                            <circle cx="80" cy="57.5" r="3" fill="#20C5C6">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
-                            </circle>
-                            <circle cx="80" cy="82.5" r="3" fill="#20C5C6">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
-                            </circle>
-                            <circle cx="80" cy="107.5" r="3" fill="#20C5C6">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite" />
-                            </circle>
-                            <circle cx="80" cy="132.5" r="3" fill="#20C5C6">
-                                <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite" />
-                            </circle>
-                            
-                            <!-- Scanning Effect -->
-                            <rect x="70" y="50" width="60" height="90" fill="#20C5C6" opacity="0.2">
-                                <animate attributeName="y" values="50;125;50" dur="4s" repeatCount="indefinite" />
-                                <animate attributeName="height" values="15;15;15" dur="4s" repeatCount="indefinite" />
-                            </rect>
-                            
-                            <!-- Audit Checkmark -->
-                            <circle cx="150" cy="60" r="20" fill="#20C5C6" opacity="0.8" />
-                            <path d="M140 60 L147 67 L160 54" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <animate attributeName="opacity" values="0;1" dur="1s" begin="2s" fill="freeze" />
-                            </path>
-                        </svg>
+<svg width="150" height="150" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+    
+    <!-- Dashboard Grid -->
+    <g opacity="0.1">
+        <line x1="50" y1="50" x2="50" y2="350" stroke="#ffffff" stroke-width="1" />
+        <line x1="150" y1="50" x2="150" y2="350" stroke="#ffffff" stroke-width="1" />
+        <line x1="250" y1="50" x2="250" y2="350" stroke="#ffffff" stroke-width="1" />
+        <line x1="350" y1="50" x2="350" y2="350" stroke="#ffffff" stroke-width="1" />
+        <line x1="450" y1="50" x2="450" y2="350" stroke="#ffffff" stroke-width="1" />
+        <line x1="550" y1="50" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+        
+        <line x1="50" y1="50" x2="550" y2="50" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="100" x2="550" y2="100" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="150" x2="550" y2="150" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="200" x2="550" y2="200" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="250" x2="550" y2="250" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="300" x2="550" y2="300" stroke="#ffffff" stroke-width="1" />
+        <line x1="50" y1="350" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+    </g>
+    
+    <!-- Top Panel -->
+    <rect x="80" y="70" width="440" height="80" rx="8" ry="8" fill="#1e293b" />
+    
+    <!-- Charts -->
+    <rect x="80" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+    <path d="M100 280 L130 250 L160 270 L190 230 L220 260 L250 220" stroke="#20C5C6" stroke-width="3" fill="none" stroke-linecap="round" />
+    
+    <!-- Bar Chart -->
+    <rect x="310" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+    <rect x="330" y="250" width="20" height="60" fill="#FF6B00" rx="2" ry="2" />
+    <rect x="360" y="230" width="20" height="80" fill="#FF6B00" rx="2" ry="2" />
+    <rect x="390" y="270" width="20" height="40" fill="#FF6B00" rx="2" ry="2" />
+    <rect x="420" y="200" width="20" height="110" fill="#FF6B00" rx="2" ry="2" />
+    <rect x="450" y="240" width="20" height="70" fill="#FF6B00" rx="2" ry="2" />
+    <rect x="480" y="220" width="20" height="90" fill="#FF6B00" rx="2" ry="2" />
+    
+    <!-- Test Points -->
+    <circle cx="130" cy="250" r="6" fill="#20C5C6" />
+    <circle cx="160" cy="270" r="6" fill="#20C5C6" />
+    <circle cx="190" cy="230" r="6" fill="#20C5C6" />
+    <circle cx="220" cy="260" r="6" fill="#20C5C6" />
+    <circle cx="250" cy="220" r="6" fill="#20C5C6" />
+    
+    <!-- Glowing Connections -->
+    <path d="M130 250 L340 230" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+    <path d="M220 260 L430 200" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+    <path d="M250 220 L490 220" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+    
+    <!-- Interactive Elements in Top Panel -->
+    <rect x="100" y="85" width="120" height="10" rx="5" ry="5" fill="#334155" />
+    <rect x="100" y="105" width="80" height="10" rx="5" ry="5" fill="#334155" />
+    <rect x="100" y="125" width="160" height="10" rx="5" ry="5" fill="#334155" />
+    
+    <circle cx="320" cy="110" r="25" fill="#334155" />
+    <path d="M310 110 L330 110 M320 100 L320 120" stroke="#94a3b8" stroke-width="2" />
+    
+    <rect x="370" y="90" width="120" height="40" rx="6" ry="6" fill="#334155" />
+    <text x="430" y="115" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Audit</text>
+</svg>
                     </div>
                 </div>
                 
@@ -1478,66 +1587,66 @@
                         <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
                         <div class="package-buttons">
                             <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=precision-strike" class="cta-button">Select Package</a>
+                            <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
                     <div class="package-svg">
                         <!-- Precision Strike SVG -->
-                        <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="precisionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                            </defs>
-                            
-                            <!-- Background Circle -->
-                            <circle cx="100" cy="100" r="90" fill="#1E293B" />
-                            
-                            <!-- Target Rings -->
-                            <circle cx="100" cy="100" r="70" fill="none" stroke="#334155" stroke-width="2" />
-                            <circle cx="100" cy="100" r="50" fill="none" stroke="#334155" stroke-width="2" />
-                            <circle cx="100" cy="100" r="30" fill="none" stroke="#334155" stroke-width="2" />
-                            <circle cx="100" cy="100" r="10" fill="url(#precisionGradient)" />
-                            
-                            <!-- Crosshair -->
-                            <line x1="100" y1="30" x2="100" y2="170" stroke="#20C5C6" stroke-width="1" />
-                            <line x1="30" y1="100" x2="170" y2="100" stroke="#20C5C6" stroke-width="1" />
-                            
-                            <!-- Precision Arrow -->
-                            <line x1="30" y1="30" x2="90" y2="90" stroke="url(#precisionGradient)" stroke-width="4" stroke-linecap="round">
-                                <animate attributeName="x2" values="90;95;100" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
-                                <animate attributeName="y2" values="90;95;100" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
-                            </line>
-                            
-                            <!-- Arrow Head -->
-                            <polygon points="85,85 95,85 90,95" fill="url(#precisionGradient)">
-                                <animate attributeName="points" values="85,85 95,85 90,95; 90,90 100,90 95,100; 95,95 105,95 100,105" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
-                            </polygon>
-                            
-                            <!-- Clock/Timer -->
-                            <circle cx="150" cy="50" r="20" fill="#20C5C6" opacity="0.8" />
-                            <line x1="150" y1="50" x2="150" y2="35" stroke="white" stroke-width="2" stroke-linecap="round">
-                                <animateTransform 
-                                    attributeName="transform"
-                                    attributeType="XML"
-                                    type="rotate"
-                                    from="0 150 50"
-                                    to="360 150 50"
-                                    dur="10s"
-                                    repeatCount="indefinite" />
-                            </line>
-                            <line x1="150" y1="50" x2="160" y2="50" stroke="white" stroke-width="2" stroke-linecap="round">
-                                <animateTransform 
-                                    attributeName="transform"
-                                    attributeType="XML"
-                                    type="rotate"
-                                    from="0 150 50"
-                                    to="360 150 50"
-                                    dur="60s"
-                                    repeatCount="indefinite" />
-                            </line>
-                        </svg>
+<svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="precisionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF6B00" />
+            <stop offset="100%" stop-color="#FF9248" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background Circle -->
+    <circle cx="100" cy="100" r="90" fill="#1E293B" />
+    
+    <!-- Target Rings -->
+    <circle cx="100" cy="100" r="70" fill="none" stroke="#334155" stroke-width="2" />
+    <circle cx="100" cy="100" r="50" fill="none" stroke="#334155" stroke-width="2" />
+    <circle cx="100" cy="100" r="30" fill="none" stroke="#334155" stroke-width="2" />
+    <circle cx="100" cy="100" r="10" fill="url(#precisionGradient)" />
+    
+    <!-- Crosshair -->
+    <line x1="100" y1="30" x2="100" y2="170" stroke="#20C5C6" stroke-width="1" />
+    <line x1="30" y1="100" x2="170" y2="100" stroke="#20C5C6" stroke-width="1" />
+    
+    <!-- Precision Arrow -->
+    <line x1="30" y1="30" x2="90" y2="90" stroke="url(#precisionGradient)" stroke-width="4" stroke-linecap="round">
+        <animate attributeName="x2" values="90;95;100" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
+        <animate attributeName="y2" values="90;95;100" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
+    </line>
+    
+    <!-- Arrow Head -->
+    <polygon points="85,85 95,85 90,95" fill="url(#precisionGradient)">
+        <animate attributeName="points" values="85,85 95,85 90,95; 90,90 100,90 95,100; 95,95 105,95 100,105" dur="2s" begin="0s" fill="freeze" repeatCount="indefinite" />
+    </polygon>
+    
+    <!-- Clock/Timer -->
+    <circle cx="150" cy="50" r="20" fill="#20C5C6" opacity="0.8" />
+    <line x1="150" y1="50" x2="150" y2="35" stroke="white" stroke-width="2" stroke-linecap="round">
+        <animateTransform 
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0 150 50"
+            to="360 150 50"
+            dur="10s"
+            repeatCount="indefinite" />
+    </line>
+    <line x1="150" y1="50" x2="160" y2="50" stroke="white" stroke-width="2" stroke-linecap="round">
+        <animateTransform 
+            attributeName="transform"
+            attributeType="XML"
+            type="rotate"
+            from="0 150 50"
+            to="360 150 50"
+            dur="60s"
+            repeatCount="indefinite" />
+    </line>
+</svg>
                     </div>
                 </div>
                 
@@ -1598,7 +1707,7 @@
             </div>
             
             <div class="explore-packages">
-                <a href="packages.html" class="cta-button">Explore Our Packages</a>
+                <a href="index.html#packages" class="cta-button">Explore Our Packages</a>
             </div>
         </div>
     </section>
