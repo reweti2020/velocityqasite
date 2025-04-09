@@ -952,8 +952,19 @@
             transition: transform 0.3s;
         }
 
-        .package-feature.active .expand-icon {
-            transform: rotate(180deg);
+        .package-feature.active .feature-content {
+            max-height: 500px;
+            padding: 1rem; // More consistent padding
+            opacity: 1;
+}
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 2.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: calc(24px + 1rem); // Aligns with the title/icon
         }
 
         /* Media Queries */
@@ -1127,6 +1138,8 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+                        padding 0.3s,
+                        opacigty 0.3;
             padding: 0 1rem;
         }
 
@@ -1309,7 +1322,7 @@
                         <div class="package-price">$450</div>
                         <p class="package-description">Rapid bug detection with same-day results. Perfect for pre-launch validation.</p>
                         <div class="package-buttons">
-                            <a href="bug-hunter.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="bug-hunter-service.html" class="cta-button package-button-secondary">Learn More</a>
                             <a href="contact.html?package=bug-hunter&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
@@ -2657,16 +2670,30 @@
             });
         }
 
-        // Collapsible Features
-        const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
+// Collapsible Features with Guaranteed Expansion
+const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
 
-        collapsibleFeatures.forEach(feature => {
-            const header = feature.querySelector('.feature-header');
-            
-            header.addEventListener('click', () => {
-                feature.classList.toggle('active');
-            });
-        });
+collapsibleFeatures.forEach(feature => {
+    const header = feature.querySelector('.feature-header');
+    const content = feature.querySelector('.feature-content');
+    
+    header.addEventListener('click', () => {
+        // Ensure the feature expands
+        feature.classList.toggle('active');
+        
+        // Force content visibility if expanding
+        if (feature.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.style.padding = '1rem';
+            content.style.opacity = '1';
+        } else {
+            // Reset when collapsing
+            content.style.maxHeight = '0';
+            content.style.padding = '0 1rem';
+            content.style.opacity = '0';
+        }
+    });
+});
         // Initialize
         updatePackageBadges();
     </script>
