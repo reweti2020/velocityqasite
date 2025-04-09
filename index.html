@@ -857,18 +857,6 @@
             min-height: 250px;
         }
 
-        .comparison-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(32, 197, 198, 0.1);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--teal);
-        }
-
         .comparison-title {
             font-size: 1.5rem;
             font-weight: 600;
@@ -1066,6 +1054,91 @@
                 animation-duration: 0.001ms !important;
                 animation-iteration-count: 1 !important;
             }
+        }
+
+        /* Comparison Slider Styles */
+        .comparison-slide {
+            flex: 0 0 100%;
+            padding: 2rem;
+            background-color: var(--bg-dark);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .comparison-content {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Collapsible Feature Styles */
+        .package-feature.collapsible {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(30, 41, 59, 0.7);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .feature-header:hover {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+
+        .feature-header .feature-icon {
+            margin-right: 1rem;
+        }
+
+        .feature-header .feature-title {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+
+        .package-feature.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1rem;
+        }
+
+        .package-feature.active .feature-content {
+            max-height: 200px;
+            padding: 0 1rem 1rem 1rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 2.5rem;
         }
     </style>
 </head>
@@ -2251,7 +2324,8 @@
                     <div class="testimonial-button" id="testimonialNext">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
+                        </svg>
+                    </div>
                 </div>
             </div>
                 
@@ -2598,4 +2672,3 @@
     </script>
 </body>
 </html>
-
