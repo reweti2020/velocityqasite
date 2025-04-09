@@ -813,6 +813,149 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Comparison Slider Styles */
+        .comparison-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comparison-slider {
+            overflow: hidden;
+        }
+
+        .comparison-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .comparison-slide {
+            flex: 0 0 100%;
+            padding: 2rem;
+            background-color: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .comparison-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(32, 197, 198, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .comparison-content {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .comparison-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comparison-button:hover {
+            background-color: var(--border);
+        }
+
+        .comparison-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comparison-dot.active {
+            background-color: var(--teal);
+        }
+
+        /* Collapsible Feature Styles */
+        .package-feature.collapsible {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(30, 41, 59, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .feature-header:hover {
+            background-color: rgba(30, 41, 59, 0.7);
+        }
+
+        .feature-header .feature-icon {
+            margin-right: 1rem;
+            margin-bottom: 0;
+        }
+
+        .feature-header .feature-title {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+
+        .package-feature.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .feature-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .package-feature.active .feature-content {
+            padding: 1rem;
+            max-height: 200px;
+        }
+
         /* Media Queries */
         @media (max-width: 992px) {
             .hero-title {
@@ -1193,56 +1336,84 @@
                 </div>
                 
                 <div class="package-features">
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Same-Day Results</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Same-Day Results</h3>
                             <p class="feature-description">Get your bug report within 24 hours, often on the same day (subject to availability).</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                                <line x1="16" y1="8" x2="2" y2="22"></line>
-                                <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Focused Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Focused Testing</h3>
                             <p class="feature-description">4-5 hours of dedicated testing focused on critical functionality and user flows.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="3" y1="9" x2="21" y2="9"></line>
-                                <line x1="9" y1="21" x2="9" y2="9"></line>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Detailed Reports</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Detailed Reports</h3>
                             <p class="feature-description">Comprehensive bug reports with screenshots, steps to reproduce, and severity ratings.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Pre-Launch Ready</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Pre-Launch Ready</h3>
                             <p class="feature-description">Perfect for validating your application before launch or after major updates.</p>
                         </div>
                     </div>
@@ -1380,59 +1551,87 @@
                 </div>
                 
                 <div class="package-features">
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-title">User-Centric Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">User-Centric Testing</h3>
                             <p class="feature-description">Testing focused on real user scenarios and critical user journeys through your application.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Cross-Device Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Cross-Device Testing</h3>
                             <p class="feature-description">Testing across multiple devices, browsers, and screen sizes to ensure consistent experiences.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Flow Analysis</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Flow Analysis</h3>
                             <p class="feature-description">Detailed analysis of user flows with recommendations for improvements and optimizations.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Comprehensive Reports</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Comprehensive Reports</h3>
                             <p class="feature-description">8-10 hours of in-depth testing with detailed reports and actionable recommendations.</p>
                         </div>
                     </div>
@@ -1517,59 +1716,87 @@
                 </div>
                 
                 <div class="package-features">
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">System-Wide Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">System-Wide Testing</h3>
                             <p class="feature-description">Comprehensive testing of your entire application, including backend functionality and integrations.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                                <line x1="6" y1="1" x2="6" y2="4"></line>
-                                <line x1="10" y1="1" x2="10" y2="4"></line>
-                                <line x1="14" y1="1" x2="14" y2="4"></line>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Performance Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Performance Testing</h3>
                             <p class="feature-description">Identify performance bottlenecks and receive recommendations for optimization.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Security Review</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Security Review</h3>
                             <p class="feature-description">Basic security assessment to identify common vulnerabilities and security issues.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="19" y1="5" x2="5" y2="19"></line>
-                                <circle cx="6.5" cy="6.5" r="2.5"></circle>
-                                <circle cx="17.5" cy="17.5" r="2.5"></circle>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="19" y1="5" x2="5" y2="19"></line>
+                                    <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                                    <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Prioritized Issues</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Prioritized Issues</h3>
                             <p class="feature-description">12-15 hours of comprehensive testing with issues prioritized by severity and impact.</p>
                         </div>
                     </div>
@@ -1648,55 +1875,83 @@
                 </div>
                 
                 <div class="package-features">
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 1v22"></path>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                            </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 1v22"></path>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Pay As You Go</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Pay As You Go</h3>
                             <p class="feature-description">Flexible hourly testing with no minimum commitment. Pay only for what you need.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
                             </svg>
+                            </div>
+                            <div class="feature-title">Targeted Focus</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Targeted Focus</h3>
                             <p class="feature-description">You direct exactly where testing should focus, ensuring maximum value for your investment.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
+                            </div>
+                            <div class="feature-title">Prepaid Discount</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Prepaid Discount</h3>
                             <p class="feature-description">10% discount when you prepay for 10+ hours of testing services.</p>
                         </div>
                     </div>
                     
-                    <div class="package-feature">
-                        <div class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
+                            </div>
+                            <div class="feature-title">Quick Turnaround</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
                         </div>
                         <div class="feature-content">
-                            <h3 class="feature-title">Quick Turnaround</h3>
                             <p class="feature-description">Rapid 24-48 hour turnaround on most testing requests, with same-day options available.</p>
                         </div>
                     </div>
@@ -1859,53 +2114,72 @@
     </section>
 
     <section class="comparison" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Why Startups Choose Us</h2>
-            <p class="section-description">Our focused approach delivers better results at a fraction of the cost.</p>
-            
-            <div class="comparison-wrapper">                
-                <div class="comparison-summary">
-                    <div class="difference-grid">
-                        <div class="difference-item">
-                            <div class="difference-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="23 4 23 10 17 10"></polyline>
-                                    <polyline points="1 20 1 14 7 14"></polyline>
-                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                                </svg>
-                            </div>
-                            <h4>Get to Market Faster</h4>
-                            <p>We reduced a medical app's testing cycle from 2 weeks to 4 days, accelerating their release by 65%.</p>
+    <div class="container">
+        <h2 class="section-title">Why Startups Choose Us</h2>
+        <p class="section-description">Our focused approach delivers better results at a fraction of the cost.</p>
+        
+        <div class="comparison-container">
+            <div class="comparison-slider">
+                <div class="comparison-track" id="comparisonTrack">
+                    <div class="comparison-slide">
+                        <div class="comparison-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                            </svg>
                         </div>
-                        
-                        <div class="difference-item">
-                            <div class="difference-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <path d="M12 16v-4"></path>
-                                    <path d="M12 8h.01"></path>
-                                </svg>
-                            </div>
-                            <h4>Save Critical Resources</h4>
-                            <p>Our focused testing costs a fraction of a full-time QA ($75K-$120K annually) while delivering more targeted results.</p>
+                        <h3 class="comparison-title">Get to Market Faster</h3>
+                        <p class="comparison-content">We reduced a medical app's testing cycle from 2 weeks to 4 days, accelerating their release by 65%.</p>
+                    </div>
+                    
+                    <div class="comparison-slide">
+                        <div class="comparison-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
                         </div>
-                        
-                        <div class="difference-item">
-                            <div class="difference-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                                    <line x1="16" y1="8" x2="2" y2="22"></line>
-                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                                </svg>
-                            </div>
-                            <h4>Bugs Found Quickly</h4>
-                            <p>For one startup's MVP dashboard, we identified 50+ UI and workflow issues in the first 2 hours of testing.</p>
+                        <h3 class="comparison-title">Save Critical Resources</h3>
+                        <p class="comparison-content">Our focused testing costs a fraction of a full-time QA ($75K-$120K annually) while delivering more targeted results.</p>
+                    </div>
+                    
+                    <div class="comparison-slide">
+                        <div class="comparison-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                <line x1="16" y1="8" x2="2" y2="22"></line>
+                                <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                            </svg>
                         </div>
+                        <h3 class="comparison-title">Bugs Found Quickly</h3>
+                        <p class="comparison-content">For one startup's MVP dashboard, we identified 50+ UI and workflow issues in the first 2 hours of testing.</p>
                     </div>
                 </div>
             </div>
+            
+            <div class="comparison-controls">
+                <div class="comparison-button" id="comparisonPrev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="comparison-button" id="comparisonNext">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="comparison-dots">
+                <div class="comparison-dot active" data-index="0"></div>
+                <div class="comparison-dot" data-index="1"></div>
+                <div class="comparison-dot" data-index="2"></div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="testimonials" class="testimonials-section">
         <div class="container">
@@ -2262,9 +2536,53 @@
             }, 3000);
         }
         
+        // Comparison Slider
+        const comparisonTrack = document.getElementById('comparisonTrack');
+        const comparisonPrev = document.getElementById('comparisonPrev');
+        const comparisonNext = document.getElementById('comparisonNext');
+        const comparisonDots = document.querySelectorAll('.comparison-dot');
+        let currentComparison = 0;
+
+        function updateComparisonSlider() {
+            comparisonTrack.style.transform = `translateX(-${currentComparison * 100}%)`;
+            
+            // Update dots
+            comparisonDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentComparison);
+            });
+        }
+
+        if (comparisonPrev && comparisonNext) {
+            comparisonPrev.addEventListener('click', () => {
+                currentComparison = (currentComparison - 1 + comparisonDots.length) % comparisonDots.length;
+                updateComparisonSlider();
+            });
+            
+            comparisonNext.addEventListener('click', () => {
+                currentComparison = (currentComparison + 1) % comparisonDots.length;
+                updateComparisonSlider();
+            });
+            
+            comparisonDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentComparison = index;
+                    updateComparisonSlider();
+                });
+            });
+        }
+
+        // Collapsible Features
+        const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
+
+        collapsibleFeatures.forEach(feature => {
+            const header = feature.querySelector('.feature-header');
+            
+            header.addEventListener('click', () => {
+                feature.classList.toggle('active');
+            });
+        });
         // Initialize
         updatePackageBadges();
     </script>
 </body>
 </html>
-
