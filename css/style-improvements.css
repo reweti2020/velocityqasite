@@ -1,0 +1,233 @@
+/* CSS improvements to reduce excessive black space and add package toggle */
+
+/* Update hero section with gradient background */
+.hero {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #121620 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+/* Add direct connection between sections to reduce scrolling */
+.hero + .process {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+.process + .features {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+.features + .packages {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+.packages + .comparison {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+.comparison + .testimonials {
+    margin-top: 0;
+    padding-top: 3rem;
+}
+
+/* Reduce padding on all sections */
+section {
+    padding: 3rem 0;
+}
+
+/* Package toggle view styles */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.toggle-btn {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background-color: var(--teal);
+    border-color: var(--teal);
+    color: white;
+}
+
+/* Package comparison table styles */
+.package-table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.package-table th,
+.package-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.package-table th {
+    background-color: rgba(32, 197, 198, 0.1);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.package-table th:first-child,
+.package-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+}
+
+.package-table .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--orange);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.package-table .check {
+    color: var(--teal);
+    font-weight: bold;
+}
+
+.package-table .cross {
+    color: var(--orange);
+}
+
+.package-table .action-row td {
+    border-bottom: none;
+    padding: 1.5rem 1rem;
+}
+
+.package-table .cta-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.package-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+/* Improve process section with more visual appeal */
+.process {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--card) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.process::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(32, 197, 198, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+}
+
+.process-step {
+    background-color: rgba(30, 41, 59, 0.8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Add subtle animation to feature cards */
+.feature-card {
+    transform: translateY(0);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Make CTA section more impactful */
+.cta-section {
+    background: linear-gradient(135deg, var(--orange) 0%, var(--teal) 100%);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.2;
+}
+
+.cta-button-secondary {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+}
+
+.cta-button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Update media queries for better mobile experience */
+@media (max-width: 768px) {
+    .package-table th,
+    .package-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .view-toggle {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .toggle-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-description {
+        margin-bottom: 2rem;
+    }
+}
