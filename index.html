@@ -72,6 +72,80 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1rem;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional QA Testing for Australian Startups | VelocityQA</title>
+    <meta name="description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta property="og:title" content="Professional QA Testing for Australian Startups | VelocityQA">
+    <meta property="og:description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta property="og:image" content="https://velocityqa.com/images/home-social.jpg">
+    <meta property="og:url" content="https://velocityqa.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VelocityQA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional QA Testing for Australian Startups">
+    <meta name="twitter:description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta name="twitter:image" content="https://velocityqa.com/images/home-social.jpg">
+    <meta name="twitter:site" content="@VelocityQA">
+    <link rel="canonical" href="https://velocityqa.com">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0PBYFYX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-W0PBYFYX7Q');
+    </script>
+    
+    <style>
+        :root {
+            --primary: #121620;
+            --primary-dark: #0a0d14;
+            --secondary: #ff5500;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --card: #ffffff;
+            --card-dark: #1e293b;
+            --border: #e2e8f0;
+            --border-dark: #334155;
+            --success: #10b981;
+            --error: #ef4444;
+            --orange: #ff6b00;
+            --teal: #20C5C6;
+            --silver: #D1D5DB;
+        }
+
+        [data-theme="dark"] {
+            --text: #f8fafc;
+            --text-light: #94a3b8;
+            --bg-light: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 1rem;
         }
 
@@ -335,8 +409,8 @@
         }
 
         .package-svg {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             margin-left: 2rem;
         }
 
@@ -2527,27 +2601,26 @@
         }
         
         // Package Tabs
-        const tabs = document.querySelectorAll('.tab');
-        const packageDisplays = document.querySelectorAll('.package-display');
+const tabs = document.querySelectorAll('.tab');
+const packageDisplays = document.querySelectorAll('.package-display');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs and displays
+        tabs.forEach(t => t.classList.remove('active'));
+        packageDisplays.forEach(d => d.classList.remove('active'));
         
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                tabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                
-                // Show corresponding package display
-                const tabId = tab.getAttribute('data-tab');
-                packageDisplays.forEach(display => {
-                    display.classList.remove('active');
-                    if (display.id === `${tabId}-display`) {
-                        display.classList.add('active');
-                    }
-                });
-            });
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Show corresponding package display
+        const tabId = tab.getAttribute('data-tab');
+        const correspondingDisplay = document.getElementById(`${tabId}-display`);
+        if (correspondingDisplay) {
+            correspondingDisplay.classList.add('active');
         }
+    });
+});
         
         // Testimonials Slider
         const testimonialsTrack = document.getElementById('testimonialsTrack');
