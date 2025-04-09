@@ -376,7 +376,16 @@
         }
 
         .feature-content {
-            flex: 1;
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            width: 100%;
+        }
+
+        .package-feature.active .feature-content {
+            padding: 0.5rem 1rem 1rem;
+            max-height: 200px;
         }
 
         .feature-title {
@@ -814,6 +823,12 @@
         }
 
         /* Comparison Slider Styles */
+        .comparison {
+            padding: 4rem 0;
+            background-color: var(--bg-dark);
+            color: white;
+        }
+
         .comparison-container {
             position: relative;
             max-width: 800px;
@@ -832,10 +847,14 @@
         .comparison-slide {
             flex: 0 0 100%;
             padding: 2rem;
-            background-color: var(--card);
+            background-color: var(--bg-dark);
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 250px;
         }
 
         .comparison-icon {
@@ -860,6 +879,7 @@
         .comparison-content {
             color: var(--text-light);
             margin-bottom: 1rem;
+            max-width: 500px;
         }
 
         .comparison-controls {
@@ -911,6 +931,9 @@
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(30, 41, 59, 0.5);
         }
 
         .feature-header {
@@ -920,6 +943,7 @@
             background-color: rgba(30, 41, 59, 0.5);
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         .feature-header:hover {
@@ -942,18 +966,6 @@
 
         .package-feature.active .expand-icon {
             transform: rotate(180deg);
-        }
-
-        .feature-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .package-feature.active .feature-content {
-            padding: 1rem;
-            max-height: 200px;
         }
 
         /* Media Queries */
@@ -2239,9 +2251,9 @@
                     <div class="testimonial-button" id="testimonialNext">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </div>
+                    </svg>
                 </div>
+            </div>
                 
                 <div class="testimonial-dots">
                     <div class="testimonial-dot active" data-index="0"></div>
@@ -2433,7 +2445,7 @@
                     }
                 });
             });
-        });
+        }
         
         // Testimonials Slider
         const testimonialsTrack = document.getElementById('testimonialsTrack');
@@ -2586,3 +2598,4 @@
     </script>
 </body>
 </html>
+
