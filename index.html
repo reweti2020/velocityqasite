@@ -952,11 +952,26 @@
             transition: transform 0.3s;
         }
 
+        .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: 
+                max-height 0.3s ease,
+                opacity 0.3s ease,
+                padding 0.3s ease;
+            padding: 0 1rem;
+        }
+
         .package-feature.active .feature-content {
-            max-height: 500px;
-            padding: 1rem; // More consistent padding
-            opacity: 1;
-}
+           max-height: 500px; /* Adjust as needed */
+           opacity: 1;
+           padding: 1rem;
+        }
+
+        .package-feature.active .expand-icon {
+            transform: rotate(180deg);
+        }
 
         .feature-description {
             font-size: 0.9rem;
@@ -2671,26 +2686,38 @@
         }
 
 // Collapsible Features with Guaranteed Expansion
+// Collapsible Features with Detailed Debugging
+const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
+
+// Collapsible Features
 const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
 
 collapsibleFeatures.forEach(feature => {
     const header = feature.querySelector('.feature-header');
     const content = feature.querySelector('.feature-content');
     
-    header.addEventListener('click', () => {
-        // Ensure the feature expands
+    if (!header || !content) {
+        console.error('Missing header or content in a collapsible feature', feature);
+        return;
+    }
+
+    header.addEventListener('click', (event) => {
+        // Toggle active class
         feature.classList.toggle('active');
+    });
+});
+
+// Ensure initial state
+document.addEventListener('DOMContentLoaded', () => {
+    const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
+    
+    collapsibleFeatures.forEach(feature => {
+        const content = feature.querySelector('.feature-content');
         
-        // Force content visibility if expanding
-        if (feature.classList.contains('active')) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            content.style.padding = '1rem';
-            content.style.opacity = '1';
-        } else {
-            // Reset when collapsing
+        if (content) {
             content.style.maxHeight = '0';
-            content.style.padding = '0 1rem';
             content.style.opacity = '0';
+            content.style.visibility = 'hidden';
         }
     });
 });
