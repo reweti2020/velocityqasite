@@ -1696,56 +1696,56 @@
     <p class="section-subtitle">We follow a structured approach to ensure thorough testing and clear communication throughout the process.</p>
     
     <div class="process-container">
-        <div class="process-svg">
-            <!-- Process SVG from Contact Page -->
-            <svg width="600" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" aria-label="Process timeline showing 4 steps: Initial Contact, Consultation, Testing, and Reporting">
-                <!-- Rest of your SVG timeline -->
-                <defs>
-                    <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FF6B00"/>
-                        <stop offset="100%" stop-color="#20C5C6"/>
-                    </linearGradient>
-                    
-                    <filter id="shadowFilter">
-                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
-                    </filter>
-                </defs>
+    <div class="process-svg">
+    <!-- Process SVG from Contact Page -->
+    <svg width="600" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" aria-label="Process timeline showing 4 steps: Initial Contact, Consultation, Testing, and Reporting">
+        <!-- Define Gradient and Filter -->
+        <defs>
+            <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF6B00"/>
+                <stop offset="100%" stop-color="#20C5C6"/>
+            </linearGradient>
+            
+            <filter id="shadowFilter">
+                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+            </filter>
+        </defs>
 
-                <!-- Timeline Base Line -->
-                <line x1="100" y1="100" x2="700" y2="100" 
-                <!-- Animated Dot -->
-                <circle cx="100" cy="100" r="6" fill="#20C5C6">
-    <animateMotion 
-        path="M0 0 L200 0 L400 0 L600 0" 
-        dur="6s" 
-        repeatCount="indefinite"
-        rotate="auto"
-    />
-</circle>
+        <!-- Timeline Base Line -->
+        <line x1="100" y1="100" x2="700" y2="100" stroke="#D1D5DB" stroke-width="2"/>
 
-                <!-- Process Stages -->
-                <g transform="translate(100, 100)">
-                    <!-- Stage 1: Initial Contact -->
-                    <g>
-                        <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
-                        <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#20C5C6" stroke-width="2"/>
-                        <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#20C5C6" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Initial Contact</text>
-                        <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">24-Hour Response</text>
-                    </g>
-                    <!-- Stages 2-4 abbreviated for brevity -->
-                </g>
+        <!-- Animated Dot -->
+        <circle cx="100" cy="100" r="6" fill="#20C5C6">
+            <animateMotion 
+                path="M0 0 L200 0 L400 0 L600 0" 
+                dur="6s" 
+                repeatCount="indefinite"
+                rotate="auto"
+            />
+        </circle>
 
-                <!-- Connecting Lines with Gradient -->
-                <line x1="130" y1="100" x2="170" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
-                <line x1="330" y1="100" x2="370" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
-                <line x1="530" y1="100" x2="570" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
-            </svg>
-        </div>
-        
+        <!-- Process Stages -->
+        <g transform="translate(100, 100)">
+            <!-- Stage 1: Initial Contact -->
+            <g>
+                <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
+                <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#20C5C6" stroke-width="2"/>
+                <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#20C5C6" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Initial Contact</text>
+                <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">24-Hour Response</text>
+            </g>
+            <!-- Stages 2-4 abbreviated for brevity -->
+        </g>
+
+        <!-- Connecting Lines with Gradient -->
+        <line x1="130" y1="100" x2="170" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+        <line x1="330" y1="100" x2="370" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+        <line x1="530" y1="100" x2="570" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+    </svg>
+</div>
         <p class="process-description">Our streamlined testing process ensures efficient and effective results. We start with a consultation to understand your needs, create a detailed testing plan, execute thorough testing, and deliver comprehensive reports with actionable recommendations.</p>
         
         <a href="process.html" class="cta-button">Learn More About Our Process</a>
