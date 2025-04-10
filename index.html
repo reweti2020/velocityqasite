@@ -2274,6 +2274,8 @@
                         <li class="footer-link"><a href="#packages">User Journey</a></li>
                         <li class="footer-link"><a href="#packages">System Auditor</a></li>
                         <li class="footer-link"><a href="#packages">Precision Strike</a></li>
+                        <li class="footer-link"><a href="automation-services.html">Automation</a></li>
+</ul>
                     </ul>
                 </div>
                 
@@ -2417,6 +2419,16 @@
     
     // Initialize package display features
     document.addEventListener('DOMContentLoaded', () => {
+      const automationTab = document.querySelector('.tab[data-tab="automation"]');
+      if (automationTab) {
+         automationTab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            automationTab.classList.add('active');
+            
+            document.querySelectorAll('.package-display').forEach(d => d.classList.remove('active'));
+            document.getElementById('automation-display').classList.add('active');
+        });
+    }
         // Initialize collapse features
         collapsibleFeatures.forEach(feature => {
             const content = feature.querySelector('.feature-content');
@@ -2509,5 +2521,8 @@
 <script src="js/toggle.js"></script>
 </body>
 </html>
+
+
+
 
 
