@@ -1,50 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Payment Terms | VelocityQA</title>
   <link rel="stylesheet" href="css/style-improvements.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #121620;
+      --primary-dark: #0a0d14;
+      --secondary: #ff5500;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --card: #ffffff;
+      --card-dark: #1e293b;
+      --border: #e2e8f0;
+      --border-dark: #334155;
+      --success: #10b981;
+      --error: #ef4444;
+      --orange: #ff6b00;
+      --teal: #20C5C6;
+    }
+
+    [data-theme="dark"] {
+      --text: #f8fafc;
+      --text-light: #94a3b8;
+      --bg-light: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-light);
       color: var(--text);
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    .terms-hero {
-      background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
-      color: white;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .page-header {
       padding: 4rem 1rem;
       text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--teal) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
 
-    .terms-hero h1 {
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.2;
+    }
+
+    .page-title {
       font-size: 2.5rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-description {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
     }
 
     .terms-section {
-      max-width: 900px;
-      margin: 0 auto;
       padding: 4rem 1rem;
       background-color: var(--card);
       border-radius: 12px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      margin: 3rem auto;
+      max-width: 900px;
     }
 
     .terms-section h2 {
-      color: var(--text);
       font-size: 1.75rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      color: var(--text);
     }
 
     .terms-section p {
-      color: var(--text-light);
       font-size: 1.1rem;
+      color: var(--text-light);
       margin-bottom: 1.5rem;
     }
 
@@ -56,43 +115,74 @@
     .section-divider {
       height: 2px;
       background-color: var(--border);
-      margin: 2rem 0;
+      margin: 2.5rem 0;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
 <body data-theme="dark">
-  <header>
-    <!-- Include your existing header here -->
-  </header>
 
-  <section class="terms-hero">
-    <h1>Payment Terms</h1>
-    <p>Clear, simple terms that work with your startup’s pace.</p>
+  <!-- Optional Theme Toggle Button -->
+  <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1 class="page-title">Payment Terms</h1>
+    <p class="page-description">Simple and transparent payment expectations for every project.</p>
   </section>
 
-  <section class="terms-section container">
+  <!-- Main Content -->
+  <section class="terms-section">
     <h2>Standard QA Packages</h2>
-    <p>
-      All VelocityQA packages require a <span class="highlight">50% deposit</span> at the time of contract agreement. The remaining <span class="highlight">50% is due within 14 days</span> after the project is completed.
-    </p>
+    <p>All VelocityQA packages require a <span class="highlight">50% deposit</span> when the contract is signed. The remaining <span class="highlight">50% must be paid within 14 days</span> of project completion.</p>
 
     <div class="section-divider"></div>
 
     <h2>Precision Strike Packages</h2>
-    <p>
-      Our intensive bug-finding “Precision Strike” packages must be <span class="highlight">paid in full upfront</span> at the time of contract agreement.
-    </p>
+    <p>Our high-impact “Precision Strike” testing options require <span class="highlight">full upfront payment</span> at the time of agreement, due to their rapid delivery and limited availability.</p>
 
     <div class="section-divider"></div>
 
     <h2>Late Payment Policy</h2>
-    <p>
-      To keep our workflow efficient and client-focused, overdue payments may incur a <span class="highlight">5% late fee</span> for every 7 days past due. Please reach out if you foresee any issues—we’re always happy to work with you.
-    </p>
+    <p>If final payment is not received within the 14-day window, a <span class="highlight">5% late fee</span> will apply every 7 days overdue. Please contact us in advance if there are any concerns—we’re happy to work with your schedule.</p>
   </section>
 
   <footer>
-    <!-- Include your existing footer here -->
+    <!-- Include your existing footer HTML here -->
   </footer>
+
 </body>
 </html>
