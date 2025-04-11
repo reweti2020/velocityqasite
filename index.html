@@ -1655,16 +1655,123 @@
                         </div>
                     </div>
                     <div class="package-svg">
-                        <!-- User Journey SVG -->
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Your SVG content from the User Journey package -->
-                            <!-- Just a placeholder for brevity -->
-                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                            <path d="M100 200 C150 200, 200 100, 250 100 C300 100, 350 200, 400 200 C450 200, 500 300, 550 300" 
-                                  stroke="#20C5C6" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="0,0" />
-                        </svg>
-                    </div>
+                    <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Flow Lines and Connection Points -->
+                        <path d="M100 200 C150 200, 200 100, 250 100 C300 100, 350 200, 400 200 C450 200, 500 300, 550 300" 
+                              stroke="#20C5C6" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="0,0" />
+                              
+                        <!-- Animated Dot along the path -->
+                        <circle cx="100" cy="200" r="5" fill="#ffffff">
+                            <animateMotion 
+                                dur="6s" 
+                                repeatCount="indefinite" 
+                                path="M0 0 C50 0, 100 -100, 150 -100 C200 -100, 250 0, 300 0 C350 0, 400 100, 450 100" />
+                        </circle>
+                        
+                        <!-- Devices at each stage of the journey -->
+                        <!-- Smartphone (starting point) -->
+                        <g transform="translate(100, 200)">
+                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333" />
+                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b" />
+                            <circle cx="0" cy="18" r="2" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Tablet (second stage) -->
+                        <g transform="translate(250, 100)">
+                            <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333" />
+                            <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b" />
+                            <circle cx="0" cy="24" r="2" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="1s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="1s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Laptop (third stage) -->
+                        <g transform="translate(400, 200)">
+                            <path d="M-35 -15 L35 -15 L35 15 L-35 15 Z" fill="#333333" />
+                            <path d="M-32 -12 L32 -12 L32 12 L-32 12 Z" fill="#1e293b" />
+                            <path d="M-40 16 L40 16 L36 25 L-36 25 Z" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Desktop (final stage) -->
+                        <g transform="translate(550, 300)">
+                            <rect x="-30" y="-25" width="60" height="40" rx="2" ry="2" fill="#333333" />
+                            <rect x="-28" y="-23" width="56" height="36" rx="1" ry="1" fill="#1e293b" />
+                            <rect x="-10" y="15" width="20" height="15" fill="#333333" />
+                            <rect x="-20" y="30" width="40" height="3" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="3s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- User Icons at each stage -->
+                        <!-- User Admin Icon -->
+                        <g transform="translate(100, 150)">
+                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Icon -->
+                        <g transform="translate(250, 50)">
+                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Icon -->
+                        <g transform="translate(400, 150)">
+                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Admin Icon -->
+                        <g transform="translate(550, 250)">
+                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- Flow Points with Labels -->
+                        <circle cx="100" cy="200" r="10" fill="#FF6B00" />
+                        <text x="100" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Login</text>
+                        
+                        <circle cx="250" cy="100" r="10" fill="#FF6B00" />
+                        <text x="250" y="130" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Browse</text>
+                        
+                        <circle cx="400" cy="200" r="10" fill="#FF6B00" />
+                        <text x="400" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Purchase</text>
+                        
+                        <circle cx="550" cy="300" r="10" fill="#FF6B00" />
+                        <text x="550" y="330" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Confirm</text>
+                        
+                        <!-- Connecting User Role Lines -->
+                        <line x1="100" y1="150" x2="100" y2="190" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="250" y1="50" x2="250" y2="90" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="400" y1="150" x2="400" y2="190" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="550" y1="250" x2="550" y2="290" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+                    </svg>
                 </div>
+            </div>
+        </div>
                 <!-- Features for User Journey -->
             </div>
             
@@ -1682,13 +1789,70 @@
                     </div>
                     <div class="package-svg">
                         <!-- System Auditor SVG -->
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Your SVG content from the System Auditor package -->
-                            <!-- Just a placeholder for brevity -->
-                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                        </svg>
-                    </div>
+                        <svg width="100%" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Dashboard Grid -->
+                        <g opacity="0.1">
+                            <line x1="50" y1="50" x2="50" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="150" y1="50" x2="150" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="250" y1="50" x2="250" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="350" y1="50" x2="350" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="450" y1="50" x2="450" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="550" y1="50" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+                            
+                            <line x1="50" y1="50" x2="550" y2="50" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="100" x2="550" y2="100" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="150" x2="550" y2="150" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="200" x2="550" y2="200" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="250" x2="550" y2="250" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="300" x2="550" y2="300" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="350" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+                        </g>
+                        
+                        <!-- Top Panel -->
+                        <rect x="80" y="70" width="440" height="80" rx="8" ry="8" fill="#1e293b" />
+                        
+                        <!-- Charts -->
+                        <rect x="80" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+                        <path d="M100 280 L130 250 L160 270 L190 230 L220 260 L250 220" stroke="#20C5C6" stroke-width="3" fill="none" stroke-linecap="round" />
+                        
+                        <!-- Bar Chart -->
+                        <rect x="310" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+                        <rect x="330" y="250" width="20" height="60" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="360" y="230" width="20" height="80" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="390" y="270" width="20" height="40" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="420" y="200" width="20" height="110" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="450" y="240" width="20" height="70" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="480" y="220" width="20" height="90" fill="#FF6B00" rx="2" ry="2" />
+                        
+                        <!-- Test Points -->
+                        <circle cx="130" cy="250" r="6" fill="#20C5C6" />
+                        <circle cx="160" cy="270" r="6" fill="#20C5C6" />
+                        <circle cx="190" cy="230" r="6" fill="#20C5C6" />
+                        <circle cx="220" cy="260" r="6" fill="#20C5C6" />
+                        <circle cx="250" cy="220" r="6" fill="#20C5C6" />
+                        
+                        <!-- Glowing Connections -->
+                        <path d="M130 250 L340 230" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        <path d="M220 260 L430 200" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        <path d="M250 220 L490 220" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        
+                        <!-- Interactive Elements in Top Panel -->
+                        <rect x="100" y="85" width="120" height="10" rx="5" ry="5" fill="#334155" />
+                        <rect x="100" y="105" width="80" height="10" rx="5" ry="5" fill="#334155" />
+                        <rect x="100" y="125" width="160" height="10" rx="5" ry="5" fill="#334155" />
+                        
+                        <circle cx="320" cy="110" r="25" fill="#334155" />
+                        <path d="M310 110 L330 110 M320 100 L320 120" stroke="#94a3b8" stroke-width="2" />
+                        
+                        <rect x="370" y="90" width="120" height="40" rx="6" ry="6" fill="#334155" />
+                        <text x="430" y="115" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Audit</text>
+                    </svg>
                 </div>
+            </div>
+        </div>
                 <!-- Features for System Auditor -->
             </div>
             
@@ -1728,13 +1892,70 @@
         </div>
         <div class="package-svg">
             <!-- SVG for Automation Package -->
-            <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                <!-- Add an SVG representation for automation -->
-                <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-            </svg>
+            <svg width="100%" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Precision Target Background -->
+                        <circle cx="300" cy="200" r="180" fill="#1e293b" />
+                        <circle cx="300" cy="200" r="150" fill="#0f172a" stroke="#334155" stroke-width="1" />
+                        <circle cx="300" cy="200" r="120" fill="#1e293b" stroke="#334155" stroke-width="1" />
+                        <circle cx="300" cy="200" r="90" fill="#0f172a" stroke="#334155" stroke-width="1" />
+                        <circle cx="300" cy="200" r="60" fill="#1e293b" stroke="#334155" stroke-width="1" />
+                        <circle cx="300" cy="200" r="30" fill="#0f172a" stroke="#334155" stroke-width="1" />
+                        
+                        <!-- Crosshairs -->
+                        <line x1="300" y1="50" x2="300" y2="350" stroke="#334155" stroke-width="1" />
+                        <line x1="150" y1="200" x2="450" y2="200" stroke="#334155" stroke-width="1" />
+                        
+                        <!-- UI Elements being targeted -->
+                        <rect x="285" y="130" width="120" height="30" rx="4" fill="#334155" opacity="0.7" />
+                        <rect x="190" y="185" width="80" height="30" rx="4" fill="#334155" opacity="0.7" />
+                        <rect x="330" y="240" width="100" height="30" rx="4" fill="#334155" opacity="0.7" />
+                        
+                        <!-- Precision Elements -->
+                        <g id="precision-target1" transform="translate(345, 145)">
+                            <circle cx="0" cy="0" r="15" fill="none" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="-7" y1="0" x2="7" y2="0" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="0" y1="-7" x2="0" y2="7" stroke="#FF6B00" stroke-width="2" />
+                        </g>
+                        
+                        <g id="precision-target2" transform="translate(230, 200)">
+                            <circle cx="0" cy="0" r="15" fill="none" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="-7" y1="0" x2="7" y2="0" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="0" y1="-7" x2="0" y2="7" stroke="#FF6B00" stroke-width="2" />
+                        </g>
+                        
+                        <g id="precision-target3" transform="translate(380, 255)">
+                            <circle cx="0" cy="0" r="15" fill="none" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="-7" y1="0" x2="7" y2="0" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="0" y1="-7" x2="0" y2="7" stroke="#FF6B00" stroke-width="2" />
+                        </g>
+                        
+                        <!-- Focus Beam Animation -->
+                        <path d="M300,200 L345,145" stroke="#20C5C6" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" values="0;20" dur="1.5s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <path d="M300,200 L230,200" stroke="#20C5C6" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" values="0;20" dur="1.5s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <path d="M300,200 L380,255" stroke="#20C5C6" stroke-width="2" stroke-dasharray="5,5">
+                            <animate attributeName="stroke-dashoffset" values="0;20" dur="1.5s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <!-- Central Focus Point -->
+                        <circle cx="300" cy="200" r="8" fill="#20C5C6" />
+                        <circle cx="300" cy="200" r="15" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0.6">
+                            <animate attributeName="r" from="15" to="30" dur="2s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                    </svg>
+                </div>
+            </div>
         </div>
     </div>
-        </div>
         <!-- Fully updated automation package features -->
 <div class="package-features">
     <div class="package-feature collapsible">
