@@ -1855,215 +1855,151 @@
         </div>
                 <!-- Features for System Auditor -->
             </div>
-         
-            image.png
-            image.png
-            I need help with the precision strike svg in the package section.
-            the first 3 packages svg are in the righ position and size, however the pricsion strike has the right size and position but is obsured compare to bug hunter
-            it appears the precision strike and the automation package sections are slightly different to the other 3 in that the box is different. see updated index(8).html in project artifacts
-            
-            
-            Crafted precision-focused SVG design for targeted testing package.
-            6s
-            
-            
-            
-            
-            
-            
-            
-            Looking at the issues with your website, I'll create a new SVG for the Precision Strike package that's properly positioned and sized to match the other package icons. The new SVG will use a precision targeting/bullseye theme that aligns with the "precision" aspect of the service.
-            
-            Here's an improved SVG for the Precision Strike package:
-            
-            
-            Precision Strike SVG
-            Code 
-            Now I'll create an SVG for the Automation service package to ensure consistency across all package illustrations:
-            
-            
-            Automation SVG
-            Code 
-            that just wasted tokens! don't make assumptions.
-            there is nothing wrong with the svg, whats wrong is the svg image on the precision strike is being cut off by the text area it appears which does not happen in the bug hunter, user journey or the system auditor
-            
-            
-            Investigated SVG layout issue in Precision Strike section
-            4s
-            
-            
-            
-            
-            
-            I apologize for the misunderstanding. You're right - the issue isn't with the SVG content but with how it's being displayed in the layout.
-            
-            Looking at your code more carefully, I can see the problem. In the Precision Strike section, the layout structure is slightly different compared to the Bug Hunter section, causing the SVG to be cut off.
-            
-            Let me fix the HTML structure for the Precision Strike section to match the other package sections:
-            
-            
-            Precision Strike Layout Fix
-            Code 
-            Now, let me fix the Automation section layout to ensure consistency with the other package sections:
-            
-            
-            Automation Layout Fix
-            Code 
-            The issue has been fixed! The problem was in the HTML structure of the Precision Strike and Automation sections, which had a slightly different layout compared to the other package sections.
-            
-            I've created fixes for both sections that maintain the exact same structure as the Bug Hunter, User Journey, and System Auditor sections:
-            
-            Precision Strike Fix: I restructured the HTML to ensure the SVG has the same positioning and container relationship as in the other packages. This ensures the SVG won't be cut off by the text area.
-            Automation Fix: Similarly, I adjusted the layout structure to match the other package displays.
-            To implement these fixes, replace the current Precision Strike and Automation sections in your index(8).html file with the code I've provided in the artifacts. This will ensure all five package sections have consistent layout structures and the SVGs will display properly without being cut off.
-            
-            Would you like me to make any other adjustments to ensure all package displays are consistent?
-            
-            
-            somehow I lost the entire precsion strike section, can you give me the full precision strike section
-            
-            <!-- Replace the entire Precision Strike Package section -->
+            <!-- Precision Strike Package (Corrected Structure) -->
             <div class="package-display" id="precision-strike-display">
-                <div class="package-header">
-                    <div class="package-info">
-                        <div class="package-price">$100/hr</div>
-                        <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
-                        <div class="package-buttons">
-                            <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
-                        </div>
+            <div class="package-header">
+                <div class="package-info">
+                    <div class="package-price">$100/hr</div>
+                    <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
+                    <div class="package-buttons">
+                        <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
+                        <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
                     </div>
-                    <div class="package-svg">
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(50, 145)">
-                                <!-- Target/Bullseye -->
-                                <circle cx="0" cy="0" r="100" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.3" />
-                                <circle cx="0" cy="0" r="70" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.2" />
-                                <circle cx="0" cy="0" r="40" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.1" />
-                    
-                                <!-- Crosshair -->
-                                <line x1="-120" y1="0" x2="120" y2="0" stroke="#FF6B00" stroke-width="2" />
-                                <line x1="0" y1="-120" x2="0" y2="120" stroke="#FF6B00" stroke-width="2" />
-                    
-                                <!-- Animated Targeting Dot -->
-                                <circle cx="0" cy="0" r="10" fill="#FF6B00">
-                                   <animate attributeName="r" 
-                                      values="10;20;10" 
-                                      dur="2s" 
-                                      repeatCount="indefinite" />
-                                   <animate attributeName="opacity" 
-                                      values="1;0.5;1" 
-                                      dur="2s" 
-                                      repeatCount="indefinite" />
-                              </circle>
-                    
-                              <!-- Small Targeting Markers -->
-                              <g>
-                                 <circle cx="50" cy="50" r="5" fill="#20C5C6" opacity="0.7">
-                                    <animateTransform 
-                                       attributeName="transform"
-                                       type="rotate"
-                                       from="0 0 0"
-                                       to="360 0 0"
-                                       dur="5s"
-                                       repeatCount="indefinite" />
-                                 </circle>
-                                 <circle cx="-50" cy="-50" r="5" fill="#20C5C6" opacity="0.7">
-                                   <animateTransform 
-                                      attributeName="transform"
-                                      type="rotate"
-                                      from="0 0 0"
-                                      to="-360 0 0"
-                                      dur="4s"
-                                      repeatCount="indefinite" />
-                              </circle>
-                           </g>
-                       </g>
-                   </svg>
-                   </div>
                 </div>
-                <!-- Features for Precision Strike -->
-                <div class="package-features">
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Hourly Flexibility</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
+                <div class="package-svg">
+                    <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background for consistency with other SVGs -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <g transform="translate(300, 200)">
+                            <!-- Target/Bullseye -->
+                            <circle cx="0" cy="0" r="120" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.3" />
+                            <circle cx="0" cy="0" r="80" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.2" />
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.1" />
+                
+                            <!-- Crosshair -->
+                            <line x1="-150" y1="0" x2="150" y2="0" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="0" y1="-150" x2="0" y2="150" stroke="#FF6B00" stroke-width="2" />
+                
+                            <!-- Animated Targeting Dot -->
+                            <circle cx="0" cy="0" r="10" fill="#FF6B00">
+                               <animate attributeName="r" 
+                                  values="10;20;10" 
+                                  dur="2s" 
+                                  repeatCount="indefinite" />
+                               <animate attributeName="opacity" 
+                                  values="1;0.5;1" 
+                                  dur="2s" 
+                                  repeatCount="indefinite" />
+                            </circle>
+                
+                            <!-- Small Targeting Markers -->
+                            <g>
+                               <circle cx="60" cy="60" r="5" fill="#20C5C6" opacity="0.7">
+                                  <animateTransform 
+                                     attributeName="transform"
+                                     type="rotate"
+                                     from="0 0 0"
+                                     to="360 0 0"
+                                     dur="5s"
+                                     repeatCount="indefinite" />
+                               </circle>
+                               <circle cx="-60" cy="-60" r="5" fill="#20C5C6" opacity="0.7">
+                                  <animateTransform 
+                                     attributeName="transform"
+                                     type="rotate"
+                                     from="0 0 0"
+                                     to="-360 0 0"
+                                     dur="4s"
+                                     repeatCount="indefinite" />
+                               </circle>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Features for Precision Strike -->
+            <div class="package-features">
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
                         </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Pay only for the testing time you need, with no minimum commitment.</p>
+                        <div class="feature-title">Hourly Flexibility</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
                     </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                                    <line x1="16" y1="8" x2="2" y2="22"></line>
-                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Targeted Testing</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Pay only for the testing time you need, with no minimum commitment.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                <line x1="16" y1="8" x2="2" y2="22"></line>
+                                <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                            </svg>
                         </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Focus testing exactly where you need it most, whether that's bug verification, UI reviews, or specific features.</p>
+                        <div class="feature-title">Targeted Testing</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
                     </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Quick Turnaround</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Focus testing exactly where you need it most, whether that's bug verification, UI reviews, or specific features.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
                         </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Get results within 24-48 hours, depending on testing scope.</p>
+                        <div class="feature-title">Quick Turnaround</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
                     </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Budget Friendly</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Get results within 24-48 hours, depending on testing scope.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
                         </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Perfect for startups with limited QA budgets or specific testing needs.</p>
+                        <div class="feature-title">Budget Friendly</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </div>
+                    </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Perfect for startups with limited QA budgets or specific testing needs.</p>
                     </div>
                 </div>
             </div>
