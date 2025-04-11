@@ -1857,490 +1857,155 @@
             </div>
             
             <!-- Precision Strike Package -->
-            <div class="package-display" id="precision-strike-display">
-                <!-- Precision Strike Package Content -->
+            <!-- Automation Package -->
+            <div class="package-display" id="automation-display">
                 <div class="package-header">
                     <div class="package-info">
-                        <div class="package-price">$100/hr</div>
-                        <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
+                        <div class="package-price">From $1,295</div>
+                        <p class="package-description">Automated testing solutions to speed up your QA process and reduce manual testing overhead.</p>
                         <div class="package-buttons">
-                            <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
+                            <a href="automation-services.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="contact.html?package=automation&add=true" class="cta-button">Select Package</a>
                         </div>
                     </div>
                     <div class="package-svg">
-                        <svg width="400" height="400" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                    <g transform="translate(50, 145)">
-                        <!-- Target/Bullseye -->
-                        <circle cx="0" cy="0" r="100" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.3" />
-                        <circle cx="0" cy="0" r="70" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.2" />
-                        <circle cx="0" cy="0" r="40" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.1" />
-            
-                        <!-- Crosshair -->
-                        <line x1="-120" y1="0" x2="120" y2="0" stroke="#FF6B00" stroke-width="2" />
-                        <line x1="0" y1="-120" x2="0" y2="120" stroke="#FF6B00" stroke-width="2" />
-            
-                        <!-- Animated Targeting Dot -->
-                        <circle cx="0" cy="0" r="10" fill="#FF6B00">
-                           <animate attributeName="r" 
-                              values="10;20;10" 
-                              dur="2s" 
-                              repeatCount="indefinite" />
-                           <animate attributeName="opacity" 
-                              values="1;0.5;1" 
-                              dur="2s" 
-                              repeatCount="indefinite" />
-                      </circle>
-            
-                      <!-- Small Targeting Markers -->
-                      <g>
-                         <circle cx="50" cy="50" r="5" fill="#20C5C6" opacity="0.7">
-                            <animateTransform 
-                               attributeName="transform"
-                               type="rotate"
-                               from="0 0 0"
-                               to="360 0 0"
-                               dur="5s"
-                               repeatCount="indefinite" />
-                         </circle>
-                         <circle cx="-50" cy="-50" r="5" fill="#20C5C6" opacity="0.7">
-                           <animateTransform 
-                              attributeName="transform"
-                              type="rotate"
-                              from="0 0 0"
-                              to="-360 0 0"
-                              dur="4s"
-                              repeatCount="indefinite" />
-                      </circle>
-                   </g>
-               </g>
-           </svg>
-       </div>
-   </div>
-            <!-- Features for Precision Strike -->
-            </div>
-
-            <div class="package-display" id="automation-display">
-            <div class="package-header">
-                <div class="package-info">
-                    <div class="package-price">From $1,295</div>
-                    <p class="package-description">Automated testing solutions to speed up your QA process and reduce manual testing overhead.</p>
-                    <div class="package-buttons">
-                        <a href="automation-services.html" class="cta-button package-button-secondary">Learn More</a>
-                        <a href="contact.html?package=automation&add=true" class="cta-button">Select Package</a>
+                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                            
+                            <!-- Terminal Window -->
+                            <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
+                            
+                            <!-- Terminal Header -->
+                            <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
+                            <circle cx="120" cy="65" r="6" fill="#ef4444" />
+                            <circle cx="140" cy="65" r="6" fill="#f59e0b" />
+                            <circle cx="160" cy="65" r="6" fill="#10b981" />
+                            
+                            <!-- Code Lines -->
+                            <rect x="120" y="100" width="200" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            <rect x="120" y="120" width="250" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
+                            <rect x="120" y="140" width="180" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            <rect x="120" y="160" width="220" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
+                            <rect x="120" y="180" width="150" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            
+                            <!-- Animated Running Tests -->
+                            <g>
+                                <rect x="120" y="220" width="360" height="20" rx="3" ry="3" fill="#334155" />
+                                <rect x="120" y="220" width="120" height="20" rx="3" ry="3" fill="#20C5C6">
+                                    <animate attributeName="width" values="0;120;240;360" dur="3s" repeatCount="indefinite" />
+                                </rect>
+                                <text x="300" y="235" font-family="monospace" font-size="12" fill="#f8fafc" text-anchor="middle">Running Automated Tests...</text>
+                            </g>
+                            
+                            <!-- Pass/Fail Indicators -->
+                            <g transform="translate(120, 260)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Login Test: PASSED</text>
+                            </g>
+                            
+                            <g transform="translate(120, 285)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Navigation Test: PASSED</text>
+                            </g>
+                            
+                            <g transform="translate(120, 310)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#ef4444" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Payment Test: FAILED</text>
+                            </g>
+                            
+                            <!-- Animated Cursor -->
+                            <rect x="120" y="335" width="8" height="15" fill="#f8fafc">
+                                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+                            </rect>
+                        </svg>
                     </div>
                 </div>
-                <div class="package-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="400" height="250" preserveAspectRatio="xMidYMid meet">
-                <g transform="translate(50, 200)">
-                <defs>
-                  <!-- Improved gradients -->
-                  <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#0a1128" />
-                    <stop offset="100%" stop-color="#1e3a8a" />
-                  </linearGradient>
-                  
-                  <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#059669" />
-                    <stop offset="100%" stop-color="#10b981" />
-                  </linearGradient>
-                  
-                  <linearGradient id="failureGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#dc2626" />
-                    <stop offset="100%" stop-color="#ef4444" />
-                  </linearGradient>
-                  
-                  <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#1e293b" />
-                    <stop offset="100%" stop-color="#0f172a" />
-                  </linearGradient>
-                  
-                  <linearGradient id="cityGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#1e293b" />
-                    <stop offset="100%" stop-color="#0f172a" />
-                  </linearGradient>
-                  
-                  <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-                    <feComposite in="blur" in2="SourceGraphic" operator="over" />
-                  </filter>
-                  
-                  <filter id="moonGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                    <feComposite in="blur" in2="SourceGraphic" operator="over" />
-                  </filter>
-                  
-                  <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <rect width="20" height="20" fill="none" />
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#475569" stroke-width="0.5" opacity="0.2" />
-                  </pattern>
-                </defs>
-                
-                <!-- Background -->
-                <rect width="600" height="400" fill="url(#nightSky)" />
-                
-                <!-- City skyline silhouette -->
-                <g id="citySkyline">
-                  <path d="M0,350 L50,350 L50,300 L70,300 L70,320 L90,320 L90,290 L110,290 L110,330 L130,330 L130,300 L150,300 L150,280 L170,280 L170,310 L190,310 L190,270 L210,270 L210,320 L230,320 L230,290 L250,290 L250,330 L270,330 L270,300 L290,300 L290,280 L310,280 L310,310 L330,310 L330,290 L350,290 L350,320 L370,320 L370,300 L390,300 L390,330 L410,330 L410,280 L430,280 L430,310 L450,310 L450,290 L470,290 L470,320 L490,320 L490,300 L510,300 L510,330 L530,330 L530,290 L550,290 L550,310 L570,310 L570,280 L590,280 L590,320 L600,320 L600,400 L0,400 Z" fill="url(#cityGradient)" opacity="0.8" />
-                  
-                  <!-- Building windows (lights) -->
-                  <g>
-                    <rect x="60" y="305" width="5" height="5" fill="#fcd34d" opacity="0.8">
-                      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" begin="0.2s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="100" y="300" width="5" height="5" fill="#fcd34d" opacity="0.7">
-                      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="4s" begin="1.1s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="140" y="310" width="5" height="5" fill="#fcd34d" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="5s" begin="0.5s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="200" y="280" width="5" height="5" fill="#fcd34d" opacity="0.8">
-                      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.5s" begin="1.7s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="240" y="300" width="5" height="5" fill="#fcd34d" opacity="0.7">
-                      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="4.2s" begin="0.9s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="320" y="290" width="5" height="5" fill="#fcd34d" opacity="0.8">
-                      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.8s" begin="1.3s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="380" y="310" width="5" height="5" fill="#fcd34d" opacity="0.6">
-                      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="4.5s" begin="0.7s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="440" y="290" width="5" height="5" fill="#fcd34d" opacity="0.7">
-                      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.2s" begin="1.5s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="500" y="320" width="5" height="5" fill="#fcd34d" opacity="0.8">
-                      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4.7s" begin="0.3s" repeatCount="indefinite" />
-                    </rect>
-                    <rect x="560" y="300" width="5" height="5" fill="#fcd34d" opacity="0.7">
-                      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.9s" begin="1.9s" repeatCount="indefinite" />
-                    </rect>
-                  </g>
-                </g>
-                
-                <!-- Stars with improved animation -->
-                <g id="stars">
-                  <!-- Larger stars -->
-                  <circle cx="100" cy="50" r="1.8" fill="white" opacity="0.9">
-                    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="3s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="200" cy="80" r="1.5" fill="white" opacity="0.8">
-                    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="4s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="300" cy="40" r="2" fill="white" opacity="1">
-                    <animate attributeName="opacity" values="1;0.4;1" dur="5s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="500" cy="60" r="1.7" fill="white" opacity="0.8">
-                    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3.5s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="600" cy="90" r="1.9" fill="white" opacity="0.9">
-                    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="4.5s" repeatCount="indefinite" />
-                  </circle>
-                  
-                  <!-- Medium stars -->
-                  <circle cx="150" cy="120" r="1.4" fill="white" opacity="0.7">
-                    <animate attributeName="opacity" values="0.7;0.1;0.7" dur="4.2s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="350" cy="100" r="1.6" fill="white" opacity="0.8">
-                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.3s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="450" cy="130" r="1.5" fill="white" opacity="0.7">
-                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="4.7s" repeatCount="indefinite" />
-                  </circle>
-                  
-                  <!-- Small stars -->
-                  <circle cx="120" cy="70" r="1" fill="white" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3.1s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="220" cy="110" r="0.8" fill="white" opacity="0.5">
-                    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="4.3s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="320" cy="60" r="1.1" fill="white" opacity="0.7">
-                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.7s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="420" cy="90" r="0.9" fill="white" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="4.1s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="520" cy="40" r="1.2" fill="white" opacity="0.7">
-                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3.4s" repeatCount="indefinite" />
-                  </circle>
-                </g>
-                
-                <!-- Enhanced moon with better glow -->
-                <g id="moon" filter="url(#moonGlow)">
-                  <circle cx="500" cy="80" r="25" fill="#f8fafc" />
-                  <circle cx="485" cy="70" r="8" fill="#e2e8f0" opacity="0.8" />
-                  <circle cx="510" cy="90" r="6" fill="#e2e8f0" opacity="0.6" />
-                  <circle cx="515" cy="65" r="5" fill="#e2e8f0" opacity="0.7" />
-                </g>
-                
-                <!-- Analog Clock showing night hours -->
-                <g id="analogClock" transform="translate(500, 260)">
-                  <!-- Clock face -->
-                  <circle cx="0" cy="0" r="40" fill="#1e293b" />
-                  
-                  <!-- Hour markers -->
-                  <line x1="0" y1="-30" x2="0" y2="-35" stroke="#94a3b8" stroke-width="1" /> <!-- 12 -->
-                  <line x1="15" y1="-26" x2="17.5" y2="-30.3" stroke="#94a3b8" stroke-width="1" /> <!-- 1 -->
-                  <line x1="26" y1="-15" x2="30.3" y2="-17.5" stroke="#94a3b8" stroke-width="1" /> <!-- 2 -->
-                  <line x1="30" y1="0" x2="35" y2="0" stroke="#94a3b8" stroke-width="1" /> <!-- 3 -->
-                  <line x1="26" y1="15" x2="30.3" y2="17.5" stroke="#94a3b8" stroke-width="1" /> <!-- 4 -->
-                  <line x1="15" y1="26" x2="17.5" y2="30.3" stroke="#94a3b8" stroke-width="1" /> <!-- 5 -->
-                  <line x1="0" y1="30" x2="0" y2="35" stroke="#94a3b8" stroke-width="1" /> <!-- 6 -->
-                  <line x1="-15" y1="26" x2="-17.5" y2="30.3" stroke="#94a3b8" stroke-width="1" /> <!-- 7 -->
-                  <line x1="-26" y1="15" x2="-30.3" y2="17.5" stroke="#94a3b8" stroke-width="1" /> <!-- 8 -->
-                  <line x1="-30" y1="0" x2="-35" y2="0" stroke="#94a3b8" stroke-width="1" /> <!-- 9 -->
-                  <line x1="-26" y1="-15" x2="-30.3" y2="-17.5" stroke="#94a3b8" stroke-width="1" /> <!-- 10 -->
-                  <line x1="-15" y1="-26" x2="-17.5" y2="-30.3" stroke="#94a3b8" stroke-width="1" /> <!-- 11 -->
-                  
-                  <!-- Clock center -->
-                  <circle cx="0" cy="0" r="2" fill="#94a3b8" />
-                  
-                  <!-- Hour hand (moving through night hours 10 PM - 6 AM) -->
-                  <line x1="0" y1="0" x2="0" y2="-15" stroke="#94a3b8" stroke-width="2" stroke-linecap="round">
-                    <animateTransform 
-                        attributeName="transform" 
-                        type="rotate" 
-                        from="300 0 0"  <!-- 10 PM -->
-                        to="180 0 0"    <!-- 6 AM -->
-                        dur="20s" 
-                        repeatCount="indefinite" />
-                  </line>
-                  
-                  <!-- Minute hand -->
-                  <line x1="0" y1="0" x2="0" y2="-25" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round">
-                    <animateTransform 
-                        attributeName="transform" 
-                        type="rotate" 
-                        from="0 0 0" 
-                        to="360 0 0" 
-                        dur="10s" 
-                        repeatCount="indefinite" />
-                  </line>
-                </g>
-                
-                <!-- Server rack with simpler design -->
-                <g id="serverRack" filter="url(#softGlow)" transform="translate(40, 150)">
-                  <rect x="0" y="0" width="60" height="200" rx="5" ry="5" fill="#1e293b" />
-                  
-                  <!-- Server units -->
-                  <g>
-                    <rect x="10" y="10" width="40" height="25" rx="2" ry="2" fill="#0f172a" />
-                    <rect x="10" y="45" width="40" height="25" rx="2" ry="2" fill="#0f172a" />
-                    <rect x="10" y="80" width="40" height="25" rx="2" ry="2" fill="#0f172a" />
-                    <rect x="10" y="115" width="40" height="25" rx="2" ry="2" fill="#0f172a" />
-                    <rect x="10" y="150" width="40" height="25" rx="2" ry="2" fill="#0f172a" />
+            
+                <div class="package-features">
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Fast Implementation</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Get automation scripts in 3-5 days, compared to weeks with traditional services.</p>
+                        </div>
+                    </div>
                     
-                    <!-- Server lights with better animation -->
-                    <circle cx="20" cy="22.5" r="3" fill="#10b981">
-                      <animate attributeName="fill" values="#10b981;#3b82f6;#10b981" dur="2s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="20" cy="57.5" r="3" fill="#10b981">
-                      <animate attributeName="fill" values="#10b981;#3b82f6;#10b981" dur="3s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="20" cy="92.5" r="3" fill="#ef4444">
-                      <animate attributeName="fill" values="#ef4444;#3b82f6;#ef4444" dur="2.5s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="20" cy="127.5" r="3" fill="#10b981">
-                      <animate attributeName="fill" values="#10b981;#3b82f6;#10b981" dur="1.8s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx="20" cy="162.5" r="3" fill="#ef4444">
-                      <animate attributeName="fill" values="#ef4444;#3b82f6;#ef4444" dur="2.2s" repeatCount="indefinite" />
-                    </circle>
-                  </g>
-                </g>
-                
-                <!-- Main computer screen with test execution -->
-                <g id="computerScreen" transform="translate(150, 100)">
-                  <rect x="0" y="0" width="320" height="220" rx="10" ry="10" fill="#1e293b" />
-                  <rect x="10" y="10" width="300" height="200" rx="5" ry="5" fill="url(#screenGradient)" />
-                  
-                  <!-- Terminal header -->
-                  <rect x="10" y="10" width="300" height="30" rx="3" ry="3" fill="#334155" />
-                  <text x="160" y="30" font-family="monospace" font-size="14" fill="#f8fafc" text-anchor="middle">Automated Test Execution</text>
-                  <circle cx="295" cy="25" r="5" fill="#ef4444" />
-                  <circle cx="275" cy="25" r="5" fill="#fbbf24" />
-                  <circle cx="255" cy="25" r="5" fill="#10b981" />
-                  
-                  <!-- First test suite -->
-                  <g opacity="0">
-                    <text x="20" y="60" font-family="monospace" font-size="14" fill="#f8fafc">Running Test: User Authentication</text>
-                    <animate attributeName="opacity" values="0;1;1;0" dur="15s" begin="0s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="85" font-family="monospace" font-size="12" fill="#94a3b8">✓ Login with valid credentials</text>
-                    <animate attributeName="opacity" values="0;0;1;1;0" dur="15s" begin="1s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="110" font-family="monospace" font-size="12" fill="#94a3b8">✓ Password reset flow</text>
-                    <animate attributeName="opacity" values="0;0;0;1;1;0" dur="15s" begin="2s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="135" font-family="monospace" font-size="12" fill="#94a3b8">✗ Login with invalid password</text>
-                    <animate attributeName="opacity" values="0;0;0;0;1;1;0" dur="15s" begin="3s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <rect x="20" y="170" width="70" height="30" rx="15" ry="15" fill="url(#successGradient)" opacity="0.9" />
-                    <text x="55" y="190" font-family="monospace" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">PASSED</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;1;1;0" dur="15s" begin="4s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <!-- Second test suite -->
-                  <g opacity="0">
-                    <text x="20" y="60" font-family="monospace" font-size="14" fill="#f8fafc">Running Test: Payment Processing</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0" dur="15s" begin="5s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="85" font-family="monospace" font-size="12" fill="#94a3b8">✓ Add product to cart</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;1;1;0" dur="15s" begin="6s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="110" font-family="monospace" font-size="12" fill="#94a3b8">✓ Proceed to checkout</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="7s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="135" font-family="monospace" font-size="12" fill="#94a3b8">✓ Enter payment details</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="8s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="160" font-family="monospace" font-size="12" fill="#94a3b8">✓ Complete purchase</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="9s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <rect x="20" y="170" width="70" height="30" rx="15" ry="15" fill="url(#successGradient)" opacity="0.9" />
-                    <text x="55" y="190" font-family="monospace" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">PASSED</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="10s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <!-- Third test suite -->
-                  <g opacity="0">
-                    <text x="20" y="60" font-family="monospace" font-size="14" fill="#f8fafc">Running Test: API Integration</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="11s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="85" font-family="monospace" font-size="12" fill="#94a3b8">✓ Data fetching</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="12s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <text x="30" y="110" font-family="monospace" font-size="12" fill="#94a3b8">✗ Error handling</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="13s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <g opacity="0">
-                    <rect x="20" y="170" width="70" height="30" rx="15" ry="15" fill="url(#failureGradient)" opacity="0.9" />
-                    <text x="55" y="190" font-family="monospace" font-size="14" fill="#ffffff" font-weight="bold" text-anchor="middle">FAILED</text>
-                    <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;1;0" dur="15s" begin="14s" repeatCount="indefinite" />
-                  </g>
-                  
-                  <!-- Blinking cursor -->
-                  <rect x="20" y="185" width="7" height="15" fill="#f8fafc">
-                    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
-                  </rect>
-                </g>
-                
-                <!-- Simplified progress indicator -->
-                <rect x="150" y="380" width="320" height="10" rx="5" ry="5" fill="#334155" />
-                <rect x="150" y="380" width="0" height="10" rx="5" ry="5" fill="url(#successGradient)">
-                  <animate attributeName="width" values="0;80;160;240;320" dur="15s" repeatCount="indefinite" />
-                </rect>
-              </svg>
-        </div>
-    </div>
-
-<div class="package-features">
-    <div class="package-feature collapsible">
-        <div class="feature-header">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Developer-Friendly</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Your developers maintain control with ready-to-use scripts for Maestro Studio or Katalon.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">40% Faster Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Cut regression testing time by 40%, reducing a typical 5-day manual testing cycle to just 3 days.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Clear, Fixed Pricing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Transparent pricing based on application size, with no hidden costs or long-term contracts.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="feature-title">Fast Implementation</div>
-            <div class="expand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </div>
-        <div class="feature-content">
-            <p class="feature-description">Get automation scripts in 3-5 days, compared to weeks with traditional services.</p>
-        </div>
-    </div>
-    
-    <div class="package-feature collapsible">
-        <div class="feature-header">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                    <line x1="16" y1="8" x2="2" y2="22"></line>
-                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                </svg>
-            </div>
-            <div class="feature-title">Developer-Friendly</div>
-            <div class="expand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </div>
-        <div class="feature-content">
-            <p class="feature-description">Your developers maintain control with ready-to-use scripts for Maestro Studio or Katalon.</p>
-        </div>
-    </div>
-    
-    <div class="package-feature collapsible">
-        <div class="feature-header">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-            </div>
-            <div class="feature-title">40% Faster Testing</div>
-            <div class="expand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </div>
-        <div class="feature-content">
-            <p class="feature-description">Cut regression testing time by 40%, reducing a typical 5-day manual testing cycle to just 3 days.</p>
-        </div>
-    </div>
-    
-    <div class="package-feature collapsible">
-        <div class="feature-header">
-            <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-            </div>
-            <div class="feature-title">Clear, Fixed Pricing</div>
-            <div class="expand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </div>
-        <div class="feature-content">
-            <p class="feature-description">Transparent pricing based on application size, with no hidden costs or long-term contracts.</p>
-        </div>
-    </div>
-</div>
         
         <!-- Package Comparison Table View -->
         <div id="tableView" style="display: none;">
