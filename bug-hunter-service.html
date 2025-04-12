@@ -890,9 +890,6 @@
                             </filter>
                         </defs>
                         
-                        <!-- Enlarged Dark Background Circle -->
-                        <circle cx="36" cy="30" r="34" fill="#121620" />
-                        
                         <!-- Neural Network Grid (adjusted positions) -->
                         <circle cx="36" cy="18" r="1" fill="#D1D5DB" />
                         <circle cx="24" cy="24" r="1" fill="#D1D5DB" />
@@ -1422,36 +1419,59 @@
             <div class="footer-container">
                 <div>
                     <!-- Footer Neural Circuit Logo -->
-                    <div class="footer-logo-container">
-                        <svg width="200" height="50" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Definitions -->
-                            <defs>
-                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="1" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-                            
-                            <!-- Neural Circuit (simplified for footer) -->
-                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
-                            
-                            <!-- Neural Nodes -->
-                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
-                            
-                            <!-- Company Name -->
-                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
-                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                            </text>
-                        </svg>
+                    <svg class="logo-svg" width="300" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Definitions -->
+                        <defs>
+                            <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FF6B00" />
+                                <stop offset="100%" stop-color="#FF9248" />
+                            </linearGradient>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1" result="blur" />
+                                <feComposite in="SourceGraphic" in2  result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        
+                        <!-- Neural Network Grid (adjusted positions) -->
+                        <circle cx="36" cy="18" r="1" fill="#D1D5DB" />
+                        <circle cx="24" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="48" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="21" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="36" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="51" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="36" cy="48" r="1" fill="#D1D5DB" />
+                        
+                        <!-- Main Circuit/Data Path (adjusted) -->
+                        <path d="M36 48L36 36L24 24L36 18" stroke="url(#neuralGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow)" />
+                        
+                        <!-- Neural Nodes (enlarged) -->
+                        <circle cx="36" cy="48" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="36" cy="36" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="24" cy="24" r="3.5" fill="#FF6B00" filter="url(#glow)" />
+                        <circle cx="36" cy="18" r="3.5" fill="#20C5C6" filter="url(#glow)" />
+                        
+                        <!-- Data Pulse Animations (adjusted) -->
+                        <circle cx="36" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="30" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="30" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
+                            <animate attributeName="cx" from="24" to="36" dur="3s" begin="2s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <!-- Company Name (adjusted position) -->
+                        <text x="82" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
+                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                        </text>
+                    </svg>
                     </div>
-                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
                     <div class="footer-social">
                         <a href="#" class="social-link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1478,8 +1498,8 @@
                     <ul class="footer-links">
                         <li class="footer-link"><a href="contact.html">Contact</a></li>
                         <li class="footer-link"><a href="aboutus.html">About Us</a></li>
-                       <li class="footer-link"><a href="payment-terms.html">Payment Terms</a></li>
-                       <li class="footer-link"><a href="faq.html">FAQ</a></li>
+                        <li class="footer-link"><a href="payment-terms.html">Payment Terms</a></li>
+                        <li class="footer-link"><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 
