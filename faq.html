@@ -117,22 +117,7 @@
 </head>
 <body>
   <header>
-    <nav>
-      <svg class="logo-svg" width="180" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
-        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18" fill="#ffffff">
-          Velocity<tspan fill="#ff6b00">QA</tspan>
-        </text>
-      </svg>
-      <div class="nav-links">
-        <a href="index.html#features" class="nav-link">Features</a>
-        <a href="index.html#packages" class="nav-link">Packages</a>
-        <a href="index.html#process" class="nav-link">Process</a>
-        <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
-        <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-        <a href="aboutus.html" class="nav-link">About Us</a>
-        <a href="contact.html" class="cta-button">Contact Us</a>
-      </div>
-    </nav>
+  <div id="header-placeholder"></div>
   </header>
 
   <section class="page-header">
@@ -156,10 +141,24 @@
     <div class="faq-item"><div class="faq-question">What kind of reporting do you provide?</div><div class="faq-answer">We provide clear reports with reproduction steps, visuals, and prioritised issues based on impact.</div></div>
     <div class="faq-item"><div class="faq-question">How does your blocked hours option work?</div><div class="faq-answer">Purchase hours in any amount at $100/hour. Use them for smoke tests, pre-release checks, or ongoing testing as needed.</div></div>
   </section>
-
   <footer>
-    <p>&copy; 2025 VelocityQA. All rights reserved.</p>
+    <div id="footer-placeholder"></div>
   </footer>
+ <script>
+// Load header
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+
+// Load footer
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  });
+</script>
 </body>
 </html>
 
