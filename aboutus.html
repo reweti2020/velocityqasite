@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - VelocityQA</title>
-<style>
+    <title>Professional QA Testing for Australian Startups | VelocityQA</title>
+    <meta name="description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta property="og:title" content="Professional QA Testing for Australian Startups | VelocityQA">
+    <meta property="og:description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta property="og:image" content="https://velocityqa.com/images/home-social.jpg">
+    <meta property="og:url" content="https://velocityqa.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VelocityQA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional QA Testing for Australian Startups">
+    <meta name="twitter:description" content="Affordable, flexible QA testing services for Australian startups. Find bugs before your users do with our professional testing packages.">
+    <meta name="twitter:image" content="https://velocityqa.com/images/home-social.jpg">
+    <meta name="twitter:site" content="@VelocityQA">
+    <link rel="canonical" href="https://velocityqa.com">
+    <link rel="stylesheet" href="css/style-improvements.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0PBYFYX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-W0PBYFYX7Q');
+    </script>
+    
+    <style>
         :root {
-            --primary: #0052cc;
-            --primary-dark: #003d99;
+            --primary: #121620;
+            --primary-dark: #0a0d14;
             --secondary: #ff5500;
             --text: #1e293b;
             --text-light: #64748b;
@@ -20,7 +44,8 @@
             --success: #10b981;
             --error: #ef4444;
             --orange: #ff6b00;
-            --teal: #20C5C6;  /* Added teal color from the logo */
+            --teal: #20C5C6;
+            --silver: #D1D5DB;
         }
 
         [data-theme="dark"] {
@@ -30,7 +55,6 @@
             --card: #1e293b;
             --border: #334155;
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -53,7 +77,7 @@
 
         /* Header Styles */
         header {
-            padding: .1rem 0;
+            padding: 1rem 0;
             position: relative;
             background-color: var(--card);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -72,13 +96,13 @@
         }
 
         .logo-svg {
-            height: 54px;
+            height: 100px;
             width: auto;
         }
 
         .logo-svg text {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 25px;
             filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
         }
 
@@ -114,7 +138,6 @@
         .nav-link:hover:after {
             width: 100%;
         }
-
         .cta-button {
             display: inline-block;
             background-color: var(--orange);
@@ -151,17 +174,16 @@
             left: 100%;
         }
 
-        /* Page Header */
-        .page-header {
-            padding: 4rem 0;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .page-header::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -172,311 +194,678 @@
             opacity: 0.2;
         }
 
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .page-description {
+        .hero-content {
             max-width: 700px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-description {
             font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
 
-        /* About Us Section */
-        .about-section {
-            padding: 5rem 0;
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .hero-button-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
         }
 
-        .about-image {
-            background-color: var(--bg-dark);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .hero-button-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }NRconintue
+        /* Package Toggle Styles */
+        .view-toggle {
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, rgba(0, 82, 204, 0.2), rgba(32, 197, 198, 0.2));
-            border-radius: 12px;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--teal);
-        }
-
-        .text-content {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .text-content p {
-            margin-bottom: 1rem;
-        }
-
-        .highlights {
-            display: flex;
-            gap: 2rem;
-            margin: 3rem 0;
-            flex-wrap: wrap; /* Added in case of smaller screens */
-            justify-content: center; /* Center items if they wrap */
-        }
-
-        .highlight-item {
-            flex: 1 250px;;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .highlight-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-text {
-            font-size: 1rem;
-            color: var(--text-light);
-        }
-
-        /* Logo in About section */
-        .logo-container-about {
-            max-width: 300px;
-            margin: 0 auto;
-            text-align: center;
-            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
-            transition: transform 0.5s ease-out;
-        }
-
-        .logo-container-about:hover {
-            transform: translateY(-8px);
-        }
-
-        .about-company-name {
-            margin-top: 2rem;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            letter-spacing: 0.5px;
-            filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
-        }
-
-        .about-velocity {
-            color: #D1D5DB;
-        }
-
-        .about-qa {
-            color: #FF6B00;
-        }
-
-        /* Team Section */
-        .team-section {
-            padding: 5rem 0;
-            background-color: var(--card);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .team-card {
-            background-color: var(--bg-light);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-image-container {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .team-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .team-card:hover .team-image {
-            transform: scale(1.05);
-        }
-
-        .team-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .team-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            min-height: 1.8rem; /* Ensures consistent height */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .team-role {
-            font-size: 0.9rem;
-            color: var(--teal);
-            margin-bottom: 1rem;
-        }
-
-        .team-bio {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .team-social {
-            display: flex;
-            justify-content: center;
+            margin-bottom: 2rem;
             gap: 1rem;
         }
 
-        .team-social-link {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(32, 197, 198, 0.1);
-            color: var(--teal);
-            border-radius: 50%;
+        .toggle-btn {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .team-social-link:hover {
+        .toggle-btn.active {
             background-color: var(--teal);
+            border-color: var(--teal);
             color: white;
-            transform: translateY(-3px);
         }
 
-        /* Values Section */
-        .values-section {
-            padding: 5rem 0;
+        /* Package Table Styles */
+        .package-table-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+
+        .package-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .package-table th,
+        .package-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .package-table th {
+            background-color: rgba(32, 197, 198, 0.1);
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .package-table th:first-child,
+        .package-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .package-table .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--orange);
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .package-table .check {
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .package-table .cross {
+            color: var(--orange);
+        }
+
+        .package-table .action-row td {
+            border-bottom: none;
+            padding: 1.5rem 1rem;
+        }
+
+        .package-table .cta-button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .package-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+         /* Package Tabs Section */
+         .package-tabs-section {
+            padding: 4rem 0 2rem;
+            background-color: var(--bg-dark);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Center align all section descriptions */
+        .section-description {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+        }
+
+        /* Ensure process description is centered */
+        .process-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .tabs-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling oniOS*/
+            white-space: nowrap;
+            padding-bottom: 5px;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--orange);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--orange);
+        }
+
+        .package-display {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .package-display.active {
+            display: block;
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-info {
+            flex: 1;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .package-svg {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: 15rem;
+            transform: translateY(-10px);
+        }
+
+        .package-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .package-button-secondary {
+            background-color: rgba(30, 41, 59, 0.8);
+            color: white;
+        }
+
+        .package-button-secondary:hover {
+            background-color: rgba(30, 41, 59, 1);
+        }
+
+        .package-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .package-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+            width: 100%;
+            opacity: 0;
+        }
+
+        .package-feature.active .feature-content {
+            padding: 0.5rem 1rem 1rem;
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background-color: var(--card);
+        }
+
+        .process-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-svg svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 4rem 0;
             background-color: var(--bg-light);
         }
 
-        .value-cards {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
-        .value-card {
+        .feature-card {
+            padding: 2rem;
             background-color: var(--card);
             border-radius: 12px;
-            padding: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
 
-        .value-card:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background-color: var(--teal);
-            transition: height 0.6s ease;
-        }
-
-        .value-card:hover::before {
-            height: 100%;
-        }
-
-        .value-icon {
+        .feature-icon-container {
             width: 60px;
             height: 60px;
             background-color: rgba(32, 197, 198, 0.1);
-            color: var(--teal);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            color: var(--teal);
+            margin: 0 auto 1.5rem;
         }
 
-        .value-card:hover .value-icon {
-            transform: scale(1.1);
-            background-color: rgba(32, 197, 198, 0.2);
-        }
-
-        .value-title {
-            font-size: 1.2rem;
+        .feature-title {
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--text);
         }
 
-        .value-description {
+        .feature-description {
+            color: var(--text-light);
+        }
+        
+        /* Featured Testimonial Section */
+        .featured-testimonial {
+            padding: 4rem 0;
+            background-color: var(--card);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23334155' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .featured-testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-left: 4px solid var(--teal);
+        }
+        
+        .quote-mark {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 100px;
+            color: var(--teal);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .featured-testimonial-content {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .featured-testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-logo {
+            width: auto;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         
+        }
+        
+        .testimonial-info {
+            flex: 1;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-position {
+            color: var(--text-light);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 4rem 0;
+            background-color: var(--card);
+        }
+
+        .testimonials-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonials-slider {
+            overflow: hidden;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .testimonial-position {
+            font-size: 0.875rem;
             color: var(--text-light);
         }
 
-        /* CTA Section */
-        .cta-section {
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .testimonial-button:hover {
+            background-color: var(--border);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--teal);
+        }
+         /* Comparison Section Styles */
+         .comparison {
+            padding: 4rem 0;
+            background-color: var(--bg-dark);
+            color: white;
+        }
+
+        .comparison-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comparison-slider {
+            overflow: hidden;
+        }
+
+        .comparison-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .comparison-slide {
+            flex: 0 0 100%;
+            padding: 2rem;
+            background-color: var(--card-dark);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .comparison-content {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .comparison-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comparison-button:hover {
+            background-color: var(--border);
+        }
+
+        .comparison-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comparison-dot.active {
+            background-color: var(--teal);
+        }
+         /* CTA Section */
+         .cta-section {
             padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--teal) 100%);
+            background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             text-align: center;
         }
@@ -512,6 +901,65 @@
             border: 2px solid white;
         }
 
+        /* Collapsible Feature Styles */
+        .package-feature.collapsible {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(30, 41, 59, 0.7);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .feature-header:hover {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+
+        .feature-header .feature-icon {
+            margin-right: 1rem;
+        }
+
+        .feature-header .feature-title {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+
+        .package-feature.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .feature-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 1rem;
+        }
+
+        .package-feature.active .feature-content {
+            max-height: 200px;
+            padding: 0 1rem 1rem 1rem;
+            opacity: 1;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 2.5rem;
+        }
         /* Footer */
         footer {
             background-color: var(--bg-dark);
@@ -527,8 +975,8 @@
         }
 
         .footer-logo-container {
-            height: 30px;
-            margin-bottom: 1rem;
+            height: 100px;
+            margin-bottom: .5rem;
         }
 
         .footer-description {
@@ -550,6 +998,10 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             transition: background-color 0.3s;
+        }
+
+        .social-link svg {
+            color: var(--silver);
         }
 
         .social-link:hover {
@@ -598,7 +1050,6 @@
             font-size: 0.875rem;
             opacity: 0.7;
         }
-
         /* Theme toggle */
         .theme-toggle {
             position: fixed;
@@ -622,7 +1073,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
-
         /* Mobile nav */
         .mobile-menu-toggle {
             display: none;
@@ -643,53 +1093,84 @@
             transition: all 0.3s;
         }
 
-        /* Custom Cursor */
-.cursor-follower {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(32, 197, 198, 0.2);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-}
+        /* Mobile bottom navigation */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+            padding: 0.75rem 0;
+        }
 
-.cursor-follower.active {
-    opacity: 1;
-}
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+        }
 
-.cursor-follower.hover-link {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(32, 197, 198, 0.1);
-}
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.75rem;
+            transition: color 0.3s;
+        }
 
-.cursor-follower.hover-button {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(32, 197, 198, 0.15);
-}
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--teal);
+        }
 
-@media (hover: none) and (pointer: coarse) {
-    .cursor-follower {
-        display: none;
-    }
-}
+        .mobile-nav-icon {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Package Badge */
+        .package-badge {
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--orange);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
 
         /* Media Queries */
         @media (max-width: 992px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .about-image {
-                order: -1;
-                max-width: 600px;
-                margin: 0 auto;
+            .package-header {
+                flex-direction: column;
+            }
+            
+            .package-svg {
+                margin-left: 0;
+                margin-bottom: 1.5rem;
+                width: 150px;
+                height: 150px;
+            }
+            
+            .featured-testimonial-container {
+                padding: 1.5rem;
             }
         }
 
@@ -716,55 +1197,158 @@
                 right: 0;
             }
 
-            .page-header {
-                padding: 3rem 0;
+            .mobile-bottom-nav {
+                display: block;
             }
 
-            .page-title {
+            .theme-toggle {
+                bottom: 5rem;
+            }
+
+            .hero-title {
                 font-size: 2rem;
             }
 
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .highlights {
+            .hero-buttons {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 0.75rem;
             }
 
-            .logo-svg {
-                height: 54px;
+            .hero-buttons .cta-button {
+                width: 100%;
             }
 
-            .footer-logo-container {
-                height: 24px;
+            .comparison-container {
+                overflow-x: visible;
+
+            }
+
+            .comparison-slider {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+
+            }
+
+            .comparison-track {
+                display: flex;
+                transition: none;
+
+            }
+
+            .comparison-slide {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                margin-right: 1rem;
+
+            }
+
+            .comparison-controls, .comparison-dots {
+                display: none;
+
+            }
+            
+            .package-features {
+                grid-template-columns: 1fr;
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-right: 1rem;
+                padding-left: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+    
+            .package-feature.collapsible {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                margin-bottom: 0;
+            }
+            
+            .package-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .package-buttons .cta-button {
+                width: 100%;
+            }
+            
+            .featured-testimonial-author {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .features-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .feature-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+
+            }
+
+            .process-svg svg {
+                height: 180px;
+                margin: 0 -1rem;
+            
+            }
+
+            .process-description {
+                display: none;
+
+            }
+
+            .process-svg::after {
+                content: "Tap to learn more about our 4-step process";
+                display: block;
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--text-light);
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+
+            }
+
+            .testimonial-logo {
+                margin-bottom: 1rem;
             }
         }
 
         @media (max-width: 576px) {
-            .value-card {
-                padding: 1.5rem;
+            .section-title {
+                font-size: 1.8rem;
             }
 
-            .team-image-container {
-                height: 200px;
+            .tabs {
+                justify-content: flex-start;
             }
 
-            .team-info {
+            .tab {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .featured-testimonial-container {
                 padding: 1rem;
             }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .highlight-number {
-                font-size: 2rem;
+            
+            .featured-testimonial-content {
+                font-size: 1rem;
             }
         }
 
@@ -777,25 +1361,8 @@
             }
         }
     </style>
-    </style>
 </head>
 <body data-theme="dark">
-    <div class="cursor-follower"></div>
-    
-    <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-    </div>
-
     <header>
         <div class="container">
             <nav>
@@ -851,10 +1418,11 @@
                         </circle>
                         
                         <!-- Company Name -->
-                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="15">
+                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
                             <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
                         </text>
                     </svg>
+                </div>
                 <div class="mobile-menu-toggle" id="mobileMenuToggle">
                     <span></span>
                     <span></span>
@@ -862,498 +1430,1539 @@
                 </div>
                 
                 <div class="nav-links" id="navLinks">
-                    <a href="index.html#features" class="nav-link">Features</a>
-                    <a href="index.html#packages" class="nav-link">Packages</a>
-                    <a href="index.html#process" class="nav-link">Process</a>
-                    <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
-                    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#packages" class="nav-link">Packages</a>
+                    <a href="#process" class="nav-link">Process</a>
+                    <a href="#pricing" class="nav-link">Why Choose Us</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
                     <a href="contact.html" class="cta-button">Contact Us</a>
                 </div>
             </nav>
         </div>
     </header>
-
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">About VelocityQA</h1>
-            <p class="page-description">We're a specialised QA team focused on helping startups deliver flawless apps without the overhead.</p>
-        </div>
-    </section>
-
-    <section class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-subtitle">Our Story</div>
-                    <h2 class="section-title">Putting Quality Within Reach of Every Startup</h2>
-                    <div class="text-content">
-                        <p>VelocityQA was born after being approached by friends and colleagues to perform testing on their startup apps and websites. It quickly became obvious there was a real gap for startups and small to medium business owners trying to juggle resources and complete proper QA testing..</p>
-                        <p>While working at enterprise-level corporations, we witnessed how quality assurance was often a luxury that only well-funded companies could afford. Startups were forced to choose between expensive QA agencies, hiring full-time specialists they couldn't justify, or simply releasing untested products that damaged their reputation.</p>
-                        <p>Our approach is different. We focus on brutal testing - using apps and sites as actual users would. We don't just follow the "happy path" that works every time; we actively look for bugs, customer pain points, irritations, and broken elements. These are precisely the issues that will drive customers away to find another solution.</p>
-                        <p>What sets us apart is that our time is spent on testing, not creating extensive plans, workflows, or reports - which can be a time sink when you're resource and time poor. You need to know what's wrong and how to fix it quickly. As a startup founder, you're likely performing many roles, and QA is often last on the list but can be most critical to successfully launching your site or app.</p>
-                        <p>We understand the importance of being first to market, the time constraints of small teams, and the need for developers to know what's wrong quickly so they can fix and turn it around. It can make all the difference.</p>
-                    </div>
-                    
-                    <div class="highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-number">Adaptable Testing</div>
-                            <div class="highlight-text">Scale your QA efforts precisely to your startup's needs and budget, from targeted strikes to comprehensive testing</div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-number">Pay-As-You-Grow</div>
-                            <div class="highlight-text">Enterprise-level testing quality without the enterprise price tag - invest only in the testing your product needs right now</div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-number">QA Without Constraints</div>
-                            <div class="highlight-text">Flexible testing approaches that adapt to your unique product challenges and development lifecycle</div>
-                        </div>
-                    </div>
+    
+    <div class="mobile-bottom-nav">
+        <div class="mobile-nav-items">
+            <a href="#packages" class="mobile-nav-item active">
+                <div class="mobile-nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
                 </div>
-   <div class="about-image">
-    <!-- Neural Circuit Logo for About Page -->
-    <div class="logo-container-about">
-        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-            <!-- Definitions -->
-            <defs>
-                <linearGradient id="neuralGradientAbout" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#FF6B00" />
-                    <stop offset="100%" stop-color="#FF9248" />
-                </linearGradient>
-                <filter id="glowAbout" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="2" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-            </defs>
-            
-            <!-- Dark Background Circle -->
-            <circle cx="150" cy="150" r="80" fill="#121620" />
-            
-            <!-- Neural Network Grid -->
-            <circle cx="150" cy="90" r="3" fill="#D1D5DB" />
-            <circle cx="110" cy="120" r="3" fill="#D1D5DB" />
-            <circle cx="190" cy="120" r="3" fill="#D1D5DB" />
-            <circle cx="100" cy="160" r="3" fill="#D1D5DB" />
-            <circle cx="150" cy="160" r="3" fill="#D1D5DB" />
-            <circle cx="200" cy="160" r="3" fill="#D1D5DB" />
-            <circle cx="150" cy="200" r="3" fill="#D1D5DB" />
-            
-            <!-- Connection Lines -->
-            <line x1="150" y1="90" x2="110" y2="120" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="150" y1="90" x2="190" y2="120" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="110" y1="120" x2="100" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="110" y1="120" x2="150" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="190" y1="120" x2="150" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="190" y1="120" x2="200" y2="160" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="100" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="150" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            <line x1="200" y1="160" x2="150" y2="200" stroke="#D1D5DB" stroke-width="1" opacity="0.3" />
-            
-            <!-- Main Circuit/Data Path -->
-            <path d="M150 200L150 160L110 120L150 90" stroke="url(#neuralGradientAbout)" stroke-width="4" fill="none" stroke-linecap="round" filter="url(#glowAbout)" />
-            
-            <!-- Neural Nodes -->
-            <circle cx="150" cy="200" r="6" fill="#FF6B00" filter="url(#glowAbout)" />
-            <circle cx="150" cy="160" r="6" fill="#FF6B00" filter="url(#glowAbout)" />
-            <circle cx="110" cy="120" r="6" fill="#FF6B00" filter="url(#glowAbout)" />
-            <circle cx="150" cy="90" r="6" fill="#20C5C6" filter="url(#glowAbout)" />
-            
-            <!-- Data Pulse Animations -->
-            <circle cx="150" cy="180" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowAbout)">
-                <animate attributeName="cy" from="200" to="160" dur="3s" repeatCount="indefinite" />
-            </circle>
-            
-            <circle cx="130" cy="140" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowAbout)">
-                <animate attributeName="cx" from="150" to="110" dur="3s" begin="1s" repeatCount="indefinite" />
-                <animate attributeName="cy" from="160" to="120" dur="3s" begin="1s" repeatCount="indefinite" />
-            </circle>
-            
-            <circle cx="130" cy="105" r="3" fill="#20C5C6" opacity="0.8" filter="url(#glowAbout)">
-                <animate attributeName="cx" from="110" to="150" dur="3s" begin="2s" repeatCount="indefinite" />
-                <animate attributeName="cy" from="120" to="90" dur="3s" begin="2s" repeatCount="indefinite" />
-            </circle>
-        </svg>
-        
-        <!-- Company Name -->
-        <div class="about-company-name">
-            <span class="about-velocity">Velocity</span><span class="about-qa">QA</span>
+                <span>Packages</span>
+            </a>
+            <a href="#features" class="mobile-nav-item">
+                <div class="mobile-nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </div>
+                <span>Features</span>
+            </a>
+            <a href="#process" class="mobile-nav-item">
+                <div class="mobile-nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <span>Process</span>
+            </a>
+            <a href="contact.html" class="mobile-nav-item package-badge">
+                <div class="mobile-nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <span>Contact</span>
+                <span class="badge" id="mobilePackageBadge">0</span>
+            </a>
         </div>
     </div>
-</div>
-        </div> <!-- This closes the container div -->
+    
+    <div class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional QA Testing for Australian Startups</h1>
+                <p class="hero-description">We break your app so your users won't. Affordable, flexible QA testing services designed specifically for startups and growing businesses.</p>
+                <div class="hero-buttons">
+                    <a href="#packages" class="cta-button">View Testing Packages</a>
+                    <a href="contact.html" class="cta-button hero-button-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="packages" class="package-tabs-section">
+    <div class="container">
+        <h2 class="section-title">Choose Your Testing Package</h2>
+        <p class="section-subtitle">Select the testing package that best fits your needs and budget. All packages include detailed bug reports and recommendations.</p>
+        
+        <!-- Package View Toggle -->
+        <div class="view-toggle">
+            <button class="toggle-btn active" data-view="tabs">View Packages</button>
+            <button class="toggle-btn" data-view="table">Comparison Table</button>
+        </div>
+        
+        <!-- Tabs View (Default) -->
+        <div id="tabsView">
+            <div class="tabs-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="bug-hunter">Bug Hunter</div>
+                    <div class="tab" data-tab="user-journey">User Journey</div>
+                    <div class="tab" data-tab="system-auditor">System Auditor</div>
+                    <div class="tab" data-tab="precision-strike">Precision Strike</div>
+                    <div class="tab" data-tab="automation">Automation</div>
+                </div>
+            </div>
+            
+            <!-- Bug Hunter Package -->
+            <div class="package-display active" id="bug-hunter-display">
+                <div class="package-header">
+                    <div class="package-info">
+                        <div class="package-price">$450</div>
+                        <p class="package-description">Rapid bug detection with same-day results. Perfect for pre-launch validation.</p>
+                        <div class="package-buttons">
+                            <a href="bug-hunter-service.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="contact.html?package=bug-hunter&add=true" class="cta-button">Select Package</a>
+                        </div>
+                    </div>
+                    <div class="package-svg">
+                        <!-- Bug Hunter SVG -->
+                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                            
+                            <!-- App UI Background -->
+                            <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
+                            
+                            <!-- Browser Chrome -->
+                            <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
+                            <circle cx="120" cy="65" r="6" fill="#ef4444" />
+                            <circle cx="140" cy="65" r="6" fill="#f59e0b" />
+                            <circle cx="160" cy="65" r="6" fill="#10b981" />
+                            
+                            <!-- Grid pattern for detail -->
+                            <g opacity="0.05">
+                                <rect x="120" y="100" width="360" height="1" fill="#ffffff" />
+                                <rect x="120" y="140" width="360" height="1" fill="#ffffff" />
+                                <rect x="120" y="180" width="360" height="1" fill="#ffffff" />
+                                <rect x="120" y="220" width="360" height="1" fill="#ffffff" />
+                                <rect x="120" y="260" width="360" height="1" fill="#ffffff" />
+                                <rect x="120" y="300" width="360" height="1" fill="#ffffff" />
+                                
+                                <rect x="120" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="180" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="240" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="300" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="360" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="420" y="100" width="1" height="200" fill="#ffffff" />
+                                <rect x="480" y="100" width="1" height="200" fill="#ffffff" />
+                            </g>
+                            
+                            <!-- UI Elements -->
+                            <rect x="140" y="120" width="120" height="20" rx="4" fill="#334155" />
+                            <rect x="140" y="150" width="180" height="20" rx="4" fill="#334155" />
+                            <rect x="140" y="180" width="150" height="20" rx="4" fill="#334155" />
+                            
+                            <rect x="340" y="120" width="120" height="80" rx="4" fill="#334155" />
+                            
+                            <rect x="140" y="220" width="320" height="40" rx="4" fill="#334155" />
+                            <rect x="140" y="280" width="200" height="40" rx="4" fill="#334155" />
+                            <rect x="360" y="280" width="100" height="40" rx="4" fill="#FF6B00" />
+                            
+                            <!-- Magnifying Glass -->
+                            <circle cx="400" cy="160" r="30" fill="none" stroke="#20C5C6" stroke-width="6" />
+                            <line x1="420" y1="180" x2="450" y2="210" stroke="#20C5C6" stroke-width="6" stroke-linecap="round" />
+                            
+                            <!-- Bug Elements -->
+                            <g id="bug1" transform="translate(180, 170)">
+                                <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+                                <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <animateTransform attributeName="transform" 
+                                    type="translate" 
+                                    from="180, 170" 
+                                    to="180, 170" 
+                                    dur="4s" 
+                                    values="180, 170; 180, 150; 200, 150; 200, 170; 180, 170" 
+                                    repeatCount="indefinite" />
+                            </g>
+                            
+                            <g id="bug2" transform="translate(370, 240)">
+                                <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+                                <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <animateTransform attributeName="transform" 
+                                    type="translate" 
+                                    from="370, 240" 
+                                    to="370, 240" 
+                                    dur="5s" 
+                                    values="370, 240; 390, 240; 390, 260; 370, 260; 370, 240" 
+                                    repeatCount="indefinite" />
+                            </g>
+                            
+                            <g id="bug3" transform="translate(300, 300)">
+                                <circle cx="0" cy="0" r="12" fill="#FF6B00" />
+                                <line x1="-8" y1="-8" x2="8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <line x1="8" y1="-8" x2="-8" y2="8" stroke="#FF0000" stroke-width="3" stroke-linecap="round" />
+                                <animateTransform attributeName="transform" 
+                                    type="translate" 
+                                    from="300, 300" 
+                                    to="300, 300" 
+                                    dur="6s" 
+                                    values="300, 300; 320, 300; 320, 280; 300, 280; 300, 300" 
+                                    repeatCount="indefinite" />
+                            </g>
+                            
+                            <!-- Target Pulse Animation -->
+                            <circle cx="180" cy="170" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+                                <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="370" cy="240" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+                                <animate attributeName="r" from="16" to="30" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0.5s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <circle cx="300" cy="300" r="16" fill="none" stroke="#20C5C6" stroke-width="2" opacity="0">
+                                <animate attributeName="r" from="16" to="30" dur="1.5s" begin="1s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="1s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="package-features">
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Same-Day Results</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Get your bug report within 24 hours, often on the same day (subject to availability).</p>
+                        </div>
+                    </div>
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Focused Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">4-5 hours of dedicated testing focused on critical functionality and user flows.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Detailed Reports</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Comprehensive bug reports with screenshots, steps to reproduce, and severity ratings.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Pre-Launch Ready</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Perfect for validating your application before launch or after major updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Journey Package -->
+            <div class="package-display" id="user-journey-display">
+                <!-- User Journey Package Content (similar to Bug Hunter) -->
+                <div class="package-header">
+                    <div class="package-info">
+                        <div class="package-price">$900</div>
+                        <p class="package-description">Comprehensive testing of your app's critical user flows. Ensure your users have a smooth experience from start to finish.</p>
+                        <div class="package-buttons">
+                            <a href="user-journey-testing.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="contact.html?package=user-journey&add=true" class="cta-button">Select Package</a>
+                        </div>
+                    </div>
+                    <div class="package-svg">
+                    <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Flow Lines and Connection Points -->
+                        <path d="M100 200 C150 200, 200 100, 250 100 C300 100, 350 200, 400 200 C450 200, 500 300, 550 300" 
+                              stroke="#20C5C6" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="0,0" />
+                              
+                        <!-- Animated Dot along the path -->
+                        <circle cx="100" cy="200" r="5" fill="#ffffff">
+                            <animateMotion 
+                                dur="6s" 
+                                repeatCount="indefinite" 
+                                path="M0 0 C50 0, 100 -100, 150 -100 C200 -100, 250 0, 300 0 C350 0, 400 100, 450 100" />
+                        </circle>
+                        
+                        <!-- Devices at each stage of the journey -->
+                        <!-- Smartphone (starting point) -->
+                        <g transform="translate(100, 200)">
+                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333" />
+                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b" />
+                            <circle cx="0" cy="18" r="2" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Tablet (second stage) -->
+                        <g transform="translate(250, 100)">
+                            <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333" />
+                            <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b" />
+                            <circle cx="0" cy="24" r="2" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="1s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="1s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Laptop (third stage) -->
+                        <g transform="translate(400, 200)">
+                            <path d="M-35 -15 L35 -15 L35 15 L-35 15 Z" fill="#333333" />
+                            <path d="M-32 -12 L32 -12 L32 12 L-32 12 Z" fill="#1e293b" />
+                            <path d="M-40 16 L40 16 L36 25 L-36 25 Z" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Desktop (final stage) -->
+                        <g transform="translate(550, 300)">
+                            <rect x="-30" y="-25" width="60" height="40" rx="2" ry="2" fill="#333333" />
+                            <rect x="-28" y="-23" width="56" height="36" rx="1" ry="1" fill="#1e293b" />
+                            <rect x="-10" y="15" width="20" height="15" fill="#333333" />
+                            <rect x="-20" y="30" width="40" height="3" fill="#333333" />
+                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
+                                <animate attributeName="r" from="20" to="30" dur="3s" begin="3s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- User Icons at each stage -->
+                        <!-- User Admin Icon -->
+                        <g transform="translate(100, 150)">
+                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Icon -->
+                        <g transform="translate(250, 50)">
+                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Icon -->
+                        <g transform="translate(400, 150)">
+                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- User Admin Icon -->
+                        <g transform="translate(550, 250)">
+                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
+                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
+                        </g>
+                        
+                        <!-- Flow Points with Labels -->
+                        <circle cx="100" cy="200" r="10" fill="#FF6B00" />
+                        <text x="100" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Login</text>
+                        
+                        <circle cx="250" cy="100" r="10" fill="#FF6B00" />
+                        <text x="250" y="130" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Browse</text>
+                        
+                        <circle cx="400" cy="200" r="10" fill="#FF6B00" />
+                        <text x="400" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Purchase</text>
+                        
+                        <circle cx="550" cy="300" r="10" fill="#FF6B00" />
+                        <text x="550" y="330" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Confirm</text>
+                        
+                        <!-- Connecting User Role Lines -->
+                        <line x1="100" y1="150" x2="100" y2="190" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="250" y1="50" x2="250" y2="90" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="400" y1="150" x2="400" y2="190" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
+                        <line x1="550" y1="250" x2="550" y2="290" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+                <!-- Features for User Journey -->
+            </div>
+            
+            <!-- System Auditor Package -->
+            <div class="package-display" id="system-auditor-display">
+                <!-- System Auditor Package Content -->
+                <div class="package-header">
+                    <div class="package-info">
+                        <div class="package-price">$1,250</div>
+                        <p class="package-description">Comprehensive system-wide testing to identify bugs, UX issues, and performance bottlenecks across your entire application.</p>
+                        <div class="package-buttons">
+                            <a href="system-auditor.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="contact.html?package=system-auditor&add=true" class="cta-button">Select Package</a>
+                        </div>
+                    </div>
+                    <div class="package-svg">
+                        <!-- System Auditor SVG -->
+                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Dashboard Grid -->
+                        <g opacity="0.1">
+                            <line x1="50" y1="50" x2="50" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="150" y1="50" x2="150" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="250" y1="50" x2="250" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="350" y1="50" x2="350" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="450" y1="50" x2="450" y2="350" stroke="#ffffff" stroke-width="1" />
+                            <line x1="550" y1="50" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+                            
+                            <line x1="50" y1="50" x2="550" y2="50" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="100" x2="550" y2="100" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="150" x2="550" y2="150" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="200" x2="550" y2="200" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="250" x2="550" y2="250" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="300" x2="550" y2="300" stroke="#ffffff" stroke-width="1" />
+                            <line x1="50" y1="350" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
+                        </g>
+                        
+                        <!-- Top Panel -->
+                        <rect x="80" y="70" width="440" height="80" rx="8" ry="8" fill="#1e293b" />
+                        
+                        <!-- Charts -->
+                        <rect x="80" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+                        <path d="M100 280 L130 250 L160 270 L190 230 L220 260 L250 220" stroke="#20C5C6" stroke-width="3" fill="none" stroke-linecap="round" />
+                        
+                        <!-- Bar Chart -->
+                        <rect x="310" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
+                        <rect x="330" y="250" width="20" height="60" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="360" y="230" width="20" height="80" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="390" y="270" width="20" height="40" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="420" y="200" width="20" height="110" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="450" y="240" width="20" height="70" fill="#FF6B00" rx="2" ry="2" />
+                        <rect x="480" y="220" width="20" height="90" fill="#FF6B00" rx="2" ry="2" />
+                        
+                        <!-- Test Points -->
+                        <circle cx="130" cy="250" r="6" fill="#20C5C6" />
+                        <circle cx="160" cy="270" r="6" fill="#20C5C6" />
+                        <circle cx="190" cy="230" r="6" fill="#20C5C6" />
+                        <circle cx="220" cy="260" r="6" fill="#20C5C6" />
+                        <circle cx="250" cy="220" r="6" fill="#20C5C6" />
+                        
+                        <!-- Glowing Connections -->
+                        <path d="M130 250 L340 230" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        <path d="M220 260 L430 200" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        <path d="M250 220 L490 220" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
+                        
+                        <!-- Interactive Elements in Top Panel -->
+                        <rect x="100" y="85" width="120" height="10" rx="5" ry="5" fill="#334155" />
+                        <rect x="100" y="105" width="80" height="10" rx="5" ry="5" fill="#334155" />
+                        <rect x="100" y="125" width="160" height="10" rx="5" ry="5" fill="#334155" />
+                        
+                        <circle cx="320" cy="110" r="25" fill="#334155" />
+                        <path d="M310 110 L330 110 M320 100 L320 120" stroke="#94a3b8" stroke-width="2" />
+                        
+                        <rect x="370" y="90" width="120" height="40" rx="6" ry="6" fill="#334155" />
+                        <text x="430" y="115" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Audit</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+                <!-- Features for System Auditor -->
+            </div>
+            <!-- Precision Strike Package (Corrected Structure) -->
+            <div class="package-display" id="precision-strike-display">
+            <div class="package-header">
+                <div class="package-info">
+                    <div class="package-price">$100/hr</div>
+                    <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
+                    <div class="package-buttons">
+                        <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
+                        <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
+                    </div>
+                </div>
+                <div class="package-svg">
+                    <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background for consistency with other SVGs -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <g transform="translate(300, 200)">
+                            <!-- Target/Bullseye -->
+                            <circle cx="0" cy="0" r="120" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.3" />
+                            <circle cx="0" cy="0" r="80" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.2" />
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.1" />
+                
+                            <!-- Crosshair -->
+                            <line x1="-150" y1="0" x2="150" y2="0" stroke="#FF6B00" stroke-width="2" />
+                            <line x1="0" y1="-150" x2="0" y2="150" stroke="#FF6B00" stroke-width="2" />
+                
+                            <!-- Animated Targeting Dot -->
+                            <circle cx="0" cy="0" r="10" fill="#FF6B00">
+                               <animate attributeName="r" 
+                                  values="10;20;10" 
+                                  dur="2s" 
+                                  repeatCount="indefinite" />
+                               <animate attributeName="opacity" 
+                                  values="1;0.5;1" 
+                                  dur="2s" 
+                                  repeatCount="indefinite" />
+                            </circle>
+                
+                            <!-- Small Targeting Markers -->
+                            <g>
+                               <circle cx="60" cy="60" r="5" fill="#20C5C6" opacity="0.7">
+                                  <animateTransform 
+                                     attributeName="transform"
+                                     type="rotate"
+                                     from="0 0 0"
+                                     to="360 0 0"
+                                     dur="5s"
+                                     repeatCount="indefinite" />
+                               </circle>
+                               <circle cx="-60" cy="-60" r="5" fill="#20C5C6" opacity="0.7">
+                                  <animateTransform 
+                                     attributeName="transform"
+                                     type="rotate"
+                                     from="0 0 0"
+                                     to="-360 0 0"
+                                     dur="4s"
+                                     repeatCount="indefinite" />
+                               </circle>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Features for Precision Strike -->
+            <div class="package-features">
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-title">Hourly Flexibility</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Pay only for the testing time you need, with no minimum commitment.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                <line x1="16" y1="8" x2="2" y2="22"></line>
+                                <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                            </svg>
+                        </div>
+                        <div class="feature-title">Targeted Testing</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Focus testing exactly where you need it most, whether that's bug verification, UI reviews, or specific features.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="feature-title">Quick Turnaround</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Get results within 24-48 hours, depending on testing scope.</p>
+                    </div>
+                </div>
+                
+                <div class="package-feature collapsible">
+                    <div class="feature-header">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-title">Budget Friendly</div>
+                        <div class="expand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <p class="feature-description">Perfect for startups with limited QA budgets or specific testing needs.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- Replace the entire Automation Package section -->
+            <div class="package-display" id="automation-display">
+                <div class="package-header">
+                    <div class="package-info">
+                        <div class="package-price">From $1,295</div>
+                        <p class="package-description">Automated testing solutions to speed up your QA process and reduce manual testing overhead.</p>
+                        <div class="package-buttons">
+                            <a href="automation-services.html" class="cta-button package-button-secondary">Learn More</a>
+                            <a href="contact.html?package=automation&add=true" class="cta-button">Select Package</a>
+                        </div>
+                    </div>
+                    <div class="package-svg">
+                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                            
+                            <!-- Terminal Window -->
+                            <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
+                            
+                            <!-- Terminal Header -->
+                            <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
+                            <circle cx="120" cy="65" r="6" fill="#ef4444" />
+                            <circle cx="140" cy="65" r="6" fill="#f59e0b" />
+                            <circle cx="160" cy="65" r="6" fill="#10b981" />
+                            
+                            <!-- Code Lines -->
+                            <rect x="120" y="100" width="200" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            <rect x="120" y="120" width="250" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
+                            <rect x="120" y="140" width="180" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            <rect x="120" y="160" width="220" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
+                            <rect x="120" y="180" width="150" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
+                            
+                            <!-- Animated Running Tests -->
+                            <g>
+                                <rect x="120" y="220" width="360" height="20" rx="3" ry="3" fill="#334155" />
+                                <rect x="120" y="220" width="120" height="20" rx="3" ry="3" fill="#20C5C6">
+                                    <animate attributeName="width" values="0;120;240;360" dur="3s" repeatCount="indefinite" />
+                                </rect>
+                                <text x="300" y="235" font-family="monospace" font-size="12" fill="#f8fafc" text-anchor="middle">Running Automated Tests...</text>
+                            </g>
+                            
+                            <!-- Pass/Fail Indicators -->
+                            <g transform="translate(120, 260)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Login Test: PASSED</text>
+                            </g>
+                            
+                            <g transform="translate(120, 285)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Navigation Test: PASSED</text>
+                            </g>
+                            
+                            <g transform="translate(120, 310)">
+                                <rect width="15" height="15" rx="3" ry="3" fill="#ef4444" />
+                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Payment Test: FAILED</text>
+                            </g>
+                            
+                            <!-- Animated Cursor -->
+                            <rect x="120" y="335" width="8" height="15" fill="#f8fafc">
+                                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+                            </rect>
+                        </svg>
+                    </div>
+                </div>
+            
+                <div class="package-features">
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Fast Implementation</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Get automation scripts in 3-5 days, compared to weeks with traditional services.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                                    <line x1="16" y1="8" x2="2" y2="22"></line>
+                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Developer-Friendly</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Your developers maintain control with ready-to-use scripts for Maestro Studio or Katalon.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-title">40% Faster Testing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Cut regression testing time by 40%, reducing a typical 5-day manual testing cycle to just 3 days.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="package-feature collapsible">
+                        <div class="feature-header">
+                            <div class="feature-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="feature-title">Clear, Fixed Pricing</div>
+                            <div class="expand-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="feature-content">
+                            <p class="feature-description">Transparent pricing based on application size, with no hidden costs or long-term contracts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- Package Comparison Table View -->
+        <div id="tableView" style="display: none;">
+            <div class="package-table-container">
+                <table class="package-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Bug Hunter<br><span class="price">$450</span></th>
+                            <th>User Journey<br><span class="price">$900</span></th>
+                            <th>System Auditor<br><span class="price">$1,250</span></th>
+                            <th>Precision Strike<br><span class="price">$100/hr</span></th>
+                            <th>Automation<br><span class="price">From $1,295</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Turnaround Time</td>
+                            <td>Same day*</td>
+                            <td>24 hours</td>
+                            <td>36 hours</td>
+                            <td>24-48 hours</td>
+                            <td>3-5 days</td>
+                        </tr>
+                        <tr>
+                            <td>Bug Detection</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>UI/UX Assessment</td>
+                            <td>Basic</td>
+                            <td>Essential</td>
+                            <td>Comprehensive</td>
+                            <td>As directed</td>
+                            <td>Automated</td>
+                        </tr>
+                        <tr>
+                            <td>Cross-Platform Testing</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td>As directed</td>
+                            <td>As directed</td>
+
+                        </tr>
+                        <tr>
+                            <td>User Role Testing</td>
+                            <td>Single role</td>
+                            <td>Multiple roles</td>
+                            <td>All roles</td>
+                            <td>As directed</td>
+                            <td>Configurable</td>
+                        </tr>
+                        <tr>
+                            <td>Reports</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr class="action-row">
+                            <td></td>
+                            <td><a href="bug-hunter-service.html" class="cta-button">Get Started</a></td>
+                            <td><a href="user-journey-testing.html" class="cta-button">Get Started</a></td>
+                            <td><a href="system-auditor.html" class="cta-button">Get Started</a></td>
+                            <td><a href="precision-strike.html" class="cta-button">Get Started</a></td>
+                            <td><a href="automation-services.html" class="cta-button">Get Started</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="package-note">* Same day testing subject to availability. Contact us for current scheduling.</p>
+        </div>
+    </div>
 </section>
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">Meet Our Testing Experts</h2>
-            <p class="section-description">Our team a passion for user experience and a startup mindset.</p>
-            
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Nina" alt="Nina" class="team-image" style="font-size: 120px; display: flex; align-items: center; justify-content: center;">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Nina</h3>                                                                                                                                                                                                                                                                                                                                                   
-                        <div class="team-role">Founder & Lead QA Strategist</div>
-                        <p class="team-bio">Nina has 10+ years testing experience, Her philosophy is simple: if she can break it in testing, a user, competitor, or external event will break it in production.</p>
-                        <div class="team-social">
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Jeanette" alt="Jeanette" class="team-image" style="font-size: 120px; display: flex; align-items: center; justify-content: center;">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Jeanette</h3>
-                        <div class="team-role">UX & Documentation Specialist</div>
-                        <p class="team-bio">Jeanette with a background in Education and Admin excels at testing user onboarding flows, help documentation and critical touchpoints where startups often lose users due to confusion or frustration.</p>
-                        <div class="team-social">
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Daniel" alt="Daniel" class="team-image" style="font-size: 120px; display: flex; align-items: center; justify-content: center;">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Daniel</h3>
-                        <div class="team-role">User Acceptance Testing</div> 
-                        <p class="team-bio">Daniel tests applications like your everyday user would— without technical bias or preconceptions. His specialty is workflow friction points and usability barriers.</p>
-                        <div class="team-social">
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </a>
-                            <a href="#" class="team-social-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="process" class="process-section">
+    <div class="container">
+        <h2 class="section-title">Our Testing Process</h2>
+        <div class="process-container">
+            <div class="process-svg">
+                <svg width="100%" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" aria-label="Process timeline showing 4 steps: Initial Contact, Consultation, Testing, and Reporting">
+                    <!-- Gradient Definitions -->
+                    <defs>
+                        <linearGradient id="processGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF6B00"/>
+                            <stop offset="100%" stop-color="#20C5C6"/>
+                        </linearGradient>
+                        
+                        <filter id="shadowFilter">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+                        </filter>
+                    </defs>
 
-    <section class="values-section">
-        <div class="container">
-            <h2 class="section-title">Our Core Values</h2>
-            <p class="section-description">We've built VelocityQA on a foundation of values that drive everything we do.</p>
-            
-            <div class="value-cards">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Quality Without Compromise</h3>
-                    <p class="value-description">We believe that every startup, regardless of size or funding, deserves access to enterprise-grade testing. We never sacrifice quality for speed or cost.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="23 4 23 10 17 10"></polyline>
-                            <polyline points="1 20 1 14 7 14"></polyline>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Velocity Without Bureaucracy</h3>
-                    <p class="value-description">We've stripped away the layers of process that slow down traditional QA agencies. We move at startup speed because we know every day matters.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                            <line x1="12" y1="9" x2="12" y2="13"></line>
-                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Brutal Honesty</h3>
-                    <p class="value-description">We don't sugar-coat or play politics. We tell you exactly what we find, what it means for your users, and how urgently it needs to be fixed.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">User Empathy</h3>
-                    <p class="value-description">We test from the perspective of real users with real needs and real frustrations. Our technical skills are matched by our understanding of human behavior.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5"></path>
-                            <path d="M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Continuous Learning</h3>
-                    <p class="value-description">Technology evolves rapidly, and so do we. Our team constantly updates our skills, tools, and approaches to provide cutting-edge testing services.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3 class="value-title">Collaborative Partnership</h3>
-                    <p class="value-description">We test and deliver a report. We can work alongside your team, providing insights and guidance that help build a culture of quality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- Timeline Base Line -->
+                    <line x1="100" y1="100" x2="700" y2="100" stroke="#334155" stroke-width="4" stroke-dasharray="8,8"/>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Ready to Experience Better QA?</h2>
-            <p class="cta-description">Let's talk about how we can help you deliver a flawless application to your users.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-button cta-button-primary">Contact Us Today</a>
-                <a href="index.html#packages" class="cta-button cta-button-secondary">View Our Packages</a>
-            </div>
-        </div>
-    </section>
+                    <!-- Animated Dot -->
+                    <circle cx="100" cy="100" r="6" fill="#20C5C6">
+                        <animateMotion 
+                            path="M0 0 L200 0 L400 0 L600 0" 
+                            dur="6s" 
+                            repeatCount="indefinite"
+                            rotate="auto"
+                        />
+                    </circle>
 
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div>
-                    <!-- Footer Neural Circuit Logo -->
-                    <div class="footer-logo-container">
-                        <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Definitions -->
-                            <defs>
-                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="1" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-                            
-                            <!-- Neural Circuit (simplified for footer) -->
-                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
-                            
-                            <!-- Neural Nodes -->
-                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
-                            
-                            <!-- Company Name -->
-                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
-                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                            </text>
-                        </svg>
-                    </div>
-                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="index.html#features">Features</a></li>
-                        <li class="footer-link"><a href="index.html#packages">Packages</a></li>
-                        <li class="footer-link"><a href="index.html#process">Our Process</a></li>
-                        <li class="footer-link"><a href="index.html#pricing">Why Choose Us</a></li>
-                        <li class="footer-link"><a href="index.html#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Services</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="bug-hunter-servide.html#packages">Bug Hunter</a></li>
-                        <li class="footer-link"><a href="user-journey-testing.html#packages">User Journey Testing</a></li>
-                        <li class="footer-link"><a href="system-auditor.html#packages">Sytem Auditor</a></li>
-                        <li class="footer-link"><a href="precision-strike.html#packages">Precision Strike</a></li>
-                        <li class="footer-link"><a href="contact.html">Precision Strike</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-title">Contact Us</h3>
-                    <div class="footer-contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Process Stages -->
+                    <g>
+                        <!-- Stage 1: Initial Contact -->
+                        <g transform="translate(100, 100)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
+                            <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#20C5C6" stroke-width="2"/>
+                            <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#20C5C6" stroke-width="2">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
-                        </div>
-                        <div>nina@velocityqa.com.au</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Initial Contact</text>
+                            <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">24-Hour Response</text>
+                        </g>
+
+                        <!-- Stage 2: Consultation -->
+                        <g transform="translate(300, 100)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
+                            <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#FF6B00" stroke-width="2"/>
+                            <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
-                        </div>
-                        <div>0413757636</div>
-                    </div>
-                    <div class="footer-contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
+                            <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Consultation</text>
+                            <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">Discovery Meeting</text>
+                        </g>
+
+                        <!-- Stage 3: Testing -->
+                        <g transform="translate(500, 100)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
+                            <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#20C5C6" stroke-width="2"/>
+                            <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#20C5C6" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
                             </svg>
+                            <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Testing</text>
+                            <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">QA Process</text>
+                        </g>
+
+                        <!-- Stage 4: Reporting -->
+                        <g transform="translate(700, 100)">
+                            <circle cx="0" cy="0" r="30" fill="rgba(32, 197, 198, 0.1)"/>
+                            <circle cx="0" cy="0" r="30" fill="#1e293b" stroke="#FF6B00" stroke-width="2"/>
+                            <svg x="-15" y="-15" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <text x="0" y="60" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-weight="600">Reporting</text>
+                            <text x="0" y="80" text-anchor="middle" fill="#94a3b8" font-family="Inter, sans-serif" font-size="12">Reports & Results</text>
+                        </g>
+                    </g>
+
+                    <!-- Connecting Lines with Gradient -->
+                    <line x1="130" y1="100" x2="270" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+                    <line x1="330" y1="100" x2="470" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+                    <line x1="530" y1="100" x2="670" y2="100" stroke="url(#processGradient)" stroke-width="4"/>
+                </svg>
+            </div>
+            <p class="process-description">Our streamlined testing process ensures efficient and effective results. We start with a consultation to understand your needs, create a detailed testing plan, execute thorough testing, and deliver comprehensive reports with actionable recommendations.</p>
+            
+            <a href="process.html" class="cta-button">Learn More About Our Process</a>
+        </div>
+    </div>
+</section>
+
+<!-- NEW Featured Testimonial Section -->
+<section class="featured-testimonial">
+    <div class="container">
+        <h2 class="section-title">Featured Client Success</h2>
+        
+        <div class="featured-testimonial-container">
+            <div class="quote-mark">"</div>
+            <div class="featured-testimonial-content">
+                <p>VelocityQA has been instrumental in helping us meet the strict service level agreements we have with local health districts. Their thorough testing ensures our application maintains the stability and security that's absolutely critical in healthcare.</p>
+                <p>With doctors being time-poor and completing vital tasks like workplace assessments through our platform, there's zero room for error in data integrity or user experience. Thanks to VelocityQA's work, we've successfully processed approximately 15,000 form sections and have benefitted from a sustained 4.8 App Store rating.</p>
+                <p>We've seen major improvements in the frequency and stability of our production releases while maintaining the highest standards of security that our healthcare clients demand.</p>
+            </div>
+            <div class="featured-testimonial-author">
+                <div class="testimonial-logo">
+                   <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: contain;">                       
+                </div>
+                <div class="testimonial-info">
+                    <div class="testimonial-name">Head of Product</div>
+                    <div class="testimonial-position">MedApps</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="container">
+        <h2 class="section-title">Why Choose VelocityQA?</h2>
+        <p class="section-description">We provide startup-focused testing services that improve your app and save you money. No unnecessary complexity, just results.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pay As You Go</h3>
+                <p class="feature-description">No expensive contracts or retainers. Our flexible pay-as-you-go model with 14-day terms means you only pay for actual testing time, not someone waiting for development to finish.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Fast Turnaround</h3>
+                <p class="feature-description">Get results in days, not weeks. We reduced one medical app's testing cycle from 2 weeks to 4 days, with smoke testing completed in only 2 days.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Brutal Honesty</h3>
+                <p class="feature-description">We test to break, using your app like your worst customer would. We find the missing links, workflow gaps, and UI issues that developers miss and users hate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="comparison" id="pricing">
+    <div class="container">
+        <h2 class="section-title">Why Startups Choose Us</h2>
+        <p class="section-description">Our focused approach delivers better results at a fraction of the cost.</p>
+        
+        <div class="comparison-container">
+            <div class="comparison-slider">
+                <div class="comparison-track" id="comparisonTrack">
+                    <div class="comparison-slide active">
+                        <h3 class="comparison-title">Cost Effective</h3>
+                        <p class="comparison-content">Our focused testing costs a fraction of a full-time QA ($75K-$120K annually) while delivering more targeted results.</p>
+                    </div>
+                    <div class="comparison-slide">
+                        <h3 class="comparison-title">Faster Turnaround</h3>
+                        <p class="comparison-content">We reduced a medical app's testing cycle from 2 weeks to 4 days, accelerating their release by 65%.</p>
+                    </div>
+                    <div class="comparison-slide">
+                        <h3 class="comparison-title">Bug Detection Rate</h3>
+                        <p class="comparison-content">For one startup's MVP dashboard, we identified 50+ UI and workflow issues in the first 2 hours of testing.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-controls">
+                <div class="comparison-button" id="comparisonPrev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="comparison-button" id="comparisonNext">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="comparison-dots">
+                <div class="comparison-dot active" data-index="0"></div>
+                <div class="comparison-dot" data-index="1"></div>
+                <div class="comparison-dot" data-index="2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Don't just take our word for it. Here's what some of our clients have to say about our testing services.</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial active">
+                        <div class="testimonial-content">
+                            <p>VelocityQA has streamlined our release process, enabling our team to launch multiple new in-app features while maintaining an impressive 4.8 App Store rating.</p>
                         </div>
-                        <div>
-                            Nigel Street<br>
-                            Brisbane, QLD 4301<br>
-                            Australia
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">CEO</div>
+                                <div class="testimonial-position">Health App</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>VelocityQA's targeted testing packages have enabled us to catch critical issues early, meaning a faster release to market.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Technical Lead</div>
+                                <div class="testimonial-position">Technology Startup</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>We've benefitted significantly from VelocityQA's work, with major improvements to the frequency and stability of production releases.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="testimonial-info">
+                                <div class="testimonial-name">Head of Product</div>
+                                <div class="testimonial-position">Medical App</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+            <div class="testimonial-controls">
+                <div class="testimonial-button" id="testimonialPrev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="testimonial-button" id="testimonialNext">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
             </div>
         </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
-        
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-        }
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
-        }
-        // Custom cursor
-    const cursor = document.querySelector('.cursor-follower');
-
-    if (cursor && window.matchMedia('(hover: hover)').matches) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
             
-            if (!cursor.classList.contains('active')) {
-                setTimeout(() => {
-                    cursor.classList.add('active');
-                }, 500);
+        <div class="testimonial-dots">
+            <div class="testimonial-dot active" data-index="0"></div>
+            <div class="testimonial-dot" data-index="1"></div>
+            <div class="testimonial-dot" data-index="2"></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-title">Ready to Break Your App Before Your Users Do?</h2>
+        <p class="cta-description">Get started with professional QA testing today and launch with confidence.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="cta-button cta-button-primary">Get Started</a>
+            <a href="#packages" class="cta-button cta-button-secondary">View Packages</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <!-- Footer content -->
+            <div>
+                <div class="footer-logo-container">
+                    <!-- Footer Logo -->
+                    <svg width="280" height="70" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" class="footer-logo">
+                        <!-- Definitions -->
+                        <defs>
+                            <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FF6B00" />
+                                <stop offset="100%" stop-color="#FF9248" />
+                            </linearGradient>
+                            <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="1" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        
+                        <!-- Dark Background Element - ADDED -->
+                        <circle cx="30" cy="30" r="30" fill="#121620" />
+                        
+                        <!-- Neural Network Grid (simplified for header) - ADDED -->
+                        <circle cx="30" cy="18" r="1" fill="#D1D5DB" />
+                        <circle cx="18" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="42" cy="24" r="1" fill="#D1D5DB" />
+                        <circle cx="15" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="30" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="45" cy="36" r="1" fill="#D1D5DB" />
+                        <circle cx="30" cy="48" r="1" fill="#D1D5DB" />
+                        
+                        <!-- Main Circuit/Data Path -->
+                        <path d="M30 48L30 36L18 24L30 18" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
+                        
+                        <!-- Neural Nodes -->
+                        <circle cx="30" cy="48" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                        <circle cx="30" cy="36" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                        <circle cx="18" cy="24" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
+                        <circle cx="30" cy="18" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
+                        
+                        <!-- Data Pulse Animations - ADDED -->
+                        <circle cx="30" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glowFooter)">
+                            <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="24" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glowFooter)">
+                            <animate attributeName="cx" from="30" to="18" dur="3s" begin="1s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <circle cx="24" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glowFooter)">
+                            <animate attributeName="cx" from="18" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
+                            <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <!-- Company Name -->
+                        <text x="75" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
+                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                        </text>
+                    </svg>
+                </div>
+               
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+            <h3 class="footer-title">Quick Links</h3>
+            <li class="footer-link"><a href="contact.html">Contact</a></li>
+            <li class="footer-link"><a href="aboutus.html">About Us</a></li>
+            <li class="footer-link"><a href="payment-terms.html">Payment Terms</a></li>
+             <li class="footer-link"><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3 class="footer-title">Services</h3>
+            <ul class="footer-links">
+                <li class="footer-link"><a href="bug-hunder-serive.html">Bug Hunter</a></li>
+                <li class="footer-link"><a href="#user-journey-testing.html">User Journey</a></li>
+                <li class="footer-link"><a href="#system-auditor.html">System Auditor</a></li>
+                <li class="footer-link"><a href="#precision-strike.html">Precision Strike</a></li>
+                <li class="footer-link"><a href="#automation-services.html">Automation</a></li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3 class="footer-title">Contact Us</h3>
+            <div class="footer-contact-item">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                <div>nina@velocityqa.com</div>
+            </div>
+            <div class="footer-contact-item">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <div>0413757636</div>
+            </div>
+            <div class="footer-contact-item">
+                <div class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <div>
+                    Nigel Street<br>
+                    Brisbane, QLD 4301<br>
+                    Australia
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 VelocityQA. All rights reserved. Made with ❤️ for startups everywhere.</p>
+    </div>
+</div>
+</footer>
+
+<script>
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    htmlElement.setAttribute('data-theme', savedTheme);
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? '' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// Package Tabs
+const tabs = document.querySelectorAll('.tab');
+const packageDisplays = document.querySelectorAll('.package-display');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Show corresponding package display
+        const tabId = tab.getAttribute('data-tab');
+        packageDisplays.forEach(display => {
+            display.classList.remove('active');
+            if (display.id === `${tabId}-display`) {
+                display.classList.add('active');
             }
         });
+    });
+});
+
+// View Toggle (Tabs vs Table)
+const toggleBtns = document.querySelectorAll('.toggle-btn');
+const tabsView = document.getElementById('tabsView');
+const tableView = document.getElementById('tableView');
+
+toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        toggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
         
-        // Add hover effects for links and buttons
-        const links = document.querySelectorAll('a, button');
-        links.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                if (link.classList.contains('cta-button')) {
-                    cursor.classList.add('hover-button');
-                } else {
-                    cursor.classList.add('hover-link');
-                }
-            });
+        const viewType = btn.getAttribute('data-view');
+        if (viewType === 'tabs') {
+            tabsView.style.display = 'block';
+            tableView.style.display = 'none';
+        } else if (viewType === 'table') {
+            tabsView.style.display = 'none';
+            tableView.style.display = 'block';
+        }
+    });
+});
+
+// Collapsible Features
+const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
+
+collapsibleFeatures.forEach(feature => {
+    const header = feature.querySelector('.feature-header');
+    const content = feature.querySelector('.feature-content');
+    
+    if (header && content) {
+        header.addEventListener('click', () => {
+            // Toggle active class
+            feature.classList.toggle('active');
             
-            link.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover-link', 'hover-button');
-            });
+            if (feature.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.opacity = '1';
+            } else {
+                content.style.maxHeight = '0';
+                content.style.opacity = '0';
+            }
         });
-        
-        // Hide cursor when it leaves the window
-        document.addEventListener('mouseleave', () => {
-            cursor.classList.remove('active');
-        });
-        
-        document.addEventListener('mouseenter', () => {
-            cursor.classList.add('active');
-        });
-    } else if (cursor) {
-        // If not a hover device, hide the cursor completely
-        cursor.style.display = 'none';
     }
+});
+
+// Initialize package display features
+document.addEventListener('DOMContentLoaded', () => {
+    const automationTab = document.querySelector('.tab[data-tab="automation"]');
+    if (automationTab) {
+        automationTab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            automationTab.classList.add('active');
+            
+            document.querySelectorAll('.package-display').forEach(d => d.classList.remove('active'));
+            document.getElementById('automation-display').classList.add('active');
+        });
+    }
+    // Initialize collapse features
+    collapsibleFeatures.forEach(feature => {
+        const content = feature.querySelector('.feature-content');
+        
+        if (content) {
+            content.style.maxHeight = '0';
+            content.style.opacity = '0';
+        }
+    });
+});
+
+// Testimonial Slider Functionality
+const testimonialTrack = document.getElementById('testimonialsTrack');
+const testimonialDots = document.querySelectorAll('.testimonial-dot');
+const testimonialPrev = document.getElementById('testimonialPrev');
+const testimonialNext = document.getElementById('testimonialNext');
+let testimonialIndex = 0;
+
+function moveTestimonials(index) {
+    if (testimonialTrack) {
+        testimonialIndex = index;
+        testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update active dot
+        testimonialDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+}
+
+if (testimonialDots.length > 0) {
+    testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => moveTestimonials(index));
+    });
+}
+
+if (testimonialPrev) {
+    testimonialPrev.addEventListener('click', () => {
+        testimonialIndex = Math.max(0, testimonialIndex - 1);
+        moveTestimonials(testimonialIndex);
+    });
+}
+
+if (testimonialNext) {
+    testimonialNext.addEventListener('click', () => {
+        testimonialIndex = Math.min(testimonialDots.length - 1, testimonialIndex + 1);
+        moveTestimonials(testimonialIndex);
+    });
+}
+
+// Comparison Slider Functionality
+const comparisonTrack = document.getElementById('comparisonTrack');
+const comparisonDots = document.querySelectorAll('.comparison-dot');
+const comparisonPrev = document.getElementById('comparisonPrev');
+const comparisonNext = document.getElementById('comparisonNext');
+let comparisonIndex = 0;
+
+function moveComparisons(index) {
+    if (comparisonTrack) {
+        comparisonIndex = index;
+        comparisonTrack.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update active dot
+        comparisonDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+}
+
+if (comparisonDots.length > 0) {
+    comparisonDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => moveComparisons(index));
+    });
+}
+
+if (comparisonPrev) {
+    comparisonPrev.addEventListener('click', () => {
+        comparisonIndex = Math.max(0, comparisonIndex - 1);
+        moveComparisons(comparisonIndex);
+    });
+}
+
+if (comparisonNext) {
+    comparisonNext.addEventListener('click', () => {
+        comparisonIndex = Math.min(comparisonDots.length - 1, comparisonIndex + 1);
+        moveComparisons(comparisonIndex);
+    });
+}
 </script>
 </body>
 </html>
+
+
 
 
 
