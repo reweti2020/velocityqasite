@@ -6,8 +6,8 @@
     <title>About Us - VelocityQA</title>
     <style>
         :root {
-            --primary: #0052cc;
-            --primary-dark: #003d99;
+            --primary: #121620;
+            --primary-dark: #0a0d14;
             --secondary: #ff5500;
             --text: #1e293b;
             --text-light: #64748b;
@@ -20,7 +20,8 @@
             --success: #10b981;
             --error: #ef4444;
             --orange: #ff6b00;
-            --teal: #20C5C6;  /* Added teal color from the logo */
+            --teal: #20C5C6;
+            --silver: #D1D5DB;
         }
 
         [data-theme="dark"] {
@@ -53,7 +54,7 @@
 
         /* Header Styles */
         header {
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             position: relative;
             background-color: var(--card);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -107,6 +108,18 @@
 
         .nav-link:hover:after {
             width: 100%;
+
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--teal);
+            transition: width 0.3s;
         }
 
         .cta-button {
