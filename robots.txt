@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://velocityqa.com.au/sitemap.xml

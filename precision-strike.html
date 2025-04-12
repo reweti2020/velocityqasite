@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision Strike - VelocityQA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pay-As-You-Go QA Testing for Australian Startups | Precision Strike | VelocityQA</title>
+        <meta name="description" content="Flexible app testing services at $100/hr with our targeted QA testing. Direct our focus to specific features, workflows, or bugs with no minimum commitment. Perfect for Australian startups!">
+        <meta property="og:title" content="Hourly QA Testing for Australian Startups | Precision Strike | VelocityQA">
+        <meta property="og:description" content="Targeted QA testing at $100/hr with no minimum commitment. Direct our focus to exactly what matters. Perfect for startups needing quick, focused app testing.">
+        <meta property="og:image" content="https://velocityqa.com/images/precision-strike-social.jpg">
+        <meta property="og:url" content="https://velocityqa.com/precision-strike.html">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="VelocityQA">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Pay-As-You-Go QA Testing for Australian Startups | Precision Strike">
+        <meta name="twitter:description" content="Flexible app testing services with no minimum commitment. Pre-release testing, bug verification, and feature validation for your startup.">
+        <meta name="twitter:image" content="https://velocityqa.com/images/precision-strike-social.jpg">
+        <meta name="twitter:site" content="@VelocityQA">
+        <link rel="canonical" href="https://velocityqa.com/precision-strike.html">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0PBYFYX7Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-W0PBYFYX7Q');
+    </script>
+    </head>
     <style>
         :root {
             --primary: #121620;
@@ -196,6 +218,20 @@
             margin: 0 auto;
             font-size: 1.2rem;
             opacity: 0.9;
+        }
+        
+        .service-introduction {
+        padding: 5rem 0;
+        background-color: var(--bg-light);
+        }
+    
+        .service-introduction-text {
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 1.1rem;
+        line-height: 1.7;
         }
 
         /* Service Overview Section */
@@ -436,6 +472,15 @@
             background: linear-gradient(135deg, #121620 0%, var(--teal) 100%);
             color: white;
             text-align: center;
+        }
+
+        .header-cta {
+               margin-top: 1.5rem;
+        }
+
+        .header-cta .cta-button {     
+              padding: 0.75rem 1.5rem;
+              font-size: 1.1rem;
         }
 
         .cta-title {
@@ -685,6 +730,42 @@
             border-radius: 3px;
             transition: all 0.3s;
         }
+                /* Custom Cursor */
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(32, 197, 198, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cursor-follower.active {
+            opacity: 1;
+        }
+
+        .cursor-follower.hover-link {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(32, 197, 198, 0.1);
+        }
+
+        .cursor-follower.hover-button {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(32, 197, 198, 0.15);
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-follower {
+                display: none;
+            }
+        }
+
 
         /* Media Queries */
         @media (max-width: 992px) {
@@ -780,21 +861,80 @@
             }
         }
     </style>
+    </style>
+    
+    <!-- Add schema markup here -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Precision Strike",
+      "provider": {
+        "@type": "Organization",
+        "name": "VelocityQA"
+      },
+      "serviceType": "QA Testing",
+      "offers": {
+        "@type": "Offer",
+        "price": "100.00",
+        "priceCurrency": "AUD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "100.00",
+          "priceCurrency": "AUD",
+          "unitCode": "HUR",
+          "unitText": "Hour"
+        }
+      },
+      "description": "Flexible, targeted QA testing service that allows you to precisely address your most pressing concerns."
+    }
+    <!-- FAQ schema right after the service schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Feature Validation testing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comprehensive testing of a specific feature or functionality to ensure it works as expected across devices, browsers, and user scenarios. Typically takes 3-5 hours depending on complexity and is ideal before releasing new functionality."
+          }
+        },
+        /* the rest of your FAQ schema */
+      ]
+    }
+    </script>
 </head>
 <body data-theme="dark">
-    <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    <div class="cursor-follower"></div>
+    
+    <!-- Add floating "Add hourly package" button after the theme toggle div -->
+<div class="theme-toggle" id="themeToggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+</div>
+
+<!-- Floating Add Hourly Package Button -->
+<div id="floating-add-button" style="position: fixed; right: -150px; bottom: 100px; z-index: 99; transition: all 0.3s ease-in-out;">
+    <a href="contact.html?package=blocked-hours&add=true" class="cta-button" style="display: flex; align-items: center; background-color: var(--orange); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); padding: 0.8rem 1.2rem; border-radius: 30px 0 0 30px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>
-    </div>
+        Add Hourly Package
+    </a>
+</div>
 
     <header>
         <div class="container">
@@ -869,6 +1009,8 @@
                     <a href="index.html#process" class="nav-link">Process</a>
                     <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
                     <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                    <a href="aboutus.html" class="nav-link">About Us</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
                     <a href="contact.html" class="cta-button">Contact Us</a>
                 </div>
             </nav>
@@ -913,15 +1055,18 @@
                     <span style="color: #D1D5DB; font-size: 0.9rem;">Perfect for <span style="color: #FF6B00;">sprint testing</span> cycles</span>
                 </li>
             </ul>
-            <a href="contact.html" class="cta-button" style="width: 100%; margin-top: 1rem; text-align: center; font-size: 0.9rem;">Book 10+ Hours</a>
+            <a href="contact.html?package=prepaid-hours&add=true" class="cta-button" style="width: 100%; margin-top: 1rem; text-align: center; font-size: 0.9rem;">Book 10+ Hours</a>
         </div>
     </div>
 
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">Precision Strike</h1>
+            <h1 class="page-title">Pay-As-You-Go QA Testing</h1>
             <div class="page-price">$100/hr</div>
-            <p class="page-description">You direct the testing focus. Our flexible, targeted service allows you to precisely address your most pressing concerns.</p>
+            <p class="page-description">Flexible app testing services for Australian startups. Direct our testing focus to specific features, workflows, or bugs with no minimum commitment.</p>
+            <div class="header-cta">
+                <a href="contact.html" class="cta-button">Start Testing Within 24 Hours</a>
+            </div>
         </div>
     </section>
 
@@ -1004,9 +1149,32 @@
         </div>
     </section>
 
+    <!-- ADD THIS NEW SECTION -->
+<section class="service-introduction">
+    <div class="container">
+        <h2 class="section-title">Target-Focused Testing for Startups and Growing Businesses</h2>
+        <p class="service-introduction-text">Our Precision Strike service is specifically designed for startups and growing businesses that need focused, targeted testing without the overhead of full-scale QA programs. We help you identify and fix critical issues in your application with a flexible approach that scales with your needs.</p>
+        
+        <!-- Optional: Add these benefit points -->
+        <div class="feature-grid" style="margin-top: 2rem;">
+            <div class="feature-card">
+                <div class="feature-title">Fast Turnaround</div>
+                <p class="feature-description">Get actionable results within 24-48 hours, perfect for pre-launch validation.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Budget-Friendly</div>
+                <p class="feature-description">Only pay for the testing hours you actually need, with no minimum commitments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Expertise On Demand</div>
+                <p class="feature-description">Access professional QA testers familiar with modern development practices.</p>
+            </div>
+        </div>
+    </div>
+</section>
     <section class="service-overview">
         <div class="container">
-            <h2 class="section-title">What's Included</h2>
+            <h2 class="section-title">What Our Precision QA Testing Includes</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1058,7 +1226,7 @@
         <div class="container">
             <div class="service-description-grid">
                 <div class="service-description-content">
-                    <h2 class="service-heading">Targeted Testing on Your Terms</h2>
+                    <h2 class="service-heading">Flexible Pay-As-You-Go QA Testing Services</h2>
                     <p>Precision Strike is our most flexible service, designed specifically for startups and teams that need focused testing on specific areas of concern. Unlike our fixed-scope packages, this hourly service lets you direct exactly what gets tested, for how long, and with what emphasis.</p>
                     
                     <p>This approach is perfect when you have clear concerns about particular features or functionality and want expert testing without committing to a broader test cycle. You can scale your testing up or down as needed, whether it's a quick check before a demo or deeper analysis of a particularly complex feature.</p>
@@ -1143,7 +1311,7 @@
     <section class="requirements">
         <div class="container">
             <div class="requirements-container">
-                <h2 class="section-title">What We Need From You</h2>
+                <h2 class="section-title">Client Requirements for Effective App Testing</h2>
                 <div class="requirements-list">
                     <div class="requirement-item">
                         <div class="requirement-icon">
@@ -1201,7 +1369,7 @@
 
     <section class="add-ons">
         <div class="container">
-            <h2 class="section-title">Commonly Requested Testing Focus Areas</h2>
+            <h2 class="section-title">Common App Testing Focus Areas for Startups</h2>
             <div class="add-ons-grid">
                 <div class="add-on-card">
                     <h3 class="add-on-title">Feature Validation</h3>
@@ -1375,7 +1543,7 @@
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </div>
-                        <div>info@velocityqa.com</div>
+                        <div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="721b1c141d3204171e1d111b060b03135c111d1f">[email&#160;protected]</a></div>
                     </div>
                     <div class="footer-contact-item">
                         <div class="contact-icon">
@@ -1407,7 +1575,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1436,7 +1604,49 @@
                 htmlElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
             });
+        // Custom cursor
+const cursor = document.querySelector('.cursor-follower');
+
+if (cursor && window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        if (!cursor.classList.contains('active')) {
+            setTimeout(() => {
+                cursor.classList.add('active');
+            }, 500);
         }
+    });
+    
+    // Add hover effects for links and buttons
+    const links = document.querySelectorAll('a, button');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            if (link.classList.contains('cta-button')) {
+                cursor.classList.add('hover-button');
+            } else {
+                cursor.classList.add('hover-link');
+            }
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover-link', 'hover-button');
+        });
+    });
+    
+    // Hide cursor when it leaves the window
+    document.addEventListener('mouseleave', () => {
+        cursor.classList.remove('active');
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.classList.add('active');
+    });
+} else if (cursor) {
+    // If not a hover device, hide the cursor completely
+    cursor.style.display = 'none';
+}
         
         // Slide Panel Animation
         document.addEventListener('DOMContentLoaded', function() {
@@ -1479,6 +1689,104 @@
                 }, 8000);
             }, 2000);
         });
+    }
     </script>
+    
+    <script>
+        // Floating Add Button Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingButton = document.getElementById('floating-add-button');
+            
+            // Show the button after a delay
+            setTimeout(function() {
+                floatingButton.style.right = '0';
+            }, 1500);
+            
+            // Add hover effect
+            floatingButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(-10px)';
+            });
+            
+            floatingButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+            
+            // Show notification when clicked
+            floatingButton.querySelector('a').addEventListener('click', function() {
+                // Create notification
+                const notification = document.createElement('div');
+                notification.textContent = 'Hourly package added to your selections';
+                notification.style.position = 'fixed';
+                notification.style.top = '20px';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = 'var(--teal)';
+                notification.style.color = 'white';
+                notification.style.padding = '1rem 2rem';
+                notification.style.borderRadius = '6px';
+                notification.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+                notification.style.zIndex = '9999';
+                
+                document.body.appendChild(notification);
+                
+                // Remove notification after 3 seconds
+                setTimeout(function() {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.5s ease';
+                    setTimeout(function() {
+                        document.body.removeChild(notification);
+                    }, 500);
+                }, 3000);
+            });
+        });
+    </script>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What types of applications does VelocityQA test?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We specialize in testing applications for healthcare, education, retail, and ecommerce startups. We test across iOS, Android and web platforms."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does QA testing cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our packages start at $450 for rapid testing (Bug Hunter). We also offer User Journey Testing ($900), System Auditor ($1,250), and Precision Strike hourly testing at $100/hour with no minimum requirement."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you require long-term contracts?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. We operate on a pay-as-you-go model with 14-day terms. You only pay for actual testing time, not someone waiting for development to finish."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How quickly can you test my application?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We offer same-day testing for our Bug Hunter package (subject to availability). Our User Journey Testing has a 24-hour turnaround, and System Auditor has a 36-hour turnaround."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you service all of Australia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. While we're based in Brisbane, we provide QA testing services to startups and small businesses throughout Australia."
+              }
+            }
+          ]
+        }
+        </script>
 </body>
 </html>
