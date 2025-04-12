@@ -372,6 +372,9 @@
             overflow-x: auto;
             scrollbar-width: none; /* Firefox */
             -ms-overflow-style: none; /* IE and Edge */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling oniOS*/
+            white-space: nowrap;
+            padding-bottom: 5px;
         }
 
         .tabs::-webkit-scrollbar {
@@ -1214,9 +1217,56 @@
             .hero-buttons .cta-button {
                 width: 100%;
             }
+
+            .comparison-container {
+                overflow-x: visible;
+
+            }
+
+            .comparison-slider {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 1rem;
+
+            }
+
+            .comparison-track {
+                display: flex;
+                transition: none;
+
+            }
+
+            .comparison-slide {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                margin-right: 1rem;
+
+            }
+
+            .comparison-controls, .comparison-dots {
+                display: none;
+
+            }
             
             .package-features {
                 grid-template-columns: 1fr;
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-right: 1rem;
+                padding-left: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+    
+            .package-feature.collapsible {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+                margin-bottom: 0;
             }
             
             .package-buttons {
@@ -1232,7 +1282,48 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .features-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .feature-card {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+
+            }
+
+            .process-svg svg {
+                height: 180px;
+                margin: 0 -1rem;
             
+            }
+
+            .process-description {
+                display: none;
+
+            }
+
+            .process-svg::after {
+                content: "Tap to learn more about our 4-step process";
+                display: block;
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--text-light);
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+
+            }
+
             .testimonial-logo {
                 margin-bottom: 1rem;
             }
@@ -2843,3 +2934,4 @@ if (comparisonNext) {
 </script>
 </body>
 </html>
+
