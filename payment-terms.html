@@ -64,10 +64,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
     .logo-link {
       text-decoration: none;
+      display: block;
+    }
+    
+    .logo-svg {
+      height: 54px;
+      width: 160px;
+      display: block;
     }
 
     .back-link {
@@ -295,56 +305,29 @@
   </style>
 </head>
 <body data-theme="dark">
-  <!-- Simple Header with Logo -->
+  <!-- Simple Header with Logo (Fixed) -->
   <header>
     <div class="container header-container">
       <a href="index.html" class="logo-link">
-        <!-- Neural Circuit Logo SVG -->
-        <svg width="160" height="54" viewBox="0 0 160 54" xmlns="http://www.w3.org/2000/svg">
-          <!-- Definitions -->
-          <defs>
-            <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#FF6B00" />
-              <stop offset="100%" stop-color="#FF9248" />
-            </linearGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="1" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-          
-          <!-- Dark Background Element -->
+        <svg class="logo-svg" width="160" height="54" viewBox="0 0 160 54" xmlns="http://www.w3.org/2000/svg">
           <circle cx="27" cy="27" r="27" fill="#121620" />
-          
-          <!-- Neural Network Grid (simplified) -->
-          <circle cx="27" cy="16" r="1" fill="#D1D5DB" />
-          <circle cx="16" cy="22" r="1" fill="#D1D5DB" />
-          <circle cx="38" cy="22" r="1" fill="#D1D5DB" />
-          <circle cx="14" cy="32" r="1" fill="#D1D5DB" />
-          <circle cx="27" cy="32" r="1" fill="#D1D5DB" />
-          <circle cx="40" cy="32" r="1" fill="#D1D5DB" />
-          <circle cx="27" cy="42" r="1" fill="#D1D5DB" />
-          
-          <!-- Main Circuit/Data Path -->
-          <path d="M27 42L27 32L16 22L27 16" stroke="url(#neuralGradient)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glow)" />
-          
-          <!-- Neural Nodes -->
-          <circle cx="27" cy="42" r="3" fill="#FF6B00" filter="url(#glow)" />
-          <circle cx="27" cy="32" r="3" fill="#FF6B00" filter="url(#glow)" />
-          <circle cx="16" cy="22" r="3" fill="#FF6B00" filter="url(#glow)" />
-          <circle cx="27" cy="16" r="3" fill="#20C5C6" filter="url(#glow)" />
-          
-          <!-- Company Name -->
+          <path d="M27 42L27 32L16 22L27 16" stroke="#FF6B00" stroke-width="2" fill="none" stroke-linecap="round" />
+          <circle cx="27" cy="42" r="3" fill="#FF6B00" />
+          <circle cx="27" cy="32" r="3" fill="#FF6B00" />
+          <circle cx="16" cy="22" r="3" fill="#FF6B00" />
+          <circle cx="27" cy="16" r="3" fill="#20C5C6" />
           <text x="65" y="32" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
             <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
           </text>
         </svg>
       </a>
-      <a href="index.html" class="back-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to Home
+      <a href="index.html" class="back-link" style="display: flex; align-items: center;">
+        <span style="margin-right: 5px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </span>
+        <span>Back to Home</span>
       </a>
     </div>
   </header>
