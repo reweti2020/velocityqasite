@@ -262,13 +262,14 @@
     padding: 3rem 1rem 1rem;
     margin-bottom: 1rem;
     position: relative;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--border-dark) var(--card-dark);
     -ms-overflow-style: none; /* IE and Edge */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .process-steps-scroll::-webkit-scrollbar {
-    display: none;
+    width: 8px;
 }
 
 /* The connecting dotted line */
@@ -329,39 +330,25 @@
     width: 320px;
     margin: 0 1rem;
     padding: 2rem;
-    background-color: var(--card);
-    border-radius: 12px;
+    background-color: var(--card-dark);
+    border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     position: relative;
     z-index: 1;
     transition: transform 0.3s, box-shadow 0.3s;
     flex-shrink: 0;
-    max-height: 400px; /* Set a max height */
-    overflow-y: auto; /* Allow vertical scrolling if needed */
+    max-height: 400px; 
+    overflow-y: auto; 
+}
+
+.process-step.horizontal::-webkit-scrollbar-track {
+    background: var(--card-dark);       
+    border-radius: 4px;                
 }
 
 .process-step.horizontal:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* Number in circle at top of card */
-.step-number-circle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
-    background-color: var(--orange);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    z-index: 2;
 }
 
 /* Large background number */
@@ -1069,7 +1056,6 @@
                     
                     <!-- Process Step 1 -->
                     <div class="process-step horizontal">
-                        <div class="step-number-circle">1</div>
                         <div class="step-number-background">1</div>
                         <div class="step-icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1088,7 +1074,6 @@
                     
                     <!-- Process Step 2 -->
                     <div class="process-step horizontal">
-                        <div class="step-number-circle">2</div>
                         <div class="step-number-background">2</div>
                         <div class="step-icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1106,7 +1091,6 @@
                     
                     <!-- Process Step 3 -->
                     <div class="process-step horizontal">
-                        <div class="step-number-circle">3</div>
                         <div class="step-number-background">3</div>
                         <div class="step-icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1126,7 +1110,6 @@
                     
                     <!-- Process Step 4 -->
                     <div class="process-step horizontal">
-                        <div class="step-number-circle">4</div>
                         <div class="step-number-background">4</div>
                         <div class="step-icon-container">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1475,7 +1458,6 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
         });
     });
     
-    / Add this JavaScript to your existing script or create a new script element
 document.addEventListener('DOMContentLoaded', function() {
     // Get the elements
     const scrollContainer = document.getElementById('processStepsContainer');
@@ -1634,3 +1616,4 @@ window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',
 </script>
 </body>
 </html>
+
