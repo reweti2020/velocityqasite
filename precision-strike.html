@@ -926,7 +926,7 @@
     <div class="cursor-follower"></div>
     
     <!-- Add floating "Add hourly package" button after the theme toggle div -->
-<div class="theme-toggle" id="themeToggle">
+<div class="theme-toggle" id="themeReference">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"></circle>
         <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -951,9 +951,8 @@
     </a>
 </div>
 
-<header>
-    <div id="header-placeholder"></div>
-  </header>
+<div id="header-placeholder"></div>
+
     
     <!-- Slide-in element from right side -->
     <div id="slide-panel" style="position: fixed; right: 0; top: 30%; z-index: 100; transform: translateX(100%); transition: transform 0.5s ease-out; max-width: 300px;">
@@ -1395,9 +1394,8 @@
         </div>
     </section>
 
-    <footer>
-        <div id="footer-placeholder"></div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
@@ -1613,22 +1611,22 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
         }
     </script>
 
-// Load header
-fetch('header.html')
+    fetch('header.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
     })
     .catch(error => console.error('Error loading header:', error));
 
-// Load footer
 fetch('footer.html')
     .then(response => response.text())
     .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
     })
     .catch(error => console.error('Error loading footer:', error));
+});
 </script>
 </body>
 </html>
+
 
