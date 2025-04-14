@@ -282,6 +282,115 @@
       opacity: 0.7;
     }
 
+    nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--teal);
+    transition: width 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--teal);
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--orange);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    background-color: #e85d00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--card);
+        flex-direction: column;
+        justify-content: center;
+        z-index: 999;
+        transition: right 0.3s;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+}
+
     /* Media Queries */
     @media (max-width: 768px) {
       .page-title {
@@ -320,23 +429,8 @@
 </div>
 
 <header>
-    <div id="header-placeholder"></div>
+  <div id="header-placeholder"></div>
 </header>
-
-  <!-- Theme Toggle Button -->
-  <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </div>
 
   <!-- Page Header -->
   <section class="page-header">
@@ -360,9 +454,9 @@
     <p>If final payment is not received within the 14-day window, a <span class="highlight">5% late fee</span> will apply every 7 days overdue. Please contact us in advance if there are any concerns—we're happy to work with your schedule.</p>
   </section>
 
-  <div id="footer-placeholder"></div>
-  <!-- Your page content here -->
-  <div id="footer-placeholder"></div>
+  <footer>
+    <div id="footer-placeholder"></div>
+  </footer>
 
   <script>
     // Theme Toggle
@@ -402,8 +496,8 @@ fetch('footer.html')
     document.getElementById('footer-placeholder').innerHTML = data;
 })
 .catch(error => console.error('Error loading footer:', error));
-</script>
 
+  </script>
 </body>
 </html>
 
