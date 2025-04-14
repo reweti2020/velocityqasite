@@ -877,6 +877,37 @@
             border-radius: 3px;
             transition: all 0.3s;
         }
+
+        /* Floating Add Package Button */
+        .floating-add-button {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            background-color: var(--orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            border: none;
+            z-index: 99;
+            opacity: 0;
+        }
+
+        .floating-add-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .floating-add-button svg {
+            flex-shrink: 0;
+            margin-right: 0.75rem;
+        }
         
         /* Custom Cursor */
         .cursor-follower {
@@ -913,36 +944,7 @@
                 display: none;
             
         }
-         /* Floating Add Package Button */
-         .floating-add-button {
-            position: fixed;
-            bottom: 6rem;
-            right: 2rem;
-            display: flex;
-            align-items: center;
-            background-color: var(--orange);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition-base);
-            border: none;
-            z-index: 99;
-            opacity: 0;
-        }
 
-        .floating-add-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(255, 107, 0, 0.3);
-        }
-
-        .floating-add-button svg {
-            flex-shrink: 0;
-            margin-right: 0.75rem;
-        }
 
         /* Media Queries */
         @media (max-width: 992px) {
@@ -1639,6 +1641,8 @@ fetch('footer.html')
   </script>
 </body>
 </html>
+
+
 
 
 
