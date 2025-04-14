@@ -113,7 +113,6 @@
             --error: #ef4444;
             --orange: #ff6b00;
             --teal: #20C5C6;
-            --silver: #D1D5DB;
             
             /* New 2025 design variables */
             --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -568,94 +567,111 @@
             transform: rotate(45deg);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--bg-dark);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
 
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
+/* Footer Styles */
+footer {
+    background-color: #0f172a;
+    color: white;
+    padding: 4rem 0 2rem;
+}
 
-        .footer-logo-container {
-            height: 30px;
-            margin-bottom: 1rem;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-        .footer-description {
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
-        }
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
 
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
+.footer-logo-container {
+    height: 60px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
 
-        .social-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition-base);
-        }
-         .social-link svg {
-             color: var(--silver);
-        }
-        .social-link:hover {
-            background-color: var(--teal);
-        }
+.footer-description {
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
 
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
 
-        .footer-links {
-            list-style: none;
-        }
+.social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
 
-        .footer-link {
-            margin-bottom: 0.75rem;
-        }
+.social-link svg {
+    color: #D1D5DB;
+}
 
-        .footer-link a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+.social-link:hover {
+    background-color: #20C5C6;
+}
 
-        .footer-link a:hover {
-            color: var(--teal);
-        }
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: white;
+}
 
-        .footer-contact-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-        }
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .contact-icon {
-            color: var(--teal);
-        }
+.footer-link {
+    margin-bottom: 0.75rem;
+    list-style-type: none;
+}
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.875rem;
-            opacity: 0.7;
-        }
+.footer-link a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-link a:hover {
+    color: #20C5C6;
+}
+
+.footer-contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    color: #20C5C6;
+    flex-shrink: 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
 
         /* Theme toggle - Improved for 2025 */
         .theme-toggle {
@@ -881,8 +897,6 @@
                         <animateMotion 
                             path="M0 0 L200 0 L400 0 L600 0" 
                             dur="6s" 
-                            repeatCount
-                            dur="6s" 
                             repeatCount="indefinite"
                             rotate="auto"
                         />
@@ -954,12 +968,742 @@
             </div>
         </div>
     </section>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h2 class="form-title">Get In Touch</h2>
+                    <form id="contactForm" action="https://formspree.io/f/xjkyadle" method="POST">
+                        <input type="hidden" name="_next" value="https://velocityqa.com.au/thank-you.html">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required aria-required="true">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required aria-required="true">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">What services are you interested in?</label>
+                            <div class="checkbox-group" role="group" aria-labelledby="services-group">
+                                <div id="services-group" class="sr-only">Services you are interested in</div>
+                                
+                                <!-- Main Packages -->
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="bug-hunter" name="package[]" value="bug-hunter">
+                                    <label for="bug-hunter">Bug Hunter ($450)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="user-journey" name="package[]" value="user-journey">
+                                    <label for="user-journey">User Journey Testing ($575)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="system-auditor" name="package[]" value="system-auditor">
+                                    <label for="system-auditor">System Auditor ($1,250)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="precision-strike" name="package[]" value="precision-strike">
+                                    <label for="precision-strike">Precision Strike ($100/hr)</label>
+                                </div>
+                                
+                                <!-- Micro Packages/Add-ons -->
+                                <h4 class="form-sublabel">Add-on Packages</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="bug-verification" name="package[]" value="bug-verification">
+                                    <label for="bug-verification">Bug Verification Package ($150)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="monthly-checkin" name="package[]" value="monthly-checkin">
+                                    <label for="monthly-checkin">Monthly Check-In Testing ($275/month)</label>
+                                </div>
+                            </div>
+                            <button type="button" onclick="clearSelectedPackages()" class="clear-button" style="margin-top: 0.75rem;">Clear All Selections</button>
+                        </div>
+
+                        <!-- Testing Environment Options -->
+                        <div class="form-group">
+                            <label class="form-label">Testing Environment (Select all that apply)</label>
+                            <div class="checkbox-group" role="group" aria-labelledby="environments-group">
+                                <div id="environments-group" class="sr-only">Testing environments</div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="testflight" name="environment[]" value="testflight">
+                                    <label for="testflight">Test Flight for iOS mobile testing</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="test-env-login" name="environment[]" value="test-env-login">
+                                    <label for="test-env-login">Testing environment with login</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="production" name="environment[]" value="production">
+                                    <label for="production">Testing on production site</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="test-user-logins" name="environment[]" value="test-user-logins">
+                                    <label for="test-user-logins">Test user logins</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Service Type</label>
+                            <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
+                                <div id="service-type-group" class="sr-only">Service type selection</div>
+                                <div class="radio-item">
+                                    <input type="radio" id="standard-package" name="service-type" value="standard" checked>
+                                    <label for="standard-package">Standard Packages (as selected above)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="tailored-package" name="service-type" value="tailored">
+                                    <label for="tailored-package">Tailored Package (custom testing solution)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
+                                    <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
+                                    <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours (optional)" min="1" aria-labelledby="blocked-hours">
+                                </div>
+                                <!-- Prepaid 10+ Hours Option -->
+                                <div class="radio-item">
+                                    <input type="radio" id="prepaid-hours" name="service-type" value="prepaid-hours">
+                                    <label for="prepaid-hours">Pre-paid 10+ Hours ($90/hour - 10% discount)</label>
+                                    <div id="prepaid-hours-selector" class="form-input custom-package-input" style="display: none;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <input type="number" id="hour-blocks" name="hour-blocks" min="1" value="1" style="width: 70px; text-align: center;">
+                                            <span>× 10 hours = <span id="total-hours">10</span> hours</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project and testing needs" required aria-required="true"></textarea>
+                        </div>
+                        
+                        <!-- Payment Terms Disclaimer -->
+                        <div class="form-disclaimer">
+                            <p>
+                                <strong>Payment Terms:
+                                    <a href="payment-terms.html" title="View detailed payment terms" aria-label="View detailed payment terms" style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background-color: var(--teal); color: white; font-size: 11px; text-decoration: none; margin-left: 4px; position: relative; top: -1px;">i</a>
+                                </strong> 
+                                A 50% deposit is required for all packages except Precision Strike. Precision Strike services (10 hours or less) must be paid in full within 24 hours.
+                            </p>
+                        </div>
+                        
+                        <button type="submit" class="submit-button" style="margin-top: 1.5rem;">Send Message</button>
+                    </form>
+                </div>
+                <!-- Testing Devices Visualization -->
+                <div class="devices-container">
+                    <h3 class="devices-title">Cross-Platform Testing</h3>
+                    <p class="devices-description">We test your applications across all major platforms to ensure consistent quality.</p>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;" aria-label="Illustration of cross-platform testing across multiple devices">  
+                        <defs>  
+                            <!-- Gradient Definitions -->  
+                            <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
+                                <stop offset="0%" stop-color="#FF6B00"/>  
+                                <stop offset="100%" stop-color="#20C5C6"/>  
+                            </linearGradient>  
+                              
+                            <filter id="deviceShadow">  
+                                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>  
+                            </filter>  
+                        </defs>
+
+                        <!-- Background Layer with Subtle Grid -->  
+                        <rect width="600" height="400" fill="#121620"/>  
+                        <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">  
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
+                        </pattern>  
+                        <rect width="600" height="400" fill="url(#gridPattern)"/>
+
+                        <!-- Central Testing Concept -->  
+                        <g transform="translate(300, 200)">  
+                            <!-- Concentric Circles -->  
+                            <circle cx="0" cy="0" r="180" fill="none" stroke="#334155" stroke-width="1" opacity="0.3"/>  
+                            <circle cx="0" cy="0" r="120" fill="none" stroke="#334155" stroke-width="1" opacity="0.2"/>  
+                            <circle cx="0" cy="0" r="60" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
+                              
+                            <!-- Pulsing Focus Point with Vibrant Color Transition -->  
+                            <circle cx="0" cy="0" r="15" fill="#20C5C6">  
+                                <animate attributeName="r"   
+                                         values="15;40;15"   
+                                         dur="3s"   
+                                         repeatCount="indefinite"/>  
+                                <animate attributeName="fill"   
+                                         values="#20C5C6;#00FFFF;#20C5C6"   
+                                         dur="3s"   
+                                         repeatCount="indefinite"/>  
+                                <animate attributeName="opacity"   
+                                         values="0.6;1;0.6"   
+                                         dur="3s"   
+                                         repeatCount="indefinite"/>  
+                            </circle>  
+                        </g>
+
+                        <!-- Device Elements -->  
+                        <!-- iOS Device -->  
+                        <g transform="translate(150, 100)">  
+                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
+                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
+                            <circle cx="0" cy="18" r="2" fill="#333333"/>  
+                              
+                            <g>  
+                                <path d="M-10 -10 L10 -10 L0 0 Z" fill="#20C5C6">  
+                                    <animateTransform   
+                                        attributeName="transform"  
+                                        type="rotate"  
+                                        from="0 0 0"  
+                                        to="360 0 0"  
+                                        dur="4s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                    <animate   
+                                        attributeName="fill"  
+                                        values="#20C5C6;#00FFFF;#20C5C6"  
+                                        dur="4s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                    <animate   
+                                        attributeName="opacity"  
+                                        values="0.3;1;0.3"  
+                                        dur="4s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                </path>  
+                            </g>  
+                        </g>
+
+                        <!-- Android Device -->  
+                        <g transform="translate(300, 80)">  
+                            <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333"/>  
+                            <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b"/>  
+                            <circle cx="0" cy="24" r="2" fill="#333333"/>  
+                              
+                            <g>  
+                                <path d="M-15 -15 L15 -15 L0 0 Z" fill="#FF6B00">  
+                                    <animateTransform   
+                                        attributeName="transform"  
+                                        type="rotate"  
+                                        from="0 0 0"  
+                                        to="-360 0 0"  
+                                        dur="5s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                    <animate   
+                                        attributeName="fill"  
+                                        values="#FF6B00;#FF4500;#FF6B00"  
+                                        dur="5s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                    <animate   
+                                        attributeName="opacity"  
+                                        values="0.3;1;0.3"  
+                                        dur="5s"  
+                                        repeatCount="indefinite"  
+                                    />  
+                                </path>  
+                            </g>  
+                        </g>
+
+                        <!-- Mac Device -->  
+                        <g transform="translate(450, 150)">  
+                            <rect x="-35" y="-25" width="70" height="40" rx="2" ry="2" fill="#333333"/>  
+                            <rect x="-32" y="-22" width="64" height="36" rx="1" ry="1" fill="#1e293b"/>  
+                            <rect x="-10" y="15" width="20" height="15" fill="#333333"/>  
+                              
+                            <circle cx="0" cy="-10" r="5" fill="#20C5C6">  
+                                <animate   
+                                    attributeName="cy"  
+                                    values="-10;-20;-10"  
+                                    dur="3s"  
+                                    repeatCount="indefinite"  
+                                />  
+                                <animate   
+                                    attributeName="fill"  
+                                    values="#20C5C6;#00FFFF;#20C5C6"  
+                                    dur="3s"  
+                                    repeatCount="indefinite"  
+                                />  
+                                <animate   
+                                    attributeName="opacity"  
+                                    values="0.3;1;0.3"  
+                                    dur="3s"  
+                                    repeatCount="indefinite"  
+                                />  
+                            </circle>  
+                        </g>
+
+                        <!-- Emulator Device -->  
+                        <g transform="translate(200, 250)">  
+                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
+                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
+                              
+                            <path d="M-8 0 Q0 -10, 8 0 T16 0" fill="none" stroke="#FF6B00" stroke-width="2">  
+                                <animate   
+                                    attributeName="d"  
+                                    values="M-8 0 Q0 -10, 8 0 T16 0;  
+                                            M-8 0 Q0 10, 8 0 T16 0;  
+                                            M-8 0 Q0 -10, 8 0 T16 0"  
+                                    dur="4s"  
+                                    repeatCount="indefinite"  
+                                />  
+                                <animate   
+                                    attributeName="stroke"  
+                                    values="#FF6B00;#FF4500;#FF6B00"  
+                                    dur="4s"  
+                                    repeatCount="indefinite"  
+                                />  
+                                <animate   
+                                    attributeName="opacity"  
+                                    values="0.5;1;0.5"  
+                                    dur="4s"  
+                                    repeatCount="indefinite"  
+                                />  
+                            </path>  
+                        </g>
+
+                        <!-- Targeting Lines -->  
+                        <g stroke-dasharray="5,5">  
+                            <path d="M150 100 Q300 200, 450 150" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
+                                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" repeatCount="indefinite"/>  
+                            </path>  
+                            <path d="M300 80 Q300 200, 200 250" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
+                                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>  
+                            </path>  
+                        </g>
+
+                        <!-- Descriptive Text -->  
+                        <text x="300" y="350" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="18" font-weight="600">  
+                            Cross-Platform Testing  
+                        </text>  
+                    </svg>
+
+                    <!-- FAQ Mini-Section -->
+                    <div class="faq-section" style="padding-top: 2rem; padding-bottom: 0;">
+                        <h3 class="devices-title">Frequently Asked Questions</h3>
+                        <p class="devices-description">Common questions about our services</p>
+                        
+                        <div class="faq-container" style="max-width: 100%;">
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
+                                    <span>How quickly can you start testing my app?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-1">
+                                    <div class="faq-answer-content">
+                                        <p>We can typically begin testing within 24 hours of receiving access to your application and a brief on your testing requirements.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
+                                    <span>Do you test on real devices or emulators?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-2">
+                                    <div class="faq-answer-content">
+                                        <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
+                                    </div>
+                                </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
+                                    <span>How does your blocked hours option work?</span>
+                                    <div class="faq-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="faq-answer" id="faq-answer-3">
+                                    <div class="faq-answer-content">
+                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <a href="./faq.html" class="cta-button">View All FAQs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div id="feader-placeholder"></div>
     <!-- Your page content here -->
     <div id="footer-placeholder"></div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+        
+        // Theme Toggle with improved accessibility
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            });
+        }
+        
+        // FAQ Accordion with keyboard accessibility
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                toggleFAQ(item, question, answer);
+            });
+            
+            // Keyboard accessibility
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFAQ(item, question, answer);
+                }
+            });
+        });
+        
+        function toggleFAQ(item, question, answer) {
+            const isActive = item.classList.contains('faq-active');
+            
+            // Close all FAQs
+            faqItems.forEach(faq => {
+                const faqQuestion = faq.querySelector('.faq-question');
+                faqQuestion.setAttribute('aria-expanded', 'false');
+                faq.classList.remove('faq-active');
+            });
+            
+            // If the clicked item wasn't active, open it
+            if (!isActive) {
+                item.classList.add('faq-active');
+                question.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Show/hide the hours input based on service type selection
+        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+        const hoursInput = document.getElementById('hours-needed');
+        
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'blocked-hours') {
+                    hoursInput.style.display = 'block';
+                } else {
+                    hoursInput.style.display = 'none';
+                }
+            });
+        });
+        
+        // Initialize display state
+        if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
+            hoursInput.style.display = 'block';
+        } else if (hoursInput) {
+            hoursInput.style.display = 'none';
+        }
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // Don't prevent default - allow form to submit to Formspree
+                
+                // Set a flag in localStorage to show a success message when the user returns
+                localStorage.setItem('formSubmitted', 'true');
+            });
+        }
+
+        // Optional: Check if returning from form submission to show success message
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('formSubmitted') === 'true') {
+                // Clear the flag
+                localStorage.removeItem('formSubmitted');
+                
+                // Show success message
+                const messageElement = document.createElement('div');
+                messageElement.style.position = 'fixed';
+                messageElement.style.top = '20px';
+                messageElement.style.left = '50%';
+                messageElement.style.transform = 'translateX(-50%)';
+                messageElement.style.backgroundColor = 'var(--success)';
+                messageElement.style.color = 'white';
+                messageElement.style.padding = '1rem 2rem';
+                messageElement.style.borderRadius = 'var(--radius-md)';
+                messageElement.style.boxShadow = 'var(--shadow-md)';
+                messageElement.style.zIndex = '9999';
+                messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
+                
+                document.body.appendChild(messageElement);
+                
+                setTimeout(() => {
+                    messageElement.style.opacity = '0';
+                    messageElement.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(messageElement);
+                    }, 500);
+                }, 5000);
+            }
+        });
+
+        // Auto-check packages based on URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize session storage for selected packages if not exists
+            if (!sessionStorage.getItem('selectedPackages')) {
+                sessionStorage.setItem('selectedPackages', JSON.stringify([]));
+            }
+            
+            // Check if we have a package to auto-select from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageToSelect = urlParams.get('package');
+            
+            // If we have a specific service type to select (blocked-hours or prepaid-hours)
+            if (packageToSelect === 'blocked-hours' || packageToSelect === 'prepaid-hours') {
+                // Find the corresponding radio button and check it
+                const radioButton = document.getElementById(packageToSelect === 'blocked-hours' ? 'blocked-hours' : 'prepaid-hours');
+                if (radioButton) {
+                    radioButton.checked = true;
+                    
+                    // Manually trigger display of the appropriate input field
+                    if (packageToSelect === 'blocked-hours') {
+                        // Show the hours input for blocked hours
+                        const hoursInput = document.getElementById('hours-needed');
+                        if (hoursInput) {
+                            hoursInput.style.display = 'block';
+                        }
+                    } else if (packageToSelect === 'prepaid-hours') {
+                        // Show the prepaid hours selector
+                        const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                        if (prepaidSelector) {
+                            prepaidSelector.style.display = 'block';
+                        }
+                    }
+                    
+                    // Scroll to the form section after a short delay
+                    setTimeout(() => {
+                        const formSection = document.getElementById('contact');
+                        if (formSection) {
+                            formSection.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Highlight the selected option
+                            radioButton.parentNode.classList.add('highlighted');
+                            setTimeout(() => {
+                                radioButton.parentNode.classList.remove('highlighted');
+                            }, 3000);
+                        }
+                    }, 500);
+                }
+            }
+            const isAddOperation = urlParams.get('add') === 'true';
+            
+            // Load any previously selected packages
+            const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+            
+            // Check boxes for all previously selected packages
+            selectedPackages.forEach(pkg => {
+                const checkbox = document.getElementById(pkg);
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+            
+            // Add the new package if specified in URL
+            if (packageToSelect) {
+                // Add to session storage if not already there
+                if (isAddOperation && !selectedPackages.includes(packageToSelect)) {
+                    selectedPackages.push(packageToSelect);
+                    sessionStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
+                }
+                
+                // Try to find the checkbox with the corresponding ID
+                const checkbox = document.getElementById(packageToSelect);
+                
+                if (checkbox) {
+                    // Check the box
+                    checkbox.checked = true;
+                    
+                    // Scroll to the form section
+                    const formSection = document.getElementById('contact');
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // Add visual feedback
+                    checkbox.parentNode.classList.add('highlighted');
+                    setTimeout(() => {
+                        checkbox.parentNode.classList.remove('highlighted');
+                    }, 3000);
+                    
+                    // Show a notification
+                    const notificationElement = document.createElement('div');
+                    notificationElement.style.position = 'fixed';
+                    notificationElement.style.top = '20px';
+                    notificationElement.style.left = '50%';
+                    notificationElement.style.transform = 'translateX(-50%)';
+                    notificationElement.style.backgroundColor = 'var(--teal)';
+                    notificationElement.style.color = 'white';
+                    notificationElement.style.padding = '1rem 2rem';
+                    notificationElement.style.borderRadius = 'var(--radius-md)';
+                    notificationElement.style.boxShadow = 'var(--shadow-md)';
+                    notificationElement.style.zIndex = '9999';
+                    notificationElement.innerText = `${checkbox.labels[0].textContent} added to your form`;
+                    
+                    document.body.appendChild(notificationElement);
+                    
+                    setTimeout(() => {
+                        notificationElement.style.opacity = '0';
+                        notificationElement.style.transition = 'opacity 0.5s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(notificationElement);
+                        }, 500);
+                    }, 3000);
+                }
+            }
+            
+            // Add event listeners to checkboxes to update session storage when changed
+            const packageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="package[]"]');
+            packageCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const packageId = this.id;
+                    const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+                    
+                    if (this.checked && !selectedPackages.includes(packageId)) {
+                        // Add to selected packages
+                        selectedPackages.push(packageId);
+                    } else if (!this.checked && selectedPackages.includes(packageId)) {
+                        // Remove from selected packages
+                        const index = selectedPackages.indexOf(packageId);
+                        if (index > -1) {
+                            selectedPackages.splice(index, 1);
+                        }
+                    }
+                    
+                    // Update session storage
+                    sessionStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
+                    
+                    // Update badge counters if they exist
+                    updatePackageBadge();
+                });
+            });
+            
+            // Update badge counter on page load
+            updatePackageBadge();
+        });
+        
+        // Function to update package badge counter
+        function updatePackageBadge() {
+            const badge = document.getElementById('package-counter');
+            if (!badge) return;
+            
+            const selectedPackages = JSON.parse(sessionStorage.getItem('selectedPackages')) || [];
+            badge.textContent = selectedPackages.length;
+            
+            if (selectedPackages.length > 0) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+        
+        // Clear all selected packages (optional feature)
+        function clearSelectedPackages() {
+            sessionStorage.setItem('selectedPackages', JSON.stringify([]));
+            
+            // Uncheck all checkboxes
+            const packageCheckboxes = document.querySelectorAll('input[type="checkbox"][name="package[]"]');
+            packageCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Update badge counter
+            updatePackageBadge();
+        }
+
+        // Show/hide the hours input based on service type selection
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both inputs first
+                if (hoursInput) hoursInput.style.display = 'none';
+                if (document.getElementById('prepaid-hours-selector')) {
+                    document.getElementById('prepaid-hours-selector').style.display = 'none';
+                }
+                
+                // Show the appropriate input based on selection
+                if (this.value === 'blocked-hours' && hoursInput) {
+                    hoursInput.style.display = 'block';
+                } else if (this.value === 'prepaid-hours' && document.getElementById('prepaid-hours-selector')) {
+                    document.getElementById('prepaid-hours-selector').style.display = 'block';
+                }
+            });
+        });
+
+        // Initialize the 10-hour blocks selector
+        const hourBlocksInput = document.getElementById('hour-blocks');
+        const totalHoursDisplay = document.getElementById('total-hours');
+
+        if (hourBlocksInput && totalHoursDisplay) {
+            hourBlocksInput.addEventListener('input', function() {
+                // Ensure the value is at least 1
+                if (this.value < 1) this.value = 1;
+                
+                // Calculate and display total hours
+                const blocks = parseInt(this.value) || 1;
+                totalHoursDisplay.textContent = blocks * 10;
+            });
+        }
+
+        // Initialize display state for prepaid hours selector
+        if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
+            const selector = document.getElementById('prepaid-hours-selector');
+            if (selector) selector.style.display = 'block';
+        }
+        <script>
     // Load header
     fetch('header.html')
         .then(response => response.text())
@@ -978,6 +1722,9 @@
     </script>
 </body>
 </html>
+</body>
+</html>
+
 
 
 
