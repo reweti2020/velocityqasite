@@ -988,7 +988,7 @@
     </div>
 
     <!-- Floating Add Package Button -->
-    <a href="contact.html?package=automation&add=true" class="floating-add-button" id="addPackageButton">
+    <a href="contact.html?package=automation-services&add=true" class="floating-add-button" id="addPackageButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -1897,33 +1897,146 @@
     <footer>
         <div id="footer-placeholder"></div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Load header
-            fetch('header.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-              })
-              .catch(error => console.error('Error loading header:', error));
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
         
-            // Load footer
-            fetch('footer.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-              })
-              .catch(error => console.error('Error loading footer:', error));
-              
-            // FAQ toggle functionality
-            document.querySelectorAll('.faq-question').forEach(function (el) {
-                el.addEventListener('click', function () {
-                    const parent = el.parentElement;
-                    parent.classList.toggle('active');
-                });
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    // Custom cursor
+    const cursor = document.querySelector('.cursor-follower');
+
+    if (cursor && window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            if (!cursor.classList.contains('active')) {
+                setTimeout(() => {
+                    cursor.classList.add('active');
+                }, 500);
+            }
+        });
+        
+        // Add hover effects for links and buttons
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                if (link.classList.contains('cta-button')) {
+                    cursor.classList.add('hover-button');
+                } else {
+                    cursor.classList.add('hover-link');
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover-link', 'hover-button');
             });
         });
-    </script>
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('active');
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.classList.add('active');
+        });
+    } else if (cursor) {
+        // If not a hover device, hide the cursor completely
+        cursor.style.display = 'none';
+    }
+
+    function toggleFAQ(element) {
+        element.parentNode.classList.toggle('active');
+    }
+    
+    // Initialize floating add package button
+    document.addEventListener('DOMContentLoaded', function() {
+        const addPackageButton = document.getElementById('addPackageButton');
+        
+        // Fade in the button
+        setTimeout(() => {
+            addPackageButton.style.opacity = '1';
+        }, 500);
+        
+        // Add notification when clicked
+        addPackageButton.addEventListener('click', function(e) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = "User Journey Testing package added to your selections";
+            notification.style.position = 'fixed';
+            notification.style.bottom = '2rem';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.backgroundColor = 'var(--teal)';
+            notification.style.color = 'white';
+            notification.style.padding = '0.75rem 1.5rem';
+            notification.style.borderRadius = 'var(--radius-md)';
+            notification.style.boxShadow = 'var(--shadow-md)';
+            notification.style.zIndex = '9999';
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s ease';
+            
+            document.body.appendChild(notification);
+            
+            // Fade in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Fade out and remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        });
+    });
+ </script>
+    
+<script>
+        // Load header
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+        
+        // Load footer
+        fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+        
+     </script>
 </body>
 </html>
