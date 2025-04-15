@@ -2915,71 +2915,93 @@ if (comparisonNext) {
         });
     </script>
 <script>
-    // Load header
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-        // After header loads, initialize cursor effects
-        initializeCursor();
-      })
-      .catch(error => console.error('Error loading header:', error));
-    
-    // Load footer
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading footer:', error));
-    
-    // Cursor functionality
-    function initializeCursor() {
-      const cursor = document.querySelector('.cursor-follower');
-      if (!cursor) return;
-      
-      if (window.matchMedia('(hover: hover)').matches) {
-        document.addEventListener('mousemove', (e) => {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
-          
-          if (!cursor.classList.contains('active')) {
-            setTimeout(() => {
-              cursor.classList.add('active');
-            }, 100);
-          }
-        });
-        
-        // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll(
-          'a, button, .nav-link, .cta-button, .feature-card, ' +
-          '.package-feature, .tab, .toggle-btn, ' +
-          '.footer-link a, .social-link'
-        );
-        
-        interactiveElements.forEach(element => {
-          element.addEventListener('mouseenter', () => {
-            if (element.classList.contains('cta-button') || 
-                element.classList.contains('hero-button-primary') || 
-                element.classList.contains('hero-button-secondary')) {
-              cursor.classList.add('hover-button');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure elements exist before manipulating them
+        const headerPlaceholder = document.getElementById('header-placeholder');
+        const footerPlaceholder = document.getElementById('footer-placeholder');
+        const cursor = document.querySelector('.cursor-follower');
+
+        // Header loading
+        if (headerPlaceholder) {
+            fetch('header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    headerPlaceholder.innerHTML = data;
+                    initializeCursor();
+                })
+                .catch(error => {
+                    console.error('Error loading header:', error);
+                });
+        }
+
+        // Footer loading
+        if (footerPlaceholder) {
+            fetch('footer.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    footerPlaceholder.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading footer:', error);
+                });
+        }
+
+        // Cursor initialization
+        function initializeCursor() {
+            if (!cursor) return;
+
+            if (window.matchMedia('(hover: hover)').matches) {
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    if (!cursor.classList.contains('active')) {
+                        setTimeout(() => {
+                            cursor.classList.add('active');
+                        }, 100);
+                    }
+                });
+                
+                // Add hover effects for interactive elements
+                const interactiveElements = document.querySelectorAll(
+                    'a, button, .nav-link, .cta-button, .feature-card, ' +
+                    '.package-feature, .tab, .toggle-btn, ' +
+                    '.footer-link a, .social-link'
+                );
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        if (element.classList.contains('cta-button') || 
+                            element.classList.contains('hero-button-primary') || 
+                            element.classList.contains('hero-button-secondary')) {
+                            cursor.classList.add('hover-button');
+                        } else {
+                            cursor.classList.add('hover-link');
+                        }
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        cursor.classList.remove('hover-link', 'hover-button');
+                    });
+                });
             } else {
-              cursor.classList.add('hover-link');
+                // Hide cursor on touch devices
+                cursor.style.display = 'none';
             }
-          });
-          
-          element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover-link', 'hover-button');
-          });
-        });
-      } else {
-        // Hide cursor on touch devices
-        cursor.style.display = 'none';
-      }
-    }
+        }
+    });
 </script>
-<script src="js/cursor.js">
-</body>
+<script src="js/cursor.js"></script>
 </html>
 
 
