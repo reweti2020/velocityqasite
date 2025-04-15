@@ -1360,6 +1360,41 @@
                 animation-iteration-count: 1 !important;
             }
         }
+            /* Custom Cursor Styles */
+    .cursor-follower {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(32, 197, 198, 0.2);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    }
+
+    .cursor-follower.active {
+        opacity: 1;
+    }
+
+    .cursor-follower.hover-link {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(32, 197, 198, 0.1);
+    }
+
+    .cursor-follower.hover-button {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(32, 197, 198, 0.15);
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        .cursor-follower {
+            display: none;
+        }
+    }
     </style>
 </head>
 <body data-theme="dark">
@@ -2880,24 +2915,71 @@ if (comparisonNext) {
         });
     </script>
 <script>
-// Load header
-fetch('header.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-})
-.catch(error => console.error('Error loading header:', error));
-
-// Load footer
-fetch('footer.html')
-.then(response => response.text())
-.then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-})
-.catch(error => console.error('Error loading footer:', error));
-
-  </script>
+    // Load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+        // After header loads, initialize cursor effects
+        initializeCursor();
+      })
+      .catch(error => console.error('Error loading header:', error));
+    
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+    
+    // Cursor functionality
+    function initializeCursor() {
+      const cursor = document.querySelector('.cursor-follower');
+      if (!cursor) return;
+      
+      if (window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+          
+          if (!cursor.classList.contains('active')) {
+            setTimeout(() => {
+              cursor.classList.add('active');
+            }, 100);
+          }
+        });
+        
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll(
+          'a, button, .nav-link, .cta-button, .feature-card, ' +
+          '.package-feature, .tab, .toggle-btn, ' +
+          '.footer-link a, .social-link'
+        );
+        
+        interactiveElements.forEach(element => {
+          element.addEventListener('mouseenter', () => {
+            if (element.classList.contains('cta-button') || 
+                element.classList.contains('hero-button-primary') || 
+                element.classList.contains('hero-button-secondary')) {
+              cursor.classList.add('hover-button');
+            } else {
+              cursor.classList.add('hover-link');
+            }
+          });
+          
+          element.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover-link', 'hover-button');
+          });
+        });
+      } else {
+        // Hide cursor on touch devices
+        cursor.style.display = 'none';
+      }
+    }
+<script src="js/cursor.js"></script>
 </body>
 </html>
+
 
 
