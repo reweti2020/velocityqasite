@@ -1439,50 +1439,51 @@
                 cursor.style.display = 'none';
             }
 
-// Initialize floating add package button
-const addPackageButton = document.getElementById('addPackageButton');
-
-// Fade in the button
-setTimeout(() => {
-    addPackageButton.style.opacity = '1';
-}, 500);
-
-// Add notification when clicked
-addPackageButton.addEventListener('click', function(e) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.textContent = "Bug Hunter package added to your selections";
-    notification.style.position = 'fixed';
-    notification.style.bottom = '2rem';
-    notification.style.left = '50%';
-    notification.style.transform = 'translateX(-50%)';
-    notification.style.backgroundColor = 'var(--teal)';
-    notification.style.color = 'white';
-    notification.style.padding = '0.75rem 1.5rem';
-    notification.style.borderRadius = 'var(--radius-md)';
-    notification.style.boxShadow = 'var(--shadow-md)';
-    notification.style.zIndex = '9999';
-    notification.style.opacity = '0';
-    notification.style.transition = 'opacity 0.3s ease';
-    
-    document.body.appendChild(notification);
-    
-    // Fade in
-    setTimeout(() => {
-        notification.style.opacity = '1';
-    }, 10);
-    
-    // Fade out and remove after 3 seconds
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
-});
+            // Initialize floating add package button
+            document.addEventListener('DOMContentLoaded', function() {
+                const addPackageButton = document.getElementById('addPackageButton');
+                
+                // Fade in the button
+                setTimeout(() => {
+                    addPackageButton.style.opacity = '1';
+                }, 500);
+                
+                // Add notification when clicked
+                addPackageButton.addEventListener('click', function(e) {
+                    // Create notification element
+                    const notification = document.createElement('div');
+                    notification.textContent = "Bug Hunter package added to your selections";
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '2rem';
+                    notification.style.left = '50%';
+                    notification.style.transform = 'translateX(-50%)';
+                    notification.style.backgroundColor = 'var(--teal)';
+                    notification.style.color = 'white';
+                    notification.style.padding = '0.75rem 1.5rem';
+                    notification.style.borderRadius = 'var(--radius-md)';
+                    notification.style.boxShadow = 'var(--shadow-md)';
+                    notification.style.zIndex = '9999';
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s ease';
+                    
+                    document.body.appendChild(notification);
+                    
+                    // Fade in
+                    setTimeout(() => {
+                        notification.style.opacity = '1';
+                    }, 10);
+                    
+                    // Fade out and remove after 3 seconds
+                    setTimeout(() => {
+                        notification.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(notification);
+                        }, 300);
+                    }, 3000);
+                });
+            });
     </script>
-
-<script>
+        <script>
     // Load header
     fetch('header.html')
         .then(response => response.text())
@@ -1498,7 +1499,6 @@ addPackageButton.addEventListener('click', function(e) {
             document.getElementById('footer-placeholder').innerHTML = data;
         })
         .catch(error => console.error('Error loading footer:', error));
-    <script>
+    </script>
 </body>
 </html>
-
