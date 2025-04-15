@@ -697,6 +697,29 @@ footer {
             box-shadow: var(--shadow-lg);
         }
 
+        /* Add styles for nested checkbox items */
+        .nested-checkbox {
+            margin-left: 1.8rem; /* Indent nested items */
+            position: relative;
+        }
+        
+        .nested-checkbox::before {
+            content: "├─";
+            position: absolute;
+            left: -1.2rem;
+            color: var(--text-light);
+        }
+        
+        .nested-checkbox:last-of-type::before {
+            content: "└─";
+        }
+        
+        /* For the parent checkbox */
+        .parent-checkbox {
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
         /* Mobile nav */
         .mobile-menu-toggle {
             display: none;
@@ -1004,27 +1027,33 @@ footer {
                                     <input type="checkbox" id="system-auditor" name="package[]" value="system-auditor">
                                     <label for="system-auditor">System Auditor ($1,250)</label>
                                 </div>
+                                
+                                <!-- Automation package with nested checkboxes -->
+                                <div class="checkbox-item parent-checkbox">
+                                    <input type="checkbox" id="automation" name="package[]" value="automation">
+                                    <label for="automation">Automation Services</label>
+                                </div>
+                                
+                                <!-- Nested automation packages -->
+                                <div class="checkbox-item nested-checkbox">
+                                    <input type="checkbox" id="automation-rapid" name="package[]" value="automation-rapid">
+                                    <label for="automation-rapid">Rapid Smoke Test Automation ($1,295)</label>
+                                </div>
+                                <div class="checkbox-item nested-checkbox">
+                                    <input type="checkbox" id="automation-core" name="package[]" value="automation-core">
+                                    <label for="automation-core">Core Workflow Automation ($2,495)</label>
+                                </div>
+                                <div class="checkbox-item nested-checkbox">
+                                    <input type="checkbox" id="automation-enterprise" name="package[]" value="automation-enterprise">
+                                    <label for="automation-enterprise">Custom Enterprise Solution (Quote)</label>
+                                </div>
+                                
+                                <!-- Precision Strike -->
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="precision-strike" name="package[]" value="precision-strike">
                                     <label for="precision-strike">Precision Strike ($100/hr)</label>
                                 </div>
-                                <div class="checkbox-item parent-checkbox">
-                                    <input type="checkbox" id="Automation" name="package[]" value="Automation">
-                                    <label for="monthly-checkin">Automation</label>
-                                </div>   
-                                <div class="checkbox-item nested-checkbox">
-                                    <input type="checkbox" id="Rapid-Smoke-Test" name="package[]" value="rapid-smoke-test">
-                                    <label for="monthly-checkin">Rapid Smoke Test ($1,295/month)</label>
-                                </div>
-                                <div class="checkbox-item nested-checkbox">
-                                    <input type="checkbox" id="Core-Workflow" name="package[]" value="Core-Workflow">
-                                    <label for="monthly-checkin">Core Workflow($2,495/month)</label>
-                                </div>
-                                <div class="checkbox-item nested-checkbox">
-                                    <input type="checkbox" id="Custom Quote" name="package[]" value="Custom Quote">
-                                    <label for="monthly-checkin">Custom Quote</label>
-                                </div>
-
+                                
                                 <!-- Micro Packages/Add-ons -->
                                 <h4 class="form-sublabel">Add-on Packages</h4>
                                 <div class="checkbox-item">
@@ -1035,11 +1064,17 @@ footer {
                                     <input type="checkbox" id="monthly-checkin" name="package[]" value="monthly-checkin">
                                     <label for="monthly-checkin">Monthly Check-In Testing ($275/month)</label>
                                 </div>
-   
+                                
+                                <!-- Automation Add-ons (nested under add-ons) -->
+                                <div class="checkbox-item nested-checkbox">
+                                    <input type="checkbox" id="automation-maintenance" name="package[]" value="automation-maintenance">
+                                    <label for="automation-maintenance">Quarterly Maintenance Package ($595/quarter)</label>
+                                </div>
+                                <div class="checkbox-item nested-checkbox">
+                                    <input type="checkbox" id="automation-edge-case" name="package[]" value="automation-edge-case">
+                                    <label for="automation-edge-case">Edge Case Testing Add-on ($795)</label>
                                 </div>
                             </div>
-                            <button type="button" onclick="clearSelectedPackages()" class="clear-button" style="margin-top: 0.75rem;">Clear All Selections</button>
-                        </div>
 
                         <!-- Testing Environment Options -->
                         <div class="form-group">
@@ -1571,6 +1606,54 @@ footer {
                 }
             });
             
+            // Custom cursor
+        const cursor = document.querySelector('.cursor-follower');
+
+if (cursor && window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        if (!cursor.classList.contains('active')) {
+            setTimeout(() => {
+                cursor.classList.add('active');
+            }, 500);
+        }
+    });
+    
+    // Add hover effects for links and buttons
+    const links = document.querySelectorAll('a, button');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            if (link.classList.contains('cta-button')) {
+                cursor.classList.add('hover-button');
+            } else {
+                cursor.classList.add('hover-link');
+            }
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover-link', 'hover-button');
+        });
+    });
+    
+    // Hide cursor when it leaves the window
+    document.addEventListener('mouseleave', () => {
+        cursor.classList.remove('active');
+    });
+    
+    document.addEventListener('mouseenter', () => {
+        cursor.classList.add('active');
+    });
+} else if (cursor) {
+    // If not a hover device, hide the cursor completely
+    cursor.style.display = 'none';
+}
+
+function toggleFAQ(element) {
+    element.parentNode.classList.toggle('active');
+}
+
             // Add the new package if specified in URL
             if (packageToSelect) {
                 // Add to session storage if not already there
@@ -1743,6 +1826,22 @@ footer {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
