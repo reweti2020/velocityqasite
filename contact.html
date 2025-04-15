@@ -866,6 +866,51 @@ footer {
             background-color: var(--bg-light);
             color: var(--text);
         }
+
+        .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    
+    /* Both containers need to independently scroll if they're longer than viewport */
+    .contact-form-container, .devices-container {
+        height: auto;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Update media query to prevent grid collapse on large screens */
+    @media (max-width: 992px) {
+        .contact-grid {
+            grid-template-columns: 1fr 1fr; /* Keep two columns even on tablets */
+            gap: 2rem; /* Slightly reduce gap */
+        }
+    }
+    
+    /* Only collapse to single column on mobile */
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr; /* Single column on mobile */
+        }
+    }
+    
+    /* Visual enhancement for the FAQ section in right column */
+    .faq-mini-section {
+        margin-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+    }
+    
+    /* Make sure SVG is fully visible and responsive */
+    .devices-container svg {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+    }
     </style>
 </head>
 <body data-theme="dark">
@@ -991,10 +1036,11 @@ footer {
             </div>
         </div>
     </section>
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
+            <!-- This is the main grid container that defines our two-column layout -->
             <div class="contact-grid">
+                <!-- LEFT COLUMN: Contact Form -->
                 <div class="contact-form-container">
                     <h2 class="form-title">Get In Touch</h2>
                     <form id="contactForm" action="https://formspree.io/f/xjkyadle" method="POST">
@@ -1075,7 +1121,8 @@ footer {
                                     <label for="automation-edge-case">Edge Case Testing Add-on ($795)</label>
                                 </div>
                             </div>
-
+                        </div>
+    
                         <!-- Testing Environment Options -->
                         <div class="form-group">
                             <label class="form-label">Testing Environment (Select all that apply)</label>
@@ -1099,7 +1146,7 @@ footer {
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="form-group">
                             <label class="form-label">Service Type</label>
                             <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
@@ -1149,12 +1196,14 @@ footer {
                         <button type="submit" class="submit-button" style="margin-top: 1.5rem;">Send Message</button>
                     </form>
                 </div>
-                <!-- Testing Devices Visualization -->
+                
+                <!-- RIGHT COLUMN: Testing Devices Visualization and FAQ -->
                 <div class="devices-container">
                     <h3 class="devices-title">Cross-Platform Testing</h3>
                     <p class="devices-description">We test your applications across all major platforms to ensure consistent quality.</p>
                     
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;" aria-label="Illustration of cross-platform testing across multiple devices">  
+                        <!-- SVG content stays the same -->
                         <defs>  
                             <!-- Gradient Definitions -->  
                             <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
@@ -1166,14 +1215,14 @@ footer {
                                 <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>  
                             </filter>  
                         </defs>
-
+    
                         <!-- Background Layer with Subtle Grid -->  
                         <rect width="600" height="400" fill="#121620"/>  
                         <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">  
                             <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
                         </pattern>  
                         <rect width="600" height="400" fill="url(#gridPattern)"/>
-
+    
                         <!-- Central Testing Concept -->  
                         <g transform="translate(300, 200)">  
                             <!-- Concentric Circles -->  
@@ -1197,7 +1246,7 @@ footer {
                                          repeatCount="indefinite"/>  
                             </circle>  
                         </g>
-
+    
                         <!-- Device Elements -->  
                         <!-- iOS Device -->  
                         <g transform="translate(150, 100)">  
@@ -1230,7 +1279,7 @@ footer {
                                 </path>  
                             </g>  
                         </g>
-
+    
                         <!-- Android Device -->  
                         <g transform="translate(300, 80)">  
                             <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333"/>  
@@ -1262,7 +1311,7 @@ footer {
                                 </path>  
                             </g>  
                         </g>
-
+    
                         <!-- Mac Device -->  
                         <g transform="translate(450, 150)">  
                             <rect x="-35" y="-25" width="70" height="40" rx="2" ry="2" fill="#333333"/>  
@@ -1290,7 +1339,7 @@ footer {
                                 />  
                             </circle>  
                         </g>
-
+    
                         <!-- Emulator Device -->  
                         <g transform="translate(200, 250)">  
                             <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
@@ -1319,7 +1368,7 @@ footer {
                                 />  
                             </path>  
                         </g>
-
+    
                         <!-- Targeting Lines -->  
                         <g stroke-dasharray="5,5">  
                             <path d="M150 100 Q300 200, 450 150" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
@@ -1329,15 +1378,15 @@ footer {
                                 <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>  
                             </path>  
                         </g>
-
+    
                         <!-- Descriptive Text -->  
                         <text x="300" y="350" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="18" font-weight="600">  
                             Cross-Platform Testing  
                         </text>  
                     </svg>
-
+    
                     <!-- FAQ Mini-Section -->
-                    <div class="faq-section" style="padding-top: 2rem; padding-bottom: 0;">
+                    <div class="faq-mini-section" style="margin-top: 2rem;">
                         <h3 class="devices-title">Frequently Asked Questions</h3>
                         <p class="devices-description">Common questions about our services</p>
                         
@@ -1374,6 +1423,7 @@ footer {
                                         <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
                                     </div>
                                 </div>
+                            </div>
                             
                             <div class="faq-item">
                                 <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
@@ -1401,8 +1451,9 @@ footer {
             </div>
         </div>
     </section>
+    </section>
 
-    <div id="feader-placeholder"></div>
+    <div id="footer-placeholder"></div>
     <!-- Your page content here -->
     <div id="footer-placeholder"></div>
 
@@ -1826,6 +1877,22 @@ function toggleFAQ(element) {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
