@@ -317,12 +317,23 @@
             background-color: var(--bg-light);
         }
 
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
         .contact-form-container {
             background-color: var(--card);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
             box-shadow: var(--shadow-lg);
             transition: var(--transition-base);
+            height: auto;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .contact-form-container:hover {
@@ -459,6 +470,7 @@
             display: flex;
             flex-direction: column;
             transition: var(--transition-base);
+            overflow-y: auto;
         }
 
         .devices-container:hover {
@@ -566,12 +578,6 @@ footer {
     background-color: #0f172a;
     color: white;
     padding: 4rem 0 2rem;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
 }
 
 .footer-container {
@@ -733,9 +739,21 @@ footer {
             transition: var(--transition-base);
         }
 
+        /* Media Queries - FIXED FOR GRID LAYOUT */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr; /* Keep two columns even on tablets */
+                gap: 2rem; /* Slightly reduce gap */
+            }
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: flex;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr; /* Single column on mobile */
             }
 
             .nav-links {
@@ -852,50 +870,20 @@ footer {
             color: var(--text);
         }
 
-        .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: start;
-    }
-    
-    /* Both containers need to independently scroll if they're longer than viewport */
-    .contact-form-container, .devices-container {
-        height: auto;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    /* Update media query to prevent grid collapse on large screens */
-    @media (max-width: 992px) {
-        .contact-grid {
-            grid-template-columns: 1fr 1fr; /* Keep two columns even on tablets */
-            gap: 2rem; /* Slightly reduce gap */
+        /* Visual enhancement for the FAQ section in right column */
+        .faq-mini-section {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
         }
-    }
-    
-    /* Only collapse to single column on mobile */
-    @media (max-width: 768px) {
-        .contact-grid {
-            grid-template-columns: 1fr; /* Single column on mobile */
+        
+        /* Make sure SVG is fully visible and responsive */
+        .devices-container svg {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
         }
-    }
-    
-    /* Visual enhancement for the FAQ section in right column */
-    .faq-mini-section {
-        margin-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1.5rem;
-    }
-    
-    /* Make sure SVG is fully visible and responsive */
-    .devices-container svg {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-        object-fit: contain;
-    }
     </style>
 </head>
 <body data-theme="dark">
@@ -1021,9 +1009,11 @@ footer {
             </div>
         </div>
     </section>
+    
+    <!-- Contact Section - FIXED STRUCTURE -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <!-- This is the main grid container that defines our two-column layout -->
+            <!-- Main grid container that defines our two-column layout -->
             <div class="contact-grid">
                 <!-- LEFT COLUMN: Contact Form -->
                 <div class="contact-form-container">
@@ -1179,437 +1169,443 @@ footer {
                         </div>
                         
                         <button type="submit" class="submit-button" style="margin-top: 1.5rem;">Send Message</button>
-                    </form>
-                </div>
+                    </form
+                </form>
+            </div>
+            
+            <!-- RIGHT COLUMN: Testing Devices Visualization and FAQ -->
+            <div class="devices-container">
+                <h3 class="devices-title">Cross-Platform Testing</h3>
+                <p class="devices-description">We test your applications across all major platforms to ensure consistent quality.</p>
                 
-                <!-- RIGHT COLUMN: Testing Devices Visualization and FAQ -->
-                <div class="devices-container">
-                    <h3 class="devices-title">Cross-Platform Testing</h3>
-                    <p class="devices-description">We test your applications across all major platforms to ensure consistent quality.</p>
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;" aria-label="Illustration of cross-platform testing across multiple devices">  
-                        <!-- SVG content stays the same -->
-                        <defs>  
-                            <!-- Gradient Definitions -->  
-                            <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
-                                <stop offset="0%" stop-color="#FF6B00"/>  
-                                <stop offset="100%" stop-color="#20C5C6"/>  
-                            </linearGradient>  
-                              
-                            <filter id="deviceShadow">  
-                                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>  
-                            </filter>  
-                        </defs>
-    
-                        <!-- Background Layer with Subtle Grid -->  
-                        <rect width="600" height="400" fill="#121620"/>  
-                        <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">  
-                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
-                        </pattern>  
-                        <rect width="600" height="400" fill="url(#gridPattern)"/>
-    
-                        <!-- Central Testing Concept -->  
-                        <g transform="translate(300, 200)">  
-                            <!-- Concentric Circles -->  
-                            <circle cx="0" cy="0" r="180" fill="none" stroke="#334155" stroke-width="1" opacity="0.3"/>  
-                            <circle cx="0" cy="0" r="120" fill="none" stroke="#334155" stroke-width="1" opacity="0.2"/>  
-                            <circle cx="0" cy="0" r="60" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
-                              
-                            <!-- Pulsing Focus Point with Vibrant Color Transition -->  
-                            <circle cx="0" cy="0" r="15" fill="#20C5C6">  
-                                <animate attributeName="r"   
-                                         values="15;40;15"   
-                                         dur="3s"   
-                                         repeatCount="indefinite"/>  
-                                <animate attributeName="fill"   
-                                         values="#20C5C6;#00FFFF;#20C5C6"   
-                                         dur="3s"   
-                                         repeatCount="indefinite"/>  
-                                <animate attributeName="opacity"   
-                                         values="0.6;1;0.6"   
-                                         dur="3s"   
-                                         repeatCount="indefinite"/>  
-                            </circle>  
-                        </g>
-    
-                        <!-- Device Elements -->  
-                        <!-- iOS Device -->  
-                        <g transform="translate(150, 100)">  
-                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
-                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
-                            <circle cx="0" cy="18" r="2" fill="#333333"/>  
-                              
-                            <g>  
-                                <path d="M-10 -10 L10 -10 L0 0 Z" fill="#20C5C6">  
-                                    <animateTransform   
-                                        attributeName="transform"  
-                                        type="rotate"  
-                                        from="0 0 0"  
-                                        to="360 0 0"  
-                                        dur="4s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                    <animate   
-                                        attributeName="fill"  
-                                        values="#20C5C6;#00FFFF;#20C5C6"  
-                                        dur="4s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                    <animate   
-                                        attributeName="opacity"  
-                                        values="0.3;1;0.3"  
-                                        dur="4s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                </path>  
-                            </g>  
-                        </g>
-    
-                        <!-- Android Device -->  
-                        <g transform="translate(300, 80)">  
-                            <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333"/>  
-                            <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b"/>  
-                            <circle cx="0" cy="24" r="2" fill="#333333"/>  
-                              
-                            <g>  
-                                <path d="M-15 -15 L15 -15 L0 0 Z" fill="#FF6B00">  
-                                    <animateTransform   
-                                        attributeName="transform"  
-                                        type="rotate"  
-                                        from="0 0 0"  
-                                        to="-360 0 0"  
-                                        dur="5s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                    <animate   
-                                        attributeName="fill"  
-                                        values="#FF6B00;#FF4500;#FF6B00"  
-                                        dur="5s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                    <animate   
-                                        attributeName="opacity"  
-                                        values="0.3;1;0.3"  
-                                        dur="5s"  
-                                        repeatCount="indefinite"  
-                                    />  
-                                </path>  
-                            </g>  
-                        </g>
-    
-                        <!-- Mac Device -->  
-                        <g transform="translate(450, 150)">  
-                            <rect x="-35" y="-25" width="70" height="40" rx="2" ry="2" fill="#333333"/>  
-                            <rect x="-32" y="-22" width="64" height="36" rx="1" ry="1" fill="#1e293b"/>  
-                            <rect x="-10" y="15" width="20" height="15" fill="#333333"/>  
-                              
-                            <circle cx="0" cy="-10" r="5" fill="#20C5C6">  
-                                <animate   
-                                    attributeName="cy"  
-                                    values="-10;-20;-10"  
-                                    dur="3s"  
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="width: 100%; height: auto; background-color: #121620;" aria-label="Illustration of cross-platform testing across multiple devices">  
+                    <defs>  
+                        <!-- Gradient Definitions -->  
+                        <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">  
+                            <stop offset="0%" stop-color="#FF6B00"/>  
+                            <stop offset="100%" stop-color="#20C5C6"/>  
+                        </linearGradient>  
+                          
+                        <filter id="deviceShadow">  
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>  
+                        </filter>  
+                    </defs>
+
+                    <!-- Background Layer with Subtle Grid -->  
+                    <rect width="600" height="400" fill="#121620"/>  
+                    <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">  
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
+                    </pattern>  
+                    <rect width="600" height="400" fill="url(#gridPattern)"/>
+
+                    <!-- Central Testing Concept -->  
+                    <g transform="translate(300, 200)">  
+                        <!-- Concentric Circles -->  
+                        <circle cx="0" cy="0" r="180" fill="none" stroke="#334155" stroke-width="1" opacity="0.3"/>  
+                        <circle cx="0" cy="0" r="120" fill="none" stroke="#334155" stroke-width="1" opacity="0.2"/>  
+                        <circle cx="0" cy="0" r="60" fill="none" stroke="#334155" stroke-width="1" opacity="0.1"/>  
+                          
+                        <!-- Pulsing Focus Point with Vibrant Color Transition -->  
+                        <circle cx="0" cy="0" r="15" fill="#20C5C6">  
+                            <animate attributeName="r"   
+                                     values="15;40;15"   
+                                     dur="3s"   
+                                     repeatCount="indefinite"/>  
+                            <animate attributeName="fill"   
+                                     values="#20C5C6;#00FFFF;#20C5C6"   
+                                     dur="3s"   
+                                     repeatCount="indefinite"/>  
+                            <animate attributeName="opacity"   
+                                     values="0.6;1;0.6"   
+                                     dur="3s"   
+                                     repeatCount="indefinite"/>  
+                        </circle>  
+                    </g>
+
+                    <!-- Device Elements -->  
+                    <!-- iOS Device -->  
+                    <g transform="translate(150, 100)">  
+                        <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
+                        <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
+                        <circle cx="0" cy="18" r="2" fill="#333333"/>  
+                          
+                        <g>  
+                            <path d="M-10 -10 L10 -10 L0 0 Z" fill="#20C5C6">  
+                                <animateTransform   
+                                    attributeName="transform"  
+                                    type="rotate"  
+                                    from="0 0 0"  
+                                    to="360 0 0"  
+                                    dur="4s"  
                                     repeatCount="indefinite"  
                                 />  
                                 <animate   
                                     attributeName="fill"  
                                     values="#20C5C6;#00FFFF;#20C5C6"  
-                                    dur="3s"  
+                                    dur="4s"  
                                     repeatCount="indefinite"  
                                 />  
                                 <animate   
                                     attributeName="opacity"  
                                     values="0.3;1;0.3"  
-                                    dur="3s"  
-                                    repeatCount="indefinite"  
-                                />  
-                            </circle>  
-                        </g>
-    
-                        <!-- Emulator Device -->  
-                        <g transform="translate(200, 250)">  
-                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
-                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
-                              
-                            <path d="M-8 0 Q0 -10, 8 0 T16 0" fill="none" stroke="#FF6B00" stroke-width="2">  
-                                <animate   
-                                    attributeName="d"  
-                                    values="M-8 0 Q0 -10, 8 0 T16 0;  
-                                            M-8 0 Q0 10, 8 0 T16 0;  
-                                            M-8 0 Q0 -10, 8 0 T16 0"  
                                     dur="4s"  
                                     repeatCount="indefinite"  
                                 />  
+                            </path>  
+                        </g>  
+                    </g>
+
+                    <!-- Android Device -->  
+                    <g transform="translate(300, 80)">  
+                        <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333"/>  
+                        <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b"/>  
+                        <circle cx="0" cy="24" r="2" fill="#333333"/>  
+                          
+                        <g>  
+                            <path d="M-15 -15 L15 -15 L0 0 Z" fill="#FF6B00">  
+                                <animateTransform   
+                                    attributeName="transform"  
+                                    type="rotate"  
+                                    from="0 0 0"  
+                                    to="-360 0 0"  
+                                    dur="5s"  
+                                    repeatCount="indefinite"  
+                                />  
                                 <animate   
-                                    attributeName="stroke"  
+                                    attributeName="fill"  
                                     values="#FF6B00;#FF4500;#FF6B00"  
-                                    dur="4s"  
+                                    dur="5s"  
                                     repeatCount="indefinite"  
                                 />  
                                 <animate   
                                     attributeName="opacity"  
-                                    values="0.5;1;0.5"  
-                                    dur="4s"  
+                                    values="0.3;1;0.3"  
+                                    dur="5s"  
                                     repeatCount="indefinite"  
                                 />  
                             </path>  
-                        </g>
-    
-                        <!-- Targeting Lines -->  
-                        <g stroke-dasharray="5,5">  
-                            <path d="M150 100 Q300 200, 450 150" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
-                                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" repeatCount="indefinite"/>  
-                            </path>  
-                            <path d="M300 80 Q300 200, 200 250" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
-                                <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>  
-                            </path>  
-                        </g>
-    
-                        <!-- Descriptive Text -->  
-                        <text x="300" y="350" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="18" font-weight="600">  
-                            Cross-Platform Testing  
-                        </text>  
-                    </svg>
-    
-                    <!-- FAQ Mini-Section -->
-                    <div class="faq-mini-section" style="margin-top: 2rem;">
-                        <h3 class="devices-title">Frequently Asked Questions</h3>
-                        <p class="devices-description">Common questions about our services</p>
-                        
-                        <div class="faq-container" style="max-width: 100%;">
-                            <div class="faq-item">
-                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
-                                    <span>How quickly can you start testing my app?</span>
-                                    <div class="faq-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="faq-answer" id="faq-answer-1">
-                                    <div class="faq-answer-content">
-                                        <p>We can typically begin testing within 24 hours of receiving access to your application and a brief on your testing requirements.</p>
-                                    </div>
+                        </g>  
+                    </g>
+
+                    <!-- Mac Device -->  
+                    <g transform="translate(450, 150)">  
+                        <rect x="-35" y="-25" width="70" height="40" rx="2" ry="2" fill="#333333"/>  
+                        <rect x="-32" y="-22" width="64" height="36" rx="1" ry="1" fill="#1e293b"/>  
+                        <rect x="-10" y="15" width="20" height="15" fill="#333333"/>  
+                          
+                        <circle cx="0" cy="-10" r="5" fill="#20C5C6">  
+                            <animate   
+                                attributeName="cy"  
+                                values="-10;-20;-10"  
+                                dur="3s"  
+                                repeatCount="indefinite"  
+                            />  
+                            <animate   
+                                attributeName="fill"  
+                                values="#20C5C6;#00FFFF;#20C5C6"  
+                                dur="3s"  
+                                repeatCount="indefinite"  
+                            />  
+                            <animate   
+                                attributeName="opacity"  
+                                values="0.3;1;0.3"  
+                                dur="3s"  
+                                repeatCount="indefinite"  
+                            />  
+                        </circle>  
+                    </g>
+
+                    <!-- Emulator Device -->  
+                    <g transform="translate(200, 250)">  
+                        <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333"/>  
+                        <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b"/>  
+                          
+                        <path d="M-8 0 Q0 -10, 8 0 T16 0" fill="none" stroke="#FF6B00" stroke-width="2">  
+                            <animate   
+                                attributeName="d"  
+                                values="M-8 0 Q0 -10, 8 0 T16 0;  
+                                        M-8 0 Q0 10, 8 0 T16 0;  
+                                        M-8 0 Q0 -10, 8 0 T16 0"  
+                                dur="4s"  
+                                repeatCount="indefinite"  
+                            />  
+                            <animate   
+                                attributeName="stroke"  
+                                values="#FF6B00;#FF4500;#FF6B00"  
+                                dur="4s"  
+                                repeatCount="indefinite"  
+                            />  
+                            <animate   
+                                attributeName="opacity"  
+                                values="0.5;1;0.5"  
+                                dur="4s"  
+                                repeatCount="indefinite"  
+                            />  
+                        </path>  
+                    </g>
+
+                    <!-- Targeting Lines -->  
+                    <g stroke-dasharray="5,5">  
+                        <path d="M150 100 Q300 200, 450 150" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
+                            <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" repeatCount="indefinite"/>  
+                        </path>  
+                        <path d="M300 80 Q300 200, 200 250" stroke="url(#deviceGradient)" stroke-width="2" fill="none">  
+                            <animate attributeName="stroke-dashoffset" from="20" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>  
+                        </path>  
+                    </g>
+
+                    <!-- Descriptive Text -->  
+                    <text x="300" y="350" text-anchor="middle" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="18" font-weight="600">  
+                        Cross-Platform Testing  
+                    </text>  
+                </svg>
+
+                <!-- FAQ Mini-Section -->
+                <div class="faq-mini-section">
+                    <h3 class="devices-title">Frequently Asked Questions</h3>
+                    <p class="devices-description">Common questions about our services</p>
+                    
+                    <div class="faq-container" style="max-width: 100%;">
+                        <div class="faq-item">
+                            <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
+                                <span>How quickly can you start testing my app?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
                                 </div>
                             </div>
-                            
-                            <div class="faq-item">
-                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
-                                    <span>Do you test on real devices or emulators?</span>
-                                    <div class="faq-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="faq-answer" id="faq-answer-2">
-                                    <div class="faq-answer-content">
-                                        <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="faq-item">
-                                <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
-                                    <span>How does your blocked hours option work?</span>
-                                    <div class="faq-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="faq-answer" id="faq-answer-3">
-                                    <div class="faq-answer-content">
-                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
-                                    </div>
+                            <div class="faq-answer" id="faq-answer-1">
+                                <div class="faq-answer-content">
+                                    <p>We can typically begin testing within 24 hours of receiving access to your application and a brief on your testing requirements.</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div style="text-align: center; margin-top: 1.5rem;">
-                            <a href="./faq.html" class="cta-button">View All FAQs</a>
+                        <div class="faq-item">
+                            <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
+                                <span>Do you test on real devices or emulators?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="faq-answer" id="faq-answer-2">
+                                <div class="faq-answer-content">
+                                    <p>We primarily test on real devices to ensure accurate results. Our testing includes iOS, Android and Mac. However, we also leverage emulators for preliminary testing.</p>
+                                </div>
+                            </div>
                         </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
+                                <span>How does your blocked hours option work?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="faq-answer" id="faq-answer-3">
+                                <div class="faq-answer-content">
+                                    <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="./faq.html" class="cta-button">View All FAQs</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <div id="footer-placeholder"></div>
-    <!-- Your page content here -->
-    <div id="footer-placeholder"></div>
+<div id="feader-placeholder"></div>
+<div id="footer-placeholder"></div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const isExpanded = navLinks.classList.contains('active');
-                mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
-            });
-        }
-        
-        // Theme Toggle with improved accessibility
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            htmlElement.setAttribute('data-theme', savedTheme);
-            if (themeToggle) {
-                themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-            }
-        }
-        
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+        });
+    }
+    
+    // Theme Toggle with improved accessibility
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
         if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-            });
+            themeToggle.setAttribute('aria-label', savedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
         }
-        
-        // FAQ Accordion with keyboard accessibility
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? '' : 'dark';
             
-            question.addEventListener('click', () => {
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        });
+    }
+    
+    // FAQ Accordion with keyboard accessibility
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        question.addEventListener('click', () => {
+            toggleFAQ(item, question, answer);
+        });
+        
+        // Keyboard accessibility
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
                 toggleFAQ(item, question, answer);
-            });
-            
-            // Keyboard accessibility
-            question.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleFAQ(item, question, answer);
-                }
-            });
-        });
-        
-        function toggleFAQ(item, question, answer) {
-            const isActive = item.classList.contains('faq-active');
-            
-            // Close all FAQs
-            faqItems.forEach(faq => {
-                const faqQuestion = faq.querySelector('.faq-question');
-                faqQuestion.setAttribute('aria-expanded', 'false');
-                faq.classList.remove('faq-active');
-            });
-            
-            // If the clicked item wasn't active, open it
-            if (!isActive) {
-                item.classList.add('faq-active');
-                question.setAttribute('aria-expanded', 'true');
             }
-        }
+        });
+    });
+    
+    function toggleFAQ(item, question, answer) {
+        const isActive = item.classList.contains('faq-active');
         
-        // Show/hide the hours input based on service type selection
-        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
-        const hoursInput = document.getElementById('hours-needed');
-        
-        serviceTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'blocked-hours') {
-                    hoursInput.style.display = 'block';
-                } else {
-                    hoursInput.style.display = 'none';
-                }
-            });
+        // Close all FAQs
+        faqItems.forEach(faq => {
+            const faqQuestion = faq.querySelector('.faq-question');
+            faqQuestion.setAttribute('aria-expanded', 'false');
+            faq.classList.remove('faq-active');
         });
         
-        // Initialize display state
-        if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
-            hoursInput.style.display = 'block';
-        } else if (hoursInput) {
-            hoursInput.style.display = 'none';
+        // If the clicked item wasn't active, open it
+        if (!isActive) {
+            item.classList.add('faq-active');
+            question.setAttribute('aria-expanded', 'true');
         }
-        
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                // Don't prevent default - allow form to submit to Formspree
-                
-                // Set a flag in localStorage to show a success message when the user returns
-                localStorage.setItem('formSubmitted', 'true');
-            });
-        }
+    }
+    
+    // Show/hide the hours input based on service type selection
+    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+    const hoursInput = document.getElementById('hours-needed');
+    
+    serviceTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Hide both inputs first
+            if (hoursInput) hoursInput.style.display = 'none';
+            if (document.getElementById('prepaid-hours-selector')) {
+                document.getElementById('prepaid-hours-selector').style.display = 'none';
+            }
+            
+            // Show the appropriate input based on selection
+            if (this.value === 'blocked-hours' && hoursInput) {
+                hoursInput.style.display = 'block';
+            } else if (this.value === 'prepaid-hours' && document.getElementById('prepaid-hours-selector')) {
+                document.getElementById('prepaid-hours-selector').style.display = 'block';
+            }
+        });
+    });
+    
+    // Initialize display state
+    if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
+        hoursInput.style.display = 'block';
+    } else if (hoursInput) {
+        hoursInput.style.display = 'none';
+    }
+    
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Don't prevent default - allow form to submit to Formspree
+            
+            // Set a flag in localStorage to show a success message when the user returns
+            localStorage.setItem('formSubmitted', 'true');
+        });
+    }
 
-        // Optional: Check if returning from form submission to show success message
-        window.addEventListener('load', function() {
-            if (localStorage.getItem('formSubmitted') === 'true') {
-                // Clear the flag
-                localStorage.removeItem('formSubmitted');
-                
-                // Show success message
-                const messageElement = document.createElement('div');
-                messageElement.style.position = 'fixed';
-                messageElement.style.top = '20px';
-                messageElement.style.left = '50%';
-                messageElement.style.transform = 'translateX(-50%)';
-                messageElement.style.backgroundColor = 'var(--success)';
-                messageElement.style.color = 'white';
-                messageElement.style.padding = '1rem 2rem';
-                messageElement.style.borderRadius = 'var(--radius-md)';
-                messageElement.style.boxShadow = 'var(--shadow-md)';
-                messageElement.style.zIndex = '9999';
-                messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
-                
-                document.body.appendChild(messageElement);
-                
+    // Optional: Check if returning from form submission to show success message
+    window.addEventListener('load', function() {
+        if (localStorage.getItem('formSubmitted') === 'true') {
+            // Clear the flag
+            localStorage.removeItem('formSubmitted');
+            
+            // Show success message
+            const messageElement = document.createElement('div');
+            messageElement.style.position = 'fixed';
+            messageElement.style.top = '20px';
+            messageElement.style.left = '50%';
+            messageElement.style.transform = 'translateX(-50%)';
+            messageElement.style.backgroundColor = 'var(--success)';
+            messageElement.style.color = 'white';
+            messageElement.style.padding = '1rem 2rem';
+            messageElement.style.borderRadius = 'var(--radius-md)';
+            messageElement.style.boxShadow = 'var(--shadow-md)';
+            messageElement.style.zIndex = '9999';
+            messageElement.innerText = 'Thank you for your message! We will get back to you shortly.';
+            
+            document.body.appendChild(messageElement);
+            
+            setTimeout(() => {
+                messageElement.style.opacity = '0';
+                messageElement.style.transition = 'opacity 0.5s ease';
                 setTimeout(() => {
-                    messageElement.style.opacity = '0';
-                    messageElement.style.transition = 'opacity 0.5s ease';
-                    setTimeout(() => {
-                        document.body.removeChild(messageElement);
-                    }, 500);
-                }, 5000);
-            }
-        });
+                    document.body.removeChild(messageElement);
+                }, 500);
+            }, 5000);
+        }
+    });
 
-        // Auto-check packages based on URL parameters
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize session storage for selected packages if not exists
-            if (!sessionStorage.getItem('selectedPackages')) {
-                sessionStorage.setItem('selectedPackages', JSON.stringify([]));
-            }
-            
-            // Check if we have a package to auto-select from URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const packageToSelect = urlParams.get('package');
-            
-            // If we have a specific service type to select (blocked-hours or prepaid-hours)
-            if (packageToSelect === 'blocked-hours' || packageToSelect === 'prepaid-hours') {
-                // Find the corresponding radio button and check it
-                const radioButton = document.getElementById(packageToSelect === 'blocked-hours' ? 'blocked-hours' : 'prepaid-hours');
-                if (radioButton) {
-                    radioButton.checked = true;
-                    
-                    // Manually trigger display of the appropriate input field
-                    if (packageToSelect === 'blocked-hours') {
-                        // Show the hours input for blocked hours
-                        const hoursInput = document.getElementById('hours-needed');
-                        if (hoursInput) {
-                            hoursInput.style.display = 'block';
-                        }
-                    } else if (packageToSelect === 'prepaid-hours') {
-                        // Show the prepaid hours selector
-                        const prepaidSelector = document.getElementById('prepaid-hours-selector');
-                        if (prepaidSelector) {
-                            prepaidSelector.style.display = 'block';
+    // Auto-check packages based on URL parameters
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize session storage for selected packages if not exists
+        if (!sessionStorage.getItem('selectedPackages')) {
+            sessionStorage.setItem('selectedPackages', JSON.stringify([]));
+        }
+        
+        // Check if we have a package to auto-select from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageToSelect = urlParams.get('package');
+        
+        // If we have a specific service type to select (blocked-hours or prepaid-hours)
+        if (packageToSelect === 'blocked-hours' || packageToSelect === 'prepaid-hours') {
+            // Find the corresponding radio button and check it
+            const radioButton = document.getElementById(packageToSelect === 'blocked-hours' ? 'blocked-hours' : 'prepaid-hours');
+            if (radioButton) {
+                radioButton.checked = true;
+                
+                // Manually trigger display of the appropriate input field
+                if (packageToSelect === 'blocked-hours') {
+                    // Show the hours input for blocked hours
+                    const hoursInput = document.getElementById('hours-needed');
+                    if (hoursInput) {
+                        hoursInput.style.display = 'block';
+                    }
+                } else if (packageToSelect === 'prepaid-hours') {
+                    // Show the prepaid hours selector
+                    const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                    if (prepaidSelector) {
+                        prepaidSelector.style.display = '
                         }
                     }
                     
@@ -1641,54 +1637,6 @@ footer {
                 }
             });
             
-            // Custom cursor
-        const cursor = document.querySelector('.cursor-follower');
-
-if (cursor && window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        if (!cursor.classList.contains('active')) {
-            setTimeout(() => {
-                cursor.classList.add('active');
-            }, 500);
-        }
-    });
-    
-    // Add hover effects for links and buttons
-    const links = document.querySelectorAll('a, button');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            if (link.classList.contains('cta-button')) {
-                cursor.classList.add('hover-button');
-            } else {
-                cursor.classList.add('hover-link');
-            }
-        });
-        
-        link.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover-link', 'hover-button');
-        });
-    });
-    
-    // Hide cursor when it leaves the window
-    document.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-    });
-    
-    document.addEventListener('mouseenter', () => {
-        cursor.classList.add('active');
-    });
-} else if (cursor) {
-    // If not a hover device, hide the cursor completely
-    cursor.style.display = 'none';
-}
-
-function toggleFAQ(element) {
-    element.parentNode.classList.toggle('active');
-}
-
             // Add the new package if specified in URL
             if (packageToSelect) {
                 // Add to session storage if not already there
@@ -1801,24 +1749,6 @@ function toggleFAQ(element) {
             updatePackageBadge();
         }
 
-        // Show/hide the hours input based on service type selection
-        serviceTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                // Hide both inputs first
-                if (hoursInput) hoursInput.style.display = 'none';
-                if (document.getElementById('prepaid-hours-selector')) {
-                    document.getElementById('prepaid-hours-selector').style.display = 'none';
-                }
-                
-                // Show the appropriate input based on selection
-                if (this.value === 'blocked-hours' && hoursInput) {
-                    hoursInput.style.display = 'block';
-                } else if (this.value === 'prepaid-hours' && document.getElementById('prepaid-hours-selector')) {
-                    document.getElementById('prepaid-hours-selector').style.display = 'block';
-                }
-            });
-        });
-
         // Initialize the 10-hour blocks selector
         const hourBlocksInput = document.getElementById('hour-blocks');
         const totalHoursDisplay = document.getElementById('total-hours');
@@ -1839,29 +1769,42 @@ function toggleFAQ(element) {
             const selector = document.getElementById('prepaid-hours-selector');
             if (selector) selector.style.display = 'block';
         }
-        </script>
 
-        <script>
-    // Load header
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading header:', error));
-
-    // Load footer
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
+        // Custom cursor handler 
+        const cursor = document.querySelector('.cursor-follower');
+        if (cursor && window.matchMedia('(hover: hover)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                if (!cursor.classList.contains('active')) {
+                    setTimeout(() => {
+                        cursor.classList.add('active');
+                    }, 500);
+                }
+            });
+        }
     </script>
 
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
 </body>
 </html>
-
 
 
 
