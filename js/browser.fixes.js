@@ -1,82 +1,46 @@
 /**
- * Simple browser compatibility fix for VelocityQA website
- * Specifically targets the floating add package button visibility
- * and contact form population issues
+ * VelocityQA Browser Fix
+ * Makes the Add Package button visible on service pages
  */
 (function() {
-    // Run when DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Fix floating add package buttons
-        fixFloatingButtons();
-        
-        // Fix contact form population issues
-        fixContactFormPopulation();
+    // Run on page load and after a short delay
+    document.addEventListener('DOMContentLoaded', fixAddPackageButton);
+    window.addEventListener('load', function() {
+        // Run immediately and again after a delay
+        fixAddPackageButton();
+        setTimeout(fixAddPackageButton, 500);
     });
     
-    // Fix floating buttons across all browsers
-    function fixFloatingButtons() {
-        const floatingButtons = document.querySelectorAll('.floating-add-button, #floating-add-button, #addPackageButton');
-        
-        floatingButtons.forEach(button => {
-            // Make sure the button is visible
-            button.style.opacity = '1';
-            button.style.zIndex = '9999';
+    function fixAddPackageButton() {
+        // Check if we're on a service page that should have the button
+        if (isServicePage()) {
+            // Look for existing floating buttons
+            const floatingButtons = document.querySelectorAll('.floating-add-button, #floating-add-button, #addPackageButton');
             
-            // Reset any positioning that might be hiding it
-            if (window.getComputedStyle(button).right === '-150px') {
-                button.style.right = '0';
-            }
-            
-            // Ensure clicks properly save the package info
-            button.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.includes('?package=') && href.includes('&add=true')) {
-                    const urlParams = new URLSearchParams(href.split('?')[1]);
-                    const packageType = urlParams.get('package');
-                    
-                    if (packageType) {
-                        localStorage.setItem('selectedPackage', packageType);
-                        localStorage.setItem('addPackage', 'true');
-                    }
-                }
-            });
-        });
-        
-        // If we're on a service page but don't have a floating button, create one
-        if (document.location.pathname.includes('bug-hunter') || 
-            document.location.pathname.includes('user-journey') ||
-            document.location.pathname.includes('system-auditor') ||
-            document.location.pathname.includes('precision-strike') ||
-            document.location.pathname.includes('automation')) {
-            
-            if (floatingButtons.length === 0) {
-                createMissingFloatingButton();
+            if (floatingButtons.length > 0) {
+                // Fix existing buttons
+                floatingButtons.forEach(button => {
+                    // Make button visible in all browsers
+                    button.style.display = "flex";
+                    button.style.position = "fixed";
+                    button.style.bottom = "6rem";
+                    button.style.right = "20px";
+                    button.style.opacity = "1";
+                    button.style.zIndex = "9999";
+                    button.style.transform = "none"; // Reset any transforms
+                });
+            } else {
+                // Create a button if none exists
+                createFloatingButton();
             }
         }
     }
     
-    // Create a missing floating button if needed
-    function createMissingFloatingButton() {
-        if (document.getElementById('addPackageButton')) {
-            return; // Button already exists
-        }
-        
-        // Determine package type from URL
-        let packageType = '';
-        if (document.location.pathname.includes('bug-hunter')) {
-            packageType = 'bug-hunter';
-        } else if (document.location.pathname.includes('user-journey')) {
-            packageType = 'user-journey';
-        } else if (document.location.pathname.includes('system-auditor')) {
-            packageType = 'system-auditor';
-        } else if (document.location.pathname.includes('precision-strike')) {
-            packageType = 'precision-strike';
-        } else if (document.location.pathname.includes('automation')) {
-            packageType = 'automation';
-        }
+    // Create the Add Package button
+    function createFloatingButton() {
+        const packageType = detectPackageFromURL();
         
         if (packageType) {
-            // Create the button
             const button = document.createElement('a');
             button.id = 'addPackageButton';
             button.className = 'floating-add-button';
@@ -96,7 +60,7 @@
             button.style.right = '20px';
             button.style.display = 'flex';
             button.style.alignItems = 'center';
-            button.style.backgroundColor = 'var(--orange, #ff6b00)';
+            button.style.backgroundColor = '#ff6b00';
             button.style.color = 'white';
             button.style.padding = '0.75rem 1.5rem';
             button.style.borderRadius = '8px';
@@ -108,88 +72,33 @@
             button.style.zIndex = '9999';
             button.style.opacity = '1';
             
+            // Append to document
             document.body.appendChild(button);
         }
     }
     
-    // Fix contact form population issues
-    function fixContactFormPopulation() {
-        // Check if we're on the contact page
-        if (document.getElementById('contactForm')) {
-            // Check URL parameters first
-            const urlParams = new URLSearchParams(window.location.search);
-            const packageParam = urlParams.get('package');
-            const addParam = urlParams.get('add');
-            
-            // If URL parameters don't exist, check localStorage
-            const storedPackage = localStorage.getItem('selectedPackage');
-            const storedAdd = localStorage.getItem('addPackage');
-            
-            // Determine which package to select
-            const packageToSelect = packageParam || storedPackage;
-            const isAddOperation = (addParam === 'true') || (storedAdd === 'true');
-            
-            if (packageToSelect && isAddOperation) {
-                // Clear localStorage after using it
-                localStorage.removeItem('selectedPackage');
-                localStorage.removeItem('addPackage');
-                
-                // Find and check the checkbox
-                const checkbox = document.getElementById(packageToSelect);
-                if (checkbox) {
-                    checkbox.checked = true;
-                    
-                    // Add visual highlight
-                    highlightElement(checkbox.parentNode);
-                }
-                
-                // Handle service type radio buttons
-                if (packageToSelect === 'precision-strike' || packageToSelect === 'blocked-hours') {
-                    const radioButton = document.getElementById('blocked-hours');
-                    if (radioButton) {
-                        radioButton.checked = true;
-                        const hoursInput = document.getElementById('hours-needed');
-                        if (hoursInput) {
-                            hoursInput.style.display = 'block';
-                        }
-                    }
-                } else if (packageToSelect === 'prepaid-hours') {
-                    const radioButton = document.getElementById('prepaid-hours');
-                    if (radioButton) {
-                        radioButton.checked = true;
-                        const prepaidHoursSelector = document.getElementById('prepaid-hours-selector');
-                        if (prepaidHoursSelector) {
-                            prepaidHoursSelector.style.display = 'block';
-                        }
-                    }
-                } else {
-                    const standardPackageRadio = document.getElementById('standard-package');
-                    if (standardPackageRadio) {
-                        standardPackageRadio.checked = true;
-                    }
-                }
-                
-                // Scroll to the form
-                setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 500);
-            }
-        }
+    // Helper function to check if we're on a service page
+    function isServicePage() {
+        return document.location.pathname.includes('bug-hunter') || 
+               document.location.pathname.includes('user-journey') ||
+               document.location.pathname.includes('system-auditor') ||
+               document.location.pathname.includes('precision-strike') ||
+               document.location.pathname.includes('automation');
     }
     
-    // Highlight an element briefly
-    function highlightElement(element) {
-        if (element) {
-            const originalBackground = element.style.backgroundColor;
-            element.style.transition = 'background-color 0.5s ease';
-            element.style.backgroundColor = 'rgba(32, 197, 198, 0.1)';
-            
-            setTimeout(() => {
-                element.style.backgroundColor = originalBackground;
-            }, 3000);
+    // Helper function to detect package type from URL
+    function detectPackageFromURL() {
+        if (document.location.pathname.includes('bug-hunter')) {
+            return 'bug-hunter';
+        } else if (document.location.pathname.includes('user-journey')) {
+            return 'user-journey';
+        } else if (document.location.pathname.includes('system-auditor')) {
+            return 'system-auditor';
+        } else if (document.location.pathname.includes('precision-strike')) {
+            return 'precision-strike';
+        } else if (document.location.pathname.includes('automation')) {
+            return 'automation';
         }
+        return '';
     }
 })();
