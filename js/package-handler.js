@@ -83,12 +83,6 @@ function handleSpecialPackages(packageToSelect) {
                 prepaidHoursSelector.style.display = 'block';
             }
         }
-    } else {
-        // Default package selection (if applicable)
-        const standardPackageRadio = document.getElementById('standard-package');
-        if (standardPackageRadio) {
-            standardPackageRadio.checked = true;
-        }
     }
 }
 
