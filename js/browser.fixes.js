@@ -184,4 +184,6 @@
      * Apply fixes specific to Edge
      */
     function applyEdgeFixes() {
-        // Edge generally follows Chrome but with some specific issues
+});
+
+
