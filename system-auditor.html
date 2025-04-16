@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Primary Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Auditor - Professional QA Services | VelocityQA</title>
     <meta name="description" content="Strategic testing for mid-complexity web applications, dashboards, and multi-page systems. Our System Auditor service identifies critical issues before your users do.">
     <meta name="keywords" content="system auditor, web application testing, dashboard testing, QA testing, cross-browser testing, VelocityQA">
     <meta name="author" content="VelocityQA">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://velocityqa.com/system-auditor.html">
-    
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Hunter QA Testing | Find App Issues Fast | VelocityQA</title>
-    <meta name="description" content="Our Bug Hunter service identifies critical app issues before launch. Starting at $450 for expert testing. Get same-day results for your startup. Book now!">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://velocityqa.com/bug-hunter.html">
@@ -52,25 +40,6 @@
     <meta name="msapplication-TileColor" content="#121620">
     <meta name="theme-color" content="#121620">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://velocityqa.com/system-auditor.html">
-    <meta property="og:title" content="System Auditor - Professional QA Services | VelocityQA">
-    <meta property="og:description" content="Strategic testing for mid-complexity web applications, dashboards, and multi-page systems. Our System Auditor service identifies critical issues before your users do.">
-    <meta property="og:image" content="https://velocityqa.com/images/og-system-auditor.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="VelocityQA">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://velocityqa.com/system-auditor.html">
-    <meta name="twitter:title" content="System Auditor - Professional QA Services | VelocityQA">
-    <meta name="twitter:description" content="Strategic testing for mid-complexity web applications, dashboards, and multi-page systems. Our System Auditor service identifies critical issues before your users do.">
-    <meta name="twitter:image" content="https://velocityqa.com/images/twitter-system-auditor.jpg">
-    <meta name="twitter:creator" content="@velocityqa">
-    
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,7 +57,7 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "Organisation",
       "name": "VelocityQA",
       "url": "https://velocityqa.com",
       "logo": "https://velocityqa.com/images/logo.png",
@@ -101,7 +70,7 @@
         "@type": "ContactPoint",
         "telephone": "04413757636",
         "contactType": "customer service",
-        "email": "info@velocityqa.com"
+        "email": "nina@velocityqa.com.au"
       },
       "address": {
         "@type": "PostalAddress",
@@ -109,7 +78,7 @@
         "addressLocality": "Brisbane",
         "addressRegion": "QLD",
         "postalCode": "4301",
-        "addressCountry": "AU"
+        "addressCountry": "AUD"
       }
     }
     </script>
@@ -121,7 +90,7 @@
       "@type": "Service",
       "name": "System Auditor",
       "provider": {
-        "@type": "Organization",
+        "@type": "Organisation",
         "name": "VelocityQA"
       },
       "serviceType": "QA Testing",
@@ -129,7 +98,7 @@
       "offers": {
         "@type": "Offer",
         "price": "1250",
-        "priceCurrency": "USD"
+        "priceCurrency": "AUD"
       }
     }
     </script>
@@ -144,19 +113,19 @@
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://velocityqa.com/"
+          "item": "https://velocityqa.com.au/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Services",
-          "item": "https://velocityqa.com/services.html"
+          "item": "https://velocityqa.com.au/services.html"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "System Auditor",
-          "item": "https://velocityqa.com/system-auditor.html"
+          "item": "https://velocityqa.com.au/system-auditor.html"
         }
       ]
     }
@@ -285,13 +254,13 @@
         }
 
         .logo-svg {
-            height: 54px;
+            height: 100px;
             width: auto;
         }
 
         .logo-svg text {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 22px;
             filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
         }
 
@@ -908,6 +877,37 @@
             border-radius: 3px;
             transition: all 0.3s;
         }
+
+        /* Floating Add Package Button */
+        .floating-add-button {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            background-color: var(--orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            border: none;
+            z-index: 99;
+            opacity: 0;
+        }
+
+        .floating-add-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .floating-add-button svg {
+            flex-shrink: 0;
+            margin-right: 0.75rem;
+        }
         
         /* Custom Cursor */
         .cursor-follower {
@@ -973,8 +973,9 @@
         @media (hover: none) and (pointer: coarse) {
             .cursor-follower {
                 display: none;
-            }
+            
         }
+
 
         /* Media Queries */
         @media (max-width: 992px) {
@@ -1063,38 +1064,35 @@
     </style>
 </head>
 <body data-theme="dark">
-    <div class="cursor-follower"></div>
+  <div class="cursor-follower"></div>
     
-    <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+</div>
+
+    <!-- Floating Add Package Button -->
+    <a href="contact.html?package=system-auditor&add=true" class="floating-add-button" id="addPackageButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
         </svg>
-    </div>
+        <span>Add Package</span>
+    </a>
 
-    <header>
-    <div id="header-placeholder"></div>
-    </header>
-
-    <!-- Breadcrumb Navigation -->
-    <div class="breadcrumb-container">
-        <div class="container">
-            <nav aria-label="Breadcrumb" class="breadcrumb">
-                <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li aria-current="page">System Auditor</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+<header>
+  <div id="header-placeholder"></div>
+</header>
 
     <section class="page-header">
         <div class="container">
@@ -1500,7 +1498,7 @@
     </section>
 
     <footer>
-    <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1609,67 +1607,69 @@
                 const altText = filename.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
                 img.setAttribute('alt', altText);
             });
+         });
         // Initialize floating add package button
-document.addEventListener('DOMContentLoaded', function() {
-    const addPackageButton = document.getElementById('addPackageButton');
-    
-    // Fade in the button
-    setTimeout(() => {
-        addPackageButton.style.opacity = '1';
-    }, 500);
-    
-    // Add notification when clicked
-    addPackageButton.addEventListener('click', function(e) {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.textContent = "System Auditor package added to your selections";
-        notification.style.position = 'fixed';
-        notification.style.bottom = '2rem';
-        notification.style.left = '50%';
-        notification.style.transform = 'translateX(-50%)';
-        notification.style.backgroundColor = 'var(--teal)';
-        notification.style.color = 'white';
-        notification.style.padding = '0.75rem 1.5rem';
-        notification.style.borderRadius = 'var(--radius-md)';
-        notification.style.boxShadow = 'var(--shadow-md)';
-        notification.style.zIndex = '9999';
-        notification.style.opacity = '0';
-        notification.style.transition = 'opacity 0.3s ease';
-        
-        document.body.appendChild(notification);
-        
-        // Fade in
-        setTimeout(() => {
-            notification.style.opacity = '1';
-        }, 10);
-        
-        // Fade out and remove after 3 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
+        document.addEventListener('DOMContentLoaded', function() {
+            const addPackageButton = document.getElementById('addPackageButton');
+            
+            // Fade in the button
             setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
-    });
-});          
-        </script>
-
-    <script>
-    // Load header
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading header:', error));
-
-    // Load footer
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
+                addPackageButton.style.opacity = '1';
+            }, 500);
+            
+            // Add notification when clicked
+            addPackageButton.addEventListener('click', function(e) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.textContent = "System Audito package added to your selections";
+                notification.style.position = 'fixed';
+                notification.style.bottom = '2rem';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = 'var(--teal)';
+                notification.style.color = 'white';
+                notification.style.padding = '0.75rem 1.5rem';
+                notification.style.borderRadius = 'var(--radius-md)';
+                notification.style.boxShadow = 'var(--shadow-md)';
+                notification.style.zIndex = '9999';
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s ease';
+                
+                document.body.appendChild(notification);
+                
+                // Fade in
+                setTimeout(() => {
+                    notification.style.opacity = '1';
+                }, 10);
+                
+                // Fade out and remove after 3 seconds
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            });
+        });  
     </script>
+<script>
+// Load header
+fetch('header.html')
+.then(response => response.text())
+.then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+})
+.catch(error => console.error('Error loading header:', error));
+
+// Load footer
+fetch('footer.html')
+.then(response => response.text())
+.then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+})
+.catch(error => console.error('Error loading footer:', error));
+
+  </script>
 </body>
 </html>
+

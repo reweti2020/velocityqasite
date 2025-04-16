@@ -101,13 +101,13 @@
         }
 
         .logo-svg {
-            height: 54px;
+            height: 100px;
             width: auto;
         }
 
         .logo-svg text {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 22px;
             filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.2));
         }
 
@@ -988,7 +988,7 @@
     </div>
 
     <!-- Floating Add Package Button -->
-    <a href="contact.html?package=automation&add=true" class="floating-add-button" id="addPackageButton">
+    <a href="contact.html?package=automation-services&add=true" class="floating-add-button" id="addPackageButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="16"></line>
@@ -998,84 +998,7 @@
     </a>
 
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo-container">
-                    <!-- Neural Circuit Logo SVG -->
-                    <svg class="logo-svg" width="300" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Definitions -->
-                        <defs>
-                            <linearGradient id="neuralGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#FF6B00" />
-                                <stop offset="100%" stop-color="#FF9248" />
-                            </linearGradient>
-                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feGaussianBlur stdDeviation="1" result="blur" />
-                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                            </filter>
-                        </defs>
-                        
-                        <!-- Enlarged Dark Background Circle -->
-                        <circle cx="36" cy="30" r="34" fill="#121620" />
-                        
-                        <!-- Neural Network Grid (adjusted positions) -->
-                        <circle cx="36" cy="18" r="1" fill="#D1D5DB" />
-                        <circle cx="24" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="48" cy="24" r="1" fill="#D1D5DB" />
-                        <circle cx="21" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="36" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="51" cy="36" r="1" fill="#D1D5DB" />
-                        <circle cx="36" cy="48" r="1" fill="#D1D5DB" />
-                        
-                        <!-- Main Circuit/Data Path (adjusted) -->
-                        <path d="M36 48L36 36L24 24L36 18" stroke="url(#neuralGradient)" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#glow)" />
-                        
-                        <!-- Neural Nodes (enlarged) -->
-                        <circle cx="36" cy="48" r="3.5" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="36" cy="36" r="3.5" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="24" cy="24" r="3.5" fill="#FF6B00" filter="url(#glow)" />
-                        <circle cx="36" cy="18" r="3.5" fill="#20C5C6" filter="url(#glow)" />
-                        
-                        <!-- Data Pulse Animations (adjusted) -->
-                        <circle cx="36" cy="42" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cy" from="48" to="36" dur="3s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <circle cx="30" cy="30" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
-                            <animate attributeName="cy" from="36" to="24" dur="3s" begin="1s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <circle cx="30" cy="21" r="1.5" fill="#20C5C6" opacity="0.8" filter="url(#glow)">
-                            <animate attributeName="cx" from="24" to="36" dur="3s" begin="2s" repeatCount="indefinite" />
-                            <animate attributeName="cy" from="24" to="18" dur="3s" begin="2s" repeatCount="indefinite" />
-                        </circle>
-                        
-                        <!-- Company Name (adjusted position) -->
-                        <text x="82" y="35" font-family="'Inter', sans-serif" font-weight="700" font-size="18">
-                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                        </text>
-                    </svg>
-                </div>
-                
-                <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <div class="nav-links" id="navLinks">
-                    <a href="index.html#features" class="nav-link">Features</a>
-                    <a href="index.html#packages" class="nav-link">Packages</a>
-                    <a href="index.html#process" class="nav-link">Process</a>
-                    <a href="index.html#pricing" class="nav-link">Why Choose Us</a>
-                    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
-                    <a href="aboutus.html" class="nav-link">About Us</a>
-                    <a href="faq.html" class="nav-link">FAQ</a>
-                    <a href="contact.html" class="cta-button">Contact Us<span id="package-counter" class="package-badge hidden">0</span></a>
-                </div>
-            </nav>
-        </div>
+        <div id="header-placeholder"></div>
     </header>
 
     <section class="page-header">
@@ -1972,60 +1895,148 @@
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div>
-                    <!-- Footer Neural Circuit Logo -->
-                    <div class="footer-logo-container">
-                        <svg width="200" height="50" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Definitions -->
-                            <defs>
-                                <linearGradient id="neuralGradientFooter" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#FF6B00" />
-                                    <stop offset="100%" stop-color="#FF9248" />
-                                </linearGradient>
-                                <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="1" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-                            
-                            <!-- Neural Circuit (simplified for footer) -->
-                            <path d="M15 30L15 22L10 15L15 10" stroke="url(#neuralGradientFooter)" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#glowFooter)" />
-                            
-                            <!-- Neural Nodes -->
-                            <circle cx="15" cy="30" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="22" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="10" cy="15" r="3" fill="#FF6B00" filter="url(#glowFooter)" />
-                            <circle cx="15" cy="10" r="3" fill="#20C5C6" filter="url(#glowFooter)" />
-                            
-                            <!-- Company Name -->
-                            <text x="50" y="25" font-family="'Inter', sans-serif" font-weight="700" font-size="16">
-                                <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-                            </text>
-                        </svg>
-                    </div>
-                    <p class="footer-description">We break your app so your users won't. Professional QA testing services for startups and growing companies.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+        <div id="footer-placeholder"></div>
+    </footer>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
                 
-                <div>
-                    <h3
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    // Custom cursor
+    const cursor = document.querySelector('.cursor-follower');
+
+    if (cursor && window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            if (!cursor.classList.contains('active')) {
+                setTimeout(() => {
+                    cursor.classList.add('active');
+                }, 500);
+            }
+        });
+        
+        // Add hover effects for links and buttons
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                if (link.classList.contains('cta-button')) {
+                    cursor.classList.add('hover-button');
+                } else {
+                    cursor.classList.add('hover-link');
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover-link', 'hover-button');
+            });
+        });
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('active');
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            cursor.classList.add('active');
+        });
+    } else if (cursor) {
+        // If not a hover device, hide the cursor completely
+        cursor.style.display = 'none';
+    }
+
+    function toggleFAQ(element) {
+        element.parentNode.classList.toggle('active');
+    }
+    
+    // Initialize floating add package button
+    document.addEventListener('DOMContentLoaded', function() {
+        const addPackageButton = document.getElementById('addPackageButton');
+        
+        // Fade in the button
+        setTimeout(() => {
+            addPackageButton.style.opacity = '1';
+        }, 500);
+        
+        // Add notification when clicked
+        addPackageButton.addEventListener('click', function(e) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = "User Journey Testing package added to your selections";
+            notification.style.position = 'fixed';
+            notification.style.bottom = '2rem';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.backgroundColor = 'var(--teal)';
+            notification.style.color = 'white';
+            notification.style.padding = '0.75rem 1.5rem';
+            notification.style.borderRadius = 'var(--radius-md)';
+            notification.style.boxShadow = 'var(--shadow-md)';
+            notification.style.zIndex = '9999';
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s ease';
+            
+            document.body.appendChild(notification);
+            
+            // Fade in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Fade out and remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        });
+    });
+ </script>
+    
+<script>
+        // Load header
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+        
+        // Load footer
+        fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+        
+     </script>
+</body>
+</html>
