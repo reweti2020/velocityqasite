@@ -1,5 +1,7 @@
 <header>
 <script src="browser-fixes.js"></script>
+<!-- Add Package Handler Script -->
+<script src="js/package-handler.js"></script>
   <div class="container">
     <nav>
       <div class="nav-section-left">
@@ -93,6 +95,13 @@
       color: var(--teal);
       transform: translateX(-3px);
       opacity: 1;
+    }
+    
+    /* Package highlighting styles */
+    .highlighted {
+      background-color: rgba(32, 197, 198, 0.1);
+      border-radius: 8px;
+      transition: background-color 0.5s ease;
     }
     
     @media (max-width: 768px) {
