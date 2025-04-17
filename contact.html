@@ -885,7 +885,8 @@
     </style>
 </head>
 <body data-theme="dark">
-        <!-- Floating Back to Packages Button -->
+    <div class="cursor-follower"></div>
+    <!-- Floating Back to Packages Button -->
 <a href="index.html#packages" id="backToPackages" class="cta-button" style="position: fixed; bottom: 100px; right: 2rem; display: flex; align-items: center; gap: 0.5rem; z-index: 99; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; opacity: 0.9;">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -926,6 +927,7 @@
             });
         }
     });
+</script>
     <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
@@ -1159,21 +1161,21 @@
                         </div>
     
                         <div class="form-group">
-                            <label class="form-label">Service Type (Select all that apply)</label>
-                            <div class="checkbox-group" role="group" aria-labelledby="service-type-group">
+                            <label class="form-label">Service Type</label>
+                            <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
                                 <div id="service-type-group" class="sr-only">Service type selection</div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="tailored-package" name="service-type[]" value="tailored">
+                                <div class="radio-item">
+                                    <input type="radio" id="tailored-package" name="service-type" value="tailored" checked>
                                     <label for="tailored-package">Tailored Package (custom testing solution)</label>
                                 </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="blocked-hours" name="service-type[]" value="blocked-hours">
+                                <div class="radio-item">
+                                    <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
                                     <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
                                     <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours" min="1" aria-labelledby="blocked-hours">
                                 </div>
                                 <!-- Prepaid 10+ Hours Option -->
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="prepaid-hours" name="service-type[]" value="prepaid-hours">
+                                <div class="radio-item">
+                                    <input type="radio" id="prepaid-hours" name="service-type" value="prepaid-hours">
                                     <label for="prepaid-hours">Pre-paid 10+ Hours ($90/hour - 10% discount)</label>
                                     <div id="prepaid-hours-selector" class="form-input custom-package-input">
                                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1737,8 +1739,6 @@
 </script>
 <script src="js/cursor.js"></script>
 </html>
-
-
 
 
 
