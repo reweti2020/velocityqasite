@@ -88,19 +88,10 @@ function initPackageHandler() {
     const urlParams = new URLSearchParams(window.location.search);
     const packageParam = urlParams.get('package');
     const addParam = urlParams.get('add');
-    const storedPackage = localStorage.getItem('selectedPackage');
-    const storedAdd = localStorage.getItem('addPackage');
 
-    const packageToSelect = packageParam || storedPackage;
-    const isAddOperation = (addParam === 'true') || (storedAdd === 'true');
-
-    if (packageToSelect && isAddOperation) {
-        // Clear localStorage after using it
-        localStorage.removeItem('selectedPackage');
-        localStorage.removeItem('addPackage');
-
+    if (packageParam && addParam === 'true') {
         // Handle package selection without clearing existing selections
-        handlePackageSelection(packageToSelect);
+        handlePackageSelection(packageParam);
 
         // Scroll to the contact section for better UX
         setTimeout(() => {
@@ -109,8 +100,13 @@ function initPackageHandler() {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
             }
         }, 500);
-    } else {
-        console.log("No package selected or 'add' operation detected.");
+        
+        // Clear URL parameters after processing to avoid reapplying on refresh
+        // This uses history.replaceState which doesn't cause a page reload
+        const url = new URL(window.location.href);
+        url.searchParams.delete('package');
+        url.searchParams.delete('add');
+        window.history.replaceState({}, document.title, url);
     }
 }
 
@@ -297,6 +293,16 @@ function updatePackageBadge() {
             // Start observing the header or document body for changes
             const targetNode = document.querySelector('header') || document.body;
             window.badgeObserver.observe(targetNode, { childList: true, subtree: true });
+        }
+    }
+    
+    // Show/hide back to packages button based on selections
+    const backButton = document.getElementById('backToPackages');
+    if (backButton) {
+        if (selectedCount > 0) {
+            backButton.style.display = 'flex';
+        } else {
+            backButton.style.display = 'none';
         }
     }
 }
