@@ -1118,21 +1118,21 @@
                         </div>
     
                         <div class="form-group">
-                            <label class="form-label">Service Type</label>
-                            <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
+                            <label class="form-label">Service Type (Select all that apply)</label>
+                            <div class="checkbox-group" role="group" aria-labelledby="service-type-group">
                                 <div id="service-type-group" class="sr-only">Service type selection</div>
-                                <div class="radio-item">
-                                    <input type="radio" id="tailored-package" name="service-type" value="tailored" checked>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tailored-package" name="service-type[]" value="tailored">
                                     <label for="tailored-package">Tailored Package (custom testing solution)</label>
                                 </div>
-                                <div class="radio-item">
-                                    <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="blocked-hours" name="service-type[]" value="blocked-hours">
                                     <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
                                     <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours" min="1" aria-labelledby="blocked-hours">
                                 </div>
                                 <!-- Prepaid 10+ Hours Option -->
-                                <div class="radio-item">
-                                    <input type="radio" id="prepaid-hours" name="service-type" value="prepaid-hours">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="prepaid-hours" name="service-type[]" value="prepaid-hours">
                                     <label for="prepaid-hours">Pre-paid 10+ Hours ($90/hour - 10% discount)</label>
                                     <div id="prepaid-hours-selector" class="form-input custom-package-input">
                                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1696,6 +1696,14 @@
 </script>
 <script src="js/cursor.js"></script>
 </html>
+
+
+
+
+
+
+
+
 
 
 
