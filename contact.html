@@ -885,6 +885,49 @@
     </style>
 </head>
 <body data-theme="dark">
+    <div class="cursor-follower"></div>
+    <!-- Floating Back to Packages Button -->
+<a href="index.html#packages" id="backToPackages" class="cta-button" style="position: fixed; bottom: 100px; right: 2rem; display: flex; align-items: center; gap: 0.5rem; z-index: 99; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; opacity: 0.9;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+    </svg>
+    Back to Packages
+</a>
+
+<script>
+    // Initialize back button visibility based on URL parameters
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageParam = urlParams.get('package');
+        const addParam = urlParams.get('add');
+        
+        const backButton = document.getElementById('backToPackages');
+        if (backButton) {
+            // Show button initially if coming from package selection
+            if (packageParam && addParam === 'true') {
+                backButton.style.display = 'flex';
+            } else {
+                // Check if any packages are already selected
+                setTimeout(() => {
+                    const selectedCount = document.querySelectorAll('input[name="package[]"]:checked').length;
+                    backButton.style.display = selectedCount > 0 ? 'flex' : 'none';
+                }, 500); // Small delay to ensure packages are loaded
+            }
+            
+            // Add hover effect
+            backButton.addEventListener('mouseenter', function() {
+                this.style.opacity = '1';
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            backButton.addEventListener('mouseleave', function() {
+                this.style.opacity = '0.9';
+                this.style.transform = 'translateY(0)';
+            });
+        }
+    });
+</script>
     <div class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
