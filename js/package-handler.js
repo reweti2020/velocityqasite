@@ -1,6 +1,80 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize package handler when DOM is fully loaded
     initPackageHandler();
+    
+    // Update badge counts on initial page load
+    updatePackageBadge();
+    
+    // Since header might be loaded asynchronously, also update after a delay
+    setTimeout(updatePackageBadge, 1000);
+    
+    // And check again after the header is likely fully loaded
+    setTimeout(updatePackageBadge, 2500);
+    
+    // Handler for service type radios
+    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+    const hoursInput = document.getElementById('hours-needed');
+    const prepaidSelector = document.getElementById('prepaid-hours-selector');
+    
+    if (serviceTypeRadios.length) {
+        serviceTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Hide both inputs first
+                if (hoursInput) hoursInput.style.display = 'none';
+                if (prepaidSelector) prepaidSelector.style.display = 'none';
+                
+                // Show the appropriate input based on selection
+                if (this.value === 'blocked-hours' && hoursInput) {
+                    hoursInput.style.display = 'block';
+                } else if (this.value === 'prepaid-hours' && prepaidSelector) {
+                    prepaidSelector.style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    // Handler for clear button
+    const clearButton = document.getElementById('clearButton');
+    if (clearButton) {
+        clearButton.addEventListener('click', function() {
+            // Clear checkboxes
+            document.querySelectorAll('input[name="package[]"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Reset to tailored package
+            const tailoredPackageRadio = document.getElementById('tailored-package');
+            if (tailoredPackageRadio) {
+                tailoredPackageRadio.checked = true;
+            }
+            
+            // Hide conditional inputs
+            if (hoursInput) hoursInput.style.display = 'none';
+            if (prepaidSelector) prepaidSelector.style.display = 'none';
+            
+            // Update badge
+            updatePackageBadge();
+        });
+    }
+    
+    // Handler for automation parent checkbox
+    const automationCheckbox = document.getElementById('automation');
+    if (automationCheckbox) {
+        automationCheckbox.addEventListener('change', function() {
+            // If automation is unchecked, uncheck all its nested checkboxes
+            if (!this.checked) {
+                document.querySelectorAll('.nested-checkbox input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                updatePackageBadge();
+            }
+        });
+    }
+    
+    // Set up listeners for all package checkboxes to update badge
+    document.querySelectorAll('input[name="package[]"]').forEach(checkbox => {
+        checkbox.addEventListener('change', updatePackageBadge);
+    });
 });
 
 function initPackageHandler() {
@@ -101,7 +175,7 @@ function handlePackageSelection(packageToSelect) {
         }
     }
     
-    // Update mobile badge count if it exists
+    // Update mobile badge if it exists
     updatePackageBadge();
 }
 
@@ -109,10 +183,121 @@ function updatePackageBadge() {
     // Count selected packages
     const selectedCount = document.querySelectorAll('input[name="package[]"]:checked').length;
     
-    // Update mobile badge if it exists
+    // Update all possible badge locations
+    // 1. Mobile badge
     const mobilePackageBadge = document.getElementById('mobilePackageBadge');
     if (mobilePackageBadge) {
         mobilePackageBadge.textContent = selectedCount;
+    }
+    
+    // 2. Header badge using various potential selectors
+    const headerBadgeSelectors = [
+        '.nav-link.package-badge .badge',
+        '.nav-links .cta-button .badge',
+        '.nav-links a[href*="contact"] .badge',
+        '#header-placeholder .badge',
+        'header .badge'
+    ];
+    
+    // Try each selector
+    for (const selector of headerBadgeSelectors) {
+        const headerBadge = document.querySelector(selector);
+        if (headerBadge) {
+            headerBadge.textContent = selectedCount;
+            // Make sure badge is visible if there are selections
+            if (selectedCount > 0) {
+                headerBadge.style.display = 'flex';
+            } else {
+                headerBadge.style.display = 'none';
+            }
+            break; // Stop after finding and updating the first match
+        }
+    }
+    
+    // If header is loaded dynamically, we need to monitor for changes
+    // and update the badge when the header becomes available
+    if (!document.querySelector('header .badge')) {
+        // Try to find the contact link in header
+        const contactLink = document.querySelector('header a[href*="contact"], .nav-links a[href*="contact"]');
+        if (contactLink && selectedCount > 0) {
+            // Contact link exists but no badge - create one if needed
+            if (!contactLink.querySelector('.badge')) {
+                const badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = selectedCount;
+                badge.style.position = 'absolute';
+                badge.style.top = '-8px';
+                badge.style.right = '-8px';
+                badge.style.backgroundColor = 'var(--orange)';
+                badge.style.color = 'white';
+                badge.style.fontSize = '0.75rem';
+                badge.style.fontWeight = '700';
+                badge.style.width = '20px';
+                badge.style.height = '20px';
+                badge.style.borderRadius = '50%';
+                badge.style.display = 'flex';
+                badge.style.alignItems = 'center';
+                badge.style.justifyContent = 'center';
+                badge.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+                
+                // Make sure contact link has position relative for badge positioning
+                contactLink.style.position = 'relative';
+                contactLink.appendChild(badge);
+            }
+        }
+        
+        // Check if we need to create a mutation observer
+        if (!window.badgeObserver) {
+            window.badgeObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        // Try to find contact link after header loads
+                        const contactLink = document.querySelector('header a[href*="contact"], .nav-links a[href*="contact"]');
+                        if (contactLink && selectedCount > 0) {
+                            // Update existing badge or create a new one
+                            let headerBadge = contactLink.querySelector('.badge');
+                            
+                            if (headerBadge) {
+                                // Update existing badge
+                                headerBadge.textContent = selectedCount;
+                                headerBadge.style.display = 'flex';
+                            } else {
+                                // Create a new badge
+                                const badge = document.createElement('span');
+                                badge.className = 'badge';
+                                badge.textContent = selectedCount;
+                                badge.style.position = 'absolute';
+                                badge.style.top = '-8px';
+                                badge.style.right = '-8px';
+                                badge.style.backgroundColor = 'var(--orange)';
+                                badge.style.color = 'white';
+                                badge.style.fontSize = '0.75rem';
+                                badge.style.fontWeight = '700';
+                                badge.style.width = '20px';
+                                badge.style.height = '20px';
+                                badge.style.borderRadius = '50%';
+                                badge.style.display = 'flex';
+                                badge.style.alignItems = 'center';
+                                badge.style.justifyContent = 'center';
+                                badge.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+                                
+                                // Make sure contact link has position relative for badge positioning
+                                contactLink.style.position = 'relative';
+                                contactLink.appendChild(badge);
+                            }
+                            
+                            // Once we've updated the badge, disconnect the observer
+                            window.badgeObserver.disconnect();
+                            window.badgeObserver = null;
+                        }
+                    }
+                });
+            });
+            
+            // Start observing the header or document body for changes
+            const targetNode = document.querySelector('header') || document.body;
+            window.badgeObserver.observe(targetNode, { childList: true, subtree: true });
+        }
     }
 }
 
@@ -126,71 +311,3 @@ function highlightElement(element) {
         }, 3000);
     }
 }
-
-// Add event handlers for the form elements
-document.addEventListener('DOMContentLoaded', function() {
-    // Handler for service type radios
-    const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
-    const hoursInput = document.getElementById('hours-needed');
-    const prepaidSelector = document.getElementById('prepaid-hours-selector');
-    
-    if (serviceTypeRadios.length) {
-        serviceTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                // Hide both inputs first
-                if (hoursInput) hoursInput.style.display = 'none';
-                if (prepaidSelector) prepaidSelector.style.display = 'none';
-                
-                // Show the appropriate input based on selection
-                if (this.value === 'blocked-hours' && hoursInput) {
-                    hoursInput.style.display = 'block';
-                } else if (this.value === 'prepaid-hours' && prepaidSelector) {
-                    prepaidSelector.style.display = 'block';
-                }
-            });
-        });
-    }
-    
-    // Handler for clear button
-    const clearButton = document.getElementById('clearButton');
-    if (clearButton) {
-        clearButton.addEventListener('click', function() {
-            // Clear checkboxes
-            document.querySelectorAll('input[name="package[]"]').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            
-            // Reset to tailored package
-            const tailoredPackageRadio = document.getElementById('tailored-package');
-            if (tailoredPackageRadio) {
-                tailoredPackageRadio.checked = true;
-            }
-            
-            // Hide conditional inputs
-            if (hoursInput) hoursInput.style.display = 'none';
-            if (prepaidSelector) prepaidSelector.style.display = 'none';
-            
-            // Update badge
-            updatePackageBadge();
-        });
-    }
-    
-    // Handler for automation parent checkbox
-    const automationCheckbox = document.getElementById('automation');
-    if (automationCheckbox) {
-        automationCheckbox.addEventListener('change', function() {
-            // If automation is unchecked, uncheck all its nested checkboxes
-            if (!this.checked) {
-                document.querySelectorAll('.nested-checkbox input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-                updatePackageBadge();
-            }
-        });
-    }
-    
-    // Set up listeners for all package checkboxes to update badge
-    document.querySelectorAll('input[name="package[]"]').forEach(checkbox => {
-        checkbox.addEventListener('change', updatePackageBadge);
-    });
-});
