@@ -293,7 +293,11 @@ section {
         padding: 0.75rem 0.5rem;
         font-size: 0.9rem;
     }
-    
+    /* Add this for the navigation button */
+    .scroll-nav-button {
+    bottom: 5rem; /* Move up above mobile nav bar */
+    }
+        
     .view-toggle {
         flex-direction: column;
         align-items: center;
