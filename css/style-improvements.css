@@ -203,6 +203,88 @@ section {
 .cta-button-secondary:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
+.cta-button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation tooltip button styles */
+.scroll-nav-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-nav-button.visible {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+.scroll-nav-button:hover {
+  opacity: 1;
+}
+
+.nav-button {
+  background-color: var(--teal);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #1bafb0; /* slightly darker teal */
+  transform: translateY(-2px);
+}
+
+.nav-tooltip {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 8px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.scroll-nav-button:hover .nav-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-light);
+}
+
+/* Update media queries for better mobile experience */
+@media (max-width: 768px) {
 
 /* Update media queries for better mobile experience */
 @media (max-width: 768px) {
