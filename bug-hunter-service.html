@@ -1371,6 +1371,11 @@
             const sharedComponentsScript = document.createElement('script');
             sharedComponentsScript.src = '/js/shared-components.js';
             document.body.appendChild(sharedComponentsScript);
+
+            // Load floating navigation
+           const floatingNavScript = document.createElement('script');
+           floatingNavScript.src = '/js/floating-nav.js';
+           document.body.appendChild(floatingNavScript);
             
             // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
