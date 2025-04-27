@@ -1628,6 +1628,72 @@ fetch('footer.html')
 })
 .catch(error => console.error('Error loading footer:', error));
 </script>
+// Add this script to precision-strike.html to fix mobile slider issues
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Fix for slide panel on mobile
+    const slidePanel = document.getElementById('slide-panel');
+    const slideHandle = document.getElementById('slide-handle');
+    const slideArrow = document.getElementById('slide-arrow');
+    
+    if (slidePanel && slideHandle && slideArrow) {
+        let isPanelOpen = false;
+        
+        // Function to toggle panel state for mobile
+        function togglePanel() {
+            if (isPanelOpen) {
+                slidePanel.style.transform = 'translateX(100%)';
+                slideArrow.style.transform = 'rotate(0deg)';
+            } else {
+                slidePanel.style.transform = 'translateX(0)';
+                slideArrow.style.transform = 'rotate(180deg)';
+            }
+            isPanelOpen = !isPanelOpen;
+        }
+        
+        // Add touch event listener for mobile devices
+        slideHandle.addEventListener('touchstart', function(event) {
+            event.preventDefault(); // Prevent default touch behavior
+            togglePanel();
+        }, { passive: false });
+        
+        // Also keep the click event for non-touch devices
+        slideHandle.addEventListener('click', togglePanel);
+        
+        // For better mobile experience, allow clicking/tapping outside the panel to close it
+        document.addEventListener('touchstart', function(event) {
+            // If panel is open and the touch is outside the panel and handle
+            if (isPanelOpen && 
+                !slidePanel.contains(event.target) && 
+                !slideHandle.contains(event.target)) {
+                togglePanel();
+            }
+        });
+    }
+    
+    // Make sure floating button is properly initialized on mobile
+    const floatingButton = document.getElementById('floating-add-button');
+    if (floatingButton) {
+        // Force button to be visible on mobile after a delay
+        setTimeout(function() {
+            floatingButton.style.right = '0';
+            floatingButton.style.opacity = '1';
+            floatingButton.style.visibility = 'visible';
+        }, 500);
+        
+        // Add specific mobile handling for the button
+        if ('ontouchstart' in window) {
+            floatingButton.addEventListener('touchstart', function() {
+                this.style.transform = 'translateX(-5px)';
+            });
+            
+            floatingButton.addEventListener('touchend', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        }
+    }
+});
+</script>
 </body>
 </html>
 
