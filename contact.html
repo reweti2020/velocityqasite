@@ -1607,48 +1607,6 @@
                     totalHoursDisplay.textContent = blocks * 10;
                 });
             }
-            
-            // Auto-check packages based on URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const packageToSelect = urlParams.get('package');
-            const isAddOperation = urlParams.get('add') === 'true';
-            
-            if (packageToSelect && isAddOperation) {
-                // Find and check the checkbox
-                const checkbox = document.getElementById(packageToSelect);
-                if (checkbox) {
-                    checkbox.checked = true;
-                    
-                    // Add visual feedback
-                    checkbox.parentNode.classList.add('highlighted');
-                    setTimeout(() => {
-                        checkbox.parentNode.classList.remove('highlighted');
-                    }, 3000);
-                }
-                
-                // Handle service type radio buttons
-                if (packageToSelect === 'precision-strike' || packageToSelect === 'blocked-hours') {
-                    const radioButton = document.getElementById('blocked-hours');
-                    if (radioButton) {
-                        radioButton.checked = true;
-                        hoursInput.style.display = 'block';
-                    }
-                } else if (packageToSelect === 'prepaid-hours') {
-                    const radioButton = document.getElementById('prepaid-hours');
-                    if (radioButton) {
-                        radioButton.checked = true;
-                        prepaidSelector.style.display = 'block';
-                    }
-                }
-                
-                // Scroll to the form section after a short delay
-                setTimeout(() => {
-                    const formSection = document.getElementById('contact');
-                    if (formSection) {
-                        formSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 500);
-            }
         });
         
     document.addEventListener('DOMContentLoaded', function() {
@@ -1735,182 +1693,187 @@
                 cursor.style.display = 'none';
             }
         }
-    // Enhanced package selection - place this at the bottom of your existing script
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the package from URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const packageToSelect = urlParams.get('package');
-    const isAddOperation = urlParams.get('add') === 'true';
-    
-    // Get previously selected packages from localStorage
-    let selectedPackages = [];
-    if (localStorage.getItem('selectedPackages')) {
-        selectedPackages = JSON.parse(localStorage.getItem('selectedPackages'));
-    }
-    
-    // Add new package if specified in URL
-    if (packageToSelect && isAddOperation && !selectedPackages.includes(packageToSelect)) {
-        selectedPackages.push(packageToSelect);
-        localStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
-        
-        // Show notification
-        showNotification(`${packageToSelect.replace(/-/g, ' ')} package added`);
-    }
-    
-    // Check all selected packages
-    selectedPackages.forEach(packageId => {
-        const checkbox = document.getElementById(packageId);
-        if (checkbox) {
-            checkbox.checked = true;
-            
-            // Add visual feedback to newly added package
-            if (packageToSelect === packageId && isAddOperation) {
-                checkbox.parentNode.classList.add('highlighted');
-                setTimeout(() => {
-                    checkbox.parentNode.classList.remove('highlighted');
-                }, 3000);
-            }
-        }
     });
     
-    // Update localStorage when checkboxes change
-    const packageCheckboxes = document.querySelectorAll('input[name="package[]"]');
-    packageCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const packageId = this.id;
-            if (this.checked && !selectedPackages.includes(packageId)) {
-                selectedPackages.push(packageId);
-            } else if (!this.checked && selectedPackages.includes(packageId)) {
-                selectedPackages = selectedPackages.filter(id => id !== packageId);
+    // Enhanced package selection - properly separated as its own event handler
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the package from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageToSelect = urlParams.get('package');
+        const isAddOperation = urlParams.get('add') === 'true';
+        
+        // Get previously selected packages from localStorage
+        let selectedPackages = [];
+        if (localStorage.getItem('selectedPackages')) {
+            try {
+                selectedPackages = JSON.parse(localStorage.getItem('selectedPackages'));
+            } catch (e) {
+                console.error("Error parsing selectedPackages from localStorage:", e);
+                selectedPackages = [];
             }
+        }
+        
+        // Add new package if specified in URL
+        if (packageToSelect && isAddOperation && !selectedPackages.includes(packageToSelect)) {
+            selectedPackages.push(packageToSelect);
             localStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
             
-            // Update back to packages button visibility
-            updateBackButtonVisibility();
-        });
-    });
-
-    // Handle service type radio buttons based on selected packages
-    if (selectedPackages.includes('precision-strike') || selectedPackages.includes('blocked-hours')) {
-        const radioButton = document.getElementById('blocked-hours');
-        if (radioButton) {
-            radioButton.checked = true;
-            const hoursInput = document.getElementById('hours-needed');
-            if (hoursInput) hoursInput.style.display = 'block';
+            // Show notification
+            showNotification(`${packageToSelect.replace(/-/g, ' ')} package added`);
         }
-    } else if (selectedPackages.includes('prepaid-hours')) {
-        const radioButton = document.getElementById('prepaid-hours');
-        if (radioButton) {
-            radioButton.checked = true;
-            const prepaidSelector = document.getElementById('prepaid-hours-selector');
-            if (prepaidSelector) prepaidSelector.style.display = 'block';
-        }
-    }
-    
-    // Make sure no radio button is selected by default if none should be
-    if (!selectedPackages.includes('precision-strike') && 
-        !selectedPackages.includes('blocked-hours') && 
-        !selectedPackages.includes('prepaid-hours')) {
-        // Uncheck all service type radio buttons
-        const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
-        serviceTypeRadios.forEach(radio => {
-            radio.checked = false;
+        
+        // Check all selected packages
+        selectedPackages.forEach(packageId => {
+            const checkbox = document.getElementById(packageId);
+            if (checkbox) {
+                checkbox.checked = true;
+                
+                // Add visual feedback to newly added package
+                if (packageToSelect === packageId && isAddOperation) {
+                    checkbox.parentNode.classList.add('highlighted');
+                    setTimeout(() => {
+                        checkbox.parentNode.classList.remove('highlighted');
+                    }, 3000);
+                }
+            }
         });
-    }
-    
-    // Clear button functionality
-    const clearButton = document.getElementById('clearButton');
-    if (clearButton) {
-        clearButton.addEventListener('click', function() {
-            // Clear all checkboxes
-            packageCheckboxes.forEach(checkbox => {
-                checkbox.checked = false;
+        
+        // Update localStorage when checkboxes change
+        const packageCheckboxes = document.querySelectorAll('input[name="package[]"]');
+        packageCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const packageId = this.id;
+                if (this.checked && !selectedPackages.includes(packageId)) {
+                    selectedPackages.push(packageId);
+                } else if (!this.checked && selectedPackages.includes(packageId)) {
+                    selectedPackages = selectedPackages.filter(id => id !== packageId);
+                }
+                localStorage.setItem('selectedPackages', JSON.stringify(selectedPackages));
+                
+                // Update back to packages button visibility
+                updateBackButtonVisibility();
             });
-            
-            // Clear localStorage
-            localStorage.removeItem('selectedPackages');
-            selectedPackages = [];
-            
-            // Reset service type selection
+        });
+
+        // Handle service type radio buttons based on selected packages
+        if (selectedPackages.includes('precision-strike') || selectedPackages.includes('blocked-hours')) {
+            const radioButton = document.getElementById('blocked-hours');
+            if (radioButton) {
+                radioButton.checked = true;
+                const hoursInput = document.getElementById('hours-needed');
+                if (hoursInput) hoursInput.style.display = 'block';
+            }
+        } else if (selectedPackages.includes('prepaid-hours')) {
+            const radioButton = document.getElementById('prepaid-hours');
+            if (radioButton) {
+                radioButton.checked = true;
+                const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                if (prepaidSelector) prepaidSelector.style.display = 'block';
+            }
+        }
+        
+        // Make sure no radio button is selected by default if none should be
+        if (!selectedPackages.includes('precision-strike') && 
+            !selectedPackages.includes('blocked-hours') && 
+            !selectedPackages.includes('prepaid-hours')) {
+            // Uncheck all service type radio buttons
             const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
             serviceTypeRadios.forEach(radio => {
                 radio.checked = false;
             });
-            
-            // Hide custom inputs
-            const hoursInput = document.getElementById('hours-needed');
-            const prepaidSelector = document.getElementById('prepaid-hours-selector');
-            if (hoursInput) hoursInput.style.display = 'none';
-            if (prepaidSelector) prepaidSelector.style.display = 'none';
-            
-            // Update back button visibility
-            updateBackButtonVisibility();
-            
-            // Show notification
-            showNotification('All selections cleared');
-        });
-    }
-    
-    // Update back button visibility based on selected packages
-    function updateBackButtonVisibility() {
-        const backButton = document.getElementById('backToPackages');
-        if (backButton) {
-            const selectedCount = document.querySelectorAll('input[name="package[]"]:checked').length;
-            backButton.style.display = selectedCount > 0 ? 'flex' : 'none';
         }
-    }
-    
-    // Initialize back button visibility
-    updateBackButtonVisibility();
-    
-    // Show notification function
-    function showNotification(message) {
-        const notification = document.createElement('div');
-        notification.textContent = message;
-        notification.style.position = 'fixed';
-        notification.style.bottom = '2rem';
-        notification.style.left = '50%';
-        notification.style.transform = 'translateX(-50%)';
-        notification.style.backgroundColor = 'var(--teal)';
-        notification.style.color = 'white';
-        notification.style.padding = '0.75rem 1.5rem';
-        notification.style.borderRadius = 'var(--radius-md)';
-        notification.style.boxShadow = 'var(--shadow-md)';
-        notification.style.zIndex = '9999';
-        notification.style.opacity = '0';
-        notification.style.transition = 'opacity 0.3s ease';
         
-        document.body.appendChild(notification);
+        // Clear button functionality
+        const clearButton = document.getElementById('clearButton');
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                // Clear all checkboxes
+                packageCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Clear localStorage
+                localStorage.removeItem('selectedPackages');
+                selectedPackages = [];
+                
+                // Reset service type selection
+                const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
+                serviceTypeRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                // Hide custom inputs
+                const hoursInput = document.getElementById('hours-needed');
+                const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                if (hoursInput) hoursInput.style.display = 'none';
+                if (prepaidSelector) prepaidSelector.style.display = 'none';
+                
+                // Update back button visibility
+                updateBackButtonVisibility();
+                
+                // Show notification
+                showNotification('All selections cleared');
+            });
+        }
         
-        // Fade in
-        setTimeout(() => {
-            notification.style.opacity = '1';
-        }, 10);
-        
-        // Fade out and remove after 3 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
-    }
-    
-    // Scroll to the form section after a short delay if a new package was added
-    if (packageToSelect && isAddOperation) {
-        setTimeout(() => {
-            const formSection = document.getElementById('contact');
-            if (formSection) {
-                formSection.scrollIntoView({ behavior: 'smooth' });
+        // Update back button visibility based on selected packages
+        function updateBackButtonVisibility() {
+            const backButton = document.getElementById('backToPackages');
+            if (backButton) {
+                const selectedCount = document.querySelectorAll('input[name="package[]"]:checked').length;
+                backButton.style.display = selectedCount > 0 ? 'flex' : 'none';
             }
-        }, 500);
-    }
-});
+        }
+        
+        // Initialize back button visibility
+        updateBackButtonVisibility();
+        
+        // Show notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.bottom = '2rem';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.backgroundColor = 'var(--teal)';
+            notification.style.color = 'white';
+            notification.style.padding = '0.75rem 1.5rem';
+            notification.style.borderRadius = 'var(--radius-md)';
+            notification.style.boxShadow = 'var(--shadow-md)';
+            notification.style.zIndex = '9999';
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s ease';
+            
+            document.body.appendChild(notification);
+            
+            // Fade in
+            setTimeout(() => {
+                notification.style.opacity = '1';
+            }, 10);
+            
+            // Fade out and remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Scroll to the form section after a short delay if a new package was added
+        if (packageToSelect && isAddOperation) {
+            setTimeout(() => {
+                const formSection = document.getElementById('contact');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
+        }
+    });
 </script>
 <script src="js/cursor.js"></script>
 </html>
-
-
 
 
 
