@@ -762,26 +762,41 @@
                         </div>
                     </div>
                 </div>
-<!-- Replace the current about-image div with this final version that exactly matches your logo -->
 <div class="about-image">
-  <svg width="600" height="300" viewBox="0 0 950 500" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; background-color: #121830; padding: 2rem; border-radius: 12px;">
-    <!-- The connection lines and nodes -->
-    <g transform="translate(370, 300) scale(1.2)">
-      <!-- Connection lines - note the light teal color -->
-      <line x1="0" y1="0" x2="-80" y2="-80" stroke="rgba(32, 197, 198, 0.7)" stroke-width="6" />
-      <line x1="-80" y1="-80" x2="-160" y2="0" stroke="rgba(32, 197, 198, 0.7)" stroke-width="6" />
+  <svg width="600" height="300" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; background-color: #1b2342; padding: 2rem; border-radius: 12px;">
+    <!-- Main shape - simplified neural network symbol -->
+    <g id="logo-mark" transform="translate(100, 30) scale(3)">
+      <!-- Connection lines -->
+      <path d="M25 40L40 25L25 10" stroke="url(#logoGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
       
-      <!-- Connection dots/nodes - the orange color -->
-      <circle cx="0" cy="0" r="22" fill="#FF6B00" />
-      <circle cx="-80" cy="-80" r="22" fill="#FF6B00" />
-      <circle cx="-160" cy="0" r="22" fill="#FF6B00" />
+      <!-- Connection dots -->
+      <circle cx="25" cy="40" r="5" fill="#FF6B00" />
+      <circle cx="40" cy="25" r="5" fill="#FF6B00" />
+      <circle cx="25" cy="10" r="5" fill="#20C5C6" />
+      
+      <!-- Animated pulse moving from bottom to top -->
+      <circle cx="25" cy="40" r="1.5" fill="#FF6B00" opacity="0.8">
+        <!-- Starting at bottom node -->
+        <animate attributeName="cy" from="40" to="10" dur="3s" repeatCount="indefinite" />
+        <!-- Move horizontally in middle -->
+        <animate attributeName="cx" values="25;25;40;25" dur="3s" repeatCount="indefinite" />
+        <!-- Color transitions from orange to teal -->
+        <animate attributeName="fill" from="#FF6B00" to="#20C5C6" dur="3s" repeatCount="indefinite" />
+      </circle>
     </g>
     
-    <!-- Company name - large and prominent -->
-    <text x="475" y="220" font-family="'Inter', Arial, sans-serif" font-weight="700" font-size="140" text-anchor="middle">
-      <tspan fill="#C9D1E0">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+    <!-- Company name - much larger than header -->
+    <text x="300" y="110" font-family="'Inter', -apple-system, sans-serif" font-weight="700" font-size="66" text-anchor="middle">
+      <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
     </text>
     
+    <!-- Gradient definition -->
+    <defs>
+      <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FF6B00" />
+        <stop offset="100%" stop-color="#20C5C6" />
+      </linearGradient>
+    </defs>
   </svg>
 </div>
             </div>
