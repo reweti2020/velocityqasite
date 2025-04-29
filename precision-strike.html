@@ -1001,7 +1001,7 @@
     <section class="page-header">
         <div class="container">
             <h1 class="page-title">Pay-As-You-Go QA Testing</h1>
-            <div class="page-price">$100/hr</div>
+            <div class="page-price">$125/hr</div>
             <p class="page-description">Flexible app testing services for Australian startups. Direct our testing focus to specific features, workflows, or bugs with no minimum commitment.</p>
             <div class="header-cta">
                 <a href="contact.html" class="cta-button">Start Testing Within 24 Hours</a>
@@ -1026,17 +1026,17 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-light);">
                         <div>Pay-as-you-go</div>
-                        <div>10+ hours prepaid -10%</div>
+                        <div>10+ hours prepaid -20%</div>
                     </div>
                     <div style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--silver);">
-                        10 hours = <span style="color: var(--orange);">$900</span> (Save $100)
+                        10 hours = <span style="color: var(--orange);">$1000</span> (Save $100)
                     </div>
                 </div>
                 
                 <div class="pricing-detail">
                     <div class="price-item">
                         <div class="price-label">Hourly Rate</div>
-                        <div class="price-value">$100/hr</div>
+                        <div class="price-value">$125/hr</div>
                     </div>
                     <div class="price-item">
                         <div class="price-label">Minimum Hours</div>
@@ -1044,7 +1044,7 @@
                     </div>
                     <div class="price-item">
                         <div class="price-label">Prepaid Discount</div>
-                        <div class="price-value">10% off 10+ hours</div>
+                        <div class="price-value">20% off 10+ hours</div>
                     </div>
                 </div>
                 
@@ -1063,7 +1063,7 @@
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </div>
-                        <div class="pricing-feature-text">Prepay 10+ hours for 10% discount</div>
+                        <div class="pricing-feature-text">Prepay 10+ hours for 20% discount</div>
                     </div>
                     <div class="pricing-feature-item">
                         <div class="pricing-feature-icon">
@@ -1144,8 +1144,8 @@
                             <path d="M18.4 9.6l-8.1 4.8-3.8-3.2"></path>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Detailed Reporting</h3>
-                    <p class="feature-description">Receive specific bug reports focused on your areas of concern, with reproduction steps, screenshots, and severity classifications.</p>
+                    <h3 class="feature-title">Reporting</h3>
+                    <p class="feature-description">Receive bug reports focused on your areas of concern, with reproduction steps, screenshots, and severity classifications.</p>
                 </div>
 
                 <div class="feature-card">
@@ -1628,73 +1628,8 @@ fetch('footer.html')
 })
 .catch(error => console.error('Error loading footer:', error));
 </script>
-// Add this script to precision-strike.html to fix mobile slider issues
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Fix for slide panel on mobile
-    const slidePanel = document.getElementById('slide-panel');
-    const slideHandle = document.getElementById('slide-handle');
-    const slideArrow = document.getElementById('slide-arrow');
-    
-    if (slidePanel && slideHandle && slideArrow) {
-        let isPanelOpen = false;
-        
-        // Function to toggle panel state for mobile
-        function togglePanel() {
-            if (isPanelOpen) {
-                slidePanel.style.transform = 'translateX(100%)';
-                slideArrow.style.transform = 'rotate(0deg)';
-            } else {
-                slidePanel.style.transform = 'translateX(0)';
-                slideArrow.style.transform = 'rotate(180deg)';
-            }
-            isPanelOpen = !isPanelOpen;
-        }
-        
-        // Add touch event listener for mobile devices
-        slideHandle.addEventListener('touchstart', function(event) {
-            event.preventDefault(); // Prevent default touch behavior
-            togglePanel();
-        }, { passive: false });
-        
-        // Also keep the click event for non-touch devices
-        slideHandle.addEventListener('click', togglePanel);
-        
-        // For better mobile experience, allow clicking/tapping outside the panel to close it
-        document.addEventListener('touchstart', function(event) {
-            // If panel is open and the touch is outside the panel and handle
-            if (isPanelOpen && 
-                !slidePanel.contains(event.target) && 
-                !slideHandle.contains(event.target)) {
-                togglePanel();
-            }
-        });
-    }
-    
-    // Make sure floating button is properly initialized on mobile
-    const floatingButton = document.getElementById('floating-add-button');
-    if (floatingButton) {
-        // Force button to be visible on mobile after a delay
-        setTimeout(function() {
-            floatingButton.style.right = '0';
-            floatingButton.style.opacity = '1';
-            floatingButton.style.visibility = 'visible';
-        }, 500);
-        
-        // Add specific mobile handling for the button
-        if ('ontouchstart' in window) {
-            floatingButton.addEventListener('touchstart', function() {
-                this.style.transform = 'translateX(-5px)';
-            });
-            
-            floatingButton.addEventListener('touchend', function() {
-                this.style.transform = 'translateX(0)';
-            });
-        }
-    }
-});
-</script>
 </body>
 </html>
+
 
 
