@@ -718,9 +718,9 @@
         }
 
         .focus-testing-options {
-            margin-left: 2.25rem;
-            margin-top: 0.75rem;
-            display: none;
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
         }
 
         .focus-testing-item {
@@ -1152,7 +1152,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <!-- Testing Environment Options -->
                         <div class="form-group">
                             <label class="form-label">Available test environments (Select all that apply)</label>
@@ -1176,7 +1176,7 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="form-group">
                             <label class="form-label">Service selection</label>
                             <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
@@ -1198,22 +1198,24 @@
                                             <input type="number" id="hour-blocks" name="hour-blocks" min="1" value="1" style="width: 70px; text-align: center;">
                                             <span>× 10 hours = <span id="total-hours">10</span> hours</span>
                                         </div>
-                                    <!-- Focus Testing Options -->
-                                    <div class="focus-testing-options" id="focus-testing-options">
-                                        <h5 style="margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--text-light);">Select testing focus:</h5>
-                                        <div class="focus-testing-item">
-                                            <input type="checkbox" id="feature-validation" name="focus[]" value="feature-validation">
-                                            <label for="feature-validation">Feature Validation (3-5 hours)</label>
-                                        </div>
-                                        <div class="focus-testing-item">
-                                            <input type="checkbox" id="critical-path" name="focus[]" value="critical-path">
-                                            <label for="critical-path">Critical Path Verification (2-4 hours)</label>
-                                        </div>
-                                        <div class="focus-testing-item">
-                                            <input type="checkbox" id="bug-verification-focus" name="focus[]" value="bug-verification-focus">
-                                            <label for="bug-verification-focus">Bug Verification (1-2 hours)</label>
-                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Focus Testing Options - Moved outside, made always visible -->
+                            <div class="focus-testing-options" id="focus-testing-options" style="display: block;">
+                                <h5 style="margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--text);">Select testing focus:</h5>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="feature-validation" name="focus[]" value="feature-validation">
+                                    <label for="feature-validation">Feature Validation (3-5 hours)</label>
+                                </div>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="critical-path" name="focus[]" value="critical-path">
+                                    <label for="critical-path">Critical Path Verification (2-4 hours)</label>
+                                </div>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="bug-verification-focus" name="focus[]" value="bug-verification-focus">
+                                    <label for="bug-verification-focus">Bug Verification (1-2 hours)</label>
                                 </div>
                             </div>
                         </div>
@@ -1603,26 +1605,25 @@
                 }
             }
             
-            // Show/hide the hours input and focus testing options based on service type selection
+            // Show/hide the hours input based on service type selection
             const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
             const hoursInput = document.getElementById('hours-needed');
             const prepaidSelector = document.getElementById('prepaid-hours-selector');
-            const focusTestingOptions = document.getElementById('focus-testing-options');
             
             serviceTypeRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    // Hide both inputs first
+                    // Hide only the inputs that should be conditional
                     if (hoursInput) hoursInput.style.display = 'none';
                     if (prepaidSelector) prepaidSelector.style.display = 'none';
-                    if (focusTestingOptions) focusTestingOptions.style.display = 'none';
                     
                     // Show the appropriate input based on selection
                     if (this.value === 'blocked-hours' && hoursInput) {
                         hoursInput.style.display = 'block';
-                    } else if (this.value === 'prepaid-hours') {
-                        if (prepaidSelector) prepaidSelector.style.display = 'block';
-                        if (focusTestingOptions) focusTestingOptions.style.display = 'block';
+                    } else if (this.value === 'prepaid-hours' && prepaidSelector) {
+                        prepaidSelector.style.display = 'block';
                     }
+                    
+                    // Focus testing options remain visible regardless of selection
                 });
             });
             
@@ -1633,7 +1634,6 @@
             
             if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
                 if (prepaidSelector) prepaidSelector.style.display = 'block';
-                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
             }
             
             // Character counter for message text area
@@ -1817,9 +1817,7 @@
                 
                 // Show prepaid hours selector and focus options
                 const prepaidSelector = document.getElementById('prepaid-hours-selector');
-                const focusTestingOptions = document.getElementById('focus-testing-options');
                 if (prepaidSelector) prepaidSelector.style.display = 'block';
-                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
             }
         }
         
@@ -1853,9 +1851,7 @@
             if (radioButton) {
                 radioButton.checked = true;
                 const prepaidSelector = document.getElementById('prepaid-hours-selector');
-                const focusTestingOptions = document.getElementById('focus-testing-options');
                 if (prepaidSelector) prepaidSelector.style.display = 'block';
-                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
             }
         }
         
@@ -1904,10 +1900,8 @@
                 // Hide custom inputs
                 const hoursInput = document.getElementById('hours-needed');
                 const prepaidSelector = document.getElementById('prepaid-hours-selector');
-                const focusTestingOptions = document.getElementById('focus-testing-options');
                 if (hoursInput) hoursInput.style.display = 'none';
                 if (prepaidSelector) prepaidSelector.style.display = 'none';
-                if (focusTestingOptions) focusTestingOptions.style.display = 'none';
                 
                 // Update back button visibility
                 updateBackButtonVisibility();
