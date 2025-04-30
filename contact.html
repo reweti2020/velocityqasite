@@ -478,16 +478,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        .form-disclaimer {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            background-color: rgba(32, 197, 198, 0.05);
-            border-left: 3px solid var(--teal);
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
         /* Nested checkboxes */
         .nested-checkbox {
             margin-left: 1.8rem;
@@ -710,6 +700,40 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Payment Terms Section */
+        .payment-terms-section {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .payment-terms-container {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--orange);
+        }
+
+        .focus-testing-options {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        .focus-testing-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-testing-item input[type="checkbox"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--teal);
         }
 
         /* Footer Styles */
@@ -1071,9 +1095,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">What services are you interested in?</label>
+                            <label class="form-label">Which packages are you interested in?</label>
                             <div class="checkbox-group" role="group" aria-labelledby="services-group">
-                                <div id="services-group" class="sr-only">Services you are interested in</div>
                                 
                                 <!-- Main Packages -->
                                 <div class="checkbox-item">
@@ -1108,13 +1131,7 @@
                                     <input type="checkbox" id="automation-enterprise" name="package[]" value="automation-enterprise">
                                     <label for="automation-enterprise">Custom Enterprise Solution (Quote)</label>
                                 </div>
-                                
-                                <!-- Precision Strike -->
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="precision-strike" name="package[]" value="precision-strike">
-                                    <label for="precision-strike">Precision Strike ($125/hr)</label>
-                                </div>
-                                
+  
                                 <!-- Add-on Packages -->
                                 <h4 class="form-sublabel">Add-on Packages</h4>
                                 <div class="checkbox-item">
@@ -1135,10 +1152,10 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <!-- Testing Environment Options -->
                         <div class="form-group">
-                            <label class="form-label">Testing Environment (Select all that apply)</label>
+                            <label class="form-label">Available test environments (Select all that apply)</label>
                             <div class="checkbox-group" role="group" aria-labelledby="environments-group">
                                 <div id="environments-group" class="sr-only">Testing environments</div>
                                 <div class="checkbox-item">
@@ -1159,11 +1176,10 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="form-group">
-                            <label class="form-label">Service Type</label>
+                            <label class="form-label">Service selection</label>
                             <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
-                                <div id="service-type-group" class="sr-only">Service type selection</div>
                                 <div class="radio-item">
                                     <input type="radio" id="tailored-package" name="service-type" value="tailored">
                                     <label for="tailored-package">Tailored Package (custom testing solution)</label>
@@ -1185,22 +1201,29 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Focus Testing Options - Moved outside, made always visible -->
+                            <div class="focus-testing-options" id="focus-testing-options" style="display: block;">
+                                <h5 style="margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--text);">Select testing focus:</h5>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="feature-validation" name="focus[]" value="feature-validation">
+                                    <label for="feature-validation">Feature Validation (3-5 hours)</label>
+                                </div>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="critical-path" name="focus[]" value="critical-path">
+                                    <label for="critical-path">Critical Path Verification (2-4 hours)</label>
+                                </div>
+                                <div class="focus-testing-item">
+                                    <input type="checkbox" id="bug-verification-focus" name="focus[]" value="bug-verification-focus">
+                                    <label for="bug-verification-focus">Bug Verification (1-2 hours)</label>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="message" class="form-label">Your Message</label>
                             <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project and testing needs" required aria-required="true" maxlength="500"></textarea>
                             <div class="char-count"><span id="char-count">0</span>/500</div>
-                        </div>
-                        
-                        <!-- Payment Terms Disclaimer -->
-                        <div class="form-disclaimer">
-                            <p>
-                                <strong>Payment Terms:
-                                    <a href="payment-terms.html" title="View detailed payment terms" aria-label="View detailed payment terms" class="info-button">i</a>
-                                </strong> 
-                                A 50% deposit is required for all packages except Precision Strike. Precision Strike services (10 hours or less) must be paid in full within 24 hours.
-                            </p>
                         </div>
                         
                         <div class="form-buttons">
@@ -1449,7 +1472,7 @@
                                 </div>
                                 <div class="faq-answer" id="faq-answer-3">
                                     <div class="faq-answer-content">
-                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
+                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $125 per hour.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1457,6 +1480,42 @@
                         
                         <div style="text-align: center; margin-top: 1.5rem;">
                             <a href="./faq.html" class="submit-button" style="text-decoration: none;">View All FAQ</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Terms Section (New) -->
+                    <div class="payment-terms-section">
+                        <h3 class="devices-title">Payment Terms</h3>
+                        <p class="devices-description">Important information about our payment policies</p>
+                        
+                        <div class="payment-terms-container">
+                            <h4 style="font-size: 1.1rem; color: var(--text); margin-bottom: 1rem;">Standard Payment Terms</h4>
+                            <ul style="list-style-type: none; padding: 0; margin-bottom: 1.5rem;">
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">50% deposit required for packages before testing begins</span>
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">Remaining balance due within 14 days of completion</span>
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">Precision Strike hourly and 10+ hour packages paid in full before testing</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">5% late fee applies every 7 days for overdue payments</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1553,7 +1612,7 @@
             
             serviceTypeRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    // Hide both inputs first
+                    // Hide only the inputs that should be conditional
                     if (hoursInput) hoursInput.style.display = 'none';
                     if (prepaidSelector) prepaidSelector.style.display = 'none';
                     
@@ -1563,16 +1622,18 @@
                     } else if (this.value === 'prepaid-hours' && prepaidSelector) {
                         prepaidSelector.style.display = 'block';
                     }
+                    
+                    // Focus testing options remain visible regardless of selection
                 });
             });
             
             // Initialize display state
             if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
-                hoursInput.style.display = 'block';
+                if (hoursInput) hoursInput.style.display = 'block';
             }
             
             if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
-                prepaidSelector.style.display = 'block';
+                if (prepaidSelector) prepaidSelector.style.display = 'block';
             }
             
             // Character counter for message text area
@@ -1701,6 +1762,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const packageToSelect = urlParams.get('package');
         const isAddOperation = urlParams.get('add') === 'true';
+        const focusOptions = urlParams.get('focus');
         
         // Get previously selected packages from localStorage
         let selectedPackages = [];
@@ -1737,6 +1799,27 @@
                 }
             }
         });
+        
+        // Check if any focus options are specified
+        if (focusOptions) {
+            const focusArray = focusOptions.split(',');
+            focusArray.forEach(focus => {
+                const focusCheckbox = document.getElementById(focus);
+                if (focusCheckbox) {
+                    focusCheckbox.checked = true;
+                }
+            });
+            
+            // Make sure prepaid-hours is selected if focus options are specified
+            const prepaidHoursRadio = document.getElementById('prepaid-hours');
+            if (prepaidHoursRadio) {
+                prepaidHoursRadio.checked = true;
+                
+                // Show prepaid hours selector and focus options
+                const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                if (prepaidSelector) prepaidSelector.style.display = 'block';
+            }
+        }
         
         // Update localStorage when checkboxes change
         const packageCheckboxes = document.querySelectorAll('input[name="package[]"]');
@@ -1787,8 +1870,20 @@
         const clearButton = document.getElementById('clearButton');
         if (clearButton) {
             clearButton.addEventListener('click', function() {
-                // Clear all checkboxes
+                // Clear all package checkboxes
                 packageCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Clear all environment checkboxes
+                const environmentCheckboxes = document.querySelectorAll('input[name="environment[]"]');
+                environmentCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Clear focus testing checkboxes
+                const focusCheckboxes = document.querySelectorAll('input[name="focus[]"]');
+                focusCheckboxes.forEach(checkbox => {
                     checkbox.checked = false;
                 });
                 
@@ -1873,4 +1968,5 @@
     });
 </script>
 <script src="js/cursor.js"></script>
+</body>
 </html>
