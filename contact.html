@@ -1095,9 +1095,9 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">What services are you interested in?</label>
+                            <label class="form-label">Which packages are you interested in?</label>
                             <div class="checkbox-group" role="group" aria-labelledby="services-group">
-                                <div id="services-group" class="sr-only">Services you are interested in</div>
+                                <div id="services-group" class="sr-only">Available packages</div>
                                 
                                 <!-- Main Packages -->
                                 <div class="checkbox-item">
@@ -1162,7 +1162,7 @@
     
                         <!-- Testing Environment Options -->
                         <div class="form-group">
-                            <label class="form-label">Testing Environment (Select all that apply)</label>
+                            <label class="form-label">Available test environments (Select all that apply)</label>
                             <div class="checkbox-group" role="group" aria-labelledby="environments-group">
                                 <div id="environments-group" class="sr-only">Testing environments</div>
                                 <div class="checkbox-item">
@@ -1185,7 +1185,7 @@
                         </div>
     
                         <div class="form-group">
-                            <label class="form-label">Service Type</label>
+                            <label class="form-label">Service selection</label>
                             <div class="radio-group" role="radiogroup" aria-labelledby="service-type-group">
                                 <div id="service-type-group" class="sr-only">Service type selection</div>
                                 <div class="radio-item">
@@ -1613,7 +1613,7 @@
                 }
             }
             
-            // Show/hide the hours input based on service type selection
+            // Show/hide the hours input and focus testing options based on service type selection
             const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
             const hoursInput = document.getElementById('hours-needed');
             const prepaidSelector = document.getElementById('prepaid-hours-selector');
@@ -1638,12 +1638,12 @@
             
             // Initialize display state
             if (document.getElementById('blocked-hours') && document.getElementById('blocked-hours').checked) {
-                hoursInput.style.display = 'block';
+                if (hoursInput) hoursInput.style.display = 'block';
             }
             
             if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
-                prepaidSelector.style.display = 'block';
-                focusTestingOptions.style.display = 'block';
+                if (prepaidSelector) prepaidSelector.style.display = 'block';
+                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
             }
             
             // Character counter for message text area
