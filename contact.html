@@ -712,6 +712,40 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Payment Terms Section */
+        .payment-terms-section {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .payment-terms-container {
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--orange);
+        }
+
+        .focus-testing-options {
+            margin-left: 2.25rem;
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .focus-testing-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .focus-testing-item input[type="checkbox"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--teal);
+        }
+
         /* Footer Styles */
         footer {
             background-color: var(--bg-dark);
@@ -1112,7 +1146,7 @@
                                 <!-- Precision Strike -->
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="precision-strike" name="package[]" value="precision-strike">
-                                    <label for="precision-strike">Precision Strike ($100/hr)</label>
+                                    <label for="precision-strike">Precision Strike ($125/hr)</label>
                                 </div>
                                 
                                 <!-- Add-on Packages -->
@@ -1170,17 +1204,34 @@
                                 </div>
                                 <div class="radio-item">
                                     <input type="radio" id="blocked-hours" name="service-type" value="blocked-hours">
-                                    <label for="blocked-hours">Blocked Hours (no minimum, $100/hour)</label>
+                                    <label for="blocked-hours">Blocked Hours (no minimum, $125/hour)</label>
                                     <input type="number" id="hours-needed" name="hours-needed" class="form-input custom-package-input" placeholder="Number of hours" min="1" aria-labelledby="blocked-hours">
                                 </div>
                                 <!-- Prepaid 10+ Hours Option -->
                                 <div class="radio-item">
                                     <input type="radio" id="prepaid-hours" name="service-type" value="prepaid-hours">
-                                    <label for="prepaid-hours">Pre-paid 10+ Hours ($90/hour - 10% discount)</label>
+                                    <label for="prepaid-hours">Pre-paid 10+ Hours ($125/hour - 20% discount)</label>
                                     <div id="prepaid-hours-selector" class="form-input custom-package-input">
                                         <div style="display: flex; align-items: center; gap: 10px;">
                                             <input type="number" id="hour-blocks" name="hour-blocks" min="1" value="1" style="width: 70px; text-align: center;">
                                             <span>× 10 hours = <span id="total-hours">10</span> hours</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Focus Testing Options (from Precision Strike) -->
+                                    <div class="focus-testing-options" id="focus-testing-options">
+                                        <h5 style="margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--text-light);">Select testing focus:</h5>
+                                        <div class="focus-testing-item">
+                                            <input type="checkbox" id="feature-validation" name="focus[]" value="feature-validation">
+                                            <label for="feature-validation">Feature Validation (3-5 hours)</label>
+                                        </div>
+                                        <div class="focus-testing-item">
+                                            <input type="checkbox" id="critical-path" name="focus[]" value="critical-path">
+                                            <label for="critical-path">Critical Path Verification (2-4 hours)</label>
+                                        </div>
+                                        <div class="focus-testing-item">
+                                            <input type="checkbox" id="bug-verification-focus" name="focus[]" value="bug-verification-focus">
+                                            <label for="bug-verification-focus">Bug Verification (1-2 hours)</label>
                                         </div>
                                     </div>
                                 </div>
@@ -1449,7 +1500,7 @@
                                 </div>
                                 <div class="faq-answer" id="faq-answer-3">
                                     <div class="faq-answer-content">
-                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $100 per hour.</p>
+                                        <p>Our blocked hours option gives you maximum flexibility. You can purchase testing time in hourly increments with no minimum, at a rate of $125 per hour.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1457,6 +1508,52 @@
                         
                         <div style="text-align: center; margin-top: 1.5rem;">
                             <a href="./faq.html" class="submit-button" style="text-decoration: none;">View All FAQ</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Terms Section (New) -->
+                    <div class="payment-terms-section">
+                        <h3 class="devices-title">Payment Terms</h3>
+                        <p class="devices-description">Important information about our payment policies</p>
+                        
+                        <div class="payment-terms-container">
+                            <h4 style="font-size: 1.1rem; color: var(--text); margin-bottom: 1rem;">Standard Payment Terms</h4>
+                            <ul style="list-style-type: none; padding: 0; margin-bottom: 1.5rem;">
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">50% deposit required for packages before testing begins</span>
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">Precision Strike (10 hours or less) must be paid in full before testing</span>
+                                </li>
+                                <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">Remaining balance due within 14 days of completion</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span style="color: var(--text-light);">20% discount on prepaid 10+ hour blocks</span>
+                                </li>
+                            </ul>
+                            
+                            <h4 style="font-size: 1.1rem; color: var(--text); margin-bottom: 1rem;">Payment Methods</h4>
+                            <p style="color: var(--text-light); margin-bottom: 0.75rem;">We accept the following payment methods:</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="background-color: var(--bg-dark); color: var(--silver); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem;">Direct Bank Transfer</div>
+                                <div style="background-color: var(--bg-dark); color: var(--silver); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem;">Credit Card</div>
+                                <div style="background-color: var(--bg-dark); color: var(--silver); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem;">PayPal</div>
+                            </div>
+                            
+                            <p style="color: var(--text-light); font-size: 0.9rem; font-style: italic;">For detailed payment terms or special arrangements, please contact our team.</p>
                         </div>
                     </div>
                 </div>
@@ -1550,18 +1647,21 @@
             const serviceTypeRadios = document.querySelectorAll('input[name="service-type"]');
             const hoursInput = document.getElementById('hours-needed');
             const prepaidSelector = document.getElementById('prepaid-hours-selector');
+            const focusTestingOptions = document.getElementById('focus-testing-options');
             
             serviceTypeRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
                     // Hide both inputs first
                     if (hoursInput) hoursInput.style.display = 'none';
                     if (prepaidSelector) prepaidSelector.style.display = 'none';
+                    if (focusTestingOptions) focusTestingOptions.style.display = 'none';
                     
                     // Show the appropriate input based on selection
                     if (this.value === 'blocked-hours' && hoursInput) {
                         hoursInput.style.display = 'block';
-                    } else if (this.value === 'prepaid-hours' && prepaidSelector) {
-                        prepaidSelector.style.display = 'block';
+                    } else if (this.value === 'prepaid-hours') {
+                        if (prepaidSelector) prepaidSelector.style.display = 'block';
+                        if (focusTestingOptions) focusTestingOptions.style.display = 'block';
                     }
                 });
             });
@@ -1573,6 +1673,7 @@
             
             if (document.getElementById('prepaid-hours') && document.getElementById('prepaid-hours').checked) {
                 prepaidSelector.style.display = 'block';
+                focusTestingOptions.style.display = 'block';
             }
             
             // Character counter for message text area
@@ -1701,6 +1802,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const packageToSelect = urlParams.get('package');
         const isAddOperation = urlParams.get('add') === 'true';
+        const focusOptions = urlParams.get('focus');
         
         // Get previously selected packages from localStorage
         let selectedPackages = [];
@@ -1738,6 +1840,29 @@
             }
         });
         
+        // Check if any focus options are specified
+        if (focusOptions) {
+            const focusArray = focusOptions.split(',');
+            focusArray.forEach(focus => {
+                const focusCheckbox = document.getElementById(focus);
+                if (focusCheckbox) {
+                    focusCheckbox.checked = true;
+                }
+            });
+            
+            // Make sure prepaid-hours is selected if focus options are specified
+            const prepaidHoursRadio = document.getElementById('prepaid-hours');
+            if (prepaidHoursRadio) {
+                prepaidHoursRadio.checked = true;
+                
+                // Show prepaid hours selector and focus options
+                const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                const focusTestingOptions = document.getElementById('focus-testing-options');
+                if (prepaidSelector) prepaidSelector.style.display = 'block';
+                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
+            }
+        }
+        
         // Update localStorage when checkboxes change
         const packageCheckboxes = document.querySelectorAll('input[name="package[]"]');
         packageCheckboxes.forEach(checkbox => {
@@ -1768,7 +1893,9 @@
             if (radioButton) {
                 radioButton.checked = true;
                 const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                const focusTestingOptions = document.getElementById('focus-testing-options');
                 if (prepaidSelector) prepaidSelector.style.display = 'block';
+                if (focusTestingOptions) focusTestingOptions.style.display = 'block';
             }
         }
         
@@ -1787,8 +1914,20 @@
         const clearButton = document.getElementById('clearButton');
         if (clearButton) {
             clearButton.addEventListener('click', function() {
-                // Clear all checkboxes
+                // Clear all package checkboxes
                 packageCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Clear all environment checkboxes
+                const environmentCheckboxes = document.querySelectorAll('input[name="environment[]"]');
+                environmentCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Clear focus testing checkboxes
+                const focusCheckboxes = document.querySelectorAll('input[name="focus[]"]');
+                focusCheckboxes.forEach(checkbox => {
                     checkbox.checked = false;
                 });
                 
@@ -1805,8 +1944,10 @@
                 // Hide custom inputs
                 const hoursInput = document.getElementById('hours-needed');
                 const prepaidSelector = document.getElementById('prepaid-hours-selector');
+                const focusTestingOptions = document.getElementById('focus-testing-options');
                 if (hoursInput) hoursInput.style.display = 'none';
                 if (prepaidSelector) prepaidSelector.style.display = 'none';
+                if (focusTestingOptions) focusTestingOptions.style.display = 'none';
                 
                 // Update back button visibility
                 updateBackButtonVisibility();
@@ -1873,4 +2014,5 @@
     });
 </script>
 <script src="js/cursor.js"></script>
+</body>
 </html>
