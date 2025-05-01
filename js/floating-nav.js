@@ -1,154 +1,107 @@
+/**
+ * Global Back-to-Top Button Implementation
+ * Simple, standalone button that appears after scrolling
+ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Create the navigation button element
-  const navButton = document.createElement('div');
-  navButton.className = 'scroll-nav-button';
-  navButton.id = 'scrollNav';
-  navButton.innerHTML = `
-    <button class="nav-button" aria-label="Navigation options">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="18 15 12 9 6 15"></polyline>
-      </svg>
-    </button>
-    
-    <div class="nav-tooltip">
-      <a href="#" id="scrollToTop" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-        <span>Top</span>
-      </a>
-      <a href="javascript:history.back()" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Back</span>
-      </a>
-      <a href="index.html" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        <span>Home</span>
-      </a>
-    </div>
+  // Create the back-to-top button element
+  const backToTopButton = document.createElement('a');
+  backToTopButton.className = 'back-to-top';
+  backToTopButton.id = 'backToTop';
+  backToTopButton.href = '#';
+  backToTopButton.setAttribute('aria-label', 'Back to top of page');
+  backToTopButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="16 12 12 8 8 12"></polyline>
+      <line x1="12" y1="16" x2="12" y2="8"></line>
+    </svg>
   `;
 
-  // Add the navigation button to the body
-  document.body.appendChild(navButton);
+  // Add the button to the body
+  document.body.appendChild(backToTopButton);
 
   // Add the CSS styles
   const style = document.createElement('style');
   style.textContent = `
-    .scroll-nav-button {
+    .back-to-top {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 99;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .scroll-nav-button.visible {
-      opacity: 0.8;
-      transform: translateY(0);
-    }
-
-    .scroll-nav-button:hover {
-      opacity: 1;
-    }
-
-    .nav-button {
-      background-color: var(--teal, #20C5C6);
+      bottom: 2.5rem;
+      right: 2.5rem;
+      background-color: rgba(32, 197, 198, 0.8); /* VelocityQA teal color with transparency */
       color: white;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .nav-button:hover {
-      background-color: #1bafb0;
-      transform: translateY(-2px);
-    }
-
-    .nav-tooltip {
-      position: absolute;
-      bottom: 100%;
-      right: 0;
-      margin-bottom: 8px;
-      background-color: white;
-      border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      overflow: hidden;
-    }
-
-    .scroll-nav-button:hover .nav-tooltip {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      color: var(--text, #1e293b);
       text-decoration: none;
-      transition: background-color 0.2s ease;
-      white-space: nowrap;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 99;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-item:hover {
-      background-color: var(--bg-light, #f8fafc);
+    .back-to-top:hover {
+      background-color: var(--orange, #ff6b00);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     }
 
+    .back-to-top.visible {
+      opacity: 0.8;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      opacity: 1;
+    }
+
+    /* For reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .back-to-top {
+        transition: opacity 0.1s linear;
+      }
+      .back-to-top:hover {
+        transform: none;
+      }
+    }
+
+    /* Mobile optimization */
     @media (max-width: 768px) {
-      .scroll-nav-button {
-        bottom: 5rem;
+      .back-to-top {
+        bottom: 5rem; /* Move up above mobile nav bar */
         right: 1.5rem;
+        width: 40px;
+        height: 40px;
       }
     }
   `;
   document.head.appendChild(style);
 
   // Show/hide button based on scroll position
-  const scrollThreshold = 300;
+  const scrollThreshold = 300; // Show after scrolling 300px
   
   window.addEventListener('scroll', function() {
     if (window.pageYOffset > scrollThreshold) {
-      navButton.classList.add('visible');
+      backToTopButton.classList.add('visible');
     } else {
-      navButton.classList.remove('visible');
+      backToTopButton.classList.remove('visible');
     }
   });
 
   // Initialize visibility
   if (window.pageYOffset > scrollThreshold) {
-    navButton.classList.add('visible');
+    backToTopButton.classList.add('visible');
   }
 
-  // Scroll to top function
-  const scrollToTop = document.getElementById('scrollToTop');
-  if (scrollToTop) {
-    scrollToTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+  // Smooth scroll to top when clicked
+  backToTopButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
-  }
+  });
 });
