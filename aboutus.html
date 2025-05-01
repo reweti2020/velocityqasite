@@ -842,7 +842,6 @@
                         <g transform="translate(300, 350)">
                             <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#20C5C6" opacity="0.8" />
                             <text x="0" y="5" text-anchor="middle" fill="white" font-family="'Inter', sans-serif" font-size="12" font-weight="600">TESTING</text>
-                            
                             <animateMotion 
                                 path="M0,0 C-50,-30 -100,-80 -50,-120 C0,-160 70,-100 100,-150" 
                                 dur="6s" 
@@ -884,48 +883,48 @@
                     <h3 class="step-title">Clear Reporting</h3>
                     <p class="step-description">We deliver actionable results with everything needed to fix issues fast.</p>
                 </div>
-            </div> <!-- Close process-steps div -->
-        </div> <!-- Close container div -->
+            </div>
+        </div>
     </section>
 
-  <section class="testimonials-section">
-    <div class="container">
-        <h2 class="section-title">Hear From Our Clients</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">Real results from real startups who worked with us.</p>
-        
-        <div class="testimonials-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "As a healthcare startup with limited resources, we couldn't afford a dedicated QA team, but we also couldn't afford to launch with bugs. VelocityQA found critical issues in our app that would have seriously impacted our launch. Their team delivered results quickly, giving us time to fix everything before our investor demo."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
-                        <img src="assets/images/logo2_SMALL.png" alt="Harmonie Health Logo" style="width: 100%; height: auto; object-fit: contain;">
-                    </div>
-                    <div class="author-info">
-                        <div class="author-name">Lisa Thomson</div>
-                        <div class="author-role">Founder, Harmonie Health</div>
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Hear From Our Clients</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">Real results from real startups who worked with us.</p>
+            
+            <div class="testimonials-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "As a healthcare startup with limited resources, we couldn't afford a dedicated QA team, but we also couldn't afford to launch with bugs. VelocityQA found critical issues in our app that would have seriously impacted our launch. Their team delivered results quickly, giving us time to fix everything before our investor demo."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+                            <img src="assets/images/logo2_SMALL.png" alt="Harmonie Health Logo" style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Lisa Thomson</div>
+                            <div class="author-role">Founder, Harmonie Health</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "VelocityQA has been instrumental in helping us meet strict service level agreements with local health districts. Their thorough testing ensures our application maintains the stability and security that's absolutely critical in healthcare. We've seen major improvements in our release stability."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
-                        <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: auto; object-fit: contain;">
-                    </div>
-                    <div class="author-info">
-                        <div class="author-name">Head of Product</div>
-                        <div class="author-role">MedApps</div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "VelocityQA has been instrumental in helping us meet strict service level agreements with local health districts. Their thorough testing ensures our application maintains the stability and security that's absolutely critical in healthcare. We've seen major improvements in our release stability."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+                            <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Head of Product</div>
+                            <div class="author-role">MedApps</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <section class="values-section">
         <div class="container">
             <h2 class="section-title">Our Core Values</h2>
@@ -966,8 +965,6 @@
                     <h3 class="value-title">Brutal Honesty</h3>
                     <p class="value-description">We don't sugar-coat or play politics. We tell you exactly what we find, what it means for your users, and how urgently it needs to be fixed.</p>
                 </div>
-                
-
             </div>
         </div>
     </section>
@@ -1039,16 +1036,45 @@
         <div id="footer-placeholder"></div>
     </footer>
 
+    <script src="js/components/shared-components.js"></script>
     <script>
-        // Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
+            // Load header
+            const headerPlaceholder = document.getElementById('header-placeholder');
+            const footerPlaceholder = document.getElementById('footer-placeholder');
             
-            if (mobileMenuToggle && navLinks) {
-                mobileMenuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                });
+            // Header loading
+            if (headerPlaceholder) {
+                fetch('header.html')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        headerPlaceholder.innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error loading header:', error);
+                    });
+            }
+            
+            // Footer loading
+            if (footerPlaceholder) {
+                fetch('footer.html')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        footerPlaceholder.innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error loading footer:', error);
+                    });
             }
             
             // Theme Toggle
@@ -1070,66 +1096,6 @@
                     localStorage.setItem('theme', newTheme);
                 });
             }
-            
-            // Custom cursor
-            const cursor = document.querySelector('.cursor-follower');
-
-            if (cursor && window.matchMedia('(hover: hover)').matches) {
-                document.addEventListener('mousemove', (e) => {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    
-                    if (!cursor.classList.contains('active')) {
-                        setTimeout(() => {
-                            cursor.classList.add('active');
-                        }, 500);
-                    }
-                });
-                
-                // Add hover effects for links and buttons
-                const links = document.querySelectorAll('a, button');
-                links.forEach(link => {
-                    link.addEventListener('mouseenter', () => {
-                        if (link.classList.contains('cta-button')) {
-                            cursor.classList.add('hover-button');
-                        } else {
-                            cursor.classList.add('hover-link');
-                        }
-                    });
-                    
-                    link.addEventListener('mouseleave', () => {
-                        cursor.classList.remove('hover-link', 'hover-button');
-                    });
-                });
-                
-                // Hide cursor when it leaves the window
-                document.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('active');
-                });
-                
-                document.addEventListener('mouseenter', () => {
-                    cursor.classList.add('active');
-                });
-            } else if (cursor) {
-                // If not a hover device, hide the cursor completely
-                cursor.style.display = 'none';
-            }
-            
-            // Load header
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading header:', error));
-            
-            // Load footer
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
         });
     </script>
 </body>
