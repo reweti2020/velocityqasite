@@ -767,7 +767,7 @@
             <div class="approach-grid">
                 <div class="approach-content">
                     <div class="section-subtitle">Our Philosophy</div>
-                    <h2 class="section-title">Practical QA for Startups</h2>
+                    <h2 class="section-title">Practical QA for Startups That Works</h2>
                     <div class="text-content">
                         <p>VelocityQA was born from a simple truth: startups need quality assurance, but traditional QA services have been too expensive, too slow, and too bureaucratic for their needs.</p>
                         
@@ -1008,8 +1008,17 @@
                     </div>
                     <h3 class="value-title">Cost Efficiency</h3>
                     <p class="value-description">Finding and fixing bugs before release is significantly more cost-effective than addressing them after users encounter them in production.</p>
-                      </svg>
-                   </div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">ROI-Focused</h3>
+                    <p class="value-description">Our testing provides a high return on investment by preventing user churn, reducing support costs, and helping you build a better reputation.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1029,67 +1038,103 @@
         <div id="footer-placeholder"></div>
     </footer>
 
-    <script src="js/components/shared-components.js"></script>
+    <!-- Fixed script section with corrected JS -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load header
-            const headerPlaceholder = document.getElementById('header-placeholder');
-            const footerPlaceholder = document.getElementById('footer-placeholder');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+        
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+        
+        // Load browser fixes
+        const browserFixesScript = document.createElement('script');
+        browserFixesScript.src = 'browser.fixes.js';
+        document.head.appendChild(browserFixesScript);
+        
+        // Load shared components
+        const sharedComponentsScript = document.createElement('script');
+        sharedComponentsScript.src = '/js/shared-components.js';
+        document.body.appendChild(sharedComponentsScript);
+
+        // Load floating navigation
+        const floatingNavScript = document.createElement('script');
+        floatingNavScript.src = '/js/floating-nav.js';
+        document.body.appendChild(floatingNavScript);
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Initialize custom cursor interactions
+        const cursor = document.querySelector('.cursor-follower');
+        if (cursor && window.matchMedia('(hover: hover)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                if (!cursor.classList.contains('active')) {
+                    setTimeout(() => {
+                        cursor.classList.add('active');
+                    }, 500);
+                }
+            });
             
-            // Header loading
-            if (headerPlaceholder) {
-                fetch('header.html')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        headerPlaceholder.innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error loading header:', error);
-                    });
-            }
-            
-            // Footer loading
-            if (footerPlaceholder) {
-                fetch('footer.html')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        footerPlaceholder.innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error loading footer:', error);
-                    });
-            }
-            
-            // Theme Toggle
-            const themeToggle = document.getElementById('themeToggle');
-            const htmlElement = document.documentElement;
-            
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                htmlElement.setAttribute('data-theme', savedTheme);
-            }
-            
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = htmlElement.getAttribute('data-theme');
-                    const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                    
-                    htmlElement.setAttribute('data-theme', newTheme);
-                    localStorage.setItem('theme', newTheme);
+            // Add hover effects for links and buttons
+            const links = document.querySelectorAll('a, button');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    if (link.classList.contains('cta-button')) {
+                        cursor.classList.add('hover-button');
+                    } else {
+                        cursor.classList.add('hover-link');
+                    }
                 });
-            }
-        });
+                
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-link', 'hover-button');
+                });
+            });
+            
+            // Hide cursor when it leaves the window
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
+            
+            document.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+            });
+        } else if (cursor) {
+            // If not a hover device, hide the cursor completely
+            cursor.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
