@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     backToTopButton.href = '#';
     backToTopButton.setAttribute('aria-label', 'Back to top of page');
     backToTopButton.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     `;
@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
             position: fixed;
             bottom: 2.5rem;
             right: 2.5rem;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background-color: var(--card, #1e293b);
-            color: var(--text-light, #94a3b8);
+            background-color: rgba(209, 213, 219, 0.25);
+            color: rgba(209, 213, 219, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -38,13 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0;
             visibility: hidden;
             z-index: 999;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .back-to-top:hover {
-            color: var(--teal, #20C5C6);
+            background-color: rgba(209, 213, 219, 0.4);
+            color: rgba(255, 255, 255, 0.9);
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .back-to-top.visible {
