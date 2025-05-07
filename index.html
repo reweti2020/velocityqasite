@@ -174,40 +174,6 @@
             left: 100%;
         }
 
-        /* Bottom navigation buttons */
-        .bottom-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            padding: 1rem;
-        }
-        
-        .bottom-nav-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--teal);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            gap: 0.5rem;
-        }
-        
-        .bottom-nav-button:hover {
-            background-color: #1ba4a5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(32, 197, 198, 0.3);
-        }
-        
-        .bottom-nav-button svg {
-            width: 18px;
-            height: 18px;
-        }
-
         /* Hero Section */
         .hero {
             padding: 5rem 0;
@@ -1523,25 +1489,7 @@
     </div>
 </section>
 
-<!-- Remainder of index.html content... -->
-
-<!-- Add Bottom Navigation -->
-<div class="bottom-nav">
-    <a href="#" id="topBtn" class="bottom-nav-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-        Top
-    </a>
-    <a href="index.html" class="bottom-nav-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        Home
-    </a>
-</div>
-
+<!-- Copyright text at bottom -->
 <footer>
     <div class="container">
         <div class="footer-container">
@@ -1631,15 +1579,6 @@
 </footer>
 
 <script>
-    // Smooth scroll to top when clicking the top button
-    document.getElementById('topBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
     // Load header
     fetch('header.html')
         .then(response => response.text())
