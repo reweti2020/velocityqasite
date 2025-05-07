@@ -982,18 +982,14 @@
         }
 
         .footer-logo-container {
-            height: 100px;
-            margin-bottom: .5rem;
-        }
-
-        .footer-description {
-            opacity: 0.7;
+            height: 60px;
             margin-bottom: 1.5rem;
         }
 
         .footer-social {
             display: flex;
             gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-link {
@@ -1495,13 +1491,44 @@
         <div class="footer-container">
             <div>
                 <div class="footer-logo-container">
-                    <svg class="logo-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="60" height="60" x="5" y="30" rx="8" fill="#20C5C6"/>
-                        <rect width="60" height="60" x="15" y="20" rx="8" fill="#121620"/>
-                        <text x="75" y="60" fill="#ffffff">Velocity<tspan fill="#FF6B00">QA</tspan></text>
-                    </svg>
+                    <a href="index.html">
+                        <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                          <!-- Main shape - simplified neural network symbol -->
+                          <g id="logo-mark">
+                            <!-- Connection lines -->
+                            <path d="M25 40L40 25L25 10" stroke="url(#logoGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                            
+                            <!-- Connection dots -->
+                            <circle cx="25" cy="40" r="5" fill="#FF6B00" />
+                            <circle cx="40" cy="25" r="5" fill="#FF6B00" />
+                            <circle cx="25" cy="10" r="5" fill="#20C5C6" />
+                            
+                            <!-- Animated pulse moving from bottom to top -->
+                            <circle cx="25" cy="40" r="1.5" fill="#FF6B00" opacity="0.8">
+                              <!-- Starting at bottom node -->
+                              <animate attributeName="cy" from="40" to="10" dur="3s" repeatCount="indefinite" />
+                              <!-- Move horizontally in middle -->
+                              <animate attributeName="cx" values="25;25;40;25" dur="3s" repeatCount="indefinite" />
+                              <!-- Color transitions from orange to teal -->
+                              <animate attributeName="fill" from="#FF6B00" to="#20C5C6" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                          </g>
+                          
+                          <!-- Company name -->
+                          <text x="60" y="35" font-family="'Inter', -apple-system, sans-serif" font-weight="700" font-size="22">
+                            <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
+                          </text>
+                          
+                          <!-- Gradient definition -->
+                          <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                              <stop offset="0%" stop-color="#FF6B00" />
+                              <stop offset="100%" stop-color="#20C5C6" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                    </a>
                 </div>
-                <p class="footer-description">We find bugs before your users do. Professional QA testing services for startups and growing businesses.</p>
                 <div class="footer-social">
                     <a href="#" class="social-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
