@@ -2236,7 +2236,7 @@
                             <th>User Journey<br><span class="price">$1,125</span></th>
                             <th>System Auditor<br><span class="price">$1,560</span></th>
                             <th>Precision Strike<br><span class="price">$125/hr</span></th>
-                            <th>Automation<br><span class="price">From $1,295</span></th>
+                            <th>Automation<br><span class="price">From $2,295</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -2499,6 +2499,7 @@
                     </svg>
                 </div>
                 <div class="comparison-button" id="comparisonNext">
+                    <svg xmlns="http://www.w3.org/2000  id="comparisonNext">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -2527,12 +2528,11 @@
                             <p>VelocityQA has streamlined our release process, enabling our team to launch multiple new in-app features while maintaining an impressive 4.8 App Store rating.</p>
                         </div>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="testimonial-logo">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: contain;max-width: 200px;">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-name">CEO</div>
-                                <div class="testimonial-position">Health App</div>
                             </div>
                         </div>
                     </div>
@@ -2541,12 +2541,11 @@
                             <p>VelocityQA's targeted testing packages have enabled us to catch critical issues early, meaning a faster release to market.</p>
                         </div>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="testimonial-logo">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: contain;max-width: 200px;">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-name">Technical Lead</div>
-                                <div class="testimonial-position">Technology Startup</div>
                             </div>
                         </div>
                     </div>
@@ -2555,12 +2554,11 @@
                             <p>We've benefitted significantly from VelocityQA's work, with major improvements to the frequency and stability of production releases.</p>
                         </div>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="testimonial-logo">
+                                <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: 100%; object-fit: contain;max-width: 200px;">
                             </div>
                             <div class="testimonial-info">
                                 <div class="testimonial-name">Head of Product</div>
-                                <div class="testimonial-position">Medical App</div>
                             </div>
                         </div>
                     </div>
@@ -2637,8 +2635,38 @@
   </div>
 </div>
 
-<footer>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load header
+    fetch('header.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading header:', error);
+        });
+    
+    // Load footer
+    fetch('footer.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+        });
+
 // Mobile Menu Toggle
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navLinks = document.getElementById('navLinks');
@@ -2955,7 +2983,8 @@ if (comparisonNext) {
                 }, 3000);
             });
         });
-    </script>
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Ensure elements exist before manipulating them
@@ -3045,8 +3074,3 @@ if (comparisonNext) {
 </script>
 <script src="js/cursor.js"></script>
 </html>
-
-
-
-
-
