@@ -1471,33 +1471,41 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
     </div>
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1 class="hero-title">We <span style="color: var(--orange);">break</span> your software so your users won't</h1>
-            <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Professional QA Testing for Startups</p>
-            <p class="hero-description">Affordable, flexible QA testing services designed specifically for startups and growing businesses.</p>
-            <div class="hero-buttons">
-                <a href="#packages" class="cta-button">View Testing Packages</a>
-                <a href="contact.html" class="cta-button hero-button-secondary">Contact Us</a>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">We <span style="color: var(--orange);">break</span> your software so your users won't</h1>
+                <p class="hero-subtitle" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Professional QA Testing for Startups</p>
+                <p class="hero-description">Affordable, flexible QA testing services designed specifically for startups and growing businesses.</p>
+                <div class="hero-buttons">
+                    <a href="#packages" class="cta-button">View Testing Packages</a>
+                    <a href="contact.html" class="cta-button hero-button-secondary">Contact Us</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-// Load header
-fetch('header.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-  });
+    <!-- Add your main content sections here -->
+    
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
 
-// Load footer
-fetch('footer.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-  });
-</script>
+    <!-- Scripts moved inside the body tag -->
+    <script>
+        // Load header
+        fetch('header.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+          });
+        
+        // Load footer
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+          });
+    </script>
 </body>
 </html>
