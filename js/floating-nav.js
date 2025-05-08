@@ -1,154 +1,163 @@
+/**
+ * Improved Back-to-Top Button Implementation
+ * Subtle, minimalist design that matches the VelocityQA aesthetic
+ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Create the navigation button element
-  const navButton = document.createElement('div');
-  navButton.className = 'scroll-nav-button';
-  navButton.id = 'scrollNav';
-  navButton.innerHTML = `
-    <button class="nav-button" aria-label="Navigation options">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="18 15 12 9 6 15"></polyline>
-      </svg>
-    </button>
-    
-    <div class="nav-tooltip">
-      <a href="#" id="scrollToTop" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-        <span>Top</span>
-      </a>
-      <a href="javascript:history.back()" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Back</span>
-      </a>
-      <a href="index.html" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        <span>Home</span>
-      </a>
-    </div>
+  // First, remove any existing back-to-top buttons or navigation elements
+  const existingButtons = document.querySelectorAll('.back-to-top, #backToTop, [id*="back-to-top"], [class*="back-to-top"], a[href*="#top"]');
+  existingButtons.forEach(button => button.remove());
+  
+  // Create the back-to-top button element (simple arrow, no box or text)
+  const backToTopButton = document.createElement('a');
+  backToTopButton.className = 'velocity-back-to-top'; // Unique class to avoid conflicts
+  backToTopButton.id = 'velocityBackToTop'; // Unique ID to avoid conflicts
+  backToTopButton.href = '#';
+  backToTopButton.setAttribute('aria-label', 'Back to top of page');
+  backToTopButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
   `;
 
-  // Add the navigation button to the body
-  document.body.appendChild(navButton);
+  // Add the button to the body
+  document.body.appendChild(backToTopButton);
 
-  // Add the CSS styles
+  // Add the CSS styles with !important flags
   const style = document.createElement('style');
   style.textContent = `
-    .scroll-nav-button {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 99;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Override any conflicting styles with !important */
+    #velocityBackToTop, 
+    .velocity-back-to-top {
+      position: fixed !important;
+      bottom: 2.5rem !important;
+      right: 2.5rem !important;
+      background-color: transparent !important;
+      color: #D1D5DB !important; /* Silver color that matches footer text */
+      width: 45px !important;
+      height: 45px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      z-index: 9999 !important; /* Higher z-index to ensure visibility */
+      box-shadow: none !important;
+      border: none !important;
+      outline: none !important;
+      text-indent: -9999px !important; /* Hide any text */
+      overflow: hidden !important;
+      white-space: nowrap !important;
+    }
+    
+    /* Ensure only the SVG is visible */
+    #velocityBackToTop::before,
+    #velocityBackToTop::after,
+    #velocityBackToTop *:not(svg):not(polyline),
+    .velocity-back-to-top::before,
+    .velocity-back-to-top::after,
+    .velocity-back-to-top *:not(svg):not(polyline) {
+      display: none !important;
+      content: none !important;
+      visibility: hidden !important;
+    }
+    
+    /* Position the SVG in the center */
+    #velocityBackToTop svg,
+    .velocity-back-to-top svg {
+      position: absolute !important;
+      text-indent: 0 !important; /* Reset text-indent for the SVG */
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      stroke: #D1D5DB !important; /* Silver color */
+      fill: none !important;
     }
 
-    .scroll-nav-button.visible {
-      opacity: 0.8;
-      transform: translateY(0);
+    #velocityBackToTop:hover,
+    .velocity-back-to-top:hover {
+      color: #20C5C6 !important; /* Teal on hover */
+      transform: translateY(-3px) !important;
+      background-color: transparent !important;
+      text-decoration: none !important;
     }
 
-    .scroll-nav-button:hover {
-      opacity: 1;
+    #velocityBackToTop:hover svg,
+    .velocity-back-to-top:hover svg {
+      stroke: #20C5C6 !important; /* Teal on hover */
     }
 
-    .nav-button {
-      background-color: var(--teal, #20C5C6);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease, transform 0.2s ease;
+    #velocityBackToTop.visible,
+    .velocity-back-to-top.visible {
+      opacity: 0.8 !important;
+      visibility: visible !important;
     }
 
-    .nav-button:hover {
-      background-color: #1bafb0;
-      transform: translateY(-2px);
-    }
-
-    .nav-tooltip {
-      position: absolute;
-      bottom: 100%;
-      right: 0;
-      margin-bottom: 8px;
-      background-color: white;
-      border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      overflow: hidden;
-    }
-
-    .scroll-nav-button:hover .nav-tooltip {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      color: var(--text, #1e293b);
-      text-decoration: none;
-      transition: background-color 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .nav-item:hover {
-      background-color: var(--bg-light, #f8fafc);
-    }
-
-    @media (max-width: 768px) {
-      .scroll-nav-button {
-        bottom: 5rem;
-        right: 1.5rem;
+    /* For reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      #velocityBackToTop,
+      .velocity-back-to-top {
+        transition: opacity 0.1s linear !important;
       }
+      #velocityBackToTop:hover,
+      .velocity-back-to-top:hover {
+        transform: none !important;
+      }
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      #velocityBackToTop,
+      .velocity-back-to-top {
+        bottom: 5rem !important; /* Move up above mobile nav bar */
+        right: 1.5rem !important;
+      }
+    }
+    
+    /* Hide any elements with these texts */
+    a:not(#velocityBackToTop) > *:contains("Top"), 
+    a:not(#velocityBackToTop) > *:contains("Back"), 
+    a:not(#velocityBackToTop) > *:contains("Home") {
+      display: none !important;
     }
   `;
   document.head.appendChild(style);
 
   // Show/hide button based on scroll position
-  const scrollThreshold = 300;
+  const scrollThreshold = 300; // Show after scrolling 300px
   
   window.addEventListener('scroll', function() {
     if (window.pageYOffset > scrollThreshold) {
-      navButton.classList.add('visible');
+      backToTopButton.classList.add('visible');
     } else {
-      navButton.classList.remove('visible');
+      backToTopButton.classList.remove('visible');
     }
   });
 
   // Initialize visibility
   if (window.pageYOffset > scrollThreshold) {
-    navButton.classList.add('visible');
+    backToTopButton.classList.add('visible');
   }
 
-  // Scroll to top function
-  const scrollToTop = document.getElementById('scrollToTop');
-  if (scrollToTop) {
-    scrollToTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+  // Smooth scroll to top when clicked
+  backToTopButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
-  }
+  });
+  
+  // Check if there are other elements creating a similar navigation
+  // and remove them periodically
+  setInterval(function() {
+    const elementsToRemove = document.querySelectorAll('a[href*="#top"]:not(#velocityBackToTop), a[href*="#home"]:not(#velocityBackToTop)');
+    elementsToRemove.forEach(el => {
+      if (el.innerText.includes('Top') || el.innerText.includes('Back') || el.innerText.includes('Home')) {
+        el.style.display = 'none';
+      }
+    });
+  }, 1000);
 });

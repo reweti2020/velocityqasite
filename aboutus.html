@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - VelocityQA</title>
+    <title>Our Approach to QA | VelocityQA</title>
+    <meta name="description" content="VelocityQA's unique approach to quality assurance delivers faster, more effective testing for startups and growing businesses.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -109,18 +110,6 @@
 
         .nav-link:hover:after {
             width: 100%;
-
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--teal);
-            transition: width 0.3s;
         }
 
         .cta-button {
@@ -193,41 +182,24 @@
             opacity: 0.9;
         }
 
-        /* About Us Section */
-        .about-section {
+        /* Our Approach Section */
+        .approach-section {
             padding: 5rem 0;
         }
 
-        .about-grid {
+        .approach-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .about-image {
+        .approach-image {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom right, rgba(0, 82, 204, 0.2), rgba(32, 197, 198, 0.2));
-            border-radius: 12px;
         }
 
         .section-title {
@@ -253,125 +225,154 @@
             margin-bottom: 1rem;
         }
 
-        .highlights {
-            display: flex;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .highlight-item {
-            flex: 1;
-            text-align: center;
-        }
-
-        .highlight-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-text {
-            font-size: 1rem;
-            color: var(--text-light);
-        }
-
-        /* Team Section */
-        .team-section {
+        /* Process Visual Section */
+        .process-visual {
             padding: 5rem 0;
             background-color: var(--card);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .team-card {
-            background-color: var(--bg-light);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-image-container {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .team-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .team-card:hover .team-image {
-            transform: scale(1.05);
-        }
-
-        .team-info {
-            padding: 1.5rem;
             text-align: center;
         }
 
-        .team-name {
-            font-size: 1.2rem;
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--teal), var(--orange));
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            width: 20%;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--card);
+            border: 4px solid var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text);
         }
 
-        .team-role {
-            font-size: 0.9rem;
-            color: var(--teal);
-            margin-bottom: 1rem;
-        }
-
-        .team-bio {
+        .step-description {
             font-size: 0.9rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            max-width: 200px;
+            margin: 0 auto;
         }
 
-        .team-social {
+        /* Client Testimonials */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 100px;
+            line-height: 1;
+            font-family: serif;
+            color: var(--teal);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 1rem;
         }
 
-        .team-social-link {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(32, 197, 198, 0.1);
-            color: var(--teal);
+        .author-image {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            transition: all 0.3s ease;
+            overflow: hidden;
         }
 
-        .team-social-link:hover {
-            background-color: var(--teal);
-            color: white;
-            transform: translateY(-3px);
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .author-role {
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
         /* Values Section */
         .values-section {
             padding: 5rem 0;
-            background-color: var(--bg-light);
+            background-color: var(--card);
         }
 
         .value-cards {
@@ -382,7 +383,7 @@
         }
 
         .value-card {
-            background-color: var(--card);
+            background-color: var(--bg-light);
             border-radius: 12px;
             padding: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -440,6 +441,51 @@
             color: var(--text-light);
         }
 
+        /* Results Section */
+        .results-section {
+            padding: 5rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .result-item {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-number span {
+            font-size: 1.5rem;
+            margin-left: 0.25rem;
+        }
+
+        .result-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 5rem 0;
@@ -486,98 +532,6 @@
             padding: 4rem 0 2rem;
         }
 
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo-container {
-            height: 60px;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-description {
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .social-link svg {
-            color: #D1D5DB;
-        }
-
-        .social-link:hover {
-            background-color: var(--teal);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-link {
-            margin-bottom: 0.75rem;
-            list-style-type: none;
-        }
-
-        .footer-link a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-link a:hover {
-            color: var(--teal);
-        }
-
-        .footer-contact-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            color: var(--teal);
-            flex-shrink: 0;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.875rem;
-            opacity: 0.7;
-        }
-
         /* Theme toggle */
         .theme-toggle {
             position: fixed;
@@ -602,6 +556,42 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
+        /* Custom cursor */
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(32, 197, 198, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cursor-follower.active {
+            opacity: 1;
+        }
+
+        .cursor-follower.hover-link {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(32, 197, 198, 0.1);
+        }
+
+        .cursor-follower.hover-button {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(32, 197, 198, 0.15);
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-follower {
+                display: none;
+            }
+        }
+
         /* Mobile nav */
         .mobile-menu-toggle {
             display: none;
@@ -624,15 +614,43 @@
 
         /* Media Queries */
         @media (max-width: 992px) {
-            .about-grid {
+            .approach-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .about-image {
+            .approach-image {
                 order: -1;
                 max-width: 600px;
                 margin: 0 auto;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+            }
+            
+            .process-steps::before {
+                top: 0;
+                bottom: 0;
+                left: 40px;
+                right: auto;
+                width: 4px;
+                height: auto;
+            }
+            
+            .process-step {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 2rem;
+            }
+            
+            .step-description {
+                max-width: none;
+                margin: 0;
             }
         }
 
@@ -675,39 +693,34 @@
                 font-size: 1.1rem;
             }
 
-            .highlights {
-                flex-direction: column;
-                gap: 1.5rem;
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
             .logo-svg {
                 height: 32px;
             }
-
-            .footer-logo-container {
-                height: 24px;
-            }
         }
 
         @media (max-width: 576px) {
-            .value-card {
+            .value-card, .testimonial-card, .result-item {
                 padding: 1.5rem;
-            }
-
-            .team-image-container {
-                height: 200px;
-            }
-
-            .team-info {
-                padding: 1rem;
             }
 
             .section-title {
                 font-size: 1.6rem;
             }
 
-            .highlight-number {
-                font-size: 2rem;
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .result-number {
+                font-size: 2.5rem;
             }
         }
 
@@ -722,133 +735,200 @@
     </style>
 </head>
 <body data-theme="dark">
+    <div class="cursor-follower"></div>
+    
+    <div class="theme-toggle" id="themeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </div>
+
     <header>
         <div id="header-placeholder"></div>
     </header>
 
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">About VelocityQA</h1>
-            <p class="page-description">We're a specialized QA team focused on helping startups deliver flawless apps without the overhead.</p>
+            <h1 class="page-title">Our Approach to Quality</h1>
+            <p class="page-description">We <span style="color: var(--orange);">break</span> things deliberately so your users never have to experience broken apps. Fast, focused, and brutally effective.</p>
         </div>
     </section>
 
-    <section class="about-section">
+    <section class="approach-section">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <div class="section-subtitle">Our Story</div>
-                    <h2 class="section-title">Putting Quality Within Reach of Every Startup</h2>
+            <div class="approach-grid">
+                <div class="approach-content">
+                    <div class="section-subtitle">Our Philosophy</div>
+                    <h2 class="section-title">Practical QA for Startups That Works</h2>
                     <div class="text-content">
-                        <p>VelocityQA was born after being approached by friends and colleagues to perform testing on their startup apps and websites. It quickly became obvious there was a real gap for startups and small to medium business owners trying to juggle resources and complete proper QA testing..</p>
-                        <p>While working at enterprise-level corporations, we witnessed how quality assurance was often a luxury that only well-funded companies could afford. Startups were forced to choose between expensive QA agencies, hiring full-time specialists they couldn't justify, or simply releasing untested products that damaged their reputation.</p>
-                        <p>Our approach is different. We focus on brutal testing - using apps and sites as actual users would. We don't just follow the "happy path" that works every time; we actively look for bugs, customer pain points, irritations, and broken elements. These are precisely the issues that will drive customers away to find another solution.</p>
-                        <p>What sets us apart is that our time is spent on testing, not creating extensive plans, workflows, or reports - which can be a time sink when you're resource and time poor. You need to know what's wrong and how to fix it quickly. As a startup founder, you're likely performing many roles, and QA is often last on the list but can be most critical to successfully launching your site or app.</p>
-                        <p>We understand the importance of being first to market, the time constraints of small teams, and the need for developers to know what's wrong quickly so they can fix and turn it around. It can make all the difference.</p>
-                    </div>
-                    
-                    <div class="highlights">
-                        <div class="highlight-item">
-                            <div class="highlight-number">Healthcare</div>
-                            <div class="highlight-text">Helping you help others</div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-number">Education</div>
-                            <div class="highlight-text">Driving Quality</div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-number">Lifestyle</div>
-                            <div class="highlight-text">Client Satisfaction</div>
-                        </div>
+                        <p>VelocityQA was born from a simple truth: startups need quality assurance, but traditional QA services have been too expensive, too slow, and too bureaucratic for their needs.</p>
+                        
+                        <p>The reality is that testing in startups usually falls on team members who are already focused on their primary responsibilities—designers, developers, founders, and salespeople. Many are even juggling full-time jobs alongside their startup. It's not that startups don't value testing; it's that their teams can only stretch so thin. They need dedicated QA resources long before they can typically afford to hire them.</p>
+                        
+                        <p>Our approach is fundamentally different. We focus on brutal testing — using your application exactly as real users would. We don't just follow the "happy path" that works every time; we actively look for bugs, customer pain points, irritations, and broken elements. These are precisely the issues that will drive users away to find another solution.</p>
+                        
+                        <p>We spend our time testing, not creating extensive plans, workflows, or reports — which become time sinks when you're resource-constrained and racing to market. You need to know what's wrong so you can fix it quickly. As a startup founder wearing multiple hats, QA is often last on your list but can be most critical to successfully launching.</p>
                     </div>
                 </div>
-<svg width="400" height="320" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-  <!-- Main container to center everything -->
-  <g transform="translate(50, 140)">
-    <!-- Logo mark - neural network symbol -->
-    <g id="logo-mark">
-      <!-- Connection lines -->
-      <path d="M25 40L40 25L25 10" stroke="url(#logoGradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-      
-      <!-- Connection dots -->
-      <circle cx="25" cy="40" r="5" fill="#FF6B00" />
-      <circle cx="40" cy="25" r="5" fill="#FF6B00" />
-      <circle cx="25" cy="10" r="5" fill="#20C5C6" />
-      
-      <!-- Animated pulse moving from bottom to top -->
-      <circle cx="25" cy="40" r="1.5" fill="#FF6B00" opacity="0.8">
-        <!-- Starting at bottom node -->
-        <animate attributeName="cy" from="40" to="10" dur="3s" repeatCount="indefinite" />
-        <!-- Move horizontally in middle -->
-        <animate attributeName="cx" values="25;25;40;25" dur="3s" repeatCount="indefinite" />
-        <!-- Color transitions from orange to teal -->
-        <animate attributeName="fill" from="#FF6B00" to="#20C5C6" dur="3s" repeatCount="indefinite" />
-      </circle>
-    </g>
-    
-    <!-- Company name - properly aligned with logo -->
-    <text x="70" y="30" font-family="'Inter', -apple-system, sans-serif" font-weight="700" font-size="36">
-      <tspan fill="#D1D5DB">Velocity</tspan><tspan fill="#FF6B00">QA</tspan>
-    </text>
-  </g>
-  
-  <!-- Gradient definition -->
-  <defs>
-    <linearGradient id="logoGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF6B00" />
-      <stop offset="100%" stop-color="#20C5C6" />
-    </linearGradient>
-  </defs>
-</svg>
-      </div>
-    </section>
-
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">Meet Our Testing Experts</h2>
-            <p class="section-description">Our team a passion for user experience and a startup mindset.</p>
-            
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Nina" alt="Nina" class="team-image">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Nina</h3>
-                        <div class="team-role">Founder & Lead QA Strategist</div>
-                        <p class="team-bio">Nina has built her career on being the person who breaks things - deliberately, methodically, and thoroughly. Her philosophy is simple: if she can break it in testing, a user, competitor, or external event will break it in production..</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Jeanette" alt="Jeanette" class="team-image">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Jeanette</h3>
-                        <div class="team-role">UX & Documentation Specialist</div>
-                        <p class="team-bio">Jeanette excels at testing user onboarding flows, help documentation, and error messaging—critical touchpoints where startups often lose users due to confusion or frustration. Her exceptional attention to detail catches the subtle UI issues and communication gaps that can make or break a startup's early user experience and brand perception</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image-container">
-                        <img src="https://placehold.co/400x400/121620/FFFFFF/?text=Daniel" alt="Daniel" class="team-image">
-                    </div>
-                    <div class="team-info">
-                    <h3 class="team-name">Daniel</h3>
-                        <div class="team-role">User Acceptance Testing</div>
-                        <p class="team-bio">Daniel tests applications like your everyday user would—without technical bias or preconceptions. His specialty is identifying workflow friction points and usability barriers that would frustrate typical users but might be overlooked in traditional QA processes. For startups targeting non-technical users or industries with specific operational workflows.</p>
-                    </div>
+                <div class="approach-image">
+                    <svg width="100%" height="100%" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
+                        
+                        <!-- Circuit board pattern -->
+                        <g opacity="0.15">
+                            <path d="M50 50 H550 M50 100 H550 M50 150 H550 M50 200 H550 M50 250 H550 M50 300 H550 M50 350 H550" stroke="#20C5C6" stroke-width="1" />
+                            <path d="M50 50 V350 M100 50 V350 M150 50 V350 M200 50 V350 M250 50 V350 M300 50 V350 M350 50 V350 M400 50 V350 M450 50 V350 M500 50 V350 M550 50 V350" stroke="#20C5C6" stroke-width="1" />
+                            
+                            <!-- Circuit nodes -->
+                            <circle cx="150" cy="100" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="250" cy="150" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="350" cy="200" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="450" cy="250" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="200" cy="300" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="300" cy="100" r="5" fill="#20C5C6" opacity="0.5" />
+                            <circle cx="400" cy="350" r="5" fill="#20C5C6" opacity="0.5" />
+                        </g>
+                        
+                        <!-- Main Illustration: QA Process with Bug Finding -->
+                        
+                        <!-- App Interface Mockup -->
+                        <rect x="150" y="100" width="300" height="200" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2" />
+                        <rect x="150" y="100" width="300" height="30" rx="10" fill="#334155" />
+                        <circle cx="165" cy="115" r="5" fill="#ef4444" />
+                        <circle cx="185" cy="115" r="5" fill="#f59e0b" />
+                        <circle cx="205" cy="115" r="5" fill="#10b981" />
+                        
+                        <!-- App Elements -->
+                        <rect x="170" y="150" width="120" height="20" rx="4" fill="#334155" />
+                        <rect x="170" y="180" width="80" height="20" rx="4" fill="#334155" />
+                        <rect x="170" y="210" width="150" height="20" rx="4" fill="#334155" />
+                        <rect x="170" y="240" width="100" height="30" rx="4" fill="#334155" />
+                        
+                        <!-- Bug Symbol -->
+                        <g transform="translate(350, 195)">
+                            <circle cx="0" cy="0" r="30" fill="#FF6B00" opacity="0.2" />
+                            <path d="M-15 -15 L15 15 M15 -15 L-15 15" stroke="#FF6B00" stroke-width="4" stroke-linecap="round" />
+                            
+                            <!-- Animated pulse -->
+                            <circle cx="0" cy="0" r="40" fill="none" stroke="#FF6B00" stroke-width="2" opacity="0.6">
+                                <animate attributeName="r" from="35" to="50" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="0.6" to="0" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Magnifying Glass -->
+                        <g transform="translate(400, 130)">
+                            <circle cx="0" cy="0" r="20" fill="none" stroke="#20C5C6" stroke-width="3" />
+                            <line x1="15" y1="15" x2="30" y2="30" stroke="#20C5C6" stroke-width="3" stroke-linecap="round" />
+                        </g>
+                        
+                        <!-- QA Process Arrows -->
+                        <g stroke="#20C5C6" stroke-width="2" stroke-dasharray="5,5">
+                            <path d="M250 320 C250,340 300,350 350,330" fill="none" />
+                            <path d="M350 170 C380,190 400,160 380,140" fill="none" />
+                            <path d="M350 230 C400,250 450,220 470,180" fill="none" />
+                        </g>
+                        
+                        <!-- Animated Testing Element -->
+                        <g transform="translate(300, 350)">
+                            <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#20C5C6" opacity="0.8" />
+                            <text x="0" y="5" text-anchor="middle" fill="white" font-family="'Inter', sans-serif" font-size="12" font-weight="600">TESTING</text>
+                            <animateMotion 
+                                path="M0,0 C-50,-30 -100,-80 -50,-120 C0,-160 70,-100 100,-150" 
+                                dur="6s" 
+                                repeatCount="indefinite" 
+                                rotate="auto" />
+                        </g>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="process-visual">
+        <div class="container">
+            <h2 class="section-title">How We Deliver</h2>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-light);">Our streamlined process eliminates unnecessary bureaucracy to deliver fast, actionable results.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Quick Intake</h3>
+                    <p class="step-description">We gather just what we need to understand your app and testing priorities.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Access Setup</h3>
+                    <p class="step-description">You provide access to your app, we handle the rest with minimal disruption.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Brutal Testing</h3>
+                    <p class="step-description">We test like real users with critical eyes, finding issues before your launch.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Clear Reporting</h3>
+                    <p class="step-description">We deliver actionable results with everything needed to fix issues fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Hear From Our Clients</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">Real results from real startups who worked with us.</p>
+            
+            <div class="testimonials-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "As a healthcare startup with limited resources, we couldn't afford a dedicated QA team, but we also couldn't afford to launch with bugs. VelocityQA found critical issues in our app that would have seriously impacted our launch. Their team delivered results quickly, giving us time to fix everything before our investor demo."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+                            <img src="assets/images/logo2_SMALL.png" alt="Harmonie Health Logo" style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Lisa Thomson</div>
+                            <div class="author-role">Founder, Harmonie Health</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "VelocityQA has been instrumental in helping us meet strict service level agreements with local health districts. Their thorough testing ensures our application maintains the stability and security that's absolutely critical in healthcare. We've seen major improvements in our release stability."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="width: 100px; height: 50px; border-radius: 5px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+                            <img src="assets/images/medapp.png" alt="MedApps Logo" style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="author-info">
+                            <div class="author-name">Head of Product</div>
+                            <div class="author-role">MedApps</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="values-section">
         <div class="container">
             <h2 class="section-title">Our Core Values</h2>
-            <p class="section-description">We've built VelocityQA on a foundation of values that drive everything we do.</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">These principles guide everything we do and define how we work with clients.</p>
             
             <div class="value-cards">
                 <div class="value-card">
@@ -885,43 +965,59 @@
                     <h3 class="value-title">Brutal Honesty</h3>
                     <p class="value-description">We don't sugar-coat or play politics. We tell you exactly what we find, what it means for your users, and how urgently it needs to be fixed.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div class="container">
+            <h2 class="section-title">The Value We Deliver</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">Our focused testing methodology creates tangible benefits for startups.</p>
+            
+            <div class="value-cards" style="margin-top: 2rem;">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="value-title">Reduced Customer Complaints</h3>
+                    <p class="value-description">Identifying and fixing issues before launch means fewer frustrated users and support tickets, allowing your team to focus on growth.</p>
+                </div>
                 
                 <div class="value-card">
                     <div class="value-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                     </div>
-                    <h3 class="value-title">User Empathy</h3>
-                    <p class="value-description">We test from the perspective of real users with real needs and real frustrations. Our technical skills are matched by our understanding of human behavior.</p>
+                    <h3 class="value-title">Quick Turnaround</h3>
+                    <p class="value-description">We understand startup timelines and deliver results quickly, giving you time to fix issues before critical deadlines and demos.</p>
                 </div>
                 
                 <div class="value-card">
                     <div class="value-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5"></path>
-                            <path d="M2 12l10 5 10-5"></path>
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <line x1="3" y1="3" x2="6" y2="6"></line>
+                            <line x1="21" y1="3" x2="18" y2="6"></line>
+                            <line x1="3" y1="21" x2="6" y2="18"></line>
+                            <line x1="21" y1="21" x2="18" y2="18"></line>
                         </svg>
                     </div>
-                    <h3 class="value-title">Continuous Learning</h3>
-                    <p class="value-description">Technology evolves rapidly, and so do we. Our team constantly updates our skills, tools, and approaches to provide cutting-edge testing services.</p>
+                    <h3 class="value-title">Cost Efficiency</h3>
+                    <p class="value-description">Finding and fixing bugs before release is significantly more cost-effective than addressing them after users encounter them in production.</p>
                 </div>
                 
                 <div class="value-card">
                     <div class="value-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                     </div>
-                    <h3 class="value-title">Collaborative Partnership</h3>
-                    <p class="value-description">We test and deliver a report. We can work alongside your team, providing insights and guidance that help build a culture of quality.</p>
+                    <h3 class="value-title">ROI-Focused</h3>
+                    <p class="value-description">Our testing provides a high return on investment by preventing user churn, reducing support costs, and helping you build a better reputation.</p>
                 </div>
             </div>
         </div>
@@ -938,74 +1034,103 @@
         </div>
     </section>
 
-    <footer>
-        <div id="footer-placeholder"></div>
-    </footer>
+// Load header
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
 
-    <div class="theme-toggle" id="themeToggle">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-    </div>
+// Load footer
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  });
+</script>
+</body>
+</html>
+            })
+            .catch(error => console.error('Error loading footer:', error));
+        
+        // Load browser fixes
+        const browserFixesScript = document.createElement('script');
+        browserFixesScript.src = 'browser.fixes.js';
+        document.head.appendChild(browserFixesScript);
+        
+        // Load shared components
+        const sharedComponentsScript = document.createElement('script');
+        sharedComponentsScript.src = '/js/shared-components.js';
+        document.body.appendChild(sharedComponentsScript);
 
-    <script>
-        // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const navLinks = document.getElementById('navLinks');
+        // Load floating navigation
+        const floatingNavScript = document.createElement('script');
+        floatingNavScript.src = '/js/floating-nav.js';
+        document.body.appendChild(floatingNavScript);
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? '' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Initialize custom cursor interactions
+        const cursor = document.querySelector('.cursor-follower');
+        if (cursor && window.matchMedia('(hover: hover)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                if (!cursor.classList.contains('active')) {
+                    setTimeout(() => {
+                        cursor.classList.add('active');
+                    }, 500);
+                }
+            });
             
-            if (mobileMenuToggle && navLinks) {
-                mobileMenuToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
+            // Add hover effects for links and buttons
+            const links = document.querySelectorAll('a, button');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    if (link.classList.contains('cta-button')) {
+                        cursor.classList.add('hover-button');
+                    } else {
+                        cursor.classList.add('hover-link');
+                    }
                 });
-            }
-            
-            // Theme Toggle
-            const themeToggle = document.getElementById('themeToggle');
-            const htmlElement = document.documentElement;
-            
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                htmlElement.setAttribute('data-theme', savedTheme);
-            }
-            
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = htmlElement.getAttribute('data-theme');
-                    const newTheme = currentTheme === 'dark' ? '' : 'dark';
-                    
-                    htmlElement.setAttribute('data-theme', newTheme);
-                    localStorage.setItem('theme', newTheme);
+                
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-link', 'hover-button');
                 });
-            }
+            });
             
-            // Load header
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading header:', error));
+            // Hide cursor when it leaves the window
+            document.addEventListener('mouseleave', () => {
+                cursor.classList.remove('active');
+            });
             
-            // Load footer
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading footer:', error));
-        });
+            document.addEventListener('mouseenter', () => {
+                cursor.classList.add('active');
+            });
+        } else if (cursor) {
+            // If not a hover device, hide the cursor completely
+            cursor.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
-
-

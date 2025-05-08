@@ -1,7 +1,10 @@
 // Script to fix collapsible features, package buttons, and other issues
 
+// Improved collapsible feature functionality for ALL package sections
+// This script ensures content height is properly calculated and applied universally
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Fix for collapsible features
+    // Fix for all collapsible features across all packages
     const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
     
     collapsibleFeatures.forEach(feature => {
@@ -9,22 +12,112 @@ document.addEventListener('DOMContentLoaded', function() {
         const content = feature.querySelector('.feature-content');
         
         if (header && content) {
+            // Store original content height for reference
+            let contentHeight = content.scrollHeight;
+            
+            // Update content height calculation when window resizes
+            window.addEventListener('resize', function() {
+                if (feature.classList.contains('active')) {
+                    // Temporarily remove height restriction to get true height
+                    content.style.height = 'auto';
+                    content.style.opacity = '1';
+                    content.style.visibility = 'visible';
+                    
+                    // Get the new scroll height
+                    contentHeight = content.scrollHeight;
+                    
+                    // Apply the new height
+                    content.style.height = contentHeight + 'px';
+                }
+            });
+            
             header.addEventListener('click', () => {
                 // Toggle active class
                 feature.classList.toggle('active');
                 
                 if (feature.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // First make it visible but hidden (for height calculation)
+                    content.style.visibility = 'hidden';
+                    content.style.height = 'auto';
+                    content.style.display = 'block';
+                    
+                    // Get the true content height
+                    contentHeight = content.scrollHeight;
+                    
+                    // Reset to prepare for animation
+                    content.style.height = '0';
+                    content.style.display = '';
+                    
+                    // Force browser reflow
+                    void content.offsetHeight;
+                    
+                    // Apply height and visibility
+                    content.style.height = contentHeight + 'px';
                     content.style.opacity = '1';
                     content.style.visibility = 'visible';
+                    
+                    // Add a class for extra protection against height issues
+                    setTimeout(() => {
+                        content.classList.add('height-auto');
+                    }, 400); // Match transition duration
                 } else {
-                    content.style.maxHeight = '0';
+                    // First set a fixed height (current height)
+                    content.style.height = content.scrollHeight + 'px';
+                    
+                    // Force browser reflow
+                    void content.offsetHeight;
+                    
+                    // Begin animation
+                    content.style.height = '0';
                     content.style.opacity = '0';
-                    content.style.visibility = 'hidden';
+                    
+                    // Remove the height-auto class
+                    content.classList.remove('height-auto');
+                    
+                    // Delay the visibility change until after animation
+                    setTimeout(() => {
+                        content.style.visibility = 'hidden';
+                    }, 300); // Slightly shorter than transition to avoid flicker
                 }
             });
         }
     });
+    
+    // Function to ensure all feature heights get recalculated when tabs change
+    function recalculateHeightsOnTabChange() {
+        // Find all tab controls
+        const tabs = document.querySelectorAll('.tab');
+        
+        if (tabs.length > 0) {
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Short delay to allow display changes
+                    setTimeout(() => {
+                        // Find all active collapsible features
+                        const activeFeatures = document.querySelectorAll('.package-feature.active');
+                        
+                        activeFeatures.forEach(feature => {
+                            const content = feature.querySelector('.feature-content');
+                            if (content) {
+                                // Reset height to auto to get true height
+                                content.style.height = 'auto';
+                                
+                                // Get correct height
+                                const contentHeight = content.scrollHeight;
+                                
+                                // Apply height
+                                content.style.height = contentHeight + 'px';
+                            }
+                        });
+                    }, 50);
+                });
+            });
+        }
+    }
+    
+    // Call the function to initialize tab change behavior
+    recalculateHeightsOnTabChange();
+});
     
     // Make package buttons clickable
     const packageButtons = document.querySelectorAll('.package-buttons .cta-button');

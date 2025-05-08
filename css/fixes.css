@@ -1,4 +1,64 @@
 /* CSS fixes for the website */
+/* Global Font Adjustments for Better Readability */
+:root {
+  /* Add a softer white for text */
+  --text-white: rgba(255, 255, 255, 0.95);
+  --text-white-secondary: rgba(255, 255, 255, 0.85);
+  --text-white-muted: rgba(255, 255, 255, 0.7);
+}
+
+/* Apply softer white text across the site */
+[data-theme="dark"] body,
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] .form-label,
+.page-header,
+.hero,
+.cta-section,
+footer {
+  color: var(--text-white);
+}
+
+/* Secondary text elements */
+[data-theme="dark"] .text-light,
+[data-theme="dark"] .page-description,
+[data-theme="dark"] .footer-description,
+.page-description,
+.footer-description {
+  color: var(--text-white-secondary);
+}
+
+/* More muted elements */
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .footer-bottom,
+.footer-bottom {
+  color: var(--text-white-muted);
+}
+
+/* Add subtle text shadow to improve readability on dark backgrounds */
+.page-header h1,
+.page-header .page-title,
+.hero h1,
+.hero .hero-title,
+.cta-section h2,
+.cta-section .cta-title {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Slightly increase font weight for better contrast */
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+.page-header p,
+.hero p,
+.cta-section p {
+  font-weight: 400;
+}
+
+/* Better contrast for interactive elements */
+.cta-button-secondary {
+  background-color: rgba(255, 255, 255, 0.25);
+}
 
 /* Fix for expandable package features */
 .package-feature.collapsible {

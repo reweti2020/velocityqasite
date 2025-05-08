@@ -434,23 +434,3 @@ function initCustomCursor() {
         cursor.style.display = 'none';
     }
 }
-
-// Initialize floating button visibility
-document.addEventListener('DOMContentLoaded', function() {
-    const floatingButton = document.getElementById('floating-add-button');
-    if (floatingButton) {
-        // Show the button after a delay
-        setTimeout(function() {
-            floatingButton.style.right = '0';
-        }, 1500);
-        
-        // Add hover effect
-        floatingButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(-10px)';
-        });
-        
-        floatingButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(0)';
-        });
-    }
-});
