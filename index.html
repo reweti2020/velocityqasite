@@ -1155,6 +1155,61 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 4rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-choose-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(32, 197, 198, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--teal);
+        }
+
+        .why-choose-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .why-choose-description {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
         /* Media Queries */
         @media (max-width: 992px) {
             .hero-title {
@@ -1330,6 +1385,24 @@
             .testimonial-logo {
                 margin-bottom: 1rem;
             }
+            
+            .why-choose-us-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .why-choose-item {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1481,6 +1554,63 @@
                 <div class="hero-buttons">
                     <a href="#packages" class="cta-button">View Testing Packages</a>
                     <a href="contact.html" class="cta-button hero-button-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us" id="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Startups Choose Us</h2>
+            <p class="section-description">VelocityQA delivers specialized testing services that growing companies need - without the enterprise price tag.</p>
+            
+            <div class="why-choose-us-grid">
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3 class="why-choose-title">Fixed Price Packages</h3>
+                    <p class="why-choose-description">Transparent pricing with no hidden costs. Choose the package that fits your budget and scale as you grow.</p>
+                </div>
+                
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="why-choose-title">Fast Turnaround</h3>
+                    <p class="why-choose-description">Get comprehensive testing completed in days, not weeks. Perfect for agile teams with tight deadlines.</p>
+                </div>
+                
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 class="why-choose-title">Experienced Testers</h3>
+                    <p class="why-choose-description">Our team specializes in working with startups and understands the unique challenges of fast-moving software development.</p>
+                </div>
+                
+                <div class="why-choose-item">
+                    <div class="why-choose-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="why-choose-title">No Long-Term Contracts</h3>
+                    <p class="why-choose-description">Use our services when you need them. No commitments or ongoing fees - just quality testing when your project requires it.</p>
                 </div>
             </div>
         </div>
