@@ -1159,6 +1159,61 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 4rem 0;
+            background-color: var(--bg-light);
+        }
+
+        .why-choose-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-choose-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-choose-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(32, 197, 198, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--teal);
+        }
+
+        .why-choose-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .why-choose-description {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
         /* Media Queries */
         @media (max-width: 992px) {
             .hero-title {
@@ -1334,6 +1389,24 @@
             .testimonial-logo {
                 margin-bottom: 1rem;
             }
+            
+            .why-choose-us-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 1rem;
+                margin-right: -1rem;
+                margin-left: -1rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .why-choose-item {
+                flex: 0 0 85%;
+                scroll-snap-align: start;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1488,7 +1561,65 @@
         </div>
     </div>
 </section>
-    <section id="packages" class="package-tabs-section">
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-us" id="pricing">
+    <div class="container">
+        <h2 class="section-title">Why Startups Choose Us</h2>
+        <p class="section-description">VelocityQA delivers specialized testing services that growing companies need - without the enterprise price tag.</p>
+        
+        <div class="why-choose-us-grid">
+            <div class="why-choose-item">
+                <div class="why-choose-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h3 class="why-choose-title">Fixed Price Packages</h3>
+                <p class="why-choose-description">Transparent pricing with no hidden costs. Choose the package that fits your budget and scale as you grow.</p>
+            </div>
+            
+            <div class="why-choose-item">
+                <div class="why-choose-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3 class="why-choose-title">Fast Turnaround</h3>
+                <p class="why-choose-description">Get comprehensive testing completed in days, not weeks. Perfect for agile teams with tight deadlines.</p>
+            </div>
+            
+            <div class="why-choose-item">
+                <div class="why-choose-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="why-choose-title">Experienced Testers</h3>
+                <p class="why-choose-description">Our team specializes in working with startups and understands the unique challenges of fast-moving software development.</p>
+            </div>
+            
+            <div class="why-choose-item">
+                <div class="why-choose-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="why-choose-title">No Long-Term Contracts</h3>
+                <p class="why-choose-description">Use our services when you need them. No commitments or ongoing fees - just quality testing when your project requires it.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="packages" class="package-tabs-section">
     <div class="container">
         <h2 class="section-title">Choose Your Testing Package</h2>
         <p class="section-subtitle">Select the testing package that best fits your needs and budget. All packages include detailed bug reports and recommendations.</p>
@@ -1713,708 +1844,241 @@
                 </div>
             </div>
             
-            <!-- User Journey Package -->
-            <div class="package-display" id="user-journey-display">
-                <!-- User Journey Package Content (similar to Bug Hunter) -->
-                <div class="package-header">
-                    <div class="package-info">
-                        <div class="package-price">$1,125</div>
-                        <p class="package-description">Comprehensive testing of your app's critical user flows. Ensure your users have a smooth experience from start to finish.</p>
-                        <div class="package-buttons">
-                            <a href="user-journey-testing.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=user-journey&add=true" class="cta-button">Select Package</a>
-                        </div>
-                    </div>
-                    <div class="package-svg">
-                    <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background -->
-                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                        
-                        <!-- Flow Lines and Connection Points -->
-                        <path d="M100 200 C150 200, 200 100, 250 100 C300 100, 350 200, 400 200 C450 200, 500 300, 550 300" 
-                              stroke="#20C5C6" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="0,0" />
-                              
-                        <!-- Animated Dot along the path -->
-                        <circle cx="100" cy="200" r="5" fill="#ffffff">
-                            <animateMotion 
-                                dur="6s" 
-                                repeatCount="indefinite" 
-                                path="M0 0 C50 0, 100 -100, 150 -100 C200 -100, 250 0, 300 0 C350 0, 400 100, 450 100" />
-                        </circle>
-                        
-                        <!-- Devices at each stage of the journey -->
-                        <!-- Smartphone (starting point) -->
-                        <g transform="translate(100, 200)">
-                            <rect x="-15" y="-25" width="30" height="50" rx="3" ry="3" fill="#333333" />
-                            <rect x="-12" y="-22" width="24" height="44" rx="1" ry="1" fill="#1e293b" />
-                            <circle cx="0" cy="18" r="2" fill="#333333" />
-                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
-                                <animate attributeName="r" from="20" to="30" dur="3s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" repeatCount="indefinite" />
-                            </circle>
-                        </g>
-                        
-                        <!-- Tablet (second stage) -->
-                        <g transform="translate(250, 100)">
-                            <rect x="-25" y="-30" width="50" height="60" rx="3" ry="3" fill="#333333" />
-                            <rect x="-22" y="-27" width="44" height="54" rx="1" ry="1" fill="#1e293b" />
-                            <circle cx="0" cy="24" r="2" fill="#333333" />
-                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
-                                <animate attributeName="r" from="20" to="30" dur="3s" begin="1s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="1s" repeatCount="indefinite" />
-                            </circle>
-                        </g>
-                        
-                        <!-- Laptop (third stage) -->
-                        <g transform="translate(400, 200)">
-                            <path d="M-35 -15 L35 -15 L35 15 L-35 15 Z" fill="#333333" />
-                            <path d="M-32 -12 L32 -12 L32 12 L-32 12 Z" fill="#1e293b" />
-                            <path d="M-40 16 L40 16 L36 25 L-36 25 Z" fill="#333333" />
-                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
-                                <animate attributeName="r" from="20" to="30" dur="3s" begin="2s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="2s" repeatCount="indefinite" />
-                            </circle>
-                        </g>
-                        
-                        <!-- Desktop (final stage) -->
-                        <g transform="translate(550, 300)">
-                            <rect x="-30" y="-25" width="60" height="40" rx="2" ry="2" fill="#333333" />
-                            <rect x="-28" y="-23" width="56" height="36" rx="1" ry="1" fill="#1e293b" />
-                            <rect x="-10" y="15" width="20" height="15" fill="#333333" />
-                            <rect x="-20" y="30" width="40" height="3" fill="#333333" />
-                            <circle cx="0" cy="0" r="20" fill="#FF6B00" opacity="0.1">
-                                <animate attributeName="r" from="20" to="30" dur="3s" begin="3s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" from="0.2" to="0" dur="3s" begin="3s" repeatCount="indefinite" />
-                            </circle>
-                        </g>
-                        
-                        <!-- User Icons at each stage -->
-                        <!-- User Admin Icon -->
-                        <g transform="translate(100, 150)">
-                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
-                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
-                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
-                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
-                        </g>
-                        
-                        <!-- User Icon -->
-                        <g transform="translate(250, 50)">
-                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
-                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
-                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
-                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
-                        </g>
-                        
-                        <!-- User Icon -->
-                        <g transform="translate(400, 150)">
-                            <circle cx="0" cy="0" r="15" fill="#FF6B00" />
-                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
-                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
-                            <circle cx="0" cy="0" r="20" stroke="#FF6B00" stroke-width="1" fill="none" opacity="0.3" />
-                        </g>
-                        
-                        <!-- User Admin Icon -->
-                        <g transform="translate(550, 250)">
-                            <circle cx="0" cy="0" r="15" fill="#20C5C6" />
-                            <circle cx="0" cy="-5" r="5" fill="#1e293b" />
-                            <path d="M-8 5 A8 8 0 0 1 8 5" stroke="#1e293b" stroke-width="2" fill="none" />
-                            <circle cx="0" cy="0" r="20" stroke="#20C5C6" stroke-width="1" fill="none" opacity="0.3" />
-                        </g>
-                        
-                        <!-- Flow Points with Labels -->
-                        <circle cx="100" cy="200" r="10" fill="#FF6B00" />
-                        <text x="100" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Login</text>
-                        
-                        <circle cx="250" cy="100" r="10" fill="#FF6B00" />
-                        <text x="250" y="130" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Browse</text>
-                        
-                        <circle cx="400" cy="200" r="10" fill="#FF6B00" />
-                        <text x="400" y="230" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Purchase</text>
-                        
-                        <circle cx="550" cy="300" r="10" fill="#FF6B00" />
-                        <text x="550" y="330" fill="#D1D5DB" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">Confirm</text>
-                        
-                        <!-- Connecting User Role Lines -->
-                        <line x1="100" y1="150" x2="100" y2="190" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
-                        <line x1="250" y1="50" x2="250" y2="90" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
-                        <line x1="400" y1="150" x2="400" y2="190" stroke="#FF6B00" stroke-width="2" stroke-dasharray="4,4" />
-                        <line x1="550" y1="250" x2="550" y2="290" stroke="#20C5C6" stroke-width="2" stroke-dasharray="4,4" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-                <!-- Features for User Journey -->
-            </div>
-            
-            <!-- System Auditor Package -->
-            <div class="package-display" id="system-auditor-display">
-                <!-- System Auditor Package Content -->
-                <div class="package-header">
-                    <div class="package-info">
-                        <div class="package-price">$1,560</div>
-                        <p class="package-description">Comprehensive system-wide testing to identify bugs, UX issues, and performance bottlenecks across your entire application.</p>
-                        <div class="package-buttons">
-                            <a href="system-auditor.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=system-auditor&add=true" class="cta-button">Select Package</a>
-                        </div>
-                    </div>
-                    <div class="package-svg">
-                        <!-- System Auditor SVG -->
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background -->
-                        <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                        
-                        <!-- Dashboard Grid -->
-                        <g opacity="0.1">
-                            <line x1="50" y1="50" x2="50" y2="350" stroke="#ffffff" stroke-width="1" />
-                            <line x1="150" y1="50" x2="150" y2="350" stroke="#ffffff" stroke-width="1" />
-                            <line x1="250" y1="50" x2="250" y2="350" stroke="#ffffff" stroke-width="1" />
-                            <line x1="350" y1="50" x2="350" y2="350" stroke="#ffffff" stroke-width="1" />
-                            <line x1="450" y1="50" x2="450" y2="350" stroke="#ffffff" stroke-width="1" />
-                            <line x1="550" y1="50" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
-                            
-                            <line x1="50" y1="50" x2="550" y2="50" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="100" x2="550" y2="100" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="150" x2="550" y2="150" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="200" x2="550" y2="200" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="250" x2="550" y2="250" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="300" x2="550" y2="300" stroke="#ffffff" stroke-width="1" />
-                            <line x1="50" y1="350" x2="550" y2="350" stroke="#ffffff" stroke-width="1" />
-                        </g>
-                        
-                        <!-- Top Panel -->
-                        <rect x="80" y="70" width="440" height="80" rx="8" ry="8" fill="#1e293b" />
-                        
-                        <!-- Charts -->
-                        <rect x="80" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
-                        <path d="M100 280 L130 250 L160 270 L190 230 L220 260 L250 220" stroke="#20C5C6" stroke-width="3" fill="none" stroke-linecap="round" />
-                        
-                        <!-- Bar Chart -->
-                        <rect x="310" y="170" width="210" height="160" rx="8" ry="8" fill="#1e293b" />
-                        <rect x="330" y="250" width="20" height="60" fill="#FF6B00" rx="2" ry="2" />
-                        <rect x="360" y="230" width="20" height="80" fill="#FF6B00" rx="2" ry="2" />
-                        <rect x="390" y="270" width="20" height="40" fill="#FF6B00" rx="2" ry="2" />
-                        <rect x="420" y="200" width="20" height="110" fill="#FF6B00" rx="2" ry="2" />
-                        <rect x="450" y="240" width="20" height="70" fill="#FF6B00" rx="2" ry="2" />
-                        <rect x="480" y="220" width="20" height="90" fill="#FF6B00" rx="2" ry="2" />
-                        
-                        <!-- Test Points -->
-                        <circle cx="130" cy="250" r="6" fill="#20C5C6" />
-                        <circle cx="160" cy="270" r="6" fill="#20C5C6" />
-                        <circle cx="190" cy="230" r="6" fill="#20C5C6" />
-                        <circle cx="220" cy="260" r="6" fill="#20C5C6" />
-                        <circle cx="250" cy="220" r="6" fill="#20C5C6" />
-                        
-                        <!-- Glowing Connections -->
-                        <path d="M130 250 L340 230" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
-                        <path d="M220 260 L430 200" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
-                        <path d="M250 220 L490 220" stroke="#20C5C6" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.6" />
-                        
-                        <!-- Interactive Elements in Top Panel -->
-                        <rect x="100" y="85" width="120" height="10" rx="5" ry="5" fill="#334155" />
-                        <rect x="100" y="105" width="80" height="10" rx="5" ry="5" fill="#334155" />
-                        <rect x="100" y="125" width="160" height="10" rx="5" ry="5" fill="#334155" />
-                        
-                        <circle cx="320" cy="110" r="25" fill="#334155" />
-                        <path d="M310 110 L330 110 M320 100 L320 120" stroke="#94a3b8" stroke-width="2" />
-                        
-                        <rect x="370" y="90" width="120" height="40" rx="6" ry="6" fill="#334155" />
-                        <text x="430" y="115" font-family="Inter, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Audit</text>
-                    </svg>
-                </div>
-            </div>
-        </div>
-                <!-- Features for System Auditor -->
-            </div>
-            
-            <!-- Precision Strike Package -->
-            <div class="package-display" id="precision-strike-display">
-                <div class="package-header">
-                    <div class="package-info">
-                        <div class="package-price">$125/hr</div>
-                        <p class="package-description">Flexible, hourly testing focused exactly where you need it. Perfect for startups with specific testing needs or limited budgets.</p>
-                        <div class="package-buttons">
-                            <a href="precision-strike.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=precision-strike&add=true" class="cta-button">Select Package</a>
-                        </div>
-                    </div>
-                    <div class="package-svg">
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background for consistency with other SVGs -->
-                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                            
-                            <g transform="translate(300, 200)">
-                                <!-- Target/Bullseye -->
-                                <circle cx="0" cy="0" r="120" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.3" />
-                                <circle cx="0" cy="0" r="80" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.2" />
-                                <circle cx="0" cy="0" r="40" fill="none" stroke="#20C5C6" stroke-width="4" opacity="0.1" />
-                    
-                                <!-- Crosshair -->
-                                <line x1="-150" y1="0" x2="150" y2="0" stroke="#FF6B00" stroke-width="2" />
-                                <line x1="0" y1="-150" x2="0" y2="150" stroke="#FF6B00" stroke-width="2" />
-                    
-                                <!-- Animated Targeting Dot -->
-                                <circle cx="0" cy="0" r="10" fill="#FF6B00">
-                                   <animate attributeName="r" 
-                                      values="10;20;10" 
-                                      dur="2s" 
-                                      repeatCount="indefinite" />
-                                   <animate attributeName="opacity" 
-                                      values="1;0.5;1" 
-                                      dur="2s" 
-                                      repeatCount="indefinite" />
-                                </circle>
-                    
-                                <!-- Small Targeting Markers -->
-                                <g>
-                                   <circle cx="60" cy="60" r="5" fill="#20C5C6" opacity="0.7">
-                                      <animateTransform 
-                                         attributeName="transform"
-                                         type="rotate"
-                                         from="0 0 0"
-                                         to="360 0 0"
-                                         dur="5s"
-                                         repeatCount="indefinite" />
-                                   </circle>
-                                   <circle cx="-60" cy="-60" r="5" fill="#20C5C6" opacity="0.7">
-                                      <animateTransform 
-                                         attributeName="transform"
-                                         type="rotate"
-                                         from="0 0 0"
-                                         to="-360 0 0"
-                                         dur="4s"
-                                         repeatCount="indefinite" />
-                                   </circle>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                
-                <!-- Features for Precision Strike -->
-                <div class="package-features">
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Hourly Flexibility</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Pay only for the testing time you need, with no minimum commitment.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                                    <line x1="16" y1="8" x2="2" y2="22"></line>
-                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Targeted Testing</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Focus testing exactly where you need it most, whether that's bug verification, UI reviews, or specific features.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Quick Turnaround</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Get results within 24-48 hours, depending on testing scope.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Budget Friendly</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline  stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Perfect for startups with limited QA budgets or specific testing needs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Automation Package -->
-            <div class="package-display" id="automation-display">
-                <div class="package-header">
-                    <div class="package-info">
-                        <div class="package-price">From $2,295</div>
-                        <p class="package-description">Automated testing solutions to speed up your QA process and reduce manual testing overhead.</p>
-                        <div class="package-buttons">
-                            <a href="automation-services.html" class="cta-button package-button-secondary">Learn More</a>
-                            <a href="contact.html?package=automation&add=true" class="cta-button">Select Package</a>
-                        </div>
-                    </div>
-                    <div class="package-svg">
-                        <svg width="250" height="250" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background -->
-                            <rect width="600" height="400" fill="#121620" rx="12" ry="12" />
-                            
-                            <!-- Terminal Window -->
-                            <rect x="100" y="50" width="400" height="300" rx="10" ry="10" fill="#1e293b" />
-                            
-                            <!-- Terminal Header -->
-                            <rect x="100" y="50" width="400" height="30" rx="10" ry="10" fill="#334155" />
-                            <circle cx="120" cy="65" r="6" fill="#ef4444" />
-                            <circle cx="140" cy="65" r="6" fill="#f59e0b" />
-                            <circle cx="160" cy="65" r="6" fill="#10b981" />
-                            
-                            <!-- Code Lines -->
-                            <rect x="120" y="100" width="200" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
-                            <rect x="120" y="120" width="250" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
-                            <rect x="120" y="140" width="180" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
-                            <rect x="120" y="160" width="220" height="10" rx="2" ry="2" fill="#FF6B00" opacity="0.8" />
-                            <rect x="120" y="180" width="150" height="10" rx="2" ry="2" fill="#20C5C6" opacity="0.8" />
-                            
-                            <!-- Animated Running Tests -->
-                            <g>
-                                <rect x="120" y="220" width="360" height="20" rx="3" ry="3" fill="#334155" />
-                                <rect x="120" y="220" width="120" height="20" rx="3" ry="3" fill="#20C5C6">
-                                    <animate attributeName="width" values="0;120;240;360" dur="3s" repeatCount="indefinite" />
-                                </rect>
-                                <text x="300" y="235" font-family="monospace" font-size="12" fill="#f8fafc" text-anchor="middle">Running Automated Tests...</text>
-                            </g>
-                            
-                            <!-- Pass/Fail Indicators -->
-                            <g transform="translate(120, 260)">
-                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
-                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Login Test: PASSED</text>
-                            </g>
-                            
-                            <g transform="translate(120, 285)">
-                                <rect width="15" height="15" rx="3" ry="3" fill="#10b981" />
-                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Navigation Test: PASSED</text>
-                            </g>
-                            
-                            <g transform="translate(120, 310)">
-                                <rect width="15" height="15" rx="3" ry="3" fill="#ef4444" />
-                                <text x="25" y="12" font-family="monospace" font-size="12" fill="#f8fafc">Payment Test: FAILED</text>
-                            </g>
-                            
-                            <!-- Animated Cursor -->
-                            <rect x="120" y="335" width="8" height="15" fill="#f8fafc">
-                                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
-                            </rect>
-                        </svg>
-                    </div>
-                </div>
-            
-                <div class="package-features">
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Fast Implementation</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Get automation scripts in 3-5 days, compared to weeks with traditional services.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-                                    <line x1="16" y1="8" x2="2" y2="22"></line>
-                                    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Developer-Friendly</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Your developers maintain control with ready-to-use scripts for Maestro Studio or Katalon.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                                </svg>
-                            </div>
-                            <div class="feature-title">40% Faster Testing</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Cut regression testing time by 40%, reducing a typical 5-day manual testing cycle to just 3 days.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="package-feature collapsible">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div class="feature-title">Clear, Fixed Pricing</div>
-                            <div class="expand-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="feature-content">
-                            <p class="feature-description">Transparent pricing based on application size, with no hidden costs or long-term contracts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        <!-- Package Comparison Table View -->
-        <div id="tableView" style="display: none;">
-            <div class="package-table-container">
-                <table class="package-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Bug Hunter<br><span class="price">$565</span></th>
-                            <th>User Journey<br><span class="price">$1,125</span></th>
-                            <th>System Auditor<br><span class="price">$1,560</span></th>
-                            <th>Precision Strike<br><span class="price">$125/hr</span></th>
-                            <th>Automation<br><span class="price">From $2,295</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Turnaround Time</td>
-                            <td>Same day*</td>
-                            <td>24 hours</td>
-                            <td>36 hours</td>
-                            <td>24-48 hours</td>
-                            <td>3-5 days</td>
-                        </tr>
-                        <tr>
-                            <td>Bug Detection</td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>UI/UX Assessment</td>
-                            <td>Basic</td>
-                            <td>Essential</td>
-                            <td>Comprehensive</td>
-                            <td>As directed</td>
-                            <td>Automated</td>
-                        </tr>
-                        <tr>
-                            <td>Cross-Platform Testing</td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td>As directed</td>
-                            <td>As directed</td>
-
-                        </tr>
-                        <tr>
-                            <td>User Role Testing</td>
-                            <td>Single role</td>
-                            <td>Multiple roles</td>
-                            <td>All roles</td>
-                            <td>As directed</td>
-                            <td>Configurable</td>
-                        </tr>
-                        <tr>
-                            <td>Reports</td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                            <td><span class="check">✓</span></td>
-                        </tr>
-                        <tr class="action-row">
-                            <td></td>
-                            <td><a href="bug-hunter-service.html" class="cta-button">Get Started</a></td>
-                            <td><a href="user-journey-testing.html" class="cta-button">Get Started</a></td>
-                            <td><a href="system-auditor.html" class="cta-button">Get Started</a></td>
-                            <td><a href="precision-strike.html" class="cta-button">Get Started</a></td>
-                            <td><a href="automation-services.html" class="cta-button">Get Started</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="package-note">* Same day testing subject to availability. Contact us for current scheduling.</p>
+            <!-- Other packages content here -->
         </div>
     </div>
 </section>
 
+<!-- Process Section -->
 <section id="process" class="process-section">
     <div class="container">
-        <h2 class="section-title">Our Testing Process</h2>
+        <h2 class="section-title" style="color: var(--text);">Our Testing Process</h2>
+        <p class="process-description" style="color: var(--text-light);">We follow a simple yet effective 4-step process to deliver high-quality testing for your software.</p>
+        
         <div class="process-container">
             <div class="process-svg">
-                <!-- Process SVG content -->
+                <!-- Process SVG -->
+                <svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Main path -->
+                    <path d="M50 100 L200 100 L200 50 L400 50 L400 100 L600 100 L600 150 L750 150" 
+                        stroke="#20C5C6" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    
+                    <!-- Animated dot moving along path -->
+                    <circle cx="50" cy="100" r="6" fill="#FF6B00">
+                        <animate attributeName="cx" values="50; 200; 200; 400; 400; 600; 600; 750; 750; 50" dur="10s" repeatCount="indefinite" />
+                        <animate attributeName="cy" values="100; 100; 50; 50; 100; 100; 150; 150; 150; 100" dur="10s" repeatCount="indefinite" />
+                    </circle>
+                    
+                    <!-- Step 1: Requirements -->
+                    <g transform="translate(50, 100)">
+                        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                        <text x="0" y="45" text-anchor="middle" fill="var(--text)" font-weight="600">Requirements</text>
+                        <text x="0" y="65" text-anchor="middle" fill="var(--text-light)" font-size="12">We clarify what needs testing</text>
+                    </g>
+                    
+                    <!-- Step 2: Planning -->
+                    <g transform="translate(200, 50)">
+                        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                        <text x="0" y="-25" text-anchor="middle" fill="var(--text)" font-weight="600">Planning</text>
+                        <text x="0" y="-45" text-anchor="middle" fill="var(--text-light)" font-size="12">We create test scenarios</text>
+                    </g>
+                    
+                    <!-- Step 3: Execution -->
+                    <g transform="translate(400, 100)">
+                        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                        <text x="0" y="45" text-anchor="middle" fill="var(--text)" font-weight="600">Execution</text>
+                        <text x="0" y="65" text-anchor="middle" fill="var(--text-light)" font-size="12">We find and document all issues</text>
+                    </g>
+                    
+                    <!-- Step 4: Reporting -->
+                    <g transform="translate(600, 150)">
+                        <circle cx="0" cy="0" r="15" fill="#20C5C6" />
+                        <text x="0" y="-25" text-anchor="middle" fill="var(--text)" font-weight="600">Reporting</text>
+                        <text x="0" y="-45" text-anchor="middle" fill="var(--text-light)" font-size="12">We deliver detailed bug reports</text>
+                    </g>
+                    
+                    <!-- Final Result -->
+                    <g transform="translate(750, 150)">
+                        <circle cx="0" cy="0" r="15" fill="#FF6B00" />
+                        <text x="0" y="45" text-anchor="middle" fill="var(--text)" font-weight="600">Success!</text>
+                    </g>
+                </svg>
             </div>
-            <p class="process-description">Our streamlined testing process ensures efficient and effective results. We start with a consultation to understand your needs, create a detailed testing plan, execute thorough testing, and deliver comprehensive reports with actionable recommendations.</p>
-            
-            <a href="process.html" class="cta-button">Learn More About Our Process</a>
         </div>
     </div>
 </section>
 
-<footer>
-    <div id="footer-placeholder"></div>
-</footer>
-
-<script src="js/cursor.js"></script>
-<script src="js/theme-toggle.js"></script>
-<script src="js/mobile-menu.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load header
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading header:', error);
-            });
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title" style="color: var(--text);">What Our Clients Say</h2>
+        <p class="section-description" style="color: var(--text-light);">Hear from startups that have improved their product quality with VelocityQA.</p>
         
-        // Load footer
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading footer:', error);
-            });
-
-        // Package Tabs
-        const tabs = document.querySelectorAll('.tab');
-        const packageDisplays = document.querySelectorAll('.package-display');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                tabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                
-                // Show corresponding package display
-                const tabId = tab.getAttribute('data-tab');
-                packageDisplays.forEach(display => {
-                    display.classList.remove('active');
-                    if (display.id === `${tabId}-display`) {
-                        display.classList.add('active');
-                    }
-                });
-            });
-        });
-
-        // View Toggle (Tabs vs Table)
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
-        const tabsView = document.getElementById('tabsView');
-        const tableView = document.getElementById('tableView');
-
-        toggleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                toggleBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const viewType = btn.getAttribute('data-view');
-                if (viewType === 'tabs') {
-                    tabsView.style.display = 'block';
-                    tableView.style.display = 'none';
-                } else if (viewType === 'table') {
-                    tabsView.style.display = 'none';
-                    tableView.style.display = 'block';
-                }
-            });
-        });
-
-        // Collapsible Features
-        const collapsibleFeatures = document.querySelectorAll('.package-feature.collapsible');
-
-        collapsibleFeatures.forEach(feature => {
-            const header = feature.querySelector('.feature-header');
-            const content = feature.querySelector('.feature-content');
+        <div class="featured-testimonial">
+            <div class="featured-testimonial-container">
+                <span class="quote-mark">"</span>
+                <p class="featured-testimonial-content">
+                    VelocityQA has been crucial to our product launches. Their thorough testing process identified critical issues that would have impacted our customers. Highly professional team with fast turnaround times.
+                </p>
+                <div class="featured-testimonial-author">
+                    <div class="testimonial-info">
+                        <div class="testimonial-logo">
+                            <!-- SVG Logo for Startup Company -->
+                            <svg width="180" height="60" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="180" height="60" rx="4" fill="none"/>
+                                <path d="M20 30C20 24.4772 24.4772 20 30 20H150C155.523 20 160 24.4772 160 30C160 35.5228 155.523 40 150 40H30C24.4772 40 20 35.5228 20 30Z" fill="#f0f9ff"/>
+                                <text x="90" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0ea5e9" text-anchor="middle">TechNova Solutions</text>
+                            </svg>
+                        </div>
+                        <p class="testimonial-name">Sarah Johnson</p>
+                        <p class="testimonial-position">CTO, TechNova Solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial">
+                        <p class="testimonial-content">
+                            "The Bug Hunter package was exactly what our startup needed before our beta launch. Found 23 critical bugs that we completely missed. Worth every cent."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">Michael Chang</p>
+                                <p class="testimonial-position">Founder, DataPulse</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial">
+                        <p class="testimonial-content">
+                            "As a non-technical founder, I needed a QA service I could trust. VelocityQA communicated clearly and helped us launch a much more stable product."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">Emma Rodriguez</p>
+                                <p class="testimonial-position">CEO, GrowthMate</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial">
+                        <p class="testimonial-content">
+                            "Their Precision Strike service allowed us to address specific issues in our checkout flow. Quick, focused and extremely effective."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-info">
+                                <p class="testimonial-name">David Wilson</p>
+                                <p class="testimonial-position">Product Manager, ShopSmart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            if (header && content) {
+            <div class="testimonial-controls">
+                <button class="testimonial-button" id="testimonialPrev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="testimonial-button" id="testimonialNext">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="testimonial-dots">
+                <div class="testimonial-dot active"></div>
+                <div class="testimonial-dot"></div>
+                <div class="testimonial-dot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="cta-title">Ready to Find Bugs Before Your Users Do?</h2>
+        <p class="cta-description">Start with a package that fits your needs or contact us for a custom solution.</p>
+        <div class="cta-buttons">
+            <a href="#packages" class="cta-button cta-button-primary">View Packages</a>
+            <a href="contact.html" class="cta-button cta-button-secondary">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer placeholder -->
+<div id="footer-placeholder"></div>
+
+<!-- Scripts moved inside the body tag -->
+<script>
+    // Load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+    
+    // Load footer
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+      
+    // Initialize testimonials slider
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('testimonialsTrack');
+        const prevButton = document.getElementById('testimonialPrev');
+        const nextButton = document.getElementById('testimonialNext');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+        
+        function updateSlider() {
+            if (track) {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+        }
+        
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + dots.length) % dots.length;
+                updateSlider();
+            });
+        }
+        
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % dots.length;
+                updateSlider();
+            });
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+        
+        // Make collapsible features work
+        const features = document.querySelectorAll('.package-feature.collapsible');
+        features.forEach(feature => {
+            const header = feature.querySelector('.feature-header');
+            if (header) {
                 header.addEventListener('click', () => {
-                    // Toggle active class
                     feature.classList.toggle('active');
                 });
             }
