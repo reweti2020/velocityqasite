@@ -1,0 +1,69 @@
+<div class="input-group">
+                                <label for="presentation-title">Presentation Title</label>
+                                <input type="text" id="presentation-title" placeholder="e.g., Digital Transformation Strategy, Market Expansion Proposal">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="presentation-purpose">Presentation Purpose</label>
+                                <textarea id="presentation-purpose" placeholder="e.g., To secure executive approval for the proposed digital transformation initiative and associated budget"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="presentation-audience">Target Audience</label>
+                                    <input type="text" id="presentation-audience" placeholder="e.g., C-Suite, Board of Directors, Senior Leadership">
+                                </div>
+                                <div class="input-group">
+                                    <label for="presentation-time">Time Allocation</label>
+                                    <input type="text" id="presentation-time" placeholder="e.g., 20 minutes presentation, 10 minutes Q&A">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="presentation-key-points">Key Points (2-4 items)</label>
+                                <textarea id="presentation-key-points" placeholder="e.g., Market opportunity estimated at $50M&#10;Implementation requires cross-functional coordination&#10;ROI projected at 35% over 3 years"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="presentation-data">Key Data/Metrics</label>
+                                    <input type="text" id="presentation-data" placeholder="e.g., Market size, Growth projections, Competitor benchmarks">
+                                </div>
+                                <div class="input-group">
+                                    <label for="presentation-decisions">Decisions Needed</label>
+                                    <input type="text" id="presentation-decisions" placeholder="e.g., Budget approval, Resource allocation, Timeline endorsement">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="presentation-challenges">Anticipated Challenges/Questions</label>
+                                <textarea id="presentation-challenges" placeholder="e.g., Budget concerns in current economic climate&#10;Implementation timeline feasibility&#10;Integration with existing systems"></textarea>
+                            </div>
+                            
+                            <button class="generate-btn" onclick="generatePrompt('exec-presentation')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                Generate Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="exec-presentation-output"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 VelocityQA. All rights reserved. These prompts are provided as templates to assist with business and technical communications.</p>
+            <p>For more information or custom prompt assistance, please <a href="../contact.html">contact VelocityQA</a>.</p>
+        </footer>
+    </div>
+    
+    <!-- Notification container for alerts -->
+    <div class="notification" id="notification" style="display: none;"></div>
+    
+    <!-- JavaScript for toolkit functionality -->
+    <script src="js/toolkit-functions.js"></script>
+</body>
+</html>
