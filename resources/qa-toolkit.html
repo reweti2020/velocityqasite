@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityQA Toolkit | Quality Assurance Resources</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Link to the same CSS used in the AI toolkit with a few custom additions -->
+    <link rel="stylesheet" href="css/toolkit-base.css">
+    <style>
+        /* Additional QA-specific styling */
+        .qa-category-header {
+            background: linear-gradient(135deg, #14223A 0%, #FF6B00 100%);
+        }
+        
+        .qa-card {
+            border-left: 3px solid #FF6B00;
+        }
+        
+        .qa-resource-preview {
+            background-color: #14223A;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qa-resource-preview::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(20, 34, 58, 0) 0%, rgba(20, 34, 58, 1) 100%);
+        }
+        
+        .qa-resource-preview.expanded::after {
+            display: none;
+        }
+        
+        .qa-resource-preview-toggle {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 10;
+            background: #FF6B00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .template-download-btn {
+            background: linear-gradient(45deg, #FF6B00, #FF9933);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .template-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="cybernetic-grid"></div>
+    <div class="container">
+        <header class="header">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+                </svg>
+            </button>
+            <div class="header-content">
+                <h1>VelocityQA Toolkit: Professional QA Resources</h1>
+                <p class="header-subtitle">A collection of professional-grade QA templates, checklists, and methodologies to improve your testing processes and deliver higher quality software.</p>
+                
+                <div class="header-feature">
+                    <h3>How to Use This Toolkit</h3>
+                    <p>Browse the categories below to find relevant templates and resources for your QA needs. Each resource includes a preview and can be downloaded as a customizable template. Use these tools to enhance your testing methodology and ensure consistent quality in your deliverables.</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="qa-search-input" placeholder="Search for test plans, checklists, test cases...">
+            <button class="search-button" id="qa-search-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="categories-nav">
+            <button class="category-button active" data-category="all">All Resources</button>
+            <button class="category-button" data-category="test-planning">Test Planning</button>
+            <button class="category-button" data-category="test-cases">Test Cases</button>
+            <button class="category-button" data-category="checklists">Checklists</button>
+            <button class="category-button" data-category="templates">Templates</button>
+            <button class="category-button" data-category="methodologies">Methodologies</button>
+        </div>
+        
+        <!-- Test Planning Category -->
+        <div class="prompt-category" data-category="test-planning">
+            <div class="category-header qa-category-header">
+                <h2>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    Test Planning Resources
+                </h2>
+            </div>
+            <div class="prompt-cards">
+                <!-- Comprehensive Test Plan Template -->
+                <div class="prompt-card qa-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Comprehensive Test Plan Template</div>
+                        <p class="prompt-description">A detailed test plan template suitable for complex applications, covering all aspects of the testing lifecycle.</p>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <div class="prompt-tab-title">
+                            <span>Resource Preview</span>
+                            <button class="copy-btn" onclick="copyQAResource('comprehensive-test-plan')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Content
+                            </button>
+                        </div>
+                        
+                        <div class="qa-resource-preview" id="comprehensive-test-plan-preview">
+# COMPREHENSIVE TEST PLAN TEMPLATE
+
+## 1. INTRODUCTION
+- 1.1 Purpose
+- 1.2 Scope
+- 1.3 References
+- 1.4 Definitions & Acronyms
+
+## 2. TEST STRATEGY
+- 2.1 Testing Objectives
+- 2.2 Testing Approach
+  - 2.2.1 Levels of Testing
+  - 2.2.2 Testing Types
+  - 2.2.3 Entry & Exit Criteria
+- 2.3 Testing Environment
+  - 2.3.1 Hardware Requirements
+  - 2.3.2 Software Requirements
+  - 2.3.3 Network Configuration
+- 2.4 Test Data Strategy
+- 2.5 Testing Tools
+
+## 3. TEST ORGANIZATION
+- 3.1 Team Structure & Responsibilities
+- 3.2 Resource Plan
+- 3.3 Training Requirements
+
+## 4. TEST SCHEDULE
+- 4.1 Test Milestones
+- 4.2 Test Estimation
+- 4.3 Test Deliverables
+
+## 5. FEATURES TO BE TESTED
+- 5.1 Features in Scope
+- 5.2 Features Not in Scope
+- 5.3 Prioritization Strategy
+
+## 6. TESTING TYPES
+- 6.1 Functional Testing
+- 6.2 UI/UX Testing
+- 6.3 Performance Testing
+- 6.4 Security Testing
+- 6.5 Compatibility Testing
+- 6.6 Regression Testing
+- 6.7 User Acceptance Testing
+
+## 7. TEST EXECUTION PROCESS
+- 7.1 Test Case Management
+- 7.2 Defect Management
+- 7.3 Status Reporting
+- 7.4 Test Metrics
+
+## 8. RISKS & CONTINGENCIES
+- 8.1 Risk Assessment
+- 8.2 Risk Mitigation Strategies
+- 8.3 Contingency Plans
+
+## 9. APPROVALS
+- 9.1 Stakeholder Approvals
+- 9.2 Change Management Process
+
+## APPENDICES
+- Appendix A: Test Case Template
+- Appendix B: Defect Report Template
+- Appendix C: Status Report Template
+                        </div>
+                        <button class="qa-resource-preview-toggle" onclick="toggleQAPreview('comprehensive-test-plan-preview')">Show More</button>
+                        
+                        <a href="#" class="template-download-btn" onclick="downloadQAResource('comprehensive-test-plan.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Template
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Risk-Based Test Plan Template -->
+                <div class="prompt-card qa-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Risk-Based Test Plan Template</div>
+                        <p class="prompt-description">A focused test plan template that prioritizes testing based on risk assessment for critical systems.</p>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <div class="prompt-tab-title">
+                            <span>Resource Preview</span>
+                            <button class="copy-btn" onclick="copyQAResource('risk-based-test-plan')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Content
+                            </button>
+                        </div>
+                        
+                        <div class="qa-resource-preview" id="risk-based-test-plan-preview">
+# RISK-BASED TEST PLAN TEMPLATE
+
+## 1. INTRODUCTION
+- 1.1 Purpose
+- 1.2 Scope
+- 1.3 References
+
+## 2. RISK ASSESSMENT METHODOLOGY
+- 2.1 Risk Identification Process
+- 2.2 Risk Categorization
+  - 2.2.1 Business Impact Categories
+  - 2.2.2 Probability Assessment
+- 2.3 Risk Matrix & Scoring
+- 2.4 Risk Prioritization Framework
+
+## 3. RISK REGISTER
+- 3.1 Feature/Component Breakdown
+- 3.2 Risk Assessment Table
+  - Component/Feature
+  - Potential Failure Mode
+  - Business Impact (1-5)
+  - Probability (1-5)
+  - Risk Score
+  - Risk Priority
+- 3.3 Risk Visualization
+
+## 4. TEST COVERAGE MAPPING
+- 4.1 High-Risk Areas Test Strategy
+  - 4.1.1 Test Depth
+  - 4.1.2 Test Types
+  - 4.1.3 Resource Allocation
+- 4.2 Medium-Risk Areas Test Strategy
+- 4.3 Low-Risk Areas Test Strategy
+- 4.4 Coverage Matrix
+
+## 5. TEST EXECUTION STRATEGY
+- 5.1 Resource Allocation Based on Risk
+- 5.2 Test Phase Entry/Exit Criteria
+- 5.3 Defect Priority Alignment
+- 5.4 Risk-Based Regression Approach
+
+## 6. RISK MITIGATION PLANS
+- 6.1 Contingency Planning
+- 6.2 Risk Monitoring Process
+- 6.3 Risk Reassessment Triggers
+
+## 7. REPORTING & COMMUNICATIONS
+- 7.1 Risk-Based Status Reporting
+- 7.2 Stakeholder Communications
+- 7.3 Escalation Procedures
+
+## 8. APPROVALS
+- 8.1 Stakeholder Approvals
+- 8.2 Risk Acceptance Sign-offs
+
+## APPENDICES
+- Appendix A: Risk Assessment Worksheet
+- Appendix B: Sample Risk-Based Test Cases
+                        </div>
+                        <button class="qa-resource-preview-toggle" onclick="toggleQAPreview('risk-based-test-plan-preview')">Show More</button>
+                        
+                        <a href="#" class="template-download-btn" onclick="downloadQAResource('risk-based-test-plan.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Template
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test Cases Category -->
+        <div class="prompt-category" data-category="test-cases">
+            <div class="category-header qa-category-header">
+                <h2>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    Test Case Templates
+                </h2>
+            </div>
+            <div class="prompt-cards">
+                <!-- Functional Test Case Template -->
+                <div class="prompt-card qa-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Functional Test Case Template</div>
+                        <p class="prompt-description">A comprehensive test case template for functional testing, including detailed steps, preconditions, and expected results.</p>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <div class="prompt-tab-title">
+                            <span>Resource Preview</span>
+                            <button class="copy-btn" onclick="copyQAResource('functional-test-case')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Content
+                            </button>
+                        </div>
+                        
+                        <div class="qa-resource-preview" id="functional-test-case-preview">
+# FUNCTIONAL TEST CASE TEMPLATE
+
+## TEST CASE METADATA
+| Field                | Value                                      |
+|----------------------|--------------------------------------------|
+| Test Case ID         | [TCID-1234]                               |
+| Test Case Name       | [Brief descriptive name]                  |
+| Module/Feature       | [Module or feature being tested]          |
+| Created By           | [Author name]                             |
+| Creation Date        | [YYYY-MM-DD]                              |
+| Last Modified By     | [Editor name]                             |
+| Last Modified Date   | [YYYY-MM-DD]                              |
+| Priority             | [Critical/High/Medium/Low]                |
+| Test Type            | [Functional/Regression/Smoke/etc.]        |
+| Automation Status    | [Automated/Not Automated/Planned]         |
+
+## TEST CASE DETAILS
+
+### Objectives
+[Clear statement of what this test case is verifying]
+
+### Preconditions
+- [Required system state before test execution]
+- [User permissions/roles needed]
+- [Any data setup requirements]
+- [Environmental requirements]
+
+### Test Data
+- [Specific test data required]
+- [Input values]
+- [Configuration settings]
+
+### Test Steps
+| Step # | Action | Expected Result | Test Data |
+|--------|--------|----------------|-----------|
+| 1      | [Detailed action to perform] | [Expected system response] | [Specific data] |
+| 2      | [Detailed action to perform] | [Expected system response] | [Specific data] |
+| 3      | [Detailed action to perform] | [Expected system response] | [Specific data] |
+| ...    | ... | ... | ... |
+
+### Postconditions
+- [Expected system state after test execution]
+- [Data cleanup requirements]
+
+### Notes
+- [Any additional information or clarifications]
+- [Known limitations or dependencies]
+
+### Related Requirements
+- [Requirement ID(s) this test case validates]
+- [User story references]
+
+### Attachments
+- [Screenshots, diagrams, or supporting files]
+                        </div>
+                        <button class="qa-resource-preview-toggle" onclick="toggleQAPreview('functional-test-case-preview')">Show More</button>
+                        
+                        <a href="#" class="template-download-btn" onclick="downloadQAResource('functional-test-case.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Template
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- API Test Case Template -->
+                <div class="prompt-card qa-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">API Test Case Template</div>
+                        <p class="prompt-description">A specialized test case template for API testing, including request details, response validation, and error scenarios.</p>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <div class="prompt-tab-title">
+                            <span>Resource Preview</span>
+                            <button class="copy-btn" onclick="copyQAResource('api-test-case')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Content
+                            </button>
+                        </div>
+                        
+                        <div class="qa-resource-preview" id="api-test-case-preview">
+# API TEST CASE TEMPLATE
+
+## TEST CASE METADATA
+| Field                | Value                                      |
+|----------------------|--------------------------------------------|
+| Test Case ID         | [API-TCID-1234]                           |
+| Test Case Name       | [Brief descriptive name]                  |
+| API/Endpoint         | [API name or endpoint path]               |
+| Created By           | [Author name]                             |
+| Creation Date        | [YYYY-MM-DD]                              |
+| Last Modified By     | [Editor name]                             |
+| Last Modified Date   | [YYYY-MM-DD]                              |
+| Priority             | [Critical/High/Medium/Low]                |
+| Automation Status    | [Automated/Not Automated/Planned]         |
+
+## API DETAILS
+
+### API Specification
+- **Method:** [GET/POST/PUT/DELETE/etc.]
+- **Endpoint:** [Full URL or path]
+- **Description:** [Brief description of API functionality]
+
+### Authentication
+- **Type:** [None/Basic/OAuth/API Key/etc.]
+- **Details:** [Specific authentication requirements]
+
+## REQUEST DETAILS
+
+### Headers
+```
+Content-Type: application/json
+Authorization: Bearer {token}
+[Other headers as needed]
+```
+
+### Query Parameters
+| Parameter | Required | Data Type | Description | Example Value |
+|-----------|----------|-----------|-------------|---------------|
+| [param1]  | [Y/N]    | [Type]    | [Description] | [Example]   |
+| [param2]  | [Y/N]    | [Type]    | [Description] | [Example]   |
+
+### Request Body (if applicable)
+```json
+{
+  "property1": "value1",
+  "property2": "value2",
+  "nestedObject": {
+    "nestedProperty": "nestedValue"
+  }
+}
+```
+
+## RESPONSE VALIDATION
+
+### Expected Status Code(s)
+- Primary: [e.g., 200 OK]
+- Alternative: [e.g., 201 Created, if applicable]
+
+### Expected Response Body
+```json
+{
+  "id": "{dynamic}",
+  "status": "success",
+  "data": {
+    "property1": "value1",
+    "property2": "value2"
+  }
+}
+```
+
+### Response Validation Rules
+| Field | Validation Rule | 
+|-------|-----------------|
+| id    | [Must be UUID format] |
+| status | [Must equal "success"] |
+| data.property1 | [Must match request value] |
+| data.timestamps | [Must be valid ISO date] |
+
+## ERROR SCENARIOS
+
+### Error Scenario 1: [Brief description]
+- **Modified Request:** [What changes from the happy path]
+- **Expected Status Code:** [e.g., 400 Bad Request]
+- **Expected Response:** 
+```json
+{
+  "status": "error",
+  "code": "INVALID_INPUT",
+  "message": "Property X is required"
+}
+```
+
+### Error Scenario 2: [Brief description]
+- **Modified Request:** [What changes from the happy path]
+- **Expected Status Code:** [e.g., 401 Unauthorized]
+- **Expected Response:** 
+```json
+{
+  "status": "error",
+  "code": "UNAUTHORIZED",
+  "message": "Invalid authentication credentials"
+}
+```
+
+## PERFORMANCE CONSIDERATIONS
+- Expected response time: [e.g., < 500ms]
+- Rate limiting considerations: [Any limits to be aware of]
+
+## DEPENDENCIES
+- [Any services, databases, or external systems required]
+- [Mock services required for testing]
+
+## NOTES
+- [Any additional information or special considerations]
+                        </div>
+                        <button class="qa-resource-preview-toggle" onclick="toggleQAPreview('api-test-case-preview')">Show More</button>
+                        
+                        <a href="#" class="template-download-btn" onclick="downloadQAResource('api-test-case.md')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Template
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Checklists Category -->
+        <div class="prompt-category" data-category="checklists">
+            <!-- Content for checklists will be added in subsequent artifact -->
+        </div>
+        
+        <!-- Templates Category -->
+        <div class="prompt-category" data-category="templates">
+            <!-- Content for templates will be added in subsequent artifact -->
+        </div>
+        
+        <!-- Methodologies Category -->
+        <div class="prompt-category" data-category="methodologies">
+            <!-- Content for methodologies will be added in subsequent artifact -->
+        </div>
+        
+        <footer>
+            <p>© 2025 VelocityQA. All rights reserved. These resources are provided as templates to assist with quality assurance processes.</p>
+        </footer>
+    </div>
+    
+    <!-- Notification container for alerts -->
+    <div class="notification" id="notification" style="display: none;"></div>
+    
+    <!-- JavaScript for QA toolkit functionality -->
+    <script>
+        // Functions to toggle QA resource preview
+        function toggleQAPreview(id) {
+            const preview = document.getElementById(id);
+            const button = preview.nextElementSibling;
+            
+            if (preview.classList.contains('expanded')) {
+                preview.classList.remove('expanded');
+                button.textContent = 'Show More';
+            } else {
+                preview.classList.add('expanded');
+                button.textContent = 'Show Less';
+            }
+        }
+        
+        // Function to copy QA resource content
+        function copyQAResource(id) {
+            const contentElement = document.getElementById(`${id}-preview`);
+            if (contentElement) {
+                navigator.clipboard.writeText(contentElement.textContent).then(() => {
+                    showNotification('Content copied to clipboard!');
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                    showNotification('Failed to copy content.', 'error');
+                });
+            }
+        }
+        
+        // Function to download QA resource
+        function downloadQAResource(filename) {
+            alert('Download functionality will be implemented. This would download: ' + filename);
+            // In actual implementation, this would fetch and download the template file
+        }
+        
+        // Function to show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification ' + type;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Add any additional QA toolkit specific JavaScript here
+    </script>
+</body>
+</html>
