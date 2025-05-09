@@ -1,4 +1,429 @@
-<div class="input-group">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Toolkit | VelocityQA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/toolkit-base.css">
+</head>
+<body>
+    <div class="cybernetic-grid"></div>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Main Site
+        </a>
+
+        <header class="header">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+                </svg>
+            </button>
+            <div class="header-content">
+                <h1>The AI Advantage: Executive-Grade Claude Prompts</h1>
+                <p class="header-subtitle">A collection of professional-grade prompting templates designed specifically for executive and business needs. These prompts leverage what actually works with Claude to deliver exceptional results.</p>
+                
+                <div class="header-feature">
+                    <h3>How to Use This Toolkit</h3>
+                    <p>Each prompt follows a two-step approach: first establish the structure with Claude, then provide the specific details. Simply fill in your information in Step 2, then copy the complete prompt to Claude.</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search for prompts, categories, or use cases...">
+            <button class="search-button" id="search-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="categories-nav">
+            <button class="category-button active" data-category="all">All Categories</button>
+            <button class="category-button" data-category="healthcare">Healthcare</button>
+            <button class="category-button" data-category="finance">Finance</button>
+            <button class="category-button" data-category="technology">Technology</button>
+            <button class="category-button" data-category="operations">Operations</button>
+            <button class="category-button" data-category="sales">Sales & Marketing</button>
+            <button class="category-button" data-category="leadership">Leadership</button>
+        </div>
+        
+        <!-- Healthcare Category -->
+        <div class="prompt-category" data-category="healthcare">
+            <div class="category-header">
+                <h2>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    Healthcare & Medical
+                </h2>
+            </div>
+            <div class="prompt-cards">
+                <!-- Healthcare Integration Blueprint -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Healthcare Integration Blueprint</div>
+                        <p class="prompt-description">For healthcare integration professionals needing detailed system connection documentation.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-healthcare-integration">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-healthcare-integration">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-healthcare-integration">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('healthcare-integration-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="healthcare-integration-structure">I need a detailed healthcare systems integration blueprint. Let's approach this in phases:
+
+PHASE 1: STRUCTURE DEVELOPMENT
+Create only the structure for a comprehensive healthcare integration document connecting systems. Include only section headings and 2-3 bullet points per section describing what each should address.
+
+Required sections must include:
+- Executive Summary
+- Systems Overview (technical specifications of both systems)
+- Integration Architecture
+- Data Mapping & Transformation
+- Security & Compliance
+- Authentication & Authorization
+- Error Handling & Exception Management
+- Testing Approach
+- Implementation Timeline
+- Maintenance & Support
+- Appendices (API references, data dictionaries)</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('healthcare-integration')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Proceed to Step 2
+                        </button>
+                    </div>
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-healthcare-integration">
+                        <div class="prompt-tab-title">
+                            <span>Project Details</span>
+                            <button class="copy-btn" id="healthcare-integration-copy-btn" onclick="copyGeneratedPrompt('healthcare-integration')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="input-form">
+                            <div class="input-form-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Fill in your project details
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-system-a">System A Name</label>
+                                    <input type="text" id="healthcare-system-a" placeholder="e.g., Epic EHR">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-system-b">System B Name</label>
+                                    <input type="text" id="healthcare-system-b" placeholder="e.g., Cerner Radiology">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="healthcare-regulations">Specific Regulations</label>
+                                <input type="text" id="healthcare-regulations" placeholder="e.g., HIPAA, GDPR, HL7 FHIR">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="healthcare-challenges">Integration Challenges (2-4 items)</label>
+                                <textarea id="healthcare-challenges" placeholder="e.g., Patient identifier reconciliation across systems&#10;Real-time data synchronization requirements&#10;Legacy system limitations"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="healthcare-workflows">Clinical Workflow Considerations</label>
+                                <textarea id="healthcare-workflows" placeholder="e.g., Emergency department triage process&#10;Medication reconciliation workflow"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-data-sensitivity">Data Sensitivity Level</label>
+                                    <input type="text" id="healthcare-data-sensitivity" placeholder="e.g., PHI requiring HIPAA compliance">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-user-types">User Types</label>
+                                    <input type="text" id="healthcare-user-types" placeholder="e.g., Clinicians, IT staff, Administrators">
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-integration-pattern">Integration Pattern Preferred</label>
+                                    <input type="text" id="healthcare-integration-pattern" placeholder="e.g., HL7 FHIR API, Real-time synchronous">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-previous-experience">Previous Integration Experience</label>
+                                    <input type="text" id="healthcare-previous-experience" placeholder="e.g., Successfully integrated lab systems">
+                                </div>
+                            </div>
+                            
+                            <button class="generate-btn" onclick="generatePrompt('healthcare-integration')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                Generate Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="healthcare-integration-output"></div>
+                    </div>
+                </div>
+                
+                <!-- Medical Software Quality Assurance Plan -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Medical Software Quality Assurance Plan</div>
+                        <p class="prompt-description">For QA professionals in healthcare software needing comprehensive testing documentation.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-medical-qa">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-medical-qa">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-medical-qa">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('medical-qa-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="medical-qa-structure">I need a professional-grade Quality Assurance Plan for medical software. Let's use a structured approach:
+
+PHASE 1: QA FRAMEWORK DEVELOPMENT
+Create only the structure for a comprehensive QA plan for medical software. Include section headings and bullet points describing what each section should address.
+
+Required components must include:
+- QA Strategy Overview
+- Regulatory Compliance Framework
+- Risk Assessment Methodology
+- Test Planning & Management
+- Test Environment Requirements
+- Test Case Development Strategy
+- Automated Testing Approach
+- Manual Testing Requirements
+- Performance Testing Parameters
+- Security Testing Protocol
+- User Acceptance Testing Framework
+- Defect Management Process
+- Release Criteria & Approval Process
+- Traceability Matrix Structure
+- QA Documentation Standards
+- QA Metrics & Reporting</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('medical-qa')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Proceed to Step 2
+                        </button>
+                    </div>
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-medical-qa">
+                        <div class="prompt-tab-title">
+                            <span>Project Details</span>
+                            <button class="copy-btn" id="medical-qa-copy-btn" onclick="copyGeneratedPrompt('medical-qa')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="input-form">
+                            <div class="input-form-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Fill in your project details
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="medical-software-name">Software Name/Type</label>
+                                <input type="text" id="medical-software-name" placeholder="e.g., PatientCare EHR, DiagnosticAI Module">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="medical-regulations">Relevant Regulations</label>
+                                <input type="text" id="medical-regulations" placeholder="e.g., FDA 21 CFR Part 820, IEC 62304, HIPAA">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="medical-qa-challenges">QA Challenges (2-4 items)</label>
+                                <textarea id="medical-qa-challenges" placeholder="e.g., Validating algorithm accuracy across diverse patient demographics&#10;Complex integration testing with multiple third-party systems"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="medical-dev-methodology">Development Methodology</label>
+                                    <input type="text" id="medical-dev-methodology" placeholder="e.g., Agile with 2-week sprints">
+                                </div>
+                                <div class="input-group">
+                                    <label for="medical-classification">Regulatory Classification</label>
+                                    <input type="text" id="medical-classification" placeholder="e.g., Class II medical device">
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="medical-validation-history">Previous Validation History</label>
+                                    <input type="text" id="medical-validation-history" placeholder="e.g., New product, Version update">
+                                </div>
+                                <div class="input-group">
+                                    <label for="medical-critical-functions">Critical Functionality Areas</label>
+                                    <input type="text" id="medical-critical-functions" placeholder="e.g., Medication dosing, Alert systems">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="medical-end-users">Primary End Users</label>
+                                <input type="text" id="medical-end-users" placeholder="e.g., Clinicians, Lab technicians">
+                            </div>
+                            
+                            <button class="generate-btn" onclick="generatePrompt('medical-qa')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                Generate Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="medical-qa-output"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Category -->
+        <div class="prompt-category" data-category="technology">
+            <div class="category-header">
+                <h2>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Technology & Engineering
+                </h2>
+            </div>
+            <div class="prompt-cards">
+                <!-- Executive Presentation Template -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Executive Presentation Template</div>
+                        <p class="prompt-description">Generate a comprehensive presentation outline for executive audiences with persuasive structure and talking points.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-exec-presentation">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-exec-presentation">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-exec-presentation">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('exec-presentation-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="exec-presentation-structure">I need to create a compelling executive presentation. Let's approach this methodically:
+
+PHASE 1: PRESENTATION FRAMEWORK
+Create only the structure for an executive-level presentation. Include slide titles and bullet points describing the content that should appear on each slide.
+
+Required sections must include:
+- Title Slide
+- Executive Summary (key takeaways upfront)
+- Context & Challenge
+- Market/Situation Analysis
+- Proposed Solution/Approach
+- Implementation Strategy
+- Financial Analysis/Business Case
+- Risk Assessment & Mitigation
+- Timeline/Roadmap
+- Key Metrics & Success Criteria
+- Required Resources/Support
+- Next Steps & Decisions Required
+- Appendix (supporting details)</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('exec-presentation')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Proceed to Step 2
+                        </button>
+                    </div>
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-exec-presentation">
+                        <div class="prompt-tab-title">
+                            <span>Presentation Details</span>
+                            <button class="copy-btn" id="exec-presentation-copy-btn" onclick="copyGeneratedPrompt('exec-presentation')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="input-form">
+                            <div class="input-form-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Fill in your presentation details
+                            </div>
+                            
+                            <div class="input-group">
                                 <label for="presentation-title">Presentation Title</label>
                                 <input type="text" id="presentation-title" placeholder="e.g., Digital Transformation Strategy, Market Expansion Proposal">
                             </div>
@@ -56,7 +481,7 @@
         
         <footer>
             <p>© 2025 VelocityQA. All rights reserved. These prompts are provided as templates to assist with business and technical communications.</p>
-            <p>For more information or custom prompt assistance, please <a href="../contact.html">contact VelocityQA</a>.</p>
+            <p>For more information or custom prompt assistance, please <a href="contact.html">contact VelocityQA</a>.</p>
         </footer>
     </div>
     
@@ -64,6 +489,6 @@
     <div class="notification" id="notification" style="display: none;"></div>
     
     <!-- JavaScript for toolkit functionality -->
-    <script src="js/toolkit-functions.js"></script>
+    <script src="toolkit-functions.js"></script>
 </body>
 </html>
