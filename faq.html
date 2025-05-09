@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frequently Asked Questions | VelocityQA</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base-styles.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fixes.css">
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -12,39 +15,6 @@
       color: #f8fafc;
       margin: 0;
       line-height: 1.6;
-    }
-    header, .page-header, footer {
-      background-color: #121620;
-    }
-    header {
-      padding: 1.5rem 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    .logo-svg {
-      height: 48px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .nav-link, .cta-button {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .cta-button {
-      background-color: #ff6b00;
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
     }
     .page-header {
       text-align: center;
@@ -54,12 +24,14 @@
     .page-title {
       font-size: 2.5rem;
       margin-bottom: 1rem;
+      color: white;
     }
     .page-description {
       font-size: 1.2rem;
       opacity: 0.9;
       max-width: 700px;
       margin: 0 auto;
+      color: rgba(255, 255, 255, 0.9);
     }
     .faq-section {
       max-width: 800px;
@@ -70,11 +42,12 @@
       text-align: center;
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: white;
     }
     .section-description {
       text-align: center;
       margin-bottom: 3rem;
-      color: #94a3b8;
+      color: rgba(255, 255, 255, 0.8);
     }
     .faq-item {
       background-color: #1e293b;
@@ -89,178 +62,30 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 600;
+      color: white;
     }
     .faq-answer {
       padding: 0 1.5rem 1.5rem;
       display: none;
-      color: #94a3b8;
+      color: rgba(255, 255, 255, 0.8);
     }
     .faq-item.active .faq-answer {
       display: block;
     }
-/* Footer */
-        footer {
-            background-color: var(--bg-dark);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo-container {
-            height: 100px;
-            margin-bottom: .5rem;
-        }
-
-        .footer-description {
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .social-link svg {
-            color: var(--silver);
-        }
-
-        .social-link:hover {
-            background-color: var(--teal);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-link {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-link a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-link a:hover {
-            color: var(--teal);
-        }
-
-        .footer-contact-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            color: var(--teal);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.875rem;
-            opacity: 0.7;
-        }
-        /* Mobile nav */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .mobile-menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--text);
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-
-        /* Mobile bottom navigation */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--card);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 99;
-            padding: 0.75rem 0;
-        }
-
-        .mobile-nav-items {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .mobile-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 0.75rem;
-            transition: color 0.3s;
-        }
-
-        .mobile-nav-item.active,
-        .mobile-nav-item:hover {
-            color: var(--teal);
-        }
-
-        .mobile-nav-icon {
-            margin-bottom: 0.25rem;
-        }
-    
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #20C5C6;
+    }
+    .faq-item.active .faq-question::after {
+      content: '-';
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.faq-question').forEach(function (el) {
-        el.addEventListener('click', function () {
-          const parent = el.parentElement;
-          parent.classList.toggle('active');
-        });
-      });
-    });
-  </script>
 </head>
-<body>
+<body data-theme="dark">
   <header>
-  <div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
   </header>
 
   <section class="page-header">
@@ -277,34 +102,56 @@
     <div class="faq-item"><div class="faq-question">How much does QA testing cost?</div><div class="faq-answer">Our packages start at ($565) for Bug Hunter. We also offer User Journey Testing ($1,125), System Auditor ($1,560), and hourly testing at $125/hour.</div></div>
     <div class="faq-item"><div class="faq-question">Do you require long-term contracts?</div><div class="faq-answer">No. We operate on a pay-as-you-go model with 14-day terms.</div></div>
     <div class="faq-item"><div class="faq-question">How quickly can you test my application?</div><div class="faq-answer">Same-day testing is available. Packages range from 24-36 hour turnaround.</div></div>
-    <div class="faq-item"><div class="faq-question">Do you service all of Australia?</div><div class="faq-answer">Yes. We’re based in Brisbane but serve startups and businesses nationwide.</div></div>
+    <div class="faq-item"><div class="faq-question">Do you service all of Australia?</div><div class="faq-answer">Yes. We're based in Brisbane but serve startups and businesses nationwide.</div></div>
     <div class="faq-item"><div class="faq-question">How quickly can you start testing my app?</div><div class="faq-answer">We can typically begin testing within 24 hours after getting access and a brief on your requirements.</div></div>
     <div class="faq-item"><div class="faq-question">What information do you need to provide a quote?</div><div class="faq-answer">We need app type, complexity, testing goals, timeline, and concerns. A 15-min call helps us quote precisely.</div></div>
     <div class="faq-item"><div class="faq-question">Do I need to provide test cases or test plans?</div><div class="faq-answer">Not required. We create strategies based on your goals. Existing documentation is welcome but optional.</div></div>
     <div class="faq-item"><div class="faq-question">What kind of reporting do you provide?</div><div class="faq-answer">We provide clear reports with reproduction steps, visuals, and prioritised issues based on impact.</div></div>
     <div class="faq-item"><div class="faq-question">How does your blocked hours option work?</div><div class="faq-answer">Purchase hours in any amount at $125/hour or 10 hour blocks at $100/hour. Use them for smoke tests, pre-release checks, or ongoing testing as needed.</div></div>
   </section>
+  
   <footer>
     <div id="footer-placeholder"></div>
   </footer>
- <script>
-// Load header
-fetch('header.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-  });
 
-// Load footer
-fetch('footer.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('footer-placeholder').innerHTML = data;
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // FAQ toggle functionality
+      document.querySelectorAll('.faq-question').forEach(function (el) {
+        el.addEventListener('click', function () {
+          const parent = el.parentElement;
+          parent.classList.toggle('active');
+        });
+      });
+      
+      // Load header and footer
+      fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-placeholder').innerHTML = data;
+          
+          // Fix mobile menu once header is loaded
+          const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+          const navLinks = document.getElementById('navLinks');
+          
+          if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', () => {
+              navLinks.classList.toggle('active');
+              mobileMenuToggle.classList.toggle('active');
+            });
+          }
+        });
+
+      // Load footer
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    });
+  </script>
 </body>
 </html>
-
 
 
 
