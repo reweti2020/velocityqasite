@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="800" fill="#121620" rx="12" ry="12" />
+  
+  <!-- Grid pattern for detail -->
+  <g opacity="0.05">
+    <rect x="0" y="0" width="800" height="800" fill="none" stroke="#20C5C6" stroke-width="1" />
+    
+    <!-- Vertical lines -->
+    <line x1="100" y1="0" x2="100" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="200" y1="0" x2="200" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="300" y1="0" x2="300" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="400" y1="0" x2="400" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="500" y1="0" x2="500" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="600" y1="0" x2="600" y2="800" stroke="#ffffff" stroke-width="1" />
+    <line x1="700" y1="0" x2="700" y2="800" stroke="#ffffff" stroke-width="1" />
+    
+    <!-- Horizontal lines -->
+    <line x1="0" y1="100" x2="800" y2="100" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="200" x2="800" y2="200" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="400" x2="800" y2="400" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="500" x2="800" y2="500" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="600" x2="800" y2="600" stroke="#ffffff" stroke-width="1" />
+    <line x1="0" y1="700" x2="800" y2="700" stroke="#ffffff" stroke-width="1" />
+  </g>
+  
+  <!-- Main Visualization - Competition Race Track -->
+  <g id="competition-race" transform="translate(400, 400)">
+    <!-- Track -->
+    <circle cx="0" cy="0" r="200" fill="none" stroke="#334155" stroke-width="60" opacity="0.6" />
+    <circle cx="0" cy="0" r="200" fill="none" stroke="#1e293b" stroke-width="50" />
+    
+    <!-- Starting/Finish line -->
+    <line x1="-5" y1="-225" x2="5" y2="-175" stroke="white" stroke-width="10" stroke-linecap="round" />
+    <text x="0" y="-240" font-family="Inter, sans-serif" font-size="18" fill="white" text-anchor="middle">START/FINISH</text>
+    
+    <!-- Track markers -->
+    <g opacity="0.5">
+      <line x1="200" y1="0" x2="200" y2="0" stroke="white" stroke-width="10" stroke-linecap="round" />
+      <line x1="0" y1="200" x2="0" y2="200" stroke="white" stroke-width="10" stroke-linecap="round" />
+      <line x1="-200" y1="0" x2="-200" y2="0" stroke="white" stroke-width="10" stroke-linecap="round" />
+    </g>
+    
+    <!-- Quality Checkpoints -->
+    <g id="qa-checkpoints">
+      <!-- Checkpoint 1 -->
+      <g transform="rotate(60) translate(0, -200)">
+        <circle cx="0" cy="0" r="15" fill="#20C5C6" opacity="0.7" />
+        <text x="0" y="5" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">QA</text>
+      </g>
+      
+      <!-- Checkpoint 2 -->
+      <g transform="rotate(150) translate(0, -200)">
+        <circle cx="0" cy="0" r="15" fill="#20C5C6" opacity="0.7" />
+        <text x="0" y="5" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">QA</text>
+      </g>
+      
+      <!-- Checkpoint 3 -->
+      <g transform="rotate(240) translate(0, -200)">
+        <circle cx="0" cy="0" r="15" fill="#20C5C6" opacity="0.7" />
+        <text x="0" y="5" font-family="Inter, sans-serif" font-size="14" fill="white" text-anchor="middle">QA</text>
+      </g>
+    </g>
+    
+    <!-- Competitor 1 - With testing (moving ahead) -->
+    <g id="competitor-with-testing">
+      <!-- Competitor car -->
+      <g transform="rotate(-90) translate(0, -200)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="-90" to="270" dur="8s" repeatCount="indefinite" 
+                          additive="sum" />
+        <rect x="-25" y="-15" width="50" height="30" rx="10" ry="10" fill="#20C5C6" />
+        <circle cx="-15" cy="15" r="8" fill="#0f172a" stroke="#20C5C6" stroke-width="2" />
+        <circle cx="15" cy="15" r="8" fill="#0f172a" stroke="#20C5C6" stroke-width="2" />
+        <rect x="-20" y="-10" width="40" height="15" rx="5" ry="5" fill="#0f172a" />
+        
+        <!-- Testing flag -->
+        <rect x="25" y="-10" width="3" height="20" fill="#0f172a" />
+        <rect x="28" y="-10" width="15" height="10" fill="#20C5C6" />
+        <text x="35" y="-2" font-family="Inter, sans-serif" font-size="8" fill="#0f172a" text-anchor="middle" font-weight="bold">QA</text>
+        
+        <!-- Speed lines -->
+        <line x1="-30" y1="0" x2="-45" y2="0" stroke="#20C5C6" stroke-width="2" stroke-linecap="round" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="0.5s" repeatCount="indefinite" />
+        </line>
+        <line x1="-33" y1="-5" x2="-48" y2="-10" stroke="#20C5C6" stroke-width="2" stroke-linecap="round" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="0.5s" repeatCount="indefinite" begin="0.1s" />
+        </line>
+        <line x1="-33" y1="5" x2="-48" y2="10" stroke="#20C5C6" stroke-width="2" stroke-linecap="round" opacity="0.7">
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="0.5s" repeatCount="indefinite" begin="0.2s" />
+        </line>
+      </g>
+      
+      <!-- Label -->
+      <text x="0" y="-250" font-family="Inter, sans-serif" font-size="16" fill="#20C5C6" text-anchor="middle" font-weight="600">YOUR COMPETITORS</text>
+    </g>
+    
+    <!-- Competitor 2 - Without testing (slow, with problems) -->
+    <g id="competitor-without-testing">
+      <!-- Competitor car with problems -->
+      <g transform="rotate(-45) translate(0, -200)">
+        <animateTransform attributeName="transform" type="rotate" 
+                          from="-45" to="60" dur="8s" repeatCount="indefinite" 
+                          additive="sum" />
+        <rect x="-25" y="-15" width="50" height="30" rx="10" ry="10" fill="#FF6B00" />
+        <circle cx="-15" cy="15" r="8" fill="#0f172a" stroke="#FF6B00" stroke-width="2" />
+        <circle cx="15" cy="15" r="8" fill="#0f172a" stroke="#FF6B00" stroke-width="2" />
+        <rect x="-20" y="-10" width="40" height="15" rx="5" ry="5" fill="#0f172a" />
+        
+        <!-- Bug/problem indicator -->
+        <g transform="translate(0, -20)">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+          <circle cx="0" cy="0" r="15" fill="#FF6B00" opacity="0.7" />
+          <text x="0" y="5" font-family="Inter, sans-serif" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold">!</text>
+        </g>
+        
+        <!-- Smoke/problem visual -->
+        <g transform="translate(-30, 0)">
+          <circle cx="0" cy="0" r="5" fill="#94a3b8" opacity="0.8">
+            <animate attributeName="cy" values="0;-10;-20;-30" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;0.4;0" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="r" values="5;10;15" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="-8" cy="-5" r="4" fill="#94a3b8" opacity="0.8">
+            <animate attributeName="cy" values="-5;-15;-25;-35" dur="2s" repeatCount="indefinite" begin="0.3s" />
+            <animate attributeName="opacity" values="0.8;0.4;0" dur="2s" repeatCount="indefinite" begin="0.3s" />
+            <animate attributeName="r" values="4;8;12" dur="2s" repeatCount="indefinite" begin="0.3s" />
+          </circle>
+          <circle cx="-5" cy="-8" r="6" fill="#94a3b8" opacity="0.8">
+            <animate attributeName="cy" values="-8;-18;-28;-38" dur="2s" repeatCount="indefinite" begin="0.6s" />
+            <animate attributeName="opacity" values="0.8;0.4;0" dur="2s" repeatCount="indefinite" begin="0.6s" />
+            <animate attributeName="r" values="6;12;18" dur="2s" repeatCount="indefinite" begin="0.6s" />
+          </circle>
+        </g>
+      </g>
+      
+      <!-- Label -->
+      <text x="100" y="150" font-family="Inter, sans-serif" font-size="16" fill="#FF6B00" text-anchor="middle" font-weight="600">YOU?</text>
+    </g>
+  </g>
+  
+  <!-- Quote -->
+  <g transform="translate(400, 100)">
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="white" text-anchor="middle">Your competitors are testing.</text>
+    <text x="0" y="50" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#FF6B00" text-anchor="middle">Are you?</text>
+    
+    <!-- Blinking cursor effect -->
+    <rect x="90" y="40" width="4" height="32" fill="#20C5C6">
+      <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite" />
+    </rect>
+  </g>
+  
+  <!-- Hashtags -->
+  <g transform="translate(400, 700)">
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="24" fill="#FF6B00" text-anchor="middle">#CompetitiveAdvantage</text>
+  </g>
+  
+  <!-- Logo -->
+  <g transform="translate(400, 760)">
+    <text x="0" y="0" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="white" text-anchor="middle">Velocity<tspan fill="#FF6B00">QA</tspan></text>
+  </g>
+</svg>
