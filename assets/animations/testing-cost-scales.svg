@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes tipping {
+      0%, 10% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      40% { transform: rotate(10deg); }
+      60% { transform: rotate(15deg); }
+      80% { transform: rotate(20deg); }
+      95%, 100% { transform: rotate(25deg); }
+    }
+    
+    @keyframes addMoney {
+      0%, 10% { opacity: 0; transform: translateY(-20px); }
+      15%, 100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    
+    .title {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #f8fafc;
+      text-anchor: middle;
+    }
+    
+    .label {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    
+    .qa-label {
+      fill: #20C5C6;
+    }
+    
+    .no-qa-label {
+      fill: #FF6B00;
+    }
+    
+    .scale-beam {
+      transform-origin: 300px 200px;
+      animation: tipping 8s ease-in-out forwards;
+    }
+    
+    .qa-money {
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .no-qa-money-1 {
+      animation: addMoney 1s ease-in-out forwards;
+    }
+    
+    .no-qa-money-2 {
+      animation: addMoney 2s ease-in-out forwards;
+    }
+    
+    .no-qa-money-3 {
+      animation: addMoney 3s ease-in-out forwards;
+    }
+    
+    .no-qa-money-4 {
+      animation: addMoney 4s ease-in-out forwards;
+    }
+    
+    .no-qa-money-5 {
+      animation: addMoney 5s ease-in-out forwards;
+    }
+    
+    .no-qa-money-6 {
+      animation: addMoney 6s ease-in-out forwards;
+    }
+    
+    .no-qa-money-7 {
+      animation: addMoney 7s ease-in-out forwards;
+    }
+    
+    .cost-factor {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 11px;
+      fill: #94a3b8;
+      opacity: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .factor-1 {
+      animation-delay: 1s;
+      animation: pulse 2s ease-in-out 1s forwards infinite;
+    }
+    
+    .factor-2 {
+      animation-delay: 2s;
+      animation: pulse 2s ease-in-out 2s forwards infinite;
+    }
+    
+    .factor-3 {
+      animation-delay: 3s;
+      animation: pulse 2s ease-in-out 3s forwards infinite;
+    }
+    
+    .factor-4 {
+      animation-delay: 4s;
+      animation: pulse 2s ease-in-out 4s forwards infinite;
+    }
+    
+    .factor-5 {
+      animation-delay: 5s;
+      animation: pulse 2s ease-in-out 5s forwards infinite;
+    }
+    
+    .factor-6 {
+      animation-delay: 6s;
+      animation: pulse 2s ease-in-out 6s forwards infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#0f172a" rx="12" ry="12"
