@@ -2774,7 +2774,20 @@ Required sections must include:
         <div class="prompt-template" id="data-security-output"></div>
     </div>
 </div>
-      </script>
+
+        <div id="notification" class="notification">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span id="notification-text">Copied to clipboard!</span>
+        </div>
+
+        <footer>
+            <p>© 2025 VelocityQA. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+    </div>
+
     <!-- Theme toggle functionality -->
     <script>
         // Theme toggle functionality
@@ -2824,6 +2837,7 @@ Required sections must include:
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');
+            const promptCards = document.querySelectorAll('.prompt-card');
             
             if (searchInput && searchButton) {
                 searchButton.addEventListener('click', performSearch);
@@ -2838,7 +2852,6 @@ Required sections must include:
                 const searchTerm = searchInput.value.trim().toLowerCase();
                 if (searchTerm === '') return;
                 
-                const promptCards = document.querySelectorAll('.prompt-card');
                 let foundCount = 0;
                 
                 promptCards.forEach(card => {
@@ -2895,7 +2908,221 @@ Required sections must include:
                     category.style.display = 'block';
                 });
             }
+
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-button');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide categories based on selection
+                    document.querySelectorAll('.prompt-category').forEach(cat => {
+                        if (category === 'all' || cat.getAttribute('data-category') === category) {
+                            cat.style.display = 'block';
+                        } else {
+                            cat.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
+
+        // Show notification function
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+
+    <!-- Tab navigation functionality -->
+    <script>
+        function nextTab(promptId) {
+            const structureTab = document.querySelector(`[data-tab="structure-${promptId}"]`);
+            const contentTab = document.querySelector(`[data-tab="content-${promptId}"]`);
+            
+            structureTab.classList.remove('active');
+            contentTab.classList.add('active');
+            
+            document.getElementById(`structure-${promptId}`).classList.remove('active');
+            document.getElementById(`content-${promptId}`).classList.add('active');
+            
+            // Mark the structure tab as completed
+            structureTab.classList.add('completed');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    const promptCard = this.closest('.prompt-card');
+                    
+                    // Remove active class from all tabs in this card
+                    promptCard.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab content in this card
+                    promptCard.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show the selected tab content
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Copy functionality -->
+    <script>
+        function copyPrompt(elementId) {
+            const promptText = document.getElementById(elementId).textContent;
+            copyToClipboard(promptText);
+            
+            // Visual feedback
+            const copyBtn = event.currentTarget;
+            copyBtn.classList.add('copied');
+            copyBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Copied!
+            `;
+            
+            showNotification('Structure prompt copied to clipboard!');
+            
+            setTimeout(() => {
+                copyBtn.classList.remove('copied');
+                copyBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy Structure Prompt
+                `;
+            }, 2000);
+        }
+        
+        function generatePrompt(promptId) {
+            const structureElement = document.getElementById(`${promptId}-structure`);
+            const outputElement = document.getElementById(`${promptId}-output`);
+            
+            // Get the structure prompt
+            const structurePrompt = structureElement.textContent;
+            
+            // Get all input values for this prompt
+            const promptCard = document.getElementById(`content-${promptId}`);
+            const inputs = promptCard.querySelectorAll('input, textarea');
+            
+            // Build the content part of the prompt
+            let contentDetails = "PHASE 2: CONTENT DEVELOPMENT\nNow, let's fill in the detailed content for this framework based on the following specific information:\n\n";
+            
+            inputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    const label = promptCard.querySelector(`label[for="${input.id}"]`).textContent;
+                    contentDetails += `${label}: ${input.value}\n\n`;
+                }
+            });
+            
+            // Combine structure and content
+            const fullPrompt = structurePrompt + "\n\n" + contentDetails + "\nPlease now create the full, detailed document based on this structure and the specific details provided. Expand each section with comprehensive content that addresses our specific context and needs.";
+            
+            // Display the generated prompt
+            outputElement.textContent = fullPrompt;
+            
+            // Visual feedback
+            showNotification('Complete prompt generated!');
+            
+            // Mark the "Generate Complete Prompt" button as completed
+            const generateBtn = event.currentTarget;
+            generateBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Prompt Generated
+            `;
+            
+            setTimeout(() => {
+                generateBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"></path>
+                    </svg>
+                    Generate Complete Prompt
+                `;
+            }, 2000);
+            
+            // Scroll to the output
+            outputElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function copyGeneratedPrompt(promptId) {
+            const outputElement = document.getElementById(`${promptId}-output`);
+            
+            // Check if the output exists and has content
+            if (outputElement && outputElement.textContent.trim() !== '') {
+                copyToClipboard(outputElement.textContent);
+                
+                // Visual feedback
+                const copyBtn = event.currentTarget;
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Copied!
+                `;
+                
+                showNotification('Complete prompt copied to clipboard!');
+                
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    `;
+                }, 2000);
+            } else {
+                showNotification('Please generate a prompt first!');
+            }
+        }
+        
+        function copyToClipboard(text) {
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(textarea);
+        }
     </script>
 
     <!-- Save form data locally -->
@@ -2945,4 +3172,4 @@ Required sections must include:
         });
     </script>
 </body>
-</html>  
+</html>
