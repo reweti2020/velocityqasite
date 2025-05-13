@@ -543,6 +543,35 @@
             margin-bottom: 20px;
         }
 
+        .output-copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gradient-primary);
+            color: var(--background-primary);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 10;
+        }
+
+        .output-copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px var(--hover-glow);
+        }
+
+        .output-copy-btn svg {
+            width: 12px;
+            height: 12px;
+        }
+
         /* Input Form Styling */
         .input-form {
             margin-bottom: 20px;
@@ -946,7 +975,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="healthcare-integration-output"></div>
+                        <div class="prompt-template" id="healthcare-integration-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('healthcare-integration-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -1079,7 +1116,15 @@ Required components must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="medical-qa-output"></div>
+                        <div class="prompt-template" id="medical-qa-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('medical-qa-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <!-- Add additional healthcare prompts here -->
@@ -1224,7 +1269,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="exec-presentation-output"></div>
+                        <div class="prompt-template" id="exec-presentation-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('exec-presentation-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -1423,7 +1476,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="tech-architecture-output"></div>
+                        <div class="prompt-template" id="tech-architecture-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('tech-architecture-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <!-- Add additional technology prompts here -->
@@ -1603,7 +1664,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="financial-risk-output"></div>
+                        <div class="prompt-template" id="financial-risk-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('financial-risk-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -1783,7 +1852,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="portfolio-analysis-output"></div>
+                        <div class="prompt-template" id="portfolio-analysis-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('portfolio-analysis-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <!-- Add additional finance prompts here -->
@@ -1982,7 +2059,234 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="competitive-analysis-output"></div>
+                        <div class="prompt-template" id="competitive-analysis-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('competitive-analysis-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Campaign Strategy Framework -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Marketing Campaign Strategy Framework</div>
+                        <p class="prompt-description">For marketing professionals needing a comprehensive framework to plan, execute, and measure marketing campaigns across channels.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-marketing-campaign">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-marketing-campaign">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-marketing-campaign">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('marketing-campaign-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="marketing-campaign-structure">I need a comprehensive marketing campaign strategy framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a marketing campaign strategy document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Campaign Objectives & Goals
+  * Business Objectives
+  * Marketing Objectives
+  * Specific Campaign Goals
+  * Key Performance Indicators (KPIs)
+- Target Audience Analysis
+  * Primary Audience Segments
+  * Audience Demographics
+  * Psychographic Profiles
+  * Behavioral Insights
+  * Customer Journey Mapping
+- Market & Competitive Analysis
+  * Market Trends & Opportunities
+  * Competitive Landscape
+  * Competitive Messaging Analysis
+  * Differentiation Strategy
+- Campaign Positioning & Messaging
+  * Value Proposition
+  * Key Messages by Audience Segment
+  * Messaging Hierarchy
+  * Tone & Voice Guidelines
+- Creative Strategy
+  * Creative Brief
+  * Campaign Theme & Concept
+  * Visual Identity Guidelines
+  * Content Strategy
+- Channel Strategy
+  * Channel Mix & Rationale
+  * Channel-Specific Tactics
+  * Touchpoint Mapping
+  * Content Distribution Plan
+- Digital Marketing Strategy
+  * Paid Media Plan
+  * Organic Social Strategy
+  * SEO/SEM Approach
+  * Email Marketing Plan
+  * Content Marketing Strategy
+- Traditional Marketing Elements
+  * Print Advertising
+  * Direct Mail
+  * Events & Experiential
+  * Public Relations
+- Campaign Timeline & Workflow
+  * Campaign Phases
+  * Key Milestones
+  * Production Schedule
+  * Approval Processes
+- Budget Allocation
+  * Total Campaign Budget
+  * Budget Breakdown by Channel
+  * Resource Allocation
+  * Contingency Planning
+- Measurement & Analytics Plan
+  * Tracking Methodology
+  * Attribution Model
+  * Reporting Framework
+  * Performance Dashboard
+- Testing & Optimization Strategy
+  * A/B Testing Plan
+  * Optimization Criteria
+  * Feedback Loops
+  * Agile Adjustment Process
+- Risk Assessment & Mitigation
+  * Potential Challenges
+  * Contingency Plans
+  * Brand Safety Considerations
+  * Crisis Management Protocol
+- Post-Campaign Analysis
+  * Success Metrics Evaluation
+  * ROI Analysis
+  * Lessons Learned
+  * Future Recommendations
+- Appendices
+  * Detailed Audience Personas
+  * Competitive Analysis Data
+  * Channel-Specific Metrics
+  * Creative Assets Inventory</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('marketing-campaign')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Proceed to Step 2
+                        </button>
+                    </div>
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-marketing-campaign">
+                        <div class="prompt-tab-title">
+                            <span>Campaign Details</span>
+                            <button class="copy-btn" id="marketing-campaign-copy-btn" onclick="copyGeneratedPrompt('marketing-campaign')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="input-form">
+                            <div class="input-form-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Fill in your campaign details
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="marketing-campaign-name">Campaign Name/Title</label>
+                                    <input type="text" id="marketing-campaign-name" placeholder="e.g., 'Next-Gen Innovation Launch', 'Summer Wellness Series'">
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing-campaign-brand">Brand/Company Name</label>
+                                    <input type="text" id="marketing-campaign-brand" placeholder="e.g., TechVision Inc., Wellness Collective">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="marketing-campaign-objectives">Campaign Objectives (2-3 items)</label>
+                                <textarea id="marketing-campaign-objectives" placeholder="e.g., Increase product awareness by 30% among target audience&#10;Generate 2,500 qualified leads within 3 months&#10;Achieve 15% conversion rate from campaign landing pages"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="marketing-campaign-audience">Target Audience Description</label>
+                                <textarea id="marketing-campaign-audience" placeholder="e.g., Primary: Tech-savvy professionals, 28-45, urban areas, $75K+ income&#10;Secondary: Small business owners looking to upgrade technology infrastructure"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="marketing-campaign-product">Product/Service Being Promoted</label>
+                                <textarea id="marketing-campaign-product" placeholder="e.g., Cloud-based productivity suite with AI capabilities&#10;Premium wellness subscription service with personalized coaching"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="marketing-campaign-usp">Unique Selling Proposition</label>
+                                    <textarea id="marketing-campaign-usp" placeholder="e.g., Only platform with real-time collaboration and AI-powered insights in one integrated solution"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing-campaign-channels">Primary Marketing Channels</label>
+                                    <textarea id="marketing-campaign-channels" placeholder="e.g., Paid social (LinkedIn, Instagram), Content marketing, Email campaigns, Industry events"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="marketing-campaign-budget">Campaign Budget</label>
+                                    <input type="text" id="marketing-campaign-budget" placeholder="e.g., $150,000 total, $50K for paid media">
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing-campaign-timeline">Campaign Timeline</label>
+                                    <input type="text" id="marketing-campaign-timeline" placeholder="e.g., Q3 2025 (July-September), 8-week campaign">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="marketing-campaign-challenges">Anticipated Challenges (2-3 items)</label>
+                                <textarea id="marketing-campaign-challenges" placeholder="e.g., Highly competitive market with established players&#10;Complex product requiring educational content&#10;Multiple decision-makers in the purchase process"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="marketing-campaign-success">Success Metrics</label>
+                                <textarea id="marketing-campaign-success" placeholder="e.g., Website traffic increase of 40%&#10;5,000 new email subscribers&#10;$1.2M in attributed pipeline&#10;20% increase in brand awareness metrics"></textarea>
+                            </div>
+                            
+                            <button class="generate-btn" onclick="generatePrompt('marketing-campaign')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                Generate Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="marketing-campaign-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('marketing-campaign-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2169,7 +2473,15 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="process-optimization-output"></div>
+                        <div class="prompt-template" id="process-optimization-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('process-optimization-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -2198,80 +2510,69 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="supply-chain-structure">I need a comprehensive supply chain optimization framework. Let's approach this methodically:
+                        <div class="prompt-template" id="supply-chain-structure">I need a comprehensive supply chain optimization framework. Let's approach this systematically:
 
-PHASE 1: FRAMEWORK DEVELOPMENT
+PHASE 1: OPTIMIZATION FRAMEWORK
 Create only the structure for a supply chain optimization document. Include section headings and bullet points describing what each section should address.
 
 Required sections must include:
 - Executive Summary
 - Supply Chain Overview
-  * Current Supply Chain Architecture
+  * Current Network Structure
   * Key Stakeholders & Partners
-  * Process Flow Mapping
-  * Technology Infrastructure
-- Supply Chain Performance Assessment
+  * Product Flow Mapping
+  * Information Flow Mapping
+  * Financial Flow Mapping
+- Performance Assessment
   * Key Performance Indicators
-  * Benchmark Comparison
-  * Historical Performance Trends
-  * Performance Gap Analysis
-- Supply Chain Diagnostics
-  * Demand Planning & Forecasting
-  * Procurement & Supplier Management
-  * Inventory Management
-  * Manufacturing & Production
-  * Warehousing & Distribution
-  * Transportation & Logistics
-  * Returns & Reverse Logistics
-- Risk Assessment
-  * Supply Chain Vulnerability Analysis
-  * Risk Mapping & Prioritization
-  * Business Continuity Planning
-  * Compliance & Regulatory Considerations
-- Data & Technology Assessment
-  * Systems Integration Evaluation
-  * Data Quality & Accessibility
-  * Analytics Capabilities
-  * Automation Opportunities
-- Optimization Opportunities
+  * Benchmark Analysis
+  * Cost Structure Analysis
+  * Service Level Analysis
+  * Risk Profile Assessment
+- Data Collection & Analysis
+  * Data Sources & Collection Methods
+  * Demand Pattern Analysis
+  * Supply Variability Analysis
+  * Lead Time Analysis
+  * Inventory Profile Analysis
+- Opportunity Identification
   * Network Design Opportunities
-  * Process Improvement Opportunities
   * Inventory Optimization Opportunities
   * Transportation Optimization Opportunities
-  * Supplier Relationship Opportunities
+  * Sourcing Strategy Opportunities
   * Technology Enhancement Opportunities
 - Future State Design
-  * Target Operating Model
-  * Process Redesign Framework
-  * Technology Architecture Vision
-  * Organization & Capability Requirements
-- Implementation Roadmap
-  * Prioritization Framework
-  * Implementation Phasing
+  * Network Configuration Options
+  * Inventory Policy Recommendations
+  * Transportation Strategy
+  * Supplier Relationship Framework
+  * Technology Integration Roadmap
+- Implementation Strategy
+  * Phased Implementation Approach
   * Resource Requirements
   * Timeline & Milestones
-  * Quick Wins Identification
+  * Change Management Considerations
+  * Risk Management Framework
 - Financial Impact Analysis
-  * Implementation Cost Estimation
-  * Cost Reduction Opportunities
-  * Revenue Enhancement Potential
-  * Working Capital Optimization
-  * ROI Analysis
-- Change Management Approach
-  * Stakeholder Impact Assessment
-  * Communication Strategy
-  * Training Requirements
-  * Change Readiness Assessment
-- Performance Monitoring Framework
-  * KPI Selection & Definition
-  * Data Collection & Reporting
-  * Performance Review Cadence
-  * Continuous Improvement Process
+  * Cost-Benefit Analysis
+  * ROI Calculation
+  * Cash Flow Impact
+  * P&L Impact
+  * Balance Sheet Impact
+- Performance Monitoring
+  * Key Performance Indicators
+  * Measurement System
+  * Continuous Improvement Mechanisms
+  * Feedback Loop Establishment
+- Governance Framework
+  * Roles & Responsibilities
+  * Decision-Making Structure
+  * Communication Protocol
+  * Escalation Procedures
 - Appendices
-  * Detailed Data Analysis
-  * Process Maps
-  * Benchmark Data
-  * Implementation Tools</div>
+  * Detailed Network Maps
+  * Data Analysis Results
+  * Implementation Tools & Templates</div>
                         
                         <button class="next-step-btn" onclick="nextTab('supply-chain')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2306,55 +2607,55 @@ Required sections must include:
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="supply-chain-company">Company/Organization Name</label>
-                                    <input type="text" id="supply-chain-company" placeholder="e.g., Global Manufacturing Inc., MedSupply Co.">
+                                    <label for="supply-chain-org-name">Organization Name/Type</label>
+                                    <input type="text" id="supply-chain-org-name" placeholder="e.g., Manufacturing company, Retail chain, Distribution business">
                                 </div>
                                 <div class="input-group">
                                     <label for="supply-chain-industry">Industry/Sector</label>
-                                    <input type="text" id="supply-chain-industry" placeholder="e.g., Electronics manufacturing, Medical supplies, Retail">
+                                    <input type="text" id="supply-chain-industry" placeholder="e.g., Consumer electronics, Food & beverage, Pharmaceuticals">
                                 </div>
                             </div>
                             
                             <div class="input-group">
                                 <label for="supply-chain-scope">Supply Chain Scope</label>
-                                <textarea id="supply-chain-scope" placeholder="e.g., Global supply chain with manufacturing in Asia, warehouses in 4 regions, and distribution to 30 countries&#10;Multi-echelon distribution network with 3 DCs and 125 retail locations"></textarea>
+                                <textarea id="supply-chain-scope" placeholder="e.g., Global manufacturing and distribution network with 5 production facilities, 12 distribution centers, and 200+ retail locations across 15 countries"></textarea>
                             </div>
                             
                             <div class="input-group">
-                                <label for="supply-chain-challenges">Key Supply Chain Challenges (2-4 items)</label>
-                                <textarea id="supply-chain-challenges" placeholder="e.g., Long lead times (currently 90+ days) from overseas suppliers&#10;Excess inventory levels (30% above industry benchmarks)&#10;Transportation costs increasing 15% year-over-year&#10;Limited visibility across multi-tier supplier network"></textarea>
+                                <label for="supply-chain-challenges">Current Supply Chain Challenges (2-4 items)</label>
+                                <textarea id="supply-chain-challenges" placeholder="e.g., Long lead times from suppliers in Asia to North American markets&#10;High inventory carrying costs due to demand volatility&#10;Transportation cost increases impacting margins&#10;Limited visibility across multi-tier supplier network"></textarea>
                             </div>
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="supply-chain-products">Product Categories/SKU Count</label>
-                                    <input type="text" id="supply-chain-products" placeholder="e.g., 3 product lines, 2,500+ active SKUs">
+                                    <label for="supply-chain-products">Key Product Categories</label>
+                                    <input type="text" id="supply-chain-products" placeholder="e.g., High-volume consumer goods, Perishable items, Custom-engineered products">
                                 </div>
                                 <div class="input-group">
-                                    <label for="supply-chain-volume">Annual Volume/Value</label>
-                                    <input type="text" id="supply-chain-volume" placeholder="e.g., $500M annual throughput, 250,000 units">
+                                    <label for="supply-chain-systems">Key Systems/Technologies</label>
+                                    <input type="text" id="supply-chain-systems" placeholder="e.g., ERP system, WMS, TMS, Demand planning software">
                                 </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="supply-chain-improvement-goals">Improvement Goals/Targets</label>
+                                <textarea id="supply-chain-improvement-goals" placeholder="e.g., Reduce total logistics costs by 15%&#10;Improve on-time delivery performance to 98%&#10;Decrease inventory levels by 20% while maintaining service levels&#10;Enhance end-to-end supply chain visibility"></textarea>
                             </div>
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="supply-chain-systems">Current Systems/Technologies</label>
-                                    <input type="text" id="supply-chain-systems" placeholder="e.g., SAP ERP, Manhattan WMS, Excel-based planning">
+                                    <label for="supply-chain-constraints">Key Constraints</label>
+                                    <input type="text" id="supply-chain-constraints" placeholder="e.g., Service level agreements, Capacity limitations, Regulatory requirements">
                                 </div>
                                 <div class="input-group">
-                                    <label for="supply-chain-kpis">Key Performance Metrics</label>
-                                    <input type="text" id="supply-chain-kpis" placeholder="e.g., On-time delivery, Inventory turnover, Perfect order rate">
+                                    <label for="supply-chain-timeline">Implementation Timeline</label>
+                                    <input type="text" id="supply-chain-timeline" placeholder="e.g., 12-18 months, 3-year phased approach">
                                 </div>
                             </div>
                             
                             <div class="input-group">
-                                <label for="supply-chain-goals">Optimization Goals/Targets</label>
-                                <textarea id="supply-chain-goals" placeholder="e.g., Reduce lead times by 30%&#10;Decrease inventory levels by 20% while maintaining service levels&#10;Optimize distribution network to reduce transportation costs by 15%"></textarea>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label for="supply-chain-constraints">Key Constraints</label>
-                                <textarea id="supply-chain-constraints" placeholder="e.g., Limited capital for new facilities/equipment ($2M cap)&#10;Service level agreements requiring 98%+ in-stock rates&#10;Regulatory requirements for product tracking and traceability"></textarea>
+                                <label for="supply-chain-stakeholders">Key Stakeholders</label>
+                                <input type="text" id="supply-chain-stakeholders" placeholder="e.g., Operations, Procurement, Finance, Sales, External logistics partners">
                             </div>
                             
                             <button class="generate-btn" onclick="generatePrompt('supply-chain')">
@@ -2365,21 +2666,30 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="supply-chain-output"></div>
+                        <div class="prompt-template" id="supply-chain-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('supply-chain-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <!-- Add additional operations prompts here -->
             </div>
         </div>
 
-<!-- LEADERSHIP Category -->
+        <!-- LEADERSHIP CATEGORY -->
         <div class="prompt-category" data-category="leadership">
             <div class="category-header">
                 <h2>
                     <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 20h9"></path>
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
                     </svg>
-                    Leadership & Strategy
+                    Leadership & Management
                 </h2>
             </div>
             <div class="prompt-cards">
@@ -2387,19 +2697,19 @@ Required sections must include:
                 <div class="prompt-card">
                     <div class="prompt-card-header">
                         <div class="prompt-title">Leadership Development Framework</div>
-                        <p class="prompt-description">For HR and executive development professionals needing comprehensive leadership development programs and succession planning.</p>
+                        <p class="prompt-description">For HR and leadership professionals needing a comprehensive framework for developing leadership capabilities across the organization.</p>
                     </div>
                     
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-leadership-dev">Step 1: Define Structure</button>
-                        <button class="tab-btn" data-tab="content-leadership-dev">Step 2: Add Details</button>
+                        <button class="tab-btn active" data-tab="structure-leadership-development">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-leadership-development">Step 2: Add Details</button>
                     </div>
 
                     <!-- Tab 1: Structure Prompt -->
-                    <div class="tab-content active" id="structure-leadership-dev">
+                    <div class="tab-content active" id="structure-leadership-development">
                         <div class="prompt-tab-title">
                             <span>Structure Definition</span>
-                            <button class="copy-btn" onclick="copyPrompt('leadership-dev-structure')">
+                            <button class="copy-btn" onclick="copyPrompt('leadership-development-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -2408,66 +2718,71 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="leadership-dev-structure">I need a comprehensive leadership development framework. Let's approach this methodically:
+                        <div class="prompt-template" id="leadership-development-structure">I need a comprehensive leadership development framework. Let's approach this systematically:
 
 PHASE 1: FRAMEWORK DEVELOPMENT
-Create only the structure for a leadership development document. Include section headings and bullet points describing what each section should address.
+Create only the structure for a leadership development framework document. Include section headings and bullet points describing what each section should address.
 
 Required sections must include:
 - Executive Summary
-- Organizational Context
-  * Business Strategy & Objectives
-  * Current Leadership Profile
-  * Leadership Capability Gaps
-  * Organizational Culture Assessment
-- Leadership Competency Framework
-  * Core Leadership Competencies
-  * Competency Proficiency Levels
-  * Behavioral Indicators
-  * Future-Focused Leadership Capabilities
-- Leadership Assessment Methodology
-  * Assessment Approach & Tools
-  * 360-Degree Feedback Framework
-  * Psychometric Assessment Strategy
-  * Performance Data Integration
 - Leadership Development Strategy
-  * Development Philosophy & Principles
-  * Learning Modality Mix
-  * Experiential Learning Approach
-  * Development Path Customization
-- Development Program Components
-  * Formal Learning Curriculum
-  * Coaching & Mentoring Framework
-  * Action Learning Projects
-  * Stretch Assignments
-  * Peer Learning Communities
+  * Strategic Objectives
+  * Alignment with Business Goals
+  * Leadership Philosophy
+  * Leadership Competency Framework
+- Current State Assessment
+  * Leadership Capability Analysis
+  * Succession Planning Status
+  * Leadership Pipeline Analysis
+  * Organizational Culture Assessment
+  * Talent Management Review
+- Leadership Competency Model
+  * Core Leadership Competencies
+  * Behavioral Indicators
+  * Competency Progression by Level
+  * Assessment Methodology
+  * Competency Development Approach
+- Development Program Architecture
+  * Program Structure by Leadership Level
+  * Learning Pathways
+  * Blended Learning Approach
+  * Experiential Learning Components
+  * Formal Training Elements
+- Individual Development Planning
+  * Assessment Process
+  * Development Planning Framework
+  * Career Pathing
+  * Mentoring & Coaching Structure
+  * Self-Directed Learning Resources
 - Succession Planning Integration
-  * Leadership Pipeline Model
-  * Critical Position Identification
-  * Talent Pool Development
-  * Succession Planning Process
-- High-Potential Identification & Development
-  * High-Potential Criteria
-  * Assessment & Calibration Process
-  * Accelerated Development Approach
-  * Retention Strategy
-- Measuring Program Effectiveness
-  * Key Performance Indicators
-  * Evaluation Methodology
-  * ROI Measurement Approach
+  * Critical Role Identification
+  * Talent Review Process
+  * Readiness Assessment Criteria
+  * Development for Succession
+  * Emergency Succession Planning
+- Measurement & Evaluation
+  * Program Effectiveness Metrics
+  * Individual Progress Tracking
+  * Business Impact Assessment
+  * ROI Methodology
   * Continuous Improvement Process
 - Implementation Roadmap
   * Phased Implementation Approach
-  * Timeline & Milestones
   * Resource Requirements
+  * Timeline & Milestones
   * Change Management Considerations
+  * Communication Strategy
+- Governance Framework
+  * Roles & Responsibilities
+  * Decision-Making Structure
+  * Stakeholder Engagement Model
+  * Reporting & Accountability
 - Appendices
-  * Competency Model Details
-  * Assessment Tools
-  * Development Resources
-  * Case Studies & Best Practices</div>
+  * Competency Assessment Tools
+  * Development Planning Templates
+  * Program Curriculum Details</div>
                         
-                        <button class="next-step-btn" onclick="nextTab('leadership-dev')">
+                        <button class="next-step-btn" onclick="nextTab('leadership-development')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -2477,10 +2792,10 @@ Required sections must include:
                     </div>
 
                     <!-- Tab 2: Content Details Form -->
-                    <div class="tab-content" id="content-leadership-dev">
+                    <div class="tab-content" id="content-leadership-development">
                         <div class="prompt-tab-title">
                             <span>Leadership Development Details</span>
-                            <button class="copy-btn" id="leadership-dev-copy-btn" onclick="copyGeneratedPrompt('leadership-dev')">
+                            <button class="copy-btn" id="leadership-development-copy-btn" onclick="copyGeneratedPrompt('leadership-development')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -2500,59 +2815,58 @@ Required sections must include:
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="leadership-dev-organization">Organization Name</label>
-                                    <input type="text" id="leadership-dev-organization" placeholder="e.g., Global Enterprises Inc., MediTech Systems">
+                                    <label for="leadership-org-name">Organization Name/Type</label>
+                                    <input type="text" id="leadership-org-name" placeholder="e.g., Global technology company, Healthcare system, Financial services firm">
                                 </div>
                                 <div class="input-group">
-                                    <label for="leadership-dev-industry">Industry/Sector</label>
-                                    <input type="text" id="leadership-dev-industry" placeholder="e.g., Financial Services, Healthcare, Technology">
+                                    <label for="leadership-org-size">Organization Size</label>
+                                    <input type="text" id="leadership-org-size" placeholder="e.g., 5,000 employees, 250 leaders, 3 leadership levels">
                                 </div>
                             </div>
                             
                             <div class="input-group">
-                                <label for="leadership-dev-target">Target Leadership Population</label>
-                                <textarea id="leadership-dev-target" placeholder="e.g., Mid-level managers (150 globally)&#10;High-potential emerging leaders&#10;Executive leadership team (C-suite and direct reports)"></textarea>
+                                <label for="leadership-business-context">Business Context & Challenges</label>
+                                <textarea id="leadership-business-context" placeholder="e.g., Rapid growth requiring development of new leaders&#10;Digital transformation requiring new leadership capabilities&#10;High turnover in middle management positions"></textarea>
                             </div>
                             
                             <div class="input-group">
-                                <label for="leadership-dev-challenges">Leadership Challenges (2-4 items)</label>
-                                <textarea id="leadership-dev-challenges" placeholder="e.g., Significant growth requiring stronger leadership pipeline&#10;Digital transformation requiring new leadership capabilities&#10;High turnover in critical leadership roles&#10;Global expansion needing cultural intelligence"></textarea>
+                                <label for="leadership-objectives">Leadership Development Objectives (2-4 items)</label>
+                                <textarea id="leadership-objectives" placeholder="e.g., Build a robust leadership pipeline for critical roles&#10;Develop digital leadership capabilities across all levels&#10;Improve leadership diversity and inclusion practices&#10;Enhance change management capabilities"></textarea>
                             </div>
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="leadership-dev-competencies">Key Leadership Competencies</label>
-                                    <textarea id="leadership-dev-competencies" placeholder="e.g., Strategic thinking, Emotional intelligence&#10;Change management, Innovation leadership&#10;Executive presence, Cross-cultural effectiveness"></textarea>
+                                    <label for="leadership-levels">Leadership Levels</label>
+                                    <input type="text" id="leadership-levels" placeholder="e.g., Executive, Senior, Mid-level, Emerging leaders">
                                 </div>
                                 <div class="input-group">
-                                    <label for="leadership-dev-resources">Available Resources/Budget</label>
-                                    <input type="text" id="leadership-dev-resources" placeholder="e.g., $750K annual budget, Internal L&D team, Executive coach network">
+                                    <label for="leadership-focus-areas">Key Focus Areas</label>
+                                    <input type="text" id="leadership-focus-areas" placeholder="e.g., Strategic thinking, Innovation, People development">
                                 </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="leadership-current-programs">Current Development Programs/Initiatives</label>
+                                <textarea id="leadership-current-programs" placeholder="e.g., Executive coaching program&#10;Leadership training workshops&#10;High-potential development program&#10;Mentoring initiative"></textarea>
                             </div>
                             
                             <div class="input-grid">
                                 <div class="input-group">
-                                    <label for="leadership-dev-timeframe">Implementation Timeframe</label>
-                                    <input type="text" id="leadership-dev-timeframe" placeholder="e.g., 18-month phased rollout, 3-year strategic initiative">
+                                    <label for="leadership-budget">Development Budget</label>
+                                    <input type="text" id="leadership-budget" placeholder="e.g., $500K annually, $2,500 per leader">
                                 </div>
                                 <div class="input-group">
-                                    <label for="leadership-dev-success">Success Measures</label>
-                                    <input type="text" id="leadership-dev-success" placeholder="e.g., Leadership pipeline readiness, Retention rates, Engagement scores">
+                                    <label for="leadership-timeline">Implementation Timeline</label>
+                                    <input type="text" id="leadership-timeline" placeholder="e.g., 18-month rollout, 3-year strategic plan">
                                 </div>
                             </div>
                             
-                            <div class="input-grid">
-                                <div class="input-group">
-                                    <label for="leadership-dev-stakeholders">Key Stakeholders</label>
-                                    <input type="text" id="leadership-dev-stakeholders" placeholder="e.g., CHRO, CEO, Board of Directors, Business Unit Leaders">
-                                </div>
-                                <div class="input-group">
-                                    <label for="leadership-dev-current">Current Development Approach</label>
-                                    <input type="text" id="leadership-dev-current" placeholder="e.g., Ad-hoc training, Limited mentoring program, External programs">
-                                </div>
+                            <div class="input-group">
+                                <label for="leadership-stakeholders">Key Stakeholders</label>
+                                <input type="text" id="leadership-stakeholders" placeholder="e.g., Executive team, HR department, Business unit leaders">
                             </div>
                             
-                            <button class="generate-btn" onclick="generatePrompt('leadership-dev')">
+                            <button class="generate-btn" onclick="generatePrompt('leadership-development')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 5v14M5 12h14"></path>
                                 </svg>
@@ -2560,390 +2874,684 @@ Required sections must include:
                             </button>
                         </div>
                         
-                        <div class="prompt-template" id="leadership-dev-output"></div>
+                        <div class="prompt-template" id="leadership-development-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('leadership-development-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Planning Framework -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Strategic Planning Framework</div>
+                        <p class="prompt-description">For executives and strategic planners needing a comprehensive framework to develop, document, and implement organizational strategy.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-strategic-planning">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-strategic-planning">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-strategic-planning">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('strategic-planning-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="strategic-planning-structure">I need a comprehensive strategic planning framework. Let's approach this systematically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a strategic planning document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Strategic Planning Process
+  * Planning Methodology
+  * Stakeholder Engagement Approach
+  * Timeline & Milestones
+  * Roles & Responsibilities
+- Organizational Context
+  * Mission, Vision & Values
+  * Organizational History & Evolution
+  * Current Business Model
+  * Organizational Structure
+  * Core Competencies
+- Environmental Analysis
+  * External Environment (PESTEL Analysis)
+  * Industry Analysis (Porter's Five Forces)
+  * Market Trends & Dynamics
+  * Competitive Landscape Analysis
+  * Customer Needs & Insights
+- Internal Assessment
+  * Organizational Capabilities
+  * Resource Analysis
+  * Performance Review
+  * Cultural Assessment
+  * SWOT Analysis
+- Strategic Direction
+  * Strategic Positioning
+  * Value Proposition
+  * Strategic Priorities
+  * Long-term Objectives
+  * Growth Strategy
+- Strategic Initiatives
+  * Initiative Portfolio
+  * Initiative Descriptions
+  * Resource Requirements
+  * Timeline & Milestones
+  * Interdependencies
+- Financial Projections
+  * Revenue Forecasts
+  * Cost Projections
+  * Capital Requirements
+  * Financial Scenarios
+  * ROI Analysis
+- Implementation Framework
+  * Governance Structure
+  * Decision-Making Process
+  * Resource Allocation
+  * Change Management Approach
+  * Risk Management Strategy
+- Performance Monitoring
+  * Key Performance Indicators
+  * Balanced Scorecard
+  * Review Cadence
+  * Adjustment Mechanisms
+  * Reporting Framework
+- Communication Plan
+  * Stakeholder Analysis
+  * Key Messages
+  * Communication Channels
+  * Communication Timeline
+  * Feedback Mechanisms
+- Appendices
+  * Detailed Market Analysis
+  * Financial Models
+  * Implementation Tools
+  * Supporting Research</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('strategic-planning')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                            Proceed to Step 2
+                        </button>
+                    </div>
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-strategic-planning">
+                        <div class="prompt-tab-title">
+                            <span>Strategic Planning Details</span>
+                            <button class="copy-btn" id="strategic-planning-copy-btn" onclick="copyGeneratedPrompt('strategic-planning')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="input-form">
+                            <div class="input-form-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                                Fill in your strategic planning details
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="strategic-org-name">Organization Name/Type</label>
+                                    <input type="text" id="strategic-org-name" placeholder="e.g., Technology startup, Healthcare provider, Manufacturing company">
+                                </div>
+                                <div class="input-group">
+                                    <label for="strategic-org-size">Organization Size/Stage</label>
+                                    <input type="text" id="strategic-org-size" placeholder="e.g., 500 employees, $50M revenue, Growth stage">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="strategic-mission">Mission Statement</label>
+                                <textarea id="strategic-mission" placeholder="e.g., To transform healthcare delivery through innovative technology solutions that improve patient outcomes and reduce costs"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="strategic-business-context">Business Context & Challenges</label>
+                                <textarea id="strategic-business-context" placeholder="e.g., Rapid market disruption from new technologies&#10;Changing customer expectations and buying behaviors&#10;Increasing regulatory pressures&#10;Need to scale operations while maintaining quality"></textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="strategic-objectives">Strategic Objectives (2-4 items)</label>
+                                <textarea id="strategic-objectives" placeholder="e.g., Expand into 3 new geographic markets within 24 months&#10;Achieve 30% revenue growth annually for next 3 years&#10;Develop 2 new product lines to diversify revenue streams&#10;Improve operational efficiency by 20%"></textarea>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="strategic-timeframe">Planning Timeframe</label>
+                                    <input type="text" id="strategic-timeframe" placeholder="e.g., 3-year strategic plan, 5-year horizon">
+                                </div>
+                                <div class="input-group">
+                                    <label for="strategic-methodology">Planning Methodology</label>
+                                    <input type="text" id="strategic-methodology" placeholder="e.g., Balanced Scorecard, OKRs, Scenario Planning">
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="strategic-strengths">Key Organizational Strengths</label>
+                                    <textarea id="strategic-strengths" placeholder="e.g., Proprietary technology, Strong brand recognition, Experienced leadership team"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="strategic-opportunities">Key Market Opportunities</label>
+                                    <textarea id="strategic-opportunities" placeholder="e.g., Emerging market segment, Digital transformation trends, Potential strategic partnerships"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="strategic-stakeholders">Key Stakeholders</label>
+                                <input type="text" id="strategic-stakeholders" placeholder="e.g., Board of Directors, Executive team, Investors, Department leaders">
+                            </div>
+                            
+                            <button class="generate-btn" onclick="generatePrompt('strategic-planning')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 5v14M5 12h14"></path>
+                                </svg>
+                                Generate Complete Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="strategic-planning-output">
+                            <button class="output-copy-btn" onclick="copyOutputPrompt('strategic-planning-output')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-                
-<!-- TECHNOLOGY - ADDITIONAL PROMPTS -->
-<div class="prompt-card">
-    <div class="prompt-card-header">
-        <div class="prompt-title">Data Security & Privacy Framework</div>
-        <p class="prompt-description">For technology and security professionals needing comprehensive data protection, compliance, and security risk management documentation.</p>
-    </div>
-    
-    <div class="prompt-tabs">
-        <button class="tab-btn active" data-tab="structure-data-security">Step 1: Define Structure</button>
-        <button class="tab-btn" data-tab="content-data-security">Step 2: Add Details</button>
-    </div>
 
-    <!-- Tab 1: Structure Prompt -->
-    <div class="tab-content active" id="structure-data-security">
-        <div class="prompt-tab-title">
-            <span>Structure Definition</span>
-            <button class="copy-btn" onclick="copyPrompt('data-security-structure')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy Structure Prompt
-            </button>
-        </div>
-        
-        <div class="prompt-template" id="data-security-structure">I need a comprehensive data security and privacy framework. Let's approach this methodically:
-
-PHASE 1: FRAMEWORK DEVELOPMENT
-Create only the structure for a data security and privacy document. Include section headings and bullet points describing what each section should address.
-
-Required sections must include:
-- Executive Summary
-- Data Security & Privacy Governance
-  * Policy & Standards Framework
-  * Roles & Responsibilities
-  * Compliance Management
-  * Risk Management Approach
-- Regulatory Compliance Landscape
-  * Applicable Regulations & Standards
-  * Compliance Requirements Mapping
-  * Certification & Audit Approach
-  * Cross-Border Data Transfer Considerations
-- Data Inventory & Classification
-  * Data Discovery Methodology
-  * Data Classification Framework
-  * Data Flow Mapping
-  * Data Lifecycle Management
-- Security Controls Framework
-  * Administrative Controls
-  * Technical Controls
-  * Physical Controls
-  * Control Maturity Assessment
-- Identity & Access Management
-  * User Identity Lifecycle
-  * Authentication Framework
-  * Authorization & Privileges
-  * Access Certification & Monitoring
-- Data Protection Strategy
-  * Data Encryption Approach
-  * Data Loss Prevention
-  * Data Minimization & Retention
-  * Privacy by Design Implementation
-- Security Operations
-  * Monitoring & Detection
-  * Incident Response Framework
-  * Vulnerability Management
-  * Penetration Testing Approach
-- Third-Party Risk Management
-  * Vendor Security Assessment
-  * Contract Security Requirements
-  * Ongoing Vendor Monitoring
-  * Service Provider Management
-- Privacy Management
-  * Privacy Impact Assessment
-  * Consent Management
-  * Data Subject Rights Handling
-  * Privacy Notice Management
-- Employee Security Awareness
-  * Training Program Structure
-  * Security Culture Development
-  * Role-Based Training Requirements
-  * Effectiveness Measurement
-- Security Risk Assessment
-  * Risk Assessment Methodology
-  * Risk Treatment Options
-  * Risk Monitoring & Reporting
-  * Risk Acceptance Process
-- Incident Response & Recovery
-  * Incident Classification Framework
-  * Response Team Structure
-  * Notification & Reporting
-  * Lessons Learned Process
-- Security Testing & Assurance
-  * Testing Methodology
-  * Frequency & Scope
-  * Findings Management
-  * Continuous Improvement Process
-- Implementation & Roadmap
-  * Prioritization Framework
-  * Resource Requirements
-  * Implementation Timeline
-  * Success Metrics & KPIs
-- Appendices
-  * Security Assessment Templates
-  * Data Flow Diagrams
-  * Control Matrices
-  * Reference Materials</div>
-        
-        <button class="next-step-btn" onclick="nextTab('data-security')">
+        <div class="notification" id="notification">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            Proceed to Step 2
-        </button>
+            <span id="notification-text">Copied to clipboard!</span>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 VelocityQA | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
     </div>
 
-    <!-- Tab 2: Content Details Form -->
-    <div class="tab-content" id="content-data-security">
-        <div class="prompt-tab-title">
-            <span>Security Framework Details</span>
-            <button class="copy-btn" id="data-security-copy-btn" onclick="copyGeneratedPrompt('data-security')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy Complete Prompt
-            </button>
-        </div>
-        
-        <div class="input-form">
-            <div class="input-form-title">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                </svg>
-                Fill in your security framework details
-            </div>
-            
-            <div class="input-grid">
-                <div class="input-group">
-                    <label for="data-security-organization">Organization Name</label>
-                    <input type="text" id="data-security-organization" placeholder="e.g., TechSecure Inc., HealthData Systems">
-                </div>
-                <div class="input-group">
-                    <label for="data-security-industry">Industry/Sector</label>
-                    <input type="text" id="data-security-industry" placeholder="e.g., Healthcare, Financial Services, Technology">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="data-security-regulations">Applicable Regulations</label>
-                <textarea id="data-security-regulations" placeholder="e.g., GDPR, HIPAA, PCI-DSS, CCPA/CPRA, SOX, Industry-specific regulations"></textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="data-security-data-types">Key Data Types/Classification</label>
-                <textarea id="data-security-data-types" placeholder="e.g., Personal Identifiable Information (PII)&#10;Protected Health Information (PHI)&#10;Payment Card Data&#10;Intellectual Property&#10;Confidential Business Information"></textarea>
-            </div>
-            
-            <div class="input-grid">
-                <div class="input-group">
-                    <label for="data-security-scale">Organization Size/Scale</label>
-                    <input type="text" id="data-security-scale" placeholder="e.g., 500+ employees, 5 global locations, 50,000+ customers">
-                </div>
-                <div class="input-group">
-                    <label for="data-security-infrastructure">Technology Infrastructure</label>
-                    <input type="text" id="data-security-infrastructure" placeholder="e.g., Cloud-based infrastructure, Hybrid environment, On-premise">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="data-security-challenges">Security Challenges (2-4 items)</label>
-                <textarea id="data-security-challenges" placeholder="e.g., Remote workforce increasing attack surface&#10;Third-party integration posing data sharing risks&#10;Legacy systems with security limitations&#10;Multiple regulatory frameworks requiring compliance"></textarea>
-            </div>
-            
-            <div class="input-grid">
-                <div class="input-group">
-                    <label for="data-security-budget">Security Resource Allocation</label>
-                    <input type="text" id="data-security-budget" placeholder="e.g., Dedicated security team of 5, Annual budget of $1.5M">
-                </div>
-                <div class="input-group">
-                    <label for="data-security-maturity">Current Security Maturity</label>
-                    <input type="text" id="data-security-maturity" placeholder="e.g., Early stage development, Moderate maturity with key gaps">
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="data-security-priorities">Security Priorities</label>
-                <textarea id="data-security-priorities" placeholder="e.g., Strengthen data encryption practices&#10;Improve access control mechanisms&#10;Enhance security awareness program&#10;Develop comprehensive incident response"></textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="data-security-stakeholders">Key Stakeholders</label>
-                <input type="text" id="data-security-stakeholders" placeholder="e.g., CISO, CIO, Legal/Compliance, Business Unit Leaders, Board">
-            </div>
-            
-            <button class="generate-btn" onclick="generatePrompt('data-security')">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 5v14M5 12h14"></path>
-                </svg>
-                Generate Complete Prompt
-            </button>
-        </div>
-        
-        <div class="prompt-template" id="data-security-output"></div>
-    </div>
-</div>
-      </script>
-    <!-- Theme toggle functionality -->
     <script>
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.querySelector('.theme-toggle');
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon-light');
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.setAttribute('data-theme', 
+                document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+            );
             
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                // Update the icon
-                updateThemeIcon(newTheme);
-            });
-            
-            // Check for saved theme preference
+            // Save theme preference to localStorage
+            localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'));
+        });
+        
+        // Load saved theme from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
-                updateThemeIcon(savedTheme);
             }
             
-            function updateThemeIcon(theme) {
-                const themeToggle = document.querySelector('.theme-toggle');
-                
-                if (theme === 'dark') {
-                    themeToggle.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
-                            <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
-                        </svg>
-                    `;
-                } else {
-                    themeToggle.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-dark">
-                            <path d="M10 2c-1.82 0-3.53.5-5 1.35C2.99 4.82 2 7.34 2 10c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 0 12 0L10 2zm0 18c-4.41 0-8-3.59-8-8 0-3.36 2.08-6.23 5-7.41C5.62 5.73 5 7.79 5 10c0 4.41 3.59 8 8 8s8-3.59 8-8c0-2.21-.9-4.21-2.35-5.65C17.79 17.85 14.23 20 10 20z" fill="currentColor"/>
-                        </svg>
-                    `;
-                }
-            }
+            // Load saved form data for all prompts
+            loadAllFormData();
         });
-    </script>
-
-    <!-- Search functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
+        
+        // Category Filtering
+        const categoryButtons = document.querySelectorAll('.category-button');
+        const promptCategories = document.querySelectorAll('.prompt-category');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                
+                // Show/hide categories based on selection
+                if (category === 'all') {
+                    promptCategories.forEach(cat => cat.style.display = 'block');
+                } else {
+                    promptCategories.forEach(cat => {
+                        if (cat.getAttribute('data-category') === category) {
+                            cat.style.display = 'block';
+                        } else {
+                            cat.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Tab Navigation
+        function nextTab(promptId) {
+            const structureTab = document.querySelector(`[data-tab="structure-${promptId}"]`);
+            const contentTab = document.querySelector(`[data-tab="content-${promptId}"]`);
             
-            if (searchInput && searchButton) {
-                searchButton.addEventListener('click', performSearch);
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        performSearch();
+            structureTab.classList.remove('active');
+            contentTab.classList.add('active');
+            
+            document.getElementById(`structure-${promptId}`).classList.remove('active');
+            document.getElementById(`content-${promptId}`).classList.add('active');
+            
+            // Mark the structure tab as completed
+            structureTab.classList.add('completed');
+        }
+        
+        // Tab Button Click Handlers
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                const tabGroup = button.parentElement;
+                const contentGroup = tabGroup.nextElementSibling.parentElement;
+                
+                // Remove active class from all buttons in this group
+                tabGroup.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all tab content in this group
+                contentGroup.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Show the selected tab content
+                contentGroup.querySelector(`#${tabId}`).classList.add('active');
+            });
+        });
+        
+        // Copy Prompt Functions
+        function copyPrompt(promptId) {
+            const promptText = document.getElementById(promptId).innerText;
+            navigator.clipboard.writeText(promptText)
+                .then(() => showNotification('Structure prompt copied to clipboard!'))
+                .catch(err => console.error('Failed to copy: ', err));
+        }
+        
+        function copyGeneratedPrompt(promptId) {
+            const outputElement = document.getElementById(`${promptId}-output`);
+            if (outputElement.textContent.trim() === '') {
+                showNotification('Please generate a prompt first!', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(outputElement.textContent)
+                .then(() => showNotification('Complete prompt copied to clipboard!'))
+                .catch(err => console.error('Failed to copy: ', err));
+        }
+        
+        function copyOutputPrompt(outputId) {
+            const outputElement = document.getElementById(outputId);
+            if (outputElement.textContent.trim() === '') {
+                showNotification('Please generate a prompt first!', 'error');
+                return;
+            }
+            
+            navigator.clipboard.writeText(outputElement.textContent)
+                .then(() => showNotification('Generated prompt copied to clipboard!'))
+                .catch(err => console.error('Failed to copy: ', err));
+        }
+        
+        // Show Notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.className = 'notification show';
+            
+            if (type === 'error') {
+                notification.style.background = 'linear-gradient(45deg, #EF4444, #DC2626)';
+            } else {
+                notification.style.background = 'var(--gradient-primary)';
+            }
+            
+            setTimeout(() => {
+                notification.className = 'notification';
+            }, 3000);
+        }
+        
+        // Generate Prompt Functions
+        function generatePrompt(promptId) {
+            // Get the structure prompt
+            const structurePrompt = document.getElementById(`${promptId}-structure`).innerText;
+            
+            // Get all input values for this prompt
+            const inputElements = document.querySelectorAll(`[id^="${promptId}-"]`);
+            let userInputs = {};
+            
+            inputElements.forEach(input => {
+                if (input.id !== `${promptId}-structure` && 
+                    input.id !== `${promptId}-output` && 
+                    input.id !== `${promptId}-copy-btn`) {
+                    const fieldName = input.id.replace(`${promptId}-`, '');
+                    userInputs[fieldName] = input.value.trim();
+                }
+            });
+            
+            // Save form data to localStorage
+            saveFormData(promptId, userInputs);
+            
+            // Generate the complete prompt based on the template and user inputs
+            let completePrompt = generateCompletePrompt(promptId, structurePrompt, userInputs);
+            
+            // Display the generated prompt
+            const outputElement = document.getElementById(`${promptId}-output`);
+            outputElement.textContent = completePrompt;
+            
+            // Show success notification
+            showNotification('Prompt generated successfully!');
+        }
+        
+        function generateCompletePrompt(promptId, structurePrompt, userInputs) {
+            let completePrompt = structurePrompt + "\n\nPHASE 2: DETAILED CONTENT DEVELOPMENT\nNow, using the structure above, create a comprehensive document with the following specific details:\n\n";
+            
+            // Add user inputs based on the prompt type
+            switch(promptId) {
+                case 'healthcare-integration':
+                    completePrompt += `System A: ${userInputs['system-a'] || '[Not specified]'}\n`;
+                    completePrompt += `System B: ${userInputs['system-b'] || '[Not specified]'}\n`;
+                    completePrompt += `Regulatory Requirements: ${userInputs['regulations'] || '[Not specified]'}\n`;
+                    completePrompt += `Integration Challenges: ${userInputs['challenges'] || '[Not specified]'}\n`;
+                    completePrompt += `Clinical Workflow Considerations: ${userInputs['workflows'] || '[Not specified]'}\n`;
+                    completePrompt += `Data Sensitivity: ${userInputs['data-sensitivity'] || '[Not specified]'}\n`;
+                    completePrompt += `User Types: ${userInputs['user-types'] || '[Not specified]'}\n`;
+                    completePrompt += `Integration Pattern: ${userInputs['integration-pattern'] || '[Not specified]'}\n`;
+                    completePrompt += `Previous Experience: ${userInputs['previous-experience'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'medical-qa':
+                    completePrompt += `Software Name/Type: ${userInputs['software-name'] || '[Not specified]'}\n`;
+                    completePrompt += `Relevant Regulations: ${userInputs['regulations'] || '[Not specified]'}\n`;
+                    completePrompt += `QA Challenges: ${userInputs['qa-challenges'] || '[Not specified]'}\n`;
+                    completePrompt += `Development Methodology: ${userInputs['dev-methodology'] || '[Not specified]'}\n`;
+                    completePrompt += `Regulatory Classification: ${userInputs['classification'] || '[Not specified]'}\n`;
+                    completePrompt += `Previous Validation History: ${userInputs['validation-history'] || '[Not specified]'}\n`;
+                    completePrompt += `Critical Functionality Areas: ${userInputs['critical-functions'] || '[Not specified]'}\n`;
+                    completePrompt += `Primary End Users: ${userInputs['end-users'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'exec-presentation':
+                    completePrompt += `Presentation Title: ${userInputs['title'] || '[Not specified]'}\n`;
+                    completePrompt += `Presentation Purpose: ${userInputs['purpose'] || '[Not specified]'}\n`;
+                    completePrompt += `Target Audience: ${userInputs['audience'] || '[Not specified]'}\n`;
+                    completePrompt += `Time Allocation: ${userInputs['time'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Points: ${userInputs['key-points'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Data/Metrics: ${userInputs['data'] || '[Not specified]'}\n`;
+                    completePrompt += `Decisions Needed: ${userInputs['decisions'] || '[Not specified]'}\n`;
+                    completePrompt += `Anticipated Challenges/Questions: ${userInputs['challenges'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'tech-architecture':
+                    completePrompt += `System/Product Name: ${userInputs['system'] || '[Not specified]'}\n`;
+                    completePrompt += `System Type: ${userInputs['type'] || '[Not specified]'}\n`;
+                    completePrompt += `System Purpose & Business Context: ${userInputs['purpose'] || '[Not specified]'}\n`;
+                    completePrompt += `Technology Stack: ${userInputs['tech-stack'] || '[Not specified]'}\n`;
+                    completePrompt += `Primary Users/User Types: ${userInputs['users'] || '[Not specified]'}\n`;
+                    completePrompt += `Scale & Volume: ${userInputs['scale'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Architectural Constraints: ${userInputs['constraints'] || '[Not specified]'}\n`;
+                    completePrompt += `Integration Points: ${userInputs['integration'] || '[Not specified]'}\n`;
+                    completePrompt += `Performance Requirements: ${userInputs['performance'] || '[Not specified]'}\n`;
+                    completePrompt += `Availability Requirements: ${userInputs['availability'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'financial-risk':
+                    completePrompt += `Organization/Portfolio Name: ${userInputs['organization'] || '[Not specified]'}\n`;
+                    completePrompt += `Industry/Sector: ${userInputs['industry'] || '[Not specified]'}\n`;
+                    completePrompt += `Risk Assessment Objectives: ${userInputs['objectives'] || '[Not specified]'}\n`;
+                    completePrompt += `Specific Risk Concerns: ${userInputs['specific-concerns'] || '[Not specified]'}\n`;
+                    completePrompt += `Preferred Risk Methodology: ${userInputs['methodology'] || '[Not specified]'}\n`;
+                    completePrompt += `Assessment Timeframe: ${userInputs['timeframe'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Stakeholders: ${userInputs['stakeholders'] || '[Not specified]'}\n`;
+                    completePrompt += `Risk Management Tools: ${userInputs['tools'] || '[Not specified]'}\n`;
+                    completePrompt += `Reporting Requirements: ${userInputs['reporting'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'portfolio-analysis':
+                    completePrompt += `Portfolio/Client Name: ${userInputs['name'] || '[Not specified]'}\n`;
+                    completePrompt += `Portfolio Size: ${userInputs['size'] || '[Not specified]'}\n`;
+                    completePrompt += `Investment Objective: ${userInputs['objective'] || '[Not specified]'}\n`;
+                    completePrompt += `Time Horizon: ${userInputs['horizon'] || '[Not specified]'}\n`;
+                    completePrompt += `Risk Tolerance: ${userInputs['risk'] || '[Not specified]'}\n`;
+                    completePrompt += `Liquidity Needs: ${userInputs['liquidity'] || '[Not specified]'}\n`;
+                    completePrompt += `Current Asset Allocation: ${userInputs['allocation'] || '[Not specified]'}\n`;
+                    completePrompt += `Primary Concerns/Questions: ${userInputs['concerns'] || '[Not specified]'}\n`;
+                    completePrompt += `Benchmark(s): ${userInputs['benchmark'] || '[Not specified]'}\n`;
+                    completePrompt += `Special Constraints: ${userInputs['constraints'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'competitive-analysis':
+                    completePrompt += `Company/Brand Name: ${userInputs['company'] || '[Not specified]'}\n`;
+                    completePrompt += `Industry/Market: ${userInputs['industry'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Competitors: ${userInputs['competitors'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Comparison Dimensions: ${userInputs['dimensions'] || '[Not specified]'}\n`;
+                    completePrompt += `Your Key Strengths: ${userInputs['strengths'] || '[Not specified]'}\n`;
+                    completePrompt += `Your Key Challenges: ${userInputs['weaknesses'] || '[Not specified]'}\n`;
+                    completePrompt += `Analysis Objectives: ${userInputs['objectives'] || '[Not specified]'}\n`;
+                    completePrompt += `Analysis Timeframe/Scope: ${userInputs['timeframe'] || '[Not specified]'}\n`;
+                    completePrompt += `Available Market/Competitor Data: ${userInputs['data'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'marketing-campaign':
+                    completePrompt += `Campaign Name/Title: ${userInputs['name'] || '[Not specified]'}\n`;
+                    completePrompt += `Brand/Company Name: ${userInputs['brand'] || '[Not specified]'}\n`;
+                    completePrompt += `Campaign Objectives: ${userInputs['objectives'] || '[Not specified]'}\n`;
+                    completePrompt += `Target Audience Description: ${userInputs['audience'] || '[Not specified]'}\n`;
+                    completePrompt += `Product/Service Being Promoted: ${userInputs['product'] || '[Not specified]'}\n`;
+                    completePrompt += `Unique Selling Proposition: ${userInputs['usp'] || '[Not specified]'}\n`;
+                    completePrompt += `Primary Marketing Channels: ${userInputs['channels'] || '[Not specified]'}\n`;
+                    completePrompt += `Campaign Budget: ${userInputs['budget'] || '[Not specified]'}\n`;
+                    completePrompt += `Campaign Timeline: ${userInputs['timeline'] || '[Not specified]'}\n`;
+                    completePrompt += `Anticipated Challenges: ${userInputs['challenges'] || '[Not specified]'}\n`;
+                    completePrompt += `Success Metrics: ${userInputs['success'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'process-optimization':
+                    completePrompt += `Organization Name/Type: ${userInputs['org-name'] || '[Not specified]'}\n`;
+                    completePrompt += `Process Scope/Focus: ${userInputs['scope'] || '[Not specified]'}\n`;
+                    completePrompt += `Current Process Challenges: ${userInputs['challenges'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Stakeholders: ${userInputs['stakeholders'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Systems/Technologies: ${userInputs['systems'] || '[Not specified]'}\n`;
+                    completePrompt += `Improvement Goals/Targets: ${userInputs['improvement-goals'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Constraints: ${userInputs['constraints'] || '[Not specified]'}\n`;
+                    completePrompt += `Preferred Methodology: ${userInputs['methodology'] || '[Not specified]'}\n`;
+                    completePrompt += `Implementation Timeline: ${userInputs['timeline'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'supply-chain':
+                    completePrompt += `Organization Name/Type: ${userInputs['org-name'] || '[Not specified]'}\n`;
+                    completePrompt += `Industry/Sector: ${userInputs['industry'] || '[Not specified]'}\n`;
+                    completePrompt += `Supply Chain Scope: ${userInputs['scope'] || '[Not specified]'}\n`;
+                    completePrompt += `Current Supply Chain Challenges: ${userInputs['challenges'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Product Categories: ${userInputs['products'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Systems/Technologies: ${userInputs['systems'] || '[Not specified]'}\n`;
+                    completePrompt += `Improvement Goals/Targets: ${userInputs['improvement-goals'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Constraints: ${userInputs['constraints'] || '[Not specified]'}\n`;
+                    completePrompt += `Implementation Timeline: ${userInputs['timeline'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Stakeholders: ${userInputs['stakeholders'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'leadership-development':
+                    completePrompt += `Organization Name/Type: ${userInputs['org-name'] || '[Not specified]'}\n`;
+                    completePrompt += `Organization Size: ${userInputs['org-size'] || '[Not specified]'}\n`;
+                    completePrompt += `Business Context & Challenges: ${userInputs['business-context'] || '[Not specified]'}\n`;
+                    completePrompt += `Leadership Development Objectives: ${userInputs['objectives'] || '[Not specified]'}\n`;
+                    completePrompt += `Leadership Levels: ${userInputs['levels'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Focus Areas: ${userInputs['focus-areas'] || '[Not specified]'}\n`;
+                    completePrompt += `Current Development Programs/Initiatives: ${userInputs['current-programs'] || '[Not specified]'}\n`;
+                    completePrompt += `Development Budget: ${userInputs['budget'] || '[Not specified]'}\n`;
+                    completePrompt += `Implementation Timeline: ${userInputs['timeline'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Stakeholders: ${userInputs['stakeholders'] || '[Not specified]'}\n`;
+                    break;
+                    
+                case 'strategic-planning':
+                    completePrompt += `Organization Name/Type: ${userInputs['org-name'] || '[Not specified]'}\n`;
+                    completePrompt += `Organization Size/Stage: ${userInputs['org-size'] || '[Not specified]'}\n`;
+                    completePrompt += `Mission Statement: ${userInputs['mission'] || '[Not specified]'}\n`;
+                    completePrompt += `Business Context & Challenges: ${userInputs['business-context'] || '[Not specified]'}\n`;
+                    completePrompt += `Strategic Objectives: ${userInputs['objectives'] || '[Not specified]'}\n`;
+                    completePrompt += `Planning Timeframe: ${userInputs['timeframe'] || '[Not specified]'}\n`;
+                    completePrompt += `Planning Methodology: ${userInputs['methodology'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Organizational Strengths: ${userInputs['strengths'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Market Opportunities: ${userInputs['opportunities'] || '[Not specified]'}\n`;
+                    completePrompt += `Key Stakeholders: ${userInputs['stakeholders'] || '[Not specified]'}\n`;
+                    break;
+                    
+                default:
+                    // Generic fallback for any other prompt types
+                    Object.keys(userInputs).forEach(key => {
+                        completePrompt += `${key}: ${userInputs[key] || '[Not specified]'}\n`;
+                    });
+            }
+            
+            completePrompt += "\nPlease develop a comprehensive document following the structure outlined in Phase 1, incorporating the specific details provided above. The document should be professionally formatted with clear section headings, concise bullet points where appropriate, and detailed explanations. Include practical examples, best practices, and actionable recommendations throughout.";
+            
+            return completePrompt;
+        }
+        
+        // Form Data Persistence
+        function saveFormData(promptId, formData) {
+            localStorage.setItem(`prompt_${promptId}`, JSON.stringify(formData));
+        }
+        
+        function loadFormData(promptId) {
+            const savedData = localStorage.getItem(`prompt_${promptId}`);
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                
+                // Populate form fields
+                Object.keys(formData).forEach(key => {
+                    const inputId = `${promptId}-${key}`;
+                    const inputElement = document.getElementById(inputId);
+                    if (inputElement) {
+                        inputElement.value = formData[key];
                     }
                 });
             }
+        }
+        
+        function loadAllFormData() {
+            // List of all prompt IDs
+            const promptIds = [
+                'healthcare-integration', 'medical-qa', 'exec-presentation', 'tech-architecture',
+                'financial-risk', 'portfolio-analysis', 'competitive-analysis', 'marketing-campaign',
+                'process-optimization', 'supply-chain', 'leadership-development', 'strategic-planning'
+            ];
             
-            function performSearch() {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-                if (searchTerm === '') return;
-                
-                const promptCards = document.querySelectorAll('.prompt-card');
-                let foundCount = 0;
-                
-                promptCards.forEach(card => {
-                    const title = card.querySelector('.prompt-title').textContent.toLowerCase();
-                    const description = card.querySelector('.prompt-description').textContent.toLowerCase();
-                    const content = card.textContent.toLowerCase();
-                    
-                    if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {
-                        card.style.display = 'block';
-                        card.closest('.prompt-category').style.display = 'block';
-                        foundCount++;
-                        
-                        // Highlight the card
-                        card.style.border = '2px solid var(--text-accent)';
-                        card.style.boxShadow = '0 0 20px var(--hover-glow)';
-                        
-                        // Reset highlighting after 3 seconds
-                        setTimeout(() => {
-                            card.style.border = '1px solid var(--border-color)';
-                            card.style.boxShadow = '';
-                        }, 3000);
+            promptIds.forEach(promptId => {
+                loadFormData(promptId);
+            });
+        }
+        
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            if (searchTerm.trim() === '') {
+                // If search is empty, show all categories
+                promptCategories.forEach(cat => cat.style.display = 'block');
+                categoryButtons.forEach(btn => {
+                    if (btn.getAttribute('data-category') === 'all') {
+                        btn.classList.add('active');
                     } else {
-                        card.style.display = 'none';
+                        btn.classList.remove('active');
                     }
                 });
-                
-                // Check if any cards are visible in each category
-                document.querySelectorAll('.prompt-category').forEach(category => {
-                    const visibleCards = Array.from(category.querySelectorAll('.prompt-card')).filter(card => 
-                        card.style.display !== 'none'
-                    );
-                    
-                    if (visibleCards.length === 0) {
-                        category.style.display = 'none';
-                    }
-                });
-                
-                // Show notification
-                if (foundCount > 0) {
-                    showNotification(`Found ${foundCount} results for "${searchTerm}"`);
-                } else {
-                    showNotification('No results found. Try different keywords.');
-                    // Show all cards again if no results
-                    resetSearch();
-                }
+                return;
             }
             
-            function resetSearch() {
-                promptCards.forEach(card => {
+            // Show all categories for searching
+            promptCategories.forEach(cat => cat.style.display = 'block');
+            
+            // Reset category buttons
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === 'all') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Get all prompt cards
+            const promptCards = document.querySelectorAll('.prompt-card');
+            
+            // Filter prompt cards based on search term
+            let foundAny = false;
+            
+            promptCards.forEach(card => {
+                const title = card.querySelector('.prompt-title').textContent.toLowerCase();
+                const description = card.querySelector('.prompt-description').textContent.toLowerCase();
+                const content = card.textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {
                     card.style.display = 'block';
-                });
-                
-                document.querySelectorAll('.prompt-category').forEach(category => {
-                    category.style.display = 'block';
-                });
-            }
-        });
-    </script>
-
-    <!-- Save form data locally -->
-    <script>
-        function saveFormData() {
-            const forms = document.querySelectorAll('.input-form');
-            
-            forms.forEach(form => {
-                const inputs = form.querySelectorAll('input, textarea');
-                const formId = form.closest('.tab-content').id;
-                const formData = {};
-                
-                inputs.forEach(input => {
-                    formData[input.id] = input.value;
-                });
-                
-                localStorage.setItem(`formData-${formId}`, JSON.stringify(formData));
-            });
-        }
-        
-        function loadFormData() {
-            const forms = document.querySelectorAll('.input-form');
-            
-            forms.forEach(form => {
-                const formId = form.closest('.tab-content').id;
-                const savedData = localStorage.getItem(`formData-${formId}`);
-                
-                if (savedData) {
-                    const formData = JSON.parse(savedData);
+                    foundAny = true;
                     
-                    for (const [id, value] of Object.entries(formData)) {
-                        const input = document.getElementById(id);
-                        if (input) input.value = value;
+                    // Make the parent category visible
+                    const parentCategory = card.closest('.prompt-category');
+                    if (parentCategory) {
+                        parentCategory.style.display = 'block';
                     }
+                } else {
+                    card.style.display = 'none';
                 }
             });
+            
+            // Check if any cards are visible in each category
+            promptCategories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.prompt-card[style="display: block;"]');
+                if (visibleCards.length === 0) {
+                    category.style.display = 'none';
+                }
+            });
+            
+            if (!foundAny) {
+                showNotification('No matching prompts found.', 'error');
+            }
         }
         
-        // Load saved form data on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadFormData();
-            
-            // Save form data when inputs change
-            document.querySelectorAll('.input-form input, .input-form textarea').forEach(input => {
-                input.addEventListener('change', saveFormData);
-            });
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
         });
     </script>
 </body>
 </html>
-
