@@ -476,8 +476,1587 @@ Required sections must include:
                         <div class="prompt-template" id="exec-presentation-output"></div>
                     </div>
                 </div>
+           <!-- FINANCE CATEGORY -->
+<div class="prompt-category" data-category="finance">
+    <div class="category-header">
+        <h2>
+            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            Finance & Accounting
+        </h2>
+    </div>
+    <div class="prompt-cards">
+        <!-- Financial Risk Assessment Framework -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Financial Risk Assessment Framework</div>
+                <p class="prompt-description">For financial professionals needing comprehensive risk assessment documentation for investment portfolios or business operations.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-financial-risk">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-financial-risk">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-financial-risk">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('financial-risk-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="financial-risk-structure">I need a comprehensive financial risk assessment framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a financial risk assessment framework. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Risk Assessment Objectives & Scope
+- Risk Identification
+  * Market Risk Categories
+  * Credit Risk Categories
+  * Operational Risk Categories
+  * Liquidity Risk Categories
+  * Regulatory/Compliance Risk Categories
+- Risk Evaluation Methodology
+  * Probability Assessment Criteria
+  * Impact Assessment Criteria
+  * Risk Scoring Model
+  * Risk Matrix Development
+- Key Risk Indicators (KRIs)
+  * KRI Definition & Selection Criteria
+  * Threshold Setting Methodology
+  * Monitoring Frequency
+- Risk Mitigation Strategies
+  * Avoidance Strategies
+  * Reduction Strategies
+  * Transfer Strategies
+  * Acceptance Criteria
+- Stress Testing Framework
+  * Scenario Development
+  * Modeling Approach
+  * Impact Analysis Methodology
+- Risk Governance Structure
+  * Roles & Responsibilities
+  * Reporting Protocols
+  * Escalation Procedures
+- Risk Monitoring & Reporting
+  * Dashboard Development
+  * Periodic Review Process
+  * Stakeholder Communication Strategy
+- Implementation Roadmap
+  * Phase One: Initial Assessment
+  * Phase Two: Mitigation Implementation
+  * Phase Three: Monitoring Framework
+- Appendices
+  * Risk Register Template
+  * Assessment Tools
+  * Glossary of Terms</div>
+                
+                <button class="next-step-btn" onclick="nextTab('financial-risk')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-financial-risk">
+                <div class="prompt-tab-title">
+                    <span>Risk Assessment Details</span>
+                    <button class="copy-btn" id="financial-risk-copy-btn" onclick="copyGeneratedPrompt('financial-risk')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your risk assessment details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="financial-risk-organization">Organization/Portfolio Name</label>
+                            <input type="text" id="financial-risk-organization" placeholder="e.g., XYZ Investment Fund, Global Corp">
+                        </div>
+                        <div class="input-group">
+                            <label for="financial-risk-industry">Industry/Sector</label>
+                            <input type="text" id="financial-risk-industry" placeholder="e.g., Banking, Technology, Manufacturing">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="financial-risk-objectives">Risk Assessment Objectives</label>
+                        <textarea id="financial-risk-objectives" placeholder="e.g., Identify emerging risks in global operations&#10;Evaluate potential impact of market volatility&#10;Ensure regulatory compliance across jurisdictions"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="financial-risk-specific-concerns">Specific Risk Concerns (2-4 items)</label>
+                        <textarea id="financial-risk-specific-concerns" placeholder="e.g., Currency fluctuation in emerging markets&#10;Counterparty default risk in derivatives portfolio&#10;Regulatory changes in EU markets"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="financial-risk-methodology">Preferred Risk Methodology</label>
+                            <input type="text" id="financial-risk-methodology" placeholder="e.g., COSO ERM, ISO 31000, Basel III">
+                        </div>
+                        <div class="input-group">
+                            <label for="financial-risk-timeframe">Assessment Timeframe</label>
+                            <input type="text" id="financial-risk-timeframe" placeholder="e.g., 12-month outlook, 3-5 year horizon">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="financial-risk-stakeholders">Key Stakeholders</label>
+                            <input type="text" id="financial-risk-stakeholders" placeholder="e.g., Board of Directors, Executive Team, Regulators">
+                        </div>
+                        <div class="input-group">
+                            <label for="financial-risk-tools">Risk Management Tools</label>
+                            <input type="text" id="financial-risk-tools" placeholder="e.g., Bloomberg Terminal, Internal models, VaR">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="financial-risk-reporting">Reporting Requirements</label>
+                        <input type="text" id="financial-risk-reporting" placeholder="e.g., Monthly executive dashboard, Quarterly board report">
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('financial-risk')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="financial-risk-output"></div>
             </div>
         </div>
+
+        <!-- Investment Portfolio Analysis -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Investment Portfolio Analysis</div>
+                <p class="prompt-description">For financial analysts and investment professionals needing comprehensive portfolio evaluation and optimization recommendations.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-portfolio-analysis">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-portfolio-analysis">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-portfolio-analysis">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('portfolio-analysis-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="portfolio-analysis-structure">I need a comprehensive investment portfolio analysis. Let's approach this methodically:
+
+PHASE 1: ANALYSIS FRAMEWORK DEVELOPMENT
+Create only the structure for an investment portfolio analysis document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Investment Objectives & Constraints
+  * Return Objectives
+  * Risk Tolerance Assessment
+  * Time Horizon
+  * Liquidity Requirements
+  * Tax Considerations
+  * Regulatory/Legal Constraints
+- Current Portfolio Overview
+  * Asset Allocation Analysis
+  * Geographic Exposure
+  * Sector Distribution
+  * Investment Vehicle Breakdown
+  * Fee Structure Analysis
+- Performance Analysis
+  * Absolute Performance Metrics
+  * Relative Performance (Benchmark Comparison)
+  * Risk-Adjusted Performance Measures
+  * Attribution Analysis
+  * Drawdown Analysis
+- Risk Assessment
+  * Volatility Measures
+  * Correlation Analysis
+  * Concentration Risk
+  * Liquidity Risk
+  * Interest Rate Sensitivity
+  * Currency Exposure
+- Market & Economic Outlook
+  * Macroeconomic Analysis
+  * Market Valuation Assessment
+  * Sector Outlook
+  * Geographic Market Trends
+- Portfolio Optimization Recommendations
+  * Strategic Asset Allocation Adjustments
+  * Tactical Positioning Recommendations
+  * Investment Vehicle Selection
+  * Rebalancing Strategy
+  * Tax Efficiency Enhancements
+- Implementation Plan
+  * Prioritized Action Items
+  * Timeline
+  * Transaction Approach
+  * Expected Impact Analysis
+- Ongoing Monitoring Framework
+  * Key Performance Indicators
+  * Risk Monitoring Metrics
+  * Review Frequency & Process
+- Appendices
+  * Detailed Holdings Analysis
+  * Performance Data
+  * Scenario Analysis Results</div>
+                
+                <button class="next-step-btn" onclick="nextTab('portfolio-analysis')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-portfolio-analysis">
+                <div class="prompt-tab-title">
+                    <span>Portfolio Details</span>
+                    <button class="copy-btn" id="portfolio-analysis-copy-btn" onclick="copyGeneratedPrompt('portfolio-analysis')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your portfolio details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="portfolio-analysis-name">Portfolio/Client Name</label>
+                            <input type="text" id="portfolio-analysis-name" placeholder="e.g., Smith Family Trust, Growth Portfolio">
+                        </div>
+                        <div class="input-group">
+                            <label for="portfolio-analysis-size">Portfolio Size</label>
+                            <input type="text" id="portfolio-analysis-size" placeholder="e.g., $5M, $250K-500K range">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="portfolio-analysis-objective">Investment Objective</label>
+                            <input type="text" id="portfolio-analysis-objective" placeholder="e.g., Growth, Income, Capital Preservation">
+                        </div>
+                        <div class="input-group">
+                            <label for="portfolio-analysis-horizon">Time Horizon</label>
+                            <input type="text" id="portfolio-analysis-horizon" placeholder="e.g., 5-10 years, 20+ years until retirement">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="portfolio-analysis-risk">Risk Tolerance</label>
+                            <input type="text" id="portfolio-analysis-risk" placeholder="e.g., Conservative, Moderate, Aggressive">
+                        </div>
+                        <div class="input-group">
+                            <label for="portfolio-analysis-liquidity">Liquidity Needs</label>
+                            <input type="text" id="portfolio-analysis-liquidity" placeholder="e.g., 10% annual withdrawal, Emergency fund only">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="portfolio-analysis-allocation">Current Asset Allocation</label>
+                        <textarea id="portfolio-analysis-allocation" placeholder="e.g., 60% Equities (40% US, 20% International)&#10;30% Fixed Income (20% Government, 10% Corporate)&#10;10% Alternatives (5% REITs, 5% Commodities)"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="portfolio-analysis-concerns">Primary Concerns/Questions (2-3 items)</label>
+                        <textarea id="portfolio-analysis-concerns" placeholder="e.g., Portfolio vulnerability to rising interest rates&#10;Potential for increased international exposure&#10;Adequacy of current allocation for retirement goals"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="portfolio-analysis-benchmark">Benchmark(s)</label>
+                            <input type="text" id="portfolio-analysis-benchmark" placeholder="e.g., S&P 500, 60/40 Blend, Custom Benchmark">
+                        </div>
+                        <div class="input-group">
+                            <label for="portfolio-analysis-constraints">Special Constraints</label>
+                            <input type="text" id="portfolio-analysis-constraints" placeholder="e.g., ESG requirements, Tax considerations">
+                        </div>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('portfolio-analysis')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="portfolio-analysis-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OPERATIONS CATEGORY -->
+<div class="prompt-category" data-category="operations">
+    <div class="category-header">
+        <h2>
+            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            Operations & Project Management
+        </h2>
+    </div>
+    <div class="prompt-cards">
+        <!-- Process Optimization Blueprint -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Process Optimization Blueprint</div>
+                <p class="prompt-description">For operations and process improvement professionals needing a comprehensive approach to identify inefficiencies and implement optimizations.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-process-optimization">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-process-optimization">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-process-optimization">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('process-optimization-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="process-optimization-structure">I need a comprehensive process optimization blueprint. Let's approach this systematically:
+
+PHASE 1: OPTIMIZATION FRAMEWORK
+Create only the structure for a process optimization document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Current Process Assessment
+  * Process Scope & Boundaries
+  * Process Mapping (As-Is)
+  * Key Performance Indicators
+  * Stakeholder Analysis
+  * Pain Point Identification
+  * Root Cause Analysis
+- Data Collection & Analysis
+  * Data Sources & Collection Methods
+  * Quantitative Analysis Approach
+  * Qualitative Analysis Approach
+  * Benchmarking Framework
+  * Process Metrics & Baseline
+- Waste & Inefficiency Identification
+  * Value Stream Mapping
+  * Process Variation Analysis
+  * Bottleneck Analysis
+  * Non-Value-Added Activities
+  * Resource Utilization Assessment
+- Improvement Opportunity Analysis
+  * Opportunity Categorization
+  * Prioritization Matrix
+  * Impact vs. Effort Assessment
+  * Quick Win Identification
+  * Long-Term Opportunity Roadmap
+- Future State Design
+  * Process Redesign Principles
+  * Process Mapping (To-Be)
+  * Technology Enhancement Opportunities
+  * Automation Potential Assessment
+  * Resource Optimization Framework
+- Implementation Strategy
+  * Phased Implementation Approach
+  * Resource Requirements
+  * Timeline & Milestones
+  * Change Management Considerations
+  * Risk Management Framework
+- Performance Monitoring
+  * Key Performance Indicators
+  * Measurement System
+  * Continuous Improvement Mechanisms
+  * Feedback Loop Establishment
+- Governance Framework
+  * Roles & Responsibilities
+  * Decision-Making Structure
+  * Communication Protocol
+  * Escalation Procedures
+- Appendices
+  * Detailed Process Maps
+  * Data Analysis Results
+  * Implementation Tools & Templates</div>
+                
+                <button class="next-step-btn" onclick="nextTab('process-optimization')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-process-optimization">
+                <div class="prompt-tab-title">
+                    <span>Process Details</span>
+                    <button class="copy-btn" id="process-optimization-copy-btn" onclick="copyGeneratedPrompt('process-optimization')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your process details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="process-optimization-name">Process/Function Name</label>
+                            <input type="text" id="process-optimization-name" placeholder="e.g., Order-to-Cash, Customer Onboarding">
+                        </div>
+                        <div class="input-group">
+                            <label for="process-optimization-organization">Organization/Department</label>
+                            <input type="text" id="process-optimization-organization" placeholder="e.g., Finance Department, Manufacturing Division">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="process-optimization-description">Brief Process Description</label>
+                        <textarea id="process-optimization-description" placeholder="e.g., The customer onboarding process begins with application submission and ends with account activation, involving 5 departments and 12 distinct steps"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="process-optimization-pain-points">Current Pain Points (2-4 items)</label>
+                        <textarea id="process-optimization-pain-points" placeholder="e.g., Long cycle times (currently averaging 15 days)&#10;High error rates in data entry (23% rework)&#10;Excessive handoffs between departments (7 transfers)&#10;Manual document processing creating bottlenecks"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="process-optimization-stakeholders">Key Stakeholders</label>
+                            <input type="text" id="process-optimization-stakeholders" placeholder="e.g., Operations team, IT department, Customers">
+                        </div>
+                        <div class="input-group">
+                            <label for="process-optimization-metrics">Current Process Metrics</label>
+                            <input type="text" id="process-optimization-metrics" placeholder="e.g., Cycle time, Error rates, Cost per transaction">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="process-optimization-improvement-goals">Improvement Goals</label>
+                            <input type="text" id="process-optimization-improvement-goals" placeholder="e.g., Reduce cycle time by 50%, Eliminate manual data entry">
+                        </div>
+                        <div class="input-group">
+                            <label for="process-optimization-methodology">Preferred Methodology</label>
+                            <input type="text" id="process-optimization-methodology" placeholder="e.g., Lean, Six Sigma, Agile, BPM">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="process-optimization-constraints">Implementation Constraints</label>
+                            <input type="text" id="process-optimization-constraints" placeholder="e.g., Limited budget, 6-month timeline, No additional headcount">
+                        </div>
+                        <div class="input-group">
+                            <label for="process-optimization-technologies">Current Technologies</label>
+                            <input type="text" id="process-optimization-technologies" placeholder="e.g., ERP system, CRM platform, Legacy databases">
+                        </div>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('process-optimization')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="process-optimization-output"></div>
+            </div>
+        </div>
+        
+        <!-- Project Management Framework -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Project Management Framework</div>
+                <p class="prompt-description">For project managers needing comprehensive project planning documentation, including scope, timeline, resource management, and risk assessment.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-project-management">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-project-management">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-project-management">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('project-management-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="project-management-structure">I need a comprehensive project management framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a project management document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Project Overview
+  * Project Background & Context
+  * Business Case & Justification
+  * Project Objectives
+  * Success Criteria & Metrics
+  * Key Stakeholders
+- Project Scope
+  * In-Scope Elements
+  * Out-of-Scope Elements
+  * Deliverables
+  * Acceptance Criteria
+  * Change Management Process
+- Project Governance
+  * Organizational Structure
+  * Roles & Responsibilities
+  * Decision-Making Framework
+  * Escalation Procedures
+  * Communication Protocol
+- Project Approach & Methodology
+  * Development/Delivery Methodology
+  * Phase/Sprint Structure
+  * Key Activities & Processes
+  * Quality Management Approach
+  * Documentation Standards
+- Project Schedule
+  * Work Breakdown Structure
+  * Key Milestones & Dependencies
+  * Critical Path Analysis
+  * Timeline Visualization
+  * Schedule Management Approach
+- Resource Management
+  * Team Structure & Composition
+  * Resource Allocation Plan
+  * Skills & Capacity Assessment
+  * Procurement Strategy
+  * Budget Allocation
+- Risk Management
+  * Risk Identification Approach
+  * Risk Assessment Methodology
+  * Risk Response Strategies
+  * Risk Monitoring Process
+  * Contingency Planning
+- Communication Plan
+  * Stakeholder Analysis
+  * Communication Matrix
+  * Reporting Structure & Cadence
+  * Meeting Framework
+  * Collaboration Tools & Platforms
+- Project Controls
+  * Progress Tracking Methodology
+  * Status Reporting Process
+  * Issue Management Framework
+  * Change Control Procedures
+  * Financial Monitoring Approach
+- Implementation Plan
+  * Deployment Strategy
+  * Training & Knowledge Transfer
+  * User Acceptance Testing
+  * Go-Live Approach
+  * Transition to Operations
+- Project Closure
+  * Closeout Criteria
+  * Lessons Learned Process
+  * Documentation Archiving
+  * Post-Implementation Review
+  * Benefits Realization Assessment
+- Appendices
+  * Detailed Project Schedule
+  * Resource Plan
+  * Budget Details
+  * Risk Register
+  * RACI Matrix</div>
+                
+                <button class="next-step-btn" onclick="nextTab('project-management')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-project-management">
+                <div class="prompt-tab-title">
+                    <span>Project Details</span>
+                    <button class="copy-btn" id="project-management-copy-btn" onclick="copyGeneratedPrompt('project-management')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your project details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="project-management-name">Project Name</label>
+                            <input type="text" id="project-management-name" placeholder="e.g., Digital Transformation Initiative, ERP Implementation">
+                        </div>
+                        <div class="input-group">
+                            <label for="project-management-organization">Organization/Department</label>
+                            <input type="text" id="project-management-organization" placeholder="e.g., IT Department, Global Operations">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="project-management-objectives">Project Objectives (2-4 items)</label>
+                        <textarea id="project-management-objectives" placeholder="e.g., Implement new ERP system to replace legacy platforms&#10;Standardize business processes across all regions&#10;Reduce operational costs by 15%&#10;Improve data visibility and reporting capabilities"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="project-management-duration">Project Duration/Timeline</label>
+                            <input type="text" id="project-management-duration" placeholder="e.g., 18 months, Q3 2025 - Q1 2026">
+                        </div>
+                        <div class="input-group">
+                            <label for="project-management-budget">Project Budget</label>
+                            <input type="text" id="project-management-budget" placeholder="e.g., $1.2M, $500K-750K range">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="project-management-team">Project Team Size/Composition</label>
+                            <input type="text" id="project-management-team" placeholder="e.g., 8 internal team members, 3 external consultants">
+                        </div>
+                        <div class="input-group">
+                            <label for="project-management-methodology">Project Methodology</label>
+                            <input type="text" id="project-management-methodology" placeholder="e.g., Agile, Waterfall, Hybrid, PRINCE2">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="project-management-stakeholders">Key Stakeholders</label>
+                        <textarea id="project-management-stakeholders" placeholder="e.g., Executive Sponsor: CEO&#10;Business Stakeholders: VP of Operations, Regional Directors&#10;Technical Stakeholders: CIO, IT Team"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="project-management-risks">Primary Risks/Challenges (2-3 items)</label>
+                        <textarea id="project-management-risks" placeholder="e.g., Resource constraints due to competing priorities&#10;Complex integration with legacy systems&#10;Change resistance from regional teams"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="project-management-success">Success Criteria</label>
+                        <textarea id="project-management-success" placeholder="e.g., All modules implemented and functioning by Q1 2026&#10;System adoption rate of 90%+ within 3 months of go-live&#10;15% reduction in operational costs achieved"></textarea>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('project-management')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="project-management-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SALES & MARKETING CATEGORY -->
+<div class="prompt-category" data-category="sales">
+    <div class="category-header">
+        <h2>
+            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+            </svg>
+            Sales & Marketing
+        </h2>
+    </div>
+    <div class="prompt-cards">
+        <!-- Marketing Strategy Blueprint -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Marketing Strategy Blueprint</div>
+                <p class="prompt-description">For marketing professionals needing a comprehensive marketing strategy with detailed audience analysis, channel planning, and campaign frameworks.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-marketing-strategy">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-marketing-strategy">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-marketing-strategy">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('marketing-strategy-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="marketing-strategy-structure">I need a comprehensive marketing strategy blueprint. Let's approach this methodically:
+
+PHASE 1: STRATEGY FRAMEWORK DEVELOPMENT
+Create only the structure for a marketing strategy document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Situation Analysis
+  * Market Overview & Trends
+  * Competitive Landscape Analysis
+  * SWOT Analysis
+  * Current Marketing Performance Review
+- Business & Marketing Objectives
+  * Business Goals Alignment
+  * Marketing Objectives
+  * Key Performance Indicators
+  * Success Metrics & Targets
+- Target Audience Strategy
+  * Customer Segmentation Framework
+  * Buyer Persona Development
+  * Customer Journey Mapping
+  * Pain Points & Value Proposition Alignment
+- Brand Strategy
+  * Brand Positioning
+  * Brand Messaging Framework
+  * Value Proposition Articulation
+  * Brand Voice & Tone Guidelines
+- Marketing Mix Strategy
+  * Product Strategy
+  * Pricing Strategy
+  * Distribution/Placement Strategy
+  * Promotion Strategy
+- Channel Strategy
+  * Channel Selection Framework
+  * Channel Role & Objectives
+  * Channel Integration Approach
+  * Channel-Specific Tactics
+- Content Strategy
+  * Content Pillars & Themes
+  * Content Types & Formats
+  * Content Production Framework
+  * Content Distribution Approach
+- Campaign Framework
+  * Campaign Architecture
+  * Campaign Calendar
+  * Campaign Budget Allocation
+  * Campaign Integration Strategy
+- Digital Marketing Strategy
+  * SEO/SEM Approach
+  * Social Media Strategy
+  * Email Marketing Framework
+  * Digital Advertising Strategy
+- Marketing Technology & Data Strategy
+  * MarTech Stack Overview
+  * Data Collection & Analysis Framework
+  * Personalization & Automation Strategy
+  * Analytics & Reporting Structure
+- Implementation Plan
+  * Timeline & Milestones
+  * Resource Allocation
+  * Budget Breakdown
+  * Phased Implementation Approach
+- Measurement & Optimization Framework
+  * Reporting Cadence & Structure
+  * Testing & Optimization Methodology
+  * ROI Assessment Approach
+  * Continuous Improvement Process
+- Appendices
+  * Detailed Buyer Personas
+  * Competitive Analysis Matrix
+  * Channel Performance Data
+  * Content Calendar Template</div>
+                
+                <button class="next-step-btn" onclick="nextTab('marketing-strategy')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-marketing-strategy">
+                <div class="prompt-tab-title">
+                    <span>Marketing Strategy Details</span>
+                    <button class="copy-btn" id="marketing-strategy-copy-btn" onclick="copyGeneratedPrompt('marketing-strategy')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your marketing strategy details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="marketing-strategy-company">Company/Brand Name</label>
+                            <input type="text" id="marketing-strategy-company" placeholder="e.g., TechNova, HealthFirst Solutions">
+                        </div>
+                        <div class="input-group">
+                            <label for="marketing-strategy-industry">Industry/Sector</label>
+                            <input type="text" id="marketing-strategy-industry" placeholder="e.g., SaaS, Healthcare, Retail, Financial Services">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="marketing-strategy-objectives">Marketing Objectives (2-4 items)</label>
+                        <textarea id="marketing-strategy-objectives" placeholder="e.g., Increase market share by 5% in next 12 months&#10;Generate 30% more qualified leads quarter-over-quarter&#10;Improve customer retention rate from 70% to 85%&#10;Launch new product line with 10,000 units sold in first quarter"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="marketing-strategy-target">Target Audience</label>
+                            <input type="text" id="marketing-strategy-target" placeholder="e.g., B2B enterprise clients, Millennial professionals, Healthcare administrators">
+                        </div>
+                        <div class="input-group">
+                            <label for="marketing-strategy-budget">Marketing Budget</label>
+                            <input type="text" id="marketing-strategy-budget" placeholder="e.g., $500K annually, 12% of revenue, $50K per quarter">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="marketing-strategy-unique">Unique Selling Proposition/Key Differentiators</label>
+                        <textarea id="marketing-strategy-unique" placeholder="e.g., Proprietary AI-powered analytics platform&#10;Industry-leading 99.99% uptime guarantee&#10;Only solution offering end-to-end integration with legacy systems"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="marketing-strategy-channels">Primary Marketing Channels</label>
+                        <textarea id="marketing-strategy-channels" placeholder="e.g., Organic social media (LinkedIn, Twitter)&#10;Content marketing (blog, whitepapers)&#10;Industry events and conferences&#10;Paid search and display advertising"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="marketing-strategy-timeframe">Strategy Timeframe</label>
+                            <input type="text" id="marketing-strategy-timeframe" placeholder="e.g., 12-month plan, 2025 annual strategy, Q3-Q4 2025">
+                        </div>
+                        <div class="input-group">
+                            <label for="marketing-strategy-competitors">Key Competitors</label>
+                            <input type="text" id="marketing-strategy-competitors" placeholder="e.g., CompetitorX, CompetitorY, Legacy providers">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="marketing-strategy-challenges">Primary Marketing Challenges</label>
+                        <textarea id="marketing-strategy-challenges" placeholder="e.g., Highly competitive market with established players&#10;Limited brand awareness in new target segments&#10;Long sales cycles (avg. 6-9 months)&#10;Difficulty differentiating from similar solutions"></textarea>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('marketing-strategy')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="marketing-strategy-output"></div>
+            </div>
+        </div>
+        
+        <!-- Customer Journey Mapping Framework -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Customer Journey Mapping Framework</div>
+                <p class="prompt-description">For marketing and CX professionals needing a comprehensive customer journey map to identify touchpoints, pain points, and optimization opportunities.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-customer-journey">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-customer-journey">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-customer-journey">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('customer-journey-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="customer-journey-structure">I need a comprehensive customer journey mapping framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a customer journey mapping document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Journey Mapping Objectives
+  * Business Goals Alignment
+  * Specific Mapping Objectives
+  * Success Metrics & Expected Outcomes
+  * Scope & Boundaries
+- Customer Persona Development
+  * Demographic Profile
+  * Psychographic Characteristics
+  * Goals, Needs & Pain Points
+  * Behavioral Patterns
+  * Decision-Making Factors
+- Journey Stages Identification
+  * Stage Definition & Criteria
+  * Pre-Purchase/Awareness Phase
+  * Consideration/Evaluation Phase
+  * Purchase/Decision Phase
+  * Post-Purchase/Usage Phase
+  * Loyalty/Advocacy Phase
+- Touchpoint Mapping
+  * Touchpoint Identification Methodology
+  * Channel Inventory
+  * Customer Actions at Each Touchpoint
+  * Company Actions at Each Touchpoint
+  * Touchpoint Ownership & Responsibility
+- Emotional Journey Mapping
+  * Customer Emotion Assessment
+  * Pain Points & Friction Identification
+  * Moments of Truth/Critical Interactions
+  * Emotional State Progression
+  * Satisfaction Drivers & Detractors
+- Opportunity Identification
+  * Gap Analysis Methodology
+  * Pain Point Prioritization Framework
+  * Quick Win Identification
+  * Strategic Improvement Opportunities
+  * Competitive Advantage Potential
+- Customer Experience Optimization
+  * Touchpoint Enhancement Strategies
+  * Cross-Channel Integration Opportunities
+  * Personalization Framework
+  * Emotional Connection Strengthening
+  * Loyalty & Advocacy Enhancement
+- Implementation Plan
+  * Prioritized Recommendations
+  * Resource Requirements
+  * Timeline & Milestones
+  * Success Metrics & KPIs
+  * Implementation Ownership
+- Continuous Improvement Framework
+  * Journey Map Review Cadence
+  * Feedback Collection Methodology
+  * Performance Monitoring Approach
+  * Iterative Refinement Process
+- Appendices
+  * Detailed Persona Documentation
+  * Research Methodology & Data Sources
+  * Touchpoint Inventory Matrix
+  * Measurement Framework Details</div>
+                
+                <button class="next-step-btn" onclick="nextTab('customer-journey')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-customer-journey">
+                <div class="prompt-tab-title">
+                    <span>Journey Mapping Details</span>
+                    <button class="copy-btn" id="customer-journey-copy-btn" onclick="copyGeneratedPrompt('customer-journey')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your journey mapping details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="customer-journey-company">Company/Brand Name</label>
+                            <input type="text" id="customer-journey-company" placeholder="e.g., CloudService Pro, RetailBrand">
+                        </div>
+                        <div class="input-group">
+                            <label for="customer-journey-product">Product/Service Focus</label>
+                            <input type="text" id="customer-journey-product" placeholder="e.g., Enterprise SaaS platform, Premium retail experience">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="customer-journey-persona">Primary Customer Persona</label>
+                        <textarea id="customer-journey-persona" placeholder="e.g., Sarah, 42, IT Director at mid-size company&#10;Budget decision-maker with technical background&#10;Goal: Improve operational efficiency while reducing costs&#10;Pain point: Complex implementation processes of enterprise software"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="customer-journey-objectives">Mapping Objectives (2-3 items)</label>
+                        <textarea id="customer-journey-objectives" placeholder="e.g., Identify friction points in onboarding process&#10;Understand key decision factors during evaluation phase&#10;Map emotional journey to improve retention strategy"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="customer-journey-touchpoints">Key Touchpoints</label>
+                        <textarea id="customer-journey-touchpoints" placeholder="e.g., Website, Sales demos, Implementation calls&#10;Customer support tickets, Quarterly business reviews&#10;Contract renewal conversations"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="customer-journey-pain-points">Known Pain Points (2-3 items)</label>
+                        <textarea id="customer-journey-pain-points" placeholder="e.g., Complex onboarding process (avg. 45 days)&#10;Inconsistent communication between departments&#10;Limited self-service options for common issues"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="customer-journey-channels">Primary Channels</label>
+                            <input type="text" id="customer-journey-channels" placeholder="e.g., Website, Mobile app, Email, Phone support">
+                        </div>
+                        <div class="input-group">
+                            <label for="customer-journey-data">Available Customer Data</label>
+                            <input type="text" id="customer-journey-data" placeholder="e.g., CRM data, Support tickets, NPS scores">
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="customer-journey-metrics">Success Metrics</label>
+                            <input type="text" id="customer-journey-metrics" placeholder="e.g., Reduced churn rate, Improved NPS, Faster onboarding">
+                        </div>
+                        <div class="input-group">
+                            <label for="customer-journey-stakeholders">Key Stakeholders</label>
+                            <input type="text" id="customer-journey-stakeholders" placeholder="e.g., Marketing, Sales, Customer Success, Product teams">
+                        </div>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('customer-journey')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="customer-journey-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LEADERSHIP CATEGORY -->
+<div class="prompt-category" data-category="leadership">
+    <div class="category-header">
+        <h2>
+            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+            Leadership & Strategy
+        </h2>
+    </div>
+    <div class="prompt-cards">
+        <!-- Strategic Planning Framework -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Strategic Planning Framework</div>
+                <p class="prompt-description">For executives and strategic leaders needing comprehensive strategic planning documentation, including vision, goals, and implementation roadmaps.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-strategic-planning">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-strategic-planning">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-strategic-planning">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('strategic-planning-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="strategic-planning-structure">I need a comprehensive strategic planning framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a strategic planning document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Organizational Background
+  * Mission, Vision & Values
+  * Organizational History & Context
+  * Current State Assessment
+  * Core Competencies & Capabilities
+- Strategic Analysis
+  * External Environment Analysis
+    - Market & Industry Trends
+    - Competitive Landscape
+    - Regulatory Environment
+    - Economic Factors
+  * Internal Environment Analysis
+    - Organizational Structure
+    - Resource Assessment
+    - Process Evaluation
+    - Performance Analysis
+  * SWOT Analysis
+    - Strengths Assessment
+    - Weaknesses Identification
+    - Opportunities Exploration
+    - Threats Evaluation
+  * Stakeholder Analysis
+    - Key Stakeholder Identification
+    - Stakeholder Needs & Expectations
+    - Influence & Impact Assessment
+- Strategic Direction
+  * Vision Statement Refinement
+  * Strategic Priorities Identification
+  * Long-Term Objectives
+  * Short-Term Goals
+  * Success Metrics & KPIs
+- Strategic Initiatives
+  * Initiative Identification & Scope
+  * Initiative Prioritization Framework
+  * Initiative Ownership & Accountability
+  * Resource Allocation Approach
+  * Initiative Interdependencies
+- Implementation Roadmap
+  * Phased Implementation Approach
+  * Key Milestones & Timelines
+  * Critical Path Analysis
+  * Dependencies & Sequencing
+  * Quick Wins Identification
+- Resource Requirements
+  * Financial Resources
+  * Human Resources
+  * Technical Resources
+  * Infrastructure Needs
+  * Capability Development Requirements
+- Risk Management
+  * Risk Identification Methodology
+  * Risk Assessment Framework
+  * Risk Mitigation Strategies
+  * Contingency Planning
+  * Risk Monitoring Approach
+- Governance & Oversight
+  * Governance Structure
+  * Decision-Making Framework
+  * Progress Tracking Methodology
+  * Performance Review Cadence
+  * Course Correction Processes
+- Communication Strategy
+  * Stakeholder Communication Plan
+  * Communication Channels & Cadence
+  * Key Messages by Audience
+  * Communication Responsibilities
+  * Feedback Collection Mechanisms
+- Monitoring & Evaluation
+  * Performance Measurement Framework
+  * Reporting Structure & Process
+  * Success Criteria & Metrics
+  * Continuous Improvement Mechanisms
+  * Strategic Review Process
+- Appendices
+  * Detailed Action Plans
+  * Resource Plans
+  * Stakeholder Analysis Matrix
+  * Detailed Risk Register
+  * Supporting Data & Analysis</div>
+                
+                <button class="next-step-btn" onclick="nextTab('strategic-planning')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-strategic-planning">
+                <div class="prompt-tab-title">
+                    <span>Strategic Planning Details</span>
+                    <button class="copy-btn" id="strategic-planning-copy-btn" onclick="copyGeneratedPrompt('strategic-planning')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your strategic planning details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="strategic-planning-organization">Organization Name</label>
+                            <input type="text" id="strategic-planning-organization" placeholder="e.g., Global Innovations Inc., HealthCare Systems Ltd.">
+                        </div>
+                        <div class="input-group">
+                            <label for="strategic-planning-industry">Industry/Sector</label>
+                            <input type="text" id="strategic-planning-industry" placeholder="e.g., Technology, Healthcare, Financial Services">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="strategic-planning-mission">Organization Mission/Vision</label>
+                        <textarea id="strategic-planning-mission" placeholder="e.g., To revolutionize healthcare delivery through innovative technology solutions that improve patient outcomes while reducing costs"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="strategic-planning-timeframe">Planning Timeframe</label>
+                        <input type="text" id="strategic-planning-timeframe" placeholder="e.g., 3-year strategic plan, 5-year horizon with annual reviews">
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="strategic-planning-size">Organization Size</label>
+                            <input type="text" id="strategic-planning-size" placeholder="e.g., Mid-size (500 employees), Enterprise (5,000+ employees)">
+                        </div>
+                        <div class="input-group">
+                            <label for="strategic-planning-growth">Current Growth Stage</label>
+                            <input type="text" id="strategic-planning-growth" placeholder="e.g., Rapid growth, Mature market position, Turnaround needed">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="strategic-planning-challenges">Key Strategic Challenges (2-4 items)</label>
+                        <textarea id="strategic-planning-challenges" placeholder="e.g., Increasing market competition from new entrants&#10;Changing regulatory landscape in primary markets&#10;Need for digital transformation across operations&#10;Talent acquisition and retention in competitive market"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="strategic-planning-objectives">Strategic Objectives (2-4 items)</label>
+                        <textarea id="strategic-planning-objectives" placeholder="e.g., Expand market share in Asia-Pacific region by 15%&#10;Launch 3 new product/service lines within 24 months&#10;Achieve 25% revenue growth while maintaining profit margins&#10;Establish industry leadership in sustainability practices"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="strategic-planning-strengths">Key Strengths/Competencies</label>
+                            <input type="text" id="strategic-planning-strengths" placeholder="e.g., Proprietary technology, Strong brand reputation, Global presence">
+                        </div>
+                        <div class="input-group">
+                            <label for="strategic-planning-stakeholders">Key Stakeholders</label>
+                            <input type="text" id="strategic-planning-stakeholders" placeholder="e.g., Board of Directors, Executive team, Investors, Employees">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="strategic-planning-resources">Available Resources/Constraints</label>
+                        <textarea id="strategic-planning-resources" placeholder="e.g., $25M investment capital available for strategic initiatives&#10;Limited technical talent in emerging markets&#10;Legacy systems requiring integration or replacement&#10;Regulatory constraints in key markets"></textarea>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('strategic-planning')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="strategic-planning-output"></div>
+            </div>
+        </div>
+        
+        <!-- Organizational Change Management Framework -->
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <div class="prompt-title">Organizational Change Management Framework</div>
+                <p class="prompt-description">For executives and change leaders needing comprehensive documentation for planning, implementing, and managing organizational change initiatives.</p>
+            </div>
+            
+            <div class="prompt-tabs">
+                <button class="tab-btn active" data-tab="structure-change-management">Step 1: Define Structure</button>
+                <button class="tab-btn" data-tab="content-change-management">Step 2: Add Details</button>
+            </div>
+
+            <!-- Tab 1: Structure Prompt -->
+            <div class="tab-content active" id="structure-change-management">
+                <div class="prompt-tab-title">
+                    <span>Structure Definition</span>
+                    <button class="copy-btn" onclick="copyPrompt('change-management-structure')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Structure Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="change-management-structure">I need a comprehensive organizational change management framework. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for an organizational change management document. Include section headings and bullet points describing what each section should address.
+
+Required sections must include:
+- Executive Summary
+- Change Overview
+  * Change Description & Scope
+  * Business Case for Change
+  * Desired Outcomes & Success Metrics
+  * Alignment with Organizational Strategy
+- Assessment & Analysis
+  * Organizational Readiness Assessment
+  * Cultural Impact Analysis
+  * Stakeholder Analysis
+  * Change Impact Assessment
+  * Risk Assessment
+- Change Strategy
+  * Change Approach & Methodology
+  * Change Leadership Structure
+  * Change Network Development
+  * Quick Wins Identification
+  * Long-Term Sustainability Approach
+- Stakeholder Engagement
+  * Stakeholder Segmentation Framework
+  * Engagement Strategy by Segment
+  * Influence & Resistance Mapping
+  * Engagement Tactics & Channels
+  * Feedback Collection Mechanisms
+- Communication Strategy
+  * Communication Objectives & Principles
+  * Key Messages by Audience
+  * Communication Channels & Methods
+  * Communication Cadence & Timeline
+  * Feedback & Response Mechanisms
+- Training & Development
+  * Knowledge, Skills & Ability Assessment
+  * Learning Needs Analysis
+  * Training Methodology & Approach
+  * Training Curriculum & Schedule
+  * Knowledge Transfer & Reinforcement
+- Leadership Alignment & Development
+  * Leadership Alignment Strategy
+  * Leadership Capability Assessment
+  * Leadership Development Approach
+  * Coaching & Support Framework
+  * Accountability Mechanisms
+- Implementation Plan
+  * Change Roadmap & Timeline
+  * Key Milestones & Activities
+  * Resource Requirements & Allocation
+  * Dependencies & Critical Path
+  * Go-Live Readiness Assessment
+- Resistance Management
+  * Resistance Identification Approach
+  * Resistance Analysis Framework
+  * Proactive Mitigation Strategies
+  * Reactive Intervention Approaches
+  * Escalation Process
+- Measurement & Monitoring
+  * Success Metrics & KPIs
+  * Monitoring Tools & Methods
+  * Reporting Structure & Cadence
+  * Course Correction Mechanisms
+  * Benefits Realization Tracking
+- Sustainability Strategy
+  * Reinforcement Activities
+  * Recognition & Reward Approach
+  * Continuous Improvement Process
+  * Long-Term Governance Structure
+  * Knowledge Management Strategy
+- Appendices
+  * Detailed Stakeholder Analysis
+  * Communication Plan Matrix
+  * Training Plan & Materials
+  * Resistance Management Toolkit
+  * Detailed Risk Register</div>
+                
+                <button class="next-step-btn" onclick="nextTab('change-management')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                    Proceed to Step 2
+                </button>
+            </div>
+
+            <!-- Tab 2: Content Details Form -->
+            <div class="tab-content" id="content-change-management">
+                <div class="prompt-tab-title">
+                    <span>Change Management Details</span>
+                    <button class="copy-btn" id="change-management-copy-btn" onclick="copyGeneratedPrompt('change-management')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="input-form">
+                    <div class="input-form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Fill in your change management details
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="change-management-organization">Organization Name</label>
+                            <input type="text" id="change-management-organization" placeholder="e.g., Global Enterprises Inc., HealthTech Solutions">
+                        </div>
+                        <div class="input-group">
+                            <label for="change-management-industry">Industry/Sector</label>
+                            <input type="text" id="change-management-industry" placeholder="e.g., Healthcare, Manufacturing, Financial Services">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="change-management-initiative">Change Initiative Name/Description</label>
+                        <textarea id="change-management-initiative" placeholder="e.g., Enterprise-wide Digital Transformation Program&#10;Organizational Restructuring from Regional to Global Business Units&#10;Implementation of new ERP system across all operations"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="change-management-objectives">Change Objectives (2-4 items)</label>
+                        <textarea id="change-management-objectives" placeholder="e.g., Streamline operations by implementing standardized processes globally&#10;Reduce operational costs by 20% through system consolidation&#10;Improve cross-functional collaboration and knowledge sharing&#10;Enhance customer experience through integrated digital channels"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="change-management-scope">Change Scope</label>
+                            <input type="text" id="change-management-scope" placeholder="e.g., Enterprise-wide, Regional, Specific business unit">
+                        </div>
+                        <div class="input-group">
+                            <label for="change-management-timeframe">Implementation Timeframe</label>
+                            <input type="text" id="change-management-timeframe" placeholder="e.g., 18-month phased approach, 12-week rapid implementation">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="change-management-stakeholders">Key Stakeholder Groups</label>
+                        <textarea id="change-management-stakeholders" placeholder="e.g., Executive leadership team&#10;Middle management across departments&#10;Front-line employees (1,500+ individuals)&#10;IT support teams&#10;External vendors and partners"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="change-management-challenges">Anticipated Challenges (2-4 items)</label>
+                        <textarea id="change-management-challenges" placeholder="e.g., Significant resistance from regional leadership teams&#10;Complex technical integration with legacy systems&#10;Diverse cultural contexts across global operations&#10;Maintaining business continuity during transition"></textarea>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="change-management-methodology">Preferred Change Methodology</label>
+                            <input type="text" id="change-management-methodology" placeholder="e.g., Kotter's 8-Step Model, ADKAR, Prosci">
+                        </div>
+                        <div class="input-group">
+                            <label for="change-management-resources">Available Resources</label>
+                            <input type="text" id="change-management-resources" placeholder="e.g., Dedicated change team, External consultants, Budget allocation">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="change-management-success">Success Metrics</label>
+                        <textarea id="change-management-success" placeholder="e.g., 90% adoption rate within 6 months of implementation&#10;Employee satisfaction scores maintained above pre-change baseline&#10;No disruption to customer service levels during transition&#10;20% improvement in process efficiency metrics"></textarea>
+                    </div>
+                    
+                    <button class="generate-btn" onclick="generatePrompt('change-management')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Generate Complete Prompt
+                    </button>
+                </div>
+                
+                <div class="prompt-template" id="change-management-output"></div>
+            </div>
+        </div>
+    </div>
+</div>
         
         <footer>
             <p>© 2025 VelocityQA. All rights reserved. These prompts are provided as templates to assist with business and technical communications.</p>
