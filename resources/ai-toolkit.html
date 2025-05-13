@@ -2067,7 +2067,214 @@ Required sections must include:
     <!-- Notification container for alerts -->
     <div class="notification" id="notification" style="display: none;"></div>
     
-    <!-- JavaScript for toolkit functionality -->
+   <!-- JavaScript for toolkit functionality -->
     <script src="toolkit-functions.js"></script>
+    
+    <!-- Additional inline script to ensure all buttons work -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded - initializing button functionality');
+        
+        // Initialize tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                const parentCard = this.closest('.prompt-card');
+                
+                // Remove active class from all tabs in this card
+                parentCard.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+                parentCard.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                parentCard.querySelector(`#${tabId}`).classList.add('active');
+            });
+        });
+        
+        // Initialize category filters
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Show/hide categories based on selection
+                const promptCategories = document.querySelectorAll('.prompt-category');
+                if (category === 'all') {
+                    promptCategories.forEach(cat => cat.style.display = 'block');
+                } else {
+                    promptCategories.forEach(cat => {
+                        if (cat.getAttribute('data-category') === category) {
+                            cat.style.display = 'block';
+                        } else {
+                            cat.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Initialize copy buttons
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const promptId = this.closest('.prompt-tab-title').previousElementSibling.id;
+                const text = document.getElementById(promptId).textContent;
+                
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Prompt copied to clipboard!');
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            });
+        });
+        
+        // Initialize next step buttons
+        document.querySelectorAll('.next-step-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const baseId = this.closest('.tab-content').id.replace('structure-', '');
+                const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`);
+                const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`);
+                
+                structureTab.classList.remove('active');
+                contentTab.classList.add('active');
+                
+                const structureContent = document.getElementById(`structure-${baseId}`);
+                const contentContent = document.getElementById(`content-${baseId}`);
+                
+                structureContent.classList.remove('active');
+                contentContent.classList.add('active');
+            });
+        });
+        
+        // Initialize generate buttons
+        document.querySelectorAll('.generate-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const baseId = this.closest('.input-form').parentElement.id.replace('content-', '');
+                
+                // Get all input values
+                const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`);
+                let inputData = {};
+                
+                inputElements.forEach(input => {
+                    const key = input.id.replace(`${baseId}-`, '');
+                    inputData[key] = input.value.trim();
+                });
+                
+                // Get structure prompt
+                const structurePrompt = document.getElementById(`${baseId}-structure`).textContent;
+                
+                // Generate the complete prompt
+                let outputPrompt = structurePrompt + "\n\nPHASE 2: CONTENT DEVELOPMENT\nNow, use the following specific details to populate the above framework:";
+                
+                // Add each input field with a label
+                for (const [key, value] of Object.entries(inputData)) {
+                    if (value && key !== 'output') {
+                        // Format key from camelCase or kebab-case to Title Case
+                        const formattedKey = key
+                            .replace(/-/g, ' ')
+                            .replace(/([A-Z])/g, ' $1')
+                            .split(' ')
+                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(' ');
+                            
+                        outputPrompt += `\n\n${formattedKey}: ${value}`;
+                    }
+                }
+                
+                // Add final instructions
+                outputPrompt += "\n\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable.";
+                
+                // Display the complete prompt
+                const outputElement = document.getElementById(`${baseId}-output`);
+                outputElement.textContent = outputPrompt;
+                outputElement.style.display = 'block';
+                
+                // Update copy button text
+                const copyBtn = document.getElementById(`${baseId}-copy-btn`);
+                copyBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy Complete Prompt
+                `;
+                
+                showNotification('Complete prompt generated!');
+            });
+        });
+        
+        // Initialize copy generated prompt buttons
+        document.querySelectorAll('[id$="-copy-btn"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const baseId = this.id.replace('-copy-btn', '');
+                const outputElement = document.getElementById(`${baseId}-output`);
+                
+                if (outputElement.textContent.trim() === '') {
+                    // If nothing has been generated yet, generate first
+                    document.querySelector(`#content-${baseId} .generate-btn`).click();
+                }
+                
+                navigator.clipboard.writeText(outputElement.textContent).then(() => {
+                    this.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                    </svg> Copied!`;
+                    this.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        this.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg> Copy Complete Prompt`;
+                        this.classList.remove('copied');
+                    }, 2000);
+                    
+                    showNotification('Complete prompt copied to clipboard!');
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            });
+        });
+    });
+
+    // Function to show notification
+    function showNotification(message) {
+        // Remove any existing notifications
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.style.display = 'block';
+        notification.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            ${message}
+        `;
+        
+        // Add to document
+        document.body.appendChild(notification);
+        
+        // Show notification
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+    </script>
 </body>
 </html>
