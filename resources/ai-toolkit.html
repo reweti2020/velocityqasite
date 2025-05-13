@@ -2278,6 +2278,211 @@ Required sections must include:
             }, 300);
         }, 3000);
     }
-    </script>
+    <script>
+// Fix the copy functionality for all buttons
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing fixed copy functionality');
+    
+    // Fix for the structure prompt copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Find the prompt template to copy
+            let promptId;
+            if (this.getAttribute('onclick') && this.getAttribute('onclick').includes('copyPrompt')) {
+                // Extract the ID from the onclick attribute
+                const match = this.getAttribute('onclick').match(/copyPrompt\('(.+?)'\)/);
+                if (match && match[1]) {
+                    promptId = match[1];
+                }
+            } else if (this.id && this.id.endsWith('-copy-btn')) {
+                // This is a "Copy Complete Prompt" button
+                promptId = this.id.replace('-copy-btn', '-output');
+            }
+            
+            if (promptId) {
+                const promptElement = document.getElementById(promptId);
+                if (promptElement) {
+                    // Create a temporary textarea to copy the text
+                    const textarea = document.createElement('textarea');
+                    textarea.value = promptElement.textContent;
+                    textarea.setAttribute('readonly', '');
+                    textarea.style.position = 'absolute';
+                    textarea.style.left = '-9999px';
+                    document.body.appendChild(textarea);
+                    
+                    // Select and copy the text
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    // Visual feedback
+                    this.classList.add('copied');
+                    this.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Copied!
+                    `;
+                    
+                    // Create notification
+                    const notification = document.createElement('div');
+                    notification.className = 'notification';
+                    notification.style.display = 'block';
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '20px';
+                    notification.style.right = '20px';
+                    notification.style.background = 'var(--gradient-primary)';
+                    notification.style.color = 'var(--background-primary)';
+                    notification.style.padding = '15px 25px';
+                    notification.style.borderRadius = '8px';
+                    notification.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+                    notification.style.zIndex = '1000';
+                    notification.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; margin-right: 8px;">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Text copied to clipboard!
+                    `;
+                    document.body.appendChild(notification);
+                    
+                    // Remove notification after 3 seconds
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 3000);
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                        if (this.id && this.id.endsWith('-copy-btn')) {
+                            this.innerHTML = `
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            `;
+                        } else {
+                            this.innerHTML = `
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            `;
+                        }
+                    }, 2000);
+                }
+            }
+        });
+    });
+    
+    // Fix for generate prompt buttons
+    document.querySelectorAll('.generate-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const baseId = this.closest('.input-form').parentElement.id.replace('content-', '');
+            
+            // Get all input values
+            const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`);
+            let inputData = {};
+            
+            inputElements.forEach(input => {
+                if (!input.id.includes('output') && !input.id.includes('copy-btn')) {
+                    const key = input.id.replace(`${baseId}-`, '');
+                    inputData[key] = input.value.trim();
+                }
+            });
+            
+            // Get structure prompt
+            const structurePrompt = document.getElementById(`${baseId}-structure`).textContent;
+            
+            // Generate the complete prompt
+            let outputPrompt = structurePrompt + "\n\nPHASE 2: CONTENT DEVELOPMENT\nNow, use the following specific details to populate the above framework:";
+            
+            // Add each input field with a label
+            for (const [key, value] of Object.entries(inputData)) {
+                if (value) {
+                    // Format key from camelCase or kebab-case to Title Case
+                    const formattedKey = key
+                        .replace(/-/g, ' ')
+                        .replace(/([A-Z])/g, ' $1')
+                        .split(' ')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                        
+                    outputPrompt += `\n\n${formattedKey}: ${value}`;
+                }
+            }
+            
+            // Add final instructions
+            outputPrompt += "\n\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable.";
+            
+            // Display the complete prompt
+            const outputElement = document.getElementById(`${baseId}-output`);
+            outputElement.textContent = outputPrompt;
+            outputElement.style.display = 'block';
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.style.display = 'block';
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.background = 'var(--gradient-primary)';
+            notification.style.color = 'var(--background-primary)';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '8px';
+            notification.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            notification.style.zIndex = '1000';
+            notification.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; margin-right: 8px;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Prompt generated! You can now copy it.
+            `;
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        });
+    });
+    
+    // Fix for tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            const parentCard = this.closest('.prompt-card');
+            
+            // Remove active class from all tabs in this card
+            parentCard.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+            parentCard.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            this.classList.add('active');
+            parentCard.querySelector(`#${tabId}`).classList.add('active');
+        });
+    });
+    
+    // Fix for next step buttons
+    document.querySelectorAll('.next-step-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const baseId = this.closest('.tab-content').id.replace('structure-', '');
+            const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`);
+            const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`);
+            
+            structureTab.classList.remove('active');
+            contentTab.classList.add('active');
+            
+            const structureContent = document.getElementById(`structure-${baseId}`);
+            const contentContent = document.getElementById(`content-${baseId}`);
+            
+            structureContent.classList.remove('active');
+            contentContent.classList.add('active');
+        });
+    });
+});
+</script>
 </body>
 </html>
