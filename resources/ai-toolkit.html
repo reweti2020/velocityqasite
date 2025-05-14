@@ -6,813 +6,40 @@
     <title>AI Prompt Toolkit | VelocityQA</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/toolkit-base.css">
-    <style>
-        :root {
-            /* Advanced Executive Color Palette */
-            --background-primary: #0A1421;
-            --background-secondary: #111C2E;
-            --background-tertiary: #1C2C43;
-            --card-inner: #14223A;
-            
-            --text-primary: #E1E6ED;
-            --text-secondary: #A0B0C5;
-            --text-accent: #00E0E0;
-            
-            --gradient-primary: linear-gradient(45deg, #00E0E0, #00B0B0);
-            --gradient-secondary: linear-gradient(45deg, #FF6D33, #FF9933);
-            
-            --border-color: #1C2C43;
-            --shadow-color: rgba(0, 224, 224, 0.1);
-            
-            /* Interaction States */
-            --hover-glow: rgba(0, 224, 224, 0.3);
-            --active-glow: rgba(0, 224, 224, 0.5);
-            
-            /* Category Colors */
-            --healthcare-color: #4CC9F0;
-            --finance-color: #4ADE80;
-            --technology-color: #8B5CF6;
-            --operations-color: #F59E0B;
-            --sales-color: #EC4899;
-            --leadership-color: #3B82F6;
-            
-            /* Form Elements */
-            --input-bg: #0D1A2F;
-            --input-border: #1C2C43;
-            --input-focus-border: #00E0E0;
-            --input-text: #E1E6ED;
-            --input-placeholder: #546A8D;
-            
-            /* Tab Navigation */
-            --tab-inactive: #1C2C43;
-            --tab-active: #00E0E0;
-            --tab-text-inactive: #A0B0C5;
-            --tab-text-active: #0A1421;
-        }
-
-        [data-theme="light"] {
-            --background-primary: #F8FAFC;
-            --background-secondary: #FFFFFF;
-            --background-tertiary: #F1F5F9;
-            --card-inner: #FFFFFF;
-            
-            --text-primary: #1E293B;
-            --text-secondary: #64748B;
-            --text-accent: #0891B2;
-            
-            --gradient-primary: linear-gradient(45deg, #0891B2, #0E7490);
-            --gradient-secondary: linear-gradient(45deg, #F97316, #FB923C);
-            
-            --border-color: #E2E8F0;
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            
-            /* Interaction States */
-            --hover-glow: rgba(8, 145, 178, 0.1);
-            --active-glow: rgba(8, 145, 178, 0.2);
-            
-            /* Form Elements */
-            --input-bg: #F8FAFC;
-            --input-border: #E2E8F0;
-            --input-focus-border: #0891B2;
-            --input-text: #1E293B;
-            --input-placeholder: #94A3B8;
-            
-            /* Tab Navigation */
-            --tab-inactive: #F1F5F9;
-            --tab-active: #0891B2;
-            --tab-text-inactive: #64748B;
-            --tab-text-active: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--text-accent) transparent;
-        }
-
-        *::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        *::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        *::-webkit-scrollbar-thumb {
-            background: var(--text-accent);
-            border-radius: 4px;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--background-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            perspective: 1000px;
-        }
-
-        .cybernetic-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.07;
-            background-image: 
-                linear-gradient(0deg, transparent 24%, rgba(0, 224, 224, 0.05) 25%, rgba(0, 224, 224, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 224, 224, 0.05) 75%, rgba(0, 224, 224, 0.05) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(0, 224, 224, 0.05) 25%, rgba(0, 224, 224, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 224, 224, 0.05) 75%, rgba(0, 224, 224, 0.05) 76%, transparent 77%, transparent);
-            background-size: 50px 50px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-accent);
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .back-link:hover {
-            transform: translateX(-5px);
-        }
-
-        .back-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .header {
-            background: var(--background-secondary);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 50px var(--shadow-color);
-            transform-style: preserve-3d;
-            transform: translateZ(0) scale(1);
-            transition: all 0.3s ease;
-        }
-
-        .header:hover {
-            transform: translateZ(10px) scale(1.01);
-            box-shadow: 0 30px 60px var(--hover-glow);
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 224, 224, 0.1);
-            border: 1px solid rgba(0, 224, 224, 0.3);
-            color: var(--text-accent);
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(0, 224, 224, 0.2);
-            transform: rotate(15deg);
-        }
-
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-accent);
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-            font-weight: 700;
-        }
-
-        .header-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-        }
-
-        .header-feature {
-            margin-top: 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .header-feature h3 {
-            color: var(--text-accent);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .header-feature p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .search-container {
-            display: flex;
-            margin-bottom: 30px;
-            gap: 10px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 20px;
-            background: var(--background-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--text-accent);
-            box-shadow: 0 0 0 3px var(--hover-glow);
-        }
-
-        .search-button {
-            background: var(--gradient-primary);
-            border: none;
-            color: var(--background-primary);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .search-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--hover-glow);
-        }
-
-        .search-button svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .categories-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .category-button {
-            padding: 10px 20px;
-            background: var(--background-tertiary);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .category-button:hover {
-            background: var(--card-inner);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        .category-button.active {
-            background: var(--gradient-primary);
-            color: var(--background-primary);
-            border-color: transparent;
-        }
-
-        .category-button[data-category="healthcare"] {
-            border-color: var(--healthcare-color);
-        }
-        
-        .category-button[data-category="finance"] {
-            border-color: var(--finance-color);
-        }
-        
-        .category-button[data-category="technology"] {
-            border-color: var(--technology-color);
-        }
-        
-        .category-button[data-category="operations"] {
-            border-color: var(--operations-color);
-        }
-        
-        .category-button[data-category="sales"] {
-            border-color: var(--sales-color);
-        }
-        
-        .category-button[data-category="leadership"] {
-            border-color: var(--leadership-color);
-        }
-        
-        .category-button.active[data-category="healthcare"] {
-            background: linear-gradient(45deg, var(--healthcare-color), rgba(76, 201, 240, 0.7));
-        }
-        
-        .category-button.active[data-category="finance"] {
-            background: linear-gradient(45deg, var(--finance-color), rgba(74, 222, 128, 0.7));
-        }
-        
-        .category-button.active[data-category="technology"] {
-            background: linear-gradient(45deg, var(--technology-color), rgba(139, 92, 246, 0.7));
-        }
-        
-        .category-button.active[data-category="operations"] {
-            background: linear-gradient(45deg, var(--operations-color), rgba(245, 158, 11, 0.7));
-        }
-        
-        .category-button.active[data-category="sales"] {
-            background: linear-gradient(45deg, var(--sales-color), rgba(236, 72, 153, 0.7));
-        }
-        
-        .category-button.active[data-category="leadership"] {
-            background: linear-gradient(45deg, var(--leadership-color), rgba(59, 130, 246, 0.7));
-        }
-
-        .prompt-category {
-            background: var(--background-secondary);
-            border-radius: 16px;
-            margin-bottom: 40px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 40px var(--shadow-color);
-            transform-style: preserve-3d;
-            transform: translateZ(0) scale(1);
-        }
-
-        .prompt-category:hover {
-            transform: translateZ(5px) scale(1.01);
-            box-shadow: 0 25px 50px var(--hover-glow);
-        }
-
-        .category-header {
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .category-header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .category-icon {
-            width: 28px;
-            height: 28px;
-        }
-
-        .prompt-cards {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 30px;
-        }
-
-        .prompt-card {
-            background: var(--card-inner);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            padding: 0;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prompt-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .prompt-card-header {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.15);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .prompt-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-accent);
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .prompt-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        /* Tab Navigation */
-        .prompt-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 15px;
-            background: transparent;
-            color: var(--tab-text-inactive);
-            border: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tab-btn:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .tab-btn.active {
-            color: var(--text-accent);
-            border-bottom: 3px solid var(--text-accent);
-        }
-
-        .tab-btn.completed::after {
-            content: "✓";
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 0.8rem;
-            color: var(--text-accent);
-        }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.3s forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .prompt-tab-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .prompt-template {
-            position: relative;
-            background: var(--background-tertiary);
-            border-radius: 8px;
-            padding: 15px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            white-space: pre-wrap;
-            word-break: break-word;
-            max-height: 300px;
-            overflow-y: auto;
-            border-left: 3px solid var(--text-accent);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Input Form Styling */
-        .input-form {
-            margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .input-form-title {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--text-accent);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .input-form-title svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .input-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .input-group {
-            margin-bottom: 12px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .input-group input, 
-        .input-group textarea, 
-        .input-group select {
-            width: 100%;
-            padding: 10px;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 6px;
-            color: var(--input-text);
-            font-size: 0.9rem;
-            font-family: 'Roboto Mono', monospace;
-            transition: all 0.3s ease;
-        }
-
-        .input-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .input-group input:focus, 
-        .input-group textarea:focus, 
-        .input-group select:focus {
-            outline: none;
-            border-color: var(--input-focus-border);
-            box-shadow: 0 0 0 2px rgba(0, 224, 224, 0.2);
-        }
-
-        .input-group input::placeholder, 
-        .input-group textarea::placeholder {
-            color: var(--input-placeholder);
-        }
-
-        .generate-btn,
-        .next-step-btn {
-            background: var(--gradient-primary);
-            color: var(--background-primary);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .next-step-btn {
-            background: var(--gradient-secondary);
-        }
-
-        .generate-btn:hover,
-        .next-step-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--hover-glow);
-        }
-
-        .generate-btn svg,
-        .next-step-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .copy-btn {
-            background: var(--gradient-primary);
-            color: var(--background-primary);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--hover-glow);
-        }
-
-        .copy-btn svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .copy-btn.copied {
-            background: linear-gradient(45deg, #10B981, #059669);
-        }
-
-        .output-copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--gradient-primary);
-            color: var(--background-primary);
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: none; /* Hide by default */
-            align-items: center;
-            gap: 4px;
-            z-index: 10;
-        }
-
-        .output-copy-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 10px var(--hover-glow);
-        }
-
-        .output-copy-btn svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        .prompt-template {
-            position: relative; /* Ensure relative positioning for absolute positioned children */
-        }
-
-        .notification {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--background-secondary);
-            color: var(--text-primary);
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .notification.show {
-            bottom: 20px;
-        }
-
-        .notification svg {
-            width: 20px;
-            height: 20px;
-            color: var(--text-accent);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        footer a {
-            color: var(--text-accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 30px 20px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .prompt-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .category-button {
-                font-size: 0.8rem;
-                padding: 8px 15px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/ai-toolkit-styles.css">
 </head>
 <body>
     <div class="cybernetic-grid"></div>
     <div class="container">
         <a href="index.html" class="back-link">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7"></path>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Back to Resources
+            Back to Main Site
         </a>
-        
-        <div class="header">
-            <button class="theme-toggle" aria-label="Toggle theme">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                    <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+
+        <header class="header">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
                 </svg>
             </button>
             <div class="header-content">
-                <h1>AI Prompt Engineering Toolkit</h1>
-                <p class="header-subtitle">A collection of professional prompt templates designed for executives and business leaders to effectively communicate with AI systems.</p>
+                <h1>The AI Advantage: Executive-Grade Claude Prompts</h1>
+                <p class="header-subtitle">A collection of professional-grade prompting templates designed specifically for executive and business needs. These prompts leverage what actually works with Claude to deliver exceptional results.</p>
                 
                 <div class="header-feature">
-                    <h3>Two-Step Prompt Engineering</h3>
-                    <p>Our templates follow a two-step approach: first, copy the structure prompt to establish the framework, then add your specific details to generate a complete, tailored prompt for your AI assistant.</p>
+                    <h3>How to Use This Toolkit</h3>
+                    <p>Each prompt follows a two-step approach: first establish the structure with Claude, then provide the specific details. Simply fill in your information in Step 2, then copy the complete prompt to Claude.</p>
                 </div>
             </div>
-        </div>
+        </header>
         
         <div class="search-container">
-            <input type="text" id="search-input" class="search-input" placeholder="Search for prompt templates...">
-            <button id="search-button" class="search-button">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <input type="text" class="search-input" id="search-input" placeholder="Search for prompts, categories, or use cases...">
+            <button class="search-button" id="search-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -833,1604 +60,1061 @@
         <div class="prompt-category" data-category="healthcare">
             <div class="category-header">
                 <h2>
-                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="var(--healthcare-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                     </svg>
-                    Healthcare Prompts
+                    Healthcare & Medical
                 </h2>
             </div>
             <div class="prompt-cards">
-                <!-- Healthcare Strategy Card -->
+                <!-- Healthcare Integration Blueprint -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
-                        <div class="prompt-title">Healthcare Strategy Framework</div>
-                        <div class="prompt-description">A comprehensive framework for developing healthcare strategies, initiatives, and improvement plans.</div>
+                        <div class="prompt-title">Healthcare Integration Blueprint</div>
+                        <p class="prompt-description">For healthcare integration professionals needing detailed system connection documentation.</p>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-healthcare-strategy">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-healthcare-strategy">Content Details</button>
-                        <button class="tab-btn" data-tab="output-healthcare-strategy">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-healthcare-integration">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-healthcare-integration">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-healthcare-strategy" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-healthcare-integration">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
-                            <button class="copy-btn" onclick="copyPrompt('healthcare-strategy-structure')">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('healthcare-integration-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="healthcare-strategy-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="healthcare-integration-structure">I need a detailed healthcare systems integration blueprint. Let's approach this in phases:
 
-I need you to help me develop a comprehensive healthcare strategy for [ORGANIZATION/INITIATIVE]. Please structure your response using the following framework:
+PHASE 1: STRUCTURE DEVELOPMENT
+Create only the structure for a comprehensive healthcare integration document connecting systems. Include only section headings and 2-3 bullet points per section describing what each should address.
 
-1. EXECUTIVE SUMMARY
-   - Provide a concise overview of the strategy
-   - Highlight key objectives and expected outcomes
-
-2. CURRENT STATE ASSESSMENT
-   - Market analysis and healthcare landscape
-   - Organizational strengths and weaknesses
-   - Key challenges and opportunities
-   - Relevant metrics and benchmarks
-
-3. STRATEGIC OBJECTIVES
-   - Primary goals (3-5 year horizon)
-   - Key performance indicators
-   - Alignment with organizational mission and vision
-
-4. IMPLEMENTATION ROADMAP
-   - Key initiatives and programs
-   - Resource requirements (financial, human, technological)
-   - Timeline and milestones
-   - Roles and responsibilities
-
-5. STAKEHOLDER ENGAGEMENT
-   - Patient/community engagement strategy
-   - Provider/staff engagement approach
-   - Partner and collaborator involvement
-
-6. RISK MANAGEMENT
-   - Potential barriers and challenges
-   - Mitigation strategies
-   - Contingency plans
-
-7. MEASUREMENT & EVALUATION
-   - Success metrics and evaluation framework
-   - Reporting cadence and methodology
-   - Continuous improvement approach
-
-8. FINANCIAL IMPLICATIONS
-   - Budget requirements
-   - ROI projections
-   - Funding sources and sustainability plan</div>
-                        <button class="next-step-btn" onclick="nextTab('healthcare-strategy')">
+Required sections must include:
+- Executive Summary
+- Systems Overview (technical specifications of both systems)
+- Integration Architecture
+- Data Mapping & Transformation
+- Security & Compliance
+- Authentication & Authorization
+- Error Handling & Exception Management
+- Testing Approach
+- Implementation Timeline
+- Maintenance & Support
+- Appendices (API references, data dictionaries)</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('healthcare-integration')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-healthcare-strategy" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-healthcare-integration">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Project Details</span>
+                            <button class="copy-btn" id="healthcare-integration-copy-btn" onclick="copyGeneratedPrompt('healthcare-integration')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your project details
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-system-a">System A Name</label>
+                                    <input type="text" id="healthcare-system-a" placeholder="e.g., Epic EHR">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-system-b">System B Name</label>
+                                    <input type="text" id="healthcare-system-b" placeholder="e.g., Cerner Radiology">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="healthcare-strategy-organization">Organization/Initiative Name</label>
-                                <input type="text" id="healthcare-strategy-organization" placeholder="e.g., Memorial Health System">
+                                <label for="healthcare-regulations">Specific Regulations</label>
+                                <input type="text" id="healthcare-regulations" placeholder="e.g., HIPAA, GDPR, HL7 FHIR">
                             </div>
+                            
                             <div class="input-group">
-                                <label for="healthcare-strategy-context">Context & Background</label>
-                                <textarea id="healthcare-strategy-context" placeholder="Brief description of your organization and the context for this strategy"></textarea>
+                                <label for="healthcare-challenges">Integration Challenges (2-4 items)</label>
+                                <textarea id="healthcare-challenges" placeholder="e.g., Patient identifier reconciliation across systems&#10;Real-time data synchronization requirements&#10;Legacy system limitations"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="healthcare-strategy-objectives">Key Objectives</label>
-                                <textarea id="healthcare-strategy-objectives" placeholder="List your primary strategic objectives"></textarea>
+                                <label for="healthcare-workflows">Clinical Workflow Considerations</label>
+                                <textarea id="healthcare-workflows" placeholder="e.g., Emergency department triage process&#10;Medication reconciliation workflow"></textarea>
                             </div>
-                            <div class="input-group">
-                                <label for="healthcare-strategy-challenges">Key Challenges</label>
-                                <textarea id="healthcare-strategy-challenges" placeholder="Describe the main challenges you're facing"></textarea>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-data-sensitivity">Data Sensitivity Level</label>
+                                    <input type="text" id="healthcare-data-sensitivity" placeholder="e.g., PHI requiring HIPAA compliance">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-user-types">User Types</label>
+                                    <input type="text" id="healthcare-user-types" placeholder="e.g., Clinicians, IT staff, Administrators">
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="healthcare-strategy-stakeholders">Key Stakeholders</label>
-                                <textarea id="healthcare-strategy-stakeholders" placeholder="List the important stakeholders for this initiative"></textarea>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="healthcare-integration-pattern">Integration Pattern Preferred</label>
+                                    <input type="text" id="healthcare-integration-pattern" placeholder="e.g., HL7 FHIR API, Real-time synchronous">
+                                </div>
+                                <div class="input-group">
+                                    <label for="healthcare-previous-experience">Previous Integration Experience</label>
+                                    <input type="text" id="healthcare-previous-experience" placeholder="e.g., Successfully integrated lab systems">
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="healthcare-strategy-timeline">Timeline</label>
-                                <input type="text" id="healthcare-strategy-timeline" placeholder="e.g., 3-year strategic plan">
-                            </div>
-                            <div class="input-group">
-                                <label for="healthcare-strategy-resources">Available Resources</label>
-                                <textarea id="healthcare-strategy-resources" placeholder="Describe the resources available for this initiative"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="healthcare-strategy-metrics">Success Metrics</label>
-                                <textarea id="healthcare-strategy-metrics" placeholder="How will you measure success?"></textarea>
-                            </div>
-                            <button class="generate-btn" onclick="generatePrompt('healthcare-strategy')">
+                            
+                            <button class="generate-btn" onclick="generatePrompt('healthcare-integration')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-healthcare-strategy" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="healthcare-strategy-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('healthcare-strategy-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="healthcare-strategy-copy-btn" onclick="copyGeneratedPrompt('healthcare-strategy')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="healthcare-integration-output"></div>
                     </div>
                 </div>
                 
-                <!-- Patient Experience Card -->
+                <!-- Medical Software Quality Assurance Plan -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
-                        <div class="prompt-title">Patient Experience Enhancement Framework</div>
-                        <div class="prompt-description">A structured approach to analyze and improve patient experience across healthcare touchpoints.</div>
+                        <div class="prompt-title">Medical Software Quality Assurance Plan</div>
+                        <p class="prompt-description">For QA professionals in healthcare software needing comprehensive testing documentation.</p>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-patient-experience">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-patient-experience">Content Details</button>
-                        <button class="tab-btn" data-tab="output-patient-experience">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-medical-qa">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-medical-qa">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-patient-experience" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-medical-qa">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
-                            <button class="copy-btn" onclick="copyPrompt('patient-experience-structure')">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('medical-qa-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="patient-experience-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="medical-qa-structure">I need a professional-grade Quality Assurance Plan for medical software. Let's use a structured approach:
 
-I need you to help me develop a comprehensive patient experience enhancement plan for [HEALTHCARE SETTING]. Please structure your response using the following framework:
+PHASE 1: QA FRAMEWORK DEVELOPMENT
+Create only the structure for a comprehensive QA plan for medical software. Include section headings and bullet points describing what each section should address.
 
-1. EXECUTIVE SUMMARY
-   - Overview of the patient experience initiative
-   - Key objectives and expected outcomes
-   - Alignment with organizational mission and values
-
-2. CURRENT STATE ASSESSMENT
-   - Analysis of existing patient experience data
-   - Key pain points and friction areas
-   - Benchmark comparisons
-   - Voice of the patient insights
-
-3. PATIENT JOURNEY MAPPING
-   - Pre-visit experience
-   - During-visit experience
-   - Post-visit experience
-   - Digital touchpoints
-   - Physical environment considerations
-
-4. STRATEGIC IMPROVEMENT AREAS
-   - Access and convenience
-   - Communication and information
-   - Care coordination
-   - Physical comfort
-   - Emotional support
-   - Staff engagement and culture
-
-5. IMPLEMENTATION PLAN
-   - Quick wins (0-3 months)
-   - Medium-term initiatives (3-12 months)
-   - Long-term transformation (12+ months)
-   - Resource requirements
-   - Roles and responsibilities
-
-6. TECHNOLOGY ENABLEMENT
-   - Digital tools and platforms
-   - Data collection and analytics
-   - Integration with existing systems
-
-7. STAFF ENGAGEMENT STRATEGY
-   - Training and development needs
-   - Recognition and incentive programs
-   - Leadership engagement
-
-8. MEASUREMENT FRAMEWORK
-   - Key performance indicators
-   - Feedback collection methods
-   - Reporting cadence and methodology
-   - Continuous improvement approach
-
-9. FINANCIAL IMPLICATIONS
-   - Implementation costs
-   - Expected ROI and value creation
-   - Funding sources</div>
-                        <button class="next-step-btn" onclick="nextTab('patient-experience')">
+Required components must include:
+- QA Strategy Overview
+- Regulatory Compliance Framework
+- Risk Assessment Methodology
+- Test Planning & Management
+- Test Environment Requirements
+- Test Case Development Strategy
+- Automated Testing Approach
+- Manual Testing Requirements
+- Performance Testing Parameters
+- Security Testing Protocol
+- User Acceptance Testing Framework
+- Defect Management Process
+- Release Criteria & Approval Process
+- Traceability Matrix Structure
+- QA Documentation Standards
+- QA Metrics & Reporting</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('medical-qa')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-patient-experience" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-medical-qa">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Project Details</span>
+                            <button class="copy-btn" id="medical-qa-copy-btn" onclick="copyGeneratedPrompt('medical-qa')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your project details
                             </div>
+                            
                             <div class="input-group">
-                                <label for="patient-experience-setting">Healthcare Setting</label>
-                                <input type="text" id="patient-experience-setting" placeholder="e.g., Community Hospital, Outpatient Clinic">
+                                <label for="medical-software-name">Software Name/Type</label>
+                                <input type="text" id="medical-software-name" placeholder="e.g., PatientCare EHR, DiagnosticAI Module">
                             </div>
+                            
                             <div class="input-group">
-                                <label for="patient-experience-context">Context & Background</label>
-                                <textarea id="patient-experience-context" placeholder="Brief description of your organization and current patient experience"></textarea>
+                                <label for="medical-regulations">Relevant Regulations</label>
+                                <input type="text" id="medical-regulations" placeholder="e.g., FDA 21 CFR Part 820, IEC 62304, HIPAA">
                             </div>
+                            
                             <div class="input-group">
-                                <label for="patient-experience-objectives">Key Objectives</label>
-                                <textarea id="patient-experience-objectives" placeholder="What are you trying to achieve with this initiative?"></textarea>
+                                <label for="medical-qa-challenges">QA Challenges (2-4 items)</label>
+                                <textarea id="medical-qa-challenges" placeholder="e.g., Validating algorithm accuracy across diverse patient demographics&#10;Complex integration testing with multiple third-party systems"></textarea>
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="medical-dev-methodology">Development Methodology</label>
+                                    <input type="text" id="medical-dev-methodology" placeholder="e.g., Agile with 2-week sprints">
+                                </div>
+                                <div class="input-group">
+                                    <label for="medical-classification">Regulatory Classification</label>
+                                    <input type="text" id="medical-classification" placeholder="e.g., Class II medical device">
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="medical-validation-history">Previous Validation History</label>
+                                    <input type="text" id="medical-validation-history" placeholder="e.g., New product, Version update">
+                                </div>
+                                <div class="input-group">
+                                    <label for="medical-critical-functions">Critical Functionality Areas</label>
+                                    <input type="text" id="medical-critical-functions" placeholder="e.g., Medication dosing, Alert systems">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="patient-experience-painpoints">Current Pain Points</label>
-                                <textarea id="patient-experience-painpoints" placeholder="Describe the main issues affecting patient experience"></textarea>
+                                <label for="medical-end-users">Primary End Users</label>
+                                <input type="text" id="medical-end-users" placeholder="e.g., Clinicians, Lab technicians">
                             </div>
-                            <div class="input-group">
-                                <label for="patient-experience-data">Available Data</label>
-                                <textarea id="patient-experience-data" placeholder="What patient experience data do you currently collect?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="patient-experience-resources">Available Resources</label>
-                                <textarea id="patient-experience-resources" placeholder="Budget, staff, technology resources available"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="patient-experience-timeline">Implementation Timeline</label>
-                                <input type="text" id="patient-experience-timeline" placeholder="e.g., 18-month improvement plan">
-                            </div>
-                            <div class="input-group">
-                                <label for="patient-experience-stakeholders">Key Stakeholders</label>
-                                <textarea id="patient-experience-stakeholders" placeholder="Who needs to be involved in this initiative?"></textarea>
-                            </div>
-                            <button class="generate-btn" onclick="generatePrompt('patient-experience')">
+                            
+                            <button class="generate-btn" onclick="generatePrompt('medical-qa')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-patient-experience" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="patient-experience-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('patient-experience-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="patient-experience-copy-btn" onclick="copyGeneratedPrompt('patient-experience')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="medical-qa-output"></div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Technology Category -->
-        <div class="prompt-category" data-category="technology">
-            <div class="category-header">
-                <h2>
-                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="var(--technology-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                    Technology Prompts
-                </h2>
-            </div>
-            <div class="prompt-cards">
-                <!-- Digital Transformation Card -->
-                <div class="prompt-card">
-                    <div class="prompt-card-header">
-                        <div class="prompt-title">Digital Transformation Framework</div>
-                        <div class="prompt-description">A comprehensive framework for planning and executing digital transformation initiatives.</div>
-                    </div>
-                    <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-digital-transformation">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-digital-transformation">Content Details</button>
-                        <button class="tab-btn" data-tab="output-digital-transformation">Generated Prompt</button>
-                    </div>
-                    <div id="structure-digital-transformation" class="tab-content active">
-                        <div class="prompt-tab-title">
-                            Structure Prompt Template
-                            <button class="copy-btn" onclick="copyPrompt('digital-transformation-structure')">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                </svg>
-                                Copy Structure
-                            </button>
-                        </div>
-                        <div class="prompt-template" id="digital-transformation-structure">PHASE 1: STRUCTURAL FRAMEWORK
-
-I need you to help me develop a comprehensive digital transformation strategy for [ORGANIZATION/INDUSTRY]. Please structure your response using the following framework:
-
-1. EXECUTIVE SUMMARY
-   - Overview of the digital transformation initiative
-   - Strategic objectives and expected outcomes
-   - Alignment with business strategy and vision
-
-2. CURRENT STATE ASSESSMENT
-   - Technology landscape analysis
-   - Digital maturity evaluation
-   - Competitive benchmarking
-   - SWOT analysis of current digital capabilities
-
-3. FUTURE STATE VISION
-   - Digital business model evolution
-   - Customer experience transformation
-   - Operational excellence opportunities
-   - Data and analytics strategy
-   - Technology architecture vision
-
-4. TRANSFORMATION ROADMAP
-   - Strategic initiatives and priorities
-   - Phased implementation approach
-   - Quick wins vs. long-term investments
-   - Dependencies and critical path
-
-5. TECHNOLOGY ENABLEMENT
-   - Core technology stack recommendations
-   - Legacy system modernization approach
-   - Cloud strategy and architecture
-   - Integration and API strategy
-   - Security and compliance considerations
-
-6. ORGANIZATIONAL READINESS
-   - Digital leadership and governance
-   - Talent and capability development
-   - Change management approach
-   - Cultural transformation strategy
-
-7. IMPLEMENTATION APPROACH
-   - Delivery methodology (Agile, DevOps, etc.)
-   - Resource requirements and team structure
-   - Partner and vendor strategy
-   - Timeline and key milestones
-
-8. RISK MANAGEMENT
-   - Implementation risks and mitigation strategies
-   - Security and compliance risks
-   - Change management risks
-   - Technology risks
-
-9. INVESTMENT AND VALUE REALIZATION
-   - Budget requirements and funding approach
-   - Business case and ROI projections
-   - Value tracking methodology
-   - Benefits realization timeline
-
-10. GOVERNANCE AND MEASUREMENT
-    - Program governance structure
-    - Key performance indicators
-    - Reporting and monitoring approach
-    - Continuous improvement methodology</div>
-                        <button class="next-step-btn" onclick="nextTab('digital-transformation')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                            Next: Add Content Details
-                        </button>
-                    </div>
-                    <div id="content-digital-transformation" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Content Details
-                        </div>
-                        <div class="input-form">
-                            <div class="input-form-title">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                </svg>
-                                Fill in your specific details
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-organization">Organization/Industry</label>
-                                <input type="text" id="digital-transformation-organization" placeholder="e.g., Retail Banking, Manufacturing Company">
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-context">Business Context</label>
-                                <textarea id="digital-transformation-context" placeholder="Brief description of your organization and business context"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-objectives">Key Objectives</label>
-                                <textarea id="digital-transformation-objectives" placeholder="What are you trying to achieve with digital transformation?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-challenges">Current Challenges</label>
-                                <textarea id="digital-transformation-challenges" placeholder="Describe the main challenges driving this transformation"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-technologies">Key Technologies</label>
-                                <textarea id="digital-transformation-technologies" placeholder="List relevant technologies you're considering"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-timeline">Timeline</label>
-                                <input type="text" id="digital-transformation-timeline" placeholder="e.g., 3-year transformation program">
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-budget">Budget Considerations</label>
-                                <textarea id="digital-transformation-budget" placeholder="Budget range or constraints for this initiative"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="digital-transformation-stakeholders">Key Stakeholders</label>
-                                <textarea id="digital-transformation-stakeholders" placeholder="Who are the key stakeholders for this transformation?"></textarea>
-                            </div>
-                            <button class="generate-btn" onclick="generatePrompt('digital-transformation')">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-                                </svg>
-                                Generate Complete Prompt
-                            </button>
-                        </div>
-                    </div>
-                    <div id="output-digital-transformation" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="digital-transformation-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('digital-transformation-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="digital-transformation-copy-btn" onclick="copyGeneratedPrompt('digital-transformation')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Sales & Marketing Category -->
+        <!-- Sales & Marketing Category - NEW PROMPT ADDED -->
         <div class="prompt-category" data-category="sales">
             <div class="category-header">
                 <h2>
-                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="var(--sales-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 20V10"></path>
-                        <path d="M18 20V4"></path>
-                        <path d="M6 20v-4"></path>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10"></line>
+                        <line x1="18" y1="20" x2="18" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="16"></line>
                     </svg>
-                    Sales & Marketing Prompts
+                    Sales & Marketing
                 </h2>
             </div>
             <div class="prompt-cards">
-                <!-- Competitive Analysis Card -->
+                <!-- Competitive Analysis Framework -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
                         <div class="prompt-title">Competitive Analysis Framework</div>
-                        <div class="prompt-description">A structured approach to analyze competitors and identify strategic opportunities in the market.</div>
+                        <p class="prompt-description">For marketing and business development professionals needing a detailed competitive analysis to identify market opportunities and threats.</p>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-competitive-analysis">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-competitive-analysis">Content Details</button>
-                        <button class="tab-btn" data-tab="output-competitive-analysis">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-competitive-analysis">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-competitive-analysis">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-competitive-analysis" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-competitive-analysis">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
+                            <span>Structure Definition</span>
                             <button class="copy-btn" onclick="copyPrompt('competitive-analysis-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="competitive-analysis-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="competitive-analysis-structure">I need a comprehensive competitive analysis framework. Let's approach this methodically:
 
-I need you to help me conduct a comprehensive competitive analysis for [COMPANY/PRODUCT/SERVICE] in the [INDUSTRY/MARKET]. Please structure your response using the following framework:
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a competitive analysis document. Include section headings and bullet points describing what each section should address.
 
-1. EXECUTIVE SUMMARY
-   - Overview of competitive landscape
-   - Key findings and strategic implications
-   - Critical competitive advantages and challenges
-
-2. MARKET OVERVIEW
-   - Market size, growth, and trends
-   - Market segmentation
-   - Key success factors in the industry
-   - Regulatory and environmental factors
-
-3. COMPETITOR IDENTIFICATION
-   - Direct competitors
-   - Indirect competitors
-   - Potential new entrants
-   - Substitutes
-
-4. COMPETITOR PROFILES (FOR EACH KEY COMPETITOR)
-   - Company background and overview
-   - Financial performance and resources
-   - Market share and positioning
-   - Target customer segments
-   - Value proposition and messaging
-
-5. PRODUCT/SERVICE COMPARISON
-   - Feature and functionality comparison
-   - Pricing strategy analysis
-   - Quality and performance benchmarking
-   - Innovation and R&D capabilities
-   - Product roadmap (if available)
-
-6. MARKETING AND SALES STRATEGIES
-   - Brand positioning and awareness
-   - Marketing channels and tactics
-   - Sales approach and distribution
-   - Customer acquisition strategies
-   - Customer retention and loyalty programs
-
-7. CUSTOMER ANALYSIS
-   - Customer perception and satisfaction
-   - Switching costs and loyalty factors
-   - Unmet customer needs
-   - Voice of customer insights
-
-8. SWOT ANALYSIS
-   - Strengths relative to competitors
-   - Weaknesses to address
-   - Market opportunities to pursue
-   - Competitive threats to mitigate
-
-9. STRATEGIC RECOMMENDATIONS
-   - Competitive positioning opportunities
-   - Differentiation strategies
-   - Defensive tactics
-   - Growth and expansion opportunities
-   - Potential partnerships or acquisitions
-
-10. IMPLEMENTATION ROADMAP
-    - Short-term actions (0-6 months)
-    - Medium-term initiatives (6-18 months)
-    - Long-term strategic moves (18+ months)
-    - Resource requirements
-    - Success metrics and KPIs</div>
+Required sections must include:
+- Executive Summary
+- Market Overview
+  * Market Size & Growth
+  * Market Segments
+  * Market Trends
+  * Market Drivers & Challenges
+- Competitor Identification
+  * Direct Competitors
+  * Indirect Competitors
+  * Potential New Entrants
+  * Selection Criteria
+- Competitive Landscape Analysis
+  * Market Share Analysis
+  * Positioning Map
+  * Strategic Grouping
+  * Industry Concentration
+- Detailed Competitor Profiles
+  * Company Background
+  * Product/Service Offerings
+  * Target Market & Customer Base
+  * Business Model
+  * Financial Performance
+- Competitive Analysis by Key Dimension
+  * Product/Service Comparison
+  * Pricing Strategy Comparison
+  * Distribution Channel Analysis
+  * Marketing & Branding Approach
+  * Technology & Innovation Assessment
+  * Operational Capabilities
+  * Customer Experience Analysis
+- SWOT Analysis
+  * Competitor Strengths
+  * Competitor Weaknesses
+  * Competitor Opportunities
+  * Competitor Threats
+- Gap Analysis
+  * Market Needs Assessment
+  * Competitor Offering Gaps
+  * Unmet Customer Needs
+  * Differentiation Opportunities
+- Strategic Implications
+  * Competitive Advantage Identification
+  * Threat Mitigation Strategies
+  * Market Opportunity Assessment
+  * Potential Partnership Opportunities
+- Action Recommendations
+  * Short-Term Actions
+  * Medium-Term Strategy
+  * Long-Term Positioning
+  * Resource Requirements
+- Monitoring Framework
+  * Key Metrics to Track
+  * Competitive Intelligence Sources
+  * Monitoring Cadence
+  * Early Warning Indicators
+- Appendices
+  * Detailed Data Tables
+  * Research Methodology
+  * Information Sources
+  * Glossary of Terms</div>
+                        
                         <button class="next-step-btn" onclick="nextTab('competitive-analysis')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-competitive-analysis" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-competitive-analysis">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Competitive Analysis Details</span>
+                            <button class="copy-btn" id="competitive-analysis-copy-btn" onclick="copyGeneratedPrompt('competitive-analysis')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your competitive analysis details
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="competitive-analysis-company">Your Company/Brand Name</label>
+                                    <input type="text" id="competitive-analysis-company" placeholder="e.g., TechNova, HealthPlus Solutions">
+                                </div>
+                                <div class="input-group">
+                                    <label for="competitive-analysis-industry">Industry/Market</label>
+                                    <input type="text" id="competitive-analysis-industry" placeholder="e.g., SaaS CRM, Medical Devices, Retail Fashion">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="competitive-analysis-company">Company/Product/Service</label>
-                                <input type="text" id="competitive-analysis-company" placeholder="e.g., Tesla Model 3, Salesforce CRM">
+                                <label for="competitive-analysis-competitors">Key Competitors (list 3-5)</label>
+                                <textarea id="competitive-analysis-competitors" placeholder="e.g., Competitor A - Market leader with 35% share&#10;Competitor B - Fast-growing challenger&#10;Competitor C - Premium segment specialist&#10;Competitor D - Low-cost alternative"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="competitive-analysis-industry">Industry/Market</label>
-                                <input type="text" id="competitive-analysis-industry" placeholder="e.g., Electric Vehicles, Enterprise SaaS">
+                                <label for="competitive-analysis-dimensions">Key Comparison Dimensions</label>
+                                <textarea id="competitive-analysis-dimensions" placeholder="e.g., Product features, Pricing models, Customer support quality&#10;Market presence, Technology stack, Distribution channels"></textarea>
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="competitive-analysis-strengths">Your Key Strengths</label>
+                                    <textarea id="competitive-analysis-strengths" placeholder="e.g., Proprietary technology, Strong customer loyalty, Cost advantage"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="competitive-analysis-weaknesses">Your Key Challenges</label>
+                                    <textarea id="competitive-analysis-weaknesses" placeholder="e.g., Limited market presence, Weaker feature set, Higher operating costs"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="competitive-analysis-objectives">Analysis Objectives</label>
+                                    <textarea id="competitive-analysis-objectives" placeholder="e.g., Identify market positioning opportunities&#10;Evaluate competitive threats&#10;Develop differentiation strategy"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="competitive-analysis-timeframe">Analysis Timeframe/Scope</label>
+                                    <input type="text" id="competitive-analysis-timeframe" placeholder="e.g., Current market snapshot, 12-month outlook">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="competitive-analysis-competitors">Key Competitors</label>
-                                <textarea id="competitive-analysis-competitors" placeholder="List your main competitors"></textarea>
+                                <label for="competitive-analysis-data">Available Market/Competitor Data</label>
+                                <input type="text" id="competitive-analysis-data" placeholder="e.g., Industry reports, Customer surveys, Sales data, Competitor marketing materials">
                             </div>
-                            <div class="input-group">
-                                <label for="competitive-analysis-objectives">Analysis Objectives</label>
-                                <textarea id="competitive-analysis-objectives" placeholder="What are you trying to learn from this analysis?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="competitive-analysis-strengths">Your Key Strengths</label>
-                                <textarea id="competitive-analysis-strengths" placeholder="What are your company's main competitive advantages?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="competitive-analysis-weaknesses">Your Key Challenges</label>
-                                <textarea id="competitive-analysis-weaknesses" placeholder="What are your company's main competitive challenges?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="competitive-analysis-customers">Target Customer Segments</label>
-                                <textarea id="competitive-analysis-customers" placeholder="Describe your target customer segments"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="competitive-analysis-timeframe">Analysis Timeframe</label>
-                                <input type="text" id="competitive-analysis-timeframe" placeholder="e.g., Current market, 5-year outlook">
-                            </div>
+                            
                             <button class="generate-btn" onclick="generatePrompt('competitive-analysis')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-competitive-analysis" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="competitive-analysis-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('competitive-analysis-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="competitive-analysis-copy-btn" onclick="copyGeneratedPrompt('competitive-analysis')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="competitive-analysis-output"></div>
                     </div>
                 </div>
-                
-                <!-- Marketing Campaign Strategy Card -->
+
+                <!-- NEW PROMPT: Marketing Campaign Strategy Framework -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
                         <div class="prompt-title">Marketing Campaign Strategy Framework</div>
-                        <div class="prompt-description">A comprehensive framework for developing effective marketing campaigns across channels.</div>
+                        <p class="prompt-description">For marketing professionals needing a comprehensive campaign strategy with audience targeting, messaging, and performance metrics.</p>
+                        <span class="prompt-card-badge new">New</span>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-marketing-campaign">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-marketing-campaign">Content Details</button>
-                        <button class="tab-btn" data-tab="output-marketing-campaign">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-marketing-campaign">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-marketing-campaign">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-marketing-campaign" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-marketing-campaign">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
+                            <span>Structure Definition</span>
                             <button class="copy-btn" onclick="copyPrompt('marketing-campaign-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="marketing-campaign-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="marketing-campaign-structure">I need a comprehensive marketing campaign strategy framework. Let's approach this methodically:
 
-I need you to help me develop a comprehensive marketing campaign strategy for [PRODUCT/SERVICE/BRAND]. Please structure your response using the following framework:
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a marketing campaign strategy document. Include section headings and bullet points describing what each section should address.
 
-1. EXECUTIVE SUMMARY
-   - Campaign overview and objectives
-   - Target audience summary
-   - Key messaging and value proposition
-   - Expected outcomes and success metrics
-
-2. MARKET ANALYSIS
-   - Current market landscape
-   - Competitive positioning
-   - Customer insights and pain points
-   - Market opportunities and challenges
-
-3. TARGET AUDIENCE DEFINITION
-   - Primary audience segments and personas
-   - Demographic and psychographic profiles
-   - Customer journey mapping
-   - Buying behavior and decision factors
-
-4. CAMPAIGN OBJECTIVES
-   - Primary and secondary goals
-   - Specific, measurable KPIs
-   - Alignment with broader business objectives
-   - Benchmark targets
-
-5. CAMPAIGN STRATEGY
-   - Core value proposition
-   - Key messaging framework
-   - Brand voice and tone
-   - Creative concept and theme
-   - Unique selling points
-
-6. CHANNEL STRATEGY
-   - Channel mix and rationale
-   - Channel-specific approaches
-   - Content strategy by channel
-   - Paid, owned, and earned media balance
-
-7. CONTENT PLAN
-   - Content types and formats
-   - Content calendar and cadence
-   - Creative assets required
-   - Content production workflow
-
-8. IMPLEMENTATION TIMELINE
-   - Campaign phases and milestones
-   - Key activities and deliverables
-   - Resource allocation
-   - Dependencies and critical path
-
-9. BUDGET ALLOCATION
-   - Total campaign budget
-   - Budget breakdown by channel
-   - Resource requirements
-   - Expected ROI projections
-
-10. MEASUREMENT AND OPTIMIZATION
-    - Performance tracking methodology
-    - Key metrics by channel
-    - Testing and optimization approach
-    - Reporting cadence and format
-
-11. RISK ASSESSMENT
-    - Potential challenges and obstacles
-    - Contingency plans
-    - Competitive responses
-    - Mitigation strategies</div>
+Required sections must include:
+- Executive Summary
+- Campaign Overview
+  * Campaign Purpose & Objectives
+  * Key Performance Indicators (KPIs)
+  * Campaign Timeline
+  * Budget Allocation
+- Market Analysis
+  * Industry Trends
+  * Competitive Landscape
+  * Market Opportunities
+  * Potential Challenges
+- Target Audience Analysis
+  * Primary Audience Segments
+  * Audience Demographics
+  * Psychographic Profiles
+  * Customer Journey Mapping
+  * Pain Points & Motivations
+- Campaign Strategy
+  * Positioning Strategy
+  * Value Proposition
+  * Key Messages & Themes
+  * Brand Voice & Tone
+  * Creative Direction
+- Channel Strategy
+  * Channel Selection & Rationale
+  * Channel-Specific Tactics
+  * Content Distribution Plan
+  * Paid Media Strategy
+  * Organic Reach Strategy
+- Content Strategy
+  * Content Pillars
+  * Content Types & Formats
+  * Content Calendar
+  * Content Production Plan
+  * Content Governance
+- Implementation Plan
+  * Campaign Phases
+  * Key Milestones
+  * Team Responsibilities
+  * Approval Processes
+  * Risk Management
+- Measurement & Optimization
+  * Analytics Framework
+  * Reporting Cadence
+  * A/B Testing Strategy
+  * Performance Optimization Approach
+  * Success Criteria
+- Budget & Resources
+  * Detailed Budget Breakdown
+  * Resource Requirements
+  * Vendor/Partner Selection
+  * ROI Projections
+- Appendices
+  * Creative Briefs
+  * Audience Personas
+  * Competitive Analysis Details
+  * Research Methodology</div>
+                        
                         <button class="next-step-btn" onclick="nextTab('marketing-campaign')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-marketing-campaign" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-marketing-campaign">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Campaign Details</span>
+                            <button class="copy-btn" id="marketing-campaign-copy-btn" onclick="copyGeneratedPrompt('marketing-campaign')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your campaign details
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="marketing-campaign-name">Campaign Name</label>
+                                    <input type="text" id="marketing-campaign-name" placeholder="e.g., Summer Launch 2025, Enterprise Growth Initiative">
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing-campaign-product">Product/Service Focus</label>
+                                    <input type="text" id="marketing-campaign-product" placeholder="e.g., New SaaS platform, Retail product line, Professional services">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="marketing-campaign-product">Product/Service/Brand</label>
-                                <input type="text" id="marketing-campaign-product" placeholder="e.g., New Fitness App, Premium Headphones">
+                                <label for="marketing-campaign-objectives">Campaign Objectives (2-4 items)</label>
+                                <textarea id="marketing-campaign-objectives" placeholder="e.g., Increase brand awareness by 30%&#10;Generate 500 qualified leads&#10;Achieve 15% conversion rate&#10;Expand into new market segment"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="marketing-campaign-objective">Campaign Objective</label>
-                                <textarea id="marketing-campaign-objective" placeholder="What is the primary goal of this campaign?"></textarea>
+                                <label for="marketing-campaign-audience">Target Audience Description</label>
+                                <textarea id="marketing-campaign-audience" placeholder="e.g., B2B technology decision-makers at mid-market companies&#10;Urban millennials with disposable income&#10;Healthcare professionals in private practice"></textarea>
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="marketing-campaign-budget">Campaign Budget</label>
+                                    <input type="text" id="marketing-campaign-budget" placeholder="e.g., $50,000, $250K-500K range">
+                                </div>
+                                <div class="input-group">
+                                    <label for="marketing-campaign-timeline">Campaign Timeline</label>
+                                    <input type="text" id="marketing-campaign-timeline" placeholder="e.g., Q3 2025, 6-month campaign, 90-day sprint">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="marketing-campaign-audience">Target Audience</label>
-                                <textarea id="marketing-campaign-audience" placeholder="Describe your target audience segments"></textarea>
+                                <label for="marketing-campaign-channels">Primary Marketing Channels</label>
+                                <textarea id="marketing-campaign-channels" placeholder="e.g., Paid social (LinkedIn, Instagram)&#10;Content marketing (blog, webinars)&#10;Email marketing&#10;Industry events"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="marketing-campaign-usp">Unique Selling Proposition</label>
-                                <textarea id="marketing-campaign-usp" placeholder="What makes your product/service unique?"></textarea>
+                                <label for="marketing-campaign-differentiators">Key Differentiators/USPs</label>
+                                <textarea id="marketing-campaign-differentiators" placeholder="e.g., Proprietary technology&#10;Industry-leading customer support&#10;Sustainable/eco-friendly approach&#10;Price advantage"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="marketing-campaign-channels">Marketing Channels</label>
-                                <textarea id="marketing-campaign-channels" placeholder="Which channels will you use for this campaign?"></textarea>
+                                <label for="marketing-campaign-challenges">Anticipated Challenges</label>
+                                <textarea id="marketing-campaign-challenges" placeholder="e.g., Highly competitive market&#10;Limited brand recognition&#10;Complex product requiring education&#10;Seasonal buying patterns"></textarea>
                             </div>
-                            <div class="input-group">
-                                <label for="marketing-campaign-budget">Campaign Budget</label>
-                                <input type="text" id="marketing-campaign-budget" placeholder="e.g., $50,000, Limited budget">
-                            </div>
-                            <div class="input-group">
-                                <label for="marketing-campaign-timeline">Campaign Timeline</label>
-                                <input type="text" id="marketing-campaign-timeline" placeholder="e.g., Q1 2023, 3-month campaign">
-                            </div>
-                            <div class="input-group">
-                                <label for="marketing-campaign-kpis">Success Metrics</label>
-                                <textarea id="marketing-campaign-kpis" placeholder="How will you measure success?"></textarea>
-                            </div>
+                            
                             <button class="generate-btn" onclick="generatePrompt('marketing-campaign')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-marketing-campaign" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="marketing-campaign-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('marketing-campaign-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="marketing-campaign-copy-btn" onclick="copyGeneratedPrompt('marketing-campaign')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="marketing-campaign-output"></div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Leadership Category -->
+
+        <!-- Leadership Category - NEW PROMPT ADDED -->
         <div class="prompt-category" data-category="leadership">
             <div class="category-header">
                 <h2>
-                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="var(--leadership-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                        <path d="M2 17l10 5 10-5"></path>
-                        <path d="M2 12l10 5 10-5"></path>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                     </svg>
-                    Leadership Prompts
+                    Leadership & Strategy
                 </h2>
             </div>
             <div class="prompt-cards">
-                <!-- Leadership Development Card -->
+                <!-- Leadership Development Framework -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
                         <div class="prompt-title">Leadership Development Framework</div>
-                        <div class="prompt-description">A comprehensive framework for developing effective leadership capabilities at individual and organizational levels.</div>
+                        <p class="prompt-description">For HR and executive development professionals needing comprehensive leadership development programs and succession planning.</p>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-leadership-development">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-leadership-development">Content Details</button>
-                        <button class="tab-btn" data-tab="output-leadership-development">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-leadership-dev">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-leadership-dev">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-leadership-development" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-leadership-dev">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
-                            <button class="copy-btn" onclick="copyPrompt('leadership-development-structure')">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('leadership-dev-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="leadership-development-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="leadership-dev-structure">I need a comprehensive leadership development framework. Let's approach this methodically:
 
-I need you to help me develop a comprehensive leadership development framework for [INDIVIDUAL/TEAM/ORGANIZATION]. Please structure your response using the following framework:
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a leadership development document. Include section headings and bullet points describing what each section should address.
 
-1. EXECUTIVE SUMMARY
-   - Overview of the leadership development approach
-   - Key objectives and expected outcomes
-   - Alignment with organizational strategy and values
-
-2. LEADERSHIP COMPETENCY MODEL
-   - Core leadership competencies
-   - Behavioral indicators and success criteria
-   - Competency progression levels
-   - Alignment with organizational values and culture
-
-3. ASSESSMENT METHODOLOGY
-   - Leadership assessment tools and approaches
-   - 360-degree feedback process
-   - Strengths and development needs identification
-   - Benchmarking against industry standards
-
-4. DEVELOPMENT PATHWAYS
-   - Individualized development planning
-   - Experience-based learning opportunities
-   - Formal training and education programs
-   - Coaching and mentoring approach
-   - Self-directed learning resources
-
-5. LEADERSHIP PIPELINE
-   - Succession planning framework
-   - High-potential identification criteria
-   - Accelerated development programs
-   - Leadership transition support
-
-6. ORGANIZATIONAL ENABLERS
-   - Leadership development governance
-   - Resource allocation and investment
-   - Technology and tools
-   - Integration with talent management processes
-
-7. MEASUREMENT AND EVALUATION
-   - Success metrics and KPIs
-   - Evaluation methodology
-   - ROI assessment approach
-   - Continuous improvement process
-
-8. IMPLEMENTATION ROADMAP
-   - Phased implementation approach
-   - Key milestones and timeline
-   - Roles and responsibilities
-   - Communication strategy
-
-9. SUSTAINABILITY PLAN
-   - Embedding leadership development in culture
-   - Manager accountability
-   - Ongoing reinforcement mechanisms
-   - Knowledge sharing and community building</div>
-                        <button class="next-step-btn" onclick="nextTab('leadership-development')">
+Required sections must include:
+- Executive Summary
+- Organizational Context
+  * Business Strategy & Objectives
+  * Current Leadership Profile
+  * Leadership Capability Gaps
+  * Organizational Culture Assessment
+- Leadership Competency Framework
+  * Core Leadership Competencies
+  * Competency Proficiency Levels
+  * Behavioral Indicators
+  * Future-Focused Leadership Capabilities
+- Leadership Assessment Methodology
+  * Assessment Approach & Tools
+  * 360-Degree Feedback Framework
+  * Psychometric Assessment Strategy
+  * Performance Data Integration
+- Leadership Development Strategy
+  * Development Philosophy & Principles
+  * Learning Modality Mix
+  * Experiential Learning Approach
+  * Development Path Customization
+- Development Program Components
+  * Formal Learning Curriculum
+  * Coaching & Mentoring Framework
+  * Action Learning Projects
+  * Stretch Assignments
+  * Peer Learning Communities
+- Succession Planning Integration
+  * Leadership Pipeline Model
+  * Critical Position Identification
+  * Talent Pool Development
+  * Succession Planning Process
+- High-Potential Identification & Development
+  * High-Potential Criteria
+  * Assessment & Calibration Process
+  * Accelerated Development Approach
+  * Retention Strategy
+- Measuring Program Effectiveness
+  * Key Performance Indicators
+  * Evaluation Methodology
+  * ROI Measurement Approach
+  * Continuous Improvement Process
+- Implementation Roadmap
+  * Phased Implementation Approach
+  * Timeline & Milestones
+  * Resource Requirements
+  * Change Management Considerations
+- Appendices
+  * Competency Model Details
+  * Assessment Tools
+  * Development Resources
+  * Case Studies & Best Practices</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('leadership-dev')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-leadership-development" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-leadership-dev">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Leadership Development Details</span>
+                            <button class="copy-btn" id="leadership-dev-copy-btn" onclick="copyGeneratedPrompt('leadership-dev')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your leadership development details
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="leadership-dev-organization">Organization Name</label>
+                                    <input type="text" id="leadership-dev-organization" placeholder="e.g., Global Enterprises Inc., MediTech Systems">
+                                </div>
+                                <div class="input-group">
+                                    <label for="leadership-dev-industry">Industry/Sector</label>
+                                    <input type="text" id="leadership-dev-industry" placeholder="e.g., Financial Services, Healthcare, Technology">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="leadership-development-target">Individual/Team/Organization</label>
-                                <input type="text" id="leadership-development-target" placeholder="e.g., Senior Leadership Team, Mid-level Managers">
+                                <label for="leadership-dev-target">Target Leadership Population</label>
+                                <textarea id="leadership-dev-target" placeholder="e.g., Mid-level managers (150 globally)&#10;High-potential emerging leaders&#10;Executive leadership team (C-suite and direct reports)"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="leadership-development-context">Organizational Context</label>
-                                <textarea id="leadership-development-context" placeholder="Brief description of your organization and leadership context"></textarea>
+                                <label for="leadership-dev-challenges">Leadership Challenges (2-4 items)</label>
+                                <textarea id="leadership-dev-challenges" placeholder="e.g., Significant growth requiring stronger leadership pipeline&#10;Digital transformation requiring new leadership capabilities&#10;High turnover in critical leadership roles&#10;Global expansion needing cultural intelligence"></textarea>
                             </div>
-                            <div class="input-group">
-                                <label for="leadership-development-objectives">Key Objectives</label>
-                                <textarea id="leadership-development-objectives" placeholder="What are you trying to achieve with this leadership development initiative?"></textarea>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="leadership-dev-competencies">Key Leadership Competencies</label>
+                                    <textarea id="leadership-dev-competencies" placeholder="e.g., Strategic thinking, Emotional intelligence&#10;Change management, Innovation leadership&#10;Executive presence, Cross-cultural effectiveness"></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label for="leadership-dev-resources">Available Resources/Budget</label>
+                                    <input type="text" id="leadership-dev-resources" placeholder="e.g., $750K annual budget, Internal L&D team, Executive coach network">
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="leadership-development-challenges">Current Leadership Challenges</label>
-                                <textarea id="leadership-development-challenges" placeholder="Describe the main leadership challenges you're facing"></textarea>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="leadership-dev-timeframe">Implementation Timeframe</label>
+                                    <input type="text" id="leadership-dev-timeframe" placeholder="e.g., 18-month phased rollout, 3-year strategic initiative">
+                                </div>
+                                <div class="input-group">
+                                    <label for="leadership-dev-success">Success Measures</label>
+                                    <input type="text" id="leadership-dev-success" placeholder="e.g., Leadership pipeline readiness, Retention rates, Engagement scores">
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="leadership-development-competencies">Key Leadership Competencies</label>
-                                <textarea id="leadership-development-competencies" placeholder="List the critical leadership competencies for your context"></textarea>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="leadership-dev-stakeholders">Key Stakeholders</label>
+                                    <input type="text" id="leadership-dev-stakeholders" placeholder="e.g., CHRO, CEO, Board of Directors, Business Unit Leaders">
+                                </div>
+                                <div class="input-group">
+                                    <label for="leadership-dev-current">Current Development Approach</label>
+                                    <input type="text" id="leadership-dev-current" placeholder="e.g., Ad-hoc training, Limited mentoring program, External programs">
+                                </div>
                             </div>
-                            <div class="input-group">
-                                <label for="leadership-development-resources">Available Resources</label>
-                                <textarea id="leadership-development-resources" placeholder="What resources are available for leadership development?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="leadership-development-timeline">Implementation Timeline</label>
-                                <input type="text" id="leadership-development-timeline" placeholder="e.g., 18-month development program">
-                            </div>
-                            <div class="input-group">
-                                <label for="leadership-development-stakeholders">Key Stakeholders</label>
-                                <textarea id="leadership-development-stakeholders" placeholder="Who are the key stakeholders for this initiative?"></textarea>
-                            </div>
-                            <button class="generate-btn" onclick="generatePrompt('leadership-development')">
+                            
+                            <button class="generate-btn" onclick="generatePrompt('leadership-dev')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-leadership-development" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="leadership-development-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('leadership-development-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="leadership-development-copy-btn" onclick="copyGeneratedPrompt('leadership-development')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="leadership-dev-output"></div>
                     </div>
                 </div>
-                
-                <!-- Strategic Planning Card -->
+
+                <!-- NEW PROMPT: Strategic Change Management Framework -->
                 <div class="prompt-card">
                     <div class="prompt-card-header">
-                        <div class="prompt-title">Strategic Planning Framework</div>
-                        <div class="prompt-description">A comprehensive framework for developing effective strategic plans that align vision, goals, and execution.</div>
+                        <div class="prompt-title">Strategic Change Management Framework</div>
+                        <p class="prompt-description">For executives and change leaders needing a comprehensive approach to managing organizational transformation initiatives.</p>
+                        <span class="prompt-card-badge new">New</span>
                     </div>
+                    
                     <div class="prompt-tabs">
-                        <button class="tab-btn active" data-tab="structure-strategic-planning">Structure Prompt</button>
-                        <button class="tab-btn" data-tab="content-strategic-planning">Content Details</button>
-                        <button class="tab-btn" data-tab="output-strategic-planning">Generated Prompt</button>
+                        <button class="tab-btn active" data-tab="structure-change-management">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-change-management">Step 2: Add Details</button>
                     </div>
-                    <div id="structure-strategic-planning" class="tab-content active">
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-change-management">
                         <div class="prompt-tab-title">
-                            Structure Prompt Template
-                            <button class="copy-btn" onclick="copyPrompt('strategic-planning-structure')">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('change-management-structure')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                                 </svg>
-                                Copy Structure
+                                Copy Structure Prompt
                             </button>
                         </div>
-                        <div class="prompt-template" id="strategic-planning-structure">PHASE 1: STRUCTURAL FRAMEWORK
+                        
+                        <div class="prompt-template" id="change-management-structure">I need a comprehensive strategic change management framework. Let's approach this methodically:
 
-I need you to help me develop a comprehensive strategic plan for [ORGANIZATION/BUSINESS UNIT]. Please structure your response using the following framework:
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a strategic change management document. Include section headings and bullet points describing what each section should address.
 
-1. EXECUTIVE SUMMARY
-   - Overview of the strategic plan
-   - Key strategic priorities
-   - Expected outcomes and impact
-
-2. ORGANIZATIONAL CONTEXT
-   - Mission, vision, and values
-   - Current state assessment
-   - Historical performance
-   - Organizational capabilities
-
-3. EXTERNAL ENVIRONMENT ANALYSIS
-   - Market trends and dynamics
-   - Competitive landscape
-   - Customer needs and expectations
-   - Regulatory environment
-   - Technological disruptions
-   - Economic factors
-
-4. INTERNAL ASSESSMENT
-   - Organizational strengths and weaknesses
-   - Resource capabilities
-   - Core competencies
-   - Performance gaps
-   - Cultural considerations
-
-5. STRATEGIC DIRECTION
-   - Strategic positioning
-   - Value proposition
-   - Competitive advantage
-   - Growth vectors
-   - Innovation approach
-
-6. STRATEGIC OBJECTIVES
-   - 3-5 year strategic goals
-   - Key performance indicators
-   - Success metrics and targets
-   - Alignment with mission and vision
-
-7. STRATEGIC INITIATIVES
-   - Key programs and projects
-   - Resource requirements
-   - Timeline and milestones
-   - Ownership and accountability
-   - Dependencies and sequencing
-
-8. FINANCIAL PROJECTIONS
-   - Investment requirements
-   - Expected returns
-   - Financial targets
-   - Funding approach
-
-9. RISK ASSESSMENT
-   - Strategic risks
-   - Market risks
-   - Operational risks
-   - Financial risks
-   - Mitigation strategies
-
-10. IMPLEMENTATION ROADMAP
-    - Governance structure
-    - Decision-making framework
-    - Communication plan
-    - Change management approach
-    - Performance monitoring
-
-11. APPENDICES
-    - Detailed market analysis
-    - Financial models
-    - Resource plans
-    - Stakeholder analysis</div>
-                        <button class="next-step-btn" onclick="nextTab('strategic-planning')">
+Required sections must include:
+- Executive Summary
+- Change Initiative Overview
+  * Change Purpose & Vision
+  * Strategic Objectives
+  * Scope & Boundaries
+  * Success Criteria
+- Current State Assessment
+  * Organizational Analysis
+  * Cultural Assessment
+  * Stakeholder Landscape
+  * Capability Assessment
+  * Readiness Evaluation
+- Future State Definition
+  * Vision Articulation
+  * Operating Model Design
+  * Process Changes
+  * Technology Changes
+  * Organizational Structure Changes
+  * Cultural Transformation Elements
+- Impact Analysis
+  * Stakeholder Impact Assessment
+  * Process Impact Assessment
+  * Technology Impact Assessment
+  * Organizational Impact Assessment
+  * Risk Assessment
+- Change Strategy
+  * Change Approach & Methodology
+  * Change Leadership Framework
+  * Governance Structure
+  * Decision-Making Processes
+  * Change Network Design
+- Stakeholder Engagement Plan
+  * Stakeholder Mapping & Analysis
+  * Engagement Strategy by Segment
+  * Resistance Management Approach
+  * Sponsorship Model
+  * Advocacy Building Strategy
+- Communications Strategy
+  * Communication Principles
+  * Key Messages by Audience
+  * Communication Channels
+  * Communication Cadence
+  * Feedback Mechanisms
+- Learning & Development Strategy
+  * Learning Needs Assessment
+  * Training Approach
+  * Curriculum Design
+  * Delivery Methods
+  * Knowledge Transfer Strategy
+- Implementation Roadmap
+  * Phased Implementation Approach
+  * Key Milestones & Timeline
+  * Quick Wins Identification
+  * Critical Path Activities
+  * Resource Requirements
+- Sustainability Strategy
+  * Reinforcement Mechanisms
+  * Performance Management Alignment
+  * Continuous Improvement Process
+  * Knowledge Management
+  * Long-term Ownership
+- Measurement & Evaluation
+  * Success Metrics & KPIs
+  * Measurement Methodology
+  * Reporting Framework
+  * Course Correction Process
+- Risk Management
+  * Risk Identification
+  * Risk Assessment Matrix
+  * Mitigation Strategies
+  * Contingency Planning
+- Appendices
+  * Detailed Stakeholder Analysis
+  * Communication Matrix
+  * Training Plan
+  * Change Readiness Assessments
+  * Change Impact Assessments</div>
+                        
+                        <button class="next-step-btn" onclick="nextTab('change-management')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                            Next: Add Content Details
+                            Proceed to Step 2
                         </button>
                     </div>
-                    <div id="content-strategic-planning" class="tab-content">
+
+                    <!-- Tab 2: Content Details Form -->
+                    <div class="tab-content" id="content-change-management">
                         <div class="prompt-tab-title">
-                            Content Details
+                            <span>Change Management Details</span>
+                            <button class="copy-btn" id="change-management-copy-btn" onclick="copyGeneratedPrompt('change-management')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Complete Prompt
+                            </button>
                         </div>
+                        
                         <div class="input-form">
                             <div class="input-form-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                                 </svg>
-                                Fill in your specific details
+                                Fill in your change management details
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="change-management-organization">Organization Name</label>
+                                    <input type="text" id="change-management-organization" placeholder="e.g., Global Enterprises Inc., MediTech Systems">
+                                </div>
+                                <div class="input-group">
+                                    <label for="change-management-industry">Industry/Sector</label>
+                                    <input type="text" id="change-management-industry" placeholder="e.g., Financial Services, Healthcare, Manufacturing">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="strategic-planning-organization">Organization/Business Unit</label>
-                                <input type="text" id="strategic-planning-organization" placeholder="e.g., Global Tech Inc., North America Division">
+                                <label for="change-management-initiative">Change Initiative Description</label>
+                                <textarea id="change-management-initiative" placeholder="e.g., Digital transformation of core business processes&#10;Post-merger integration of two organizations&#10;Implementation of new ERP system&#10;Organizational restructuring"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="strategic-planning-mission">Mission & Vision</label>
-                                <textarea id="strategic-planning-mission" placeholder="Brief description of your organization's mission and vision"></textarea>
+                                <label for="change-management-objectives">Strategic Objectives (2-4 items)</label>
+                                <textarea id="change-management-objectives" placeholder="e.g., Increase operational efficiency by 30%&#10;Enhance customer experience across all touchpoints&#10;Reduce costs by $10M annually&#10;Enable data-driven decision making"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="strategic-planning-context">Business Context</label>
-                                <textarea id="strategic-planning-context" placeholder="Current business situation and challenges"></textarea>
+                                <label for="change-management-scope">Scope & Scale of Change</label>
+                                <textarea id="change-management-scope" placeholder="e.g., Enterprise-wide transformation affecting 5,000 employees&#10;Regional implementation across 3 business units&#10;Department-level restructuring of 150 employees"></textarea>
                             </div>
+                            
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label for="change-management-timeline">Implementation Timeline</label>
+                                    <input type="text" id="change-management-timeline" placeholder="e.g., 18-month phased rollout, 3-year transformation">
+                                </div>
+                                <div class="input-group">
+                                    <label for="change-management-stakeholders">Key Stakeholder Groups</label>
+                                    <input type="text" id="change-management-stakeholders" placeholder="e.g., Executive team, Middle management, Frontline staff">
+                                </div>
+                            </div>
+                            
                             <div class="input-group">
-                                <label for="strategic-planning-objectives">Key Strategic Objectives</label>
-                                <textarea id="strategic-planning-objectives" placeholder="What are your primary strategic goals?"></textarea>
+                                <label for="change-management-challenges">Anticipated Challenges (2-4 items)</label>
+                                <textarea id="change-management-challenges" placeholder="e.g., Strong resistance from middle management&#10;Complex legacy systems integration&#10;Geographically dispersed workforce&#10;Tight regulatory requirements"></textarea>
                             </div>
+                            
                             <div class="input-group">
-                                <label for="strategic-planning-strengths">Key Organizational Strengths</label>
-                                <textarea id="strategic-planning-strengths" placeholder="What are your organization's main strengths?"></textarea>
+                                <label for="change-management-culture">Current Organizational Culture</label>
+                                <textarea id="change-management-culture" placeholder="e.g., Hierarchical decision-making structure&#10;Risk-averse mindset&#10;Siloed departments with limited collaboration&#10;Strong employee loyalty but resistance to change"></textarea>
                             </div>
-                            <div class="input-group">
-                                <label for="strategic-planning-challenges">Key Challenges</label>
-                                <textarea id="strategic-planning-challenges" placeholder="What are the main challenges you're facing?"></textarea>
-                            </div>
-                            <div class="input-group">
-                                <label for="strategic-planning-timeframe">Planning Horizon</label>
-                                <input type="text" id="strategic-planning-timeframe" placeholder="e.g., 3-year strategic plan, 5-year vision">
-                            </div>
-                            <div class="input-group">
-                                <label for="strategic-planning-stakeholders">Key Stakeholders</label>
-                                <textarea id="strategic-planning-stakeholders" placeholder="Who are the key stakeholders for this strategic plan?"></textarea>
-                            </div>
-                            <button class="generate-btn" onclick="generatePrompt('strategic-planning')">
+                            
+                            <button class="generate-btn" onclick="generatePrompt('change-management')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    <path d="M12 5v14M5 12h14"></path>
                                 </svg>
                                 Generate Complete Prompt
                             </button>
                         </div>
-                    </div>
-                    <div id="output-strategic-planning" class="tab-content">
-                        <div class="prompt-tab-title">
-                            Generated Prompt
-                        </div>
-                        <div class="prompt-template" id="strategic-planning-output">
-                            <!-- Generated output will appear here -->
-                        </div>
-                        <button class="output-copy-btn" onclick="copyOutputText('strategic-planning-output')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy
-                        </button>
-                        <button class="generate-btn" id="strategic-planning-copy-btn" onclick="copyGeneratedPrompt('strategic-planning')">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            Copy Complete Prompt
-                        </button>
+                        
+                        <div class="prompt-template" id="change-management-output"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <footer>
+            <p>© 2025 VelocityQA. All rights reserved. These resources are provided to assist with quality assurance and AI-driven productivity.</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2025 VelocityQA. All rights reserved. <a href="https://www.velocityqa.com.au">Visit our main site</a></p>
-    </footer>
-
-    <script>
-        // Function to copy prompt text
-        function copyPrompt(id) {
-            const promptElement = document.getElementById(id);
-            const text = promptElement.textContent;
-
-            navigator.clipboard
-                .writeText(text)
-                .then(() => {
-                    showNotification("Prompt copied to clipboard!");
-                })
-                .catch((err) => {
-                    console.error("Could not copy text: ", err);
-                    showNotification("Failed to copy text. Please try again.");
-                });
-        }
-
-        // Function to move to next tab
-        function nextTab(baseId) {
-            const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`);
-            const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`);
-
-            structureTab.classList.remove("active");
-            contentTab.classList.add("active");
-
-            const structureContent = document.getElementById(`structure-${baseId}`);
-            const contentContent = document.getElementById(`content-${baseId}`);
-
-            structureContent.classList.remove("active");
-            contentContent.classList.add("active");
-        }
-
-        // Function to generate the complete prompt
-        function generatePrompt(baseId) {
-            try {
-                // Get all input values
-                const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`);
-                const inputData = {};
-
-                inputElements.forEach((input) => {
-                    if (input.id !== `${baseId}-structure` && 
-                        input.id !== `${baseId}-output` && 
-                        input.id !== `${baseId}-copy-btn`) {
-                        const key = input.id.replace(`${baseId}-`, "");
-                        inputData[key] = input.value.trim();
-                    }
-                });
-
-                // Get structure prompt
-                const structurePrompt = document.getElementById(`${baseId}-structure`).textContent;
-
-                // Generate the complete prompt based on the template and user inputs
-                let outputPrompt = structurePrompt + "\n\nPHASE 2: CONTENT DEVELOPMENT\nNow, use the following specific details to populate the above framework:";
-
-                // Add each input field with a label
-                for (const [key, value] of Object.entries(inputData)) {
-                    if (value) {
-                        // Format key from camelCase or kebab-case to Title Case
-                        const formattedKey = key
-                            .replace(/-/g, " ")
-                            .replace(/([A-Z])/g, " $1")
-                            .split(" ")
-                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                            .join(" ");
-
-                        outputPrompt += `\n\n${formattedKey}: ${value}`;
-                    }
-                }
-
-                // Add final instructions
-                outputPrompt += "\n\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable.";
-
-                // Display the complete prompt
-                const outputElement = document.getElementById(`${baseId}-output`);
-                outputElement.textContent = outputPrompt;
-
-                // Save input values to localStorage
-                inputElements.forEach((input) => {
-                    if (input.id !== `${baseId}-structure` && 
-                        input.id !== `${baseId}-output` && 
-                        input.id !== `${baseId}-copy-btn`) {
-                        localStorage.setItem(input.id, input.value);
-                    }
-                });
-
-                // Switch to the output tab
-                const outputTab = document.querySelector(`[data-tab="output-${baseId}"]`);
-                const outputContent = document.getElementById(`output-${baseId}`);
-                
-                // Remove active class from all tabs
-                const parentCard = outputTab.closest('.prompt-card');
-                parentCard.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
-                parentCard.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-                
-                // Add active class to output tab
-                outputTab.classList.add('active');
-                outputContent.classList.add('active');
-
-                // Show the output copy button
-                const copyBtn = outputElement.nextElementSibling;
-                if (copyBtn) {
-                    copyBtn.style.display = 'flex';
-                }
-
-                showNotification("Complete prompt generated!");
-            } catch (error) {
-                console.error("Error generating prompt:", error);
-                showNotification("Error generating prompt. Please try again.");
-            }
-        }
-
-        // Function to copy the generated prompt
-        function copyGeneratedPrompt(baseId) {
-            const outputElement = document.getElementById(`${baseId}-output`);
-
-            if (!outputElement || outputElement.textContent.trim() === "") {
-                // If nothing has been generated yet, generate first
-                generatePrompt(baseId);
-                return;
-            }
-
-            navigator.clipboard
-                .writeText(outputElement.textContent)
-                .then(() => {
-                    const copyBtn = document.getElementById(`${baseId}-copy-btn`);
-                    copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
-                    </svg> Copied!`;
-                    copyBtn.classList.add("copied");
-
-                    setTimeout(() => {
-                        copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg> Copy Complete Prompt`;
-                        copyBtn.classList.remove("copied");
-                    }, 2000);
-
-                    showNotification("Complete prompt copied to clipboard!");
-                })
-                .catch((err) => {
-                    console.error("Could not copy text: ", err);
-                    showNotification("Failed to copy text. Please try again.");
-                });
-        }
-
-        // Function to copy output text
-        function copyOutputText(outputId) {
-            const outputElement = document.getElementById(outputId);
-            if (!outputElement || outputElement.textContent.trim() === "") {
-                showNotification("No content to copy yet!");
-                return;
-            }
-            
-            navigator.clipboard.writeText(outputElement.textContent)
-                .then(() => {
-                    showNotification("Output copied to clipboard!");
-                    
-                    // Visual feedback on the button
-                    const copyBtn = outputElement.nextElementSibling;
-                    copyBtn.innerHTML = `
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
-                        </svg> Copied!`;
-                    
-                    setTimeout(() => {
-                        copyBtn.innerHTML = `
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg> Copy`;
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error("Could not copy text: ", err);
-                    showNotification("Failed to copy text. Please try again.");
-                });
-        }
-
-        // Function to show notification
-        function showNotification(message) {
-            // Remove any existing notifications
-            const existingNotification = document.querySelector(".notification");
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            // Create notification element
-            const notification = document.createElement("div");
-            notification.className = "notification";
-            notification.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                ${message}
-            `;
-
-            // Add to document
-            document.body.appendChild(notification);
-
-            // Show notification
-            setTimeout(() => {
-                notification.classList.add("show");
-            }, 10);
-
-            // Hide after 3 seconds
-            setTimeout(() => {
-                notification.classList.remove("show");
-                setTimeout(() => {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-
-        // Initialize UI elements and load saved form data
-        document.addEventListener("DOMContentLoaded", function() {
-            // Theme toggle functionality
-            const themeToggle = document.querySelector(".theme-toggle");
-            if (themeToggle) {
-                themeToggle.addEventListener("click", () => {
-                    document.documentElement.setAttribute(
-                        "data-theme",
-                        document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"
-                    );
-                });
-            }
-
-            // Tab functionality
-            const tabBtns = document.querySelectorAll(".tab-btn");
-            tabBtns.forEach((btn) => {
-                btn.addEventListener("click", function() {
-                    const tabId = this.getAttribute("data-tab");
-                    const parentCard = this.closest(".prompt-card");
-
-                    // Remove active class from all tabs in this card
-                    parentCard.querySelectorAll(".tab-btn").forEach((tb) => tb.classList.remove("active"));
-                    parentCard.querySelectorAll(".tab-content").forEach((tc) => tc.classList.remove("active"));
-
-                    // Add active class to clicked tab and corresponding content
-                    this.classList.add("active");
-                    parentCard.querySelector(`#${tabId}`).classList.add("active");
-                });
-            });
-
-            // Category selection
-            const categoryButtons = document.querySelectorAll(".category-button");
-            const promptCategories = document.querySelectorAll(".prompt-category");
-
-            categoryButtons.forEach((button) => {
-                button.addEventListener("click", function() {
-                    const category = this.getAttribute("data-category");
-
-                    // Remove active class from all buttons
-                    categoryButtons.forEach((btn) => btn.classList.remove("active"));
-
-                    // Add active class to clicked button
-                    this.classList.add("active");
-
-                    // Show/hide categories based on selection
-                    if (category === "all") {
-                        promptCategories.forEach((cat) => (cat.style.display = "block"));
-                    } else {
-                        promptCategories.forEach((cat) => {
-                            if (cat.getAttribute("data-category") === category) {
-                                cat.style.display = "block";
-                            } else {
-                                cat.style.display = "none";
-                            }
-                        });
-                    }
-                });
-            });
-
-            // Search functionality
-            const searchInput = document.getElementById("search-input");
-            const searchButton = document.getElementById("search-button");
-
-            function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-
-                if (searchTerm === "") {
-                    // If search is empty, restore default view
-                    promptCategories.forEach((cat) => (cat.style.display = "block"));
-                    document.querySelectorAll(".prompt-card").forEach((card) => (card.style.display = "block"));
-                    return;
-                }
-
-                // Show all categories for searching
-                promptCategories.forEach((cat) => (cat.style.display = "block"));
-
-                // Search in cards
-                document.querySelectorAll(".prompt-card").forEach((card) => {
-                    const title = card.querySelector(".prompt-title").textContent.toLowerCase();
-                    const description = card.querySelector(".prompt-description").textContent.toLowerCase();
-                    const content = card.textContent.toLowerCase();
-
-                    if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {
-                        card.style.display = "block";
-                        // Make sure the parent category is visible
-                        const parentCategory = card.closest(".prompt-category");
-                        parentCategory.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-
-                // Hide empty categories
-                promptCategories.forEach((category) => {
-                    const visibleCards = category.querySelectorAll('.prompt-card[style="display: block;"]');
-                    if (visibleCards.length === 0) {
-                        category.style.display = "none";
-                    }
-                });
-            }
-
-            if (searchButton) {
-                searchButton.addEventListener("click", performSearch);
-            }
-
-            if (searchInput) {
-                searchInput.addEventListener("keyup", (e) => {
-                    if (e.key === "Enter") {
-                        performSearch();
-                    }
-                });
-            }
-
-            // Load saved form data from localStorage
-            const forms = document.querySelectorAll('.input-form');
-            forms.forEach(form => {
-                const baseId = form.closest('.tab-content').id.replace('content-', '');
-                const inputs = form.querySelectorAll('input, textarea');
-                
-                inputs.forEach(input => {
-                    const savedValue = localStorage.getItem(input.id);
-                    if (savedValue) {
-                        input.value = savedValue;
-                    }
-                    
-                    // Save input values to localStorage as they change
-                    input.addEventListener('change', function() {
-                        localStorage.setItem(this.id, this.value);
-                    });
-                });
-            });
-            
-            // Set up hover behavior for output copy buttons
-            const promptTemplates = document.querySelectorAll('.prompt-template');
-            promptTemplates.forEach(template => {
-                const copyBtn = template.nextElementSibling;
-                if (copyBtn && copyBtn.classList.contains('output-copy-btn')) {
-                    template.addEventListener('mouseenter', function() {
-                        copyBtn.style.display = 'flex';
-                    });
-                    
-                    template.addEventListener('mouseleave', function() {
-                        copyBtn.style.display = 'none';
-                    });
-                }
-            });
-        });
-    </script>
+    
+    <script src="js/toolkit-functions.js"></script>
+    <script src="js/ai-toolkit-specific.js"></script>
 </body>
 </html>
-
