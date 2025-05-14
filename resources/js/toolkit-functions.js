@@ -4,11 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.querySelector(".theme-toggle")
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      document.documentElement.setAttribute(
-        "data-theme",
-        document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark",
-      )
+      const currentTheme = document.documentElement.getAttribute("data-theme")
+      const newTheme = currentTheme === "dark" ? "light" : "dark"
+      
+      document.documentElement.setAttribute("data-theme", newTheme)
+      localStorage.setItem("theme", newTheme)
+      
+      // Update the icon
+      updateThemeIcon(newTheme)
     })
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme)
+      updateThemeIcon(savedTheme)
+    }
   }
 
   // Tab functionality
@@ -112,7 +123,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Update the copyPrompt function to properly handle copying
+// Function to update theme icon
+function updateThemeIcon(theme) {
+  const themeToggle = document.querySelector(".theme-toggle")
+  if (!themeToggle) return
+
+  if (theme === "dark") {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+        <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+      </svg>
+    `
+  } else {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-dark">
+        <path d="M10 2c-1.82 0-3.53.5-5 1.35C2.99 4.82 2 7.34 2 10c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 0 12 0L10 2zm0 18c-4.41 0-8-3.59-8-8 0-3.36 2.08-6.23 5-7.41C5.62 5.73 5 7.79 5 10c0 4.41 3.59 8 8 8s8-3.59 8-8c0-2.21-.9-4.21-2.35-5.65C17.79 17.85 14.23 20 10 20z" fill="currentColor"/>
+      </svg>
+    `
+  }
+}
+
+// Function to copy prompt text
 function copyPrompt(id) {
   const promptElement = document.getElementById(id)
   if (!promptElement) {
@@ -151,7 +182,40 @@ function copyPrompt(id) {
     })
 }
 
-// Improved generatePrompt function with better error handling
+// Function to move to next tab
+function nextTab(baseId) {
+  const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`)
+  const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`)
+
+  if (!structureTab || !contentTab) {
+    console.error(`Tabs for ${baseId} not found`)
+    return
+  }
+
+  // Update tab buttons
+  structureTab.classList.remove("active")
+  contentTab.classList.add("active")
+
+  // Mark the first tab as completed
+  structureTab.classList.add("completed")
+
+  // Update tab content
+  const structureContent = document.getElementById(`structure-${baseId}`)
+  const contentContent = document.getElementById(`content-${baseId}`)
+
+  if (!structureContent || !contentContent) {
+    console.error(`Tab content for ${baseId} not found`)
+    return
+  }
+
+  structureContent.classList.remove("active")
+  contentContent.classList.add("active")
+
+  // Scroll to the content tab if needed
+  contentContent.scrollIntoView({ behavior: "smooth", block: "nearest" })
+}
+
+// FIXED: Function to generate the complete prompt
 function generatePrompt(baseId) {
   // Get all input values
   const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`)
@@ -226,9 +290,59 @@ function generatePrompt(baseId) {
   }
 
   showNotification("Complete prompt generated!")
+  
+  // Scroll to the output
+  outputElement.scrollIntoView({ behavior: "smooth", block: "nearest" })
 }
 
-// Enhanced notification function with support for different types
+// Function to copy the generated prompt
+function copyGeneratedPrompt(baseId) {
+  const outputElement = document.getElementById(`${baseId}-output`)
+
+  if (!outputElement) {
+    console.error(`Output element for ${baseId} not found`)
+    return
+  }
+
+  if (outputElement.textContent.trim() === "") {
+    // If nothing has been generated yet, generate first
+    generatePrompt(baseId)
+  }
+
+  navigator.clipboard
+    .writeText(outputElement.textContent)
+    .then(() => {
+      const copyBtn = document.getElementById(`${baseId}-copy-btn`)
+      if (copyBtn) {
+        copyBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+          </svg>
+          Copied!
+        `
+        copyBtn.classList.add("copied")
+
+        setTimeout(() => {
+          copyBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy Complete Prompt
+          `
+          copyBtn.classList.remove("copied")
+        }, 2000)
+      }
+
+      showNotification("Complete prompt copied to clipboard!")
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err)
+      showNotification("Failed to copy. Please try again.", "error")
+    })
+}
+
+// Function to show notification
 function showNotification(message, type = "success") {
   // Remove any existing notifications
   const existingNotification = document.querySelector(".notification")
@@ -277,198 +391,6 @@ function showNotification(message, type = "success") {
   }, 3000)
 }
 
-// Add event listeners when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize tab functionality
-  initializeTabs()
-
-  // Initialize category filters
-  initializeCategoryFilters()
-
-  // Initialize search functionality
-  initializeSearch()
-
-  // Load saved form data
-  loadFormData()
-
-  // Add event listeners for form inputs to save data
-  document.querySelectorAll(".input-form input, .input-form textarea").forEach((input) => {
-    input.addEventListener("change", saveFormData)
-  })
-
-  // Initialize theme toggle
-  initializeThemeToggle()
-})
-
-// Function to initialize tabs
-function initializeTabs() {
-  const tabBtns = document.querySelectorAll(".tab-btn")
-  tabBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const tabId = this.getAttribute("data-tab")
-      const parentCard = this.closest(".prompt-card")
-
-      // Remove active class from all tabs in this card
-      parentCard.querySelectorAll(".tab-btn").forEach((tb) => tb.classList.remove("active"))
-      parentCard.querySelectorAll(".tab-content").forEach((tc) => tc.classList.remove("active"))
-
-      // Add active class to clicked tab and corresponding content
-      this.classList.add("active")
-      parentCard.querySelector(`#${tabId}`).classList.add("active")
-    })
-  })
-}
-
-// Function to initialize category filters
-function initializeCategoryFilters() {
-  const categoryButtons = document.querySelectorAll(".category-button")
-  const promptCategories = document.querySelectorAll(".prompt-category")
-
-  categoryButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const category = this.getAttribute("data-category")
-
-      // Remove active class from all buttons
-      categoryButtons.forEach((btn) => btn.classList.remove("active"))
-
-      // Add active class to clicked button
-      this.classList.add("active")
-
-      // Show/hide categories based on selection
-      if (category === "all") {
-        promptCategories.forEach((cat) => (cat.style.display = "block"))
-      } else {
-        promptCategories.forEach((cat) => {
-          if (cat.getAttribute("data-category") === category) {
-            cat.style.display = "block"
-          } else {
-            cat.style.display = "none"
-          }
-        })
-      }
-    })
-  })
-}
-
-// Function to initialize search functionality
-function initializeSearch() {
-  const searchInput = document.getElementById("search-input")
-  const searchButton = document.getElementById("search-button")
-
-  if (searchButton) {
-    searchButton.addEventListener("click", performSearch)
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener("keyup", (e) => {
-      if (e.key === "Enter") {
-        performSearch()
-      }
-    })
-  }
-}
-
-// Function to perform search
-function performSearch() {
-  const searchInput = document.getElementById("search-input")
-  if (!searchInput) return
-
-  const searchTerm = searchInput.value.toLowerCase().trim()
-  const promptCategories = document.querySelectorAll(".prompt-category")
-
-  if (searchTerm === "") {
-    // If search is empty, restore default view
-    promptCategories.forEach((cat) => (cat.style.display = "block"))
-    document.querySelectorAll(".prompt-card").forEach((card) => (card.style.display = "block"))
-    return
-  }
-
-  // Show all categories for searching
-  promptCategories.forEach((cat) => (cat.style.display = "block"))
-
-  // Search in cards
-  const cards = document.querySelectorAll(".prompt-card")
-  let foundCount = 0
-
-  cards.forEach((card) => {
-    const title = card.querySelector(".prompt-title").textContent.toLowerCase()
-    const description = card.querySelector(".prompt-description").textContent.toLowerCase()
-    const content = card.textContent.toLowerCase()
-
-    if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {
-      card.style.display = "block"
-      foundCount++
-      // Make sure the parent category is visible
-      const parentCategory = card.closest(".prompt-category")
-      parentCategory.style.display = "block"
-    } else {
-      card.style.display = "none"
-    }
-  })
-
-  // Hide empty categories
-  promptCategories.forEach((category) => {
-    const visibleCards = Array.from(category.querySelectorAll(".prompt-card")).filter(
-      (card) => card.style.display !== "none",
-    )
-
-    if (visibleCards.length === 0) {
-      category.style.display = "none"
-    }
-  })
-
-  // Show notification
-  if (foundCount > 0) {
-    showNotification(`Found ${foundCount} results for "${searchTerm}"`)
-  } else {
-    showNotification("No results found. Try different keywords.", "error")
-  }
-}
-
-// Function to initialize theme toggle
-function initializeThemeToggle() {
-  const themeToggle = document.querySelector(".theme-toggle")
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme")
-      const newTheme = currentTheme === "dark" ? "light" : "dark"
-
-      document.documentElement.setAttribute("data-theme", newTheme)
-      localStorage.setItem("theme", newTheme)
-
-      // Update the icon
-      updateThemeIcon(newTheme)
-    })
-
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem("theme")
-    if (savedTheme) {
-      document.documentElement.setAttribute("data-theme", savedTheme)
-      updateThemeIcon(savedTheme)
-    }
-  }
-}
-
-// Function to update theme icon
-function updateThemeIcon(theme) {
-  const themeToggle = document.querySelector(".theme-toggle")
-  if (!themeToggle) return
-
-  if (theme === "dark") {
-    themeToggle.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
-        <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
-      </svg>
-    `
-  } else {
-    themeToggle.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-dark">
-        <path d="M10 2c-1.82 0-3.53.5-5 1.35C2.99 4.82 2 7.34 2 10c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 0 12 0L10 2zm0 18c-4.41 0-8-3.59-8-8 0-3.36 2.08-6.23 5-7.41C5.62 5.73 5 7.79 5 10c0 4.41 3.59 8 8 8s8-3.59 8-8c0-2.21-.9-4.21-2.35-5.65C17.79 17.85 14.23 20 10 20z" fill="currentColor"/>
-      </svg>
-    `
-  }
-}
-
 // Function to save form data
 function saveFormData() {
   const forms = document.querySelectorAll(".input-form")
@@ -505,6 +427,15 @@ function loadFormData() {
   })
 }
 
+// Load saved form data on page load
+document.addEventListener("DOMContentLoaded", function() {
+  loadFormData()
+  
+  // Save form data when inputs change
+  document.querySelectorAll(".input-form input, .input-form textarea").forEach(input => {
+    input.addEventListener("change", saveFormData)
+  })
+})
+
 // Add this at the end of the file
 console.log("Toolkit JavaScript loaded successfully!")
-
