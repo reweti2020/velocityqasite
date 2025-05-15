@@ -28,17 +28,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const match = onclickAttr.match(/copyGeneratedPrompt\(['"]([^'"]+)['"]\)/);
         if (match && match[1]) {
           const id = match[1];
-          const structureContent = document.getElementById(`${id}-structure`).textContent;
-          const outputElement = document.getElementById(`${id}-output`);
-          
-          // If there's already content in the output, copy it
-          if (outputElement && outputElement.textContent.trim() !== "") {
-            copyToClipboard(outputElement.textContent, element);
-          } 
-          // Otherwise copy the structure content
-          else {
-            copyToClipboard(structureContent, element);
-          }
+          copyGeneratedPrompt(id, element);
+        }
+      });
+    } else if (onclickAttr && onclickAttr.includes("generatePrompt")) {
+      element.addEventListener("click", function(event) {
+        event.preventDefault();
+        const match = onclickAttr.match(/generatePrompt\(['"]([^'"]+)['"]\)/);
+        if (match && match[1]) {
+          const id = match[1];
+          generatePrompt(id);
         }
       });
     }
@@ -109,31 +108,177 @@ function switchToNextTab(baseId) {
   if (contentSection) contentSection.classList.add("active");
 }
 
-// Function to copy text to clipboard
-function copyToClipboard(text, buttonElement) {
+// Function to generate prompt by combining structure with form inputs
+function generatePrompt(baseId) {
+  // Get all input values
+  const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`);
+  if (inputElements.length === 0) {
+    console.error(`No input elements found for base ID: ${baseId}`);
+    showNotification("Error generating prompt. Please try again.", "error");
+    return;
+  }
+
+  const inputData = {};
+
+  inputElements.forEach((input) => {
+    if (input.id === `${baseId}-structure` || input.id === `${baseId}-output`) return;
+    if (input.tagName === "INPUT" || input.tagName === "TEXTAREA") {
+      const key = input.id.replace(`${baseId}-`, "");
+      inputData[key] = input.value.trim();
+    }
+  });
+
+  // Get structure prompt
+  const structurePromptElement = document.getElementById(`${baseId}-structure`);
+  if (!structurePromptElement) {
+    console.error(`Structure prompt element not found for base ID: ${baseId}`);
+    showNotification("Error generating prompt. Please try again.", "error");
+    return;
+  }
+
+  const structurePrompt = structurePromptElement.textContent;
+
+  // Generate the complete prompt based on the template and user inputs
+  let outputPrompt =
+    structurePrompt +
+    "\n\nPHASE 2: CONTENT DEVELOPMENT\nNow, use the following specific details to populate the above framework:";
+
+  // Add each input field with a label
+  for (const [key, value] of Object.entries(inputData)) {
+    if (value) {
+      // Format key from camelCase or kebab-case to Title Case
+      const formattedKey = key
+        .replace(/-/g, " ")
+        .replace(/([A-Z])/g, " $1")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+
+      outputPrompt += `\n\n${formattedKey}: ${value}`;
+    }
+  }
+
+  // Add final instructions
+  outputPrompt +=
+    "\n\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable.";
+
+  // Display the complete prompt
+  const outputElement = document.getElementById(`${baseId}-output`);
+  if (!outputElement) {
+    console.error(`Output element not found for base ID: ${baseId}`);
+    showNotification("Error generating prompt. Please try again.", "error");
+    return;
+  }
+
+  outputElement.textContent = outputPrompt;
+
+  // Update copy button text
+  const copyBtn = document.getElementById(`${baseId}-copy-btn`);
+  if (copyBtn) {
+    copyBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy Complete Prompt
+    `;
+  }
+
+  showNotification("Complete prompt generated!");
+  
+  // Scroll to the output
+  outputElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// Function to copy generated prompt to clipboard
+function copyGeneratedPrompt(baseId, buttonElement) {
+  const outputElement = document.getElementById(`${baseId}-output`);
+  
+  if (!outputElement) {
+    console.error(`Output element for ${baseId} not found`);
+    return;
+  }
+  
+  // If no content generated yet, generate it first
+  if (outputElement.textContent.trim() === "") {
+    generatePrompt(baseId);
+  }
+  
+  // Use enhanced clipboard function for maximum browser compatibility
+  copyToClipboardEnhanced(outputElement.textContent, buttonElement);
+}
+
+// Function to copy text to clipboard with fallback methods
+function copyToClipboardEnhanced(text, buttonElement) {
   if (!text) return;
   
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      // Show success feedback
-      if (buttonElement) {
-        const originalText = buttonElement.innerHTML;
-        buttonElement.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg> Copied!';
-        buttonElement.classList.add("copied");
-        
-        setTimeout(() => {
-          buttonElement.innerHTML = originalText;
-          buttonElement.classList.remove("copied");
-        }, 2000);
-      }
-      
-      // Show notification
-      showNotification("Copied to clipboard!");
-    })
-    .catch(err => {
-      console.error("Error copying to clipboard:", err);
-      showNotification("Failed to copy. Please try again.", "error");
-    });
+  // First try the modern clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        showCopySuccess(buttonElement);
+      })
+      .catch(err => {
+        console.error("Clipboard API failed:", err);
+        // Fall back to execCommand method
+        fallbackCopyToClipboard(text, buttonElement);
+      });
+  } else {
+    // Use fallback for non-secure contexts
+    fallbackCopyToClipboard(text, buttonElement);
+  }
+}
+
+// Fallback clipboard copy method using execCommand
+function fallbackCopyToClipboard(text, buttonElement) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  
+  // Make the textarea out of viewport
+  textArea.style.position = "fixed";
+  textArea.style.left = "-999999px";
+  textArea.style.top = "-999999px";
+  document.body.appendChild(textArea);
+  
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      showCopySuccess(buttonElement);
+    } else {
+      showNotification("Failed to copy. Please try manually selecting the text.", "error");
+    }
+  } catch (err) {
+    console.error("execCommand error:", err);
+    showNotification("Failed to copy. Please try manually selecting the text.", "error");
+  }
+  
+  document.body.removeChild(textArea);
+}
+
+// Show copy success UI feedback
+function showCopySuccess(buttonElement) {
+  // Show success feedback on button
+  if (buttonElement) {
+    const originalText = buttonElement.innerHTML;
+    buttonElement.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg> Copied!';
+    buttonElement.classList.add("copied");
+    
+    setTimeout(() => {
+      buttonElement.innerHTML = originalText;
+      buttonElement.classList.remove("copied");
+    }, 2000);
+  }
+  
+  // Show notification
+  showNotification("Copied to clipboard!");
+}
+
+// Function for simple copy operations
+function copyToClipboard(text, buttonElement) {
+  copyToClipboardEnhanced(text, buttonElement);
 }
 
 // Simple notification function
