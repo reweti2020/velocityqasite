@@ -129,6 +129,29 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".input-form input, .input-form textarea").forEach(input => {
     input.addEventListener("change", saveFormData)
   })
+  
+  // Add direct event handlers to generate buttons
+  document.querySelectorAll(".generate-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const onclickAttr = this.getAttribute("onclick");
+      if (onclickAttr && onclickAttr.includes("generatePrompt")) {
+        const match = onclickAttr.match(/generatePrompt\(['"]([^'"]+)['"]\)/);
+        if (match && match[1]) {
+          const baseId = match[1];
+          generatePrompt(baseId);
+        }
+      }
+    });
+  });
+  
+  // Add direct event handlers to copy buttons
+  document.querySelectorAll("[id$='-copy-btn']").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const id = this.getAttribute("id");
+      const baseId = id.replace("-copy-btn", "");
+      copyGeneratedPrompt(baseId);
+    });
+  });
 })
 
 // Function to update theme icon
@@ -192,6 +215,7 @@ function copyPrompt(id) {
 
 // Function to move to next tab
 function nextTab(baseId) {
+  console.log("Moving to next tab for: " + baseId);
   const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`)
   const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`)
 
@@ -225,6 +249,8 @@ function nextTab(baseId) {
 
 // Function to generate the complete prompt
 function generatePrompt(baseId) {
+  console.log("Generating prompt for: " + baseId);
+  
   // Get all input values
   const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`)
   if (inputElements.length === 0) {
@@ -282,8 +308,21 @@ function generatePrompt(baseId) {
     showNotification("Error generating prompt. Please try again.", "error")
     return
   }
-
-  outputElement.textContent = outputPrompt
+  
+  console.log("Setting output element content");
+  outputElement.textContent = outputPrompt;
+  
+  // Make sure the output element is visible
+  outputElement.style.display = "block";
+  outputElement.style.height = "auto";
+  outputElement.style.minHeight = "100px";
+  outputElement.style.maxHeight = "500px";
+  
+  // Try to ensure the display is visible by checking parent styles
+  const parent = outputElement.parentElement;
+  if (parent) {
+    parent.style.display = "block";
+  }
 
   // Update copy button text
   const copyBtn = document.getElementById(`${baseId}-copy-btn`)
@@ -305,6 +344,8 @@ function generatePrompt(baseId) {
 
 // Function to copy the generated prompt
 function copyGeneratedPrompt(baseId) {
+  console.log("Copying generated prompt for: " + baseId);
+  
   const outputElement = document.getElementById(`${baseId}-output`)
 
   if (!outputElement) {
@@ -312,13 +353,24 @@ function copyGeneratedPrompt(baseId) {
     return
   }
 
+  // If nothing has been generated yet, generate first
   if (outputElement.textContent.trim() === "") {
-    // If nothing has been generated yet, generate first
     generatePrompt(baseId)
+    
+    // Small delay to ensure generation completes
+    setTimeout(() => {
+      copyToClipboard(outputElement.textContent, baseId);
+    }, 500);
+  } else {
+    copyToClipboard(outputElement.textContent, baseId);
   }
+}
 
+function copyToClipboard(text, baseId) {
+  console.log("Copying to clipboard:", text.substring(0, 50) + "...");
+  
   navigator.clipboard
-    .writeText(outputElement.textContent)
+    .writeText(text)
     .then(() => {
       const copyBtn = document.getElementById(`${baseId}-copy-btn`)
       if (copyBtn) {
@@ -352,6 +404,8 @@ function copyGeneratedPrompt(baseId) {
 
 // Function to show notification
 function showNotification(message, type = "success") {
+  console.log("Showing notification:", message, type);
+  
   // Remove any existing notifications
   const existingNotification = document.querySelector(".notification")
   if (existingNotification) {
