@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const match = onclickAttr.match(/copyPrompt\(['"]([^'"]+)['"]\)/);
         if (match && match[1]) {
           const id = match[1];
-          const content = document.getElementById(id).textContent;
-          copyToClipboard(content, element);
+          copyPrompt(id);
         }
       });
     } else if (onclickAttr && onclickAttr.includes("nextTab")) {
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const match = onclickAttr.match(/copyGeneratedPrompt\(['"]([^'"]+)['"]\)/);
         if (match && match[1]) {
           const id = match[1];
-          copyGeneratedPrompt(id, element);
+          copyGeneratedPrompt(id);
         }
       });
     } else if (onclickAttr && onclickAttr.includes("generatePrompt")) {
@@ -190,8 +189,92 @@ function generatePrompt(baseId) {
   outputElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+// Function to copy prompt text
+function copyPrompt(id) {
+  const promptElement = document.getElementById(id);
+  if (!promptElement) {
+    console.error(`Element with ID ${id} not found`);
+    return;
+  }
+
+  const text = promptElement.textContent || promptElement.innerText;
+  console.log("Attempting to copy text:", text.substring(0, 50) + "...");
+
+  // Try modern clipboard API first
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        updateCopyButtonUI(id);
+        showNotification("Prompt copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Clipboard API error:", err);
+        fallbackCopyMethod(text, id);
+      });
+  } else {
+    // Use fallback method
+    fallbackCopyMethod(text, id);
+  }
+}
+
+// Fallback copy method using execCommand and textarea
+function fallbackCopyMethod(text, id) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.position = "fixed";  // Avoid scrolling to bottom
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.width = "2em";
+  textArea.style.height = "2em";
+  textArea.style.padding = "0";
+  textArea.style.border = "none";
+  textArea.style.outline = "none";
+  textArea.style.boxShadow = "none";
+  textArea.style.background = "transparent";
+  textArea.style.opacity = "0";
+  document.body.appendChild(textArea);
+  
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      updateCopyButtonUI(id);
+      showNotification("Prompt copied to clipboard!");
+    } else {
+      showNotification("Failed to copy. Please try again.", "error");
+    }
+  } catch (err) {
+    console.error('Fallback copy method failed:', err);
+    showNotification("Failed to copy. Please try again.", "error");
+  }
+  
+  document.body.removeChild(textArea);
+}
+
+// Update button UI helper
+function updateCopyButtonUI(id) {
+  const copyBtn = document.querySelector(`[onclick="copyPrompt('${id}')"]`);
+  if (copyBtn) {
+    const originalHTML = copyBtn.innerHTML;
+    copyBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+      </svg>
+      Copied!
+    `;
+    copyBtn.classList.add("copied");
+
+    setTimeout(() => {
+      copyBtn.innerHTML = originalHTML;
+      copyBtn.classList.remove("copied");
+    }, 2000);
+  }
+}
+
 // Function to copy generated prompt to clipboard
-function copyGeneratedPrompt(baseId, buttonElement) {
+function copyGeneratedPrompt(baseId) {
   const outputElement = document.getElementById(`${baseId}-output`);
   
   if (!outputElement) {
@@ -204,40 +287,41 @@ function copyGeneratedPrompt(baseId, buttonElement) {
     generatePrompt(baseId);
   }
   
-  // Use enhanced clipboard function for maximum browser compatibility
-  copyToClipboardEnhanced(outputElement.textContent, buttonElement);
-}
-
-// Function to copy text to clipboard with fallback methods
-function copyToClipboardEnhanced(text, buttonElement) {
-  if (!text) return;
+  const text = outputElement.textContent;
+  console.log("Attempting to copy generated prompt:", text.substring(0, 50) + "...");
   
-  // First try the modern clipboard API
+  // Try modern clipboard API first
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text)
       .then(() => {
-        showCopySuccess(buttonElement);
+        updateGeneratedCopyButtonUI(baseId);
+        showNotification("Complete prompt copied to clipboard!");
       })
-      .catch(err => {
-        console.error("Clipboard API failed:", err);
-        // Fall back to execCommand method
-        fallbackCopyToClipboard(text, buttonElement);
+      .catch((err) => {
+        console.error("Clipboard API error:", err);
+        fallbackCopyGeneratedMethod(text, baseId);
       });
   } else {
-    // Use fallback for non-secure contexts
-    fallbackCopyToClipboard(text, buttonElement);
+    // Use fallback method
+    fallbackCopyGeneratedMethod(text, baseId);
   }
 }
 
-// Fallback clipboard copy method using execCommand
-function fallbackCopyToClipboard(text, buttonElement) {
+// Fallback copy method for generated prompts
+function fallbackCopyGeneratedMethod(text, baseId) {
   const textArea = document.createElement("textarea");
   textArea.value = text;
-  
-  // Make the textarea out of viewport
-  textArea.style.position = "fixed";
-  textArea.style.left = "-999999px";
-  textArea.style.top = "-999999px";
+  textArea.style.position = "fixed";  // Avoid scrolling to bottom
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.width = "2em";
+  textArea.style.height = "2em";
+  textArea.style.padding = "0";
+  textArea.style.border = "none";
+  textArea.style.outline = "none";
+  textArea.style.boxShadow = "none";
+  textArea.style.background = "transparent";
+  textArea.style.opacity = "0";
   document.body.appendChild(textArea);
   
   textArea.focus();
@@ -246,39 +330,42 @@ function fallbackCopyToClipboard(text, buttonElement) {
   try {
     const successful = document.execCommand('copy');
     if (successful) {
-      showCopySuccess(buttonElement);
+      updateGeneratedCopyButtonUI(baseId);
+      showNotification("Complete prompt copied to clipboard!");
     } else {
-      showNotification("Failed to copy. Please try manually selecting the text.", "error");
+      showNotification("Failed to copy. Please try again.", "error");
     }
   } catch (err) {
-    console.error("execCommand error:", err);
-    showNotification("Failed to copy. Please try manually selecting the text.", "error");
+    console.error('Fallback copy method failed:', err);
+    showNotification("Failed to copy. Please try again.", "error");
   }
   
   document.body.removeChild(textArea);
 }
 
-// Show copy success UI feedback
-function showCopySuccess(buttonElement) {
-  // Show success feedback on button
-  if (buttonElement) {
-    const originalText = buttonElement.innerHTML;
-    buttonElement.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg> Copied!';
-    buttonElement.classList.add("copied");
-    
+// Update generated prompt button UI
+function updateGeneratedCopyButtonUI(baseId) {
+  const copyBtn = document.getElementById(`${baseId}-copy-btn`);
+  if (copyBtn) {
+    copyBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+      </svg>
+      Copied!
+    `;
+    copyBtn.classList.add("copied");
+
     setTimeout(() => {
-      buttonElement.innerHTML = originalText;
-      buttonElement.classList.remove("copied");
+      copyBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copy Complete Prompt
+      `;
+      copyBtn.classList.remove("copied");
     }, 2000);
   }
-  
-  // Show notification
-  showNotification("Copied to clipboard!");
-}
-
-// Function for simple copy operations
-function copyToClipboard(text, buttonElement) {
-  copyToClipboardEnhanced(text, buttonElement);
 }
 
 // Simple notification function
