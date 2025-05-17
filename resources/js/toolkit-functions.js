@@ -1,1 +1,420 @@
-// Essential JavaScript functions for the toolkit\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  console.log(\"DOM fully loaded - initializing toolkit functions\");\n  \n  // Theme toggle functionality\n  const themeToggle = document.querySelector(\".theme-toggle\")\n  if (themeToggle) {\n    themeToggle.addEventListener(\"click\", () => {\n      const currentTheme = document.documentElement.getAttribute(\"data-theme\")\n      const newTheme = currentTheme === \"dark\" ? \"light\" : \"dark\"\n      \n      document.documentElement.setAttribute(\"data-theme\", newTheme)\n      localStorage.setItem(\"theme\", newTheme)\n      \n      // Update the icon\n      updateThemeIcon(newTheme)\n    })\n    \n    // Check for saved theme preference\n    const savedTheme = localStorage.getItem(\"theme\")\n    if (savedTheme) {\n      document.documentElement.setAttribute(\"data-theme\", savedTheme)\n      updateThemeIcon(savedTheme)\n    }\n  }\n\n  // Tab functionality\n  const tabBtns = document.querySelectorAll(\".tab-btn\")\n  tabBtns.forEach((btn) => {\n    btn.addEventListener(\"click\", function () {\n      const tabId = this.getAttribute(\"data-tab\")\n      const parentCard = this.closest(\".prompt-card\")\n\n      // Remove active class from all tabs in this card\n      parentCard.querySelectorAll(\".tab-btn\").forEach((tb) => tb.classList.remove(\"active\"))\n      parentCard.querySelectorAll(\".tab-content\").forEach((tc) => tc.classList.remove(\"active\"))\n\n      // Add active class to clicked tab and corresponding content\n      this.classList.add(\"active\")\n      parentCard.querySelector(`#${tabId}`).classList.add(\"active\")\n    })\n  })\n\n  // Category selection\n  const categoryButtons = document.querySelectorAll(\".category-button\")\n  const promptCategories = document.querySelectorAll(\".prompt-category\")\n\n  categoryButtons.forEach((button) => {\n    button.addEventListener(\"click\", function () {\n      const category = this.getAttribute(\"data-category\")\n\n      // Remove active class from all buttons\n      categoryButtons.forEach((btn) => btn.classList.remove(\"active\"))\n\n      // Add active class to clicked button\n      this.classList.add(\"active\")\n\n      // Show/hide categories based on selection\n      if (category === \"all\") {\n        promptCategories.forEach((cat) => (cat.style.display = \"block\"))\n      } else {\n        promptCategories.forEach((cat) => {\n          if (cat.getAttribute(\"data-category\") === category) {\n            cat.style.display = \"block\"\n          } else {\n            cat.style.display = \"none\"\n          }\n        })\n      }\n    })\n  })\n\n  // Search functionality\n  const searchInput = document.getElementById(\"search-input\")\n  const searchButton = document.getElementById(\"search-button\")\n\n  function performSearch() {\n    const searchTerm = searchInput.value.toLowerCase().trim()\n\n    if (searchTerm === \"\") {\n      // If search is empty, restore default view\n      promptCategories.forEach((cat) => (cat.style.display = \"block\"))\n      document.querySelectorAll(\".prompt-card\").forEach((card) => (card.style.display = \"block\"))\n      return\n    }\n\n    // Show all categories for searching\n    promptCategories.forEach((cat) => (cat.style.display = \"block\"))\n\n    // Search in cards\n    document.querySelectorAll(\".prompt-card\").forEach((card) => {\n      const title = card.querySelector(\".prompt-title\").textContent.toLowerCase()\n      const description = card.querySelector(\".prompt-description\").textContent.toLowerCase()\n      const content = card.textContent.toLowerCase()\n\n      if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {\n        card.style.display = \"block\"\n        // Make sure the parent category is visible\n        const parentCategory = card.closest(\".prompt-category\")\n        parentCategory.style.display = \"block\"\n      } else {\n        card.style.display = \"none\"\n      }\n    })\n\n    // Hide empty categories\n    promptCategories.forEach((category) => {\n      const visibleCards = category.querySelectorAll('.prompt-card[style=\"display: block;\"]')\n      if (visibleCards.length === 0) {\n        category.style.display = \"none\"\n      }\n    })\n  }\n\n  if (searchButton) {\n    searchButton.addEventListener(\"click\", performSearch)\n  }\n\n  if (searchInput) {\n    searchInput.addEventListener(\"keyup\", (e) => {\n      if (e.key === \"Enter\") {\n        performSearch()\n      }\n    })\n  }\n  \n  // Setup new copy functionality\n  setupSimpleCopyButtons();\n  \n  console.log(\"All toolkit functions initialized\");\n})\n\n// Set up copy buttons with new approach\nfunction setupSimpleCopyButtons() {\n  // Handle all copy buttons\n  document.querySelectorAll('.copy-btn').forEach(button => {\n    // Remove the original onclick attribute\n    const originalOnclick = button.getAttribute('onclick');\n    button.removeAttribute('onclick');\n    \n    // Add a direct click handler\n    button.addEventListener('click', function(e) {\n      // Prevent default action\n      e.preventDefault();\n      \n      let promptId;\n      let isGenerated = false;\n      \n      // Parse the original onclick to get the ID\n      if (originalOnclick && originalOnclick.includes('copyPrompt(')) {\n        const match = originalOnclick.match(/copyPrompt\\(['\"]([^'\"]+)['\"]\\)/i);\n        if (match && match[1]) {\n          promptId = match[1];\n        }\n      } else if (originalOnclick && originalOnclick.includes('copyGeneratedPrompt(')) {\n        const match = originalOnclick.match(/copyGeneratedPrompt\\(['\"]([^'\"]+)['\"]\\)/i);\n        if (match && match[1]) {\n          promptId = match[1];\n          isGenerated = true;\n        }\n      } else if (this.id && this.id.endsWith('-copy-btn')) {\n        // Handle by ID pattern\n        promptId = this.id.replace('-copy-btn', '');\n        isGenerated = true;\n      }\n      \n      if (!promptId) {\n        showNotification('Could not identify prompt to copy', 'error');\n        return;\n      }\n      \n      // Get the text to copy\n      let elementId = isGenerated ? `${promptId}-output` : promptId;\n      let promptElement = document.getElementById(elementId);\n      \n      // If generating a prompt, make sure it's generated\n      if (isGenerated && (!promptElement || promptElement.textContent.trim() === '')) {\n        generatePrompt(promptId);\n        promptElement = document.getElementById(elementId);\n      }\n      \n      if (!promptElement) {\n        showNotification('Could not find prompt content', 'error');\n        return;\n      }\n      \n      // Get the text\n      const text = promptElement.innerText.trim();\n      \n      if (!text) {\n        showNotification('Prompt is empty', 'error');\n        return;\n      }\n      \n      // Create a modal dialog to show and copy the text\n      showCopyModal(text, isGenerated);\n      \n      // Update the button to show copied state\n      const originalHTML = this.innerHTML;\n      this.innerHTML = `\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          <path d=\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z\"></path>\n        </svg>\n        Copied!\n      `;\n      this.classList.add('copied');\n      \n      // Reset after delay\n      setTimeout(() => {\n        this.innerHTML = originalHTML;\n        this.classList.remove('copied');\n      }, 2000);\n    });\n  });\n}\n\n// Function to show a modal with the text to copy\nfunction showCopyModal(text, isGenerated) {\n  // Remove any existing modal\n  const existingModal = document.getElementById('copy-modal');\n  if (existingModal) {\n    document.body.removeChild(existingModal);\n  }\n  \n  // Create modal container\n  const modal = document.createElement('div');\n  modal.id = 'copy-modal';\n  modal.style.position = 'fixed';\n  modal.style.top = '0';\n  modal.style.left = '0';\n  modal.style.width = '100%';\n  modal.style.height = '100%';\n  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';\n  modal.style.display = 'flex';\n  modal.style.justifyContent = 'center';\n  modal.style.alignItems = 'center';\n  modal.style.zIndex = '9999';\n  \n  // Create modal content\n  const modalContent = document.createElement('div');\n  modalContent.style.backgroundColor = 'var(--card, #1e293b)';\n  modalContent.style.color = 'var(--text, #f8fafc)';\n  modalContent.style.padding = '2rem';\n  modalContent.style.borderRadius = '10px';\n  modalContent.style.maxWidth = '800px';\n  modalContent.style.width = '90%';\n  modalContent.style.maxHeight = '80vh';\n  modalContent.style.display = 'flex';\n  modalContent.style.flexDirection = 'column';\n  modalContent.style.gap = '1rem';\n  \n  // Create modal header\n  const modalHeader = document.createElement('div');\n  modalHeader.style.display = 'flex';\n  modalHeader.style.justifyContent = 'space-between';\n  modalHeader.style.alignItems = 'center';\n  \n  const modalTitle = document.createElement('h3');\n  modalTitle.textContent = isGenerated ? 'Complete Prompt' : 'Prompt';\n  modalTitle.style.fontSize = '1.5rem';\n  modalTitle.style.margin = '0';\n  \n  const closeButton = document.createElement('button');\n  closeButton.innerHTML = '&times;';\n  closeButton.style.background = 'none';\n  closeButton.style.border = 'none';\n  closeButton.style.color = 'var(--text, #f8fafc)';\n  closeButton.style.fontSize = '2rem';\n  closeButton.style.cursor = 'pointer';\n  closeButton.style.padding = '0 0.5rem';\n  closeButton.addEventListener('click', () => {\n    document.body.removeChild(modal);\n  });\n  \n  modalHeader.appendChild(modalTitle);\n  modalHeader.appendChild(closeButton);\n  \n  // Create textarea with the text\n  const textarea = document.createElement('textarea');\n  textarea.value = text;\n  textarea.style.width = '100%';\n  textarea.style.minHeight = '300px';\n  textarea.style.maxHeight = '60vh';\n  textarea.style.padding = '1rem';\n  textarea.style.borderRadius = '5px';\n  textarea.style.backgroundColor = 'var(--bg-dark, #0f172a)';\n  textarea.style.color = 'var(--text, #f8fafc)';\n  textarea.style.fontFamily = 'monospace';\n  textarea.style.border = '1px solid var(--border, #334155)';\n  textarea.style.fontSize = '14px';\n  textarea.style.lineHeight = '1.5';\n  textarea.style.resize = 'vertical';\n  \n  // Create instructions\n  const instructions = document.createElement('p');\n  instructions.textContent = 'Press Ctrl+A then Ctrl+C (or ⌘+A then ⌘+C on Mac) to select all and copy this text.';\n  instructions.style.margin = '0';\n  instructions.style.fontSize = '0.9rem';\n  instructions.style.opacity = '0.8';\n  \n  // Create buttons container\n  const buttonsContainer = document.createElement('div');\n  buttonsContainer.style.display = 'flex';\n  buttonsContainer.style.justifyContent = 'space-between';\n  buttonsContainer.style.gap = '1rem';\n  buttonsContainer.style.marginTop = '1rem';\n  \n  // Create copy button\n  const copyButton = document.createElement('button');\n  copyButton.textContent = 'Copy to Clipboard';\n  copyButton.style.padding = '0.5rem 1rem';\n  copyButton.style.backgroundColor = 'var(--orange, #ff6b00)';\n  copyButton.style.color = 'white';\n  copyButton.style.border = 'none';\n  copyButton.style.borderRadius = '5px';\n  copyButton.style.cursor = 'pointer';\n  copyButton.style.fontWeight = '600';\n  copyButton.style.flex = '1';\n  copyButton.style.maxWidth = '200px';\n  copyButton.addEventListener('click', () => {\n    textarea.select();\n    document.execCommand('copy');\n    copyButton.textContent = 'Copied!';\n    setTimeout(() => {\n      copyButton.textContent = 'Copy to Clipboard';\n    }, 2000);\n  });\n  \n  // Create close button\n  const closeModalButton = document.createElement('button');\n  closeModalButton.textContent = 'Close';\n  closeModalButton.style.padding = '0.5rem 1rem';\n  closeModalButton.style.backgroundColor = 'var(--card-dark, #1e293b)';\n  closeModalButton.style.color = 'var(--text, #f8fafc)';\n  closeModalButton.style.border = '1px solid var(--border, #334155)';\n  closeModalButton.style.borderRadius = '5px';\n  closeModalButton.style.cursor = 'pointer';\n  closeModalButton.style.fontWeight = '600';\n  closeModalButton.style.flex = '1';\n  closeModalButton.style.maxWidth = '200px';\n  closeModalButton.addEventListener('click', () => {\n    document.body.removeChild(modal);\n  });\n  \n  buttonsContainer.appendChild(copyButton);\n  buttonsContainer.appendChild(closeModalButton);\n  \n  // Assemble modal content\n  modalContent.appendChild(modalHeader);\n  modalContent.appendChild(textarea);\n  modalContent.appendChild(instructions);\n  modalContent.appendChild(buttonsContainer);\n  \n  // Add modal to page\n  modal.appendChild(modalContent);\n  document.body.appendChild(modal);\n  \n  // Focus and select the textarea for easy copying\n  setTimeout(() => {\n    textarea.focus();\n    textarea.select();\n  }, 100);\n  \n  // Also try the programmatic copy\n  try {\n    // Try to copy with the Clipboard API\n    if (navigator.clipboard) {\n      navigator.clipboard.writeText(text)\n        .then(() => {\n          console.log('Text successfully copied to clipboard via Clipboard API');\n        })\n        .catch(err => {\n          console.log('Clipboard API failed, but user can still copy manually', err);\n        });\n    } else {\n      // Fallback to execCommand\n      const successful = document.execCommand('copy');\n      if (successful) {\n        console.log('Text successfully copied to clipboard via execCommand');\n      } else {\n        console.log('execCommand copy failed, but user can still copy manually');\n      }\n    }\n  } catch (err) {\n    console.log('Automatic copy failed, but user can still copy manually', err);\n  }\n  \n  // Return the modal\n  return modal;\n}\n\n// Function to update theme icon\nfunction updateThemeIcon(theme) {\n  const themeToggle = document.querySelector(\".theme-toggle\")\n  if (!themeToggle) return\n\n  if (theme === \"dark\") {\n    themeToggle.innerHTML = `\n      <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"theme-icon-light\">\n        <path d=\"M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z\"/>\n      </svg>\n    `\n  } else {\n    themeToggle.innerHTML = `\n      <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"theme-icon-dark\">\n        <path d=\"M10 2c-1.82 0-3.53.5-5 1.35C2.99 4.82 2 7.34 2 10c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 0 12 0L10 2zm0 18c-4.41 0-8-3.59-8-8 0-3.36 2.08-6.23 5-7.41C5.62 5.73 5 7.79 5 10c0 4.41 3.59 8 8 8s8-3.59 8-8c0-2.21-.9-4.21-2.35-5.65C17.79 17.85 14.23 20 10 20z\" fill=\"currentColor\"/>\n      </svg>\n    `\n  }\n}\n\n// Function to move to next tab\nfunction nextTab(baseId) {\n  const structureTab = document.querySelector(`[data-tab=\"structure-${baseId}\"]`)\n  const contentTab = document.querySelector(`[data-tab=\"content-${baseId}\"]`)\n\n  if (!structureTab || !contentTab) {\n    console.error(`Tabs for ${baseId} not found`)\n    return\n  }\n\n  // Update tab buttons\n  structureTab.classList.remove(\"active\")\n  contentTab.classList.add(\"active\")\n\n  // Mark the first tab as completed\n  structureTab.classList.add(\"completed\")\n\n  // Update tab content\n  const structureContent = document.getElementById(`structure-${baseId}`)\n  const contentContent = document.getElementById(`content-${baseId}`)\n\n  if (!structureContent || !contentContent) {\n    console.error(`Tab content for ${baseId} not found`)\n    return\n  }\n\n  structureContent.classList.remove(\"active\")\n  contentContent.classList.add(\"active\")\n\n  // Scroll to the content tab if needed\n  contentContent.scrollIntoView({ behavior: \"smooth\", block: \"nearest\" })\n}\n\n// Function to generate the complete prompt\nfunction generatePrompt(baseId) {\n  console.log(`Generating prompt for ${baseId}`);\n  \n  // Get all input values\n  const inputElements = document.querySelectorAll(`[id^=\"${baseId}-\"]`)\n  if (inputElements.length === 0) {\n    console.error(`No input elements found for base ID: ${baseId}`)\n    showNotification(\"Error generating prompt. Please try again.\", \"error\")\n    return\n  }\n\n  const inputData = {}\n\n  inputElements.forEach((input) => {\n    if (input.id === `${baseId}-structure` || input.id === `${baseId}-output`) return\n    const key = input.id.replace(`${baseId}-`, \"\")\n    inputData[key] = input.value.trim()\n  })\n\n  // Get structure prompt\n  const structurePromptElement = document.getElementById(`${baseId}-structure`)\n  if (!structurePromptElement) {\n    console.error(`Structure prompt element not found for base ID: ${baseId}`)\n    showNotification(\"Error generating prompt. Please try again.\", \"error\")\n    return\n  }\n\n  const structurePrompt = structurePromptElement.textContent\n\n  // Generate the complete prompt based on the template and user inputs\n  let outputPrompt =\n    structurePrompt +\n    \"\\n\\nPHASE 2: CONTENT DEVELOPMENT\\nNow, use the following specific details to populate the above framework:\"\n\n  // Add each input field with a label\n  for (const [key, value] of Object.entries(inputData)) {\n    if (value) {\n      // Format key from camelCase or kebab-case to Title Case\n      const formattedKey = key\n        .replace(/-/g, \" \")\n        .replace(/([A-Z])/g, \" $1\")\n        .split(\" \")\n        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))\n        .join(\" \")\n\n      outputPrompt += `\\n\\n${formattedKey}: ${value}`\n    }\n  }\n\n  // Add final instructions\n  outputPrompt +=\n    \"\\n\\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable.\"\n\n  // Display the complete prompt\n  const outputElement = document.getElementById(`${baseId}-output`)\n  if (!outputElement) {\n    console.error(`Output element not found for base ID: ${baseId}`)\n    showNotification(\"Error generating prompt. Please try again.\", \"error\")\n    return\n  }\n\n  outputElement.textContent = outputPrompt\n  console.log(`Generated prompt content (${outputPrompt.length} characters)`);\n\n  // Update copy button text\n  const copyBtn = document.getElementById(`${baseId}-copy-btn`)\n  if (copyBtn) {\n    copyBtn.innerHTML = `\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect>\n        <path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path>\n      </svg>\n      Copy Complete Prompt\n    `\n  }\n\n  showNotification(\"Complete prompt generated!\")\n  \n  // Scroll to the output\n  outputElement.scrollIntoView({ behavior: \"smooth\", block: \"nearest\" })\n  \n  return outputPrompt;\n}\n\n// Function to show notification\nfunction showNotification(message, type = \"success\") {\n  console.log(`Showing notification: ${message} (${type})`);\n  \n  // Remove any existing notifications\n  const existingNotification = document.querySelector(\".notification\")\n  if (existingNotification) {\n    existingNotification.remove()\n  }\n\n  // Create notification element\n  const notification = document.createElement(\"div\")\n  notification.className = `notification ${type}`\n\n  // Set icon based on type\n  let icon = `\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path>\n      <polyline points=\"22 4 12 14.01 9 11.01\"></polyline>\n    </svg>\n  `\n\n  if (type === \"error\") {\n    icon = `\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <circle cx=\"12\" cy=\"12\" r=\"10\"></circle>\n        <line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line>\n        <line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line>\n      </svg>\n    `\n  }\n\n  notification.innerHTML = `${icon} ${message}`\n\n  // Add to document\n  document.body.appendChild(notification)\n\n  // Show notification\n  setTimeout(() => {\n    notification.classList.add(\"show\")\n  }, 10)\n\n  // Hide after 3 seconds\n  setTimeout(() => {\n    notification.classList.remove(\"show\")\n    setTimeout(() => {\n      notification.remove()\n    }, 300)\n  }, 3000)\n}\n\n// Function to save form data\nfunction saveFormData() {\n  const forms = document.querySelectorAll(\".input-form\")\n\n  forms.forEach((form) => {\n    const inputs = form.querySelectorAll(\"input, textarea\")\n    const formId = form.closest(\".tab-content\").id\n    const formData = {}\n\n    inputs.forEach((input) => {\n      formData[input.id] = input.value\n    })\n\n    localStorage.setItem(`formData-${formId}`, JSON.stringify(formData))\n  })\n}\n\n// Function to load form data\nfunction loadFormData() {\n  const forms = document.querySelectorAll(\".input-form\")\n\n  forms.forEach((form) => {\n    const formId = form.closest(\".tab-content\").id\n    const savedData = localStorage.getItem(`formData-${formId}`)\n\n    if (savedData) {\n      const formData = JSON.parse(savedData)\n\n      for (const [id, value] of Object.entries(formData)) {\n        const input = document.getElementById(id)\n        if (input) input.value = value\n      }\n    }\n  })\n}\n\n// Load saved form data on page load\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  loadFormData()\n  \n  // Save form data when inputs change\n  document.querySelectorAll(\".input-form input, .input-form textarea\").forEach(input => {\n    input.addEventListener(\"change\", saveFormData)\n  })\n})\n\n// Original functions to maintain compatibility\nfunction copyPrompt(id) {\n  console.log(`Original copyPrompt function called with id: ${id}`);\n  \n  // Get the element with the text\n  const element = document.getElementById(id);\n  if (!element) {\n    console.error(`Element with ID ${id} not found`);\n    return;\n  }\n  \n  // Get the text and show the modal\n  const text = element.innerText.trim();\n  showCopyModal(text, false);\n}\n\nfunction copyGeneratedPrompt(baseId) {\n  console.log(`Original copyGeneratedPrompt function called with baseId: ${baseId}`);\n  \n  // Make sure the prompt is generated\n  const outputElement = document.getElementById(`${baseId}-output`);\n  if (!outputElement || outputElement.textContent.trim() === '') {\n    generatePrompt(baseId);\n  }\n  \n  // Get the updated element\n  const element = document.getElementById(`${baseId}-output`);\n  if (!element) {\n    console.error(`Element with ID ${baseId}-output not found`);\n    return;\n  }\n  \n  // Get the text and show the modal\n  const text = element.innerText.trim();\n  showCopyModal(text, true);\n}\n\n// Add this at the end of the file\nconsole.log(\"Toolkit JavaScript loaded successfully!\");\n\n// Add css for the copy modal\naddModalStyles();\n\nfunction addModalStyles() {\n  // Create a style element\n  const style = document.createElement('style');\n  style.textContent = `\n    #copy-modal {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.7);\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      z-index: 9999;\n    }\n    \n    #copy-modal button:hover {\n      opacity: 0.9;\n    }\n  `;\n  \n  // Add it to the document\n  document.head.appendChild(style);\n}
+// Function to generate the complete prompt
+function generatePrompt(baseId) {
+  console.log(`Generating prompt for ${baseId}`);
+  
+  // Get all input values
+  const inputElements = document.querySelectorAll(`[id^="${baseId}-"]`)
+  if (inputElements.length === 0) {
+    console.error(`No input elements found for base ID: ${baseId}`)
+    showNotification("Error generating prompt. Please try again.", "error")
+    return
+  }
+
+  const inputData = {}
+
+  inputElements.forEach((input) => {
+    if (input.id === `${baseId}-structure` || input.id === `${baseId}-output`) return
+    const key = input.id.replace(`${baseId}-`, "")
+    inputData[key] = input.value.trim()
+  })
+
+  // Get structure prompt
+  const structurePromptElement = document.getElementById(`${baseId}-structure`)
+  if (!structurePromptElement) {
+    console.error(`Structure prompt element not found for base ID: ${baseId}`)
+    showNotification("Error generating prompt. Please try again.", "error")
+    return
+  }
+
+  const structurePrompt = structurePromptElement.textContent
+
+  // Generate the complete prompt based on the template and user inputs
+  let outputPrompt =
+    structurePrompt +
+    "\n\nPHASE 2: CONTENT DEVELOPMENT\nNow, use the following specific details to populate the above framework:"
+
+  // Add each input field with a label
+  for (const [key, value] of Object.entries(inputData)) {
+    if (value) {
+      // Format key from camelCase or kebab-case to Title Case
+      const formattedKey = key
+        .replace(/-/g, " ")
+        .replace(/([A-Z])/g, " $1")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+
+      outputPrompt += `\n\n${formattedKey}: ${value}`
+    }
+  }
+
+  // Add final instructions
+  outputPrompt +=
+    "\n\nPlease generate a detailed document following the structure provided in Phase 1, incorporating these specific details. Ensure the document is comprehensive, well-organized, and actionable."
+
+  // Display the complete prompt
+  const outputElement = document.getElementById(`${baseId}-output`)
+  if (!outputElement) {
+    console.error(`Output element not found for base ID: ${baseId}`)
+    showNotification("Error generating prompt. Please try again.", "error")
+    return
+  }
+
+  outputElement.textContent = outputPrompt
+  console.log(`Generated prompt content (${outputPrompt.length} characters)`);
+
+  // Update copy button text
+  const copyBtn = document.getElementById(`${baseId}-copy-btn`)
+  if (copyBtn) {
+    copyBtn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy Complete Prompt
+    `
+  }
+
+  showNotification("Complete prompt generated!")
+  
+  // Scroll to the output
+  outputElement.scrollIntoView({ behavior: "smooth", block: "nearest" })
+  
+  return outputPrompt;
+}
+
+// Function to show notification
+function showNotification(message, type = "success") {
+  console.log(`Showing notification: ${message} (${type})`);
+  
+  // Remove any existing notifications
+  const existingNotification = document.querySelector(".notification")
+  if (existingNotification) {
+    existingNotification.remove()
+  }
+
+  // Create notification element
+  const notification = document.createElement("div")
+  notification.className = `notification ${type}`
+
+  // Set icon based on type
+  let icon = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+  `
+
+  if (type === "error") {
+    icon = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="15" y1="9" x2="9" y2="15"></line>
+        <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+    `
+  }
+
+  notification.innerHTML = `${icon} ${message}`
+
+  // Add to document
+  document.body.appendChild(notification)
+
+  // Show notification
+  setTimeout(() => {
+    notification.classList.add("show")
+  }, 10)
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove("show")
+    setTimeout(() => {
+      notification.remove()
+    }, 300)
+  }, 3000)
+}
+
+// Function to copy prompt
+function copyPrompt(id) {
+  console.log(`Original copyPrompt function called with id: ${id}`);
+  
+  // Get the element with the text
+  const element = document.getElementById(id);
+  if (!element) {
+    console.error(`Element with ID ${id} not found`);
+    showNotification('Could not find content to copy', 'error');
+    return;
+  }
+  
+  const text = element.innerText.trim();
+  if (!text) {
+    showNotification('Content is empty', 'error');
+    return;
+  }
+  
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      showNotification('Prompt copied to clipboard!');
+      
+      // Update button state if it triggered the copy
+      const button = document.querySelector(`[onclick*="${id}"]`);
+      if (button) {
+        const originalHTML = button.innerHTML;
+        button.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+          </svg>
+          Copied!
+        `;
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+          button.classList.remove('copied');
+        }, 2000);
+      }
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
+      showNotification("Failed to copy. Please try again.", "error");
+    });
+}
+
+function copyGeneratedPrompt(baseId) {
+  console.log(`Original copyGeneratedPrompt function called with baseId: ${baseId}`);
+  
+  // Make sure the prompt is generated
+  const outputElement = document.getElementById(`${baseId}-output`);
+  if (!outputElement || outputElement.textContent.trim() === '') {
+    generatePrompt(baseId);
+  }
+  
+  // Get the element after possibly generating
+  const element = document.getElementById(`${baseId}-output`);
+  if (!element) {
+    console.error(`Element with ID ${baseId}-output not found`);
+    showNotification('Could not find content to copy', 'error');
+    return;
+  }
+  
+  const text = element.innerText.trim();
+  if (!text) {
+    showNotification('Content is empty', 'error');
+    return;
+  }
+  
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      showNotification('Complete prompt copied to clipboard!');
+      
+      // Update button state
+      const copyBtn = document.getElementById(`${baseId}-copy-btn`);
+      if (copyBtn) {
+        copyBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+          </svg>
+          Copied!
+        `;
+        copyBtn.classList.add('copied');
+
+        setTimeout(() => {
+          copyBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy Complete Prompt
+          `;
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
+      showNotification("Failed to copy. Please try again.", "error");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM fully loaded - initializing toolkit functions");
+  
+  // Theme toggle functionality
+  const themeToggle = document.querySelector(".theme-toggle")
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme")
+      const newTheme = currentTheme === "dark" ? "light" : "dark"
+      
+      document.documentElement.setAttribute("data-theme", newTheme)
+      localStorage.setItem("theme", newTheme)
+      
+      // Update the icon
+      updateThemeIcon(newTheme)
+    })
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme)
+      updateThemeIcon(savedTheme)
+    }
+  }
+
+  // Tab functionality
+  const tabBtns = document.querySelectorAll(".tab-btn")
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const tabId = this.getAttribute("data-tab")
+      const parentCard = this.closest(".prompt-card")
+
+      // Remove active class from all tabs in this card
+      parentCard.querySelectorAll(".tab-btn").forEach((tb) => tb.classList.remove("active"))
+      parentCard.querySelectorAll(".tab-content").forEach((tc) => tc.classList.remove("active"))
+
+      // Add active class to clicked tab and corresponding content
+      this.classList.add("active")
+      parentCard.querySelector(`#${tabId}`).classList.add("active")
+    })
+  })
+
+  // Category selection
+  const categoryButtons = document.querySelectorAll(".category-button")
+  const promptCategories = document.querySelectorAll(".prompt-category")
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const category = this.getAttribute("data-category")
+
+      // Remove active class from all buttons
+      categoryButtons.forEach((btn) => btn.classList.remove("active"))
+
+      // Add active class to clicked button
+      this.classList.add("active")
+
+      // Show/hide categories based on selection
+      if (category === "all") {
+        promptCategories.forEach((cat) => (cat.style.display = "block"))
+      } else {
+        promptCategories.forEach((cat) => {
+          if (cat.getAttribute("data-category") === category) {
+            cat.style.display = "block"
+          } else {
+            cat.style.display = "none"
+          }
+        })
+      }
+    })
+  })
+
+  // Search functionality
+  const searchInput = document.getElementById("search-input")
+  const searchButton = document.getElementById("search-button")
+
+  function performSearch() {
+    const searchTerm = searchInput.value.toLowerCase().trim()
+
+    if (searchTerm === "") {
+      // If search is empty, restore default view
+      promptCategories.forEach((cat) => (cat.style.display = "block"))
+      document.querySelectorAll(".prompt-card").forEach((card) => (card.style.display = "block"))
+      return
+    }
+
+    // Show all categories for searching
+    promptCategories.forEach((cat) => (cat.style.display = "block"))
+
+    // Search in cards
+    document.querySelectorAll(".prompt-card").forEach((card) => {
+      const title = card.querySelector(".prompt-title").textContent.toLowerCase()
+      const description = card.querySelector(".prompt-description").textContent.toLowerCase()
+      const content = card.textContent.toLowerCase()
+
+      if (title.includes(searchTerm) || description.includes(searchTerm) || content.includes(searchTerm)) {
+        card.style.display = "block"
+        // Make sure the parent category is visible
+        const parentCategory = card.closest(".prompt-category")
+        parentCategory.style.display = "block"
+      } else {
+        card.style.display = "none"
+      }
+    })
+
+    // Hide empty categories
+    promptCategories.forEach((category) => {
+      const visibleCards = category.querySelectorAll('.prompt-card[style="display: block;"]')
+      if (visibleCards.length === 0) {
+        category.style.display = "none"
+      }
+    })
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener("click", performSearch)
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        performSearch()
+      }
+    })
+  }
+  
+  console.log("All toolkit functions initialized");
+})
+
+function updateThemeIcon(theme) {
+  const themeToggle = document.querySelector(".theme-toggle")
+  if (!themeToggle) return
+
+  if (theme === "dark") {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+        <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+      </svg>
+    `
+  } else {
+    themeToggle.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-dark">
+        <path d="M10 2c-1.82 0-3.53.5-5 1.35C2.99 4.82 2 7.34 2 10c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 0 12 0L10 2zm0 18c-4.41 0-8-3.59-8-8 0-3.36 2.08-6.23 5-7.41C5.62 5.73 5 7.79 5 10c0 4.41 3.59 8 8 8s8-3.59 8-8c0-2.21-.9-4.21-2.35-5.65C17.79 17.85 14.23 20 10 20z" fill="currentColor"/>
+      </svg>
+    `
+  }
+}
+
+// Function to move to next tab
+function nextTab(baseId) {
+  const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`)
+  const contentTab = document.querySelector(`[data-tab="content-${baseId}"]`)
+
+  if (!structureTab || !contentTab) {
+    console.error(`Tabs for ${baseId} not found`)
+    return
+  }
+
+  // Update tab buttons
+  structureTab.classList.remove("active")
+  contentTab.classList.add("active")
+
+  // Mark the first tab as completed
+  structureTab.classList.add("completed")
+
+  // Update tab content
+  const structureContent = document.getElementById(`structure-${baseId}`)
+  const contentContent = document.getElementById(`content-${baseId}`)
+
+  if (!structureContent || !contentContent) {
+    console.error(`Tab content for ${baseId} not found`)
+    return
+  }
+
+  structureContent.classList.remove("active")
+  contentContent.classList.add("active")
+
+  // Scroll to the content tab if needed
+  contentContent.scrollIntoView({ behavior: "smooth", block: "nearest" })
+}
+
+// Add this at the end of the file
+console.log("Toolkit functions loaded successfully!");
