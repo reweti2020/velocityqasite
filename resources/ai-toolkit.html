@@ -1,3 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Toolkit - VelocityQA</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/toolkit.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Velocity<span class="highlight">QA</span></span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="toolkit-container">
+        <div class="toolkit-header">
+            <h1>AI Prompt Toolkit</h1>
+            <p>Professional frameworks to help you create powerful AI prompts for business use cases.</p>
+            
+            <div class="toolkit-actions">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search prompt frameworks...">
+                    <button id="search-button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <button class="theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                        <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="toolkit-categories">
+            <button class="category-button active" data-category="all">All Categories</button>
+            <button class="category-button" data-category="marketing">Marketing</button>
+            <button class="category-button" data-category="sales">Sales</button>
+            <button class="category-button" data-category="leadership">Leadership</button>
+            <button class="category-button" data-category="product">Product</button>
+        </div>
+        
+        <!-- Marketing Category -->
+        <div class="prompt-category" data-category="marketing">
+            <div class="category-header">
+                <h2>
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                        <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                    </svg>
+                    Marketing Strategy
+                </h2>
+                <p class="category-description">Frameworks for developing marketing strategies, campaign plans, and content marketing approaches.</p>
+            </div>
+            <div class="prompt-cards">
+                <!-- Marketing Campaign Strategy Framework -->
+                <div class="prompt-card">
+                    <div class="prompt-card-header">
+                        <div class="prompt-title">Marketing Campaign Strategy Framework</div>
+                        <p class="prompt-description">For marketing professionals developing comprehensive marketing campaigns across multiple channels.</p>
+                    </div>
+                    
+                    <div class="prompt-tabs">
+                        <button class="tab-btn active" data-tab="structure-marketing-campaign">Step 1: Define Structure</button>
+                        <button class="tab-btn" data-tab="content-marketing-campaign">Step 2: Add Details</button>
+                    </div>
+
+                    <!-- Tab 1: Structure Prompt -->
+                    <div class="tab-content active" id="structure-marketing-campaign">
+                        <div class="prompt-tab-title">
+                            <span>Structure Definition</span>
+                            <button class="copy-btn" onclick="copyPrompt('marketing-campaign-structure')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Structure Prompt
+                            </button>
+                        </div>
+                        
+                        <div class="prompt-template" id="marketing-campaign-structure">I need a comprehensive marketing campaign strategy. Let's approach this methodically:
+
+PHASE 1: FRAMEWORK DEVELOPMENT
+Create only the structure for a marketing campaign strategy document. Include section headings and bullet points describing what each section should address.
+
 Required sections must include:
 - Executive Summary
 - Campaign Overview
@@ -880,10 +988,75 @@ Required sections must include:
             </div>
         </div>
         
-    </div>
+        <!-- Notification Container -->
+        <div class="notification-container"></div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Velocity<span class="highlight">QA</span></span>
+                    <p>Professional QA testing for startups</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="services.html#manual-testing">Manual Testing</a></li>
+                            <li><a href="services.html#automation">Automation</a></li>
+                            <li><a href="services.html#api-testing">API Testing</a></li>
+                            <li><a href="services.html#mobile-testing">Mobile Testing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="resources.html">Articles</a></li>
+                            <li><a href="resources.html">Guides</a></li>
+                            <li><a href="resources.html">Templates</a></li>
+                            <li><a href="resources.html">Tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about.html#team">Team</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VelocityQA. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <!-- Scripts -->
     <script src="js/toolkit-functions.js"></script>
     <script src="js/ai-toolkit-specific.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
