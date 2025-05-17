@@ -2,6 +2,10 @@
  * AI Toolkit specific JavaScript functionality
  */
 
+// These functions are implemented in toolkit-functions.js
+// This file just contains the AI toolkit specific functions that depend on those
+// core functions
+
 // Function to handle the "Next Step" button click
 function nextTab(baseId) {
   const structureTab = document.querySelector(`[data-tab="structure-${baseId}"]`)
@@ -82,6 +86,49 @@ function copyGeneratedPrompt(baseId) {
     })
 }
 
+// Function to copy a prompt
+function copyPrompt(id) {
+  const element = document.getElementById(id);
+  if (!element) {
+    console.error(`Element with ID ${id} not found`);
+    showNotification("Could not find content to copy", "error");
+    return;
+  }
+  
+  const text = element.innerText.trim();
+  if (!text) {
+    showNotification("Content is empty", "error");
+    return;
+  }
+  
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      showNotification("Prompt copied to clipboard!");
+      
+      // Update button state if it triggered the copy
+      const button = document.querySelector(`[onclick*="${id}"]`);
+      if (button) {
+        const originalHTML = button.innerHTML;
+        button.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+          </svg>
+          Copied!
+        `;
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+          button.classList.remove('copied');
+        }, 2000);
+      }
+    })
+    .catch((err) => {
+      console.error("Could not copy text: ", err);
+      showNotification("Failed to copy. Please try again.", "error");
+    });
+}
+
 // Function to track prompt usage
 function trackPromptUsage(promptId, action) {
   // This would typically send analytics data to a backend
@@ -126,13 +173,4 @@ document.addEventListener("keydown", (e) => {
   }
 })
 
-// Mock functions for generatePrompt and showNotification
-function generatePrompt(baseId) {
-  console.log("generatePrompt function called for baseId:", baseId)
-  // Add your actual generatePrompt logic here
-}
-
-function showNotification(message, type = "success") {
-  console.log("Notification:", message, "Type:", type)
-  // Add your actual showNotification logic here
-}
+console.log("AI toolkit specific JS loaded");
