@@ -1,0 +1,219 @@
+/* QA Toolkit Specific Styles */
+
+/* Template Cards */
+.qa-template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.qa-template-card {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.qa-template-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.qa-template-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.qa-template-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+}
+
+.qa-template-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.qa-template-card p {
+  color: var(--muted-text);
+  margin-bottom: 1.5rem;
+  min-height: 4rem;
+}
+
+.qa-template-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.qa-preview-btn,
+.qa-download-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.qa-preview-btn {
+  background-color: var(--hover-bg);
+  color: var(--light-text);
+}
+
+.qa-preview-btn:hover {
+  background-color: var(--border-color);
+}
+
+.qa-download-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.qa-download-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Category Tabs */
+.qa-toolkit-categories {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.qa-category-tab {
+  background: none;
+  border: none;
+  color: var(--muted-text);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.qa-category-tab:hover {
+  color: var(--light-text);
+  background-color: var(--hover-bg);
+}
+
+.qa-category-tab.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Category Content */
+.qa-category-content {
+  display: none;
+}
+
+.qa-category-content.active {
+  display: block;
+}
+
+/* Modal Styles */
+.qa-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.qa-modal-content {
+  background-color: var(--card-bg);
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 0.5rem;
+  width: 80%;
+  max-width: 900px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.qa-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.qa-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.qa-close-modal {
+  color: var(--muted-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.qa-close-modal:hover {
+  color: var(--light-text);
+}
+
+.qa-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.qa-modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+#qa-template-preview-content {
+  background-color: white;
+  color: #333;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  min-height: 400px;
+}
+
+/* Intro Section */
+.qa-toolkit-intro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.qa-header-subtitle {
+  font-size: 1.2rem;
+  color: var(--muted-text);
+  max-width: 800px;
+  margin: 1rem auto 2rem;
+}
+
+.qa-header-feature {
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.qa-header-feature h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.qa-header-feature ol {
+  padding-left: 1.5rem;
+}
