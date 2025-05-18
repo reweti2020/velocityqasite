@@ -1107,12 +1107,10 @@
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   backdrop-filter: blur(5px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .template-modal.show {
-  opacity: 1;
+  display: block;
 }
 
 .template-modal-content {
@@ -1126,9 +1124,6 @@
   flex-direction: column;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  transform: translateY(-30px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .template-modal.show .template-modal-content {
