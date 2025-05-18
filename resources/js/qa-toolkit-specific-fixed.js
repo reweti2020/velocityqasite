@@ -103,71 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        // Add styles for the dialog
-        const style = document.createElement('style');
-        style.textContent = `
-            .format-dialog {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            }
-            .format-dialog-content {
-                background: var(--card-bg);
-                border: 1px solid var(--card-border);
-                border-radius: 8px;
-                padding: 24px;
-                max-width: 400px;
-                width: 90%;
-                text-align: center;
-            }
-            .format-dialog-content h3 {
-                margin-top: 0;
-                margin-bottom: 16px;
-                color: var(--text-primary);
-            }
-            .format-options {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-bottom: 20px;
-            }
-            .format-option {
-                background: var(--gray-800);
-                color: var(--text-primary);
-                border: 1px solid var(--gray-700);
-                border-radius: 4px;
-                padding: 10px 15px;
-                cursor: pointer;
-                transition: all var(--transition-fast);
-            }
-            .format-option:hover {
-                background: var(--accent-orange);
-                color: white;
-                border-color: var(--accent-orange);
-            }
-            .format-dialog-close {
-                background: transparent;
-                color: var(--text-secondary);
-                border: 1px solid var(--gray-700);
-                border-radius: 4px;
-                padding: 8px 16px;
-                cursor: pointer;
-                transition: all var(--transition-fast);
-            }
-            .format-dialog-close:hover {
-                color: var(--text-primary);
-                border-color: var(--gray-600);
-            }
-        `;
-        
-        document.head.appendChild(style);
         document.body.appendChild(formatDialog);
         
         // Handle format selection
@@ -177,14 +112,89 @@ document.addEventListener('DOMContentLoaded', function() {
                 const format = this.getAttribute('data-format');
                 document.body.removeChild(formatDialog);
                 
-                // Create a blob and trigger download
-                const content = `This is a simulated ${resourceTitle} file in ${format.toUpperCase()} format.`;
-                const blob = new Blob([content], { type: 'text/plain' });
+                // Generate appropriate demo content and MIME type based on format
+                let content, mimeType, filename;
+                
+                switch (format) {
+                    case 'pdf':
+                        // Create a simple fallback message for PDF
+                        content = `This would be a real PDF file for ${resourceTitle} in a production environment.`;
+                        mimeType = 'application/pdf';
+                        filename = `${resourceId}.pdf`;
+                        
+                        // For actual PDF generation, you'd need a PDF generation library
+                        // or would need to serve actual PDF files from the server
+                        showNotification(`${resourceTitle} downloaded as PDF. Note: This is a demo file.`);
+                        break;
+                        
+                    case 'docx':
+                        // Create a more compatible DOCX-like file structure
+                        // This is a simplification and not a real DOCX file
+                        content = `
+                        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                        <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                          <w:body>
+                            <w:p>
+                              <w:r>
+                                <w:t>${resourceTitle}</w:t>
+                              </w:r>
+                            </w:p>
+                            <w:p>
+                              <w:r>
+                                <w:t>This is a demonstration document. In a production environment, you would receive a fully formatted DOCX file.</w:t>
+                              </w:r>
+                            </w:p>
+                          </w:body>
+                        </w:document>`;
+                        mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+                        filename = `${resourceId}.docx`;
+                        showNotification(`${resourceTitle} downloaded as DOCX. Note: This is a demo file.`);
+                        break;
+                        
+                    case 'xlsx':
+                        // Create a simplified XLSX-like structure
+                        content = `
+                        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                        <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+                          <sheets>
+                            <sheet name="Template" />
+                          </sheets>
+                          <definedNames/>
+                        </workbook>`;
+                        mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+                        filename = `${resourceId}.xlsx`;
+                        showNotification(`${resourceTitle} downloaded as XLSX. Note: This is a demo file.`);
+                        break;
+                        
+                    default:
+                        // Fallback to text
+                        content = `${resourceTitle} content would be here in a production environment.`;
+                        mimeType = 'text/plain';
+                        filename = `${resourceId}.txt`;
+                        showNotification(`${resourceTitle} downloaded as text. Note: This is a demo file.`);
+                }
+                
+                // Create a text file explaining this is a demo
+                const demoContent = `
+                DEMO FILE
+                =========
+                
+                This is a demonstration file for: ${resourceTitle}
+                
+                In a production environment, this would be a properly formatted ${format.toUpperCase()} file.
+                
+                Since this is a demo, we've provided this text file instead, but with the correct file extension.
+                
+                To access the real templates and resources, please contact VelocityQA directly.
+                `;
+                
+                // Create the blob and download
+                const blob = new Blob([demoContent], { type: 'text/plain' });
                 const url = URL.createObjectURL(blob);
                 
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `${resourceId}.${format}`;
+                a.download = filename;
                 document.body.appendChild(a);
                 a.click();
                 
@@ -193,8 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                 }, 100);
-                
-                showNotification(`${resourceTitle} downloaded successfully as ${format.toUpperCase()}!`);
             });
         });
         
