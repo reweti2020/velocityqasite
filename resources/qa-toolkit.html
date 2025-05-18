@@ -1,956 +1,43 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional QA Resources | VelocityQA Toolkit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Core Colors */
-            --primary: #FF6B00;
-            --secondary: #20C5C6;
-            --dark: #0f172a;
-            --darker: #080d16;
-            --light: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            
-            /* UI Elements */
-            --card-bg: #1e293b;
-            --card-border: #334155;
-            --header-bg: #131c2e;
-            
-            /* Typography */
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-tertiary: #64748b;
-            
-            /* Accents */
-            --accent-orange: #FF6B00;
-            --accent-teal: #20C5C6;
-            --accent-purple: #8B5CF6;
-            --accent-green: #10b981;
-            --accent-red: #ef4444;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            
-            /* Transitions */
-            --transition-fast: 0.15s ease;
-            --transition-normal: 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--dark);
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
-        header {
-            background: var(--header-bg);
-            padding: 24px 0;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--gray-800);
-        }
-
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .logo-text span {
-            color: var(--accent-orange);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 24px;
-            align-items: center;
-        }
-
-        .header-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            font-weight: 500;
-        }
-
-        .header-link:hover {
-            color: var(--text-primary);
-        }
-
-        .header-button {
-            background: var(--accent-orange);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color var(--transition-fast), transform var(--transition-fast);
-        }
-
-        .header-button:hover {
-            background: #E55A00;
-            transform: translateY(-1px);
-        }
-        
-        /* Theme Toggle */
-        .theme-toggle {
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-            transition: all var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .theme-toggle svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Page Title */
-        .page-title {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .page-title h1 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .page-title p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Search */
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .search-form {
-            display: flex;
-            gap: 8px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid var(--gray-700);
-            background: var(--gray-800);
-            color: var(--text-primary);
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent-teal);
-        }
-
-        .search-button {
-            background: var(--accent-teal);
-            color: white;
-            border: none;
-            padding: 0 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color var(--transition-fast);
-        }
-
-        .search-button:hover {
-            background: #1AB0B0;
-        }
-
-        /* Categories */
-        .categories {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .category-button {
-            padding: 8px 16px;
-            background: var(--gray-800);
-            border: 1px solid var(--gray-700);
-            color: var(--text-secondary);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-weight: 500;
-        }
-
-        .category-button:hover {
-            border-color: var(--accent-orange);
-            color: var(--text-primary);
-        }
-
-        .category-button.active {
-            background: var(--accent-orange);
-            color: white;
-            border-color: var(--accent-orange);
-        }
-
-        /* Resource Categories */
-        .resource-category {
-            margin-bottom: 60px;
-        }
-
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--gray-700);
-            margin-bottom: 24px;
-        }
-
-        .category-header h2 {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .category-icon {
-            color: var(--accent-orange);
-        }
-
-        /* Resource Grid */
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 24px;
-        }
-
-        /* Resource Card */
-        .resource-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-        }
-
-        .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .resource-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--gray-700);
-        }
-
-        .resource-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--accent-teal);
-        }
-
-        .resource-description {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .resource-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .resource-tag {
-            padding: 4px 8px;
-            background: rgba(32, 197, 198, 0.1);
-            color: var(--accent-teal);
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .resource-preview {
-            padding: 20px;
-            background: var(--gray-900);
-            position: relative;
-            max-height: 200px;
-            overflow: hidden;
-        }
-
-        .resource-preview::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0), rgba(15, 23, 42, 1));
-            pointer-events: none;
-        }
-
-        .resource-preview.expanded {
-            max-height: none;
-        }
-
-        .resource-preview.expanded::after {
-            display: none;
-        }
-
-        .resource-preview pre {
-            font-family: monospace;
-            white-space: pre-wrap;
-            font-size: 13px;
-            line-height: 1.5;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .resource-actions {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--gray-700);
-        }
-
-        .resource-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .resource-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-tertiary);
-            font-size: 13px;
-        }
-
-        .resource-meta-icon {
-            width: 16px;
-            height: 16px;
-            opacity: 0.6;
-        }
-
-        .resource-button {
-            background: var(--accent-orange);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color var(--transition-fast), transform var(--transition-fast);
-        }
-
-        .resource-button:hover {
-            background: #E55A00;
-            transform: translateY(-1px);
-        }
-
-        .resource-button-icon {
-            width: 16px;
-            height: 16px;
-        }
-
-        .toggle-preview {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent-orange);
-            color: white;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        /* Feature Section */
-        .features-section {
-            background: var(--header-bg);
-            padding: 60px 0;
-            margin-top: 60px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 24px;
-            transition: transform var(--transition-normal);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 16px;
-            color: var(--accent-teal);
-        }
-
-        .feature-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--header-bg);
-            padding: 60px 0 30px;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-link {
-            margin-bottom: 12px;
-        }
-
-        .footer-link a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        .footer-link a:hover {
-            color: var(--accent-teal);
-        }
-
-        .footer-bottom {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-700);
-            text-align: center;
-            color: var(--text-tertiary);
-            font-size: 14px;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--card-bg);
-            color: var(--text-primary);
-            padding: 12px 20px;
-            border-radius: 6px;
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 1000;
-        }
-
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .notification.success {
-            border-left: 4px solid var(--accent-green);
-        }
-
-        .notification.error {
-            border-left: 4px solid var(--accent-red);
-        }
-
-        .notification svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .notification.success svg {
-            color: var(--accent-green);
-        }
-
-        .notification.error svg {
-            color: var(--accent-red);
-        }
-
-        /* Template Modal */
-        .template-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            padding: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-
-        .template-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .template-modal-content {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .template-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--card-border);
-            position: sticky;
-            top: 0;
-            background: var(--card-bg);
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .template-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--accent-teal);
-        }
-
-        .close-modal {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 24px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            transition: all var(--transition-fast);
-        }
-
-        .close-modal:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-        }
-
-        .tab-navigation {
-            display: flex;
-            background: var(--gray-800);
-            position: sticky;
-            top: 79px;
-            z-index: 10;
-        }
-
-        .tab-button {
-            flex: 1;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            padding: 16px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-
-        .tab-button:hover {
-            color: var(--text-primary);
-        }
-
-        .tab-button.active {
-            color: var(--accent-orange);
-        }
-
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-orange);
-        }
-
-        .tab-button.completed {
-            color: var(--accent-green);
-        }
-
-        .tab-content {
-            padding: 20px;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .template-structure {
-            font-family: monospace;
-            white-space: pre-wrap;
-            color: var(--text-primary);
-            background: var(--gray-900);
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
-
-        .template-content-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-label {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .form-input {
-            padding: 12px 16px;
-            border: 1px solid var(--gray-700);
-            background: var(--gray-800);
-            color: var(--text-primary);
-            border-radius: 4px;
-            font-size: 16px;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-teal);
-        }
-
-        textarea.form-input {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .template-output {
-            margin-top: 20px;
-            background: var(--gray-900);
-            border: 1px solid var(--gray-700);
-            border-radius: 6px;
-            padding: 20px;
-            font-family: monospace;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            color: var(--text-primary);
-            min-height: 200px;
-        }
-
-        .action-buttons {
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .generate-button, .copy-button {
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: none;
-            transition: all var(--transition-fast);
-        }
-
-        .generate-button {
-            background: var(--accent-teal);
-            color: white;
-        }
-
-        .generate-button:hover {
-            background: #1AB0B0;
-            transform: translateY(-1px);
-        }
-
-        .copy-button {
-            background: var(--accent-orange);
-            color: white;
-        }
-
-        .copy-button:hover {
-            background: #E55A00;
-            transform: translateY(-1px);
-        }
-
-        .copy-button.copied {
-            background: var(--accent-green);
-        }
-
-        .action-button-icon {
-            width: 18px;
-            height: 18px;
-        }
-
-        .next-button {
-            padding: 10px 20px;
-            background: var(--accent-teal);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            transition: all var(--transition-fast);
-        }
-
-        .next-button:hover {
-            background: #1AB0B0;
-            transform: translateY(-1px);
-        }
-
-        /* Utility Classes */
-        .text-orange {
-            color: var(--accent-orange);
-        }
-
-        .text-teal {
-            color: var(--accent-teal);
-        }
-
-        @media (max-width: 768px) {
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-actions {
-                display: none;
-            }
-            
-            .page-title h1 {
-                font-size: 28px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-text">Velocity<span>QA</span></div>
-            </a>
-            <div class="header-actions">
-                <button class="theme-toggle" aria-label="Toggle dark/light mode">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
-                        <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
-                    </svg>
-                </button>
-                <a href="index.html" class="header-link">Home</a>
-                <a href="packages.html" class="header-link">Testing Packages</a>
-                <a href="blog.html" class="header-link">Blog</a>
-                <a href="contact.html" class="header-button">Contact Us</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <div class="page-title">
-            <h1>Professional QA Resources</h1>
-            <p>A collection of high-quality test templates, checklists, and methodologies to improve your testing process and deliver exceptional software.</p>
-        </div>
-
-        <div class="search-container">
-            <form class="search-form">
-                <input type="text" id="search-input" class="search-input" placeholder="Search for templates, checklists, or keywords...">
-                <button type="submit" id="search-button" class="search-button">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
-            </form>
-        </div>
-
-        <div class="categories">
-            <button class="category-button active" data-category="all">All Resources</button>
-            <button class="category-button" data-category="test-plans">Test Plans</button>
-            <button class="category-button" data-category="test-cases">Test Cases</button>
-            <button class="category-button" data-category="checklists">Checklists</button>
-            <button class="category-button" data-category="templates">Templates</button>
-            <button class="category-button" data-category="methodologies">Methodologies</button>
-        </div>
-
-        <!-- Test Plans Category -->
-        <section class="resource-category" data-category="test-plans">
-            <div class="category-header">
-                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                 </svg>
-                <h2>Test Planning Resources</h2>
+                <h2>QA Methodologies</h2>
             </div>
 
             <div class="resource-grid">
-                <!-- Comprehensive Test Plan Template -->
+                <!-- Developer-Led Testing Guide -->
                 <article class="resource-card">
                     <div class="resource-header">
-                        <h3 class="resource-title">Comprehensive Test Plan Template</h3>
-                        <p class="resource-description">A detailed test plan template suitable for complex applications, covering all aspects of the testing lifecycle.</p>
+                        <h3 class="resource-title">Developer-Led Testing Guide</h3>
+                        <p class="resource-description">A practical guide for developers to effectively test their own code and catch bugs before passing to formal QA, increasing overall quality.</p>
                         <div class="resource-tags">
-                            <span class="resource-tag">Testing Strategy</span>
-                            <span class="resource-tag">Documentation</span>
+                            <span class="resource-tag">Developers</span>
+                            <span class="resource-tag">Best Practices</span>
                         </div>
                     </div>
 
-                    <div class="resource-preview" id="test-plan-preview">
-                        <pre># COMPREHENSIVE TEST PLAN TEMPLATE
+                    <div class="resource-preview" id="dev-testing-preview">
+                        <pre># DEVELOPER-LED TESTING GUIDE
 
-## 1. INTRODUCTION
-- 1.1 Purpose
-- 1.2 Scope
-- 1.3 References
-- 1.4 Definitions & Acronyms
+## INTRODUCTION
+This guide helps developers implement effective testing practices into their daily workflow to catch bugs early and deliver higher quality code.
 
-## 2. TEST STRATEGY
-- 2.1 Testing Objectives
-- 2.2 Testing Approach
-  - 2.2.1 Levels of Testing
-  - 2.2.2 Testing Types
-  - 2.2.3 Entry & Exit Criteria
-- 2.3 Testing Environment
-  - 2.3.1 Hardware Requirements
-  - 2.3.2 Software Requirements
-  - 2.3.3 Network Configuration
-- 2.4 Test Data Strategy
-- 2.5 Testing Tools
+## WHY DEVELOPER TESTING MATTERS
+- Catches bugs when they're cheapest to fix (during development)
+- Reduces back-and-forth with QA team
+- Improves code quality and maintainability
+- Saves time in the overall development cycle
+- Builds knowledge of edge cases and failure modes
 
-## 3. TEST ORGANIZATION
-- 3.1 Team Structure & Responsibilities
-- 3.2 Resource Plan
-- 3.3 Training Requirements</pre>
-                        <button class="toggle-preview" data-id="test-plan-preview">Show More</button>
+## EFFECTIVE TESTING MINDSET
+### Switch Contexts
+The most important skill in developer testing is the ability to mentally switch from a builder mindset ("make it work") to a tester mindset ("break it if possible").
+
+### Techniques for Context Switching:
+1. Take a short break after implementation
+2. Approach testing as if you didn't write the code
+3. Ask: "What assumptions did I make while coding?"
+4. Consider: "What could users do that I didn't expect?"</pre>
+                        <button class="toggle-preview" data-id="dev-testing-preview">Show More</button>
                     </div>
 
                     <div class="resource-actions">
@@ -959,62 +46,62 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                <span>15 min setup</span>
+                                <span>15 min read</span>
                             </div>
                             <div class="resource-meta-item">
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>1,240 Uses</span>
+                                <span>New</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="comprehensive-test-plan">
+                        <button class="resource-button" data-template="dev-testing-guide">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Customize Template
+                            Download Guide
                         </button>
                     </div>
                 </article>
 
-                <!-- Risk-Based Test Plan Template -->
+                <!-- 5-Minute Test Strategy Framework -->
                 <article class="resource-card">
                     <div class="resource-header">
-                        <h3 class="resource-title">Risk-Based Test Plan Template</h3>
-                        <p class="resource-description">A focused test plan template that prioritizes testing based on risk assessment for critical systems.</p>
+                        <h3 class="resource-title">5-Minute Test Strategy Framework</h3>
+                        <p class="resource-description">A rapid-planning approach for creating effective test strategies when time is limited, focusing on risk assessment and high-impact testing.</p>
                         <div class="resource-tags">
-                            <span class="resource-tag">Risk Assessment</span>
-                            <span class="resource-tag">Prioritization</span>
+                            <span class="resource-tag">Rapid Planning</span>
+                            <span class="resource-tag">Strategy</span>
                         </div>
                     </div>
 
-                    <div class="resource-preview" id="risk-plan-preview">
-                        <pre># RISK-BASED TEST PLAN TEMPLATE
+                    <div class="resource-preview" id="test-strategy-preview">
+                        <pre># 5-MINUTE TEST STRATEGY FRAMEWORK
 
-## 1. INTRODUCTION
-- 1.1 Purpose
-- 1.2 Scope
-- 1.3 References
+## THE CHALLENGE
+In fast-paced environments, there's rarely time to create detailed test plans. This framework helps you quickly develop a focused testing strategy that:
+- Identifies highest-risk areas
+- Maximizes test coverage with limited resources
+- Ensures critical issues won't reach production
 
-## 2. RISK ASSESSMENT METHODOLOGY
-- 2.1 Risk Identification Process
-- 2.2 Risk Categorization
-  - 2.2.1 Business Impact Categories
-  - 2.2.2 Probability Assessment
-- 2.3 Risk Matrix & Scoring
-- 2.4 Risk Prioritization Framework
+## THE 5-MINUTE PROCESS
 
-## 3. RISK REGISTER
-- 3.1 Feature/Component Breakdown
-- 3.2 Risk Assessment Table
-  - Component/Feature
-  - Potential Failure Mode
-  - Business Impact (1-5)
-  - Probability (1-5)
-  - Risk Score
-  - Risk Priority
-- 3.3 Risk Visualization</pre>
-                        <button class="toggle-preview" data-id="risk-plan-preview">Show More</button>
+### MINUTE 1: Define Business Risk
+Answer these questions:
+1. What's the worst thing that could happen if this breaks?
+2. Which features are most visible to users/customers?
+3. Which areas impact revenue/data integrity?
+
+List the top 3 areas that emerged from these questions.
+
+### MINUTE 2: Consider Technical Risk
+For each high-business-risk area, consider:
+1. What changed recently in this area?
+2. Which parts have complex code/logic?
+3. Which parts have been buggy in the past?
+
+Add any new areas that emerged to your high-risk list.</pre>
+                        <button class="toggle-preview" data-id="test-strategy-preview">Show More</button>
                     </div>
 
                     <div class="resource-actions">
@@ -1023,283 +110,297 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                <span>20 min setup</span>
+                                <span>10 min read</span>
                             </div>
                             <div class="resource-meta-item">
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>895 Uses</span>
+                                <span>New</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="risk-based-test-plan">
+                        <button class="resource-button" data-template="test-strategy-framework">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Customize Template
+                            Download Framework
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Quality Gates for Startups -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Quality Gates for Startups</h3>
+                        <p class="resource-description">A lightweight implementation of quality checkpoints throughout the development process that prevents major issues without slowing down delivery.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Process</span>
+                            <span class="resource-tag">Agile</span>
+                            <span class="resource-tag">Startup</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="quality-gates-preview">
+                        <pre># QUALITY GATES FOR STARTUPS
+
+## WHAT ARE QUALITY GATES?
+Quality gates are lightweight checkpoints in the development process that validate quality criteria before work proceeds to the next stage. Unlike heavyweight processes, these are designed to:
+
+- Take minimal time to implement
+- Focus only on critical quality aspects
+- Adapt to changing priorities
+- Improve quality without adding bureaucracy
+
+## IMPLEMENTATION GUIDE
+
+### GATE 1: REQUIREMENTS REVIEW
+**When:** Before development starts
+**Time Required:** 15-30 minutes
+**Who:** Product Owner, Tech Lead, optional QA representative
+
+**Key Questions:**
+1. Are acceptance criteria clear and testable?
+2. Are edge cases and error scenarios defined?
+3. Are there any security or performance implications?
+4. Is the scope clear and appropriately sized?
+
+**Output:** Refined user story with clear acceptance criteria</pre>
+                        <button class="toggle-preview" data-id="quality-gates-preview">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>20 min read</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>New</span>
+                            </div>
+                        </div>
+                        <button class="resource-button" data-template="quality-gates">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                            Download Guide
                         </button>
                     </div>
                 </article>
             </div>
         </section>
 
-        <!-- Test Cases Category -->
-        <section class="resource-category" data-category="test-cases">
+        <!-- UI/UX Quick Reference -->
+        <section class="resource-category" data-category="uiux">
             <div class="category-header">
                 <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
                 </svg>
-                <h2>Test Case Templates</h2>
+                <h2>UI/UX Quick Reference</h2>
             </div>
 
-            <div class="resource-grid">
-                <!-- Functional Test Case Template -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">Functional Test Case Template</h3>
-                        <p class="resource-description">A comprehensive test case template for functional testing, including detailed steps, preconditions, and expected results.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Functional Testing</span>
-                            <span class="resource-tag">Documentation</span>
-                        </div>
-                    </div>
+            <div class="uiux-reference">
+                <div class="uiux-header">
+                    <h3 class="uiux-title">UI/UX Visual Verification Guide</h3>
+                    <p class="uiux-description">A reference for QA professionals and developers to verify visual quality and consistency in user interfaces across platforms and devices.</p>
+                </div>
 
-                    <div class="resource-preview" id="func-test-preview">
-                        <pre># FUNCTIONAL TEST CASE TEMPLATE
+                <div class="uiux-tabs">
+                    <button class="uiux-tab active" data-content="visual-consistency">Visual Consistency</button>
+                    <button class="uiux-tab" data-content="interactive-elements">Interactive Elements</button>
+                    <button class="uiux-tab" data-content="responsive-design">Responsive Design</button>
+                </div>
 
-## TEST CASE METADATA
-| Field                | Value                                      |
-|----------------------|--------------------------------------------|
-| Test Case ID         | [TCID-1234]                               |
-| Test Case Name       | [Brief descriptive name]                  |
-| Module/Feature       | [Module or feature being tested]          |
-| Created By           | [Author name]                             |
-| Creation Date        | [YYYY-MM-DD]                              |
-| Last Modified By     | [Editor name]                             |
-| Last Modified Date   | [YYYY-MM-DD]                              |
-| Priority             | [Critical/High/Medium/Low]                |
-| Test Type            | [Functional/Regression/Smoke/etc.]        |
-| Automation Status    | [Automated/Not Automated/Planned]         |
-
-## TEST CASE DETAILS
-
-### Objectives
-[Clear statement of what this test case is verifying]</pre>
-                        <button class="toggle-preview" data-id="func-test-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>5 min setup</span>
+                <div class="uiux-content active" id="visual-consistency">
+                    <div class="uiux-grid">
+                        <!-- Spacing Example -->
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Spacing Consistency</div>
+                                <div class="uiux-example-label uiux-correct">Correct</div>
                             </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                </svg>
-                                <span>1,782 Uses</span>
+                            <div class="uiux-example-content">
+                                <div class="spacing-example-correct">
+                                    <div class="spacing-block"></div>
+                                    <div class="spacing-block"></div>
+                                    <div class="spacing-block"></div>
+                                </div>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="functional-test-case">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Customize Template
-                        </button>
-                    </div>
-                </article>
 
-                <!-- API Test Case Template -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">API Test Case Template</h3>
-                        <p class="resource-description">A specialized test case template for API testing, including request details, response validation, and error scenarios.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">API Testing</span>
-                            <span class="resource-tag">Technical</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="api-test-preview">
-                        <pre># API TEST CASE TEMPLATE
-
-## TEST CASE METADATA
-| Field                | Value                                      |
-|----------------------|--------------------------------------------|
-| Test Case ID         | [API-TCID-1234]                           |
-| Test Case Name       | [Brief descriptive name]                  |
-| API/Endpoint         | [API name or endpoint path]               |
-| Created By           | [Author name]                             |
-| Creation Date        | [YYYY-MM-DD]                              |
-| Last Modified By     | [Editor name]                             |
-| Last Modified Date   | [YYYY-MM-DD]                              |
-| Priority             | [Critical/High/Medium/Low]                |
-| Automation Status    | [Automated/Not Automated/Planned]         |
-
-## API DETAILS
-
-### API Specification
-- **Method:** [GET/POST/PUT/DELETE/etc.]
-- **Endpoint:** [Full URL or path]
-- **Description:** [Brief description of API functionality]</pre>
-                        <button class="toggle-preview" data-id="api-test-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>10 min setup</span>
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Spacing Inconsistency</div>
+                                <div class="uiux-example-label uiux-incorrect">Incorrect</div>
                             </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                </svg>
-                                <span>1,145 Uses</span>
+                            <div class="uiux-example-content">
+                                <div class="spacing-example-incorrect">
+                                    <div class="spacing-block"></div>
+                                    <div class="spacing-block"></div>
+                                    <div class="spacing-block"></div>
+                                </div>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="api-test-case">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Customize Template
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
 
-        <!-- Checklists Category -->
-        <section class="resource-category" data-category="checklists">
-            <div class="category-header">
-                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                </svg>
-                <h2>QA Checklists</h2>
-            </div>
-
-            <div class="resource-grid">
-                <!-- Mobile App Testing Checklist -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">Mobile App Testing Checklist</h3>
-                        <p class="resource-description">A comprehensive checklist for testing mobile applications across iOS and Android platforms, covering functionality, usability, and performance.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Mobile</span>
-                            <span class="resource-tag">iOS</span>
-                            <span class="resource-tag">Android</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="mobile-checklist-preview">
-                        <pre># MOBILE APP TESTING CHECKLIST
-
-## INSTALLATION & SETUP
-- [ ] App installs correctly on clean device
-- [ ] App installs as update over previous version
-- [ ] App can be uninstalled properly
-- [ ] Installation size is within acceptable limits
-- [ ] App permissions are appropriate and clearly explained
-- [ ] App appears properly in app drawer/home screen
-- [ ] App icon displays correctly in all required resolutions
-
-## FUNCTIONALITY
-- [ ] All features work according to specifications
-- [ ] Required user flows complete successfully
-- [ ] All buttons and controls function properly
-- [ ] Text fields handle input correctly (including validation)
-- [ ] Error messages are clear and helpful
-- [ ] Push notifications display correctly and take user to appropriate screen when tapped
-- [ ] Data is saved correctly when app is closed
-- [ ] Data synchronizes properly with backend services</pre>
-                        <button class="toggle-preview" data-id="mobile-checklist-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>5 min setup</span>
+                        <!-- Alignment Example -->
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Alignment Consistency</div>
+                                <div class="uiux-example-label uiux-correct">Correct</div>
                             </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                </svg>
-                                <span>2,105 Uses</span>
+                            <div class="uiux-example-content">
+                                <div class="alignment-example-correct">
+                                    <div class="alignment-item alignment-item-1"></div>
+                                    <div class="alignment-item alignment-item-2"></div>
+                                    <div class="alignment-item alignment-item-3"></div>
+                                </div>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="mobile-app-checklist">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Customize Template
-                        </button>
-                    </div>
-                </article>
 
-                <!-- Web Accessibility Testing Checklist -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">Web Accessibility Testing Checklist</h3>
-                        <p class="resource-description">A detailed WCAG 2.1 compliance checklist for ensuring web applications meet accessibility standards.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Accessibility</span>
-                            <span class="resource-tag">WCAG</span>
-                            <span class="resource-tag">Compliance</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="accessibility-checklist-preview">
-                        <pre># WEB ACCESSIBILITY TESTING CHECKLIST (WCAG 2.1)
-
-## PERCEIVABLE
-
-### Text Alternatives
-- [ ] **1.1.1 Non-text Content (A)** - All images have appropriate alt text
-- [ ] Decorative images have empty alt attributes or are CSS backgrounds
-- [ ] Complex images (charts, diagrams) have extended descriptions
-- [ ] Form input fields have associated text labels
-- [ ] Audio and video have text alternatives (transcripts, captions)
-
-### Time-based Media
-- [ ] **1.2.1 Audio-only and Video-only (A)** - Pre-recorded audio-only and video-only content has alternatives
-- [ ] **1.2.2 Captions (A)** - Captions provided for all pre-recorded audio
-- [ ] **1.2.3 Audio Description or Media Alternative (A)** - Audio description or alternative provided for video
-- [ ] **1.2.4 Captions (Live) (AA)** - Captions provided for live audio content
-- [ ] **1.2.5 Audio Description (AA)** - Audio description provided for all pre-recorded video</pre>
-                        <button class="toggle-preview" data-id="accessibility-checklist-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>5 min setup</span>
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Alignment Inconsistency</div>
+                                <div class="uiux-example-label uiux-incorrect">Incorrect</div>
                             </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
-                                </svg>
-                                <span>1,876 Uses</span>
+                            <div class="uiux-example-content">
+                                <div class="alignment-example-incorrect">
+                                    <div class="alignment-item alignment-item-1"></div>
+                                    <div class="alignment-item alignment-item-2"></div>
+                                    <div class="alignment-item alignment-item-3"></div>
+                                </div>
                             </div>
                         </div>
-                        <button class="resource-button" data-template="accessibility-checklist">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Customize Template
-                        </button>
                     </div>
-                </article>
+                </div>
+
+                <div class="uiux-content" id="interactive-elements">
+                    <div class="uiux-grid">
+                        <!-- Button States -->
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Button States</div>
+                            </div>
+                            <div class="uiux-example-content">
+                                <div class="button-states">
+                                    <div class="button-state button-state-normal">Normal</div>
+                                    <div class="button-state button-state-hover">Hover</div>
+                                    <div class="button-state button-state-active">Active</div>
+                                    <div class="button-state button-state-disabled">Disabled</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Field States -->
+                        <div class="uiux-example">
+                            <div class="uiux-example-header">
+                                <div class="uiux-example-title">Form Field States</div>
+                            </div>
+                            <div class="uiux-example-content">
+                                <div class="form-field-states">
+                                    <div class="form-field-example">
+                                        <label class="form-field-label">Default State</label>
+                                        <input type="text" class="form-field-input" placeholder="Enter value">
+                                    </div>
+                                    <div class="form-field-example">
+                                        <label class="form-field-label">Focus State</label>
+                                        <input type="text" class="form-field-input focus" placeholder="Enter value">
+                                    </div>
+                                    <div class="form-field-example">
+                                        <label class="form-field-label">Error State</label>
+                                        <input type="text" class="form-field-input error" placeholder="Enter value">
+                                        <div class="form-field-error">This field is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uiux-content" id="responsive-design">
+                    <div class="responsive-example">
+                        <div class="responsive-header">
+                            <div class="responsive-title">Layout Adaptation</div>
+                            <div class="responsive-toggle">
+                                <button class="responsive-button active" data-view="desktop">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                                <button class="responsive-button" data-view="tablet">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                                <button class="responsive-button" data-view="mobile">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="responsive-content active" id="desktop-view">
+                            <div class="responsive-desktop">
+                                <div class="responsive-desktop-sidebar">
+                                    <div class="responsive-placeholder-text"></div>
+                                    <div class="responsive-placeholder-text short"></div>
+                                    <div class="responsive-placeholder-text medium"></div>
+                                    <div class="responsive-placeholder-text short"></div>
+                                </div>
+                                <div class="responsive-desktop-main">
+                                    <div class="responsive-placeholder-text medium"></div>
+                                    <div class="responsive-placeholder-text"></div>
+                                    <div class="responsive-placeholder-text long"></div>
+                                    <div class="responsive-placeholder-text medium"></div>
+                                    <div class="responsive-placeholder-text"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="responsive-content" id="tablet-view">
+                            <div class="responsive-tablet">
+                                <div class="responsive-tablet-header">
+                                    <div class="responsive-placeholder-text short"></div>
+                                </div>
+                                <div class="responsive-tablet-content">
+                                    <div class="responsive-tablet-sidebar">
+                                        <div class="responsive-placeholder-text short"></div>
+                                        <div class="responsive-placeholder-text short"></div>
+                                        <div class="responsive-placeholder-text short"></div>
+                                    </div>
+                                    <div class="responsive-tablet-main">
+                                        <div class="responsive-placeholder-text medium"></div>
+                                        <div class="responsive-placeholder-text"></div>
+                                        <div class="responsive-placeholder-text long"></div>
+                                        <div class="responsive-placeholder-text medium"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="responsive-content" id="mobile-view">
+                            <div class="responsive-mobile">
+                                <div class="responsive-mobile-header">
+                                    <div class="responsive-placeholder-text short"></div>
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                    </svg>
+                                </div>
+                                <div class="responsive-mobile-content">
+                                    <div class="responsive-placeholder-text medium"></div>
+                                    <div class="responsive-placeholder-text long"></div>
+                                    <div class="responsive-placeholder-text"></div>
+                                    <div class="responsive-placeholder-text medium"></div>
+                                    <div class="responsive-placeholder-text long"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -1426,7 +527,7 @@
     </footer>
 
     <!-- Add the script tags for JavaScript files -->
-    <script src="js/toolkit-functions.js"></script>
+    <script src="js/qa-toolkit-specific-fixed.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log("QA Toolkit JS loading...");
@@ -1465,7 +566,12 @@
                     // Show/hide categories based on selection
                     if (category === 'all') {
                         resourceCategories.forEach(cat => cat.style.display = 'block');
+                        document.querySelector('.uiux-reference').style.display = 'block';
+                    } else if (category === 'uiux') {
+                        resourceCategories.forEach(cat => cat.style.display = 'none');
+                        document.querySelector('.uiux-reference').style.display = 'block';
                     } else {
+                        document.querySelector('.uiux-reference').style.display = 'none';
                         resourceCategories.forEach(cat => {
                             if (cat.getAttribute('data-category') === category) {
                                 cat.style.display = 'block';
@@ -1474,6 +580,42 @@
                             }
                         });
                     }
+                });
+            });
+            
+            // UI/UX Tabs functionality
+            const uiuxTabs = document.querySelectorAll('.uiux-tab');
+            const uiuxContents = document.querySelectorAll('.uiux-content');
+            
+            uiuxTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const contentId = this.getAttribute('data-content');
+                    
+                    // Remove active class from all tabs and contents
+                    uiuxTabs.forEach(t => t.classList.remove('active'));
+                    uiuxContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(contentId).classList.add('active');
+                });
+            });
+            
+            // Responsive view toggle
+            const responsiveButtons = document.querySelectorAll('.responsive-button');
+            const responsiveContents = document.querySelectorAll('.responsive-content');
+            
+            responsiveButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const view = this.getAttribute('data-view');
+                    
+                    // Remove active class from all buttons and contents
+                    responsiveButtons.forEach(btn => btn.classList.remove('active'));
+                    responsiveContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(view + '-view').classList.add('active');
                 });
             });
             
@@ -1497,11 +639,24 @@
                     // Reset all resources to visible if search is empty
                     resourceCategories.forEach(cat => cat.style.display = 'block');
                     document.querySelectorAll('.resource-card').forEach(card => card.style.display = 'block');
+                    document.querySelector('.uiux-reference').style.display = 'block';
                     return;
                 }
                 
                 // Make all categories visible initially
                 resourceCategories.forEach(cat => cat.style.display = 'block');
+                
+                // Hide UI/UX reference if not relevant to search
+                const uiuxReference = document.querySelector('.uiux-reference');
+                if (searchTerm.includes('ui') || 
+                    searchTerm.includes('ux') || 
+                    searchTerm.includes('visual') || 
+                    searchTerm.includes('design') ||
+                    searchTerm.includes('interface')) {
+                    uiuxReference.style.display = 'block';
+                } else {
+                    uiuxReference.style.display = 'none';
+                }
                 
                 // Filter resource cards
                 const resourceCards = document.querySelectorAll('.resource-card');
@@ -1535,324 +690,6 @@
                     }
                 });
             }
-            
-            // Template customization functionality
-            const templateModal = document.getElementById('template-modal');
-            const closeModalBtn = document.getElementById('close-modal');
-            const templateButtons = document.querySelectorAll('.resource-button');
-            const templateTitle = document.getElementById('template-title');
-            const templateStructure = document.getElementById('template-structure');
-            const templateForm = document.getElementById('template-form');
-            const templateOutput = document.getElementById('template-output');
-            
-            // Tab navigation
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const tabId = this.id.replace('-tab', '-content');
-                    
-                    // Remove active class from all tabs
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // Next buttons
-            document.getElementById('next-structure').addEventListener('click', function() {
-                document.getElementById('structure-tab').classList.add('completed');
-                document.getElementById('structure-tab').classList.remove('active');
-                document.getElementById('content-tab').classList.add('active');
-                
-                document.getElementById('structure-content').classList.remove('active');
-                document.getElementById('content-content').classList.add('active');
-            });
-            
-            document.getElementById('next-content').addEventListener('click', function() {
-                document.getElementById('content-tab').classList.add('completed');
-                document.getElementById('content-tab').classList.remove('active');
-                document.getElementById('output-tab').classList.add('active');
-                
-                document.getElementById('content-content').classList.remove('active');
-                document.getElementById('output-content').classList.add('active');
-                
-                // Generate output if not already done
-                if (templateOutput.textContent.trim() === '') {
-                    generateOutput();
-                }
-            });
-            
-            // Template data
-            const templates = {
-                'comprehensive-test-plan': {
-                    title: 'Comprehensive Test Plan',
-                    structure: document.getElementById('test-plan-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
-                        { name: 'testingScope', label: 'Testing Scope', type: 'textarea', placeholder: 'Define the scope of testing' },
-                        { name: 'testingObjectives', label: 'Testing Objectives', type: 'textarea', placeholder: 'List your primary testing objectives' },
-                        { name: 'testLevels', label: 'Testing Levels', type: 'textarea', placeholder: 'Unit, Integration, System, etc.' },
-                        { name: 'testTypes', label: 'Testing Types', type: 'textarea', placeholder: 'Functional, Performance, Security, etc.' }
-                    ]
-                },
-                'risk-based-test-plan': {
-                    title: 'Risk-Based Test Plan',
-                    structure: document.getElementById('risk-plan-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
-                        { name: 'riskScope', label: 'Risk Scope', type: 'textarea', placeholder: 'Define which components will be assessed for risk' },
-                        { name: 'impactCategories', label: 'Business Impact Categories', type: 'textarea', placeholder: 'Define your impact categories (e.g., 1-5 scale)' },
-                        { name: 'highRiskAreas', label: 'High Risk Areas', type: 'textarea', placeholder: 'List components with highest risk' }
-                    ]
-                },
-                'functional-test-case': {
-                    title: 'Functional Test Case Template',
-                    structure: document.getElementById('func-test-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'testCaseId', label: 'Test Case ID', type: 'text', placeholder: 'TCID-1234' },
-                        { name: 'testCaseName', label: 'Test Case Name', type: 'text', placeholder: 'Enter descriptive name' },
-                        { name: 'moduleFeature', label: 'Module/Feature', type: 'text', placeholder: 'Module being tested' },
-                        { name: 'objectives', label: 'Objectives', type: 'textarea', placeholder: 'What this test case is verifying' },
-                        { name: 'testSteps', label: 'Test Steps', type: 'textarea', placeholder: 'Step-by-step procedure' },
-                        { name: 'expectedResults', label: 'Expected Results', type: 'textarea', placeholder: 'What should happen when steps are followed' }
-                    ]
-                },
-                'api-test-case': {
-                    title: 'API Test Case Template',
-                    structure: document.getElementById('api-test-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'testCaseId', label: 'Test Case ID', type: 'text', placeholder: 'API-TCID-1234' },
-                        { name: 'testCaseName', label: 'Test Case Name', type: 'text', placeholder: 'Enter descriptive name' },
-                        { name: 'apiEndpoint', label: 'API/Endpoint', type: 'text', placeholder: 'API name or endpoint path' },
-                        { name: 'method', label: 'HTTP Method', type: 'text', placeholder: 'GET/POST/PUT/DELETE/etc.' },
-                        { name: 'requestBody', label: 'Request Body', type: 'textarea', placeholder: 'JSON request body example' },
-                        { name: 'expectedResponse', label: 'Expected Response', type: 'textarea', placeholder: 'Expected response format and values' }
-                    ]
-                },
-                'mobile-app-checklist': {
-                    title: 'Mobile App Testing Checklist',
-                    structure: document.getElementById('mobile-checklist-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'appName', label: 'App Name', type: 'text', placeholder: 'Enter app name' },
-                        { name: 'platforms', label: 'Target Platforms', type: 'text', placeholder: 'iOS, Android, etc.' },
-                        { name: 'deviceList', label: 'Test Device List', type: 'textarea', placeholder: 'List specific devices to test on' },
-                        { name: 'customChecks', label: 'Custom Checks', type: 'textarea', placeholder: 'Add any app-specific checks' }
-                    ]
-                },
-                'accessibility-checklist': {
-                    title: 'Web Accessibility Testing Checklist',
-                    structure: document.getElementById('accessibility-checklist-preview').querySelector('pre').textContent,
-                    fields: [
-                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
-                        { name: 'conformanceLevel', label: 'WCAG Conformance Level', type: 'text', placeholder: 'A, AA, or AAA' },
-                        { name: 'primaryBrowsers', label: 'Primary Browsers', type: 'text', placeholder: 'Chrome, Firefox, Safari, etc.' },
-                        { name: 'screenReaders', label: 'Screen Readers to Test', type: 'text', placeholder: 'NVDA, JAWS, VoiceOver, etc.' },
-                        { name: 'customChecks', label: 'Custom Accessibility Checks', type: 'textarea', placeholder: 'Add any organization-specific checks' }
-                    ]
-                }
-            };
-            
-            // Open template modal
-            templateButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const templateId = this.getAttribute('data-template');
-                    const template = templates[templateId];
-                    
-                    if (template) {
-                        // Set template data
-                        templateTitle.textContent = template.title;
-                        templateStructure.textContent = template.structure;
-                        
-                        // Clear previous form and output
-                        templateForm.innerHTML = '';
-                        templateOutput.textContent = '';
-                        
-                        // Create form fields
-                        template.fields.forEach(field => {
-                            const formGroup = document.createElement('div');
-                            formGroup.className = 'form-group';
-                            
-                            const label = document.createElement('label');
-                            label.className = 'form-label';
-                            label.setAttribute('for', field.name);
-                            label.textContent = field.label;
-                            
-                            let input;
-                            if (field.type === 'textarea') {
-                                input = document.createElement('textarea');
-                            } else {
-                                input = document.createElement('input');
-                                input.type = field.type;
-                            }
-                            
-                            input.className = 'form-input';
-                            input.id = field.name;
-                            input.name = field.name;
-                            input.placeholder = field.placeholder;
-                            
-                            formGroup.appendChild(label);
-                            formGroup.appendChild(input);
-                            templateForm.appendChild(formGroup);
-                        });
-                        
-                        // Reset tabs
-                        tabButtons.forEach(btn => btn.classList.remove('active', 'completed'));
-                        tabContents.forEach(content => content.classList.remove('active'));
-                        document.getElementById('structure-tab').classList.add('active');
-                        document.getElementById('structure-content').classList.add('active');
-                        
-                        // Store current template ID
-                        templateForm.setAttribute('data-template', templateId);
-                        
-                        // Show modal
-                        templateModal.classList.add('active');
-                    }
-                });
-            });
-            
-            // Close modal
-            closeModalBtn.addEventListener('click', function() {
-                templateModal.classList.remove('active');
-            });
-            
-            // Close modal on outside click
-            templateModal.addEventListener('click', function(event) {
-                if (event.target === templateModal) {
-                    templateModal.classList.remove('active');
-                }
-            });
-            
-            // Generate output
-            const generateBtn = document.getElementById('generate-output');
-            generateBtn.addEventListener('click', generateOutput);
-            
-            function generateOutput() {
-                const templateId = templateForm.getAttribute('data-template');
-                const template = templates[templateId];
-                
-                if (!template) return;
-                
-                let output = template.structure;
-                
-                // Replace placeholders with form values
-                template.fields.forEach(field => {
-                    const input = document.getElementById(field.name);
-                    const value = input.value.trim() || field.placeholder;
-                    
-                    // Based on field name, replace appropriate placeholders in the structure
-                    switch(field.name) {
-                        case 'projectName':
-                            output = output.replace(/\[Project Name\]/g, value);
-                            break;
-                        case 'testCaseId':
-                            output = output.replace(/\[(?:API-)?TCID-\d+\]/g, value);
-                            break;
-                        case 'testCaseName':
-                            output = output.replace(/\[Brief descriptive name\]/g, value);
-                            break;
-                        case 'moduleFeature':
-                            output = output.replace(/\[Module or feature being tested\]/g, value);
-                            break;
-                        case 'apiEndpoint':
-                            output = output.replace(/\[API name or endpoint path\]/g, value);
-                            break;
-                        case 'method':
-                            output = output.replace(/\[GET\/POST\/PUT\/DELETE\/etc\.\]/g, value);
-                            break;
-                        case 'testingScope':
-                            output = output.replace(/- 1\.2 Scope/g, `- 1.2 Scope\n  ${value}`);
-                            break;
-                        case 'testingObjectives':
-                            output = output.replace(/- 2\.1 Testing Objectives/g, `- 2.1 Testing Objectives\n  ${value}`);
-                            break;
-                        case 'testLevels':
-                            output = output.replace(/  - 2\.2\.1 Levels of Testing/g, `  - 2.2.1 Levels of Testing\n    ${value}`);
-                            break;
-                        case 'testTypes':
-                            output = output.replace(/  - 2\.2\.2 Testing Types/g, `  - 2.2.2 Testing Types\n    ${value}`);
-                            break;
-                        case 'objectives':
-                            output = output.replace(/\[Clear statement of what this test case is verifying\]/g, value);
-                            break;
-                        case 'testSteps':
-                            // Add test steps section if not present
-                            if (!output.includes('### Test Steps')) {
-                                output += '\n\n### Test Steps\n' + value;
-                            }
-                            break;
-                        case 'expectedResults':
-                            // Add expected results section if not present
-                            if (!output.includes('### Expected Results')) {
-                                output += '\n\n### Expected Results\n' + value;
-                            }
-                            break;
-                        case 'requestBody':
-                            // Add request body section if not present
-                            if (!output.includes('### Request Body')) {
-                                output += '\n\n### Request Body\n```json\n' + value + '\n```';
-                            }
-                            break;
-                        case 'expectedResponse':
-                            // Add expected response section if not present
-                            if (!output.includes('### Expected Response')) {
-                                output += '\n\n### Expected Response\n```json\n' + value + '\n```';
-                            }
-                            break;
-                        case 'customChecks':
-                            // Add custom checks section at the end
-                            output += '\n\n## CUSTOM CHECKS\n' + value;
-                            break;
-                        // Add more cases as needed for other fields
-                    }
-                });
-                
-                templateOutput.textContent = output;
-                
-                // Show notification
-                showNotification('Template generated successfully!');
-            }
-            
-            // Copy to clipboard functionality
-            const copyBtn = document.getElementById('copy-output');
-            copyBtn.addEventListener('click', function() {
-                const output = templateOutput.textContent;
-                
-                if (!output) {
-                    showNotification('Nothing to copy. Generate output first.', 'error');
-                    return;
-                }
-                
-                navigator.clipboard.writeText(output)
-                    .then(() => {
-                        copyBtn.innerHTML = `
-                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Copied!
-                        `;
-                        copyBtn.classList.add('copied');
-                        
-                        setTimeout(() => {
-                            copyBtn.innerHTML = `
-                                <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
-                                </svg>
-                                Copy to Clipboard
-                            `;
-                            copyBtn.classList.remove('copied');
-                        }, 2000);
-                        
-                        showNotification('Copied to clipboard!');
-                    })
-                    .catch(() => {
-                        showNotification('Failed to copy to clipboard', 'error');
-                    });
-            });
             
             // Notification function
             function showNotification(message, type = 'success') {
@@ -1901,6 +738,14 @@
                         notification.remove();
                     }, 300);
                 }, 3000);
+            }
+            
+            // Coming soon notification
+            const notifyButton = document.querySelector('.notify-button');
+            if (notifyButton) {
+                notifyButton.addEventListener('click', () => {
+                    showNotification('You will be notified when the Test Suites feature is available!');
+                });
             }
             
             console.log("QA Toolkit JS loaded successfully!");
