@@ -12,8 +12,10 @@
     <!-- QA Toolkit Specific Styles -->
     <link rel="stylesheet" href="css/qa-toolkit-specific.css">
     
-    <!-- QA Toolkit Dark Theme Override -->
-    <link rel="stylesheet" href="css/qa-toolkit-dark-theme.css">
+    <!-- External Libraries for PDF Generation and Downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
@@ -896,7 +898,33 @@ Quality gates are lightweight checkpoints in the development process that valida
             </div>
             
             <div id="content-content" class="tab-content">
+                <!-- Branding Customization Section -->
+                <div class="form-group">
+                    <label for="company-name">Your Company Name</label>
+                    <input type="text" id="company-name" class="form-input" placeholder="Leave blank to use VelocityQA">
+                </div>
+                <div class="form-group">
+                    <label for="company-tagline">Your Company Tagline</label>
+                    <input type="text" id="company-tagline" class="form-input" placeholder="Optional tagline">
+                </div>
+                <div class="form-group">
+                    <label for="heading-color">Heading Color</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="color" id="heading-color" value="#FF6B00" style="margin-right: 8px;">
+                        <input type="text" id="heading-color-hex" class="form-input" value="#FF6B00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subheading-color">Subheading Color</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="color" id="subheading-color" value="#20C5C6" style="margin-right: 8px;">
+                        <input type="text" id="subheading-color-hex" class="form-input" value="#20C5C6">
+                    </div>
+                </div>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1);">
                 <p>Fill in the details for your template below:</p>
+                
                 <form id="template-form" class="template-content-form">
                     <!-- Form fields will be dynamically generated based on the template -->
                 </form>
@@ -927,6 +955,20 @@ Quality gates are lightweight checkpoints in the development process that valida
                         </svg>
                         Copy to Clipboard
                     </button>
+                    
+                    <div style="display: flex; gap: 10px; margin-left: 10px;">
+                        <select id="download-format" class="form-input" style="width: auto;">
+                            <option value="md">Markdown (.md)</option>
+                            <option value="txt">Text (.txt)</option>
+                            <option value="pdf">PDF (.pdf)</option>
+                        </select>
+                        <button id="download-template" class="download-button">
+                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -973,6 +1015,7 @@ Quality gates are lightweight checkpoints in the development process that valida
                 <div class="footer-column">
                     <h3>VelocityQA</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
+                    <p><a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a></p>
                 </div>
 
                 <div class="footer-column">
