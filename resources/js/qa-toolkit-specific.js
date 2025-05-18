@@ -1,1 +1,1687 @@
-document.addEventListener(\"DOMContentLoaded\", () => {\n  console.log(\"QA Toolkit Fixed JS loading...\")\n\n  // Template modal elements\n  const templateModal = document.getElementById(\"template-modal\")\n  const closeModalBtn = document.getElementById(\"close-modal\")\n  const templateTitle = document.getElementById(\"template-title\")\n  const templateStructure = document.getElementById(\"template-structure\")\n  const templateForm = document.getElementById(\"template-form\")\n  const templateOutput = document.getElementById(\"template-output\")\n\n  // Tab navigation in template modal\n  const structureTab = document.getElementById(\"structure-tab\")\n  const contentTab = document.getElementById(\"content-tab\")\n  const outputTab = document.getElementById(\"output-tab\")\n  const structureContent = document.getElementById(\"structure-content\")\n  const contentContent = document.getElementById(\"content-content\")\n  const outputContent = document.getElementById(\"output-content\")\n\n  // Buttons in template modal\n  const nextStructureBtn = document.getElementById(\"next-structure\")\n  const nextContentBtn = document.getElementById(\"next-content\")\n  const generateOutputBtn = document.getElementById(\"generate-output\")\n  const copyOutputBtn = document.getElementById(\"copy-output\")\n  const downloadBtn = document.getElementById(\"download-template\")\n  const downloadFormatSelect = document.getElementById(\"download-format\")\n\n  // Category buttons functionality\n  const categoryButtons = document.querySelectorAll(\".category-button\")\n  const resourceCategories = document.querySelectorAll(\".resource-category\")\n\n  categoryButtons.forEach((button) => {\n    button.addEventListener(\"click\", function () {\n      console.log(\"Category button clicked:\", this.getAttribute(\"data-category\"))\n      const category = this.getAttribute(\"data-category\")\n\n      // Remove active class from all buttons\n      categoryButtons.forEach((btn) => btn.classList.remove(\"active\"))\n\n      // Add active class to clicked button\n      this.classList.add(\"active\")\n\n      // Show/hide categories based on selection\n      if (category === \"all\") {\n        resourceCategories.forEach((cat) => (cat.style.display = \"block\"))\n      } else {\n        resourceCategories.forEach((cat) => {\n          if (cat.getAttribute(\"data-category\") === category) {\n            cat.style.display = \"block\"\n          } else {\n            cat.style.display = \"none\"\n          }\n        })\n      }\n    })\n  })\n\n  // Toggle preview functionality\n  const toggleButtons = document.querySelectorAll(\".toggle-preview\")\n  toggleButtons.forEach((button) => {\n    button.addEventListener(\"click\", function () {\n      console.log(\"Toggle preview button clicked:\", this.getAttribute(\"data-id\"))\n      const previewId = this.getAttribute(\"data-id\")\n      togglePreview(previewId)\n    })\n  })\n\n  // Function to toggle preview\n  function togglePreview(previewId) {\n    const previewElement = document.getElementById(previewId)\n\n    if (!previewElement) {\n      console.error(`Preview element with ID ${previewId} not found`)\n      return\n    }\n\n    if (previewElement.classList.contains(\"expanded\")) {\n      previewElement.classList.remove(\"expanded\")\n      document.querySelector(`[data-id=\"${previewId}\"]`).textContent = \"Show More\"\n    } else {\n      previewElement.classList.add(\"expanded\")\n      document.querySelector(`[data-id=\"${previewId}\"]`).textContent = \"Show Less\"\n    }\n  }\n\n  // UI/UX Tabs functionality\n  const uiuxTabs = document.querySelectorAll(\".uiux-tab\")\n  const uiuxContents = document.querySelectorAll(\".uiux-content\")\n\n  uiuxTabs.forEach((tab) => {\n    tab.addEventListener(\"click\", function () {\n      const contentId = this.getAttribute(\"data-content\")\n\n      // Remove active class from all tabs and contents\n      uiuxTabs.forEach((t) => t.classList.remove(\"active\"))\n      uiuxContents.forEach((c) => c.classList.remove(\"active\"))\n\n      // Add active class to clicked tab and corresponding content\n      this.classList.add(\"active\")\n      document.getElementById(contentId).classList.add(\"active\")\n    })\n  })\n\n  // Responsive view toggle\n  const responsiveButtons = document.querySelectorAll(\".responsive-button\")\n  const responsiveContents = document.querySelectorAll(\".responsive-content\")\n\n  responsiveButtons.forEach((button) => {\n    button.addEventListener(\"click\", function () {\n      const view = this.getAttribute(\"data-view\")\n\n      // Remove active class from all buttons and contents\n      responsiveButtons.forEach((btn) => btn.classList.remove(\"active\"))\n      responsiveContents.forEach((content) => content.classList.remove(\"active\"))\n\n      // Add active class to clicked button and corresponding content\n      this.classList.add(\"active\")\n      document.getElementById(view + \"-view\").classList.add(\"active\")\n    })\n  })\n\n  // Search functionality\n  const searchForm = document.querySelector(\".search-form\")\n  const searchInput = document.getElementById(\"search-input\")\n\n  if (searchForm) {\n    searchForm.addEventListener(\"submit\", (event) => {\n      event.preventDefault()\n      performSearch()\n    })\n  }\n\n  function performSearch() {\n    if (!searchInput) return\n\n    const searchTerm = searchInput.value.toLowerCase().trim()\n    console.log(\"Searching for:\", searchTerm)\n\n    if (searchTerm === \"\") {\n      // Reset all resources to visible if search is empty\n      resourceCategories.forEach((cat) => (cat.style.display = \"block\"))\n      document.querySelectorAll(\".resource-card\").forEach((card) => (card.style.display = \"block\"))\n      return\n    }\n\n    // Make all categories visible initially\n    resourceCategories.forEach((cat) => (cat.style.display = \"block\"))\n\n    // Filter resource cards\n    const resourceCards = document.querySelectorAll(\".resource-card\")\n    const hasVisibleCards = {}\n\n    resourceCards.forEach((card) => {\n      const title = card.querySelector(\".resource-title\").textContent.toLowerCase()\n      const description = card.querySelector(\".resource-description\").textContent.toLowerCase()\n      const tags = Array.from(card.querySelectorAll(\".resource-tag\"))\n        .map((tag) => tag.textContent.toLowerCase())\n        .join(\" \")\n\n      const categorySection = card.closest(\".resource-category\")\n      const categoryId = categorySection.getAttribute(\"data-category\")\n\n      if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {\n        card.style.display = \"block\"\n        hasVisibleCards[categoryId] = true\n      } else {\n        card.style.display = \"none\"\n      }\n    })\n\n    // Hide categories with no visible cards\n    resourceCategories.forEach((cat) => {\n      const categoryId = cat.getAttribute(\"data-category\")\n      if (!hasVisibleCards[categoryId]) {\n        cat.style.display = \"none\"\n      }\n    })\n  }\n\n  // Template data storage\n  const templateData = {\n    \"bug-report-template\": {\n      title: \"Bug Report Template\",\n      structure: `# BUG REPORT TEMPLATE\n\n## BASIC INFORMATION\n**Bug ID:** [Auto-generated or manually assigned]\n**Reported By:** [Your Name]\n**Date Reported:** [YYYY-MM-DD]\n**Priority:** [High/Medium/Low]\n**Severity:** [Critical/Major/Minor/Cosmetic]\n**Status:** [New]\n\n## ENVIRONMENT\n**Device:** [e.g., MacBook Pro, iPhone 13, etc.]\n**OS & Version:** [e.g., Windows 11, iOS 15.4]\n**Browser & Version:** [e.g., Chrome 99.0.4844.51]\n**App Version:** [e.g., 2.4.1]\n**Screen Resolution:** [e.g., 1920x1080]\n\n## DESCRIPTION\n[Provide a clear, concise description of the bug]\n\n## STEPS TO REPRODUCE\n1. [First step]\n2. [Second step]\n3. [Third step]\n...\n\n## EXPECTED BEHAVIOR\n[What should happen when the steps are followed correctly]\n\n## ACTUAL BEHAVIOR\n[What actually happens when the steps are followed]\n\n## ATTACHMENTS\n[Screenshots, videos, logs, or other relevant files]\n\n## ADDITIONAL NOTES\n[Any other information that might be helpful]`,\n      fields: [\n        { id: \"bugId\", label: \"Bug ID\", type: \"text\", placeholder: \"e.g., BUG-123\" },\n        { id: \"reportedBy\", label: \"Reported By\", type: \"text\", placeholder: \"Your Name\" },\n        { id: \"dateReported\", label: \"Date Reported\", type: \"date\" },\n        {\n          id: \"priority\",\n          label: \"Priority\",\n          type: \"select\",\n          options: [\"High\", \"Medium\", \"Low\"],\n        },\n        {\n          id: \"severity\",\n          label: \"Severity\",\n          type: \"select\",\n          options: [\"Critical\", \"Major\", \"Minor\", \"Cosmetic\"],\n        },\n        { id: \"device\", label: \"Device\", type: \"text\", placeholder: \"e.g., MacBook Pro, iPhone 13\" },\n        { id: \"osVersion\", label: \"OS & Version\", type: \"text\", placeholder: \"e.g., Windows 11, iOS 15.4\" },\n        {\n          id: \"browserVersion\",\n          label: \"Browser & Version\",\n          type: \"text\",\n          placeholder: \"e.g., Chrome 99.0.4844.51\",\n        },\n        { id: \"appVersion\", label: \"App Version\", type: \"text\", placeholder: \"e.g., 2.4.1\" },\n        { id: \"description\", label: \"Description\", type: \"textarea\", placeholder: \"Describe the bug in detail\" },\n        {\n          id: \"stepsToReproduce\",\n          label: \"Steps to Reproduce\",\n          type: \"textarea\",\n          placeholder: \"List the steps to reproduce the bug\",\n        },\n        {\n          id: \"expectedBehavior\",\n          label: \"Expected Behavior\",\n          type: \"textarea\",\n          placeholder: \"What should happen\",\n        },\n        {\n          id: \"actualBehavior\",\n          label: \"Actual Behavior\",\n          type: \"textarea\",\n          placeholder: \"What actually happens\",\n        },\n      ],\n    },\n    \"coverage-report-template\": {\n      title: \"Test Coverage Report Template\",\n      structure: `# TEST COVERAGE REPORT\n\n## PROJECT OVERVIEW\n**Project Name:** [Project Name]\n**Version/Sprint:** [Version or Sprint #]\n**Report Date:** [YYYY-MM-DD]\n**Report Prepared By:** [Your Name]\n**Testing Period:** [Start Date] to [End Date]\n\n## EXECUTIVE SUMMARY\n[1-2 sentences summarizing the overall quality status]\n\n## COVERAGE METRICS\n**Feature Coverage:** [e.g., 85%] (Features tested / Total features)\n**Requirement Coverage:** [e.g., 92%] (Requirements tested / Total requirements)\n**Code Coverage:** [e.g., 78%] (Code tested / Total code)\n**Test Case Execution:** [e.g., 245/250] (Executed / Total planned)\n\n## RISK ASSESSMENT\n**High-Risk Areas Coverage:** [e.g., 100%]\n**Medium-Risk Areas Coverage:** [e.g., 85%]\n**Low-Risk Areas Coverage:** [e.g., 75%]\n\n## TEST RESULTS SUMMARY\n**Total Test Cases:** [Number]\n**Passed:** [Number] ([Percentage]%)\n**Failed:** [Number] ([Percentage]%)\n**Blocked:** [Number] ([Percentage]%)\n**Not Executed:** [Number] ([Percentage]%)\n\n## DEFECTS SUMMARY\n**Total Defects:** [Number]\n**Critical:** [Number]\n**High:** [Number]\n**Medium:** [Number]\n**Low:** [Number]\n\n## RECOMMENDATIONS\n[List any recommendations based on the test results]\n\n## CONCLUSION\n[Overall assessment of quality and readiness]`,\n      fields: [\n        { id: \"projectName\", label: \"Project Name\", type: \"text\", placeholder: \"Project Name\" },\n        { id: \"versionSprint\", label: \"Version/Sprint\", type: \"text\", placeholder: \"e.g., v1.2.3 or Sprint 5\" },\n        { id: \"reportDate\", label: \"Report Date\", type: \"date\" },\n        { id: \"preparedBy\", label: \"Prepared By\", type: \"text\", placeholder: \"Your Name\" },\n        { id: \"testingPeriodStart\", label: \"Testing Period Start\", type: \"date\" },\n        { id: \"testingPeriodEnd\", label: \"Testing Period End\", type: \"date\" },\n        {\n          id: \"executiveSummary\",\n          label: \"Executive Summary\",\n          type: \"textarea\",\n          placeholder: \"Brief summary of overall quality status\",\n        },\n        {\n          id: \"featureCoverage\",\n          label: \"Feature Coverage (%)\",\n          type: \"number\",\n          placeholder: \"e.g., 85\",\n          min: \"0\",\n          max: \"100\",\n        },\n        {\n          id: \"requirementCoverage\",\n          label: \"Requirement Coverage (%)\",\n          type: \"number\",\n          placeholder: \"e.g., 92\",\n          min: \"0\",\n          max: \"100\",\n        },\n        {\n          id: \"codeCoverage\",\n          label: \"Code Coverage (%)\",\n          type: \"number\",\n          placeholder: \"e.g., 78\",\n          min: \"0\",\n          max: \"100\",\n        },\n        { id: \"testCasesExecuted\", label: \"Test Cases Executed\", type: \"number\", placeholder: \"e.g., 245\" },\n        { id: \"testCasesTotal\", label: \"Total Test Cases\", type: \"number\", placeholder: \"e.g., 250\" },\n        {\n          id: \"recommendations\",\n          label: \"Recommendations\",\n          type: \"textarea\",\n          placeholder: \"List any recommendations based on the test results\",\n        },\n        {\n          id: \"conclusion\",\n          label: \"Conclusion\",\n          type: \"textarea\",\n          placeholder: \"Overall assessment of quality and readiness\",\n        },\n      ],\n    },\n    \"user-bug-form\": {\n      title: \"User-Reported Bug Form\",\n      structure: `# USER ISSUE REPORT FORM\n\nThank you for taking the time to report an issue. The information you provide will help us fix the problem quickly.\n\n## What went wrong?\n[Brief description of the issue]\n\n## What did you expect to happen?\n[What you expected the app/site to do]\n\n## Can you reproduce the issue?\n- [ ] Yes, every time\n- [ ] Yes, sometimes\n- [ ] No, it happened only once\n- [ ] Not sure\n\n## Steps to reproduce (if applicable)\n1. [First step]\n2. [Second step]\n3. [Continue as needed]\n\n## Device and technical details\nDevice Type: [Smartphone / Tablet / Laptop / Desktop / Other]\nDevice Model: [e.g., iPhone 13 Pro, Dell XPS 15]\nOperating System: [e.g., iOS 15.4, Windows 11]\nBrowser (if applicable): [e.g., Chrome, Safari]\nApp Version (if applicable): [e.g., 2.4.1]\n\n## Additional information\n[Any other details that might help us understand the issue]\n\n## Contact information (optional)\nEmail: [Your email address if you'd like us to follow up]`,\n      fields: [\n        {\n          id: \"issueDescription\",\n          label: \"What went wrong?\",\n          type: \"textarea\",\n          placeholder: \"Brief description of the issue\",\n        },\n        {\n          id: \"expectedBehavior\",\n          label: \"What did you expect to happen?\",\n          type: \"textarea\",\n          placeholder: \"What you expected the app/site to do\",\n        },\n        {\n          id: \"reproducibility\",\n          label: \"Can you reproduce the issue?\",\n          type: \"select\",\n          options: [\"Yes, every time\", \"Yes, sometimes\", \"No, it happened only once\", \"Not sure\"],\n        },\n        {\n          id: \"stepsToReproduce\",\n          label: \"Steps to reproduce\",\n          type: \"textarea\",\n          placeholder: \"List the steps to reproduce the issue\",\n        },\n        {\n          id: \"deviceType\",\n          label: \"Device Type\",\n          type: \"select\",\n          options: [\"Smartphone\", \"Tablet\", \"Laptop\", \"Desktop\", \"Other\"],\n        },\n        { id: \"deviceModel\", label: \"Device Model\", type: \"text\", placeholder: \"e.g., iPhone 13 Pro, Dell XPS 15\" },\n        {\n          id: \"operatingSystem\",\n          label: \"Operating System\",\n          type: \"text\",\n          placeholder: \"e.g., iOS 15.4, Windows 11\",\n        },\n        { id: \"browser\", label: \"Browser\", type: \"text\", placeholder: \"e.g., Chrome, Safari\" },\n        { id: \"appVersion\", label: \"App Version\", type: \"text\", placeholder: \"e.g., 2.4.1\" },\n        {\n          id: \"additionalInfo\",\n          label: \"Additional Information\",\n          type: \"textarea\",\n          placeholder: \"Any other details that might help us understand the issue\",\n        },\n        { id: \"contactEmail\", label: \"Contact Email (optional)\", type: \"email\", placeholder: \"Your email address\" },\n      ],\n    },\n    \"launch-checklist\": {\n      title: \"Launch Readiness Checklist\",\n      structure: `# LAUNCH READINESS CHECKLIST\n\n## FUNCTIONAL VERIFICATION\n- [ ] All critical user journeys have been tested end-to-end\n- [ ] All high and medium priority bugs have been fixed\n- [ ] Known issues have been documented with workarounds\n- [ ] Error handling and validation has been tested\n- [ ] Search functionality works as expected\n- [ ] Form submissions are processed correctly\n- [ ] Email notifications and confirmations are working\n\n## PERFORMANCE & SCALABILITY\n- [ ] Load testing has been performed at 2x expected volume\n- [ ] Response times are within acceptable thresholds\n- [ ] Database queries are optimized\n- [ ] CDN configuration is optimized\n- [ ] Auto-scaling is configured (if applicable)\n- [ ] Caching strategy is implemented and tested\n\n## SECURITY\n- [ ] Security vulnerabilities have been addressed\n- [ ] Authentication and authorization work correctly\n- [ ] Sensitive data is encrypted\n- [ ] Input validation is implemented\n- [ ] CSRF protection is in place\n- [ ] Rate limiting is configured\n\n## COMPATIBILITY\n- [ ] Application works in all supported browsers\n- [ ] Application works on all supported devices\n- [ ] Application works on all supported operating systems\n- [ ] Responsive design has been tested\n- [ ] Accessibility requirements have been met\n\n## DEPLOYMENT & OPERATIONS\n- [ ] Deployment process is documented\n- [ ] Rollback procedure is documented and tested\n- [ ] Monitoring is configured\n- [ ] Alerting is configured\n- [ ] Logging is implemented\n- [ ] Backup and recovery procedures are in place\n\n## DOCUMENTATION & TRAINING\n- [ ] User documentation is complete\n- [ ] Admin documentation is complete\n- [ ] Support team has been trained\n- [ ] Known issues and workarounds are documented\n\n## BUSINESS READINESS\n- [ ] Marketing materials are ready\n- [ ] Legal requirements have been met\n- [ ] Analytics tracking is implemented\n- [ ] Stakeholders have approved the release`,\n      fields: [\n        {\n          id: \"projectName\",\n          label: \"Project Name\",\n          type: \"text\",\n          placeholder: \"Name of the project being launched\",\n        },\n        { id: \"version\", label: \"Version\", type: \"text\", placeholder: \"e.g., v1.0.0\" },\n        { id: \"launchDate\", label: \"Planned Launch Date\", type: \"date\" },\n        { id: \"preparedBy\", label: \"Prepared By\", type: \"text\", placeholder: \"Your Name\" },\n        { id: \"preparedDate\", label: \"Preparation Date\", type: \"date\" },\n        {\n          id: \"additionalNotes\",\n          label: \"Additional Notes\",\n          type: \"textarea\",\n          placeholder: \"Any additional notes or context for this launch\",\n        },\n      ],\n    },\n    \"security-checklist\": {\n      title: \"Security Baseline Checklist\",\n      structure: `# SECURITY BASELINE CHECKLIST\n\n## AUTHENTICATION & AUTHORIZATION\n- [ ] Strong password requirements enforced\n- [ ] Account lockout after failed login attempts\n- [ ] Two-factor authentication available\n- [ ] Password reset flow is secure\n- [ ] Session timeout implemented\n- [ ] Role-based access control implemented\n- [ ] Authorization checks on all sensitive endpoints\n\n## DATA PROTECTION\n- [ ] Sensitive data encrypted at rest\n- [ ] TLS/SSL used for all communications\n- [ ] PII is minimized and protected\n- [ ] Database connection strings and credentials are secured\n- [ ] Encryption keys properly managed\n- [ ] Data backups are encrypted\n\n## INPUT VALIDATION & OUTPUT ENCODING\n- [ ] Input validation implemented for all user inputs\n- [ ] Output encoding implemented to prevent XSS\n- [ ] SQL injection prevention implemented\n- [ ] File upload validation and scanning\n- [ ] API parameters are validated\n- [ ] Content Security Policy implemented\n\n## SESSION MANAGEMENT\n- [ ] Secure session handling implemented\n- [ ] Secure session handling implemented\n- [ ] CSRF protection implemented\n- [ ] Session IDs are properly protected\n- [ ] Sessions expire after inactivity\n- [ ] Secure cookie attributes used\n- [ ] Session fixation protection implemented\n\n## ERROR HANDLING & LOGGING\n- [ ] Error messages don't reveal sensitive information\n- [ ] Exceptions are properly caught and handled\n- [ ] Security events are logged\n- [ ] Logs don't contain sensitive information\n- [ ] Log integrity is protected\n- [ ] Monitoring for suspicious activity implemented\n\n## INFRASTRUCTURE SECURITY\n- [ ] Firewall configured properly\n- [ ] Network segmentation implemented\n- [ ] Unnecessary services disabled\n- [ ] System hardening performed\n- [ ] Regular security patching process in place\n- [ ] DDoS protection implemented\n\n## SECURITY TESTING\n- [ ] Regular vulnerability scanning performed\n- [ ] Penetration testing performed\n- [ ] Security code review performed\n- [ ] Dependency scanning for vulnerabilities\n- [ ] Security regression testing performed\n- [ ] Security incident response plan tested`,\n      fields: [\n        {\n          id: \"applicationName\",\n          label: \"Application Name\",\n          type: \"text\",\n          placeholder: \"Name of the application being assessed\",\n        },\n        { id: \"version\", label: \"Version\", type: \"text\", placeholder: \"e.g., v1.0.0\" },\n        { id: \"assessmentDate\", label: \"Assessment Date\", type: \"date\" },\n        { id: \"assessedBy\", label: \"Assessed By\", type: \"text\", placeholder: \"Your Name\" },\n        {\n          id: \"scope\",\n          label: \"Assessment Scope\",\n          type: \"textarea\",\n          placeholder: \"Define the scope of this security assessment\",\n        },\n        {\n          id: \"additionalNotes\",\n          label: \"Additional Notes\",\n          type: \"textarea\",\n          placeholder: \"Any additional notes or context for this assessment\",\n        },\n      ],\n    },\n    \"accessibility-checklist\": {\n      title: \"Web Accessibility Testing Checklist\",\n      structure: `# WEB ACCESSIBILITY TESTING CHECKLIST\n\n## PERCEIVABLE\n### Text Alternatives\n- [ ] All images have appropriate alt text\n- [ ] Complex images have extended descriptions\n- [ ] Decorative images have null alt attributes\n- [ ] Form inputs have associated text labels\n- [ ] Button text clearly describes the action\n\n### Time-based Media\n- [ ] Videos have captions\n- [ ] Audio content has transcripts\n- [ ] Media players have accessible controls\n\n### Adaptable\n- [ ] Content can be presented in different ways\n- [ ] Correct semantic HTML elements are used\n- [ ] Page structure uses proper heading hierarchy (H1-H6)\n- [ ] Tables have proper headers and structure\n\n### Distinguishable\n- [ ] Color is not the only means of conveying information\n- [ ] Text has sufficient contrast with background\n- [ ] Text can be resized up to 200% without loss of content\n- [ ] Audio can be paused, stopped, or volume adjusted\n\n## OPERABLE\n### Keyboard Accessible\n- [ ] All functionality is available via keyboard\n- [ ] Keyboard focus is visible\n- [ ] Keyboard focus order is logical\n- [ ] No keyboard traps exist\n\n### Enough Time\n- [ ] Time limits can be adjusted or extended\n- [ ] Moving content can be paused, stopped, or hidden\n- [ ] Auto-updating content can be paused, stopped, or hidden\n\n### Seizures and Physical Reactions\n- [ ] No content flashes more than 3 times per second\n\n### Navigable\n- [ ] Pages have descriptive titles\n- [ ] Each page has at least one heading\n- [ ] Skip navigation link is provided\n- [ ] Link text is descriptive and makes sense out of context\n\n## UNDERSTANDABLE\n### Readable\n- [ ] Language of page is specified\n- [ ] Language of parts is specified when it changes\n- [ ] Unusual words and abbreviations are explained\n\n### Predictable\n- [ ] Navigation is consistent across pages\n- [ ] Components with same functionality are identified consistently\n- [ ] Changes of context are initiated only by user request\n\n### Input Assistance\n- [ ] Form errors are identified and described to users\n- [ ] Labels or instructions are provided for user input\n- [ ] Error suggestions are provided when detected\n- [ ] Critical forms can be reviewed before submission\n\n## ROBUST\n### Compatible\n- [ ] HTML is valid and well-formed\n- [ ] ARIA is used correctly\n- [ ] Custom controls have appropriate roles and states\n- [ ] Status messages can be programmatically determined`,\n      fields: [\n        {\n          id: \"websiteName\",\n          label: \"Website/Application Name\",\n          type: \"text\",\n          placeholder: \"Name of the website or application being tested\",\n        },\n        { id: \"url\", label: \"URL\", type: \"url\", placeholder: \"https://example.com\" },\n        { id: \"testDate\", label: \"Test Date\", type: \"date\" },\n        { id: \"testedBy\", label: \"Tested By\", type: \"text\", placeholder: \"Your Name\" },\n        {\n          id: \"browsers\",\n          label: \"Browsers Tested\",\n          type: \"text\",\n          placeholder: \"e.g., Chrome 99, Firefox 98, Safari 15.4\",\n        },\n        {\n          id: \"assistiveTech\",\n          label: \"Assistive Technologies Tested\",\n          type: \"text\",\n          placeholder: \"e.g., NVDA, VoiceOver, JAWS\",\n        },\n        {\n          id: \"scope\",\n          label: \"Test Scope\",\n          type: \"textarea\",\n          placeholder: \"Define the scope of this accessibility assessment\",\n        },\n        {\n          id: \"additionalNotes\",\n          label: \"Additional Notes\",\n          type: \"textarea\",\n          placeholder: \"Any additional notes or context for this assessment\",\n        },\n      ],\n    },\n    \"dev-testing-guide\": {\n      title: \"Developer-Led Testing Guide\",\n      structure: `# DEVELOPER-LED TESTING GUIDE\n\n## INTRODUCTION\nThis guide helps developers implement effective testing practices into their daily workflow to catch bugs early and deliver higher quality code.\n\n## WHY DEVELOPER TESTING MATTERS\n- Catches bugs when they're cheapest to fix (during development)\n- Reduces back-and-forth with QA team\n- Improves code quality and maintainability\n- Saves time in the overall development cycle\n- Builds knowledge of edge cases and failure modes\n\n## EFFECTIVE TESTING MINDSET\n### Switch Contexts\nThe most important skill in developer testing is the ability to mentally switch from a builder mindset (\"make it work\") to a tester mindset (\"break it if possible\").\n\n### Techniques for Context Switching:\n1. Take a short break after implementation\n2. Approach testing as if you didn't write the code\n3. Ask: \"What assumptions did I make while coding?\"\n4. Consider: \"What could users do that I didn't expect?\"\n\n## TESTING APPROACHES\n### 1. Unit Testing\n- Test individual functions and methods in isolation\n- Focus on edge cases and boundary conditions\n- Use test-driven development when appropriate\n- Aim for high code coverage\n\n### 2. Integration Testing\n- Test how components work together\n- Focus on interfaces between components\n- Test error handling between components\n- Verify data flows correctly between components\n\n### 3. Functional Testing\n- Test complete user workflows\n- Verify business requirements are met\n- Test both happy paths and error paths\n- Validate UI behavior and state management\n\n## PRACTICAL TESTING CHECKLIST\n### Before You Start Coding\n- [ ] Understand the requirements fully\n- [ ] Identify potential edge cases\n- [ ] Plan your testing approach\n\n### During Development\n- [ ] Write unit tests for new code\n- [ ] Test edge cases as you go\n- [ ] Verify error handling\n- [ ] Check for performance issues\n\n### Before Submitting for Review\n- [ ] Run all tests (unit, integration, etc.)\n- [ ] Test the feature manually as a user would\n- [ ] Verify all acceptance criteria are met\n- [ ] Check for any regressions\n\n## COMMON TESTING PITFALLS\n1. Only testing the \"happy path\"\n2. Not testing edge cases\n3. Not testing error handling\n4. Not testing with realistic data\n5. Not testing performance\n6. Not testing security\n\n## CONCLUSION\nDeveloper-led testing is not about replacing QA but about catching issues earlier when they're easier and cheaper to fix. By incorporating these practices into your daily workflow, you'll deliver higher quality code and become a more effective developer.`,\n      fields: [\n        {\n          id: \"teamName\",\n          label: \"Development Team Name\",\n          type: \"text\",\n          placeholder: \"Name of your development team\",\n        },\n        {\n          id: \"projectType\",\n          label: \"Project Type\",\n          type: \"text\",\n          placeholder: \"e.g., Web Application, Mobile App, API\",\n        },\n        {\n          id: \"primaryLanguages\",\n          label: \"Primary Programming Languages\",\n          type: \"text\",\n          placeholder: \"e.g., JavaScript, Python, Java\",\n        },\n        {\n          id: \"testingTools\",\n          label: \"Testing Tools Used\",\n          type: \"text\",\n          placeholder: \"e.g., Jest, Cypress, JUnit\",\n        },\n        {\n          id: \"customApproaches\",\n          label: \"Custom Testing Approaches\",\n          type: \"textarea\",\n          placeholder: \"Any team-specific testing approaches or methodologies\",\n        },\n        {\n          id: \"challengesNotes\",\n          label: \"Specific Challenges & Notes\",\n          type: \"textarea\",\n          placeholder: \"Any specific testing challenges or additional notes for your team\",\n        },\n      ],\n    },\n    \"test-strategy-framework\": {\n      title: \"5-Minute Test Strategy Framework\",\n      structure: `# 5-MINUTE TEST STRATEGY FRAMEWORK\n\n## THE CHALLENGE\nIn fast-paced environments, there's rarely time to create detailed test plans. This framework helps you quickly develop a focused testing strategy that:\n- Identifies highest-risk areas\n- Maximizes test coverage with limited resources\n- Ensures critical issues won't reach production\n\n## THE 5-MINUTE PROCESS\n\n### MINUTE 1: Define Business Risk\nAnswer these questions:\n1. What's the worst thing that could happen if this breaks?\n2. Which features are most visible to users/customers?\n3. Which areas impact revenue/data integrity?\n\nList the top 3 areas that emerged from these questions.\n\n### MINUTE 2: Consider Technical Risk\nFor each high-business-risk area, consider:\n1. What changed recently in this area?\n2. Which parts have complex code/logic?\n3. Which parts have been buggy in the past?\n\nAdd any new areas that emerged to your high-risk list.\n\n### MINUTE 3: Prioritize Test Areas\nCombine your business and technical risk assessments to create a prioritized list:\n1. Critical: Must test thoroughly (business + technical risk)\n2. High: Should test well (high risk in either category)\n3. Medium: Test if time permits\n4. Low: Minimal testing needed\n\n### MINUTE 4: Select Test Approaches\nFor each priority level, choose appropriate test approaches:\n- Critical: Thorough manual testing + automated tests\n- High: Focused manual testing + key automated tests\n- Medium: Key scenario testing\n- Low: Smoke testing only\n\n### MINUTE 5: Create Execution Plan\n1. Allocate available time across priority levels (e.g., 60% Critical, 30% High, 10% Medium)\n2. Identify who will perform each testing activity\n3. Define what \"done\" means for each priority level\n4. Determine how results will be reported\n\n## OUTPUT\nYou now have a risk-based test strategy that:\n- Focuses on what matters most\n- Makes the best use of limited resources\n- Can be communicated to stakeholders in 2 minutes\n- Provides clear direction to the testing team`,\n      fields: [\n        {\n          id: \"projectName\",\n          label: \"Project/Feature Name\",\n          type: \"text\",\n          placeholder: \"Name of the project or feature\",\n        },\n        { id: \"releaseDate\", label: \"Target Release Date\", type: \"date\" },\n        { id: \"preparedBy\", label: \"Prepared By\", type: \"text\", placeholder: \"Your Name\" },\n        { id: \"preparedDate\", label: \"Preparation Date\", type: \"date\" },\n        {\n          id: \"businessRisks\",\n          label: \"Top Business Risks\",\n          type: \"textarea\",\n          placeholder: \"List the top 3 business risks\",\n        },\n        {\n          id: \"technicalRisks\",\n          label: \"Top Technical Risks\",\n          type: \"textarea\",\n          placeholder: \"List the top 3 technical risks\",\n        },\n        {\n          id: \"criticalAreas\",\n          label: \"Critical Test Areas\",\n          type: \"textarea\",\n          placeholder: \"List the critical areas that must be tested thoroughly\",\n        },\n        {\n          id: \"highAreas\",\n          label: \"High Priority Test Areas\",\n          type: \"textarea\",\n          placeholder: \"List the high priority areas that should be tested well\",\n        },\n        {\n          id: \"timeAllocation\",\n          label: \"Time Allocation\",\n          type: \"textarea\",\n          placeholder: \"How will you allocate the available testing time?\",\n        },\n        {\n          id: \"additionalNotes\",\n          label: \"Additional Notes\",\n          type: \"textarea\",\n          placeholder: \"Any additional notes or context for this test strategy\",\n        },\n      ],\n    },\n    \"quality-gates\": {\n      title: \"Quality Gates for Startups\",\n      structure: `# QUALITY GATES FOR STARTUPS\n\n## WHAT ARE QUALITY GATES?\nQuality gates are lightweight checkpoints in the development process that validate quality criteria before work proceeds to the next stage. Unlike heavyweight processes, these are designed to:\n\n- Take minimal time to implement\n- Focus only on critical quality aspects\n- Adapt to changing priorities\n- Improve quality without adding bureaucracy\n\n## IMPLEMENTATION GUIDE\n\n### GATE 1: REQUIREMENTS REVIEW\n**When:** Before development starts\n**Time Required:** 15-30 minutes\n**Who:** Product Owner, Tech Lead, optional QA representative\n\n**Key Questions:**\n1. Are acceptance criteria clear and testable?\n2. Are edge cases and error scenarios defined?\n3. Are there any security or performance implications?\n4. Is the scope clear and appropriately sized?\n\n**Output:** Refined user story with clear acceptance criteria\n\n### GATE 2: DESIGN REVIEW\n**When:** After initial technical design, before implementation\n**Time Required:** 15-30 minutes\n**Who:** Tech Lead, Senior Developer(s), optional QA representative\n\n**Key Questions:**\n1. Does the design address all requirements?\n2. Are there any technical risks or dependencies?\n3. Is the approach scalable and maintainable?\n4. Are there any security considerations?\n\n**Output:** Validated technical approach with identified risks\n\n### GATE 3: CODE REVIEW\n**When:** Before merging code\n**Time Required:** 15-45 minutes\n**Who:** Peer developer(s)\n\n**Key Questions:**\n1. Does the code implement the requirements correctly?\n2. Does the code follow team standards and best practices?\n3. Are there adequate unit tests?\n4. Are there any performance or security concerns?\n\n**Output:** Improved code quality and knowledge sharing\n\n### GATE 4: QA VERIFICATION\n**When:** After feature implementation, before release\n**Time Required:** 30-60 minutes\n**Who:** QA or developer performing testing role\n\n**Key Questions:**\n1. Do all acceptance criteria pass?\n2. Have edge cases been tested?\n3. Is there any regression in existing functionality?\n4. Is the feature usable and intuitive?\n\n**Output:** Verified feature ready for release\n\n### GATE 5: RELEASE READINESS\n**When:** Before deploying to production\n**Time Required:** 15-30 minutes\n**Who:** Tech Lead, Product Owner, QA representative\n\n**Key Questions:**\n1. Have all critical and high-priority bugs been fixed?\n2. Has the feature been tested in a production-like environment?\n3. Are monitoring and rollback plans in place?\n4. Has documentation been updated?\n\n**Output:** Go/No-Go decision for release\n\n## ADAPTING TO YOUR NEEDS\n- Start with just 2-3 gates that address your biggest quality pain points\n- Keep the process lightweight and focused\n- Adjust criteria based on project risk and importance\n- Document decisions but minimize bureaucracy\n- Review and improve the process regularly`,\n      fields: [\n        { id: \"companyName\", label: \"Company Name\", type: \"text\", placeholder: \"Your startup's name\" },\n        {\n          id: \"productName\",\n          label: \"Product/Project Name\",\n          type: \"text\",\n          placeholder: \"Name of the product or project\",\n        },\n        { id: \"teamSize\", label: \"Team Size\", type: \"number\", placeholder: \"Number of team members\" },\n        {\n          id: \"developmentMethodology\",\n          label: \"Development Methodology\",\n          type: \"text\",\n          placeholder: \"e.g., Scrum, Kanban, Custom Agile\",\n        },\n        {\n          id: \"currentPainPoints\",\n          label: \"Current Quality Pain Points\",\n          type: \"textarea\",\n          placeholder: \"Describe your current quality challenges\",\n        },\n        {\n          id: \"priorityGates\",\n          label: \"Priority Gates to Implement\",\n          type: \"textarea\",\n          placeholder: \"Which quality gates would you prioritize implementing first?\",\n        },\n        {\n          id: \"customCriteria\",\n          label: \"Custom Gate Criteria\",\n          type: \"textarea\",\n          placeholder: \"Any custom criteria you'd like to add to the quality gates\",\n        },\n        {\n          id: \"implementationNotes\",\n          label: \"Implementation Notes\",\n          type: \"textarea\",\n          placeholder: \"Any notes on how you plan to implement these quality gates\",\n        },\n      ],\n    },\n  }\n\n  // Download button functionality\n  const resourceButtons = document.querySelectorAll(\".resource-button, .qa-preview-btn\")\n  resourceButtons.forEach((button) => {\n    button.addEventListener(\"click\", function () {\n      console.log(\"Resource button clicked:\", this.getAttribute(\"data-template\"))\n      const templateId = this.getAttribute(\"data-template\")\n\n      if (!templateId || !templateData[templateId]) {\n        console.error(`Template data not found for ID: ${templateId}`)\n        showNotification(\"Template not found\", \"error\")\n        return\n      }\n\n      openTemplateModal(templateId)\n    })\n  })\n\n  // Function to open template modal\n  function openTemplateModal(templateId) {\n    const template = templateData[templateId]\n\n    // Set modal title\n    templateTitle.textContent = template.title\n\n    // Set template structure\n    templateStructure.textContent = template.structure\n\n    // Generate form fields\n    generateFormFields(templateId, template.fields)\n\n    // Reset tabs\n    structureTab.classList.add(\"active\")\n    contentTab.classList.remove(\"active\")\n    outputTab.classList.remove(\"active\")\n    structureContent.classList.add(\"active\")\n    contentContent.classList.remove(\"active\")\n    outputContent.classList.remove(\"active\")\n\n    // Clear output\n    templateOutput.textContent = \"\"\n\n    // Show modal with animation\n    templateModal.style.display = \"block\"\n    templateModal.classList.add(\"show\")\n    document.body.style.overflow = \"hidden\"\n  }\n\n  // Close modal\n  if (closeModalBtn) {\n    closeModalBtn.addEventListener(\"click\", () => {\n      templateModal.classList.remove(\"show\")\n      templateModal.style.display = \"none\"\n      document.body.style.overflow = \"auto\"\n    })\n  }\n\n  // Close modal when clicking outside\n  window.addEventListener(\"click\", (event) => {\n    if (event.target === templateModal) {\n      templateModal.classList.remove(\"show\")\n      templateModal.style.display = \"none\"\n      document.body.style.overflow = \"auto\"\n    }\n  })\n\n  // Tab navigation\n  structureTab.addEventListener(\"click\", () => {\n    structureTab.classList.add(\"active\")\n    contentTab.classList.remove(\"active\")\n    outputTab.classList.remove(\"active\")\n    structureContent.classList.add(\"active\")\n    contentContent.classList.remove(\"active\")\n    outputContent.classList.remove(\"active\")\n  })\n\n  contentTab.addEventListener(\"click\", () => {\n    structureTab.classList.remove(\"active\")\n    contentTab.classList.add(\"active\")\n    outputTab.classList.remove(\"active\")\n    structureContent.classList.remove(\"active\")\n    contentContent.classList.add(\"active\")\n    outputContent.classList.remove(\"active\")\n  })\n\n  outputTab.addEventListener(\"click\", () => {\n    structureTab.classList.remove(\"active\")\n    contentTab.classList.remove(\"active\")\n    outputTab.classList.add(\"active\")\n    structureContent.classList.remove(\"active\")\n    contentContent.classList.remove(\"active\")\n    outputContent.classList.add(\"active\")\n  })\n\n  // Next buttons\n  nextStructureBtn.addEventListener(\"click\", () => {\n    structureTab.classList.remove(\"active\")\n    contentTab.classList.add(\"active\")\n    outputTab.classList.remove(\"active\")\n    structureContent.classList.remove(\"active\")\n    contentContent.classList.add(\"active\")\n    outputContent.classList.remove(\"active\")\n  })\n\n  nextContentBtn.addEventListener(\"click\", () => {\n    // Generate output first\n    generateOutput()\n\n    structureTab.classList.remove(\"active\")\n    contentTab.classList.remove(\"active\")\n    outputTab.classList.add(\"active\")\n    structureContent.classList.remove(\"active\")\n    contentContent.classList.remove(\"active\")\n    outputContent.classList.add(\"active\")\n  })\n\n  // Generate output\n  generateOutputBtn.addEventListener(\"click\", generateOutput)\n\n  // Copy output\n  copyOutputBtn.addEventListener(\"click\", () => {\n    const outputText = templateOutput.textContent\n    if (!outputText) {\n      showNotification(\"No content to copy\", \"error\")\n      return\n    }\n\n    navigator.clipboard\n      .writeText(outputText)\n      .then(() => {\n        showNotification(\"Content copied to clipboard!\")\n        copyOutputBtn.innerHTML = `\n          <svg class=\"action-button-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M5 13l4 4L19 7\"></path>\n          </svg>\n          Copied!\n        `\n        setTimeout(() => {\n          copyOutputBtn.innerHTML = `\n            <svg class=\"action-button-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\">\n              <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2\"></path>\n            </svg>\n            Copy to Clipboard\n          `\n        }, 2000)\n      })\n      .catch((err) => {\n        console.error(\"Could not copy text: \", err)\n        showNotification(\"Failed to copy. Please try again.\", \"error\")\n      })\n  })\n\n  // Download button functionality\n  if (downloadBtn) {\n    downloadBtn.addEventListener(\"click\", function() {\n      const format = downloadFormatSelect.value\n      const templateId = templateForm.getAttribute(\"data-template\")\n      downloadTemplate(templateId, format)\n    })\n  }\n\n  // Function to download template in different formats\n  function downloadTemplate(templateId, format) {\n    if (!templateId || !templateData[templateId]) {\n      showNotification(\"Template not found\", \"error\")\n      return\n    }\n\n    // Get the template output content\n    const outputContent = templateOutput.textContent\n    if (!outputContent) {\n      showNotification(\"Please generate content first\", \"error\")\n      return\n    }\n\n    const title = templateData[templateId].title\n    let filename = title.toLowerCase().replace(/\\s+/g, '-')\n\n    try {\n      switch(format) {\n        case 'docx':\n          generateDocx(outputContent, filename)\n          break\n        case 'pdf':\n          generatePdf(outputContent, filename)\n          break\n        case 'md':\n          generateMarkdown(outputContent, filename)\n          break\n        default:\n          generateTextFile(outputContent, filename)\n      }\n    } catch (error) {\n      console.error(\"Error generating file:\", error)\n      showNotification(\"Error generating file. Please try again.\", \"error\")\n    }\n  }\n\n  // Function to generate DOCX file\n  function generateDocx(content, filename) {\n    const docx = window.docx\n    const { Document, Paragraph, TextRun, HeadingLevel, AlignmentType } = docx\n\n    // Split content into lines\n    const lines = content.split('\\n')\n    const docxContent = []\n\n    let inList = false\n\n    lines.forEach((line) => {\n      // Check for headings (lines starting with #)\n      if (line.startsWith('# ')) {\n        docxContent.push(\n          new Paragraph({\n            text: line.substring(2),\n            heading: HeadingLevel.HEADING_1,\n            bold: true,\n          })\n        )\n      } else if (line.startsWith('## ')) {\n        docxContent.push(\n          new Paragraph({\n            text: line.substring(3),\n            heading: HeadingLevel.HEADING_2,\n            bold: true,\n          })\n        )\n      } else if (line.startsWith('### ')) {\n        docxContent.push(\n          new Paragraph({\n            text: line.substring(4),\n            heading: HeadingLevel.HEADING_3,\n            bold: true,\n          })\n        )\n      } else if (line.startsWith('- [ ] ') || line.startsWith('- [x] ')) {\n        // Checkbox list items\n        const checked = line.startsWith('- [x] ')\n        const text = line.substring(6)\n        docxContent.push(\n          new Paragraph({\n            text: `${checked ? '☑' : '☐'} ${text}`,\n            bullet: { level: 0 },\n          })\n        )\n        inList = true\n      } else if (line.startsWith('- ')) {\n        // Regular list items\n        docxContent.push(\n          new Paragraph({\n            text: line.substring(2),\n            bullet: { level: 0 },\n          })\n        )\n        inList = true\n      } else if (line.trim() === '') {\n        // Empty line\n        docxContent.push(new Paragraph({}))\n        inList = false\n      } else {\n        // Regular paragraph\n        if (line.includes('**')) {\n          // Handle bold text\n          const parts = line.split(/(?:\\*\\*|\\*\\*)/g)\n          const runs = []\n          let isBold = false\n\n          parts.forEach(part => {\n            if (part) {\n              runs.push(new TextRun({ text: part, bold: isBold }))\n            }\n            isBold = !isBold\n          })\n\n          docxContent.push(new Paragraph({ children: runs }))\n        } else {\n          docxContent.push(new Paragraph({ text: line }))\n        }\n        inList = false\n      }\n    })\n\n    const doc = new Document({\n      sections: [{\n        properties: {},\n        children: docxContent,\n      }],\n    })\n\n    docx.Packer.toBlob(doc).then((blob) => {\n      saveAs(blob, `${filename}.docx`)\n      showNotification(\"Document downloaded successfully!\")\n    })\n  }\n\n  // Function to generate PDF file\n  function generatePdf(content, filename) {\n    const { jsPDF } = window.jspdf\n    const doc = new jsPDF()\n    \n    // Split content into lines\n    const lines = content.split('\\n')\n    let y = 20 // Starting vertical position\n    const lineHeight = 7\n    const pageWidth = doc.internal.pageSize.getWidth()\n    const margin = 20\n    const textWidth = pageWidth - (2 * margin)\n\n    let currentPage = 1\n    let fontSize = 12\n\n    lines.forEach((line) => {\n      // Check if it's a heading\n      if (line.startsWith('# ')) {\n        fontSize = 16\n        doc.setFontSize(fontSize)\n        doc.setFont(undefined, 'bold')\n        line = line.substring(2)\n      } else if (line.startsWith('## ')) {\n        fontSize = 14\n        doc.setFontSize(fontSize)\n        doc.setFont(undefined, 'bold')\n        line = line.substring(3)\n      } else if (line.startsWith('### ')) {\n        fontSize = 12\n        doc.setFontSize(fontSize)\n        doc.setFont(undefined, 'bold')\n        line = line.substring(4)\n      } else {\n        fontSize = 10\n        doc.setFontSize(fontSize)\n        doc.setFont(undefined, 'normal')\n        \n        // Handle list items\n        if (line.startsWith('- [ ] ')) {\n          line = '☐ ' + line.substring(6)\n        } else if (line.startsWith('- [x] ')) {\n          line = '☑ ' + line.substring(6)\n        } else if (line.startsWith('- ')) {\n          line = '• ' + line.substring(2)\n        }\n        \n        // Handle bold text by removing markdown\n        line = line.replace(/\\*\\*(.*?)\\*\\*/g, '$1')\n      }\n\n      // Check if we need to add a new page\n      if (y > doc.internal.pageSize.getHeight() - 20) {\n        doc.addPage()\n        currentPage++\n        y = 20\n      }\n\n      // Add the text\n      if (line.trim() !== '') {\n        // Split long lines\n        const splitLines = doc.splitTextToSize(line, textWidth)\n        splitLines.forEach(splitLine => {\n          doc.text(splitLine, margin, y)\n          y += lineHeight\n        })\n      } else {\n        y += lineHeight / 2\n      }\n    })\n\n    // Add page numbers\n    for (let i = 1; i <= currentPage; i++) {\n      doc.setPage(i)\n      doc.setFontSize(8)\n      doc.text(`Page ${i} of ${currentPage}`, pageWidth - 30, doc.internal.pageSize.getHeight() - 10)\n    }\n\n    doc.save(`${filename}.pdf`)\n    showNotification(\"PDF downloaded successfully!\")\n  }\n\n  // Function to generate Markdown file\n  function generateMarkdown(content, filename) {\n    const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })\n    saveAs(blob, `${filename}.md`)\n    showNotification(\"Markdown file downloaded successfully!\")\n  }\n\n  // Function to generate text file\n  function generateTextFile(content, filename) {\n    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })\n    saveAs(blob, `${filename}.txt`)\n    showNotification(\"Text file downloaded successfully!\")\n  }\n\n  // Helper function to generate form fields\n  function generateFormFields(templateId, fields) {\n    if (!templateForm) return\n\n    templateForm.innerHTML = \"\"\n    templateForm.setAttribute(\"data-template\", templateId)\n\n    fields.forEach((field) => {\n      const formGroup = document.createElement(\"div\")\n      formGroup.className = \"form-group\"\n\n      const label = document.createElement(\"label\")\n      label.className = \"form-label\"\n      label.setAttribute(\"for\", field.id)\n      label.textContent = field.label\n      formGroup.appendChild(label)\n\n      let input\n\n      if (field.type === \"textarea\") {\n        input = document.createElement(\"textarea\")\n        input.className = \"form-input form-textarea\"\n        input.rows = 4\n      } else if (field.type === \"select\") {\n        input = document.createElement(\"select\")\n        input.className = \"form-input\"\n        field.options.forEach((option) => {\n          const optionElement = document.createElement(\"option\")\n          optionElement.value = option\n          optionElement.textContent = option\n          input.appendChild(optionElement)\n        })\n      } else {\n        input = document.createElement(\"input\")\n        input.className = \"form-input\"\n        input.type = field.type\n      }\n\n      input.id = field.id\n      input.name = field.id\n\n      if (field.placeholder) {\n        input.placeholder = field.placeholder\n      }\n\n      if (field.min) {\n        input.min = field.min\n      }\n\n      if (field.max) {\n        input.max = field.max\n      }\n\n      formGroup.appendChild(input)\n      templateForm.appendChild(formGroup)\n    })\n  }\n\n  // Helper function to generate output\n  function generateOutput() {\n    const templateId = templateForm.getAttribute(\"data-template\")\n    if (!templateId || !templateData[templateId]) {\n      console.error(`Template data not found for ID: ${templateId}`)\n      showNotification(\"Template not found\", \"error\")\n      return\n    }\n\n    const template = templateData[templateId]\n    let output = template.structure\n\n    // Get form values\n    const formData = {}\n    template.fields.forEach((field) => {\n      const input = document.getElementById(field.id)\n      if (input) {\n        formData[field.id] = input.value.trim()\n      }\n    })\n\n    // Replace placeholders with form values\n    Object.keys(formData).forEach((key) => {\n      if (formData[key]) {\n        const value = formData[key]\n\n        // Try to replace common placeholders based on the field ID\n        if (key === \"projectName\") {\n          output = output.replace(/\\[Project Name\\]/g, value)\n        } else if (key === \"preparedBy\") {\n          output = output.replace(/\\[Your Name\\]/g, value)\n        } else if (key === \"reportDate\" || key === \"preparedDate\") {\n          output = output.replace(/\\[YYYY-MM-DD\\]/g, value)\n        } else if (key === \"version\") {\n          output = output.replace(/\\[Version or Sprint #\\]/g, value)\n        } else if (key === \"description\") {\n          output = output.replace(/\\[Provide a clear, concise description of the bug\\]/g, value)\n        } else if (key === \"stepsToReproduce\") {\n          // Replace the steps placeholder with actual steps\n          const steps = value\n            .split(\"\\n\")\n            .map((step, index) => `${index + 1}. ${step}`)\n            .join(\"\\n\")\n          output = output.replace(/1\\. \\[First step\\]\\n2\\. \\[Second step\\]\\n3\\. \\[Third step\\]\\n\\.\\.\\./g, steps)\n        } else if (key === \"testingPeriodStart\" && formData[\"testingPeriodEnd\"]) {\n          // Handle date range\n          output = output.replace(\n            /\\[Start Date\\] to \\[End Date\\]/g,\n            `${formData[\"testingPeriodStart\"]} to ${formData[\"testingPeriodEnd\"]}`,\n          )\n        } else if (key === \"executiveSummary\") {\n          output = output.replace(/\\[1-2 sentences summarizing the overall quality status\\]/g, value)\n        } else if (key === \"featureCoverage\") {\n          output = output.replace(/\\[e\\.g\\., 85%\\]/g, `${value}%`)\n        } else if (key === \"issueDescription\") {\n          output = output.replace(/\\[Brief description of the issue\\]/g, value)\n        } else if (key === \"expectedBehavior\") {\n          if (templateId === \"user-bug-form\") {\n            output = output.replace(/\\[What you expected the app\\/site to do\\]/g, value)\n          } else {\n            output = output.replace(/\\[What should happen when the steps are followed correctly\\]/g, value)\n          }\n        } else if (key === \"actualBehavior\") {\n          output = output.replace(/\\[What actually happens when the steps are followed\\]/g, value)\n        } else if (key === \"deviceType\") {\n          output = output.replace(/\\[Smartphone \\/ Tablet \\/ Laptop \\/ Desktop \\/ Other\\]/g, value)\n        } else if (key === \"deviceModel\") {\n          output = output.replace(/\\[e\\.g\\., iPhone 13 Pro, Dell XPS 15\\]/g, value)\n        } else if (key === \"operatingSystem\") {\n          output = output.replace(/\\[e\\.g\\., iOS 15\\.4, Windows 11\\]/g, value)\n        } else if (key === \"browser\") {\n          output = output.replace(/\\[e\\.g\\., Chrome, Safari\\]/g, value)\n        } else if (key === \"appVersion\") {\n          output = output.replace(/\\[e\\.g\\., 2\\.4\\.1\\]/g, value)\n        } else if (key === \"contactEmail\") {\n          output = output.replace(/\\[Your email address if you'd like us to follow up\\]/g, value)\n        } else if (key === \"additionalInfo\") {\n          output = output.replace(/\\[Any other details that might help us understand the issue\\]/g, value)\n        }\n      }\n    })\n\n    // Set output\n    templateOutput.textContent = output\n\n    // Show notification\n    showNotification(\"Template generated successfully!\")\n  }\n\n  // Helper function to show notification\n  function showNotification(message, type = \"success\") {\n    // Remove existing notifications\n    const existingNotification = document.querySelector(\".notification\")\n    if (existingNotification) {\n      existingNotification.remove()\n    }\n\n    // Create notification element\n    const notification = document.createElement(\"div\")\n    notification.className = `notification ${type}`\n\n    // Set icon based on type\n    let icon = `\n      <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path>\n        <polyline points=\"22 4 12 14.01 9 11.01\"></polyline>\n      </svg>\n    `\n\n    if (type === \"error\") {\n      icon = `\n        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          <circle cx=\"12\" cy=\"12\" r=\"10\"></circle>\n          <line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line>\n          <line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line>\n        </svg>\n      `\n    }\n\n    notification.innerHTML = `${icon} ${message}`\n\n    // Add to document\n    document.body.appendChild(notification)\n\n    // Show notification\n    setTimeout(() => {\n      notification.classList.add(\"show\")\n    }, 10)\n\n    // Hide after 3 seconds\n    setTimeout(() => {\n      notification.classList.remove(\"show\")\n      setTimeout(() => {\n        notification.remove()\n      }, 300)\n    }, 3000)\n  }\n\n  // Initialize fetch template from JSON if it exists\n  async function fetchTemplateFromServer(templateId) {\n    try {\n      const response = await fetch(`templates/${templateId}.json`)\n      if (!response.ok) {\n        throw new Error(`Failed to fetch template: ${response.status}`)\n      }\n      const data = await response.json()\n      // Process the JSON to handle escaped newlines properly\n      if (data.structure) {\n        // Fix JSON string newline escaping issues\n        data.structure = data.structure.replace(/\\\\n/g, '\\n')\n      }\n      return data\n    } catch (error) {\n      console.error(\"Error fetching template:\", error)\n      return null\n    }\n  }\n\n  // Try to load templates from server\n  async function initializeTemplates() {\n    const templateIds = Object.keys(templateData)\n    for (const templateId of templateIds) {\n      const serverTemplate = await fetchTemplateFromServer(templateId)\n      if (serverTemplate) {\n        console.log(`Loaded template ${templateId} from server`)\n        // Update template data with server version\n        templateData[templateId] = {\n          ...templateData[templateId],\n          ...serverTemplate\n        }\n      }\n    }\n  }\n\n  // Initialize templates\n  initializeTemplates()\n\n  console.log(\"QA Toolkit Fixed JS loaded successfully!\")\n})\n
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("QA Toolkit Fixed JS loading...")
+
+  // Template modal elements
+  const templateModal = document.getElementById("template-modal")
+  const closeModalBtn = document.getElementById("close-modal")
+  const templateTitle = document.getElementById("template-title")
+  const templateStructure = document.getElementById("template-structure")
+  const templateForm = document.getElementById("template-form")
+  const templateOutput = document.getElementById("template-output")
+
+  // Tab navigation in template modal
+  const structureTab = document.getElementById("structure-tab")
+  const contentTab = document.getElementById("content-tab")
+  const outputTab = document.getElementById("output-tab")
+  const structureContent = document.getElementById("structure-content")
+  const contentContent = document.getElementById("content-content")
+  const outputContent = document.getElementById("output-content")
+
+  // Buttons in template modal
+  const nextStructureBtn = document.getElementById("next-structure")
+  const nextContentBtn = document.getElementById("next-content")
+  const generateOutputBtn = document.getElementById("generate-output")
+  const copyOutputBtn = document.getElementById("copy-output")
+  const downloadBtn = document.getElementById("download-template")
+  const downloadFormatSelect = document.getElementById("download-format")
+
+  // Branding customization elements
+  const companyNameInput = document.getElementById("company-name")
+  const companyTaglineInput = document.getElementById("company-tagline")
+  const headingColorInput = document.getElementById("heading-color")
+  const headingColorHexInput = document.getElementById("heading-color-hex")
+  const subheadingColorInput = document.getElementById("subheading-color")
+  const subheadingColorHexInput = document.getElementById("subheading-color-hex")
+
+  // Sync color picker and hex input
+  if (headingColorInput && headingColorHexInput) {
+    headingColorInput.addEventListener("input", () => {
+      headingColorHexInput.value = headingColorInput.value
+    })
+    headingColorHexInput.addEventListener("input", () => {
+      if (/^#[0-9A-F]{6}$/i.test(headingColorHexInput.value)) {
+        headingColorInput.value = headingColorHexInput.value
+      }
+    })
+  }
+
+  if (subheadingColorInput && subheadingColorHexInput) {
+    subheadingColorInput.addEventListener("input", () => {
+      subheadingColorHexInput.value = subheadingColorInput.value
+    })
+    subheadingColorHexInput.addEventListener("input", () => {
+      if (/^#[0-9A-F]{6}$/i.test(subheadingColorHexInput.value)) {
+        subheadingColorInput.value = subheadingColorHexInput.value
+      }
+    })
+  }
+
+  // Category buttons functionality
+  const categoryButtons = document.querySelectorAll(".category-button")
+  const resourceCategories = document.querySelectorAll(".resource-category")
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("Category button clicked:", this.getAttribute("data-category"))
+      const category = this.getAttribute("data-category")
+
+      // Remove active class from all buttons
+      categoryButtons.forEach((btn) => btn.classList.remove("active"))
+
+      // Add active class to clicked button
+      this.classList.add("active")
+
+      // Show/hide categories based on selection
+      if (category === "all") {
+        resourceCategories.forEach((cat) => (cat.style.display = "block"))
+      } else {
+        resourceCategories.forEach((cat) => {
+          if (cat.getAttribute("data-category") === category) {
+            cat.style.display = "block"
+          } else {
+            cat.style.display = "none"
+          }
+        })
+      }
+    })
+  })
+
+  // Toggle preview functionality
+  const toggleButtons = document.querySelectorAll(".toggle-preview")
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("Toggle preview button clicked:", this.getAttribute("data-id"))
+      const previewId = this.getAttribute("data-id")
+      togglePreview(previewId)
+    })
+  })
+
+  // Function to toggle preview
+  function togglePreview(previewId) {
+    const previewElement = document.getElementById(previewId)
+
+    if (!previewElement) {
+      console.error(`Preview element with ID ${previewId} not found`)
+      return
+    }
+
+    if (previewElement.classList.contains("expanded")) {
+      previewElement.classList.remove("expanded")
+      document.querySelector(`[data-id="${previewId}"]`).textContent = "Show More"
+    } else {
+      previewElement.classList.add("expanded")
+      document.querySelector(`[data-id="${previewId}"]`).textContent = "Show Less"
+    }
+  }
+
+  // UI/UX Tabs functionality
+  const uiuxTabs = document.querySelectorAll(".uiux-tab")
+  const uiuxContents = document.querySelectorAll(".uiux-content")
+
+  uiuxTabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      const contentId = this.getAttribute("data-content")
+
+      // Remove active class from all tabs and contents
+      uiuxTabs.forEach((t) => t.classList.remove("active"))
+      uiuxContents.forEach((c) => c.classList.remove("active"))
+
+      // Add active class to clicked tab and corresponding content
+      this.classList.add("active")
+      document.getElementById(contentId).classList.add("active")
+    })
+  })
+
+  // Responsive view toggle
+  const responsiveButtons = document.querySelectorAll(".responsive-button")
+  const responsiveContents = document.querySelectorAll(".responsive-content")
+
+  responsiveButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const view = this.getAttribute("data-view")
+
+      // Remove active class from all buttons and contents
+      responsiveButtons.forEach((btn) => btn.classList.remove("active"))
+      responsiveContents.forEach((content) => content.classList.remove("active"))
+
+      // Add active class to clicked button and corresponding content
+      this.classList.add("active")
+      document.getElementById(view + "-view").classList.add("active")
+    })
+  })
+
+  // Search functionality
+  const searchForm = document.querySelector(".search-form")
+  const searchInput = document.getElementById("search-input")
+
+  if (searchForm) {
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault()
+      performSearch()
+    })
+  }
+
+  function performSearch() {
+    if (!searchInput) return
+
+    const searchTerm = searchInput.value.toLowerCase().trim()
+    console.log("Searching for:", searchTerm)
+
+    if (searchTerm === "") {
+      // Reset all resources to visible if search is empty
+      resourceCategories.forEach((cat) => (cat.style.display = "block"))
+      document.querySelectorAll(".resource-card").forEach((card) => (card.style.display = "block"))
+      return
+    }
+
+    // Make all categories visible initially
+    resourceCategories.forEach((cat) => (cat.style.display = "block"))
+
+    // Filter resource cards
+    const resourceCards = document.querySelectorAll(".resource-card")
+    const hasVisibleCards = {}
+
+    resourceCards.forEach((card) => {
+      const title = card.querySelector(".resource-title").textContent.toLowerCase()
+      const description = card.querySelector(".resource-description").textContent.toLowerCase()
+      const tags = Array.from(card.querySelectorAll(".resource-tag"))
+        .map((tag) => tag.textContent.toLowerCase())
+        .join(" ")
+
+      const categorySection = card.closest(".resource-category")
+      const categoryId = categorySection.getAttribute("data-category")
+
+      if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+        card.style.display = "block"
+        hasVisibleCards[categoryId] = true
+      } else {
+        card.style.display = "none"
+      }
+    })
+
+    // Hide categories with no visible cards
+    resourceCategories.forEach((cat) => {
+      const categoryId = cat.getAttribute("data-category")
+      if (!hasVisibleCards[categoryId]) {
+        cat.style.display = "none"
+      }
+    })
+  }
+
+  // Template data storage
+  const templateData = {
+    "bug-report-template": {
+      title: "Bug Report Template",
+      structure: `# BUG REPORT TEMPLATE
+
+## BASIC INFORMATION
+**Bug ID:** [Auto-generated or manually assigned]
+**Reported By:** [Your Name]
+**Date Reported:** [YYYY-MM-DD]
+**Priority:** [High/Medium/Low]
+**Severity:** [Critical/Major/Minor/Cosmetic]
+**Status:** [New]
+
+## ENVIRONMENT
+**Device:** [e.g., MacBook Pro, iPhone 13, etc.]
+**OS & Version:** [e.g., Windows 11, iOS 15.4]
+**Browser & Version:** [e.g., Chrome 99.0.4844.51]
+**App Version:** [e.g., 2.4.1]
+**Screen Resolution:** [e.g., 1920x1080]
+
+## DESCRIPTION
+[Provide a clear, concise description of the bug]
+
+## STEPS TO REPRODUCE
+1. [First step]
+2. [Second step]
+3. [Third step]
+...
+
+## EXPECTED BEHAVIOR
+[What should happen when the steps are followed correctly]
+
+## ACTUAL BEHAVIOR
+[What actually happens when the steps are followed]
+
+## ATTACHMENTS
+[Screenshots, videos, logs, or other relevant files]
+
+## ADDITIONAL NOTES
+[Any other information that might be helpful]`,
+      fields: [
+        { id: "bugId", label: "Bug ID", type: "text", placeholder: "e.g., BUG-123" },
+        { id: "reportedBy", label: "Reported By", type: "text", placeholder: "Your Name" },
+        { id: "dateReported", label: "Date Reported", type: "date" },
+        {
+          id: "priority",
+          label: "Priority",
+          type: "select",
+          options: ["High", "Medium", "Low"],
+        },
+        {
+          id: "severity",
+          label: "Severity",
+          type: "select",
+          options: ["Critical", "Major", "Minor", "Cosmetic"],
+        },
+        { id: "device", label: "Device", type: "text", placeholder: "e.g., MacBook Pro, iPhone 13" },
+        { id: "osVersion", label: "OS & Version", type: "text", placeholder: "e.g., Windows 11, iOS 15.4" },
+        {
+          id: "browserVersion",
+          label: "Browser & Version",
+          type: "text",
+          placeholder: "e.g., Chrome 99.0.4844.51",
+        },
+        { id: "appVersion", label: "App Version", type: "text", placeholder: "e.g., 2.4.1" },
+        { id: "description", label: "Description", type: "textarea", placeholder: "Describe the bug in detail" },
+        {
+          id: "stepsToReproduce",
+          label: "Steps to Reproduce",
+          type: "textarea",
+          placeholder: "List the steps to reproduce the bug",
+        },
+        {
+          id: "expectedBehavior",
+          label: "Expected Behavior",
+          type: "textarea",
+          placeholder: "What should happen",
+        },
+        {
+          id: "actualBehavior",
+          label: "Actual Behavior",
+          type: "textarea",
+          placeholder: "What actually happens",
+        },
+      ],
+    },
+    "coverage-report-template": {
+      title: "Test Coverage Report Template",
+      structure: `# TEST COVERAGE REPORT
+
+## PROJECT OVERVIEW
+**Project Name:** [Project Name]
+**Version/Sprint:** [Version or Sprint #]
+**Report Date:** [YYYY-MM-DD]
+**Report Prepared By:** [Your Name]
+**Testing Period:** [Start Date] to [End Date]
+
+## EXECUTIVE SUMMARY
+[1-2 sentences summarizing the overall quality status]
+
+## COVERAGE METRICS
+**Feature Coverage:** [e.g., 85%] (Features tested / Total features)
+**Requirement Coverage:** [e.g., 92%] (Requirements tested / Total requirements)
+**Code Coverage:** [e.g., 78%] (Code tested / Total code)
+**Test Case Execution:** [e.g., 245/250] (Executed / Total planned)
+
+## RISK ASSESSMENT
+**High-Risk Areas Coverage:** [e.g., 100%]
+**Medium-Risk Areas Coverage:** [e.g., 85%]
+**Low-Risk Areas Coverage:** [e.g., 75%]
+
+## TEST RESULTS SUMMARY
+**Total Test Cases:** [Number]
+**Passed:** [Number] ([Percentage]%)
+**Failed:** [Number] ([Percentage]%)
+**Blocked:** [Number] ([Percentage]%)
+**Not Executed:** [Number] ([Percentage]%)
+
+## DEFECTS SUMMARY
+**Total Defects:** [Number]
+**Critical:** [Number]
+**High:** [Number]
+**Medium:** [Number]
+**Low:** [Number]
+
+## RECOMMENDATIONS
+[List any recommendations based on the test results]
+
+## CONCLUSION
+[Overall assessment of quality and readiness]`,
+      fields: [
+        { id: "projectName", label: "Project Name", type: "text", placeholder: "Project Name" },
+        { id: "versionSprint", label: "Version/Sprint", type: "text", placeholder: "e.g., v1.2.3 or Sprint 5" },
+        { id: "reportDate", label: "Report Date", type: "date" },
+        { id: "preparedBy", label: "Prepared By", type: "text", placeholder: "Your Name" },
+        { id: "testingPeriodStart", label: "Testing Period Start", type: "date" },
+        { id: "testingPeriodEnd", label: "Testing Period End", type: "date" },
+        {
+          id: "executiveSummary",
+          label: "Executive Summary",
+          type: "textarea",
+          placeholder: "Brief summary of overall quality status",
+        },
+        {
+          id: "featureCoverage",
+          label: "Feature Coverage (%)",
+          type: "number",
+          placeholder: "e.g., 85",
+          min: "0",
+          max: "100",
+        },
+        {
+          id: "requirementCoverage",
+          label: "Requirement Coverage (%)",
+          type: "number",
+          placeholder: "e.g., 92",
+          min: "0",
+          max: "100",
+        },
+        {
+          id: "codeCoverage",
+          label: "Code Coverage (%)",
+          type: "number",
+          placeholder: "e.g., 78",
+          min: "0",
+          max: "100",
+        },
+        { id: "testCasesExecuted", label: "Test Cases Executed", type: "number", placeholder: "e.g., 245" },
+        { id: "testCasesTotal", label: "Total Test Cases", type: "number", placeholder: "e.g., 250" },
+        {
+          id: "recommendations",
+          label: "Recommendations",
+          type: "textarea",
+          placeholder: "List any recommendations based on the test results",
+        },
+        {
+          id: "conclusion",
+          label: "Conclusion",
+          type: "textarea",
+          placeholder: "Overall assessment of quality and readiness",
+        },
+      ],
+    },
+    "user-bug-form": {
+      title: "User-Reported Bug Form",
+      structure: `# USER ISSUE REPORT FORM
+
+Thank you for taking the time to report an issue. The information you provide will help us fix the problem quickly.
+
+## What went wrong?
+[Brief description of the issue]
+
+## What did you expect to happen?
+[What you expected the app/site to do]
+
+## Can you reproduce the issue?
+- [ ] Yes, every time
+- [ ] Yes, sometimes
+- [ ] No, it happened only once
+- [ ] Not sure
+
+## Steps to reproduce (if applicable)
+1. [First step]
+2. [Second step]
+3. [Continue as needed]
+
+## Device and technical details
+Device Type: [Smartphone / Tablet / Laptop / Desktop / Other]
+Device Model: [e.g., iPhone 13 Pro, Dell XPS 15]
+Operating System: [e.g., iOS 15.4, Windows 11]
+Browser (if applicable): [e.g., Chrome, Safari]
+App Version (if applicable): [e.g., 2.4.1]
+
+## Additional information
+[Any other details that might help us understand the issue]
+
+## Contact information (optional)
+Email: [Your email address if you'd like us to follow up]`,
+      fields: [
+        {
+          id: "issueDescription",
+          label: "What went wrong?",
+          type: "textarea",
+          placeholder: "Brief description of the issue",
+        },
+        {
+          id: "expectedBehavior",
+          label: "What did you expect to happen?",
+          type: "textarea",
+          placeholder: "What you expected the app/site to do",
+        },
+        {
+          id: "reproducibility",
+          label: "Can you reproduce the issue?",
+          type: "select",
+          options: ["Yes, every time", "Yes, sometimes", "No, it happened only once", "Not sure"],
+        },
+        {
+          id: "stepsToReproduce",
+          label: "Steps to reproduce",
+          type: "textarea",
+          placeholder: "List the steps to reproduce the issue",
+        },
+        {
+          id: "deviceType",
+          label: "Device Type",
+          type: "select",
+          options: ["Smartphone", "Tablet", "Laptop", "Desktop", "Other"],
+        },
+        { id: "deviceModel", label: "Device Model", type: "text", placeholder: "e.g., iPhone 13 Pro, Dell XPS 15" },
+        {
+          id: "operatingSystem",
+          label: "Operating System",
+          type: "text",
+          placeholder: "e.g., iOS 15.4, Windows 11",
+        },
+        { id: "browser", label: "Browser", type: "text", placeholder: "e.g., Chrome, Safari" },
+        { id: "appVersion", label: "App Version", type: "text", placeholder: "e.g., 2.4.1" },
+        {
+          id: "additionalInfo",
+          label: "Additional Information",
+          type: "textarea",
+          placeholder: "Any other details that might help us understand the issue",
+        },
+        { id: "contactEmail", label: "Contact Email (optional)", type: "email", placeholder: "Your email address" },
+      ],
+    },
+    "launch-checklist": {
+      title: "Launch Readiness Checklist",
+      structure: `# LAUNCH READINESS CHECKLIST
+
+## FUNCTIONAL VERIFICATION
+- [ ] All critical user journeys have been tested end-to-end
+- [ ] All high and medium priority bugs have been fixed
+- [ ] Known issues have been documented with workarounds
+- [ ] Error handling and validation has been tested
+- [ ] Search functionality works as expected
+- [ ] Form submissions are processed correctly
+- [ ] Email notifications and confirmations are working
+
+## PERFORMANCE & SCALABILITY
+- [ ] Load testing has been performed at 2x expected volume
+- [ ] Response times are within acceptable thresholds
+- [ ] Database queries are optimized
+- [ ] CDN configuration is optimized
+- [ ] Auto-scaling is configured (if applicable)
+- [ ] Caching strategy is implemented and tested
+
+## SECURITY
+- [ ] Security vulnerabilities have been addressed
+- [ ] Authentication and authorization work correctly
+- [ ] Sensitive data is encrypted
+- [ ] Input validation is implemented
+- [ ] CSRF protection is in place
+- [ ] Rate limiting is configured
+
+## COMPATIBILITY
+- [ ] Application works in all supported browsers
+- [ ] Application works on all supported devices
+- [ ] Application works on all supported operating systems
+- [ ] Responsive design has been tested
+- [ ] Accessibility requirements have been met
+
+## DEPLOYMENT & OPERATIONS
+- [ ] Deployment process is documented
+- [ ] Rollback procedure is documented and tested
+- [ ] Monitoring is configured
+- [ ] Alerting is configured
+- [ ] Logging is implemented
+- [ ] Backup and recovery procedures are in place
+
+## DOCUMENTATION & TRAINING
+- [ ] User documentation is complete
+- [ ] Admin documentation is complete
+- [ ] Support team has been trained
+- [ ] Known issues and workarounds are documented
+
+## BUSINESS READINESS
+- [ ] Marketing materials are ready
+- [ ] Legal requirements have been met
+- [ ] Analytics tracking is implemented
+- [ ] Stakeholders have approved the release`,
+      fields: [
+        {
+          id: "projectName",
+          label: "Project Name",
+          type: "text",
+          placeholder: "Name of the project being launched",
+        },
+        { id: "version", label: "Version", type: "text", placeholder: "e.g., v1.0.0" },
+        { id: "launchDate", label: "Planned Launch Date", type: "date" },
+        { id: "preparedBy", label: "Prepared By", type: "text", placeholder: "Your Name" },
+        { id: "preparedDate", label: "Preparation Date", type: "date" },
+        {
+          id: "additionalNotes",
+          label: "Additional Notes",
+          type: "textarea",
+          placeholder: "Any additional notes or context for this launch",
+        },
+      ],
+    },
+    "security-checklist": {
+      title: "Security Baseline Checklist",
+      structure: `# SECURITY BASELINE CHECKLIST
+
+## AUTHENTICATION & AUTHORIZATION
+- [ ] Strong password requirements enforced
+- [ ] Account lockout after failed login attempts
+- [ ] Two-factor authentication available
+- [ ] Password reset flow is secure
+- [ ] Session timeout implemented
+- [ ] Role-based access control implemented
+- [ ] Authorization checks on all sensitive endpoints
+
+## DATA PROTECTION
+- [ ] Sensitive data encrypted at rest
+- [ ] TLS/SSL used for all communications
+- [ ] PII is minimized and protected
+- [ ] Database connection strings and credentials are secured
+- [ ] Encryption keys properly managed
+- [ ] Data backups are encrypted
+
+## INPUT VALIDATION & OUTPUT ENCODING
+- [ ] Input validation implemented for all user inputs
+- [ ] Output encoding implemented to prevent XSS
+- [ ] SQL injection prevention implemented
+- [ ] File upload validation and scanning
+- [ ] API parameters are validated
+- [ ] Content Security Policy implemented
+
+## SESSION MANAGEMENT
+- [ ] Secure session handling implemented
+- [ ] Secure session handling implemented
+- [ ] CSRF protection implemented
+- [ ] Session IDs are properly protected
+- [ ] Sessions expire after inactivity
+- [ ] Secure cookie attributes used
+- [ ] Session fixation protection implemented
+
+## ERROR HANDLING & LOGGING
+- [ ] Error messages don't reveal sensitive information
+- [ ] Exceptions are properly caught and handled
+- [ ] Security events are logged
+- [ ] Logs don't contain sensitive information
+- [ ] Log integrity is protected
+- [ ] Monitoring for suspicious activity implemented
+
+## INFRASTRUCTURE SECURITY
+- [ ] Firewall configured properly
+- [ ] Network segmentation implemented
+- [ ] Unnecessary services disabled
+- [ ] System hardening performed
+- [ ] Regular security patching process in place
+- [ ] DDoS protection implemented
+
+## SECURITY TESTING
+- [ ] Regular vulnerability scanning performed
+- [ ] Penetration testing performed
+- [ ] Security code review performed
+- [ ] Dependency scanning for vulnerabilities
+- [ ] Security regression testing performed
+- [ ] Security incident response plan tested`,
+      fields: [
+        {
+          id: "applicationName",
+          label: "Application Name",
+          type: "text",
+          placeholder: "Name of the application being assessed",
+        },
+        { id: "version", label: "Version", type: "text", placeholder: "e.g., v1.0.0" },
+        { id: "assessmentDate", label: "Assessment Date", type: "date" },
+        { id: "assessedBy", label: "Assessed By", type: "text", placeholder: "Your Name" },
+        {
+          id: "scope",
+          label: "Assessment Scope",
+          type: "textarea",
+          placeholder: "Define the scope of this security assessment",
+        },
+        {
+          id: "additionalNotes",
+          label: "Additional Notes",
+          type: "textarea",
+          placeholder: "Any additional notes or context for this assessment",
+        },
+      ],
+    },
+    "accessibility-checklist": {
+      title: "Web Accessibility Testing Checklist",
+      structure: `# WEB ACCESSIBILITY TESTING CHECKLIST
+
+## PERCEIVABLE
+### Text Alternatives
+- [ ] All images have appropriate alt text
+- [ ] Complex images have extended descriptions
+- [ ] Decorative images have null alt attributes
+- [ ] Form inputs have associated text labels
+- [ ] Button text clearly describes the action
+
+### Time-based Media
+- [ ] Videos have captions
+- [ ] Audio content has transcripts
+- [ ] Media players have accessible controls
+
+### Adaptable
+- [ ] Content can be presented in different ways
+- [ ] Correct semantic HTML elements are used
+- [ ] Page structure uses proper heading hierarchy (H1-H6)
+- [ ] Tables have proper headers and structure
+
+### Distinguishable
+- [ ] Color is not the only means of conveying information
+- [ ] Text has sufficient contrast with background
+- [ ] Text can be resized up to 200% without loss of content
+- [ ] Audio can be paused, stopped, or volume adjusted
+
+## OPERABLE
+### Keyboard Accessible
+- [ ] All functionality is available via keyboard
+- [ ] Keyboard focus is visible
+- [ ] Keyboard focus order is logical
+- [ ] No keyboard traps exist
+
+### Enough Time
+- [ ] Time limits can be adjusted or extended
+- [ ] Moving content can be paused, stopped, or hidden
+- [ ] Auto-updating content can be paused, stopped, or hidden
+
+### Seizures and Physical Reactions
+- [ ] No content flashes more than 3 times per second
+
+### Navigable
+- [ ] Pages have descriptive titles
+- [ ] Each page has at least one heading
+- [ ] Skip navigation link is provided
+- [ ] Link text is descriptive and makes sense out of context
+
+## UNDERSTANDABLE
+### Readable
+- [ ] Language of page is specified
+- [ ] Language of parts is specified when it changes
+- [ ] Unusual words and abbreviations are explained
+
+### Predictable
+- [ ] Navigation is consistent across pages
+- [ ] Components with same functionality are identified consistently
+- [ ] Changes of context are initiated only by user request
+
+### Input Assistance
+- [ ] Form errors are identified and described to users
+- [ ] Labels or instructions are provided for user input
+- [ ] Error suggestions are provided when detected
+- [ ] Critical forms can be reviewed before submission
+
+## ROBUST
+### Compatible
+- [ ] HTML is valid and well-formed
+- [ ] ARIA is used correctly
+- [ ] Custom controls have appropriate roles and states
+- [ ] Status messages can be programmatically determined`,
+      fields: [
+        {
+          id: "websiteName",
+          label: "Website/Application Name",
+          type: "text",
+          placeholder: "Name of the website or application being tested",
+        },
+        { id: "url", label: "URL", type: "url", placeholder: "https://example.com" },
+        { id: "testDate", label: "Test Date", type: "date" },
+        { id: "testedBy", label: "Tested By", type: "text", placeholder: "Your Name" },
+        {
+          id: "browsers",
+          label: "Browsers Tested",
+          type: "text",
+          placeholder: "e.g., Chrome 99, Firefox 98, Safari 15.4",
+        },
+        {
+          id: "assistiveTech",
+          label: "Assistive Technologies Tested",
+          type: "text",
+          placeholder: "e.g., NVDA, VoiceOver, JAWS",
+        },
+        {
+          id: "scope",
+          label: "Test Scope",
+          type: "textarea",
+          placeholder: "Define the scope of this accessibility assessment",
+        },
+        {
+          id: "additionalNotes",
+          label: "Additional Notes",
+          type: "textarea",
+          placeholder: "Any additional notes or context for this assessment",
+        },
+      ],
+    },
+    "dev-testing-guide": {
+      title: "Developer-Led Testing Guide",
+      structure: `# DEVELOPER-LED TESTING GUIDE
+
+## INTRODUCTION
+This guide helps developers implement effective testing practices into their daily workflow to catch bugs early and deliver higher quality code.
+
+## WHY DEVELOPER TESTING MATTERS
+- Catches bugs when they're cheapest to fix (during development)
+- Reduces back-and-forth with QA team
+- Improves code quality and maintainability
+- Saves time in the overall development cycle
+- Builds knowledge of edge cases and failure modes
+
+## EFFECTIVE TESTING MINDSET
+### Switch Contexts
+The most important skill in developer testing is the ability to mentally switch from a builder mindset ("make it work") to a tester mindset ("break it if possible").
+
+### Techniques for Context Switching:
+1. Take a short break after implementation
+2. Approach testing as if you didn't write the code
+3. Ask: "What assumptions did I make while coding?"
+4. Consider: "What could users do that I didn't expect?"
+
+## TESTING APPROACHES
+### 1. Unit Testing
+- Test individual functions and methods in isolation
+- Focus on edge cases and boundary conditions
+- Use test-driven development when appropriate
+- Aim for high code coverage
+
+### 2. Integration Testing
+- Test how components work together
+- Focus on interfaces between components
+- Test error handling between components
+- Verify data flows correctly between components
+
+### 3. Functional Testing
+- Test complete user workflows
+- Verify business requirements are met
+- Test both happy paths and error paths
+- Validate UI behavior and state management
+
+## PRACTICAL TESTING CHECKLIST
+### Before You Start Coding
+- [ ] Understand the requirements fully
+- [ ] Identify potential edge cases
+- [ ] Plan your testing approach
+
+### During Development
+- [ ] Write unit tests for new code
+- [ ] Test edge cases as you go
+- [ ] Verify error handling
+- [ ] Check for performance issues
+
+### Before Submitting for Review
+- [ ] Run all tests (unit, integration, etc.)
+- [ ] Test the feature manually as a user would
+- [ ] Verify all acceptance criteria are met
+- [ ] Check for any regressions
+
+## COMMON TESTING PITFALLS
+1. Only testing the "happy path"
+2. Not testing edge cases
+3. Not testing error handling
+4. Not testing with realistic data
+5. Not testing performance
+6. Not testing security
+
+## CONCLUSION
+Developer-led testing is not about replacing QA but about catching issues earlier when they're easier and cheaper to fix. By incorporating these practices into your daily workflow, you'll deliver higher quality code and become a more effective developer.`,
+      fields: [
+        {
+          id: "teamName",
+          label: "Development Team Name",
+          type: "text",
+          placeholder: "Name of your development team",
+        },
+        {
+          id: "projectType",
+          label: "Project Type",
+          type: "text",
+          placeholder: "e.g., Web Application, Mobile App, API",
+        },
+        {
+          id: "primaryLanguages",
+          label: "Primary Programming Languages",
+          type: "text",
+          placeholder: "e.g., JavaScript, Python, Java",
+        },
+        {
+          id: "testingTools",
+          label: "Testing Tools Used",
+          type: "text",
+          placeholder: "e.g., Jest, Cypress, JUnit",
+        },
+        {
+          id: "customApproaches",
+          label: "Custom Testing Approaches",
+          type: "textarea",
+          placeholder: "Any team-specific testing approaches or methodologies",
+        },
+        {
+          id: "challengesNotes",
+          label: "Specific Challenges & Notes",
+          type: "textarea",
+          placeholder: "Any specific testing challenges or additional notes for your team",
+        },
+      ],
+    },
+    "test-strategy-framework": {
+      title: "5-Minute Test Strategy Framework",
+      structure: `# 5-MINUTE TEST STRATEGY FRAMEWORK
+
+## THE CHALLENGE
+In fast-paced environments, there's rarely time to create detailed test plans. This framework helps you quickly develop a focused testing strategy that:
+- Identifies highest-risk areas
+- Maximizes test coverage with limited resources
+- Ensures critical issues won't reach production
+
+## THE 5-MINUTE PROCESS
+
+### MINUTE 1: Define Business Risk
+Answer these questions:
+1. What's the worst thing that could happen if this breaks?
+2. Which features are most visible to users/customers?
+3. Which areas impact revenue/data integrity?
+
+List the top 3 areas that emerged from these questions.
+
+### MINUTE 2: Consider Technical Risk
+For each high-business-risk area, consider:
+1. What changed recently in this area?
+2. Which parts have complex code/logic?
+3. Which parts have been buggy in the past?
+
+Add any new areas that emerged to your high-risk list.
+
+### MINUTE 3: Prioritize Test Areas
+Combine your business and technical risk assessments to create a prioritized list:
+1. Critical: Must test thoroughly (business + technical risk)
+2. High: Should test well (high risk in either category)
+3. Medium: Test if time permits
+4. Low: Minimal testing needed
+
+### MINUTE 4: Select Test Approaches
+For each priority level, choose appropriate test approaches:
+- Critical: Thorough manual testing + automated tests
+- High: Focused manual testing + key automated tests
+- Medium: Key scenario testing
+- Low: Smoke testing only
+
+### MINUTE 5: Create Execution Plan
+1. Allocate available time across priority levels (e.g., 60% Critical, 30% High, 10% Medium)
+2. Identify who will perform each testing activity
+3. Define what "done" means for each priority level
+4. Determine how results will be reported
+
+## OUTPUT
+You now have a risk-based test strategy that:
+- Focuses on what matters most
+- Makes the best use of limited resources
+- Can be communicated to stakeholders in 2 minutes
+- Provides clear direction to the testing team`,
+      fields: [
+        {
+          id: "projectName",
+          label: "Project/Feature Name",
+          type: "text",
+          placeholder: "Name of the project or feature",
+        },
+        { id: "releaseDate", label: "Target Release Date", type: "date" },
+        { id: "preparedBy", label: "Prepared By", type: "text", placeholder: "Your Name" },
+        { id: "preparedDate", label: "Preparation Date", type: "date" },
+        {
+          id: "businessRisks",
+          label: "Top Business Risks",
+          type: "textarea",
+          placeholder: "List the top 3 business risks",
+        },
+        {
+          id: "technicalRisks",
+          label: "Top Technical Risks",
+          type: "textarea",
+          placeholder: "List the top 3 technical risks",
+        },
+        {
+          id: "criticalAreas",
+          label: "Critical Test Areas",
+          type: "textarea",
+          placeholder: "List the critical areas that must be tested thoroughly",
+        },
+        {
+          id: "highAreas",
+          label: "High Priority Test Areas",
+          type: "textarea",
+          placeholder: "List the high priority areas that should be tested well",
+        },
+        {
+          id: "timeAllocation",
+          label: "Time Allocation",
+          type: "textarea",
+          placeholder: "How will you allocate the available testing time?",
+        },
+        {
+          id: "additionalNotes",
+          label: "Additional Notes",
+          type: "textarea",
+          placeholder: "Any additional notes or context for this test strategy",
+        },
+      ],
+    },
+    "quality-gates": {
+      title: "Quality Gates for Startups",
+      structure: `# QUALITY GATES FOR STARTUPS
+
+## WHAT ARE QUALITY GATES?
+Quality gates are lightweight checkpoints in the development process that validate quality criteria before work proceeds to the next stage. Unlike heavyweight processes, these are designed to:
+
+- Take minimal time to implement
+- Focus only on critical quality aspects
+- Adapt to changing priorities
+- Improve quality without adding bureaucracy
+
+## IMPLEMENTATION GUIDE
+
+### GATE 1: REQUIREMENTS REVIEW
+**When:** Before development starts
+**Time Required:** 15-30 minutes
+**Who:** Product Owner, Tech Lead, optional QA representative
+
+**Key Questions:**
+1. Are acceptance criteria clear and testable?
+2. Are edge cases and error scenarios defined?
+3. Are there any security or performance implications?
+4. Is the scope clear and appropriately sized?
+
+**Output:** Refined user story with clear acceptance criteria
+
+### GATE 2: DESIGN REVIEW
+**When:** After initial technical design, before implementation
+**Time Required:** 15-30 minutes
+**Who:** Tech Lead, Senior Developer(s), optional QA representative
+
+**Key Questions:**
+1. Does the design address all requirements?
+2. Are there any technical risks or dependencies?
+3. Is the approach scalable and maintainable?
+4. Are there any security considerations?
+
+**Output:** Validated technical approach with identified risks
+
+### GATE 3: CODE REVIEW
+**When:** Before merging code
+**Time Required:** 15-45 minutes
+**Who:** Peer developer(s)
+
+**Key Questions:**
+1. Does the code implement the requirements correctly?
+2. Does the code follow team standards and best practices?
+3. Are there adequate unit tests?
+4. Are there any performance or security concerns?
+
+**Output:** Improved code quality and knowledge sharing
+
+### GATE 4: QA VERIFICATION
+**When:** After feature implementation, before release
+**Time Required:** 30-60 minutes
+**Who:** QA or developer performing testing role
+
+**Key Questions:**
+1. Do all acceptance criteria pass?
+2. Have edge cases been tested?
+3. Is there any regression in existing functionality?
+4. Is the feature usable and intuitive?
+
+**Output:** Verified feature ready for release
+
+### GATE 5: RELEASE READINESS
+**When:** Before deploying to production
+**Time Required:** 15-30 minutes
+**Who:** Tech Lead, Product Owner, QA representative
+
+**Key Questions:**
+1. Have all critical and high-priority bugs been fixed?
+2. Has the feature been tested in a production-like environment?
+3. Are monitoring and rollback plans in place?
+4. Has documentation been updated?
+
+**Output:** Go/No-Go decision for release
+
+## ADAPTING TO YOUR NEEDS
+- Start with just 2-3 gates that address your biggest quality pain points
+- Keep the process lightweight and focused
+- Adjust criteria based on project risk and importance
+- Document decisions but minimize bureaucracy
+- Review and improve the process regularly`,
+      fields: [
+        { id: "companyName", label: "Company Name", type: "text", placeholder: "Your startup's name" },
+        {
+          id: "productName",
+          label: "Product/Project Name",
+          type: "text",
+          placeholder: "Name of the product or project",
+        },
+        { id: "teamSize", label: "Team Size", type: "number", placeholder: "Number of team members" },
+        {
+          id: "developmentMethodology",
+          label: "Development Methodology",
+          type: "text",
+          placeholder: "e.g., Scrum, Kanban, Custom Agile",
+        },
+        {
+          id: "currentPainPoints",
+          label: "Current Quality Pain Points",
+          type: "textarea",
+          placeholder: "Describe your current quality challenges",
+        },
+        {
+          id: "priorityGates",
+          label: "Priority Gates to Implement",
+          type: "textarea",
+          placeholder: "Which quality gates would you prioritize implementing first?",
+        },
+        {
+          id: "customCriteria",
+          label: "Custom Gate Criteria",
+          type: "textarea",
+          placeholder: "Any custom criteria you'd like to add to the quality gates",
+        },
+        {
+          id: "implementationNotes",
+          label: "Implementation Notes",
+          type: "textarea",
+          placeholder: "Any notes on how you plan to implement these quality gates",
+        },
+      ],
+    },
+  }
+
+  // Download button functionality
+  const resourceButtons = document.querySelectorAll(".resource-button, .qa-preview-btn")
+  resourceButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("Resource button clicked:", this.getAttribute("data-template"))
+      const templateId = this.getAttribute("data-template")
+
+      if (!templateId || !templateData[templateId]) {
+        console.error(`Template data not found for ID: ${templateId}`)
+        showNotification("Template not found", "error")
+        return
+      }
+
+      openTemplateModal(templateId)
+    })
+  })
+
+  // Function to open template modal
+  function openTemplateModal(templateId) {
+    const template = templateData[templateId]
+
+    // Set modal title
+    templateTitle.textContent = template.title
+
+    // Set template structure
+    templateStructure.textContent = template.structure
+
+    // Generate form fields
+    generateFormFields(templateId, template.fields)
+
+    // Reset tabs
+    structureTab.classList.add("active")
+    contentTab.classList.remove("active")
+    outputTab.classList.remove("active")
+    structureContent.classList.add("active")
+    contentContent.classList.remove("active")
+    outputContent.classList.remove("active")
+
+    // Clear output
+    templateOutput.textContent = ""
+
+    // Show modal with animation
+    templateModal.style.display = "block"
+    templateModal.classList.add("show")
+    document.body.style.overflow = "hidden"
+  }
+
+  // Close modal
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => {
+      templateModal.classList.remove("show")
+      templateModal.style.display = "none"
+      document.body.style.overflow = "auto"
+    })
+  }
+
+  // Close modal when clicking outside
+  window.addEventListener("click", (event) => {
+    if (event.target === templateModal) {
+      templateModal.classList.remove("show")
+      templateModal.style.display = "none"
+      document.body.style.overflow = "auto"
+    }
+  })
+
+  // Tab navigation
+  structureTab.addEventListener("click", () => {
+    structureTab.classList.add("active")
+    contentTab.classList.remove("active")
+    outputTab.classList.remove("active")
+    structureContent.classList.add("active")
+    contentContent.classList.remove("active")
+    outputContent.classList.remove("active")
+  })
+
+  contentTab.addEventListener("click", () => {
+    structureTab.classList.remove("active")
+    contentTab.classList.add("active")
+    outputTab.classList.remove("active")
+    structureContent.classList.remove("active")
+    contentContent.classList.add("active")
+    outputContent.classList.remove("active")
+  })
+
+  outputTab.addEventListener("click", () => {
+    structureTab.classList.remove("active")
+    contentTab.classList.remove("active")
+    outputTab.classList.add("active")
+    structureContent.classList.remove("active")
+    contentContent.classList.remove("active")
+    outputContent.classList.add("active")
+  })
+
+  // Next buttons
+  nextStructureBtn.addEventListener("click", () => {
+    structureTab.classList.remove("active")
+    contentTab.classList.add("active")
+    outputTab.classList.remove("active")
+    structureContent.classList.remove("active")
+    contentContent.classList.add("active")
+    outputContent.classList.remove("active")
+  })
+
+  nextContentBtn.addEventListener("click", () => {
+    // Generate output first
+    generateOutput()
+
+    structureTab.classList.remove("active")
+    contentTab.classList.remove("active")
+    outputTab.classList.add("active")
+    structureContent.classList.remove("active")
+    contentContent.classList.remove("active")
+    outputContent.classList.add("active")
+  })
+
+  // Generate output
+  generateOutputBtn.addEventListener("click", generateOutput)
+
+  // Copy output
+  copyOutputBtn.addEventListener("click", () => {
+    const outputText = templateOutput.textContent
+    if (!outputText) {
+      showNotification("No content to copy", "error")
+      return
+    }
+
+    navigator.clipboard
+      .writeText(outputText)
+      .then(() => {
+        showNotification("Content copied to clipboard!")
+        copyOutputBtn.innerHTML = `
+          <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Copied!
+        `
+        setTimeout(() => {
+          copyOutputBtn.innerHTML = `
+            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+            </svg>
+            Copy to Clipboard
+          `
+        }, 2000)
+      })
+      .catch((err) => {
+        console.error("Could not copy text: ", err)
+        showNotification("Failed to copy. Please try again.", "error")
+      })
+  })
+
+  // Download button functionality
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", function() {
+      const format = downloadFormatSelect.value
+      const templateId = templateForm.getAttribute("data-template")
+      downloadTemplate(templateId, format)
+    })
+  }
+
+  // Function to download template in different formats
+  function downloadTemplate(templateId, format) {
+    if (!templateId || !templateData[templateId]) {
+      showNotification("Template not found", "error")
+      return
+    }
+
+    // Get the template output content
+    const outputContent = templateOutput.textContent
+    if (!outputContent) {
+      showNotification("Please generate content first", "error")
+      return
+    }
+
+    const title = templateData[templateId].title
+    let filename = title.toLowerCase().replace(/\s+/g, '-')
+
+    try {
+      switch(format) {
+        case 'pdf':
+          generatePdf(outputContent, filename)
+          break
+        case 'md':
+          generateMarkdown(outputContent, filename)
+          break
+        default:
+          generateTextFile(outputContent, filename)
+      }
+    } catch (error) {
+      console.error("Error generating file:", error)
+      showNotification("Error generating file. Please try again.", "error")
+    }
+  }
+
+  // Function to generate PDF file
+  function generatePdf(content, filename) {
+    try {
+      // Create a new jsPDF instance
+      const { jsPDF } = window.jspdf
+      const doc = new jsPDF()
+      
+      // Split content into lines
+      const lines = content.split('\n')
+      let y = 20 // Starting vertical position
+      const lineHeight = 7
+      const pageWidth = doc.internal.pageSize.getWidth()
+      const margin = 20
+      const textWidth = pageWidth - (2 * margin)
+
+      let currentPage = 1
+      let fontSize = 12
+
+      // Add branding
+      const companyName = companyNameInput.value.trim() || "VelocityQA"
+      doc.setFontSize(16)
+      doc.setFont(undefined, 'bold')
+      doc.text(companyName, margin, y)
+      y += lineHeight * 1.5
+
+      // Add website
+      doc.setFontSize(10)
+      doc.setFont(undefined, 'normal')
+      doc.setTextColor(0, 102, 204)
+      doc.text("www.velocityqa.com.au", margin, y)
+      doc.setTextColor(0, 0, 0)
+      y += lineHeight * 2
+
+      lines.forEach((line) => {
+        // Check if it's a heading
+        if (line.startsWith('# ')) {
+          fontSize = 16
+          doc.setFontSize(fontSize)
+          doc.setFont(undefined, 'bold')
+          doc.setTextColor(parseInt(headingColorHexInput.value.substring(1, 3), 16), 
+                          parseInt(headingColorHexInput.value.substring(3, 5), 16), 
+                          parseInt(headingColorHexInput.value.substring(5, 7), 16))
+          line = line.substring(2)
+        } else if (line.startsWith('## ')) {
+          fontSize = 14
+          doc.setFontSize(fontSize)
+          doc.setFont(undefined, 'bold')
+          doc.setTextColor(parseInt(subheadingColorHexInput.value.substring(1, 3), 16), 
+                          parseInt(subheadingColorHexInput.value.substring(3, 5), 16), 
+                          parseInt(subheadingColorHexInput.value.substring(5, 7), 16))
+          line = line.substring(3)
+        } else if (line.startsWith('### ')) {
+          fontSize = 12
+          doc.setFontSize(fontSize)
+          doc.setFont(undefined, 'bold')
+          doc.setTextColor(parseInt(subheadingColorHexInput.value.substring(1, 3), 16), 
+                          parseInt(subheadingColorHexInput.value.substring(3, 5), 16), 
+                          parseInt(subheadingColorHexInput.value.substring(5, 7), 16))
+          line = line.substring(4)
+        } else {
+          fontSize = 10
+          doc.setFontSize(fontSize)
+          doc.setFont(undefined, 'normal')
+          doc.setTextColor(0, 0, 0)
+          
+          // Handle list items
+          if (line.startsWith('- [ ] ')) {
+            line = '☐ ' + line.substring(6)
+          } else if (line.startsWith('- [x] ')) {
+            line = '☑ ' + line.substring(6)
+          } else if (line.startsWith('- ')) {
+            line = '• ' + line.substring(2)
+          }
+          
+          // Handle bold text by removing markdown
+          line = line.replace(/\*\*(.*?)\*\*/g, '$1')
+        }
+
+        // Check if we need to add a new page
+        if (y > doc.internal.pageSize.getHeight() - 20) {
+          doc.addPage()
+          currentPage++
+          y = 20
+        }
+
+        // Add the text
+        if (line.trim() !== '') {
+          // Split long lines
+          const splitLines = doc.splitTextToSize(line, textWidth)
+          splitLines.forEach(splitLine => {
+            doc.text(splitLine, margin, y)
+            y += lineHeight
+          })
+        } else {
+          y += lineHeight / 2
+        }
+      })
+
+      // Add page numbers
+      for (let i = 1; i <= currentPage; i++) {
+        doc.setPage(i)
+        doc.setFontSize(8)
+        doc.setTextColor(0, 0, 0)
+        doc.text(`Page ${i} of ${currentPage}`, pageWidth - 30, doc.internal.pageSize.getHeight() - 10)
+      }
+
+      // Add footer with company details if provided
+      if (companyTaglineInput.value.trim()) {
+        const tagline = companyTaglineInput.value.trim()
+        doc.setPage(currentPage)
+        doc.setFontSize(9)
+        doc.setTextColor(100, 100, 100)
+        doc.text(tagline, margin, doc.internal.pageSize.getHeight() - 10)
+      }
+
+      doc.save(`${filename}.pdf`)
+      showNotification("PDF downloaded successfully!")
+    } catch (error) {
+      console.error("Error generating PDF:", error)
+      showNotification("Error generating PDF. Please try again.", "error")
+    }
+  }
+
+  // Function to generate Markdown file
+  function generateMarkdown(content, filename) {
+    const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
+    saveAs(blob, `${filename}.md`)
+    showNotification("Markdown file downloaded successfully!")
+  }
+
+  // Function to generate text file
+  function generateTextFile(content, filename) {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+    saveAs(blob, `${filename}.txt`)
+    showNotification("Text file downloaded successfully!")
+  }
+
+  // Helper function to save files
+  function saveAs(blob, fileName) {
+    if (window.saveAs) {
+      window.saveAs(blob, fileName)
+    } else {
+      // Fallback for browsers without FileSaver.js
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = fileName
+      document.body.appendChild(a)
+      a.click()
+      setTimeout(() => {
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      }, 100)
+    }
+  }
+
+  // Helper function to generate form fields
+  function generateFormFields(templateId, fields) {
+    if (!templateForm) return
+
+    templateForm.innerHTML = ""
+    templateForm.setAttribute("data-template", templateId)
+
+    fields.forEach((field) => {
+      const formGroup = document.createElement("div")
+      formGroup.className = "form-group"
+
+      const label = document.createElement("label")
+      label.className = "form-label"
+      label.setAttribute("for", field.id)
+      label.textContent = field.label
+      formGroup.appendChild(label)
+
+      let input
+
+      if (field.type === "textarea") {
+        input = document.createElement("textarea")
+        input.className = "form-input form-textarea"
+        input.rows = 4
+      } else if (field.type === "select") {
+        input = document.createElement("select")
+        input.className = "form-input"
+        field.options.forEach((option) => {
+          const optionElement = document.createElement("option")
+          optionElement.value = option
+          optionElement.textContent = option
+          input.appendChild(optionElement)
+        })
+      } else {
+        input = document.createElement("input")
+        input.className = "form-input"
+        input.type = field.type
+      }
+
+      input.id = field.id
+      input.name = field.id
+
+      if (field.placeholder) {
+        input.placeholder = field.placeholder
+      }
+
+      if (field.min) {
+        input.min = field.min
+      }
+
+      if (field.max) {
+        input.max = field.max
+      }
+
+      formGroup.appendChild(input)
+      templateForm.appendChild(formGroup)
+    })
+  }
+
+  // Helper function to generate output
+  function generateOutput() {
+    const templateId = templateForm.getAttribute("data-template")
+    if (!templateId || !templateData[templateId]) {
+      console.error(`Template data not found for ID: ${templateId}`)
+      showNotification("Template not found", "error")
+      return
+    }
+
+    const template = templateData[templateId]
+    let output = template.structure
+
+    // Apply company branding if provided
+    const companyName = companyNameInput.value.trim()
+    const companyTagline = companyTaglineInput.value.trim()
+
+    // Add company footer if provided
+    if (companyName) {
+      output += `\n\n---\nGenerated by ${companyName}`
+      if (companyTagline) {
+        output += ` - ${companyTagline}`
+      }
+    } else {
+      output += `\n\n---\nGenerated with VelocityQA Toolkit - www.velocityqa.com.au`
+    }
+
+    // Get form values
+    const formData = {}
+    template.fields.forEach((field) => {
+      const input = document.getElementById(field.id)
+      if (input) {
+        formData[field.id] = input.value.trim()
+      }
+    })
+
+    // Replace placeholders with form values
+    Object.keys(formData).forEach((key) => {
+      if (formData[key]) {
+        const value = formData[key]
+
+        // Try to replace common placeholders based on the field ID
+        if (key === "projectName") {
+          output = output.replace(/\[Project Name\]/g, value)
+        } else if (key === "preparedBy") {
+          output = output.replace(/\[Your Name\]/g, value)
+        } else if (key === "reportDate" || key === "preparedDate") {
+          output = output.replace(/\[YYYY-MM-DD\]/g, value)
+        } else if (key === "version") {
+          output = output.replace(/\[Version or Sprint #\]/g, value)
+        } else if (key === "description") {
+          output = output.replace(/\[Provide a clear, concise description of the bug\]/g, value)
+        } else if (key === "stepsToReproduce") {
+          // Replace the steps placeholder with actual steps
+          const steps = value
+            .split("\n")
+            .map((step, index) => `${index + 1}. ${step}`)
+            .join("\n")
+          output = output.replace(/1\. \[First step\]\n2\. \[Second step\]\n3\. \[Third step\]\n\.\.\./g, steps)
+        } else if (key === "testingPeriodStart" && formData["testingPeriodEnd"]) {
+          // Handle date range
+          output = output.replace(
+            /\[Start Date\] to \[End Date\]/g,
+            `${formData["testingPeriodStart"]} to ${formData["testingPeriodEnd"]}`,
+          )
+        } else if (key === "executiveSummary") {
+          output = output.replace(/\[1-2 sentences summarizing the overall quality status\]/g, value)
+        } else if (key === "featureCoverage") {
+          output = output.replace(/\[e\.g\., 85%\]/g, `${value}%`)
+        } else if (key === "issueDescription") {
+          output = output.replace(/\[Brief description of the issue\]/g, value)
+        } else if (key === "expectedBehavior") {
+          if (templateId === "user-bug-form") {
+            output = output.replace(/\[What you expected the app\/site to do\]/g, value)
+          } else {
+            output = output.replace(/\[What should happen when the steps are followed correctly\]/g, value)
+          }
+        } else if (key === "actualBehavior") {
+          output = output.replace(/\[What actually happens when the steps are followed\]/g, value)
+        } else if (key === "deviceType") {
+          output = output.replace(/\[Smartphone \/ Tablet \/ Laptop \/ Desktop \/ Other\]/g, value)
+        } else if (key === "deviceModel") {
+          output = output.replace(/\[e\.g\., iPhone 13 Pro, Dell XPS 15\]/g, value)
+        } else if (key === "operatingSystem") {
+          output = output.replace(/\[e\.g\., iOS 15\.4, Windows 11\]/g, value)
+        } else if (key === "browser") {
+          output = output.replace(/\[e\.g\., Chrome, Safari\]/g, value)
+        } else if (key === "appVersion") {
+          output = output.replace(/\[e\.g\., 2\.4\.1\]/g, value)
+        } else if (key === "contactEmail") {
+          output = output.replace(/\[Your email address if you'd like us to follow up\]/g, value)
+        } else if (key === "additionalInfo") {
+          output = output.replace(/\[Any other details that might help us understand the issue\]/g, value)
+        }
+      }
+    })
+
+    // Set output
+    templateOutput.textContent = output
+
+    // Show notification
+    showNotification("Template generated successfully!")
+  }
+
+  // Helper function to show notification
+  function showNotification(message, type = "success") {
+    // Remove existing notifications
+    const existingNotification = document.querySelector(".notification")
+    if (existingNotification) {
+      existingNotification.remove()
+    }
+
+    // Create notification element
+    const notification = document.createElement("div")
+    notification.className = `notification ${type}`
+
+    // Set icon based on type
+    let icon = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+    `
+
+    if (type === "error") {
+      icon = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      `
+    }
+
+    notification.innerHTML = `${icon} ${message}`
+
+    // Add to document
+    document.body.appendChild(notification)
+
+    // Show notification
+    setTimeout(() => {
+      notification.classList.add("show")
+    }, 10)
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove("show")
+      setTimeout(() => {
+        notification.remove()
+      }, 300)
+    }, 3000)
+  }
+
+  // Initialize fetch template from JSON if it exists
+  async function fetchTemplateFromServer(templateId) {
+    try {
+      const response = await fetch(`templates/${templateId}.json`)
+      if (!response.ok) {
+        throw new Error(`Failed to fetch template: ${response.status}`)
+      }
+      const data = await response.json()
+      // Process the JSON to handle escaped newlines properly
+      if (data.structure) {
+        // Fix JSON string newline escaping issues
+        data.structure = data.structure.replace(/\\n/g, '\n')
+      }
+      return data
+    } catch (error) {
+      console.error("Error fetching template:", error)
+      return null
+    }
+  }
+
+  // Try to load templates from server
+  async function initializeTemplates() {
+    const templateIds = Object.keys(templateData)
+    for (const templateId of templateIds) {
+      const serverTemplate = await fetchTemplateFromServer(templateId)
+      if (serverTemplate) {
+        console.log(`Loaded template ${templateId} from server`)
+        // Update template data with server version
+        templateData[templateId] = {
+          ...templateData[templateId],
+          ...serverTemplate
+        }
+      }
+    }
+  }
+
+  // Initialize templates
+  initializeTemplates()
+
+  console.log("QA Toolkit Fixed JS loaded successfully!")
+})
