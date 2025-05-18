@@ -1,6 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("QA Toolkit Fixed JS loading...")
 
+  // Template modal elements
+  const templateModal = document.getElementById("template-modal")
+  const closeModalBtn = document.getElementById("close-modal")
+  const templateTitle = document.getElementById("template-title")
+  const templateStructure = document.getElementById("template-structure")
+  const templateForm = document.getElementById("template-form")
+  const templateOutput = document.getElementById("template-output")
+
+  // Tab navigation in template modal
+  const structureTab = document.getElementById("structure-tab")
+  const contentTab = document.getElementById("content-tab")
+  const outputTab = document.getElementById("output-tab")
+  const structureContent = document.getElementById("structure-content")
+  const contentContent = document.getElementById("content-content")
+  const outputContent = document.getElementById("output-content")
+
+  // Buttons in template modal
+  const nextStructureBtn = document.getElementById("next-structure")
+  const nextContentBtn = document.getElementById("next-content")
+  const generateOutputBtn = document.getElementById("generate-output")
+  const copyOutputBtn = document.getElementById("copy-output")
+
   // Category buttons functionality
   const categoryButtons = document.querySelectorAll(".category-button")
   const resourceCategories = document.querySelectorAll(".resource-category")
@@ -1029,7 +1051,7 @@ Quality gates are lightweight checkpoints in the development process that valida
   }
 
   // Download button functionality
-  const resourceButtons = document.querySelectorAll(".resource-button")
+  const resourceButtons = document.querySelectorAll(".resource-button, .qa-preview-btn")
   resourceButtons.forEach((button) => {
     button.addEventListener("click", function () {
       console.log("Resource button clicked:", this.getAttribute("data-template"))
@@ -1041,32 +1063,9 @@ Quality gates are lightweight checkpoints in the development process that valida
         return
       }
 
-      // Open the template modal
       openTemplateModal(templateId)
     })
   })
-
-  // Template modal functionality
-  const templateModal = document.getElementById("template-modal")
-  const closeModalBtn = document.getElementById("close-modal")
-  const templateTitle = document.getElementById("template-title")
-  const templateStructure = document.getElementById("template-structure")
-  const templateForm = document.getElementById("template-form")
-  const templateOutput = document.getElementById("template-output")
-
-  // Tab navigation in template modal
-  const structureTab = document.getElementById("structure-tab")
-  const contentTab = document.getElementById("content-tab")
-  const outputTab = document.getElementById("output-tab")
-  const structureContent = document.getElementById("structure-content")
-  const contentContent = document.getElementById("content-content")
-  const outputContent = document.getElementById("output-content")
-
-  // Buttons in template modal
-  const nextStructureBtn = document.getElementById("next-structure")
-  const nextContentBtn = document.getElementById("next-content")
-  const generateOutputBtn = document.getElementById("generate-output")
-  const copyOutputBtn = document.getElementById("copy-output")
 
   // Function to open template modal
   function openTemplateModal(templateId) {
@@ -1092,24 +1091,33 @@ Quality gates are lightweight checkpoints in the development process that valida
     // Clear output
     templateOutput.textContent = ""
 
-    // Show modal
+    // Show modal with animation
     templateModal.style.display = "block"
-    document.body.style.overflow = "hidden"
+    setTimeout(() => {
+      templateModal.classList.add("show")
+      document.body.style.overflow = "hidden"
+    }, 10)
   }
 
   // Close modal
   if (closeModalBtn) {
     closeModalBtn.addEventListener("click", () => {
-      templateModal.style.display = "none"
-      document.body.style.overflow = "auto"
+      templateModal.classList.remove("show")
+      setTimeout(() => {
+        templateModal.style.display = "none"
+        document.body.style.overflow = "auto"
+      }, 300)
     })
   }
 
   // Close modal when clicking outside
   window.addEventListener("click", (event) => {
     if (event.target === templateModal) {
-      templateModal.style.display = "none"
-      document.body.style.overflow = "auto"
+      templateModal.classList.remove("show")
+      setTimeout(() => {
+        templateModal.style.display = "none"
+        document.body.style.overflow = "auto"
+      }, 300)
     }
   })
 
@@ -1145,16 +1153,20 @@ Quality gates are lightweight checkpoints in the development process that valida
   nextStructureBtn.addEventListener("click", () => {
     structureTab.classList.remove("active")
     contentTab.classList.add("active")
+    outputTab.classList.remove("active")
     structureContent.classList.remove("active")
     contentContent.classList.add("active")
+    outputContent.classList.remove("active")
   })
 
   nextContentBtn.addEventListener("click", () => {
     // Generate output first
     generateOutput()
 
+    structureTab.classList.remove("active")
     contentTab.classList.remove("active")
     outputTab.classList.add("active")
+    structureContent.classList.remove("active")
     contentContent.classList.remove("active")
     outputContent.classList.add("active")
   })
