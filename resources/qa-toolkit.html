@@ -1,4 +1,467 @@
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Toolkit - VelocityQA</title>
+    <meta name="description" content="Quality Assurance resources, templates, checklists and methodologies for startups and growing businesses.">
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="css/toolkit-base.css">
+    
+    <!-- QA Toolkit Specific Styles -->
+    <link rel="stylesheet" href="css/qa-toolkit-specific.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Grid -->
+    <div class="cybernetic-grid"></div>
+    
+    <div class="container">
+        <!-- Back to main site link -->
+        <a href="/" class="back-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to VelocityQA
+        </a>
+        
+        <!-- Header Section -->
+        <header class="header">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            
+            <div class="header-content">
+                <h1>QA Toolkit</h1>
+                <p class="header-subtitle">Professional QA templates, checklists, and resources for startups and growing businesses.</p>
+                
+                <div class="header-feature">
+                    <h3>NEW: Comprehensive QA Resources for Non-Technical Founders</h3>
+                    <p>Designed specifically for startup founders without technical backgrounds, our toolkit simplifies testing and quality assurance with practical, easy-to-implement templates and guides.</p>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Search Container -->
+        <div class="search-container">
+            <form class="search-form">
+                <input type="text" id="search-input" class="search-input" placeholder="Search resources, templates, checklists...">
+                <button type="submit" class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        
+        <!-- Category Filters -->
+        <div class="categories-nav">
+            <button class="category-button active" data-category="all">All Resources</button>
+            <button class="category-button" data-category="templates">Templates</button>
+            <button class="category-button" data-category="checklists">Checklists</button>
+            <button class="category-button" data-category="methodologies">Methodologies</button>
+            <button class="category-button" data-category="uiux">UI/UX Reference</button>
+        </div>
+        
+        <main>
+            <!-- Templates Section -->
+            <section class="resource-category" data-category="templates">
+                <div class="category-header">
+                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <h2>Templates & Forms</h2>
+                </div>
+                
+                <div class="resource-grid">
+                    <!-- Effective Bug Report Template -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">Effective Bug Report Template</h3>
+                            <p class="resource-description">A structured template for documenting bugs that makes reproduction easy and speeds up the debugging process.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Bug Tracking</span>
+                                <span class="resource-tag">Documentation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="bug-report-preview">
+                            <pre># BUG REPORT TEMPLATE
+
+## BASIC INFORMATION
+**Bug ID:** [Auto-generated or manually assigned]
+**Reported By:** [Your Name]
+**Date Reported:** [YYYY-MM-DD]
+**Priority:** [High/Medium/Low]
+**Severity:** [Critical/Major/Minor/Cosmetic]
+**Status:** [New]
+
+## ENVIRONMENT
+**Device:** [e.g., MacBook Pro, iPhone 13, etc.]
+**OS & Version:** [e.g., Windows 11, iOS 15.4]
+**Browser & Version:** [e.g., Chrome 99.0.4844.51]
+**App Version:** [e.g., 2.4.1]
+**Screen Resolution:** [e.g., 1920x1080]
+
+## DESCRIPTION
+[Provide a clear, concise description of the bug]
+
+## STEPS TO REPRODUCE
+1. [First step]
+2. [Second step]
+3. [Third step]
+...</pre>
+                            <button class="toggle-preview" data-id="bug-report-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>5 min read</span>
+                                </div>
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <span>New</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="bug-report-template">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Template
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Test Coverage Report Template -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">Test Coverage Report Template</h3>
+                            <p class="resource-description">A one-page summary template designed for stakeholders to understand test coverage and quality status at a glance.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Reporting</span>
+                                <span class="resource-tag">Metrics</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="coverage-report-preview">
+                            <pre># TEST COVERAGE REPORT
+
+## PROJECT OVERVIEW
+**Project Name:** [Project Name]
+**Version/Sprint:** [Version or Sprint #]
+**Report Date:** [YYYY-MM-DD]
+**Report Prepared By:** [Your Name]
+**Testing Period:** [Start Date] to [End Date]
+
+## EXECUTIVE SUMMARY
+[1-2 sentences summarizing the overall quality status]
+
+## COVERAGE METRICS
+**Feature Coverage:** [e.g., 85%] (Features tested / Total features)
+**Requirement Coverage:** [e.g., 92%] (Requirements tested / Total requirements)
+**Code Coverage:** [e.g., 78%] (Code tested / Total code)
+**Test Case Execution:** [e.g., 245/250] (Executed / Total planned)
+
+## RISK ASSESSMENT
+**High-Risk Areas Coverage:** [e.g., 100%]
+**Medium-Risk Areas Coverage:** [e.g., 85%]
+**Low-Risk Areas Coverage:** [e.g., 75%]</pre>
+                            <button class="toggle-preview" data-id="coverage-report-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>10 min read</span>
+                                </div>
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <span>New</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="coverage-report-template">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Template
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- User-Reported Bug Form -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">User-Reported Bug Form</h3>
+                            <p class="resource-description">A customer-facing form designed to collect the right information when users encounter issues, making bug reproduction easier.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Customer Support</span>
+                                <span class="resource-tag">Bug Tracking</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="user-bug-preview">
+                            <pre># USER ISSUE REPORT FORM
+
+Thank you for taking the time to report an issue. The information you provide will help us fix the problem quickly.
+
+## What went wrong?
+[Brief description of the issue]
+
+## What did you expect to happen?
+[What you expected the app/site to do]
+
+## Can you reproduce the issue?
+- [ ] Yes, every time
+- [ ] Yes, sometimes
+- [ ] No, it happened only once
+- [ ] Not sure
+
+## Steps to reproduce (if applicable)
+1. [First step]
+2. [Second step]
+3. [Continue as needed]
+
+## Device and technical details
+Device Type: [Smartphone / Tablet / Laptop / Desktop / Other]
+Device Model: [e.g., iPhone 13 Pro, Dell XPS 15]
+Operating System: [e.g., iOS 15.4, Windows 11]
+Browser (if applicable): [e.g., Chrome, Safari]
+App Version (if applicable): [e.g., 2.4.1]</pre>
+                            <button class="toggle-preview" data-id="user-bug-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>5 min read</span>
+                                </div>
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <span>New</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="user-bug-form">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Form
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- Checklists Section -->
+            <section class="resource-category" data-category="checklists">
+                <div class="category-header">
+                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                    </svg>
+                    <h2>Checklists</h2>
+                </div>
+                
+                <div class="resource-grid">
+                    <!-- Launch Readiness Checklist -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">Launch Readiness Checklist</h3>
+                            <p class="resource-description">A comprehensive pre-release verification checklist to ensure your product is ready for public deployment.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Release</span>
+                                <span class="resource-tag">Pre-Launch</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="launch-checklist-preview">
+                            <pre># LAUNCH READINESS CHECKLIST
+
+## FUNCTIONAL VERIFICATION
+- [ ] All critical user journeys have been tested end-to-end
+- [ ] All high and medium priority bugs have been fixed
+- [ ] Known issues have been documented with workarounds
+- [ ] Error handling and validation has been tested
+- [ ] Search functionality works as expected
+- [ ] Form submissions are processed correctly
+- [ ] Email notifications and confirmations are working
+
+## PERFORMANCE & SCALABILITY
+- [ ] Load testing has been performed at 2x expected volume
+- [ ] Response times are within acceptable thresholds
+- [ ] Database queries are optimized
+- [ ] CDN configuration is optimized
+- [ ] Auto-scaling is configured (if applicable)
+- [ ] Caching strategy is implemented and tested</pre>
+                            <button class="toggle-preview" data-id="launch-checklist-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>15 min read</span>
+                                </div>
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <span>New</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="launch-checklist">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Checklist
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Security Baseline Checklist -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">Security Baseline Checklist</h3>
+                            <p class="resource-description">A fundamental security checklist covering the essential security practices that every application should implement.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Security</span>
+                                <span class="resource-tag">Compliance</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="security-checklist-preview">
+                            <pre># SECURITY BASELINE CHECKLIST
+
+## AUTHENTICATION & AUTHORIZATION
+- [ ] Strong password requirements enforced
+- [ ] Account lockout after failed login attempts
+- [ ] Two-factor authentication available
+- [ ] Password reset flow is secure
+- [ ] Session timeout implemented
+- [ ] Role-based access control implemented
+- [ ] Authorization checks on all sensitive endpoints
+
+## DATA PROTECTION
+- [ ] Sensitive data encrypted at rest
+- [ ] TLS/SSL used for all communications
+- [ ] PII is minimized and protected
+- [ ] Database connection strings and credentials are secured
+- [ ] Encryption keys properly managed
+- [ ] Data backups are encrypted</pre>
+                            <button class="toggle-preview" data-id="security-checklist-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>20 min read</span>
+                                </div>
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <span>New</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="security-checklist">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Checklist
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- Web Accessibility Testing Checklist -->
+                    <article class="resource-card">
+                        <div class="resource-header">
+                            <h3 class="resource-title">Web Accessibility Testing Checklist</h3>
+                            <p class="resource-description">A comprehensive WCAG-aligned checklist for testing accessibility compliance of websites and web applications.</p>
+                            <div class="resource-tags">
+                                <span class="resource-tag">Accessibility</span>
+                                <span class="resource-tag">WCAG</span>
+                                <span class="resource-tag">A11y</span>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-preview" id="a11y-checklist-preview">
+                            <pre># WEB ACCESSIBILITY TESTING CHECKLIST
+
+## PERCEIVABLE
+### Text Alternatives
+- [ ] All images have appropriate alt text
+- [ ] Complex images have extended descriptions
+- [ ] Decorative images have null alt attributes
+- [ ] Form inputs have associated text labels
+- [ ] Button text clearly describes the action
+
+### Time-based Media
+- [ ] Videos have captions
+- [ ] Audio content has transcripts
+- [ ] Media players have accessible controls
+
+### Adaptable
+- [ ] Content can be presented in different ways
+- [ ] Correct semantic HTML elements are used
+- [ ] Page structure uses proper heading hierarchy (H1-H6)
+- [ ] Tables have proper headers and structure</pre>
+                            <button class="toggle-preview" data-id="a11y-checklist-preview">Show More</button>
+                        </div>
+                        
+                        <div class="resource-actions">
+                            <div class="resource-meta">
+                                <div class="resource-meta-item">
+                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>25 min read</span>
+                                </div>
+                            </div>
+                            <button class="resource-button" data-template="accessibility-checklist">
+                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                </svg>
+                                Download Checklist
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- Methodologies Section -->
+            <section class="resource-category" data-category="methodologies">
+                <div class="category-header">
+                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                 </svg>
                 <h2>QA Methodologies</h2>
             </div>
@@ -526,9 +989,43 @@ Quality gates are lightweight checkpoints in the development process that valida
         </div>
     </footer>
 
-    <!-- Add the script tags for JavaScript files -->
-    <script src="js/qa-toolkit-specific-fixed.js"></script>
+    <!-- JavaScripts -->
     <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            // Check for saved theme preference or use the system preference
+            const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+            
+            // Set initial theme
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Update toggle button
+            if (currentTheme === 'light') {
+                themeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+            } else {
+                themeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+            }
+            
+            // Handle toggle button click
+            themeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                let newTheme = theme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Update toggle button icon
+                if (newTheme === 'light') {
+                    themeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+                } else {
+                    themeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             console.log("QA Toolkit JS loading...");
             
