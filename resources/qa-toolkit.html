@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -520,6 +520,51 @@
             color: var(--accent-teal);
         }
 
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .notification svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .notification.success svg {
+            color: var(--accent-green);
+        }
+
+        .notification.error svg {
+            color: var(--accent-red);
+        }
+
         @media (max-width: 768px) {
             .resource-grid {
                 grid-template-columns: 1fr;
@@ -558,8 +603,8 @@
 
         <div class="search-container">
             <form class="search-form">
-                <input type="text" class="search-input" placeholder="Search for templates, checklists, or keywords...">
-                <button type="submit" class="search-button">
+                <input type="text" id="search-input" class="search-input" placeholder="Search for templates, checklists, or keywords...">
+                <button type="submit" id="search-button" class="search-button">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
@@ -568,16 +613,16 @@
         </div>
 
         <div class="categories">
-            <button class="category-button active">All Resources</button>
-            <button class="category-button">Test Plans</button>
-            <button class="category-button">Test Cases</button>
-            <button class="category-button">Checklists</button>
-            <button class="category-button">Templates</button>
-            <button class="category-button">Methodologies</button>
+            <button class="category-button active" data-category="all">All Resources</button>
+            <button class="category-button" data-category="test-plans">Test Plans</button>
+            <button class="category-button" data-category="test-cases">Test Cases</button>
+            <button class="category-button" data-category="checklists">Checklists</button>
+            <button class="category-button" data-category="templates">Templates</button>
+            <button class="category-button" data-category="methodologies">Methodologies</button>
         </div>
 
         <!-- Test Plans Category -->
-        <section class="resource-category">
+        <section class="resource-category" data-category="test-plans">
             <div class="category-header">
                 <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
@@ -641,7 +686,7 @@
                                 <span>1,240 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="test-plan-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -705,7 +750,7 @@
                                 <span>895 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="risk-plan-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -717,7 +762,7 @@
         </section>
 
         <!-- Test Cases Category -->
-        <section class="resource-category">
+        <section class="resource-category" data-category="test-cases">
             <div class="category-header">
                 <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
@@ -776,7 +821,7 @@
                                 <span>1,782 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="func-test-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -836,7 +881,7 @@
                                 <span>1,145 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="api-test-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -848,7 +893,7 @@
         </section>
 
         <!-- Checklists Category -->
-        <section class="resource-category">
+        <section class="resource-category" data-category="checklists">
             <div class="category-header">
                 <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
@@ -908,7 +953,7 @@
                                 <span>2,105 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="mobile-checklist-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -965,7 +1010,7 @@
                                 <span>1,876 Downloads</span>
                             </div>
                         </div>
-                        <button class="resource-button">
+                        <button class="resource-button" id="accessibility-checklist-download">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
@@ -1021,32 +1066,6 @@
                 </div>
 
                 <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="packages.html">Testing Packages</a></li>
-                        <li class="footer-link"><a href="automation.html">Automation Services</a></li>
-                        <li class="footer-link"><a href="consulting.html">QA Consulting</a></li>
-                        <li class="footer-link"><a href="training.html">Team Training</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li class="footer-link"><a href="toolkit.html">QA Toolkit</a></li>
-                        <li class="footer-link"><a href="blog.html">Blog</a></li>
-                        <li class="footer-link"><a href="case-studies.html">Case Studies</a></li>
-                        <li class="footer-link"><a href="webinars.html">Webinars</a></li>
-                    </ul>
-                </div>
-
-              <div class="footer-container">
-                 <div class="footer-column">
-                     <h3>VelocityQA</h3>
-                     <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
-                 </div>
-
-                <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
                        <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/index.html">Resources Home</a></li>
@@ -1061,19 +1080,30 @@
         </div>
     </footer>
 
+    <!-- Add the script tags for JavaScript files -->
+    <script src="js/toolkit-functions.js"></script>
+
+    <!-- Add event listeners for the download buttons -->
     <script>
-        function togglePreview(id) {
-            const preview = document.getElementById(id);
-            const button = preview.querySelector('.toggle-preview');
-            
-            if (preview.classList.contains('expanded')) {
-                preview.classList.remove('expanded');
-                button.textContent = 'Show More';
-            } else {
-                preview.classList.add('expanded');
-                button.textContent = 'Show Less';
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup download button event listeners
+            const downloadButtons = document.querySelectorAll('.resource-button');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Get the resource title
+                    const card = this.closest('.resource-card');
+                    const title = card.querySelector('.resource-title').textContent;
+                    
+                    // Show notification
+                    showNotification(`Downloading ${title}...`);
+                    
+                    // Simulate download (in a real app, this would trigger an actual download)
+                    setTimeout(() => {
+                        showNotification(`${title} downloaded successfully!`);
+                    }, 1500);
+                });
+            });
+        });
     </script>
 </body>
 </html>
