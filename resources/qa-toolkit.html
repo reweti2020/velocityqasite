@@ -1,304 +1,1082 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Toolkit - VelocityQA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/qa-toolkit-specific.css">
+    <title>Professional QA Resources | VelocityQA Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Colors */
+            --primary: #FF6B00;
+            --secondary: #20C5C6;
+            --dark: #0f172a;
+            --darker: #080d16;
+            --light: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            /* UI Elements */
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --header-bg: #131c2e;
+            
+            /* Typography */
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            
+            /* Accents */
+            --accent-orange: #FF6B00;
+            --accent-teal: #20C5C6;
+            --accent-purple: #8B5CF6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            padding: 24px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--gray-800);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo-text span {
+            color: var(--accent-orange);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .header-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .header-link:hover {
+            color: var(--text-primary);
+        }
+
+        .header-button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .header-button:hover {
+            background: #E55A00;
+            transform: translateY(-1px);
+        }
+
+        /* Page Title */
+        .page-title {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .page-title p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Search */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-700);
+            background: var(--gray-800);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        .search-button {
+            background: var(--accent-teal);
+            color: white;
+            border: none;
+            padding: 0 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+
+        .search-button:hover {
+            background: #1AB0B0;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-button {
+            padding: 8px 16px;
+            background: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .category-button:hover {
+            border-color: var(--accent-orange);
+            color: var(--text-primary);
+        }
+
+        .category-button.active {
+            background: var(--accent-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        /* Resource Categories */
+        .resource-category {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-700);
+            margin-bottom: 24px;
+        }
+
+        .category-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .category-icon {
+            color: var(--accent-orange);
+        }
+
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        /* Resource Card */
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-700);
+        }
+
+        .resource-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-teal);
+        }
+
+        .resource-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .resource-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .resource-tag {
+            padding: 4px 8px;
+            background: rgba(32, 197, 198, 0.1);
+            color: var(--accent-teal);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .resource-preview {
+            padding: 20px;
+            background: var(--gray-900);
+            position: relative;
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        .resource-preview::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0), rgba(15, 23, 42, 1));
+            pointer-events: none;
+        }
+
+        .resource-preview.expanded {
+            max-height: none;
+        }
+
+        .resource-preview.expanded::after {
+            display: none;
+        }
+
+        .resource-preview pre {
+            font-family: monospace;
+            white-space: pre-wrap;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .resource-actions {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-700);
+        }
+
+        .resource-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .resource-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+        }
+
+        .resource-meta-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        .resource-button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .resource-button:hover {
+            background: #E55A00;
+            transform: translateY(-1px);
+        }
+
+        .resource-button-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .toggle-preview {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Feature Section */
+        .features-section {
+            background: var(--header-bg);
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            color: var(--accent-teal);
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--header-bg);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 12px;
+        }
+
+        .footer-link a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-link a:hover {
+            color: var(--accent-teal);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-700);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        /* Utility Classes */
+        .text-orange {
+            color: var(--accent-orange);
+        }
+
+        .text-teal {
+            color: var(--accent-teal);
+        }
+
+        @media (max-width: 768px) {
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-actions {
+                display: none;
+            }
+            
+            .page-title h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header class="toolkit-header">
-            <div class="logo-container">
-                <img src="/images/logo.svg" alt="VelocityQA Logo" class="logo">
-                <h1>QA Toolkit</h1>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-text">Velocity<span>QA</span></div>
+            </a>
+            <div class="header-actions">
+                <a href="index.html" class="header-link">Home</a>
+                <a href="packages.html" class="header-link">Testing Packages</a>
+                <a href="blog.html" class="header-link">Blog</a>
+                <a href="contact.html" class="header-button">Contact Us</a>
             </div>
-            <nav class="toolkit-nav">
-                <a href="index.html">Home</a>
-                <a href="resources.html">Resources</a>
-                <a href="ai-toolkit.html">AI Toolkit</a>
-                <a href="qa-toolkit.html" class="active">QA Toolkit</a>
-            </nav>
-        </header>
+        </div>
+    </header>
 
-        <main class="toolkit-main">
-            <div class="qa-toolkit-intro">
-                <h1>The QA Advantage: Professional Testing Templates</h1>
-                <p class="qa-header-subtitle">A collection of professional-grade QA templates designed specifically for testing needs. These templates help you implement best practices and improve your testing process.</p>
-                
-                <div class="qa-header-feature">
-                    <h3>How to Use This Toolkit</h3>
-                    <ol>
-                        <li>Browse through the categories to find the template you need</li>
-                        <li>Click on a template to preview it</li>
-                        <li>Use the download button to get an editable version</li>
-                        <li>Customize the template to fit your specific project requirements</li>
-                    </ol>
+    <main class="container">
+        <div class="page-title">
+            <h1>Professional QA Resources</h1>
+            <p>A collection of high-quality test templates, checklists, and methodologies to improve your testing process and deliver exceptional software.</p>
+        </div>
+
+        <div class="search-container">
+            <form class="search-form">
+                <input type="text" class="search-input" placeholder="Search for templates, checklists, or keywords...">
+                <button type="submit" class="search-button">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <div class="categories">
+            <button class="category-button active">All Resources</button>
+            <button class="category-button">Test Plans</button>
+            <button class="category-button">Test Cases</button>
+            <button class="category-button">Checklists</button>
+            <button class="category-button">Templates</button>
+            <button class="category-button">Methodologies</button>
+        </div>
+
+        <!-- Test Plans Category -->
+        <section class="resource-category">
+            <div class="category-header">
+                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                </svg>
+                <h2>Test Planning Resources</h2>
+            </div>
+
+            <div class="resource-grid">
+                <!-- Comprehensive Test Plan Template -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Comprehensive Test Plan Template</h3>
+                        <p class="resource-description">A detailed test plan template suitable for complex applications, covering all aspects of the testing lifecycle.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Testing Strategy</span>
+                            <span class="resource-tag">Documentation</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="test-plan-preview">
+                        <pre># COMPREHENSIVE TEST PLAN TEMPLATE
+
+## 1. INTRODUCTION
+- 1.1 Purpose
+- 1.2 Scope
+- 1.3 References
+- 1.4 Definitions & Acronyms
+
+## 2. TEST STRATEGY
+- 2.1 Testing Objectives
+- 2.2 Testing Approach
+  - 2.2.1 Levels of Testing
+  - 2.2.2 Testing Types
+  - 2.2.3 Entry & Exit Criteria
+- 2.3 Testing Environment
+  - 2.3.1 Hardware Requirements
+  - 2.3.2 Software Requirements
+  - 2.3.3 Network Configuration
+- 2.4 Test Data Strategy
+- 2.5 Testing Tools
+
+## 3. TEST ORGANIZATION
+- 3.1 Team Structure & Responsibilities
+- 3.2 Resource Plan
+- 3.3 Training Requirements</pre>
+                        <button class="toggle-preview" onclick="togglePreview('test-plan-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>15 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>1,240 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Risk-Based Test Plan Template -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Risk-Based Test Plan Template</h3>
+                        <p class="resource-description">A focused test plan template that prioritizes testing based on risk assessment for critical systems.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Risk Assessment</span>
+                            <span class="resource-tag">Prioritization</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="risk-plan-preview">
+                        <pre># RISK-BASED TEST PLAN TEMPLATE
+
+## 1. INTRODUCTION
+- 1.1 Purpose
+- 1.2 Scope
+- 1.3 References
+
+## 2. RISK ASSESSMENT METHODOLOGY
+- 2.1 Risk Identification Process
+- 2.2 Risk Categorization
+  - 2.2.1 Business Impact Categories
+  - 2.2.2 Probability Assessment
+- 2.3 Risk Matrix & Scoring
+- 2.4 Risk Prioritization Framework
+
+## 3. RISK REGISTER
+- 3.1 Feature/Component Breakdown
+- 3.2 Risk Assessment Table
+  - Component/Feature
+  - Potential Failure Mode
+  - Business Impact (1-5)
+  - Probability (1-5)
+  - Risk Score
+  - Risk Priority
+- 3.3 Risk Visualization</pre>
+                        <button class="toggle-preview" onclick="togglePreview('risk-plan-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>20 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>895 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Test Cases Category -->
+        <section class="resource-category">
+            <div class="category-header">
+                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+                <h2>Test Case Templates</h2>
+            </div>
+
+            <div class="resource-grid">
+                <!-- Functional Test Case Template -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Functional Test Case Template</h3>
+                        <p class="resource-description">A comprehensive test case template for functional testing, including detailed steps, preconditions, and expected results.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Functional Testing</span>
+                            <span class="resource-tag">Documentation</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="func-test-preview">
+                        <pre># FUNCTIONAL TEST CASE TEMPLATE
+
+## TEST CASE METADATA
+| Field                | Value                                      |
+|----------------------|--------------------------------------------|
+| Test Case ID         | [TCID-1234]                               |
+| Test Case Name       | [Brief descriptive name]                  |
+| Module/Feature       | [Module or feature being tested]          |
+| Created By           | [Author name]                             |
+| Creation Date        | [YYYY-MM-DD]                              |
+| Last Modified By     | [Editor name]                             |
+| Last Modified Date   | [YYYY-MM-DD]                              |
+| Priority             | [Critical/High/Medium/Low]                |
+| Test Type            | [Functional/Regression/Smoke/etc.]        |
+| Automation Status    | [Automated/Not Automated/Planned]         |
+
+## TEST CASE DETAILS
+
+### Objectives
+[Clear statement of what this test case is verifying]</pre>
+                        <button class="toggle-preview" onclick="togglePreview('func-test-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>5 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>1,782 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+
+                <!-- API Test Case Template -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">API Test Case Template</h3>
+                        <p class="resource-description">A specialized test case template for API testing, including request details, response validation, and error scenarios.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">API Testing</span>
+                            <span class="resource-tag">Technical</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="api-test-preview">
+                        <pre># API TEST CASE TEMPLATE
+
+## TEST CASE METADATA
+| Field                | Value                                      |
+|----------------------|--------------------------------------------|
+| Test Case ID         | [API-TCID-1234]                           |
+| Test Case Name       | [Brief descriptive name]                  |
+| API/Endpoint         | [API name or endpoint path]               |
+| Created By           | [Author name]                             |
+| Creation Date        | [YYYY-MM-DD]                              |
+| Last Modified By     | [Editor name]                             |
+| Last Modified Date   | [YYYY-MM-DD]                              |
+| Priority             | [Critical/High/Medium/Low]                |
+| Automation Status    | [Automated/Not Automated/Planned]         |
+
+## API DETAILS
+
+### API Specification
+- **Method:** [GET/POST/PUT/DELETE/etc.]
+- **Endpoint:** [Full URL or path]
+- **Description:** [Brief description of API functionality]</pre>
+                        <button class="toggle-preview" onclick="togglePreview('api-test-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>10 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>1,145 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Checklists Category -->
+        <section class="resource-category">
+            <div class="category-header">
+                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+                <h2>QA Checklists</h2>
+            </div>
+
+            <div class="resource-grid">
+                <!-- Mobile App Testing Checklist -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Mobile App Testing Checklist</h3>
+                        <p class="resource-description">A comprehensive checklist for testing mobile applications across iOS and Android platforms, covering functionality, usability, and performance.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Mobile</span>
+                            <span class="resource-tag">iOS</span>
+                            <span class="resource-tag">Android</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="mobile-checklist-preview">
+                        <pre># MOBILE APP TESTING CHECKLIST
+
+## INSTALLATION & SETUP
+- [ ] App installs correctly on clean device
+- [ ] App installs as update over previous version
+- [ ] App can be uninstalled properly
+- [ ] Installation size is within acceptable limits
+- [ ] App permissions are appropriate and clearly explained
+- [ ] App appears properly in app drawer/home screen
+- [ ] App icon displays correctly in all required resolutions
+
+## FUNCTIONALITY
+- [ ] All features work according to specifications
+- [ ] Required user flows complete successfully
+- [ ] All buttons and controls function properly
+- [ ] Text fields handle input correctly (including validation)
+- [ ] Error messages are clear and helpful
+- [ ] Push notifications display correctly and take user to appropriate screen when tapped
+- [ ] Data is saved correctly when app is closed
+- [ ] Data synchronizes properly with backend services</pre>
+                        <button class="toggle-preview" onclick="togglePreview('mobile-checklist-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>5 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>2,105 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Web Accessibility Testing Checklist -->
+                <article class="resource-card">
+                    <div class="resource-header">
+                        <h3 class="resource-title">Web Accessibility Testing Checklist</h3>
+                        <p class="resource-description">A detailed WCAG 2.1 compliance checklist for ensuring web applications meet accessibility standards.</p>
+                        <div class="resource-tags">
+                            <span class="resource-tag">Accessibility</span>
+                            <span class="resource-tag">WCAG</span>
+                            <span class="resource-tag">Compliance</span>
+                        </div>
+                    </div>
+
+                    <div class="resource-preview" id="accessibility-checklist-preview">
+                        <pre># WEB ACCESSIBILITY TESTING CHECKLIST (WCAG 2.1)
+
+## PERCEIVABLE
+
+### Text Alternatives
+- [ ] **1.1.1 Non-text Content (A)** - All images have appropriate alt text
+- [ ] Decorative images have empty alt attributes or are CSS backgrounds
+- [ ] Complex images (charts, diagrams) have extended descriptions
+- [ ] Form input fields have associated text labels
+- [ ] Audio and video have text alternatives (transcripts, captions)
+
+### Time-based Media
+- [ ] **1.2.1 Audio-only and Video-only (A)** - Pre-recorded audio-only and video-only content has alternatives
+- [ ] **1.2.2 Captions (A)** - Captions provided for all pre-recorded audio
+- [ ] **1.2.3 Audio Description or Media Alternative (A)** - Audio description or alternative provided for video
+- [ ] **1.2.4 Captions (Live) (AA)** - Captions provided for live audio content
+- [ ] **1.2.5 Audio Description (AA)** - Audio description provided for all pre-recorded video</pre>
+                        <button class="toggle-preview" onclick="togglePreview('accessibility-checklist-preview')">Show More</button>
+                    </div>
+
+                    <div class="resource-actions">
+                        <div class="resource-meta">
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>5 min setup</span>
+                            </div>
+                            <div class="resource-meta-item">
+                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                <span>1,876 Downloads</span>
+                            </div>
+                        </div>
+                        <button class="resource-button">
+                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Use Our QA Resources?</h2>
+                <p>Our professionally designed templates and checklists help you implement best practices and improve your testing process.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <h3 class="feature-title">Save Time</h3>
+                    <p class="feature-description">Stop creating test documentation from scratch. Our templates provide a professional foundation that you can customize to your needs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <h3 class="feature-title">Ensure Quality</h3>
+                    <p class="feature-description">Our resources incorporate industry best practices and comprehensive coverage to help you find bugs before your users do.</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <h3 class="feature-title">Team Alignment</h3>
+                    <p class="feature-description">Standardize your testing approach across different team members with consistent templates and methodologies.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="qa-toolkit-categories">
-                <button class="qa-category-tab active" data-category="test-plans">Test Plans</button>
-                <button class="qa-category-tab" data-category="test-cases">Test Cases</button>
-                <button class="qa-category-tab" data-category="checklists">Checklists</button>
-                <button class="qa-category-tab" data-category="templates">Templates</button>
-            </div>
-
-            <!-- Test Plans Category -->
-            <div class="qa-category-content active" id="test-plans">
-                <div class="qa-template-grid">
-                    <div class="qa-template-card" data-template="comprehensive-test-plan">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            <h3>Comprehensive Test Plan</h3>
-                        </div>
-                        <p>A detailed test plan template covering all aspects of testing for medium to large projects.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="comprehensive-test-plan">Preview</button>
-                            <button class="qa-download-btn" data-template="comprehensive-test-plan" data-format="docx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="agile-test-plan">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            <h3>Agile Test Plan</h3>
-                        </div>
-                        <p>A lightweight test plan template designed for agile teams and sprint-based testing.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="agile-test-plan">Preview</button>
-                            <button class="qa-download-btn" data-template="agile-test-plan" data-format="docx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="mobile-app-test-plan">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                            </svg>
-                            <h3>Mobile App Test Plan</h3>
-                        </div>
-                        <p>A specialized test plan template for mobile applications, covering iOS and Android platforms.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="mobile-app-test-plan">Preview</button>
-                            <button class="qa-download-btn" data-template="mobile-app-test-plan" data-format="docx">Download</button>
-                        </div>
-                    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>VelocityQA</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
                 </div>
-            </div>
 
-            <!-- Test Cases Category -->
-            <div class="qa-category-content" id="test-cases">
-                <div class="qa-template-grid">
-                    <div class="qa-template-card" data-template="functional-test-cases">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            <h3>Functional Test Cases</h3>
-                        </div>
-                        <p>A collection of functional test case templates for common application features.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="functional-test-cases">Preview</button>
-                            <button class="qa-download-btn" data-template="functional-test-cases" data-format="xlsx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="api-test-cases">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                            <h3>API Test Cases</h3>
-                        </div>
-                        <p>Comprehensive test cases for RESTful and GraphQL API testing.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="api-test-cases">Preview</button>
-                            <button class="qa-download-btn" data-template="api-test-cases" data-format="xlsx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="security-test-cases">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                            <h3>Security Test Cases</h3>
-                        </div>
-                        <p>Security-focused test cases to identify common vulnerabilities in web applications.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="security-test-cases">Preview</button>
-                            <button class="qa-download-btn" data-template="security-test-cases" data-format="xlsx">Download</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Checklists Category -->
-            <div class="qa-category-content" id="checklists">
-                <div class="qa-template-grid">
-                    <div class="qa-template-card" data-template="web-app-checklist">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="9" y1="9" x2="15" y2="15"></line>
-                                <line x1="15" y1="9" x2="9" y2="15"></line>
-                            </svg>
-                            <h3>Web App Checklist</h3>
-                        </div>
-                        <p>A comprehensive checklist for testing web applications across browsers and devices.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="web-app-checklist">Preview</button>
-                            <button class="qa-download-btn" data-template="web-app-checklist" data-format="pdf">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="accessibility-checklist">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 8v4"></path>
-                                <path d="M12 16h.01"></path>
-                            </svg>
-                            <h3>Accessibility Checklist</h3>
-                        </div>
-                        <p>A detailed checklist for ensuring your application meets WCAG 2.1 accessibility standards.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="accessibility-checklist">Preview</button>
-                            <button class="qa-download-btn" data-template="accessibility-checklist" data-format="pdf">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="performance-checklist">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                            </svg>
-                            <h3>Performance Checklist</h3>
-                        </div>
-                        <p>A checklist for performance testing, covering load times, resource usage, and optimization.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="performance-checklist">Preview</button>
-                            <button class="qa-download-btn" data-template="performance-checklist" data-format="pdf">Download</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Templates Category -->
-            <div class="qa-category-content" id="templates">
-                <div class="qa-template-grid">
-                    <div class="qa-template-card" data-template="bug-report-template">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 1v10M12 17v6"></path>
-                                <circle cx="12" cy="14" r="3"></circle>
-                                <path d="M3 14h6M15 14h6"></path>
-                            </svg>
-                            <h3>Bug Report Template</h3>
-                        </div>
-                        <p>A standardized template for reporting bugs with all necessary information for developers.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="bug-report-template">Preview</button>
-                            <button class="qa-download-btn" data-template="bug-report-template" data-format="docx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="test-summary-report">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                            <h3>Test Summary Report</h3>
-                        </div>
-                        <p>A template for creating comprehensive test summary reports for stakeholders.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="test-summary-report">Preview</button>
-                            <button class="qa-download-btn" data-template="test-summary-report" data-format="docx">Download</button>
-                        </div>
-                    </div>
-
-                    <div class="qa-template-card" data-template="test-strategy-template">
-                        <div class="qa-template-header">
-                            <svg class="qa-template-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
-                            <h3>Test Strategy Template</h3>
-                        </div>
-                        <p>A template for creating a comprehensive test strategy for your project or organization.</p>
-                        <div class="qa-template-actions">
-                            <button class="qa-preview-btn" data-template="test-strategy-template">Preview</button>
-                            <button class="qa-download-btn" data-template="test-strategy-template" data-format="docx">Download</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Template Preview Modal -->
-            <div id="qa-template-preview-modal" class="qa-modal">
-                <div class="qa-modal-content">
-                    <div class="qa-modal-header">
-                        <h2 id="qa-preview-title">Template Preview</h2>
-                        <span class="qa-close-modal">&times;</span>
-                    </div>
-                    <div class="qa-modal-body">
-                        <div id="qa-template-preview-content"></div>
-                    </div>
-                    <div class="qa-modal-footer">
-                        <button id="qa-modal-download-btn" class="qa-download-btn">Download</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="toolkit-footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About VelocityQA</h3>
-                    <p>Professional quality assurance services and resources for software development teams.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
+                <div class="footer-column">
+                    <h3>Services</h3>
                     <ul class="footer-links">
-                        <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/index.html">Resources Home</a></li>
-                        <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/ai-toolkit.html">AI Toolkit</a></li>
-                        <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/qa-toolkit.html">QA Toolkit</a></li>
+                        <li class="footer-link"><a href="packages.html">Testing Packages</a></li>
+                        <li class="footer-link"><a href="automation.html">Automation Services</a></li>
+                        <li class="footer-link"><a href="consulting.html">QA Consulting</a></li>
+                        <li class="footer-link"><a href="training.html">Team Training</a></li>
                     </ul>
                 </div>
-            </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="toolkit.html">QA Toolkit</a></li>
+                        <li class="footer-link"><a href="blog.html">Blog</a></li>
+                        <li class="footer-link"><a href="case-studies.html">Case Studies</a></li>
+                        <li class="footer-link"><a href="webinars.html">Webinars</a></li>
+                    </ul>
+                </div>
+
+              <div class="footer-container">
+                 <div class="footer-column">
+                     <h3>VelocityQA</h3>
+                     <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
+                 </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                       <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/index.html">Resources Home</a></li>
+                       <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/ai-toolkit.html">AI Toolkit</a></li>
+                   </ul>
+               </div>
+           </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 VelocityQA. All rights reserved. These templates are designed to help you implement best practices in your testing process.</p>
+                <p>&copy; 2025 VelocityQA. All rights reserved.</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <script src="js/toolkit-functions.js"></script>
-    <script src="js/qa-toolkit-specific.js"></script>
+    <script>
+        function togglePreview(id) {
+            const preview = document.getElementById(id);
+            const button = preview.querySelector('.toggle-preview');
+            
+            if (preview.classList.contains('expanded')) {
+                preview.classList.remove('expanded');
+                button.textContent = 'Show More';
+            } else {
+                preview.classList.add('expanded');
+                button.textContent = 'Show Less';
+            }
+        }
+    </script>
 </body>
 </html>
+
 
 
