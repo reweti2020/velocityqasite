@@ -1244,6 +1244,133 @@ Quality gates are lightweight checkpoints in the development process that valida
     })
   }
 
+  // Save button functionality
+  const saveTemplateBtn = document.getElementById("saveBtn")
+  if (saveTemplateBtn) {
+    saveTemplateBtn.addEventListener("click", function() {
+      const templateId = templateForm.getAttribute("data-template")
+      saveTemplateToLocalStorage(templateId)
+    })
+  }
+
+  // Import JSON button functionality
+  const importJsonBtn = document.getElementById("importJsonBtn")
+  const importModal = document.getElementById("importModal")
+  const confirmImportBtn = document.getElementById("confirmImportBtn")
+  const importJson = document.getElementById("importJson")
+
+  if (importJsonBtn) {
+    importJsonBtn.addEventListener("click", function() {
+      // Show import modal
+      if (importModal) {
+        importModal.style.display = "flex"
+        importJson.value = ""
+      }
+    })
+  }
+
+  // Close import modal when clicking close button
+  const modalCloseBtns = document.querySelectorAll(".modal-close, .modal-close-btn")
+  modalCloseBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      importModal.style.display = "none"
+    })
+  })
+
+  // Close import modal when clicking outside
+  window.addEventListener("click", (event) => {
+    if (event.target === importModal) {
+      importModal.style.display = "none"
+    }
+  })
+
+  // Confirm import button
+  if (confirmImportBtn) {
+    confirmImportBtn.addEventListener("click", function() {
+      importTemplateFromJson()
+    })
+  }
+
+  // Export JSON button functionality
+  const exportJsonBtn = document.getElementById("exportJsonBtn")
+  if (exportJsonBtn) {
+    exportJsonBtn.addEventListener("click", function() {
+      const templateId = templateForm.getAttribute("data-template")
+      exportTemplateAsJson(templateId)
+    })
+  }
+
+  // Template list functionality
+  const templateList = document.getElementById("templateList")
+  
+  // Function to load saved templates on page load
+  function loadSavedTemplates() {
+    if (!templateList) return
+    
+    // Clear current list
+    templateList.innerHTML = ""
+    
+    // Get saved templates from localStorage
+    const savedTemplates = getSavedTemplates()
+    
+    if (!savedTemplates || savedTemplates.length === 0) {
+      templateList.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">No saved templates yet. Generate and save a template to see it here.</p>'
+      return
+    }
+    
+    // Add each template to the list
+    savedTemplates.forEach(template => {
+      const templateItem = document.createElement("div")
+      templateItem.className = "saved-item"
+      templateItem.dataset.id = template.id
+      
+      // Format date
+      const date = new Date(template.date)
+      const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+      
+      // Create template item HTML
+      templateItem.innerHTML = `
+        <div class="saved-item-title">${escapeHtml(template.title)}</div>
+        <div class="saved-item-meta">
+          <span>${getTemplateTypeName(template.type)}</span>
+          <span>${formattedDate}</span>
+        </div>
+        <div class="saved-item-actions">
+          <button class="load-btn" data-id="${template.id}">Load</button>
+          <button class="delete-btn" data-id="${template.id}">Delete</button>
+        </div>
+      `
+      
+      templateList.appendChild(templateItem)
+    })
+    
+    // Add event listeners for load buttons
+    document.querySelectorAll('.load-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation()
+        const templateId = this.dataset.id
+        loadTemplateFromStorage(templateId)
+      })
+    })
+    
+    // Add event listeners for delete buttons
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation()
+        const templateId = this.dataset.id
+        deleteTemplateFromStorage(templateId)
+      })
+    })
+    
+    // Make entire item clickable
+    document.querySelectorAll('.saved-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const templateId = this.dataset.id
+        loadTemplateFromStorage(templateId)
+      })
+    })
+  }
+
   // Function to download template in different formats
   function downloadTemplate(templateId, format) {
     if (!templateId || !templateData[templateId]) {
@@ -1276,6 +1403,278 @@ Quality gates are lightweight checkpoints in the development process that valida
       console.error("Error generating file:", error)
       showNotification("Error generating file. Please try again.", "error")
     }
+  }
+
+  // Function to save template to localStorage
+  function saveTemplateToLocalStorage(templateId) {
+    if (!templateId || !templateData[templateId]) {
+      showNotification("Template not found", "error")
+      return
+    }
+
+    // Check if template is generated
+    if (!templateOutput.textContent) {
+      showNotification("Please generate the template first", "error")
+      return
+    }
+
+    // Create template data object
+    const templateToSave = {
+      id: Date.now().toString(), // Unique ID based on timestamp
+      type: templateId,
+      title: templateData[templateId].title,
+      date: new Date().toISOString(),
+      content: templateOutput.textContent,
+      formData: {}
+    }
+
+    // Save form field values
+    templateData[templateId].fields.forEach(field => {
+      const input = document.getElementById(field.id)
+      if (input) {
+        templateToSave.formData[field.id] = input.value.trim()
+      }
+    })
+
+    // Save branding information
+    templateToSave.branding = {
+      companyName: companyNameInput.value.trim(),
+      companyTagline: companyTaglineInput.value.trim(),
+      headingColor: headingColorInput.value,
+      subheadingColor: subheadingColorInput.value
+    }
+
+    // Get existing templates
+    const savedTemplates = getSavedTemplates()
+    
+    // Add new template
+    savedTemplates.push(templateToSave)
+    
+    // Save back to localStorage
+    localStorage.setItem('velocityQATemplates', JSON.stringify(savedTemplates))
+    
+    // Refresh template list
+    loadSavedTemplates()
+    
+    showNotification("Template saved successfully!")
+  }
+
+  // Function to load template from localStorage
+  function loadTemplateFromStorage(templateId) {
+    const savedTemplates = getSavedTemplates()
+    const template = savedTemplates.find(t => t.id === templateId)
+    
+    if (!template) {
+      showNotification("Template not found", "error")
+      return
+    }
+    
+    // Find the corresponding template type
+    if (!templateData[template.type]) {
+      showNotification("Template type not supported", "error")
+      return
+    }
+    
+    // Select template type
+    const templateSelector = document.getElementById("templateSelector")
+    if (templateSelector) {
+      templateSelector.value = template.type
+      
+      // Trigger change event to load form
+      const event = new Event('change')
+      templateSelector.dispatchEvent(event)
+    } else {
+      // Direct method if selector not available
+      openTemplateModal(template.type)
+    }
+    
+    // Set form values after slight delay to ensure form is generated
+    setTimeout(() => {
+      // Set branding values if available
+      if (template.branding) {
+        if (companyNameInput) companyNameInput.value = template.branding.companyName || ""
+        if (companyTaglineInput) companyTaglineInput.value = template.branding.companyTagline || ""
+        if (headingColorInput) {
+          headingColorInput.value = template.branding.headingColor || "#FF6B00"
+          headingColorHexInput.value = template.branding.headingColor || "#FF6B00"
+        }
+        if (subheadingColorInput) {
+          subheadingColorInput.value = template.branding.subheadingColor || "#20C5C6"
+          subheadingColorHexInput.value = template.branding.subheadingColor || "#20C5C6"
+        }
+      }
+      
+      // Set form field values
+      Object.keys(template.formData).forEach(key => {
+        const input = document.getElementById(key)
+        if (input) {
+          input.value = template.formData[key]
+        }
+      })
+      
+      // Generate output
+      generateOutput()
+      
+      // Switch to output tab
+      if (outputTab) {
+        outputTab.click()
+      }
+      
+      showNotification("Template loaded successfully!")
+    }, 100)
+  }
+
+  // Function to delete template from localStorage
+  function deleteTemplateFromStorage(templateId) {
+    if (confirm("Are you sure you want to delete this template?")) {
+      // Get saved templates
+      let savedTemplates = getSavedTemplates()
+      
+      // Filter out the template to delete
+      savedTemplates = savedTemplates.filter(t => t.id !== templateId)
+      
+      // Save back to localStorage
+      localStorage.setItem('velocityQATemplates', JSON.stringify(savedTemplates))
+      
+      // Refresh template list
+      loadSavedTemplates()
+      
+      showNotification("Template deleted successfully!")
+    }
+  }
+
+  // Function to export template as JSON
+  function exportTemplateAsJson(templateId) {
+    if (!templateId || !templateData[templateId]) {
+      showNotification("Template not found", "error")
+      return
+    }
+
+    // Check if template is generated
+    if (!templateOutput.textContent) {
+      showNotification("Please generate the template first", "error")
+      return
+    }
+
+    // Create template data object
+    const templateToExport = {
+      type: templateId,
+      title: templateData[templateId].title,
+      date: new Date().toISOString(),
+      content: templateOutput.textContent,
+      formData: {}
+    }
+
+    // Save form field values
+    templateData[templateId].fields.forEach(field => {
+      const input = document.getElementById(field.id)
+      if (input) {
+        templateToExport.formData[field.id] = input.value.trim()
+      }
+    })
+
+    // Save branding information
+    templateToExport.branding = {
+      companyName: companyNameInput.value.trim(),
+      companyTagline: companyTaglineInput.value.trim(),
+      headingColor: headingColorInput.value,
+      subheadingColor: subheadingColorInput.value
+    }
+
+    // Convert to JSON string with proper formatting
+    const jsonString = JSON.stringify(templateToExport, null, 2)
+    
+    // Create and download file
+    const blob = new Blob([jsonString], { type: 'application/json' })
+    const filename = templateData[templateId].title.toLowerCase().replace(/\s+/g, '-') + '.json'
+    saveAs(blob, filename)
+    
+    showNotification("JSON exported successfully!")
+  }
+
+  // Function to import template from JSON
+  function importTemplateFromJson() {
+    if (!importJson) return
+    
+    const jsonText = importJson.value.trim()
+    if (!jsonText) {
+      showNotification("Please paste a JSON template", "error")
+      return
+    }
+    
+    try {
+      // Parse JSON
+      const templateData = JSON.parse(jsonText)
+      
+      // Validate required fields
+      if (!templateData.type || !templateData.title || !templateData.content) {
+        throw new Error("Invalid template format")
+      }
+      
+      // Add ID if not present
+      if (!templateData.id) {
+        templateData.id = Date.now().toString()
+      }
+      
+      // Add date if not present
+      if (!templateData.date) {
+        templateData.date = new Date().toISOString()
+      }
+      
+      // Get saved templates
+      const savedTemplates = getSavedTemplates()
+      
+      // Add imported template
+      savedTemplates.push(templateData)
+      
+      // Save to localStorage
+      localStorage.setItem('velocityQATemplates', JSON.stringify(savedTemplates))
+      
+      // Refresh template list
+      loadSavedTemplates()
+      
+      // Close modal
+      importModal.style.display = "none"
+      
+      showNotification("Template imported successfully!")
+      
+      // Load the imported template
+      loadTemplateFromStorage(templateData.id)
+      
+    } catch (error) {
+      console.error("Import error:", error)
+      showNotification("Invalid JSON format. Please check your JSON and try again.", "error")
+    }
+  }
+
+  // Helper function to get saved templates from localStorage
+  function getSavedTemplates() {
+    const templates = localStorage.getItem('velocityQATemplates')
+    return templates ? JSON.parse(templates) : []
+  }
+
+  // Helper function to get readable template type name
+  function getTemplateTypeName(type) {
+    switch(type) {
+      case 'bug-report-template': return 'Bug Report'
+      case 'coverage-report-template': return 'Coverage Report'
+      case 'user-bug-form': return 'User Bug Form'
+      case 'launch-checklist': return 'Launch Checklist'
+      case 'security-checklist': return 'Security Checklist'
+      case 'accessibility-checklist': return 'Accessibility Checklist'
+      case 'dev-testing-guide': return 'Dev Testing Guide'
+      case 'test-strategy-framework': return 'Test Strategy'
+      case 'quality-gates': return 'Quality Gates'
+      default: return type.replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase())
+    }
+  }
+
+  // Helper function to escape HTML for safe output
+  function escapeHtml(text) {
+    if (!text) return ''
+    const div = document.createElement('div')
+    div.textContent = text
+    return div.innerHTML
   }
 
   // Function to generate PDF file
@@ -1678,6 +2077,9 @@ Quality gates are lightweight checkpoints in the development process that valida
         }
       }
     }
+    
+    // Initialize saved templates list after templates are loaded
+    loadSavedTemplates()
   }
 
   // Initialize templates
