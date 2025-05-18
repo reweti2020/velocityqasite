@@ -579,65 +579,258 @@
             color: var(--accent-red);
         }
 
-        /* Format dialog styles */
-        .format-dialog {
+        /* Template Modal */
+        .template-modal {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 2000;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-        .format-dialog-content {
+
+        .template-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .template-modal-content {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 24px;
-            max-width: 400px;
             width: 90%;
-            text-align: center;
-        }
-        .format-dialog-content h3 {
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-        .format-options {
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            flex-direction: column;
         }
-        .format-option {
-            background: var(--gray-800);
-            color: var(--text-primary);
-            border: 1px solid var(--gray-700);
-            border-radius: 4px;
-            padding: 10px 15px;
+
+        .template-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .template-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-teal);
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 24px;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
             transition: all var(--transition-fast);
         }
-        .format-option:hover {
-            background: var(--accent-orange);
-            color: white;
-            border-color: var(--accent-orange);
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
         }
-        .format-dialog-close {
+
+        .tab-navigation {
+            display: flex;
+            background: var(--gray-800);
+            position: sticky;
+            top: 79px;
+            z-index: 10;
+        }
+
+        .tab-button {
+            flex: 1;
+            border: none;
             background: transparent;
             color: var(--text-secondary);
-            border: 1px solid var(--gray-700);
-            border-radius: 4px;
-            padding: 8px 16px;
+            padding: 16px;
             cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .tab-button:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-button.active {
+            color: var(--accent-orange);
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-orange);
+        }
+
+        .tab-button.completed {
+            color: var(--accent-green);
+        }
+
+        .tab-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .template-structure {
+            font-family: monospace;
+            white-space: pre-wrap;
+            color: var(--text-primary);
+            background: var(--gray-900);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .template-content-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            padding: 12px 16px;
+            border: 1px solid var(--gray-700);
+            background: var(--gray-800);
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .template-output {
+            margin-top: 20px;
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            border-radius: 6px;
+            padding: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            color: var(--text-primary);
+            min-height: 200px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .generate-button, .copy-button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
             transition: all var(--transition-fast);
         }
-        .format-dialog-close:hover {
-            color: var(--text-primary);
-            border-color: var(--gray-600);
+
+        .generate-button {
+            background: var(--accent-teal);
+            color: white;
+        }
+
+        .generate-button:hover {
+            background: #1AB0B0;
+            transform: translateY(-1px);
+        }
+
+        .copy-button {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .copy-button:hover {
+            background: #E55A00;
+            transform: translateY(-1px);
+        }
+
+        .copy-button.copied {
+            background: var(--accent-green);
+        }
+
+        .action-button-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .next-button {
+            padding: 10px 20px;
+            background: var(--accent-teal);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            transition: all var(--transition-fast);
+        }
+
+        .next-button:hover {
+            background: #1AB0B0;
+            transform: translateY(-1px);
         }
 
         /* Utility Classes */
@@ -772,14 +965,14 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>1,240 Downloads</span>
+                                <span>1,240 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="comprehensive-test-plan">
+                        <button class="resource-button" data-template="comprehensive-test-plan">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
@@ -836,14 +1029,14 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>895 Downloads</span>
+                                <span>895 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="risk-based-test-plan">
+                        <button class="resource-button" data-template="risk-based-test-plan">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
@@ -907,14 +1100,14 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>1,782 Downloads</span>
+                                <span>1,782 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="functional-test-case">
+                        <button class="resource-button" data-template="functional-test-case">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
@@ -967,14 +1160,14 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>1,145 Downloads</span>
+                                <span>1,145 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="api-test-case">
+                        <button class="resource-button" data-template="api-test-case">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
@@ -1039,14 +1232,14 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>2,105 Downloads</span>
+                                <span>2,105 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="mobile-app-checklist">
+                        <button class="resource-button" data-template="mobile-app-checklist">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
@@ -1096,20 +1289,83 @@
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
                                 </svg>
-                                <span>1,876 Downloads</span>
+                                <span>1,876 Uses</span>
                             </div>
                         </div>
-                        <button class="resource-button" data-resource="accessibility-checklist">
+                        <button class="resource-button" data-template="accessibility-checklist">
                             <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
-                            Download
+                            Customize Template
                         </button>
                     </div>
                 </article>
             </div>
         </section>
     </main>
+
+    <!-- Template Modal -->
+    <div id="template-modal" class="template-modal">
+        <div class="template-modal-content">
+            <div class="template-header">
+                <h3 id="template-title" class="template-title">Template Title</h3>
+                <button id="close-modal" class="close-modal">×</button>
+            </div>
+            
+            <div class="tab-navigation">
+                <button class="tab-button active" id="structure-tab">Template Structure</button>
+                <button class="tab-button" id="content-tab">Your Content</button>
+                <button class="tab-button" id="output-tab">Final Output</button>
+            </div>
+            
+            <div id="structure-content" class="tab-content active">
+                <div id="template-structure" class="template-structure">
+                    <!-- Template structure will be loaded here -->
+                </div>
+                <button id="next-structure" class="next-button">
+                    <span>Next: Add Your Content</span>
+                    <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="content-content" class="tab-content">
+                <p>Fill in the details for your template below:</p>
+                <form id="template-form" class="template-content-form">
+                    <!-- Form fields will be dynamically generated based on the template -->
+                </form>
+                <div class="action-buttons">
+                    <button id="generate-output" class="generate-button">
+                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        Generate Output
+                    </button>
+                    <button id="next-content" class="next-button">
+                        <span>Next: View Output</span>
+                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="output-content" class="tab-content">
+                <div id="template-output" class="template-output">
+                    <!-- Generated output will appear here -->
+                </div>
+                <div class="action-buttons">
+                    <button id="copy-output" class="copy-button">
+                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="features-section">
         <div class="container">
@@ -1171,6 +1427,484 @@
 
     <!-- Add the script tags for JavaScript files -->
     <script src="js/toolkit-functions.js"></script>
-    <script src="js/qa-toolkit-specific-fixed.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("QA Toolkit JS loading...");
+            
+            // Toggle template preview functionality
+            const toggleButtons = document.querySelectorAll('.toggle-preview');
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const previewId = this.getAttribute('data-id');
+                    const previewElement = document.getElementById(previewId);
+                    
+                    if (previewElement.classList.contains('expanded')) {
+                        previewElement.classList.remove('expanded');
+                        this.textContent = 'Show More';
+                    } else {
+                        previewElement.classList.add('expanded');
+                        this.textContent = 'Show Less';
+                    }
+                });
+            });
+            
+            // Category filter functionality
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const resourceCategories = document.querySelectorAll('.resource-category');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show/hide categories based on selection
+                    if (category === 'all') {
+                        resourceCategories.forEach(cat => cat.style.display = 'block');
+                    } else {
+                        resourceCategories.forEach(cat => {
+                            if (cat.getAttribute('data-category') === category) {
+                                cat.style.display = 'block';
+                            } else {
+                                cat.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchForm = document.querySelector('.search-form');
+            const searchInput = document.getElementById('search-input');
+            
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    performSearch();
+                });
+            }
+            
+            function performSearch() {
+                if (!searchInput) return;
+                
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    // Reset all resources to visible if search is empty
+                    resourceCategories.forEach(cat => cat.style.display = 'block');
+                    document.querySelectorAll('.resource-card').forEach(card => card.style.display = 'block');
+                    return;
+                }
+                
+                // Make all categories visible initially
+                resourceCategories.forEach(cat => cat.style.display = 'block');
+                
+                // Filter resource cards
+                const resourceCards = document.querySelectorAll('.resource-card');
+                let hasVisibleCards = {};
+                
+                resourceCards.forEach(card => {
+                    const title = card.querySelector('.resource-title').textContent.toLowerCase();
+                    const description = card.querySelector('.resource-description').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.resource-tag'))
+                        .map(tag => tag.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const categorySection = card.closest('.resource-category');
+                    const categoryId = categorySection.getAttribute('data-category');
+                    
+                    if (title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        tags.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        hasVisibleCards[categoryId] = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Hide categories with no visible cards
+                resourceCategories.forEach(cat => {
+                    const categoryId = cat.getAttribute('data-category');
+                    if (!hasVisibleCards[categoryId]) {
+                        cat.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Template customization functionality
+            const templateModal = document.getElementById('template-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const templateButtons = document.querySelectorAll('.resource-button');
+            const templateTitle = document.getElementById('template-title');
+            const templateStructure = document.getElementById('template-structure');
+            const templateForm = document.getElementById('template-form');
+            const templateOutput = document.getElementById('template-output');
+            
+            // Tab navigation
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.id.replace('-tab', '-content');
+                    
+                    // Remove active class from all tabs
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Next buttons
+            document.getElementById('next-structure').addEventListener('click', function() {
+                document.getElementById('structure-tab').classList.add('completed');
+                document.getElementById('structure-tab').classList.remove('active');
+                document.getElementById('content-tab').classList.add('active');
+                
+                document.getElementById('structure-content').classList.remove('active');
+                document.getElementById('content-content').classList.add('active');
+            });
+            
+            document.getElementById('next-content').addEventListener('click', function() {
+                document.getElementById('content-tab').classList.add('completed');
+                document.getElementById('content-tab').classList.remove('active');
+                document.getElementById('output-tab').classList.add('active');
+                
+                document.getElementById('content-content').classList.remove('active');
+                document.getElementById('output-content').classList.add('active');
+                
+                // Generate output if not already done
+                if (templateOutput.textContent.trim() === '') {
+                    generateOutput();
+                }
+            });
+            
+            // Template data
+            const templates = {
+                'comprehensive-test-plan': {
+                    title: 'Comprehensive Test Plan',
+                    structure: document.getElementById('test-plan-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
+                        { name: 'testingScope', label: 'Testing Scope', type: 'textarea', placeholder: 'Define the scope of testing' },
+                        { name: 'testingObjectives', label: 'Testing Objectives', type: 'textarea', placeholder: 'List your primary testing objectives' },
+                        { name: 'testLevels', label: 'Testing Levels', type: 'textarea', placeholder: 'Unit, Integration, System, etc.' },
+                        { name: 'testTypes', label: 'Testing Types', type: 'textarea', placeholder: 'Functional, Performance, Security, etc.' }
+                    ]
+                },
+                'risk-based-test-plan': {
+                    title: 'Risk-Based Test Plan',
+                    structure: document.getElementById('risk-plan-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
+                        { name: 'riskScope', label: 'Risk Scope', type: 'textarea', placeholder: 'Define which components will be assessed for risk' },
+                        { name: 'impactCategories', label: 'Business Impact Categories', type: 'textarea', placeholder: 'Define your impact categories (e.g., 1-5 scale)' },
+                        { name: 'highRiskAreas', label: 'High Risk Areas', type: 'textarea', placeholder: 'List components with highest risk' }
+                    ]
+                },
+                'functional-test-case': {
+                    title: 'Functional Test Case Template',
+                    structure: document.getElementById('func-test-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'testCaseId', label: 'Test Case ID', type: 'text', placeholder: 'TCID-1234' },
+                        { name: 'testCaseName', label: 'Test Case Name', type: 'text', placeholder: 'Enter descriptive name' },
+                        { name: 'moduleFeature', label: 'Module/Feature', type: 'text', placeholder: 'Module being tested' },
+                        { name: 'objectives', label: 'Objectives', type: 'textarea', placeholder: 'What this test case is verifying' },
+                        { name: 'testSteps', label: 'Test Steps', type: 'textarea', placeholder: 'Step-by-step procedure' },
+                        { name: 'expectedResults', label: 'Expected Results', type: 'textarea', placeholder: 'What should happen when steps are followed' }
+                    ]
+                },
+                'api-test-case': {
+                    title: 'API Test Case Template',
+                    structure: document.getElementById('api-test-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'testCaseId', label: 'Test Case ID', type: 'text', placeholder: 'API-TCID-1234' },
+                        { name: 'testCaseName', label: 'Test Case Name', type: 'text', placeholder: 'Enter descriptive name' },
+                        { name: 'apiEndpoint', label: 'API/Endpoint', type: 'text', placeholder: 'API name or endpoint path' },
+                        { name: 'method', label: 'HTTP Method', type: 'text', placeholder: 'GET/POST/PUT/DELETE/etc.' },
+                        { name: 'requestBody', label: 'Request Body', type: 'textarea', placeholder: 'JSON request body example' },
+                        { name: 'expectedResponse', label: 'Expected Response', type: 'textarea', placeholder: 'Expected response format and values' }
+                    ]
+                },
+                'mobile-app-checklist': {
+                    title: 'Mobile App Testing Checklist',
+                    structure: document.getElementById('mobile-checklist-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'appName', label: 'App Name', type: 'text', placeholder: 'Enter app name' },
+                        { name: 'platforms', label: 'Target Platforms', type: 'text', placeholder: 'iOS, Android, etc.' },
+                        { name: 'deviceList', label: 'Test Device List', type: 'textarea', placeholder: 'List specific devices to test on' },
+                        { name: 'customChecks', label: 'Custom Checks', type: 'textarea', placeholder: 'Add any app-specific checks' }
+                    ]
+                },
+                'accessibility-checklist': {
+                    title: 'Web Accessibility Testing Checklist',
+                    structure: document.getElementById('accessibility-checklist-preview').querySelector('pre').textContent,
+                    fields: [
+                        { name: 'projectName', label: 'Project Name', type: 'text', placeholder: 'Enter project name' },
+                        { name: 'conformanceLevel', label: 'WCAG Conformance Level', type: 'text', placeholder: 'A, AA, or AAA' },
+                        { name: 'primaryBrowsers', label: 'Primary Browsers', type: 'text', placeholder: 'Chrome, Firefox, Safari, etc.' },
+                        { name: 'screenReaders', label: 'Screen Readers to Test', type: 'text', placeholder: 'NVDA, JAWS, VoiceOver, etc.' },
+                        { name: 'customChecks', label: 'Custom Accessibility Checks', type: 'textarea', placeholder: 'Add any organization-specific checks' }
+                    ]
+                }
+            };
+            
+            // Open template modal
+            templateButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const templateId = this.getAttribute('data-template');
+                    const template = templates[templateId];
+                    
+                    if (template) {
+                        // Set template data
+                        templateTitle.textContent = template.title;
+                        templateStructure.textContent = template.structure;
+                        
+                        // Clear previous form and output
+                        templateForm.innerHTML = '';
+                        templateOutput.textContent = '';
+                        
+                        // Create form fields
+                        template.fields.forEach(field => {
+                            const formGroup = document.createElement('div');
+                            formGroup.className = 'form-group';
+                            
+                            const label = document.createElement('label');
+                            label.className = 'form-label';
+                            label.setAttribute('for', field.name);
+                            label.textContent = field.label;
+                            
+                            let input;
+                            if (field.type === 'textarea') {
+                                input = document.createElement('textarea');
+                            } else {
+                                input = document.createElement('input');
+                                input.type = field.type;
+                            }
+                            
+                            input.className = 'form-input';
+                            input.id = field.name;
+                            input.name = field.name;
+                            input.placeholder = field.placeholder;
+                            
+                            formGroup.appendChild(label);
+                            formGroup.appendChild(input);
+                            templateForm.appendChild(formGroup);
+                        });
+                        
+                        // Reset tabs
+                        tabButtons.forEach(btn => btn.classList.remove('active', 'completed'));
+                        tabContents.forEach(content => content.classList.remove('active'));
+                        document.getElementById('structure-tab').classList.add('active');
+                        document.getElementById('structure-content').classList.add('active');
+                        
+                        // Store current template ID
+                        templateForm.setAttribute('data-template', templateId);
+                        
+                        // Show modal
+                        templateModal.classList.add('active');
+                    }
+                });
+            });
+            
+            // Close modal
+            closeModalBtn.addEventListener('click', function() {
+                templateModal.classList.remove('active');
+            });
+            
+            // Close modal on outside click
+            templateModal.addEventListener('click', function(event) {
+                if (event.target === templateModal) {
+                    templateModal.classList.remove('active');
+                }
+            });
+            
+            // Generate output
+            const generateBtn = document.getElementById('generate-output');
+            generateBtn.addEventListener('click', generateOutput);
+            
+            function generateOutput() {
+                const templateId = templateForm.getAttribute('data-template');
+                const template = templates[templateId];
+                
+                if (!template) return;
+                
+                let output = template.structure;
+                
+                // Replace placeholders with form values
+                template.fields.forEach(field => {
+                    const input = document.getElementById(field.name);
+                    const value = input.value.trim() || field.placeholder;
+                    
+                    // Based on field name, replace appropriate placeholders in the structure
+                    switch(field.name) {
+                        case 'projectName':
+                            output = output.replace(/\[Project Name\]/g, value);
+                            break;
+                        case 'testCaseId':
+                            output = output.replace(/\[(?:API-)?TCID-\d+\]/g, value);
+                            break;
+                        case 'testCaseName':
+                            output = output.replace(/\[Brief descriptive name\]/g, value);
+                            break;
+                        case 'moduleFeature':
+                            output = output.replace(/\[Module or feature being tested\]/g, value);
+                            break;
+                        case 'apiEndpoint':
+                            output = output.replace(/\[API name or endpoint path\]/g, value);
+                            break;
+                        case 'method':
+                            output = output.replace(/\[GET\/POST\/PUT\/DELETE\/etc\.\]/g, value);
+                            break;
+                        case 'testingScope':
+                            output = output.replace(/- 1\.2 Scope/g, `- 1.2 Scope\n  ${value}`);
+                            break;
+                        case 'testingObjectives':
+                            output = output.replace(/- 2\.1 Testing Objectives/g, `- 2.1 Testing Objectives\n  ${value}`);
+                            break;
+                        case 'testLevels':
+                            output = output.replace(/  - 2\.2\.1 Levels of Testing/g, `  - 2.2.1 Levels of Testing\n    ${value}`);
+                            break;
+                        case 'testTypes':
+                            output = output.replace(/  - 2\.2\.2 Testing Types/g, `  - 2.2.2 Testing Types\n    ${value}`);
+                            break;
+                        case 'objectives':
+                            output = output.replace(/\[Clear statement of what this test case is verifying\]/g, value);
+                            break;
+                        case 'testSteps':
+                            // Add test steps section if not present
+                            if (!output.includes('### Test Steps')) {
+                                output += '\n\n### Test Steps\n' + value;
+                            }
+                            break;
+                        case 'expectedResults':
+                            // Add expected results section if not present
+                            if (!output.includes('### Expected Results')) {
+                                output += '\n\n### Expected Results\n' + value;
+                            }
+                            break;
+                        case 'requestBody':
+                            // Add request body section if not present
+                            if (!output.includes('### Request Body')) {
+                                output += '\n\n### Request Body\n```json\n' + value + '\n```';
+                            }
+                            break;
+                        case 'expectedResponse':
+                            // Add expected response section if not present
+                            if (!output.includes('### Expected Response')) {
+                                output += '\n\n### Expected Response\n```json\n' + value + '\n```';
+                            }
+                            break;
+                        case 'customChecks':
+                            // Add custom checks section at the end
+                            output += '\n\n## CUSTOM CHECKS\n' + value;
+                            break;
+                        // Add more cases as needed for other fields
+                    }
+                });
+                
+                templateOutput.textContent = output;
+                
+                // Show notification
+                showNotification('Template generated successfully!');
+            }
+            
+            // Copy to clipboard functionality
+            const copyBtn = document.getElementById('copy-output');
+            copyBtn.addEventListener('click', function() {
+                const output = templateOutput.textContent;
+                
+                if (!output) {
+                    showNotification('Nothing to copy. Generate output first.', 'error');
+                    return;
+                }
+                
+                navigator.clipboard.writeText(output)
+                    .then(() => {
+                        copyBtn.innerHTML = `
+                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Copied!
+                        `;
+                        copyBtn.classList.add('copied');
+                        
+                        setTimeout(() => {
+                            copyBtn.innerHTML = `
+                                <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+                                </svg>
+                                Copy to Clipboard
+                            `;
+                            copyBtn.classList.remove('copied');
+                        }, 2000);
+                        
+                        showNotification('Copied to clipboard!');
+                    })
+                    .catch(() => {
+                        showNotification('Failed to copy to clipboard', 'error');
+                    });
+            });
+            
+            // Notification function
+            function showNotification(message, type = 'success') {
+                // Remove existing notifications
+                const existingNotification = document.querySelector('.notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                
+                // Set icon based on type
+                let icon = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                `;
+                
+                if (type === 'error') {
+                    icon = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    `;
+                }
+                
+                notification.innerHTML = `${icon} ${message}`;
+                
+                // Add to document
+                document.body.appendChild(notification);
+                
+                // Show notification
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 3000);
+            }
+            
+            console.log("QA Toolkit JS loaded successfully!");
+        });
+    </script>
 </body>
 </html>
