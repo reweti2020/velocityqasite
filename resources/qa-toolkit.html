@@ -579,6 +579,67 @@
             color: var(--accent-red);
         }
 
+        /* Format dialog styles */
+        .format-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .format-dialog-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+        .format-dialog-content h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .format-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .format-option {
+            background: var(--gray-800);
+            color: var(--text-primary);
+            border: 1px solid var(--gray-700);
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .format-option:hover {
+            background: var(--accent-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+        .format-dialog-close {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--gray-700);
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .format-dialog-close:hover {
+            color: var(--text-primary);
+            border-color: var(--gray-600);
+        }
+
         /* Utility Classes */
         .text-orange {
             color: var(--accent-orange);
@@ -1110,36 +1171,6 @@
 
     <!-- Add the script tags for JavaScript files -->
     <script src="js/toolkit-functions.js"></script>
-    
-    <!-- Add custom script for the QA toolkit page -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Setup toggle preview functionality
-            const toggleButtons = document.querySelectorAll('.toggle-preview');
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const previewId = this.getAttribute('data-id');
-                    togglePreview(previewId);
-                });
-            });
-            
-            // Setup download button event listeners
-            const downloadButtons = document.querySelectorAll('.resource-button');
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const resourceId = this.getAttribute('data-resource');
-                    const resourceTitle = this.closest('.resource-card').querySelector('.resource-title').textContent;
-                    
-                    // Show notification
-                    showNotification(`Downloading ${resourceTitle}...`);
-                    
-                    // Simulate download (in a real app, this would trigger an actual download)
-                    setTimeout(() => {
-                        showNotification(`${resourceTitle} downloaded successfully!`);
-                    }, 1500);
-                });
-            });
-        });
-    </script>
+    <script src="js/qa-toolkit-specific-fixed.js"></script>
 </body>
 </html>
