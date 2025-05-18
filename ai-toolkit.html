@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Toolkit | VelocityQA</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/resources/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/toolkit.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/resources/images/logo.svg" alt="VelocityQA Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="qa-toolkit.html" class="active">QA Toolkit</a></li>
+                    <li><a href="ai-toolkit.html" class="active">AI Toolkit</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Prompting Toolkit</h1>
+                <p>Professional-grade AI prompts for business strategy and consulting engagements</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toolkit Introduction -->
+    <section class="toolkit-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Enhanced Consulting with AI</h2>
+                <p>These battle-tested prompts help consultants get more valuable, structured, and actionable outputs from AI tools like ChatGPT, Claude, and Bard. Each prompt is designed for a specific business challenge.</p>
+                
+                <div class="toolkit-features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Save Time</h3>
+                        <p>Skip the trial and error with prompts engineered for optimal AI responses</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <h3>Customizable</h3>
+                        <p>Each prompt has clear placeholders to adapt to your specific business context</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Business Focus</h3>
+                        <p>Designed for strategy, marketing, operations, and implementation challenges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How To Use These Prompts</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Browse Categories</h3>
+                        <p>Select the business function or challenge you need assistance with</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Select a Prompt</h3>
+                        <p>Choose a prompt designed for your specific situation</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Customize</h3>
+                        <p>Fill in the bracketed sections with your specific information</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Copy & Paste</h3>
+                        <p>Use the prompt with your preferred AI tool and refine further as needed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Bar -->
+    <section class="toolkit-filter">
+        <div class="container">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="toolkit-search" placeholder="Search prompts...">
+            </div>
+            
+            <div class="category-filters">
+                <button class="category-button active" data-category="all">All Categories</button>
+                <button class="category-button" data-category="business-model">Business Model</button>
+                <button class="category-button" data-category="marketing">Marketing</button>
+                <button class="category-button" data-category="sales">Sales & Enablement</button>
+                <button class="category-button" data-category="change">Change Management</button>
+                <button class="category-button" data-category="strategic">Strategic Planning</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prompt Categories -->
+    <section class="prompt-categories">
+        <div class="container">
+            <div id="no-results-message" style="display: none;">
+                <p>No prompts match your search. Try different keywords or clear your search.</p>
+            </div>
+            
+            <!-- Business Model Analysis Section -->
+            <div class="category-section" data-category="business-model">
+                <div class="category-header">
+                    <h2>Business Model Analysis</h2>
+                    <p>Evaluate and optimize your business model components and competitive positioning</p>
+                </div>
+                
+                <div class="prompt-cards">
+                    <!-- Prompt Card 1 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Business Model Canvas Analysis</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Generate a comprehensive business model canvas with detailed analysis of each component</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a detailed Business Model Canvas for [company name], which is in the [industry] industry. Our main value proposition is [brief description of main offering/value].
+
+Please create a comprehensive Business Model Canvas with detailed analysis of each of the following components:
+
+1. Customer Segments: Identify the specific customer segments we should target, including their characteristics, needs, and behaviors.
+
+2. Value Propositions: Elaborate on the value we deliver to each customer segment, including the problems we solve and needs we satisfy.
+
+3. Channels: Recommend the best channels to reach each customer segment, including awareness, evaluation, purchase, delivery, and after-sales.
+
+4. Customer Relationships: Suggest the types of relationships we should establish with each segment and how to maintain them.
+
+5. Revenue Streams: Identify potential revenue models, pricing mechanisms, and how each contributes to overall revenue.
+
+6. Key Resources: Detail the physical, intellectual, human, and financial resources required to deliver our value proposition.
+
+7. Key Activities: Outline the most important actions we need to take to operate successfully.
+
+8. Key Partnerships: Recommend strategic partnerships that could optimize our business model.
+
+9. Cost Structure: Break down the main costs incurred to operate our business model.
+
+For each section, please provide:
+- Detailed descriptions
+- Specific examples relevant to our industry
+- Potential innovations or competitive advantages
+- Common pitfalls to avoid
+
+After completing the canvas, please provide a strategic analysis highlighting the 3 most critical components we should focus on first and explain why.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Card 2 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Competitive Positioning Analysis</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Analyze your company's positioning relative to competitors with strategic recommendations</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need a comprehensive competitive positioning analysis for [Company Name] in the [specific industry/market] industry.
+
+Our company background:
+- Core products/services: [list main offerings]
+- Target customers: [describe primary customer segments]
+- Current market share: approximately [X]%
+- Key strengths: [list 2-3 strengths]
+- Key challenges: [list 2-3 challenges]
+
+Our main competitors are:
+1. [Competitor 1]: Known for [brief description]
+2. [Competitor 2]: Known for [brief description]
+3. [Competitor 3]: Known for [brief description]
+
+Please provide a detailed competitive positioning analysis that includes:
+
+1. Competitive Landscape Overview:
+   - Market structure and key players
+   - Recent industry trends and disruptions
+   - Regulatory factors affecting competition
+
+2. Detailed Competitor Profiles (for each competitor):
+   - Market share and growth trajectory
+   - Target customer segments
+   - Value proposition and positioning statement
+   - Pricing strategy
+   - Distribution channels
+   - Marketing approach
+   - Strengths and weaknesses
+   - Recent strategic moves
+
+3. Comparative Analysis:
+   - Create a detailed positioning map showing how we compare on key attributes
+   - Identify direct vs. indirect competitors
+   - Analyze competitive advantages and disadvantages
+   - Detail gaps in the market that represent opportunities
+
+4. Strategic Recommendations:
+   - Optimal positioning strategy based on competitive analysis
+   - 3-5 specific actions we should take to strengthen our position
+   - Defensive strategies against competitor threats
+   - Offensive strategies to gain market share
+   - Potential partnerships or M&A opportunities
+
+5. Future Outlook:
+   - Potential market evolution scenarios
+   - How competitors might respond to market changes
+   - Early warning indicators to monitor
+
+Please be specific, data-driven where possible, and provide actionable recommendations rather than generalities.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Card 3 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Business Model Innovation Workshop</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Design a comprehensive workshop to identify business model innovation opportunities</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to design a comprehensive Business Model Innovation Workshop for [company/team name]. We're in the [industry] industry and our current business model focuses on [brief description of current approach]. We're looking to explore new business model innovations to [specific goal: increase revenue streams/enter new markets/respond to disruption/etc.].
+
+Please create a detailed workshop plan that includes:
+
+1. Pre-Workshop Preparation:
+   - Essential data to gather before the workshop
+   - Pre-reading materials for participants
+   - Stakeholders to include (by role, not specific names)
+   - Workshop logistics recommendations (duration, setting, materials)
+
+2. Workshop Introduction (60 minutes):
+   - Explanation of business model innovation concepts
+   - Case studies of successful business model innovations in our industry
+   - Review of our current business model and its limitations
+   - Workshop goals and expected outcomes
+
+3. Current State Assessment (90 minutes):
+   - Framework for analyzing our existing business model
+   - Exercise to identify strengths, weaknesses, and constraints
+   - Customer journey mapping exercise
+   - Value chain analysis activity
+
+4. Innovation Stimulus (120 minutes):
+   - Introduction to the 10 types of business model innovations
+   - External trend analysis exercise
+   - Competitor and adjacent industry analysis
+   - Disruptive technology impact assessment
+
+5. Ideation Exercises (120 minutes):
+   - Structured brainstorming activities for new business model components
+   - "What if" scenarios to challenge assumptions
+   - Recombination exercise using elements from other industries
+   - Customer-centric innovation approach
+
+6. Concept Development (120 minutes):
+   - Framework for developing 3-5 innovative business model concepts
+   - Rapid prototyping method for business models
+   - Value proposition design for each model
+   - Financial viability assessment
+
+7. Evaluation and Refinement (90 minutes):
+   - Evaluation matrix with weighted criteria
+   - Stress-testing exercises for each concept
+   - Refinement process for top 2-3 concepts
+   - Implementation roadmap development
+
+8. Next Steps and Action Planning (60 minutes):
+   - Defining clear next steps and responsibilities
+   - Resource requirements assessment
+   - Timeline development
+   - Success metrics definition
+
+For each section, please include:
+- Detailed description of the activities
+- Time allocations
+- Required materials
+- Facilitation tips
+- Expected outcomes
+
+Also include 3-5 contingency plans for common workshop challenges and a post-workshop follow-up plan to ensure implementation.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Card 4 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Value Chain Optimization</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Analyze your value chain to identify efficiency opportunities and competitive advantages</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to conduct a comprehensive value chain analysis for [Company Name] in the [industry] sector to identify optimization opportunities and competitive advantages. Our company creates value through [brief description of main offering] for [target customers].
+
+Please provide a detailed value chain analysis including:
+
+1. Overview of Value Chain Methodology:
+   - Brief explanation of the value chain framework we'll be using
+   - Explanation of how value is created in our specific industry
+   - Key metrics used to evaluate value chain efficiency
+
+2. Current Value Chain Mapping:
+   - Detailed analysis of our primary activities:
+     * Inbound logistics: [describe current approach]
+     * Operations: [describe current approach]
+     * Outbound logistics: [describe current approach]
+     * Marketing and sales: [describe current approach]
+     * Service: [describe current approach]
+   
+   - Analysis of our support activities:
+     * Firm infrastructure: [describe current approach]
+     * Human resource management: [describe current approach]
+     * Technology development: [describe current approach]
+     * Procurement: [describe current approach]
+
+3. Value Creation Analysis:
+   - Identify which activities create the most customer value
+   - Quantify the value contribution of each activity where possible
+   - Map customer willingness to pay to specific value chain elements
+   - Identify value gaps compared to customer expectations
+
+4. Competitive Benchmarking:
+   - Compare our value chain to key competitors:
+     * [Competitor 1]: Known for [brief description]
+     * [Competitor 2]: Known for [brief description]
+   - Identify relative strengths and weaknesses
+   - Analyze where competitors have advantages/disadvantages
+
+5. Optimization Opportunities:
+   - Identify inefficiencies in each value chain element
+   - Prioritize improvement opportunities by:
+     * Potential cost reduction
+     * Value enhancement potential
+     * Implementation difficulty
+     * Time to realize benefits
+   - Recommend specific changes to each value chain component
+
+6. Strategic Recommendations:
+   - Identify activities that should be:
+     * Strengthened as competitive advantages
+     * Maintained at industry parity
+     * Outsourced or reduced in scope
+     * Completely reimagined
+   - Recommend technology enablers for key activities
+   - Propose new value chain configurations
+
+7. Implementation Roadmap:
+   - Prioritized sequence of value chain improvements
+   - Resource requirements and capabilities needed
+   - Expected outcomes and metrics to track
+   - Timeline with quick wins and longer-term strategic shifts
+
+Please be specific to our industry context, provide concrete examples, and emphasize actionable recommendations rather than theoretical concepts.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Card 5 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Blue Ocean Strategy Development</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Create a strategic approach to find uncontested market spaces and create new demand</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive Blue Ocean Strategy for [Company Name] in the [industry] sector. We currently compete in a [crowded/mature/competitive] market with [brief description of current market dynamics and challenges].
+
+Our company background:
+- Core products/services: [list main offerings]
+- Target customers: [describe primary customer segments]
+- Key strengths: [list 2-3 strengths]
+- Current competitive approach: [brief description of how you currently compete]
+
+Please create a detailed Blue Ocean Strategy that includes:
+
+1. Industry Analysis:
+   - Strategic canvas showing where competitors currently invest their resources
+   - Analysis of standard competitive factors in our industry
+   - Assessment of our current strategic profile compared to competitors
+   - Identification of industry assumptions that could be challenged
+
+2. Four Actions Framework:
+   - Eliminate: Which factors our industry competes on that should be eliminated
+   - Reduce: Which factors should be reduced well below the industry standard
+   - Raise: Which factors should be raised well above the industry standard
+   - Create: Which factors should be created that the industry has never offered
+
+3. Reconstructing Market Boundaries:
+   - Look across alternative industries for inspiration
+   - Look across strategic groups within our industry
+   - Redefine the buyer group or chain
+   - Look across complementary product and service offerings
+   - Rethink the functional-emotional orientation of the industry
+   - Participate in shaping external trends over time
+
+4. Value Innovation:
+   - Proposed new value curve that diverges from competition
+   - Explanation of how this creates a leap in value for both customers and the company
+   - Specific new offerings or modifications to current offerings
+   - Visual representation of our current vs. new strategic profile
+
+5. Reaching Beyond Existing Demand:
+   - Strategy to convert non-customers into customers
+   - Three tiers of non-customers to target
+   - Addressing pain points that keep non-customers away from the market
+   - Specific approach to reach each tier of non-customers
+
+6. Strategic Sequence Validation:
+   - Buyer utility assessment: Does our blue ocean idea deliver exceptional utility?
+   - Strategic pricing: Is it accessible to the mass of target buyers?
+   - Cost structure: Can we attain our cost targets to profit at this strategic price?
+   - Adoption hurdles: Have we addressed adoption hurdles for all stakeholders?
+
+7. Implementation Roadmap:
+   - Detailed timeline for transition to the new strategy
+   - Key milestones and decision points
+   - Resource requirements and organizational changes needed
+   - Risk assessment and mitigation strategies
+   - Success metrics and KPIs
+
+Please provide a comprehensive strategy that is specific to our industry context, avoids generic recommendations, and includes concrete examples and detailed action steps. The final strategy should be both innovative and pragmatically implementable.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Card 6 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Disruptive Business Model Audit</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Evaluate your vulnerability to disruption and identify potential disruptive moves</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to conduct a Disruptive Business Model Audit for [Company Name] in the [industry] industry. We want to evaluate our vulnerability to disruption and identify potential disruptive moves we could make ourselves.
+
+Our company background:
+- Founded: [year]
+- Core business: [brief description]
+- Revenue model: [how we make money]
+- Market position: [market share/position]
+- Key competitive advantages: [list 2-3]
+- Technology infrastructure: [brief description]
+
+Industry context:
+- Major incumbents: [list 2-3]
+- Recent innovations: [brief description]
+- Customer pain points: [list 2-3]
+- Regulatory environment: [brief description]
+- Technology trends: [list 2-3]
+
+Please provide a comprehensive Disruption Audit that includes:
+
+1. Disruption Vulnerability Assessment:
+   - Evaluation of our business model against classic disruption patterns
+   - Identification of overserved customer segments where we're vulnerable
+   - Assessment of potential low-end entry points into our market
+   - Analysis of barriers to entry and how technology might be eroding them
+   - Evaluation of our business model complexity and cost structure
+   - Assessment of our customer/partner switching costs
+
+2. Disruptive Threat Identification:
+   - Analysis of emerging technologies that could enable new business models
+   - Evaluation of potential new entrants from adjacent industries
+   - Assessment of upstream/downstream players who could disintermediate us
+   - Identification of potential attack vectors (price, convenience, access, simplicity)
+   - Timeline of when different disruptive threats might materialize
+   - Probability and impact assessment of each threat
+
+3. Early Warning System:
+   - Key metrics and indicators to monitor for each disruptive threat
+   - Thresholds that would trigger defensive action
+   - Recommended monitoring mechanisms and frequencies
+   - Organizational responsibilities for disruption monitoring
+
+4. Defensive Strategy Options:
+   - Potential responses to each identified threat
+   - "Self-disruption" opportunities to cannibalize our own business
+   - Partnership strategies to co-opt potential disruptors
+   - Acquisition targets to neutralize threats
+   - Resource reallocation recommendations to strengthen core business
+
+5. Offensive Disruption Opportunities:
+   - Identification of markets we could disrupt
+   - Potential disruptive business models we could adopt
+   - Assessment of our capabilities to execute different disruptive moves
+   - Resource requirements and capabilities gaps
+   - Financial modeling of disruptive business model scenarios
+   - Risk assessment of various offensive moves
+
+6. Strategic Recommendations:
+   - Prioritized defensive actions with timeline
+   - Prioritized offensive opportunities with timeline
+   - Organizational changes needed to increase agility
+   - Technology infrastructure investments required
+   - Talent acquisition/development needs
+   - Partner ecosystem development recommendations
+
+7. Implementation Roadmap:
+   - 30/60/90 day critical actions
+   - 6-month strategic initiatives
+   - 1-3 year transformation plan
+   - Key decision points and contingency plans
+   - Success metrics and leading indicators
+
+Please ensure your analysis is specific to our industry context, backed by disruption theory, and provides actionable recommendations rather than general observations.</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marketing Campaign Strategy Section -->
+            <div class="category-section" data-category="marketing">
+                <div class="category-header">
+                    <h2>Marketing Campaign Strategy</h2>
+                    <p>Develop comprehensive marketing campaigns, buyer personas, and content strategies</p>
+                </div>
+                
+                <div class="prompt-cards">
+                    <!-- Marketing Prompt 1 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Comprehensive Marketing Campaign Strategy</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a detailed, multi-channel marketing campaign with timeline and KPIs</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need a comprehensive marketing campaign strategy for [Product/Service Name] at [Company Name]. We're targeting [target audience] with a budget of approximately [budget range].
+
+Campaign Background:
+- Product/Service Description: [brief description of what you're marketing]
+- Primary Goal: [specific goal: sales, leads, awareness, etc.]
+- Secondary Goals: [list 1-3 additional goals]
+- Campaign Timeframe: [duration/dates]
+- Previous Campaign Results: [brief summary of past performance, if applicable]
+- Brand Voice: [brief description of your company's tone/style]
+- Key Differentiators: [what makes your offering unique]
+- Key Challenges: [list 1-3 challenges]
+
+Please develop a comprehensive marketing campaign strategy that includes:
+
+1. Campaign Strategy Overview:
+   - Campaign theme and concept
+   - Core messaging and value proposition
+   - Target audience segmentation (detailed profiles)
+   - Positioning relative to competitors
+   - Creative approach and guidelines
+
+2. Channel Strategy:
+   - Recommended marketing channels with rationale
+   - Channel mix optimization
+   - Budget allocation by channel
+   - Expected performance metrics by channel
+   - Channel sequencing and integration strategy
+
+3. Content Strategy:
+   - Content themes and topics
+   - Content formats (video, blog, social, etc.)
+   - Content calendar
+   - Repurposing strategy across channels
+   - Required content assets list with specifications
+
+4. Digital Marketing Plan:
+   - Paid search approach (keywords, ad types, targeting)
+   - Social media strategy (platforms, content types, posting frequency)
+   - Email marketing campaign flow
+   - SEO optimization recommendations
+   - Display/retargeting strategy
+
+5. Traditional Marketing Integration (if applicable):
+   - Print advertising recommendations
+   - Direct mail strategy
+   - Event marketing approach
+   - PR and media outreach plan
+   - Offline-to-online integration tactics
+
+6. Timeline and Implementation:
+   - Detailed campaign phases
+   - Key milestones and deliverables
+   - Resource requirements
+   - Critical path dependencies
+   - Risk factors and contingency plans
+
+7. Budget Allocation:
+   - Detailed budget breakdown by channel and activity
+   - Expected ROI calculations
+   - Cost efficiency optimization recommendations
+   - Spending schedule and cash flow projections
+
+8. Performance Measurement:
+   - KPIs for each channel and tactic
+   - Analytics setup and tracking plan
+   - Reporting framework and dashboard design
+   - A/B testing strategy
+   - Mid-campaign optimization triggers
+
+9. Post-Campaign:
+   - Evaluation methodology
+   - Success criteria
+   - Knowledge capture process
+   - Follow-up campaign recommendations
+
+Please ensure the strategy is data-driven where possible, provides specific actionable recommendations (not generalities), and takes into account current marketing best practices for our industry.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Prompt 2 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Detailed Buyer Persona Development</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Create comprehensive buyer personas with deep psychographic and behavioral insights</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop detailed, actionable buyer personas for [Company Name]'s [product/service]. We operate in the [industry] industry and our primary offering helps [brief description of what your product/service does for customers].
+
+Our current understanding of our customers includes:
+- Demographics: [brief description of who currently buys]
+- Primary use cases: [how customers typically use your product/service]
+- Common buying triggers: [what typically prompts purchase]
+- Main challenges we solve: [problems your offering addresses]
+- Competitive alternatives they consider: [other solutions they evaluate]
+
+Please develop [number] comprehensive buyer personas that include:
+
+1. Core Persona Profile:
+   - Descriptive name that captures their essence
+   - Demographic details (age range, income range, education, etc.)
+   - Professional information (job title, role, industry, company size)
+   - Life situation (family status, location type, lifestyle)
+   - A day in their life (typical daily routine)
+   - Personality traits and communication preferences
+   - Professional responsibilities and KPIs they're measured on
+
+2. Psychographic Analysis:
+   - Core values and beliefs
+   - Career aspirations and goals
+   - Professional identity and how they want to be perceived
+   - Attitudes toward technology/innovation
+   - Risk tolerance and decision-making style
+   - Information consumption habits
+   - Social and professional affiliations
+
+3. Buying Journey Analysis:
+   - Awareness stage: How they become aware of problems we solve
+   - Problem recognition triggers
+   - Information gathering process and preferred sources
+   - Evaluation criteria and priorities
+   - Decision-making process (solo or committee, timeline)
+   - Common objections and concerns
+   - Proof points and validation needed
+
+4. Relationship with Our Solution:
+   - Specific problems they're trying to solve with our product
+   - Primary and secondary use cases
+   - Expected outcomes and success metrics
+   - Feature prioritization (must-haves vs. nice-to-haves)
+   - Implementation and adoption challenges
+   - Support and service expectations
+   - Upsell/cross-sell opportunities
+
+5. Marketing Implications:
+   - Key messaging themes and value propositions
+   - Content preferences (formats, topics, tone)
+   - Most effective marketing channels to reach them
+   - Influencers and trusted information sources
+   - Keywords and search behaviors
+   - Events and communities they participate in
+   - Testimonial and case study approach
+
+6. Sales Approach:
+   - Optimal communication style and frequency
+   - Trust-building tactics
+   - Objection handling strategies
+   - Demonstration/proof requirements
+   - Decision support needs
+   - Ideal sales process and timeline
+   - Post-purchase relationship management
+
+For each persona, please also include:
+- A representative quote that encapsulates their mindset
+- 3-5 verbatim-style statements they might make about their challenges
+- A prioritized list of their goals, challenges, and objections
+- Specific recommendations for engaging them effectively
+
+Please ensure the personas are specific rather than generic, based on realistic market understanding, and provide actionable insights for our marketing and sales teams.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Prompt 3 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Content Marketing Strategy</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a comprehensive content marketing strategy aligned with business objectives</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need a comprehensive content marketing strategy for [Company Name]. We're in the [industry] industry and our primary offerings include [brief description of products/services]. Our target audience consists of [brief description of target segments].
+
+Our business objectives for content marketing are:
+1. [Objective 1, e.g., increase qualified leads by X%]
+2. [Objective 2, e.g., improve brand awareness in specific segments]
+3. [Objective 3, e.g., position as thought leader in specific topics]
+
+Current content marketing efforts:
+- Existing content assets: [brief inventory of what you have]
+- Current channels: [where you currently publish/distribute]
+- Performance metrics: [key results you're currently seeing]
+- Content production capacity: [team size/capabilities/budget]
+- Key challenges: [issues you're facing with content marketing]
+
+Please develop a comprehensive 12-month content marketing strategy that includes:
+
+1. Strategic Foundation:
+   - Content marketing mission statement
+   - Core themes and topics to own
+   - Differentiation strategy vs. competitors
+   - Content brand voice and style guidelines
+   - Audience-specific value propositions
+
+2. Audience Strategy:
+   - Detailed content needs by buyer persona and journey stage
+   - Pain points and questions to address for each audience
+   - Content consumption preferences by segment
+   - User journey mapping and content touchpoints
+   - Search intent analysis for priority keywords
+
+3. Content Pillars and Taxonomy:
+   - Primary content pillars aligned with business goals
+   - Topic clusters within each pillar
+   - SEO keyword strategy by cluster
+   - Content types and formats for each cluster
+   - Evergreen vs. timely content balance
+
+4. Channel Strategy:
+   - Primary and secondary distribution channels
+   - Channel-specific content strategies
+   - Cross-channel promotion approach
+   - Owned, earned, and paid media mix
+   - Social media platform strategies
+
+5. Content Creation Framework:
+   - Editorial calendar structure and planning process
+   - Content production workflow and approval process
+   - Content repurposing strategy across channels
+   - Guidelines for internal vs. outsourced creation
+   - Resource allocation across content types
+
+6. Detailed Content Plan:
+   - 12-month content calendar with specific deliverables
+   - Content briefs for cornerstone assets
+   - Content production schedule and responsibilities
+   - Resource requirements and budget allocation
+   - Priority content pieces for immediate development
+
+7. Amplification Strategy:
+   - Organic promotion tactics
+   - Paid promotion approach and budget allocation
+   - Influencer and partner amplification
+   - Employee advocacy program
+   - SEO and technical optimization
+
+8. Conversion Strategy:
+   - Content-specific conversion paths
+   - Call-to-action framework by content type
+   - Lead nurturing sequences
+   - Sales enablement content integration
+   - Customer retention and expansion content
+
+9. Measurement Framework:
+   - KPIs aligned with business objectives
+   - Channel-specific metrics
+   - Attribution model recommendations
+   - Reporting structure and frequency
+   - Tools and technology requirements
+
+10. Implementation Roadmap:
+    - 30-60-90 day action plan
+    - Required resources and skills
+    - Process and workflow establishment
+    - Technology and tool recommendations
+    - Success criteria and milestones
+
+For each section, please provide specific, actionable recommendations rather than general principles. Include examples where helpful, and ensure all recommendations are tailored to our industry, audience, and objectives.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Prompt 4 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">SEO Content Strategy</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Create a comprehensive SEO content strategy to improve organic visibility and traffic</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need a comprehensive SEO content strategy for [Company Name]. We are in the [industry] industry and offer [brief description of products/services]. Our primary business objectives are [list 2-3 business goals], and we want to significantly improve our organic search visibility and traffic.
+
+Current SEO situation:
+- Domain authority: approximately [score if known]
+- Current organic traffic: approximately [number] monthly visits
+- Top performing keywords: [list 3-5 if known]
+- Key competitors in search: [list 2-3 main competitors]
+- Current content assets: [brief overview of existing content]
+- Technical SEO status: [brief overview if known]
+- Main challenges: [list 2-3 SEO challenges]
+
+Please develop a detailed SEO content strategy that includes:
+
+1. Keyword Strategy:
+   - Comprehensive keyword research methodology
+   - Keyword categorization and prioritization framework
+   - Primary, secondary, and tertiary keyword targets
+   - Long-tail keyword opportunities
+   - Search intent analysis for priority keywords
+   - Competitor keyword gap analysis
+   - Keyword cannibalization assessment and fixes
+   - Semantic keyword clusters and topic modeling
+
+2. Content Audit and Gap Analysis:
+   - Methodology for auditing existing content
+   - Content quality assessment framework
+   - Underperforming content identification
+   - Content consolidation recommendations
+   - Strategic content gaps to address
+   - Existing content optimization priorities
+
+3. Content Structure and Information Architecture:
+   - Ideal site taxonomy for SEO
+   - Pillar content and topic cluster strategy
+   - Internal linking structure and strategy
+   - URL structure recommendations
+   - Category/tag strategy for blogs (if applicable)
+   - Schema markup implementation plan
+
+4. Content Development Plan:
+   - Detailed content calendar with SEO focus
+   - Content briefs structure for SEO content
+   - Guidelines for SEO content creation
+   - Word count and depth recommendations by content type
+   - E-A-T signals to incorporate
+   - Visual content and multimedia SEO approach
+   - Mobile optimization considerations
+
+5. On-Page SEO Framework:
+   - Title tag optimization strategy
+   - Meta description best practices
+   - Heading structure guidelines
+   - Content formatting for readability and SEO
+   - Image optimization protocol
+   - Featured snippet optimization approach
+   - Page speed optimization recommendations
+
+6. Local SEO Strategy (if applicable):
+   - Local content development plan
+   - Google Business Profile optimization
+   - Local landing page strategy
+   - Local schema markup approach
+   - Local citation strategy
+   - Review generation and management
+
+7. Implementation Roadmap:
+   - Prioritized action items with timeline
+   - Quick wins for immediate implementation
+   - Medium-term content development plan
+   - Long-term content strategy
+   - Resource requirements and skill needs
+   - Technology and tool recommendations
+
+8. Measurement and Optimization:
+   - KPIs and success metrics
+   - Reporting framework and frequency
+   - A/B testing approach for SEO content
+   - Content refreshing and updating protocol
+   - Competitive monitoring process
+   - Algorithm update response framework
+
+Please provide specific, actionable recommendations rather than general SEO principles. Ensure all recommendations are aligned with current SEO best practices and likely to remain effective with anticipated algorithm changes. Include examples and templates where helpful.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Prompt 5 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Brand Messaging Framework</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a comprehensive brand messaging framework to ensure consistent communication</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive Brand Messaging Framework for [Company Name]. We are a [company description] in the [industry] industry. Our primary offerings include [brief description of products/services], and we target [brief description of target audience].
+
+Company background:
+- Founded: [year]
+- Mission: [brief statement]
+- Vision: [brief statement]
+- Core values: [list 3-5]
+- Key differentiators: [list 2-3]
+- Brand personality: [brief description]
+
+Market context:
+- Key competitors: [list 2-3]
+- Industry trends: [list 2-3]
+- Customer pain points: [list 2-3]
+- Audience segments: [list primary segments]
+
+Please develop a comprehensive Brand Messaging Framework that includes:
+
+1. Brand Essence:
+   - Brand promise (one sentence)
+   - Brand positioning statement (1-2 paragraphs)
+   - Brand purpose (why we exist beyond profit)
+   - Brand vision (what future we're creating)
+   - Core brand pillars (3-5 foundational elements)
+   - Brand archetype and personality
+   - Brand values and beliefs
+
+2. Target Audience Messaging:
+   - Detailed audience segments with psychographics
+   - Segment-specific pain points and aspirations
+   - Value proposition for each segment
+   - Messaging hierarchy by segment
+   - Key benefits by segment
+   - Objection handling by segment
+   - Emotional triggers by segment
+
+3. Competitive Positioning:
+   - Competitive differentiation statements
+   - Ownable market space definition
+   - "Only we..." statements
+   - "Unlike [competitor], we..." statements
+   - Category conventions to embrace vs. challenge
+   - White space opportunities in messaging
+
+4. Messaging Architecture:
+   - Master brand narrative (story arc)
+   - Elevator pitch (15, 30, 60 second versions)
+   - Tagline and campaign theme options
+   - Key message pillars with supporting points
+   - Feature-benefit mapping
+   - Proof points and evidence for claims
+   - Origin story and founding narrative
+
+5. Tone of Voice Guidelines:
+   - Tone characteristics and attributes
+   - Tone spectrum by channel and context
+   - Do's and don'ts in communication
+   - Vocabulary preferences and word choices
+   - Grammar and punctuation preferences
+   - Sentence structure and complexity guidelines
+   - Examples of on-brand vs. off-brand communication
+
+6. Messaging by Channel:
+   - Channel-specific messaging adaptations
+   - Messaging format by channel
+   - Visual-verbal integration guidelines
+   - Social media voice adaptations
+   - Long-form vs. short-form content guidance
+   - SEO keyword integration with brand language
+
+7. Messaging for Customer Journey:
+   - Awareness stage messaging
+   - Consideration stage messaging
+   - Decision stage messaging
+   - Onboarding/implementation messaging
+   - Retention and loyalty messaging
+   - Advocacy and referral messaging
+   - Crisis communication principles
+
+8. Implementation Guide:
+   - Message testing methodology
+   - Internal education and adoption plan
+   - Governance and approval process
+   - Measurement of messaging effectiveness
+   - Brand messaging evolution process
+   - Documentation and resource development
+
+For each component, please provide specific, actionable examples and templates rather than general principles. The framework should be comprehensive but practical for implementation. Include guidance on keeping messaging fresh while maintaining consistency.</pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Prompt 6 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Market Segmentation Analysis</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a detailed market segmentation strategy with targeting recommendations</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need a comprehensive market segmentation analysis for [Company Name] in the [industry] market. We offer [brief description of products/services] and want to identify the most valuable market segments to target with our marketing and product development efforts.
+
+Company and market context:
+- Current customer base: [brief description]
+- Revenue model: [how you generate revenue]
+- Primary value proposition: [main benefit you offer]
+- Geographic scope: [markets you serve]
+- Main competitors: [list 2-3]
+- Market trends: [list 2-3 relevant trends]
+- Available customer data: [what data you have for analysis]
+
+Please provide a detailed market segmentation analysis that includes:
+
+1. Segmentation Methodology:
+   - Recommended segmentation approaches (demographic, psychographic, behavioral, needs-based, etc.)
+   - Data sources and collection methods
+   - Statistical analysis approach
+   - Validation methodology
+   - Segmentation criteria and rationale
+
+2. Market Segment Profiles:
+   - Detailed description of each identified segment (minimum 3, maximum 7)
+   - Size and growth potential of each segment
+   - Demographic characteristics
+   - Psychographic attributes
+   - Behavioral patterns
+   - Needs, pain points, and goals
+   - Decision-making process
+   - Price sensitivity
+   - Channel preferences
+   - Key purchase drivers
+   - Brand perceptions and preferences
+
+3. Segment Attractiveness Assessment:
+   - Quantitative scoring methodology
+   - Segment size and growth potential
+   - Profitability and revenue potential
+   - Competitive intensity by segment
+   - Alignment with company capabilities
+   - Cost to serve and support requirements
+   - Entry barriers and switching costs
+   - Stability and vulnerability to disruption
+   - Overall attractiveness score with rationale
+
+4. Targeting Strategy:
+   - Priority segments with rationale
+   - Recommended targeting approach (concentrated, differentiated, or undifferentiated)
+   - Primary, secondary, and tertiary segments
+   - Segments to deliberately avoid
+   - Resource allocation across segments
+   - Timeline for segment development
+   - Risk assessment of targeting strategy
+
+5. Segment-Specific Strategies:
+   - Value proposition refinement by segment
+   - Product/service adaptation recommendations
+   - Pricing strategy by segment
+   - Channel strategy by segment
+   - Marketing message customization
+   - Customer experience considerations
+   - Loyalty and retention approach
+
+6. Implementation Plan:
+   - Go-to-market roadmap for priority segments
+   - Organizational alignment recommendations
+   - Required capabilities and resources
+   - Success metrics and KPIs by segment
+   - Testing and validation approach
+   - Timeline with key milestones
+
+7. Future Evolution:
+   - Market monitoring framework
+   - Triggers for segmentation update
+   - Emerging segment identification process
+   - Segment migration patterns to watch
+   - Potential for micro-segmentation
+
+Please ensure the analysis is data-driven where possible, provides specific actionable recommendations rather than general principles, and balances scientific rigor with practical applicability. The segmentation should be detailed enough to drive meaningful business decisions but simple enough to be operationalized across the organization.</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sales Strategy & Enablement Section -->
+            <div class="category-section" data-category="sales">
+                <div class="category-header">
+                    <h2>Sales Strategy & Enablement</h2>
+                    <p>Create sales playbooks, negotiate better deals, and drive revenue growth</p>
+                </div>
+                
+                <div class="prompt-cards">
+                    <!-- Add sales prompts here -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sales Strategy Development</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Create a comprehensive sales strategy to drive sustainable revenue growth</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive sales strategy for [Company Name] in the [industry] sector. We provide [brief description of product/service] to [target market]. Our current annual revenue is approximately [revenue figure], and we're aiming to grow by [growth target] over the next [timeframe].
+
+Company context:
+- Sales team structure: [brief description]
+- Current sales channels: [list main channels]
+- Sales cycle length: [average time]
+- Average deal size: [amount]
+- Current conversion rates: [if known]
+- Key competitors: [list 2-3]
+- Main challenges: [list 2-3]
+
+Please create a comprehensive sales strategy that includes:
+
+1. Market Analysis:
+   - Detailed target market assessment
+   - Ideal customer profile refinement
+   - Total addressable market calculation
+   - Market segmentation and prioritization
+   - Competitive positioning analysis
+   - Market trends and growth opportunities
+   - Regulatory or market constraints
+
+2. Sales Organization Structure:
+   - Optimal team structure recommendations
+   - Roles and responsibilities definition
+   - Territory design and account allocation
+   - Inside vs. field sales balance
+   - Sales management layers and spans of control
+   - Sales operations function design
+   - Sales and marketing alignment model
+
+3. Go-to-Market Strategy:
+   - Channel strategy and mix
+   - Direct vs. partner sales approach
+   - E-commerce and digital sales integration
+   - International expansion approach (if applicable)
+   - New market entry strategy
+   - Product/service bundling strategy
+   - Cross-sell and upsell strategy
+
+4. Sales Process Optimization:
+   - End-to-end sales process mapping
+   - Stage-gate criteria and definitions
+   - Opportunity qualification framework
+   - Proposal and quoting process
+   - Pipeline management methodology
+   - Forecasting approach and accuracy
+   - Account planning methodology
+   - Sales meeting and review cadence
+
+5. Sales Methodology:
+   - Recommended sales approach (consultative, solution, challenger, etc.)
+   - Discovery and needs analysis framework
+   - Value proposition articulation
+   - Objection handling approach
+   - Competitive differentiation tactics
+   - Negotiation framework
+   - Closing techniques
+   - Account management and farming strategy
+
+6. Pricing and Proposal Strategy:
+   - Pricing model recommendations
+   - Discount governance structure
+   - Proposal template and structure
+   - ROI calculation methodology
+   - Deal desk function and process
+   - Contract terms optimization
+   - Approval thresholds and process
+
+7. Technology and Tools:
+   - CRM optimization recommendations
+   - Sales enablement platform requirements
+   - Sales intelligence tools
+   - Configure/price/quote (CPQ) approach
+   - Sales analytics and reporting
+   - Mobile enablement strategy
+   - Technology integration requirements
+
+8. Performance Management:
+   - KPI framework and metrics cascade
+   - Quota setting methodology
+   - Compensation plan design
+   - Performance review process
+   - Recognition and incentive programs
+   - Sales contest framework
+   - Performance improvement process
+
+9. Talent Strategy:
+   - Recruitment profile and process
+   - Onboarding program design
+   - Training and development curriculum
+   - Coaching framework and cadence
+   - Career path development
+   - Retention strategy
+   - Culture development approach
+
+10. Implementation Roadmap:
+    - Phased implementation plan
+    - Change management approach
+    - Quick wins identification
+    - Resource requirements
+    - Timeline with milestones
+    - Success metrics and ROI
+    - Risk assessment and mitigation
+
+Please provide specific, actionable recommendations rather than general principles. The strategy should be comprehensive but practical for implementation, with clear priorities and sequencing.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Sales Prompt 2 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Comprehensive Sales Playbook</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Create a detailed sales playbook for consistent, effective sales execution</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive Sales Playbook for [Company Name]'s sales team. We sell [product/service] to [target market] with an average sales cycle of [duration] and average deal size of [amount]. The playbook should serve as the definitive guide for our sales team to consistently execute our sales methodology and process.
+
+Company and product context:
+- Value proposition: [brief description]
+- Key differentiators: [list 2-3]
+- Primary buyer personas: [list 2-3]
+- Sales team structure: [brief description]
+- Current sales challenges: [list 2-3]
+- Competitive landscape: [brief description]
+
+Please create a detailed Sales Playbook that includes:
+
+1. Introduction and Strategic Overview:
+   - Company mission, vision, and values
+   - Sales organization structure and roles
+   - Go-to-market strategy
+   - Annual sales targets and KPIs
+   - How to use this playbook effectively
+
+2. Product Knowledge:
+   - Detailed product/service descriptions
+   - Core features and benefits mapping
+   - Unique selling propositions
+   - Product roadmap overview
+   - Competitive comparison matrix
+   - Pricing models and packaging
+   - Cross-sell and upsell opportunities
+   - Product demonstration guidelines
+
+3. Ideal Customer Profile and Buyer Personas:
+   - Detailed ICPs for each market segment
+   - Buyer persona profiles with psychographics
+   - Buyer role and influence mapping
+   - Buyer journey by persona
+   - Pain points and triggers by persona
+   - Decision criteria by persona
+   - Common objections by persona
+   - Effective messaging by persona
+
+4. Sales Methodology:
+   - Core sales methodology overview
+   - Value-based selling approach
+   - Discovery framework and key questions
+   - Need development techniques
+   - Solution positioning methodology
+   - ROI calculation framework
+   - Proof point and reference strategy
+   - Buying consensus building approach
+
+5. Sales Process:
+   - End-to-end process map with stages
+   - Entry and exit criteria for each stage
+   - Required activities by stage
+   - Verifiable outcomes by stage
+   - Pipeline management guidelines
+   - Forecasting methodology
+   - CRM usage requirements
+   - Meeting rhythm and cadence
+
+6. Account Planning and Management:
+   - Strategic account selection criteria
+   - Account planning template and process
+   - Stakeholder mapping methodology
+   - White space analysis approach
+   - Account growth strategies
+   - Executive relationship development
+   - Quarterly business review framework
+   - Customer success management
+
+7. Opportunity Management:
+   - Qualification framework (BANT, MEDDIC, etc.)
+   - Opportunity scoring system
+   - Deal strategy development guide
+   - Power mapping approach
+   - Competitive displacement strategy
+   - Risk assessment methodology
+   - Deal size optimization tactics
+   - Multi-threaded relationship building
+
+8. Prospecting and Lead Management:
+   - Ideal prospect identification
+   - Prospecting cadence and templates
+   - Social selling approach
+   - Referral generation process
+   - Lead qualification framework
+   - MQL to SQL transition criteria
+   - Lead nurturing best practices
+   - Marketing collaboration guidelines
+
+9. Sales Messaging and Communication:
+   - Elevator pitch templates
+   - Value proposition articulation
+   - Email templates by sales stage
+   - Call scripts and talk tracks
+   - Discovery question framework
+   - Presentation templates
+   - Proposal structure and guidelines
+   - Meeting agenda templates
+
+10. Objection Handling:
+    - Common objection catalog
+    - Objection response framework
+    - Competitive objection handling
+    - Price objection management
+    - Timing/urgency objection tactics
+    - Technical objection responses
+    - Executive objection strategies
+    - Objection prevention techniques
+
+11. Negotiation and Closing:
+    - Negotiation preparation checklist
+    - Value-based negotiation tactics
+    - Pricing and discount guidelines
+    - Term negotiation parameters
+    - Closing techniques and language
+    - Commitment gaining strategies
+    - Contract process management
+    - Deal approval process
+
+12. Sales Tools and Resources:
+    - Technology stack overview
+    - CRM usage guidelines
+    - Sales enablement platform guide
+    - Content library organization
+    - Assessment and diagnostic tools
+    - ROI calculators and tools
+    - Proposal generation system
+    - Analytics and reporting tools
+
+13. Performance Standards and Expectations:
+    - Activity metrics by role
+    - Performance KPIs by role
+    - Quality standards for deliverables
+    - Meeting and call expectations
+    - Documentation requirements
+    - Time management guidelines
+    - Collaboration requirements
+    - Professional conduct standards
+
+14. Training and Development:
+    - Onboarding curriculum
+    - Continuous learning path
+    - Certification requirements
+    - Role playing scenarios
+    - Coaching framework
+    - Skill development resources
+    - Career advancement path
+    - Mentoring program
+
+Please ensure the playbook is practical, actionable, and specific to our business context rather than generic sales advice. Include examples, templates, and scripts where appropriate, and format the content for easy reference and navigation.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Sales Prompt 3 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sales Compensation Plan Design</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Design an effective sales compensation plan aligned with business objectives</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to design a comprehensive sales compensation plan for [Company Name]'s sales organization. We are a [brief company description] in the [industry] sector, selling [products/services] with an average deal size of [amount] and sales cycle of [duration]. Our annual revenue is approximately [amount], and we have [number] sales representatives across [number] teams/territories.
+
+Business context:
+- Revenue goals: [target for upcoming year]
+- Growth strategy: [brief description]
+- Sales roles: [list main sales roles]
+- Current compensation structure: [brief description if applicable]
+- Key challenges: [list 2-3 issues with current compensation]
+- Industry compensation benchmarks: [if known]
+- Sales cycle and complexity: [brief description]
+
+Please develop a comprehensive sales compensation plan that includes:
+
+1. Compensation Philosophy and Principles:
+   - Alignment with company values and culture
+   - Pay positioning strategy (lead, match, lag market)
+   - Pay mix rationale (base vs. variable)
+   - Performance curve philosophy
+   - Governance and administration principles
+   - Fairness and transparency commitments
+
+2. Plan Structure by Role:
+   - Target total compensation by role
+   - Base salary ranges and rationale
+   - Target incentive amounts
+   - Pay mix (base/variable ratio)
+   - Upside potential and rationale
+   - Total compensation benchmarking
+   - Career progression impact on compensation
+
+3. Performance Measures:
+   - Primary and secondary measures by role
+   - Individual vs. team vs. corporate measures
+   - Revenue vs. profit vs. activity measures
+   - Leading vs. lagging indicators
+   - Quantitative vs. qualitative measures
+   - Measure weightings and rationale
+   - Measurement frequency and tracking
+
+4. Goal Setting Methodology:
+   - Quota development process
+   - Territory potential assessment approach
+   - Quota allocation methodology
+   - Quota fairness testing approach
+   - Historical performance consideration
+   - Ramp for new hires and territories
+   - Adjustments for market conditions
+   - Over-assignment philosophy
+
+5. Incentive Plan Mechanics:
+   - Commission vs. bonus structure
+   - Payout timing and frequency
+   - Threshold requirements
+   - Accelerator design and rationale
+   - Deceleration or caps (if any)
+   - Kickers and SPIFs design
+   - Clawback provisions
+   - Draw/guarantee approach
+
+6. Special Incentive Elements:
+   - New customer acquisition incentives
+   - Product mix incentives
+   - Multi-year deal handling
+   - Renewal/retention incentives
+   - Team-based components
+   - MBO/qualitative components
+   - President's club/recognition program
+   - Non-cash incentives
+
+7. Administrative Framework:
+   - Calculation process and tools
+   - Dispute resolution process
+   - Mid-year adjustments protocol
+   - Crediting rules for complex situations
+   - Commission statement design
+   - Performance visibility tools
+   - Legal and compliance considerations
+   - Plan document development
+
+8. Territory and Account Design:
+   - Territory construction methodology
+   - Account assignment approach
+   - Named account strategy
+   - House account handling
+   - Territory balancing process
+   - Teaming and split rules
+   - Channel conflict resolution
+
+9. Implementation Plan:
+   - Communication strategy and materials
+   - Change management approach
+   - Transition from current plan
+   - Training for sales and management
+   - Simulation and modeling approach
+   - Technology and system requirements
+   - Timeline and key milestones
+
+10. Performance Management Integration:
+    - Goal setting process and timing
+    - Performance review cadence
+    - Coaching framework around compensation
+    - Performance improvement process
+    - Recognition and non-monetary rewards
+    - Career development integration
+    - Management reporting and analytics
+
+11. Governance and Evolution:
+    - Plan ownership and responsibilities
+    - Exception handling process
+    - Regular review cadence
+    - Adjustment triggers and process
+    - Success metrics for the plan itself
+    - Continuous improvement approach
+    - Annual plan refresh process
+
+Please provide specific, actionable recommendations rather than general compensation principles. Include example calculation scenarios, payout curves, and compensation statements where helpful. The plan should drive the desired sales behaviors while remaining financially sustainable and administratively manageable.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Sales Prompt 4 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Strategic Account Planning Framework</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a comprehensive framework for strategic account planning and growth</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive Strategic Account Planning Framework for [Company Name]'s enterprise sales team. We provide [products/services] to [target market] with complex buying cycles and multiple stakeholders. Our goal is to maximize revenue, retention, and growth from our most valuable accounts through structured, strategic account management.
+
+Current account management context:
+- Number of strategic accounts: [approximate number]
+- Average annual revenue per account: [amount range]
+- Account team structure: [brief description]
+- Current account planning process: [brief description if any]
+- Main challenges: [list 2-3 issues]
+- Competitive threats: [brief description]
+- Account growth targets: [percentage or amount]
+
+Please create a comprehensive Strategic Account Planning Framework that includes:
+
+1. Strategic Account Selection:
+   - Account classification criteria and methodology
+   - Tiering system with clear definitions
+   - Account scoring model
+   - Growth potential assessment
+   - Strategic alignment evaluation
+   - Resource allocation by tier
+   - Account graduation/demotion process
+   - Selection governance and review process
+
+2. Account Team Structure:
+   - Core team roles and responsibilities
+   - Extended team members and contributions
+   - Executive sponsorship program
+   - Subject matter expert engagement model
+   - Customer success integration
+   - Cross-functional collaboration framework
+   - RACI matrix for account activities
+   - Team meeting cadence and governance
+
+3. Account Intelligence Gathering:
+   - Account research methodology
+   - Stakeholder mapping process
+   - Organizational structure analysis
+   - Business initiative identification
+   - Technology landscape mapping
+   - Financial analysis framework
+   - Competitive positioning assessment
+   - SWOT analysis template
+
+4. Strategic Account Vision and Strategy:
+   - Account vision development process
+   - Joint success definition framework
+   - Strategic imperatives identification
+   - Value creation opportunities
+   - Mutual investment considerations
+   - Innovation and co-creation approach
+   - Relationship development strategy
+   - 3-5 year account development roadmap
+
+5. Value Proposition Development:
+   - Account-specific value proposition framework
+   - Business impact quantification methodology
+   - ROI calculation templates
+   - Total cost of ownership analysis
+   - Competitive differentiation by account
+   - Solution mapping to business initiatives
+   - Case study and reference development
+   - Executive value messaging
+
+6. Opportunity Identification and Planning:
+   - White space analysis methodology
+   - Cross-sell/upsell opportunity mapping
+   - Services attachment strategy
+   - New business unit expansion approach
+   - Geographic expansion planning
+   - Product roadmap alignment
+   - Renewal and migration opportunities
+   - Expansion business case development
+
+7. Relationship Management:
+   - Stakeholder tiering and prioritization
+   - Influence mapping methodology
+   - Executive relationship program
+   - Communication planning template
+   - Trust-building framework
+   - Event and engagement strategy
+   - Social capital development approach
+   - Political navigation guidance
+
+8. Account Risk Management:
+   - Risk assessment framework
+   - Competitor threat analysis
+   - Relationship risk evaluation
+   - Budget and financial risk assessment
+   - Executive sponsorship changes
+   - Contract and legal risk management
+   - Implementation and delivery risk
+   - Mitigation strategy development
+
+9. Account Planning Process:
+   - Annual planning cycle timeline
+   - Quarterly review and refresh process
+   - Plan template and components
+   - Planning meeting structure
+   - Data gathering requirements
+   - Cross-functional input process
+   - Approval and commitment process
+   - Plan sharing with customer approach
+
+10. Implementation and Execution:
+    - 30-60-90 day action planning
+    - Success metrics and KPIs
+    - Account team coordination
+    - Resource deployment guidelines
+    - Pipeline development process
+    - Deal strategy development
+    - Executive alignment activities
+    - Weekly/monthly execution cadence
+
+11. Business Reviews and Governance:
+    - Quarterly business review framework
+    - Executive sponsor review process
+    - Performance tracking dashboard
+    - ROI and value realization tracking
+    - Plan vs. actual analysis
+    - Issue resolution process
+    - Success celebration approach
+    - Continuous improvement methodology
+
+12. Technology and Tools:
+    - CRM configuration requirements
+    - Account planning tool recommendations
+    - Collaboration platform usage
+    - Data visualization approach
+    - Document management system
+    - Knowledge sharing repository
+    - Analytics and reporting tools
+    - Mobile enablement strategy
+
+Please provide a framework that is comprehensive but practical for implementation, with templates, examples, and clear guidance. Include best practices for driving account team adoption and securing customer engagement in the planning process.</pre>
+                        </div>
+                    </div>
+
+                    <!-- Sales Prompt 5 -->
+                    <div class="prompt-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sales Discovery Framework</h3>
+                            <div class="card-actions">
+                                <button class="toggle-preview">Preview <i class="fas fa-chevron-down"></i></button>
+                                <button class="copy-button" onclick="copyPromptContent(this)"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+                        <p class="card-description">Develop a comprehensive discovery framework to uncover customer needs and qualify opportunities</p>
+                        
+                        <div class="prompt-preview">
+                            <pre class="prompt-content">I need to develop a comprehensive Sales Discovery Framework for [Company Name]'s sales team. We sell [products/services] to [target market] and need to improve our discovery process to better understand customer needs, qualify opportunities effectively, and position our solutions for maximum impact.
+
+Sales context:
+- Sales methodology: [brief description if any]
+- Average sales cycle: [duration]
+- Key decision makers: [typical roles involved]
+- Current discovery approach: [brief description]
+- Win/loss patterns: [brief insights if known]
+- Common objections: [list 2-3 if known]
+- Qualification criteria: [current approach if any]
+
+Please create a comprehensive Sales Discovery Framework that includes:
+
+1. Discovery Philosophy and Principles:
+   - Purpose and value of effective discovery
+   - Mindset and approach recommendations
+   - Active listening techniques
+   - Question sequencing strategy
+   - Note-taking and documentation approach
+   - Discovery as a continuous process
+   - Remote vs. in-person discovery adaptations
+   - Building trust during discovery
+
+2. Pre-Discovery Preparation:
+   - Account and contact research checklist
+   - Company research framework
+   - Industry trend analysis
+   - Stakeholder mapping preparation
+   - Technology landscape assessment
+   - Competitor intelligence gathering
+   - Previous interaction review process
+   - Discovery meeting planning
+
+3. Meeting Structure and Flow:
+   - Opening and agenda setting
+   - Building rapport techniques
+   - Transitioning to business discussion
+   - Question sequencing strategy
+   - Active listening techniques
+   - Note-taking approach
+   - Meeting management tips
+   - Closing and next steps
+
+4. Business Context Questions:
+   - Company goals and priorities
+   - Industry and market trends impact
+   - Business model understanding
+   - Organizational structure insights
+   - Strategic initiatives mapping
+   - Business challenges identification
+   - Competitive position assessment
+   - Financial drivers and constraints
+
+5. Current Situation Analysis:
+   - Current state assessment questions
+   - Process mapping approach
+   - Technology ecosystem understanding
+   - Resource allocation insights
+   - Performance metrics identification
+   - Stakeholder satisfaction assessment
+   - Previous solution attempts
+   - Workarounds and manual processes
+
+6. Pain Point Exploration:
+   - Problem identification techniques
+   - Impact and consequence questions
+   - Quantification of pain approaches
+   - Emotional impact exploration
+   - Ripple effect analysis
+   - Problem prioritization framework
+   - Pain validation techniques
+   - Unstated problem discovery
+
+7. Future State Vision:
+   - Ideal scenario exploration
+   - Success definition questions
+   - Outcome prioritization
+   - Timeline and urgency assessment
+   - Decision criteria identification
+   - Budget and resource questions
+   - ROI and value expectation
+   - Vision alignment across stakeholders
+
+8. Stakeholder Analysis:
+   - Decision-making process mapping
+   - Power and influence assessment
+   - Personal motivation exploration
+   - Individual vs. organizational goals
+   - Political landscape navigation
+   - Potential champions identification
+   - Potential blockers assessment
+   - Cross-department impact analysis
+
+9. Qualification Framework:
+   - Formal qualification methodology (BANT, MEDDIC, etc.)
+   - Opportunity scoring system
+   - Red flag identification
+   - Minimum requirements definition
+   - Go/no-go decision criteria
+   - Resource investment guidelines
+   - Qualification documentation
+   - Deal strategy implications
+
+10. Value Hypothesis Development:
+    - Solution mapping to needs
+    - Value proposition tailoring
+    - ROI calculation approach
+    - Differentiation strategy
+    - Risk assessment and mitigation
+    - Implementation considerations
+    - Timeline and phasing options
+    - Success measurement approach
+
+11. Discovery Question Library:
+    - Industry-specific questions
+    - Role-specific questions
+    - Product/solution specific questions
+    - Situation-based questions
+    - Challenge-focused questions
+    - Competitive differentiation questions
+    - Budget and authority questions
+    - Timeline and urgency questions
+
+12. Post-Discovery Process:
+    - Discovery documentation template
+    - Internal debrief process
+    - Customer communication approach
+    - Solution development process
+    - Proposal preparation guidelines
+    - Follow-up discovery planning
+    - Continuous discovery mindset
+    - Success stories and case study development
+
+Please provide a framework that includes specific questions, techniques, and templates rather than general discovery principles. The framework should be adaptable to different customer types and selling situations while maintaining consistency in approach. Include guidance on virtual discovery techniques as well as in-person approaches.</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Strategic Change Management Section -->
+            <div class="category-section" data-category="change">
+                <div class="category-header">
+                    <h2>Strategic Change Management</h2>
+                    <p>Design and implement effective organizational change initiatives</p>
+                </div>
+                
+                <div class="prompt-cards">
+                    <!-- Add change management prompts here -->
+                </div>
+            </div>
+            
+            <!-- Strategic Planning Section -->
+            <div class="category-section" data-category="strategic">
+                <div class="category-header">
+                    <h2>Strategic Planning Frameworks</h2>
+                    <p>Develop robust strategic plans, scenario analyses, and implementation roadmaps</p>
+                </div>
+                
+                <div class="prompt-cards">
+                    <!-- Add strategic planning prompts here -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How to Contribute -->
+    <section class="contribute-section">
+        <div class="container">
+            <div class="contribute-content">
+                <h2>Want to Contribute?</h2>
+                <p>We're always expanding our toolkit. If you have an effective prompt template for business strategy or consulting, we'd love to add it with full attribution.</p>
+                <a href="contact.html" class="btn btn-primary">Submit a Prompt</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/resources/images/logo-white.svg" alt="VelocityQA Logo">
+                    <p>Professional QA testing for startups.<br>We break your software so your users won't.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="qa-toolkit.html">QA Toolkit</a></li>
+                            <li><a href="ai-toolkit.html">AI Toolkit</a></li>
+                            <li><a href="case-studies.html">Case Studies</a></li>
+                            <li><a href="webinars.html">Webinars</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h3>Connect</h3>
+                        <ul>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="https://twitter.com/velocityqa">Twitter</a></li>
+                            <li><a href="https://linkedin.com/company/velocityqa">LinkedIn</a></li>
+                            <li><a href="https://github.com/velocityqa">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VelocityQA. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="/resources/js/main.js"></script>
+    <script src="/resources/js/ai-toolkit-specific.js"></script>
+    
+    <script>
+        // Toggle prompt preview visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.toggle-preview');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.prompt-card');
+                    const preview = card.querySelector('.prompt-preview');
+                    const icon = this.querySelector('i');
+                    
+                    if (preview.style.display === 'block') {
+                        preview.style.display = 'none';
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        preview.style.display = 'block';
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+            
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide relevant sections
+                    if (category === 'all') {
+                        categorySections.forEach(section => {
+                            section.style.display = 'block';
+                        });
+                    } else {
+                        categorySections.forEach(section => {
+                            if (section.getAttribute('data-category') === category) {
+                                section.style.display = 'block';
+                            } else {
+                                section.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Copy prompt content to clipboard
+        function copyPromptContent(button) {
+            const card = button.closest('.prompt-card');
+            const content = card.querySelector('.prompt-content').textContent;
+            
+            navigator.clipboard.writeText(content).then(() => {
+                // Visual feedback for copy success
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy. Please try selecting and copying the text manually.');
+            });
+        }
+    </script>
+</body>
+</html>
