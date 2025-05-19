@@ -1,1163 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Toolkit - VelocityQA</title>
-    <meta name="description" content="Quality Assurance resources, templates, checklists and methodologies for startups and growing businesses.">
-    
-    <!-- Base Styles -->
-    <link rel="stylesheet" href="css/toolkit-base.css">
-    
-    <!-- QA Toolkit Specific Styles -->
-    <link rel="stylesheet" href="css/qa-toolkit-specific.css">
-    
-    <!-- External Libraries for PDF Generation and Downloading -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Background Grid -->
-    <div class="cybernetic-grid"></div>
-    
-    <div class="container">
-        <!-- Back to main site link -->
-        <a href="index.html" class="back-link">
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Back to Main Site
-        </a>
-
-        <!-- Header Section -->
-        <header class="header">
-            <button class="theme-toggle" aria-label="Toggle dark/light mode">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
-                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
-                </svg>
-            </button>
-            
-            <div class="header-content">
-                <h1>QA Toolkit</h1>
-                <p class="header-subtitle">Professional QA templates, checklists, and resources for startups and growing businesses.</p>
-                
-                <div class="header-feature">
-                    <h3>NEW: Comprehensive QA Resources for Non-Technical Founders</h3>
-                    <p>Designed specifically for startup founders without technical backgrounds, our toolkit simplifies testing and quality assurance with practical, easy-to-implement templates and guides.</p>
-                </div>
-            </div>
-        </header>
-        
-        <!-- Search Container -->
-        <div class="search-container">
-            <form class="search-form">
-                <input type="text" id="search-input" class="search-input" placeholder="Search resources, templates, checklists...">
-                <button type="submit" class="search-button">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-            </form>
-        </div>
-        
-        <!-- Category Filters -->
-        <div class="categories-nav">
-            <button class="category-button active" data-category="all">All Resources</button>
-            <button class="category-button" data-category="templates">Templates</button>
-            <button class="category-button" data-category="checklists">Checklists</button>
-            <button class="category-button" data-category="methodologies">Methodologies</button>
-            <button class="category-button" data-category="uiux">UI/UX Reference</button>
-        </div>
-        
-        <main>
-            <!-- Templates Section -->
-            <section class="resource-category" data-category="templates">
-                <div class="category-header">
-                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    <h2>Templates & Forms</h2>
-                </div>
-                
-                <div class="resource-grid">
-                    <!-- Effective Bug Report Template -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">Effective Bug Report Template</h3>
-                            <p class="resource-description">A structured template for documenting bugs that makes reproduction easy and speeds up the debugging process.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Bug Tracking</span>
-                                <span class="resource-tag">Documentation</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="bug-report-preview">
-                            <pre># BUG REPORT TEMPLATE
-
-## BASIC INFORMATION
-**Bug ID:** [Auto-generated or manually assigned]
-**Reported By:** [Your Name]
-**Date Reported:** [YYYY-MM-DD]
-**Priority:** [High/Medium/Low]
-**Severity:** [Critical/Major/Minor/Cosmetic]
-**Status:** [New]
-
-## ENVIRONMENT
-**Device:** [e.g., MacBook Pro, iPhone 13, etc.]
-**OS & Version:** [e.g., Windows 11, iOS 15.4]
-**Browser & Version:** [e.g., Chrome 99.0.4844.51]
-**App Version:** [e.g., 2.4.1]
-**Screen Resolution:** [e.g., 1920x1080]
-
-## DESCRIPTION
-[Provide a clear, concise description of the bug]
-
-## STEPS TO REPRODUCE
-1. [First step]
-2. [Second step]
-3. [Third step]
-...</pre>
-                            <button class="toggle-preview" data-id="bug-report-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>5 min read</span>
-                                </div>
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    <span>New</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="bug-report-template">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Template
-                            </button>
-                        </div>
-                    </article>
-                    
-                    <!-- Test Coverage Report Template -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">Test Coverage Report Template</h3>
-                            <p class="resource-description">A one-page summary template designed for stakeholders to understand test coverage and quality status at a glance.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Reporting</span>
-                                <span class="resource-tag">Metrics</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="coverage-report-preview">
-                            <pre># TEST COVERAGE REPORT
-
-## PROJECT OVERVIEW
-**Project Name:** [Project Name]
-**Version/Sprint:** [Version or Sprint #]
-**Report Date:** [YYYY-MM-DD]
-**Report Prepared By:** [Your Name]
-**Testing Period:** [Start Date] to [End Date]
-
-## EXECUTIVE SUMMARY
-[1-2 sentences summarizing the overall quality status]
-
-## COVERAGE METRICS
-**Feature Coverage:** [e.g., 85%] (Features tested / Total features)
-**Requirement Coverage:** [e.g., 92%] (Requirements tested / Total requirements)
-**Code Coverage:** [e.g., 78%] (Code tested / Total code)
-**Test Case Execution:** [e.g., 245/250] (Executed / Total planned)
-
-## RISK ASSESSMENT
-**High-Risk Areas Coverage:** [e.g., 100%]
-**Medium-Risk Areas Coverage:** [e.g., 85%]
-**Low-Risk Areas Coverage:** [e.g., 75%]</pre>
-                            <button class="toggle-preview" data-id="coverage-report-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>10 min read</span>
-                                </div>
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    <span>New</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="coverage-report-template">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Template
-                            </button>
-                        </div>
-                    </article>
-                    
-                    <!-- User-Reported Bug Form -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">User-Reported Bug Form</h3>
-                            <p class="resource-description">A customer-facing form designed to collect the right information when users encounter issues, making bug reproduction easier.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Customer Support</span>
-                                <span class="resource-tag">Bug Tracking</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="user-bug-preview">
-                            <pre># USER ISSUE REPORT FORM
-
-Thank you for taking the time to report an issue. The information you provide will help us fix the problem quickly.
-
-## What went wrong?
-[Brief description of the issue]
-
-## What did you expect to happen?
-[What you expected the app/site to do]
-
-## Can you reproduce the issue?
-- [ ] Yes, every time
-- [ ] Yes, sometimes
-- [ ] No, it happened only once
-- [ ] Not sure
-
-## Steps to reproduce (if applicable)
-1. [First step]
-2. [Second step]
-3. [Continue as needed]
-
-## Device and technical details
-Device Type: [Smartphone / Tablet / Laptop / Desktop / Other]
-Device Model: [e.g., iPhone 13 Pro, Dell XPS 15]
-Operating System: [e.g., iOS 15.4, Windows 11]
-Browser (if applicable): [e.g., Chrome, Safari]
-App Version (if applicable): [e.g., 2.4.1]</pre>
-                            <button class="toggle-preview" data-id="user-bug-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>5 min read</span>
-                                </div>
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    <span>New</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="user-bug-form">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Form
-                            </button>
-                        </div>
-                    </article>
-                </div>
-            </section>
-            
-            <!-- Checklists Section -->
-            <section class="resource-category" data-category="checklists">
-                <div class="category-header">
-                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-                    </svg>
-                    <h2>Checklists</h2>
-                </div>
-                
-                <div class="resource-grid">
-                    <!-- Launch Readiness Checklist -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">Launch Readiness Checklist</h3>
-                            <p class="resource-description">A comprehensive pre-release verification checklist to ensure your product is ready for public deployment.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Release</span>
-                                <span class="resource-tag">Pre-Launch</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="launch-checklist-preview">
-                            <pre># LAUNCH READINESS CHECKLIST
-
-## FUNCTIONAL VERIFICATION
-- [ ] All critical user journeys have been tested end-to-end
-- [ ] All high and medium priority bugs have been fixed
-- [ ] Known issues have been documented with workarounds
-- [ ] Error handling and validation has been tested
-- [ ] Search functionality works as expected
-- [ ] Form submissions are processed correctly
-- [ ] Email notifications and confirmations are working
-
-## PERFORMANCE & SCALABILITY
-- [ ] Load testing has been performed at 2x expected volume
-- [ ] Response times are within acceptable thresholds
-- [ ] Database queries are optimized
-- [ ] CDN configuration is optimized
-- [ ] Auto-scaling is configured (if applicable)
-- [ ] Caching strategy is implemented and tested</pre>
-                            <button class="toggle-preview" data-id="launch-checklist-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>15 min read</span>
-                                </div>
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    <span>New</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="launch-checklist">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Checklist
-                            </button>
-                        </div>
-                    </article>
-                    
-                    <!-- Security Baseline Checklist -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">Security Baseline Checklist</h3>
-                            <p class="resource-description">A fundamental security checklist covering the essential security practices that every application should implement.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Security</span>
-                                <span class="resource-tag">Compliance</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="security-checklist-preview">
-                            <pre># SECURITY BASELINE CHECKLIST
-
-## AUTHENTICATION & AUTHORIZATION
-- [ ] Strong password requirements enforced
-- [ ] Account lockout after failed login attempts
-- [ ] Two-factor authentication available
-- [ ] Password reset flow is secure
-- [ ] Session timeout implemented
-- [ ] Role-based access control implemented
-- [ ] Authorization checks on all sensitive endpoints
-
-## DATA PROTECTION
-- [ ] Sensitive data encrypted at rest
-- [ ] TLS/SSL used for all communications
-- [ ] PII is minimized and protected
-- [ ] Database connection strings and credentials are secured
-- [ ] Encryption keys properly managed
-- [ ] Data backups are encrypted</pre>
-                            <button class="toggle-preview" data-id="security-checklist-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>20 min read</span>
-                                </div>
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                    <span>New</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="security-checklist">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Checklist
-                            </button>
-                        </div>
-                    </article>
-                    
-                    <!-- Web Accessibility Testing Checklist -->
-                    <article class="resource-card">
-                        <div class="resource-header">
-                            <h3 class="resource-title">Web Accessibility Testing Checklist</h3>
-                            <p class="resource-description">A comprehensive WCAG-aligned checklist for testing accessibility compliance of websites and web applications.</p>
-                            <div class="resource-tags">
-                                <span class="resource-tag">Accessibility</span>
-                                <span class="resource-tag">WCAG</span>
-                                <span class="resource-tag">A11y</span>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-preview" id="a11y-checklist-preview">
-                            <pre># WEB ACCESSIBILITY TESTING CHECKLIST
-
-## PERCEIVABLE
-### Text Alternatives
-- [ ] All images have appropriate alt text
-- [ ] Complex images have extended descriptions
-- [ ] Decorative images have null alt attributes
-- [ ] Form inputs have associated text labels
-- [ ] Button text clearly describes the action
-
-### Time-based Media
-- [ ] Videos have captions
-- [ ] Audio content has transcripts
-- [ ] Media players have accessible controls
-
-### Adaptable
-- [ ] Content can be presented in different ways
-- [ ] Correct semantic HTML elements are used
-- [ ] Page structure uses proper heading hierarchy (H1-H6)
-- [ ] Tables have proper headers and structure</pre>
-                            <button class="toggle-preview" data-id="a11y-checklist-preview">Show More</button>
-                        </div>
-                        
-                        <div class="resource-actions">
-                            <div class="resource-meta">
-                                <div class="resource-meta-item">
-                                    <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span>25 min read</span>
-                                </div>
-                            </div>
-                            <button class="resource-button" data-template="accessibility-checklist">
-                                <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                                Download Checklist
-                            </button>
-                        </div>
-                    </article>
-                </div>
-            </section>
-            
-            <!-- Methodologies Section -->
-            <section class="resource-category" data-category="methodologies">
-                <div class="category-header">
-                    <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                </svg>
-                <h2>QA Methodologies</h2>
-            </div>
-
-            <div class="resource-grid">
-                <!-- Developer-Led Testing Guide -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">Developer-Led Testing Guide</h3>
-                        <p class="resource-description">A practical guide for developers to effectively test their own code and catch bugs before passing to formal QA, increasing overall quality.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Developers</span>
-                            <span class="resource-tag">Best Practices</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="dev-testing-preview">
-                        <pre># DEVELOPER-LED TESTING GUIDE
-
-## INTRODUCTION
-This guide helps developers implement effective testing practices into their daily workflow to catch bugs early and deliver higher quality code.
-
-## WHY DEVELOPER TESTING MATTERS
-- Catches bugs when they're cheapest to fix (during development)
-- Reduces back-and-forth with QA team
-- Improves code quality and maintainability
-- Saves time in the overall development cycle
-- Builds knowledge of edge cases and failure modes
-
-## EFFECTIVE TESTING MINDSET
-### Switch Contexts
-The most important skill in developer testing is the ability to mentally switch from a builder mindset ("make it work") to a tester mindset ("break it if possible").
-
-### Techniques for Context Switching:
-1. Take a short break after implementation
-2. Approach testing as if you didn't write the code
-3. Ask: "What assumptions did I make while coding?"
-4. Consider: "What could users do that I didn't expect?"</pre>
-                        <button class="toggle-preview" data-id="dev-testing-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>15 min read</span>
-                            </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
-                                <span>New</span>
-                            </div>
-                        </div>
-                        <button class="resource-button" data-template="dev-testing-guide">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Download Guide
-                        </button>
-                    </div>
-                </article>
-
-                <!-- 5-Minute Test Strategy Framework -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">5-Minute Test Strategy Framework</h3>
-                        <p class="resource-description">A rapid-planning approach for creating effective test strategies when time is limited, focusing on risk assessment and high-impact testing.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Rapid Planning</span>
-                            <span class="resource-tag">Strategy</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="test-strategy-preview">
-                        <pre># 5-MINUTE TEST STRATEGY FRAMEWORK
-
-## THE CHALLENGE
-In fast-paced environments, there's rarely time to create detailed test plans. This framework helps you quickly develop a focused testing strategy that:
-- Identifies highest-risk areas
-- Maximizes test coverage with limited resources
-- Ensures critical issues won't reach production
-
-## THE 5-MINUTE PROCESS
-
-### MINUTE 1: Define Business Risk
-Answer these questions:
-1. What's the worst thing that could happen if this breaks?
-2. Which features are most visible to users/customers?
-3. Which areas impact revenue/data integrity?
-
-List the top 3 areas that emerged from these questions.
-
-### MINUTE 2: Consider Technical Risk
-For each high-business-risk area, consider:
-1. What changed recently in this area?
-2. Which parts have complex code/logic?
-3. Which parts have been buggy in the past?
-
-Add any new areas that emerged to your high-risk list.</pre>
-                        <button class="toggle-preview" data-id="test-strategy-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>10 min read</span>
-                            </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
-                                <span>New</span>
-                            </div>
-                        </div>
-                        <button class="resource-button" data-template="test-strategy-framework">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Download Framework
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Quality Gates for Startups -->
-                <article class="resource-card">
-                    <div class="resource-header">
-                        <h3 class="resource-title">Quality Gates for Startups</h3>
-                        <p class="resource-description">A lightweight implementation of quality checkpoints throughout the development process that prevents major issues without slowing down delivery.</p>
-                        <div class="resource-tags">
-                            <span class="resource-tag">Process</span>
-                            <span class="resource-tag">Agile</span>
-                            <span class="resource-tag">Startup</span>
-                        </div>
-                    </div>
-
-                    <div class="resource-preview" id="quality-gates-preview">
-                        <pre># QUALITY GATES FOR STARTUPS
-
-## WHAT ARE QUALITY GATES?
-Quality gates are lightweight checkpoints in the development process that validate quality criteria before work proceeds to the next stage. Unlike heavyweight processes, these are designed to:
-
-- Take minimal time to implement
-- Focus only on critical quality aspects
-- Adapt to changing priorities
-- Improve quality without adding bureaucracy
-
-## IMPLEMENTATION GUIDE
-
-### GATE 1: REQUIREMENTS REVIEW
-**When:** Before development starts
-**Time Required:** 15-30 minutes
-**Who:** Product Owner, Tech Lead, optional QA representative
-
-**Key Questions:**
-1. Are acceptance criteria clear and testable?
-2. Are edge cases and error scenarios defined?
-3. Are there any security or performance implications?
-4. Is the scope clear and appropriately sized?
-
-**Output:** Refined user story with clear acceptance criteria</pre>
-                        <button class="toggle-preview" data-id="quality-gates-preview">Show More</button>
-                    </div>
-
-                    <div class="resource-actions">
-                        <div class="resource-meta">
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span>20 min read</span>
-                            </div>
-                            <div class="resource-meta-item">
-                                <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
-                                <span>New</span>
-                            </div>
-                        </div>
-                        <button class="resource-button" data-template="quality-gates">
-                            <svg class="resource-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                            </svg>
-                            Download Guide
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- UI/UX Quick Reference -->
-        <section class="resource-category" data-category="uiux">
-            <div class="category-header">
-                <svg class="category-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-                </svg>
-                <h2>UI/UX Quick Reference</h2>
-            </div>
-
-            <div class="uiux-reference">
-                <div class="uiux-header">
-                    <h3 class="uiux-title">UI/UX Visual Verification Guide</h3>
-                    <p class="uiux-description">A reference for QA professionals and developers to verify visual quality and consistency in user interfaces across platforms and devices.</p>
-                </div>
-
-                <div class="uiux-tabs">
-                    <button class="uiux-tab active" data-content="visual-consistency">Visual Consistency</button>
-                    <button class="uiux-tab" data-content="interactive-elements">Interactive Elements</button>
-                    <button class="uiux-tab" data-content="responsive-design">Responsive Design</button>
-                </div>
-
-                <div class="uiux-content active" id="visual-consistency">
-                    <div class="uiux-grid">
-                        <!-- Spacing Example -->
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Spacing Consistency</div>
-                                <div class="uiux-example-label uiux-correct">Correct</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="spacing-example-correct">
-                                    <div class="spacing-block"></div>
-                                    <div class="spacing-block"></div>
-                                    <div class="spacing-block"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Spacing Inconsistency</div>
-                                <div class="uiux-example-label uiux-incorrect">Incorrect</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="spacing-example-incorrect">
-                                    <div class="spacing-block"></div>
-                                    <div class="spacing-block"></div>
-                                    <div class="spacing-block"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Alignment Example -->
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Alignment Consistency</div>
-                                <div class="uiux-example-label uiux-correct">Correct</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="alignment-example-correct">
-                                    <div class="alignment-item alignment-item-1"></div>
-                                    <div class="alignment-item alignment-item-2"></div>
-                                    <div class="alignment-item alignment-item-3"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Alignment Inconsistency</div>
-                                <div class="uiux-example-label uiux-incorrect">Incorrect</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="alignment-example-incorrect">
-                                    <div class="alignment-item alignment-item-1"></div>
-                                    <div class="alignment-item alignment-item-2"></div>
-                                    <div class="alignment-item alignment-item-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="uiux-content" id="interactive-elements">
-                    <div class="uiux-grid">
-                        <!-- Button States -->
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Button States</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="button-states">
-                                    <div class="button-state button-state-normal">Normal</div>
-                                    <div class="button-state button-state-hover">Hover</div>
-                                    <div class="button-state button-state-active">Active</div>
-                                    <div class="button-state button-state-disabled">Disabled</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Form Field States -->
-                        <div class="uiux-example">
-                            <div class="uiux-example-header">
-                                <div class="uiux-example-title">Form Field States</div>
-                            </div>
-                            <div class="uiux-example-content">
-                                <div class="form-field-states">
-                                    <div class="form-field-example">
-                                        <label class="form-field-label">Default State</label>
-                                        <input type="text" class="form-field-input" placeholder="Enter value">
-                                    </div>
-                                    <div class="form-field-example">
-                                        <label class="form-field-label">Focus State</label>
-                                        <input type="text" class="form-field-input focus" placeholder="Enter value">
-                                    </div>
-                                    <div class="form-field-example">
-                                        <label class="form-field-label">Error State</label>
-                                        <input type="text" class="form-field-input error" placeholder="Enter value">
-                                        <div class="form-field-error">This field is required</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="uiux-content" id="responsive-design">
-                    <div class="responsive-example">
-                        <div class="responsive-header">
-                            <div class="responsive-title">Layout Adaptation</div>
-                            <div class="responsive-toggle">
-                                <button class="responsive-button active" data-view="desktop">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                    </svg>
-                                </button>
-                                <button class="responsive-button" data-view="tablet">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                    </svg>
-                                </button>
-                                <button class="responsive-button" data-view="mobile">
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="responsive-content active" id="desktop-view">
-                            <div class="responsive-desktop">
-                                <div class="responsive-desktop-sidebar">
-                                    <div class="responsive-placeholder-text"></div>
-                                    <div class="responsive-placeholder-text short"></div>
-                                    <div class="responsive-placeholder-text medium"></div>
-                                    <div class="responsive-placeholder-text short"></div>
-                                </div>
-                                <div class="responsive-desktop-main">
-                                    <div class="responsive-placeholder-text medium"></div>
-                                    <div class="responsive-placeholder-text"></div>
-                                    <div class="responsive-placeholder-text long"></div>
-                                    <div class="responsive-placeholder-text medium"></div>
-                                    <div class="responsive-placeholder-text"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="responsive-content" id="tablet-view">
-                            <div class="responsive-tablet">
-                                <div class="responsive-tablet-header">
-                                    <div class="responsive-placeholder-text short"></div>
-                                </div>
-                                <div class="responsive-tablet-content">
-                                    <div class="responsive-tablet-sidebar">
-                                        <div class="responsive-placeholder-text short"></div>
-                                        <div class="responsive-placeholder-text short"></div>
-                                        <div class="responsive-placeholder-text short"></div>
-                                    </div>
-                                    <div class="responsive-tablet-main">
-                                        <div class="responsive-placeholder-text medium"></div>
-                                        <div class="responsive-placeholder-text"></div>
-                                        <div class="responsive-placeholder-text long"></div>
-                                        <div class="responsive-placeholder-text medium"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="responsive-content" id="mobile-view">
-                            <div class="responsive-mobile">
-                                <div class="responsive-mobile-header">
-                                    <div class="responsive-placeholder-text short"></div>
-                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                                    </svg>
-                                </div>
-                                <div class="responsive-mobile-content">
-                                    <div class="responsive-placeholder-text medium"></div>
-                                    <div class="responsive-placeholder-text long"></div>
-                                    <div class="responsive-placeholder-text"></div>
-                                    <div class="responsive-placeholder-text medium"></div>
-                                    <div class="responsive-placeholder-text long"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Template Modal -->
-    <div id="template-modal" class="template-modal">
-        <div class="template-modal-content">
-            <div class="template-header">
-                <h3 id="template-title" class="template-title">Template Title</h3>
-                <button id="close-modal" class="close-modal">×</button>
-            </div>
-            
-            <div class="tab-navigation">
-                <button class="tab-button active" id="structure-tab">Template Structure</button>
-                <button class="tab-button" id="content-tab">Your Content</button>
-                <button class="tab-button" id="output-tab">Final Output</button>
-            </div>
-            
-            <div id="structure-content" class="tab-content active">
-                <div id="template-structure" class="template-structure">
-                    <!-- Template structure will be loaded here -->
-                </div>
-                <div class="action-buttons">
-                    <button id="next-structure" class="next-button">
-                        <span>Next: Add Your Content</span>
-                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div id="content-content" class="tab-content">
-                <!-- Branding Customization Section -->
-                <div class="form-group">
-                    <label for="company-name">Your Company Name</label>
-                    <input type="text" id="company-name" class="form-input" placeholder="Leave blank to use VelocityQA">
-                </div>
-                <div class="form-group">
-                    <label for="company-tagline">Your Company Tagline</label>
-                    <input type="text" id="company-tagline" class="form-input" placeholder="Optional tagline">
-                </div>
-                <div class="form-group">
-                    <label for="heading-color">Heading Color</label>
-                    <div style="display: flex; align-items: center;">
-                        <input type="color" id="heading-color" value="#FF6B00" style="margin-right: 8px;">
-                        <input type="text" id="heading-color-hex" class="form-input" value="#FF6B00">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="subheading-color">Subheading Color</label>
-                    <div style="display: flex; align-items: center;">
-                        <input type="color" id="subheading-color" value="#20C5C6" style="margin-right: 8px;">
-                        <input type="text" id="subheading-color-hex" class="form-input" value="#20C5C6">
-                    </div>
-                </div>
-
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                <p>Fill in the details for your template below:</p>
-                
-                <form id="template-form" class="template-content-form">
-                    <!-- Form fields will be dynamically generated based on the template -->
-                </form>
-                <div class="action-buttons">
-                    <button id="generate-output" class="generate-button">
-                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        Generate Output
-                    </button>
-                    <button id="next-content" class="next-button">
-                        <span>Next: View Output</span>
-                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div id="output-content" class="tab-content">
-                <div id="template-output" class="template-output">
-                    <!-- Generated output will appear here -->
-                </div>
-                <div class="action-buttons">
-                    <button id="copy-output" class="copy-button">
-                        <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
-                        </svg>
-                        Copy to Clipboard
-                    </button>
-                    
-                    <div style="display: flex; gap: 10px; margin-left: 10px;">
-                        <select id="download-format" class="form-input" style="width: auto;">
-                            <option value="md">Markdown (.md)</option>
-                            <option value="txt">Text (.txt)</option>
-                            <option value="pdf">PDF (.pdf)</option>
-                        </select>
-                        <button id="download-template" class="download-button">
-                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            Download
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Import/Export Modal -->
-    <div id="importModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Import Template</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-content">
-                <div class="form-group">
-                    <label for="importJson">Paste your template JSON below:</label>
-                    <textarea id="importJson" class="form-control" rows="10"></textarea>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button id="confirmImportBtn" class="btn">Import</button>
-                <button class="modal-close-btn btn btn-secondary">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <section class="features-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Use Our QA Resources?</h2>
-                <p>Our professionally designed templates and checklists help you implement best practices and improve your testing process.</p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    <h3 class="feature-title">Save Time</h3>
-                    <p class="feature-description">Stop creating test documentation from scratch. Our templates provide a professional foundation that you can customize to your needs.</p>
-                </div>
-
-                <div class="feature-card">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    <h3 class="feature-title">Ensure Quality</h3>
-                    <p class="feature-description">Our resources incorporate industry best practices and comprehensive coverage to help you find bugs before your users do.</p>
-                </div>
-
-                <div class="feature-card">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                    <h3 class="feature-title">Team Alignment</h3>
-                    <p class="feature-description">Standardize your testing approach across different team members with consistent templates and methodologies.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h3>VelocityQA</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
-                    <p><a href="https://www.velocityqa.com.au" target="_blank" style="color: var(--primary-light); text-decoration: none;">www.velocityqa.com.au</a></p>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                       <li class="footer-link"><a href="/resources/index.html">Resources Home</a></li>
-                       <li class="footer-link"><a href="/resources/ai-toolkit.html">AI Toolkit</a></li>
-                   </ul>
-               </div>
-           </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 VelocityQA. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScripts -->
-    <script src="js/toolkit-functions.js"></script>
-    <script src="js/qa-toolkit-specific.js"></script>
-    
-    <!-- Additional JS for template customization -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Connect color pickers to their hex input fields
-        document.getElementById('heading-color').addEventListener('input', function() {
-            document.getElementById('heading-color-hex').value = this.value;
-        });
-        document.getElementById('subheading-color').addEventListener('input', function() {
-            document.getElementById('subheading-color-hex').value = this.value;
-        });
-        
-        // Sync hex inputs back to color pickers
-        document.getElementById('heading-color-hex').addEventListener('input', function() {
-            if (/^#[0-9A-F]{6}$/i.test(this.value)) {
-                document.getElementById('heading-color').value = this.value;
-            }
-        });
-        document.getElementById('subheading-color-hex').addEventListener('input', function() {
-            if (/^#[0-9A-F]{6}$/i.test(this.value)) {
-                document.getElementById('subheading-color').value = this.value;
-            }
-        });
-        
-        // Override the original generateOutput function
-        const originalGenerateBtn = document.getElementById('generate-output');
-        if (originalGenerateBtn) {
-            const originalClickHandler = originalGenerateBtn.onclick;
-            originalGenerateBtn.onclick = function() {
-                // Call original handler first
-                if (originalClickHandler) {
-                    originalClickHandler.call(this);
-                }
-                
-                // Then apply custom colors and branding
-                applyCustomFormatting();
-            };
-        }
-        
-        // Function to apply custom colors and branding to output
-        function applyCustomFormatting() {
-            const templateOutput = document.getElementById('template-output');
-            if (!templateOutput) return;
-            
-            const outputContent = templateOutput.textContent;
-            if (!outputContent) return;
-            
-            const headingColor = document.getElementById('heading-color').value || '#FF6B00';
-            const subheadingColor = document.getElementById('subheading-color').value || '#20C5C6';
-            const companyName = document.getElementById('company-name').value.trim() || 'VelocityQA';
-            const companyTagline = document.getElementById('company-tagline').value.trim() || 'Professional QA testing for startups. We break your software so your users won\'t.';
-            
-            // Apply the company footer
-            let modifiedContent = outputContent;
-            if (modifiedContent.includes('Generated by') || modifiedContent.includes('Generated with')) {
-                // Replace existing footer
-                modifiedContent = modifiedContent.replace(
-                    /---\nGenerated (by|with).*$/,
-                    `---\nGenerated by ${companyName} - ${companyTagline}`
-                );
-            } else {
-                // Add footer if none exists
-                modifiedContent += `\n\n---\nGenerated by ${companyName} - ${companyTagline}`;
-            }
-            
-            // Update the output
-            templateOutput.textContent = modifiedContent;
-        }
-        
-        // PDF generation improvements
-        const downloadBtn = document.getElementById('download-template');
-        if (downloadBtn) {
-            const originalClickHandler = downloadBtn.onclick;
-            downloadBtn.onclick = function() {
-                const format = document.getElementById('download-format').value;
-                if (format === 'pdf') {
-                    improvedPdfGeneration();
-                } else if (originalClickHandler) {
-                    originalClickHandler.call(this);
-                }
-            };
-        }
-        
-        // Enhanced PDF generation
-        function improvedPdfGeneration() {
-            const templateId = document.getElementById('template-form').getAttribute('data-template');
-            const templateOutput = document.getElementById('template-output');
-            
-            if (!templateOutput || !templateOutput.textContent) {
-                showNotification("Please generate content first", "error");
-                return;
-            }
-            
-            const title = document.getElementById('template-title').textContent;
-            const filename = title.toLowerCase().replace(/\s+/g, '-');
-            
             // Create PDF-friendly version of content
             const pdfContent = document.createElement('div');
             pdfContent.className = 'pdf-content';
@@ -1577,7 +417,7 @@ Quality gates are lightweight checkpoints in the development process that valida
                 
                 // Show no results message
                 if (!anyResults) {
-                    // TODO: Add a no results message
+                    // Display a message for no results
                     showNotification('No matching resources found. Try a different search term.', 'warning');
                 }
             });
@@ -1600,6 +440,188 @@ Quality gates are lightweight checkpoints in the development process that valida
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
         }
+
+        // Modal functionality
+        const closeModalBtn = document.getElementById('close-modal');
+        const templateModal = document.getElementById('template-modal');
+        
+        if (closeModalBtn && templateModal) {
+            closeModalBtn.addEventListener('click', function() {
+                templateModal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Open modal when clicking a template button
+        document.querySelectorAll('.resource-button[data-template]').forEach(button => {
+            button.addEventListener('click', function() {
+                const templateId = this.getAttribute('data-template');
+                
+                // Set the template title
+                const templateTitle = this.closest('.resource-card').querySelector('.resource-title').textContent;
+                document.getElementById('template-title').textContent = templateTitle;
+                
+                // Load template structure (this would be handled by qa-toolkit-specific.js)
+                // This is just a placeholder for the demonstration
+                if (typeof loadTemplateStructure === 'function') {
+                    loadTemplateStructure(templateId);
+                } else {
+                    // Fallback if function doesn't exist
+                    document.getElementById('template-structure').textContent = 
+                        "Template structure loading is handled by the main JS files.\n\n" +
+                        "This function demonstrates how the HTML and styling has been updated.";
+                }
+                
+                // Set the template ID for the form
+                document.getElementById('template-form').setAttribute('data-template', templateId);
+                
+                // Show the modal
+                templateModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+                
+                // Reset tabs to first tab
+                document.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active'));
+                document.getElementById('structure-tab').classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById('structure-content').classList.add('active');
+            });
+        });
+        
+        // Tab navigation
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.id.replace('-tab', '');
+                
+                // Update active button
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Next buttons
+        document.getElementById('next-structure').addEventListener('click', function() {
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById('content-tab').classList.add('active');
+            
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('content-content').classList.add('active');
+        });
+        
+        document.getElementById('next-content').addEventListener('click', function() {
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            document.getElementById('output-tab').classList.add('active');
+            
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('output-content').classList.add('active');
+        });
+
+        // Add smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Additional animation effects
+        function addIntersectionObserver() {
+            if ('IntersectionObserver' in window) {
+                const options = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+                
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, options);
+                
+                // Observe feature cards for animation
+                document.querySelectorAll('.feature-card').forEach(card => {
+                    card.classList.add('animate-on-scroll');
+                    observer.observe(card);
+                });
+            }
+        }
+        
+        // Initialize animations if supported
+        if ('IntersectionObserver' in window) {
+            addIntersectionObserver();
+        }
+
+        // Copy button functionality
+        document.getElementById('copy-output')?.addEventListener('click', function() {
+            const output = document.getElementById('template-output');
+            if (!output) return;
+            
+            const text = output.textContent;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        showNotification('Copied to clipboard!');
+                        
+                        // Change button text temporarily
+                        const originalText = this.innerHTML;
+                        this.innerHTML = `
+                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Copied!
+                        `;
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        showNotification('Failed to copy to clipboard', 'error');
+                    });
+            } else {
+                // Fallback for browsers without clipboard API
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showNotification('Copied to clipboard!');
+                    } else {
+                        showNotification('Failed to copy to clipboard', 'error');
+                    }
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                    showNotification('Failed to copy to clipboard', 'error');
+                }
+                
+                document.body.removeChild(textarea);
+            }
+        });
     });
     </script>
 </body>
