@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,16 +31,21 @@
     
     <div class="container">
         <!-- Back to main site link -->
-        <a href="/" class="back-link">
+        <a href="index.html" class="back-link">
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
             </svg>
-            Back to VelocityQA
+            Back to Main Site
         </a>
-        
+
         <!-- Header Section -->
         <header class="header">
-            <!-- Dark theme is applied via CSS -->
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+                </svg>
+            </button>
             
             <div class="header-content">
                 <h1>QA Toolkit</h1>
@@ -59,7 +64,8 @@
                 <input type="text" id="search-input" class="search-input" placeholder="Search resources, templates, checklists...">
                 <button type="submit" class="search-button">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
             </form>
@@ -514,7 +520,7 @@ The most important skill in developer testing is the ability to mentally switch 
                             </div>
                             <div class="resource-meta-item">
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
                                 <span>New</span>
                             </div>
@@ -578,7 +584,7 @@ Add any new areas that emerged to your high-risk list.</pre>
                             </div>
                             <div class="resource-meta-item">
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
                                 <span>New</span>
                             </div>
@@ -642,7 +648,7 @@ Quality gates are lightweight checkpoints in the development process that valida
                             </div>
                             <div class="resource-meta-item">
                                 <svg class="resource-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
                                 <span>New</span>
                             </div>
@@ -1035,14 +1041,14 @@ Quality gates are lightweight checkpoints in the development process that valida
                 <div class="footer-column">
                     <h3>VelocityQA</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 20px;">Professional QA testing services for startups and growing businesses.</p>
-                    <p><a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a></p>
+                    <p><a href="https://www.velocityqa.com.au" target="_blank" style="color: var(--primary-light); text-decoration: none;">www.velocityqa.com.au</a></p>
                 </div>
 
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
-                       <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/index.html">Resources Home</a></li>
-                       <li class="footer-link"><a href="https://www.velocityqa.com.au/resources/ai-toolkit.html">AI Toolkit</a></li>
+                       <li class="footer-link"><a href="/resources/index.html">Resources Home</a></li>
+                       <li class="footer-link"><a href="/resources/ai-toolkit.html">AI Toolkit</a></li>
                    </ul>
                </div>
            </div>
@@ -1456,6 +1462,143 @@ Quality gates are lightweight checkpoints in the development process that valida
         // Load saved templates on page load
         if (typeof loadSavedTemplates === 'function') {
             loadSavedTemplates();
+        }
+        
+        // Toggle preview sections
+        document.querySelectorAll('.toggle-preview').forEach(button => {
+            button.addEventListener('click', function() {
+                const previewId = this.getAttribute('data-id');
+                const preview = document.getElementById(previewId);
+                
+                if (preview.classList.contains('expanded')) {
+                    preview.classList.remove('expanded');
+                    this.textContent = 'Show More';
+                } else {
+                    preview.classList.add('expanded');
+                    this.textContent = 'Show Less';
+                }
+            });
+        });
+        
+        // Handle UI/UX tabs
+        document.querySelectorAll('.uiux-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const contentId = this.getAttribute('data-content');
+                
+                // Update active tab
+                document.querySelectorAll('.uiux-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected content
+                document.querySelectorAll('.uiux-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+        
+        // Handle responsive view buttons
+        document.querySelectorAll('.responsive-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const viewId = this.getAttribute('data-view');
+                
+                // Update active button
+                document.querySelectorAll('.responsive-button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected view
+                document.querySelectorAll('.responsive-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`${viewId}-view`).classList.add('active');
+            });
+        });
+        
+        // Handle category filtering
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active button
+                document.querySelectorAll('.category-button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected categories
+                if (category === 'all') {
+                    document.querySelectorAll('.resource-category').forEach(section => section.style.display = 'block');
+                } else {
+                    document.querySelectorAll('.resource-category').forEach(section => {
+                        if (section.getAttribute('data-category') === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Handle search functionality
+        const searchForm = document.querySelector('.search-form');
+        const searchInput = document.getElementById('search-input');
+        
+        if (searchForm && searchInput) {
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (!searchTerm) {
+                    // Reset search
+                    document.querySelectorAll('.resource-card').forEach(card => card.style.display = 'block');
+                    document.querySelectorAll('.resource-category').forEach(section => section.style.display = 'block');
+                    return;
+                }
+                
+                // Search through cards
+                let anyResults = false;
+                document.querySelectorAll('.resource-card').forEach(card => {
+                    const title = card.querySelector('.resource-title')?.textContent.toLowerCase() || '';
+                    const description = card.querySelector('.resource-description')?.textContent.toLowerCase() || '';
+                    const tags = Array.from(card.querySelectorAll('.resource-tag')).map(tag => tag.textContent.toLowerCase());
+                    const content = card.querySelector('.resource-preview')?.textContent.toLowerCase() || '';
+                    
+                    if (title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        tags.some(tag => tag.includes(searchTerm)) || 
+                        content.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        anyResults = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show only categories with results
+                document.querySelectorAll('.resource-category').forEach(section => {
+                    const visibleCards = section.querySelectorAll('.resource-card[style="display: block"]').length;
+                    section.style.display = visibleCards > 0 ? 'block' : 'none';
+                });
+                
+                // Show no results message
+                if (!anyResults) {
+                    // TODO: Add a no results message
+                    showNotification('No matching resources found. Try a different search term.', 'warning');
+                }
+            });
+        }
+        
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+            
+            // Set initial theme based on user preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
         }
     });
     </script>
