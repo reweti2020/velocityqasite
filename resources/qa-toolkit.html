@@ -1,628 +1,425 @@
-            // Create PDF-friendly version of content
-            const pdfContent = document.createElement('div');
-            pdfContent.className = 'pdf-content';
-            pdfContent.style.padding = '20px';
-            pdfContent.style.background = '#ffffff';
-            pdfContent.style.color = '#333333';
-            pdfContent.style.width = '794px'; // A4 width
-            pdfContent.style.fontFamily = 'Arial, sans-serif';
-            
-            // Add company header
-            const companyName = document.getElementById('company-name').value.trim() || 'VelocityQA';
-            const companyTagline = document.getElementById('company-tagline').value.trim() || 'Professional QA testing for startups. We break your software so your users won\'t.';
-            const headingColor = document.getElementById('heading-color').value || '#FF6B00';
-            const subheadingColor = document.getElementById('subheading-color').value || '#20C5C6';
-            
-            const header = document.createElement('div');
-            header.style.borderBottom = '1px solid #eee';
-            header.style.paddingBottom = '10px';
-            header.style.marginBottom = '20px';
-            
-            const headerTitle = document.createElement('h1');
-            headerTitle.style.fontSize = '24px';
-            headerTitle.style.color = headingColor;
-            headerTitle.style.marginBottom = '5px';
-            headerTitle.textContent = title;
-            
-            const headerCompany = document.createElement('div');
-            headerCompany.style.fontSize = '14px';
-            headerCompany.style.color = '#666';
-            headerCompany.textContent = companyName;
-            
-            header.appendChild(headerTitle);
-            header.appendChild(headerCompany);
-            pdfContent.appendChild(header);
-            
-            // Format content
-            const content = document.createElement('div');
-            const lines = templateOutput.textContent.split('\n');
-            
-            lines.forEach(line => {
-                if (line.startsWith('# ')) {
-                    const h1 = document.createElement('h1');
-                    h1.style.fontSize = '22px';
-                    h1.style.color = headingColor;
-                    h1.style.marginTop = '20px';
-                    h1.style.marginBottom = '10px';
-                    h1.textContent = line.substring(2);
-                    content.appendChild(h1);
-                } else if (line.startsWith('## ')) {
-                    const h2 = document.createElement('h2');
-                    h2.style.fontSize = '18px';
-                    h2.style.color = subheadingColor;
-                    h2.style.marginTop = '15px';
-                    h2.style.marginBottom = '8px';
-                    h2.textContent = line.substring(3);
-                    content.appendChild(h2);
-                } else if (line.startsWith('### ')) {
-                    const h3 = document.createElement('h3');
-                    h3.style.fontSize = '16px';
-                    h3.style.color = subheadingColor;
-                    h3.style.marginTop = '12px';
-                    h3.style.marginBottom = '6px';
-                    h3.textContent = line.substring(4);
-                    content.appendChild(h3);
-                } else if (line.startsWith('- [ ] ')) {
-                    const item = document.createElement('div');
-                    item.style.display = 'flex';
-                    item.style.alignItems = 'flex-start';
-                    item.style.marginBottom = '6px';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityQA Toolkit</title>
+    <link rel="stylesheet" href="./css/qa-toolkit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="gradient-text">The Non-Technical Founder's QA Toolkit</h1>
+            <p>Translation guide for QA terminology with simple frameworks for founders without technical backgrounds</p>
+        </header>
+        
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">QA Translation Dictionary</h2>
+                <div class="qa-dict">
+                    <div class="term-card">
+                        <div class="term">Regression Testing <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "Making sure new updates don't break existing features." It's confirming your foundation stays solid as you build new floors.</p>
+                    </div>
                     
-                    const checkbox = document.createElement('span');
-                    checkbox.style.marginRight = '8px';
-                    checkbox.innerHTML = '☐';
+                    <div class="term-card">
+                        <div class="term">Edge Cases <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "Unusual but possible user scenarios." Think of them as rare customer situations that could cause complaints if overlooked.</p>
+                    </div>
                     
-                    const text = document.createElement('span');
-                    text.textContent = line.substring(6);
+                    <div class="term-card">
+                        <div class="term">User Acceptance Testing <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "Does it actually solve the problem for real users?" It's test-driving your product with actual users before full launch.</p>
+                    </div>
                     
-                    item.appendChild(checkbox);
-                    item.appendChild(text);
-                    content.appendChild(item);
-                } else if (line.startsWith('- ')) {
-                    const item = document.createElement('div');
-                    item.style.display = 'flex';
-                    item.style.alignItems = 'flex-start';
-                    item.style.marginBottom = '6px';
+                    <div class="term-card">
+                        <div class="term">Test Coverage <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "How much of your app has been tested?" It's like an insurance policy - higher percentage means lower risk.</p>
+                    </div>
                     
-                    const bullet = document.createElement('span');
-                    bullet.style.marginRight = '8px';
-                    bullet.innerHTML = '•';
+                    <div class="term-card">
+                        <div class="term">Test Environment <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "A safe practice area." It's like a restaurant's test kitchen where chefs experiment before updating the menu.</p>
+                    </div>
                     
-                    const text = document.createElement('span');
-                    text.textContent = line.substring(2);
+                    <div class="term-card">
+                        <div class="term">Production <span>(what devs say)</span></div>
+                        <p class="definition">Business translation: "The live, customer-facing version of your product." Think of it as your store during business hours - changes affect real customers.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <div class="flowchart">
+                    <h3 class="flowchart-title">Simplified QA Flowchart for Founders</h3>
                     
-                    item.appendChild(bullet);
-                    item.appendChild(text);
-                    content.appendChild(item);
-                } else if (line.trim() === '---') {
-                    const hr = document.createElement('hr');
-                    hr.style.border = '0';
-                    hr.style.borderTop = '1px solid #eee';
-                    hr.style.margin = '20px 0';
-                    content.appendChild(hr);
-                } else if (line.trim() !== '') {
-                    const p = document.createElement('p');
-                    p.style.marginBottom = '8px';
-                    p.style.lineHeight = '1.4';
-                    
-                    // Handle bold text
-                    if (line.includes('**')) {
-                        let text = line;
-                        let parts = [];
-                        let boldPattern = /\*\*(.*?)\*\*/g;
-                        let match;
-                        let lastIndex = 0;
+                    <div class="flow-container">
+                        <div class="flow-step flow-step-1">
+                            <h4 class="flow-step-title">Define Success</h4>
+                            <p class="flow-step-desc">What does "working" actually mean for this feature?</p>
+                        </div>
                         
-                        while ((match = boldPattern.exec(text)) !== null) {
-                            // Text before the bold part
-                            if (match.index > lastIndex) {
-                                parts.push(document.createTextNode(text.substring(lastIndex, match.index)));
-                            }
-                            
-                            // Bold part
-                            const bold = document.createElement('strong');
-                            bold.textContent = match[1];
-                            parts.push(bold);
-                            
-                            lastIndex = match.index + match[0].length;
-                        }
+                        <div class="flow-step flow-step-2">
+                            <h4 class="flow-step-title">Verify Core Flow</h4>
+                            <p class="flow-step-desc">Does the main user journey work as expected?</p>
+                        </div>
                         
-                        // Remaining text
-                        if (lastIndex < text.length) {
-                            parts.push(document.createTextNode(text.substring(lastIndex)));
-                        }
+                        <div class="flow-step flow-step-3">
+                            <h4 class="flow-step-title">Test Boundaries</h4>
+                            <p class="flow-step-desc">What happens when users do unexpected things?</p>
+                        </div>
                         
-                        // Add all parts to paragraph
-                        parts.forEach(part => p.appendChild(part));
-                    } else {
-                        p.textContent = line;
-                    }
+                        <div class="flow-step flow-step-4">
+                            <h4 class="flow-step-title">Real User Check</h4>
+                            <p class="flow-step-desc">Watch actual users interact with the feature</p>
+                        </div>
+                        
+                        <div class="flow-arrow"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <div class="tips-section">
+                    <h3 class="tips-title">Non-Technical Founder's QA Checklist</h3>
+                    <ul class="tips-list">
+                        <li>Always ask: "How do we know this is working?" for each new feature</li>
+                        <li>Document what "working" means before development starts</li>
+                        <li>Test your product on the oldest devices your users might have</li>
+                        <li>Try using your product with a poor internet connection</li>
+                        <li>Ask a non-team member to use your product without instructions</li>
+                        <li>Focus testing time on features that directly affect revenue</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Template Generator Section -->
+            <section class="section">
+                <div class="form-section">
+                    <h3 class="form-title">QA Template Generator</h3>
+                    <p class="form-description">Fill out the form below to generate a customized QA template for your project.</p>
                     
-                    content.appendChild(p);
-                } else {
-                    // Empty line
-                    const spacer = document.createElement('div');
-                    spacer.style.height = '8px';
-                    content.appendChild(spacer);
-                }
-            });
-            
-            pdfContent.appendChild(content);
-            
-            // Add footer
-            const footer = document.createElement('div');
-            footer.style.borderTop = '1px solid #eee';
-            footer.style.paddingTop = '10px';
-            footer.style.marginTop = '20px';
-            footer.style.fontSize = '12px';
-            footer.style.color = '#666';
-            footer.style.textAlign = 'center';
-            footer.textContent = `Generated by ${companyName} - ${companyTagline}`;
-            pdfContent.appendChild(footer);
-            
-            // Hide the element
-            pdfContent.style.position = 'absolute';
-            pdfContent.style.left = '-9999px';
-            document.body.appendChild(pdfContent);
-            
-            // Generate PDF
-            html2canvas(pdfContent, {
-                scale: 2,
-                logging: false,
-                useCORS: true,
-                allowTaint: false,
-                backgroundColor: '#ffffff'
-            }).then(canvas => {
-                document.body.removeChild(pdfContent);
-                
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'mm',
-                    format: 'a4'
-                });
-                
-                const imgData = canvas.toDataURL('image/jpeg', 1.0);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                const imgWidth = canvas.width;
-                const imgHeight = canvas.height;
-                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-                const imgX = (pdfWidth - imgWidth * ratio) / 2;
-                
-                pdf.addImage(imgData, 'JPEG', imgX, 0, imgWidth * ratio, imgHeight * ratio);
-                
-                // Add footer with date and page number
-                pdf.setFontSize(8);
-                pdf.setTextColor(100, 100, 100);
-                pdf.text(`Generated on ${new Date().toLocaleDateString()} - Page 1 of 1`, pdfWidth / 2, pdfHeight - 10, { align: 'center' });
-                
-                pdf.save(`${filename}.pdf`);
-                showNotification("PDF downloaded successfully!");
-                
-            }).catch(error => {
-                console.error("Error generating PDF:", error);
-                showNotification("Failed to generate PDF. Please try again.", "error");
-            });
-        }
-        
-        // Form validation
-        function validateForm(templateId) {
-            const form = document.getElementById('template-form');
-            if (!form) return true;
-            
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('error');
+                    <!-- Branding Options -->
+                    <div class="branding-options">
+                        <h4 class="branding-title">Customize Template Branding</h4>
+                        <div class="branding-grid">
+                            <div class="form-group">
+                                <label for="business-name">Your Business Name</label>
+                                <input type="text" id="business-name" class="form-control" placeholder="Leave blank to use VelocityQA">
+                            </div>
+                            <div class="form-group">
+                                <label for="business-tagline">Your Business Tagline</label>
+                                <input type="text" id="business-tagline" class="form-control" placeholder="Optional tagline for your business">
+                            </div>
+                        </div>
+                        <div class="color-options">
+                            <div class="form-group">
+                                <label for="heading-color">Heading Color</label>
+                                <div class="color-input">
+                                    <input type="color" id="heading-color" value="#FF6B00">
+                                    <input type="text" id="heading-color-hex" class="form-control" value="#FF6B00">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subheading-color">Subheading Color</label>
+                                <div class="color-input">
+                                    <input type="color" id="subheading-color" value="#20C5C6">
+                                    <input type="text" id="subheading-color-hex" class="form-control" value="#20C5C6">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="accent-color">Accent Color</label>
+                                <div class="color-input">
+                                    <input type="color" id="accent-color" value="#FF8533">
+                                    <input type="text" id="accent-color-hex" class="form-control" value="#FF8533">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    // Create or update error message
-                    let errorMessage = field.nextElementSibling;
-                    if (!errorMessage || !errorMessage.classList.contains('form-error')) {
-                        errorMessage = document.createElement('div');
-                        errorMessage.className = 'form-error';
-                        field.parentNode.insertBefore(errorMessage, field.nextSibling);
-                    }
-                    errorMessage.textContent = 'This field is required';
-                } else {
-                    field.classList.remove('error');
-                    const errorMessage = field.nextElementSibling;
-                    if (errorMessage && errorMessage.classList.contains('form-error')) {
-                        errorMessage.remove();
-                    }
-                }
-            });
-            
-            return isValid;
-        }
-        
-        // Add required attributes to important form fields
-        function addValidationAttributes() {
-            const form = document.getElementById('template-form');
-            if (!form) return;
-            
-            const templateId = form.getAttribute('data-template');
-            if (!templateId) return;
-            
-            // Add required attribute to primary fields based on template type
-            switch (templateId) {
-                case 'bug-report-template':
-                    document.getElementById('bugId')?.setAttribute('required', '');
-                    document.getElementById('description')?.setAttribute('required', '');
-                    document.getElementById('stepsToReproduce')?.setAttribute('required', '');
-                    break;
-                case 'launch-checklist':
-                    document.getElementById('projectName')?.setAttribute('required', '');
-                    document.getElementById('launchDate')?.setAttribute('required', '');
-                    break;
-                case 'test-strategy-framework':
-                    document.getElementById('projectName')?.setAttribute('required', '');
-                    document.getElementById('businessRisks')?.setAttribute('required', '');
-                    break;
-            }
-        }
-        
-        // Function for showing notification
-        function showNotification(message, type = "success") {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    notification.remove();
-                }, 300);
-            }, 3000);
-        }
-        
-        // Call validation setup when template form is generated
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'childList' && mutation.target.id === 'template-form') {
-                    addValidationAttributes();
-                }
-            });
-        });
-        
-        const templateForm = document.getElementById('template-form');
-        if (templateForm) {
-            observer.observe(templateForm, { childList: true });
-        }
-        
-        // Load saved templates on page load
-        if (typeof loadSavedTemplates === 'function') {
-            loadSavedTemplates();
-        }
-        
-        // Toggle preview sections
-        document.querySelectorAll('.toggle-preview').forEach(button => {
-            button.addEventListener('click', function() {
-                const previewId = this.getAttribute('data-id');
-                const preview = document.getElementById(previewId);
-                
-                if (preview.classList.contains('expanded')) {
-                    preview.classList.remove('expanded');
-                    this.textContent = 'Show More';
-                } else {
-                    preview.classList.add('expanded');
-                    this.textContent = 'Show Less';
-                }
-            });
-        });
-        
-        // Handle UI/UX tabs
-        document.querySelectorAll('.uiux-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const contentId = this.getAttribute('data-content');
-                
-                // Update active tab
-                document.querySelectorAll('.uiux-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show selected content
-                document.querySelectorAll('.uiux-content').forEach(content => content.classList.remove('active'));
-                document.getElementById(contentId).classList.add('active');
-            });
-        });
-        
-        // Handle responsive view buttons
-        document.querySelectorAll('.responsive-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const viewId = this.getAttribute('data-view');
-                
-                // Update active button
-                document.querySelectorAll('.responsive-button').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show selected view
-                document.querySelectorAll('.responsive-content').forEach(content => content.classList.remove('active'));
-                document.getElementById(`${viewId}-view`).classList.add('active');
-            });
-        });
-        
-        // Handle category filtering
-        document.querySelectorAll('.category-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const category = this.getAttribute('data-category');
-                
-                // Update active button
-                document.querySelectorAll('.category-button').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show selected categories
-                if (category === 'all') {
-                    document.querySelectorAll('.resource-category').forEach(section => section.style.display = 'block');
-                } else {
-                    document.querySelectorAll('.resource-category').forEach(section => {
-                        if (section.getAttribute('data-category') === category) {
-                            section.style.display = 'block';
-                        } else {
-                            section.style.display = 'none';
-                        }
-                    });
-                }
-            });
-        });
-        
-        // Handle search functionality
-        const searchForm = document.querySelector('.search-form');
-        const searchInput = document.getElementById('search-input');
-        
-        if (searchForm && searchInput) {
-            searchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                
-                if (!searchTerm) {
-                    // Reset search
-                    document.querySelectorAll('.resource-card').forEach(card => card.style.display = 'block');
-                    document.querySelectorAll('.resource-category').forEach(section => section.style.display = 'block');
-                    return;
-                }
-                
-                // Search through cards
-                let anyResults = false;
-                document.querySelectorAll('.resource-card').forEach(card => {
-                    const title = card.querySelector('.resource-title')?.textContent.toLowerCase() || '';
-                    const description = card.querySelector('.resource-description')?.textContent.toLowerCase() || '';
-                    const tags = Array.from(card.querySelectorAll('.resource-tag')).map(tag => tag.textContent.toLowerCase());
-                    const content = card.querySelector('.resource-preview')?.textContent.toLowerCase() || '';
+                    <select class="template-selector" id="templateSelector">
+                        <option value="">-- Select a template --</option>
+                        <option value="bug-report">Bug Report Template</option>
+                        <option value="test-plan">Minimal Viable Test Plan</option>
+                        <option value="launch-checklist">Launch Readiness Checklist</option>
+                        <option value="security-checklist">Security Baseline Checklist</option>
+                        <option value="test-strategy">5-Minute Test Strategy Framework</option>
+                    </select>
                     
-                    if (title.includes(searchTerm) || 
-                        description.includes(searchTerm) || 
-                        tags.some(tag => tag.includes(searchTerm)) || 
-                        content.includes(searchTerm)) {
-                        card.style.display = 'block';
-                        anyResults = true;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Show only categories with results
-                document.querySelectorAll('.resource-category').forEach(section => {
-                    const visibleCards = section.querySelectorAll('.resource-card[style="display: block"]').length;
-                    section.style.display = visibleCards > 0 ? 'block' : 'none';
-                });
-                
-                // Show no results message
-                if (!anyResults) {
-                    // Display a message for no results
-                    showNotification('No matching resources found. Try a different search term.', 'warning');
-                }
-            });
-        }
-        
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', function() {
-                const html = document.documentElement;
-                const currentTheme = html.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
-            
-            // Set initial theme based on user preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            }
-        }
-
-        // Modal functionality
-        const closeModalBtn = document.getElementById('close-modal');
-        const templateModal = document.getElementById('template-modal');
-        
-        if (closeModalBtn && templateModal) {
-            closeModalBtn.addEventListener('click', function() {
-                templateModal.classList.remove('show');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Open modal when clicking a template button
-        document.querySelectorAll('.resource-button[data-template]').forEach(button => {
-            button.addEventListener('click', function() {
-                const templateId = this.getAttribute('data-template');
-                
-                // Set the template title
-                const templateTitle = this.closest('.resource-card').querySelector('.resource-title').textContent;
-                document.getElementById('template-title').textContent = templateTitle;
-                
-                // Load template structure (this would be handled by qa-toolkit-specific.js)
-                // This is just a placeholder for the demonstration
-                if (typeof loadTemplateStructure === 'function') {
-                    loadTemplateStructure(templateId);
-                } else {
-                    // Fallback if function doesn't exist
-                    document.getElementById('template-structure').textContent = 
-                        "Template structure loading is handled by the main JS files.\n\n" +
-                        "This function demonstrates how the HTML and styling has been updated.";
-                }
-                
-                // Set the template ID for the form
-                document.getElementById('template-form').setAttribute('data-template', templateId);
-                
-                // Show the modal
-                templateModal.classList.add('show');
-                document.body.style.overflow = 'hidden';
-                
-                // Reset tabs to first tab
-                document.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active'));
-                document.getElementById('structure-tab').classList.add('active');
-                
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                document.getElementById('structure-content').classList.add('active');
-            });
-        });
-        
-        // Tab navigation
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const tabId = this.id.replace('-tab', '');
-                
-                // Update active button
-                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show selected content
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                document.getElementById(`${tabId}-content`).classList.add('active');
-            });
-        });
-        
-        // Next buttons
-        document.getElementById('next-structure').addEventListener('click', function() {
-            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-            document.getElementById('content-tab').classList.add('active');
-            
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById('content-content').classList.add('active');
-        });
-        
-        document.getElementById('next-content').addEventListener('click', function() {
-            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-            document.getElementById('output-tab').classList.add('active');
-            
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById('output-content').classList.add('active');
-        });
-
-        // Add smooth scroll for anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Additional animation effects
-        function addIntersectionObserver() {
-            if ('IntersectionObserver' in window) {
-                const options = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-                
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animated-in');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, options);
-                
-                // Observe feature cards for animation
-                document.querySelectorAll('.feature-card').forEach(card => {
-                    card.classList.add('animate-on-scroll');
-                    observer.observe(card);
-                });
-            }
-        }
-        
-        // Initialize animations if supported
-        if ('IntersectionObserver' in window) {
-            addIntersectionObserver();
-        }
-
-        // Copy button functionality
-        document.getElementById('copy-output')?.addEventListener('click', function() {
-            const output = document.getElementById('template-output');
-            if (!output) return;
-            
-            const text = output.textContent;
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text)
-                    .then(() => {
-                        showNotification('Copied to clipboard!');
+                    <!-- Bug Report Template Form -->
+                    <div id="bug-report-form" class="template-form">
+                        <div class="form-group">
+                            <label for="bug-title">Bug Title</label>
+                            <input type="text" id="bug-title" class="form-control" placeholder="E.g., Login button not working on iOS devices">
+                        </div>
                         
-                        // Change button text temporarily
-                        const originalText = this.innerHTML;
-                        this.innerHTML = `
-                            <svg class="action-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Copied!
-                        `;
+                        <div class="form-group">
+                            <label for="bug-severity">Severity</label>
+                            <select id="bug-severity" class="form-control">
+                                <option value="Critical">Critical - App crashes, data loss, or security issue</option>
+                                <option value="High">High - Major feature broken</option>
+                                <option value="Medium">Medium - Feature partially broken, has workaround</option>
+                                <option value="Low">Low - Minor issue, cosmetic</option>
+                            </select>
+                        </div>
                         
-                        setTimeout(() => {
-                            this.innerHTML = originalText;
-                        }, 2000);
-                    })
-                    .catch(err => {
-                        console.error('Failed to copy: ', err);
-                        showNotification('Failed to copy to clipboard', 'error');
-                    });
-            } else {
-                // Fallback for browsers without clipboard API
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                textarea.style.position = 'fixed';
-                document.body.appendChild(textarea);
-                textarea.focus();
-                textarea.select();
-                
-                try {
-                    const successful = document.execCommand('copy');
-                    if (successful) {
-                        showNotification('Copied to clipboard!');
-                    } else {
-                        showNotification('Failed to copy to clipboard', 'error');
-                    }
-                } catch (err) {
-                    console.error('Failed to copy: ', err);
-                    showNotification('Failed to copy to clipboard', 'error');
-                }
-                
-                document.body.removeChild(textarea);
-            }
-        });
-    });
-    </script>
+                        <div class="form-group">
+                            <label for="bug-steps">Steps to Reproduce</label>
+                            <textarea id="bug-steps" class="form-control" placeholder="1. Navigate to login page&#10;2. Enter valid credentials&#10;3. Click login button"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bug-expected">Expected Result</label>
+                            <textarea id="bug-expected" class="form-control" placeholder="User should be logged in and redirected to dashboard"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bug-actual">Actual Result</label>
+                            <textarea id="bug-actual" class="form-control" placeholder="Login button does nothing when clicked on iOS devices"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bug-environment">Environment</label>
+                            <input type="text" id="bug-environment" class="form-control" placeholder="E.g., iPhone 13, iOS 16.2, Safari browser">
+                        </div>
+                    </div>
+                    
+                    <!-- Test Plan Template Form -->
+                    <div id="test-plan-form" class="template-form">
+                        <div class="form-group">
+                            <label for="plan-project">Project Name</label>
+                            <input type="text" id="plan-project" class="form-control" placeholder="E.g., Mobile App v2.0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan-scope">Test Scope (Features to test)</label>
+                            <textarea id="plan-scope" class="form-control" placeholder="List the features that will be tested:&#10;1. User authentication&#10;2. Profile management&#10;3. Payment processing"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan-exclusions">Test Exclusions (Features not to test)</label>
+                            <textarea id="plan-exclusions" class="form-control" placeholder="List the features that will NOT be tested:&#10;1. Admin dashboard&#10;2. Legacy features"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan-approach">Test Approach</label>
+                            <textarea id="plan-approach" class="form-control" placeholder="Describe your testing approach:&#10;- Manual testing for UI components&#10;- Automated testing for APIs&#10;- User testing for final validation"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan-schedule">Test Schedule</label>
+                            <input type="text" id="plan-schedule" class="form-control" placeholder="E.g., May 15-30, 2025">
+                        </div>
+                    </div>
+                    
+                    <!-- Launch Checklist Template Form -->
+                    <div id="launch-checklist-form" class="template-form">
+                        <div class="form-group">
+                            <label for="launch-product">Product Name</label>
+                            <input type="text" id="launch-product" class="form-control" placeholder="E.g., SaaS Dashboard v3.0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="launch-date">Planned Launch Date</label>
+                            <input type="text" id="launch-date" class="form-control" placeholder="E.g., June 15, 2025">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="launch-responsible">Responsible Team Members</label>
+                            <textarea id="launch-responsible" class="form-control" placeholder="List the key team members responsible for launch:&#10;1. Sarah (Product Manager)&#10;2. Michael (Lead Developer)&#10;3. Jasmine (QA Lead)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="launch-critical">Critical Path Features</label>
+                            <textarea id="launch-critical" class="form-control" placeholder="List features that must work perfectly at launch:&#10;1. User login/authentication&#10;2. Payment processing&#10;3. Core workflow"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="launch-fallback">Fallback Plan</label>
+                            <textarea id="launch-fallback" class="form-control" placeholder="Describe your plan if critical issues are found:&#10;- Rollback procedure&#10;- Communication plan&#10;- Emergency fixes process"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Security Checklist Template Form -->
+                    <div id="security-checklist-form" class="template-form">
+                        <div class="form-group">
+                            <label for="security-project">Project Name</label>
+                            <input type="text" id="security-project" class="form-control" placeholder="E.g., E-commerce Platform v2.1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="security-scope">Application Type</label>
+                            <select id="security-scope" class="form-control">
+                                <option value="Web Application">Web Application</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="API Service">API Service</option>
+                                <option value="Desktop App">Desktop App</option>
+                                <option value="IoT Device">IoT Device</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="security-data">Data Sensitivity</label>
+                            <select id="security-data" class="form-control">
+                                <option value="High">High - Handles personal, financial, or health data</option>
+                                <option value="Medium">Medium - Contains user accounts but no sensitive financial/health data</option>
+                                <option value="Low">Low - Basic information only, no user accounts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="security-team">Security Point Person</label>
+                            <input type="text" id="security-team" class="form-control" placeholder="Name and role of person responsible for security">
+                        </div>
+                    </div>
+                    
+                    <!-- Test Strategy Framework Form -->
+                    <div id="test-strategy-form" class="template-form">
+                        <div class="form-group">
+                            <label for="strategy-project">Project Name</label>
+                            <input type="text" id="strategy-project" class="form-control" placeholder="E.g., Customer Portal Redesign">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="strategy-goal">Primary Business Goal</label>
+                            <input type="text" id="strategy-goal" class="form-control" placeholder="E.g., Increase user engagement by 30%">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="strategy-risk">Highest Risk Areas</label>
+                            <textarea id="strategy-risk" class="form-control" placeholder="List the highest risk areas in your project:&#10;1. Payment processing&#10;2. User data security&#10;3. Mobile responsiveness"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="strategy-constraints">Testing Constraints</label>
+                            <textarea id="strategy-constraints" class="form-control" placeholder="List your main testing constraints:&#10;- Limited time (1 week before launch)&#10;- No dedicated QA team&#10;- No automated testing infrastructure"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="strategy-resources">Available Resources</label>
+                            <textarea id="strategy-resources" class="form-control" placeholder="List resources available for testing:&#10;- 2 developers can spend 20% time on testing&#10;- 3 team members for user testing&#10;- Basic device lab with 3 mobile devices"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="template-actions">
+                        <button id="generateBtn" class="btn"><i class="fas fa-magic"></i> Generate Template</button>
+                        <button id="saveBtn" class="btn btn-secondary"><i class="fas fa-save"></i> Save Template</button>
+                        <button id="exportPdfBtn" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Export PDF</button>
+                        <button id="exportJsonBtn" class="btn btn-secondary"><i class="fas fa-file-code"></i> Export JSON</button>
+                        <button id="importJsonBtn" class="btn btn-secondary"><i class="fas fa-file-import"></i> Import Template</button>
+                    </div>
+                    
+                    <!-- Template Preview -->
+                    <div id="templatePreview" class="template-preview"></div>
+                    
+                    <!-- Saved Templates Section -->
+                    <div class="saved-templates">
+                        <h3 class="form-title">My Saved Templates</h3>
+                        <p class="templates-description">Templates are saved in your browser. You can access them anytime you return to this page.</p>
+                        <div id="templateList" class="template-list">
+                            <!-- Saved templates will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Coming Soon Section -->
+            <section class="section">
+                <div class="coming-soon">
+                    <div class="coming-soon-badge">COMING SOON</div>
+                    <h3 class="coming-soon-title">Advanced Bug Management System</h3>
+                    <p class="coming-soon-desc">A complete solution for tracking, managing, and resolving bugs throughout your product development lifecycle. Save time and improve quality with our integrated bug tracking workflow.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-cloud"></i> Cloud Storage</div>
+                            <p class="feature-desc">Securely store and access your bug reports from anywhere, with team-sharing capabilities.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-chart-line"></i> Visual Dashboard</div>
+                            <p class="feature-desc">Track bug status, priority, and assignment with an intuitive visual interface.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-project-diagram"></i> Workflow Integration</div>
+                            <p class="feature-desc">Connect with popular task management tools like Jira, Trello, and Asana.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-database"></i> Data Persistence</div>
+                            <p class="feature-desc">Exit and return to your work anytime with automatic saving and versioning.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-chart-pie"></i> Analytics & Reporting</div>
+                            <p class="feature-desc">Generate insights on bug patterns and testing coverage with built-in reports.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-title"><i class="fas fa-users"></i> Team Collaboration</div>
+                            <p class="feature-desc">Collaborate with developers and stakeholders with comments and notifications.</p>
+                        </div>
+                    </div>
+                    
+                    <button id="notifyBtn" class="notify-btn">Notify Me When Available</button>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="logo">Velocity<span>QA</span></div>
+            <p class="tagline">Professional QA testing for startups. We break your software so your users won't.</p>
+            <p class="website-link"><a href="https://www.velocityqa.com.au" target="_blank">www.velocityqa.com.au</a></p>
+        </footer>
+    </div>
+    
+    <!-- Import/Export Modal -->
+    <div id="importModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Import Template</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div class="form-group">
+                    <label for="importJson">Paste your template JSON below:</label>
+                    <textarea id="importJson" class="form-control" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmImportBtn" class="btn">Import</button>
+                <button class="modal-close-btn btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PDF Creation Element (hidden) -->
+    <div id="pdf-container" class="pdf-container" style="display: none;"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Main Scripts -->
+    <script src="./js/qa-toolkit.js"></script>
+    <script src="./js/pdf-generator.js"></script>
 </body>
 </html>
