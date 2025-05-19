@@ -1,0 +1,224 @@
+/* Specific styles for the AI Toolkit page */
+
+/* Prompt category specific colors */
+.category-button[data-category="healthcare"] {
+  border-color: var(--healthcare-color);
+}
+
+.category-button[data-category="finance"] {
+  border-color: var(--finance-color);
+}
+
+.category-button[data-category="technology"] {
+  border-color: var(--technology-color);
+}
+
+.category-button[data-category="operations"] {
+  border-color: var(--operations-color);
+}
+
+.category-button[data-category="sales"] {
+  border-color: var(--sales-color);
+}
+
+.category-button[data-category="leadership"] {
+  border-color: var(--leadership-color);
+}
+
+.category-button.active[data-category="healthcare"] {
+  background: linear-gradient(45deg, var(--healthcare-color), rgba(76, 201, 240, 0.7));
+}
+
+.category-button.active[data-category="finance"] {
+  background: linear-gradient(45deg, var(--finance-color), rgba(74, 222, 128, 0.7));
+}
+
+.category-button.active[data-category="technology"] {
+  background: linear-gradient(45deg, var(--technology-color), rgba(139, 92, 246, 0.7));
+}
+
+.category-button.active[data-category="operations"] {
+  background: linear-gradient(45deg, var(--operations-color), rgba(245, 158, 11, 0.7));
+}
+
+.category-button.active[data-category="sales"] {
+  background: linear-gradient(45deg, var(--sales-color), rgba(236, 72, 153, 0.7));
+}
+
+.category-button.active[data-category="leadership"] {
+  background: linear-gradient(45deg, var(--leadership-color), rgba(59, 130, 246, 0.7));
+}
+
+/* Prompt card animations */
+@keyframes cardHover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.prompt-card:hover {
+  animation: cardHover 0.3s forwards;
+}
+
+/* Tab transitions */
+.tab-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tab-content.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Improved form styling */
+.input-form {
+  transition: box-shadow 0.3s ease;
+}
+
+.input-form:hover {
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Prompt template styling */
+.prompt-template {
+  position: relative;
+  background: var(--background-tertiary);
+  border-radius: 8px;
+  padding: 15px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  border-left: 3px solid var(--text-accent);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: block !important;
+}
+
+/* Enhanced output styling */
+[id$="-output"] {
+  display: block !important;
+  min-height: 100px !important;
+  max-height: 500px !important;
+  overflow-y: auto !important;
+  background: var(--background-tertiary) !important;
+  border-radius: 8px !important;
+  padding: 15px !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  border-left: 3px solid var(--orange) !important;
+  line-height: 1.6 !important;
+  margin: 15px 0 !important;
+}
+
+.prompt-template::-webkit-scrollbar {
+  width: 8px;
+}
+
+.prompt-template::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.prompt-template::-webkit-scrollbar-thumb {
+  background: var(--text-accent);
+  border-radius: 4px;
+}
+
+/* Copy button animation */
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.copy-btn.copied {
+  animation: copySuccess 0.3s ease;
+}
+
+/* Enhanced header styling */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(0, 224, 224, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+/* Enhanced button styles */
+.generate-btn, .next-step-btn, .copy-btn {
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.generate-btn:hover, .next-step-btn:hover, .copy-btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+.generate-btn:active, .next-step-btn:active, .copy-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .search-container,
+  .categories-nav,
+  .prompt-tabs,
+  .input-form,
+  .copy-btn,
+  .next-step-btn,
+  .generate-btn {
+    display: none !important;
+  }
+
+  .prompt-template {
+    max-height: none;
+    overflow: visible;
+    border: 1px solid #ccc;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .prompt-category,
+  .prompt-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* Debug outlines - uncomment for debugging
+.generate-btn, .next-step-btn, .copy-btn {
+  outline: 2px solid red !important;
+}
+
+[id$="-output"] {
+  outline: 2px solid green !important;
+}
+*/

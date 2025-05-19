@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityQA Resources | Professional QA & AI Templates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/toolkit-base.css">
+    <style>
+        /* Additional styles specific to index page */
+        .ai-toolkit-badge {
+            background: linear-gradient(45deg, #00E0E0, #00B0B0);
+        }
+        
+        .qa-toolkit-badge {
+            background: linear-gradient(45deg, #FF6D33, #FF9933);
+        }
+        
+        .ai-toolkit-image {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/images/ai-toolkit-bg.jpg');
+        }
+        
+        .qa-toolkit-image {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/images/qa-toolkit-bg.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="cybernetic-grid"></div>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"></path>
+                <path d="M12 19l-7-7 7-7"></path>
+            </svg>
+            Back to VelocityQA Home
+        </a>
+        
+        <header class="header">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="theme-icon-light">
+                    <path d="M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42L5.99 4.58zm12.42 12.42c-.39-.39-1.03-.39-1.42 0-.39.39-.39 1.03 0 1.42l1.42 1.42c.39.39 1.03.39 1.42 0 .39-.39.39-1.03 0-1.42l-1.42-1.42zM18.01 4.58l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0zM5.59 16.99l-1.42 1.42c-.39.39-.39 1.03 0 1.42.39.39 1.03.39 1.42 0l1.42-1.42c.39-.39.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0z"/>
+                </svg>
+            </button>
+            <div class="header-content">
+                <h1>VelocityQA Professional Resources</h1>
+                <p class="header-subtitle">A collection of professional-grade tools, templates, and methodologies to enhance your testing processes and leverage AI for better productivity.</p>
+                
+                <div class="header-feature">
+                    <h3>Welcome to the VelocityQA Resources Hub</h3>
+                    <p>These specialized toolkits are designed to help you deliver higher quality software more efficiently. Choose from our AI-powered Claude prompts or our comprehensive QA templates and methodologies to level up your testing game.</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="resource-grid">
+            <!-- AI Toolkit Card -->
+            <div class="resource-card">
+                <div class="resource-card-image ai-toolkit-image"></div>
+                <span class="resource-card-badge ai-toolkit-badge">AI-Powered</span>
+                <div class="resource-card-content">
+                    <h2 class="resource-card-title">Claude AI Prompt Toolkit</h2>
+                    <p class="resource-card-description">Professional-grade prompting templates designed specifically for business and technical needs. These prompts leverage Claude's capabilities to deliver exceptional results for various business scenarios.</p>
+                    <a href="ai-toolkit.html" class="resource-card-link">Open AI Toolkit</a>
+                </div>
+            </div>
+            
+            <!-- QA Toolkit Card -->
+            <div class="resource-card">
+                <div class="resource-card-image qa-toolkit-image"></div>
+                <span class="resource-card-badge qa-toolkit-badge">QA Resources</span>
+                <div class="resource-card-content">
+                    <h2 class="resource-card-title">Quality Assurance Toolkit</h2>
+                    <p class="resource-card-description">A comprehensive collection of QA templates, checklists, and methodologies to improve your testing processes. These resources cover test planning, test cases, security testing, and more.</p>
+                    <a href="qa-toolkit.html" class="resource-card-link">Open QA Toolkit</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 VelocityQA. All rights reserved. These resources are provided to assist with quality assurance and AI-driven productivity.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.documentElement.setAttribute('data-theme', 
+                        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+                    );
+                });
+            }
+        });
+    </script>
+</body>
+</html>
