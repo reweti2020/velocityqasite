@@ -96,6 +96,24 @@
         }
         
         /* QA Dictionary Section */
+        .qa-dict-container {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            max-height: 250px; /* Initial height shows 2 cards */
+        }
+        
+        .qa-dict-container.expanded {
+            max-height: 1000px; /* Fully expanded height */
+        }
+        
+        .expand-toggle {
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #20C5C6;
+            font-weight: 500;
+        }
+        
         .qa-dict {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -133,7 +151,7 @@
         
         .definition {
             font-size: 15px;
-            color: #94a3b8;
+            color: #20C5C6;
             line-height: 1.4;
         }
         
@@ -155,9 +173,12 @@
         }
         
         .flow-container {
+            position: relative;
             display: flex;
             justify-content: space-around;
-            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 2;
         }
         
         .flow-step {
@@ -168,7 +189,7 @@
             border-radius: 8px;
             padding: 15px;
             text-align: center;
-            z-index: 2;
+            z-index: 3;
         }
         
         .flow-step-1 {
@@ -199,7 +220,7 @@
             color: #94a3b8;
         }
         
-        .flow-arrow {
+        .flow-line {
             position: absolute;
             top: 50%;
             left: 180px;
@@ -210,20 +231,33 @@
             transform: translateY(-50%);
         }
         
-        .flow-arrow::after {
-            content: '';
+        .flow-line-animation {
             position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0;
+            left: 0;
+            height: 100%;
             width: 0;
-            height: 0;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            border-left: 10px solid #20C5C6;
+            background: #20C5C6;
+            animation: flowLineAnimation 3s infinite;
+        }
+        
+        @keyframes flowLineAnimation {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
         }
         
         /* Tips Section */
+        .tips-container {
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            max-height: 200px; /* Initial height shows few items */
+        }
+        
+        .tips-container.expanded {
+            max-height: 600px; /* Fully expanded height */
+        }
+        
         .tips-section {
             background: rgba(30, 41, 59, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -246,6 +280,7 @@
             margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
+            color: #20C5C6;
         }
         
         .tips-list li:before {
@@ -732,7 +767,7 @@
                 gap: 50px;
             }
             
-            .flow-arrow {
+            .flow-line {
                 display: none;
             }
             
@@ -772,37 +807,40 @@
         <main class="content">
             <section class="section">
                 <h2 class="section-title">QA Translation Dictionary</h2>
-                <div class="qa-dict">
-                    <div class="term-card">
-                        <div class="term">Regression Testing <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "Making sure new updates don't break existing features." It's confirming your foundation stays solid as you build new floors.</p>
-                    </div>
-                    
-                    <div class="term-card">
-                        <div class="term">Edge Cases <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "Unusual but possible user scenarios." Think of them as rare customer situations that could cause complaints if overlooked.</p>
-                    </div>
-                    
-                    <div class="term-card">
-                        <div class="term">User Acceptance Testing <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "Does it actually solve the problem for real users?" It's test-driving your product with actual users before full launch.</p>
-                    </div>
-                    
-                    <div class="term-card">
-                        <div class="term">Test Coverage <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "How much of your app has been tested?" It's like an insurance policy - higher percentage means lower risk.</p>
-                    </div>
-                    
-                    <div class="term-card">
-                        <div class="term">Test Environment <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "A safe practice area." It's like a restaurant's test kitchen where chefs experiment before updating the menu.</p>
-                    </div>
-                    
-                    <div class="term-card">
-                        <div class="term">Production <span>(what devs say)</span></div>
-                        <p class="definition">Business translation: "The live, customer-facing version of your product." Think of it as your store during business hours - changes affect real customers.</p>
+                <div class="qa-dict-container">
+                    <div class="qa-dict">
+                        <div class="term-card">
+                            <div class="term">Regression Testing <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "Making sure new updates don't break existing features." It's confirming your foundation stays solid as you build new floors.</p>
+                        </div>
+                        
+                        <div class="term-card">
+                            <div class="term">Edge Cases <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "Unusual but possible user scenarios." Think of them as rare customer situations that could cause complaints if overlooked.</p>
+                        </div>
+                        
+                        <div class="term-card">
+                            <div class="term">User Acceptance Testing <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "Does it actually solve the problem for real users?" It's test-driving your product with actual users before full launch.</p>
+                        </div>
+                        
+                        <div class="term-card">
+                            <div class="term">Test Coverage <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "How much of your app has been tested?" It's like an insurance policy - higher percentage means lower risk.</p>
+                        </div>
+                        
+                        <div class="term-card">
+                            <div class="term">Test Environment <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "A safe practice area." It's like a restaurant's test kitchen where chefs experiment before updating the menu.</p>
+                        </div>
+                        
+                        <div class="term-card">
+                            <div class="term">Production <span>(what devs say)</span></div>
+                            <p class="definition">Business translation: "The live, customer-facing version of your product." Think of it as your store during business hours - changes affect real customers.</p>
+                        </div>
                     </div>
                 </div>
+                <div class="expand-toggle">Show More ▼</div>
             </section>
             
             <section class="section">
@@ -830,7 +868,9 @@
                             <p class="flow-step-desc">Watch actual users interact with the feature</p>
                         </div>
                         
-                        <div class="flow-arrow"></div>
+                        <div class="flow-line">
+                            <div class="flow-line-animation"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -838,14 +878,17 @@
             <section class="section">
                 <div class="tips-section">
                     <h3 class="tips-title">Non-Technical Founder's QA Checklist</h3>
-                    <ul class="tips-list">
-                        <li>Always ask: "How do we know this is working?" for each new feature</li>
-                        <li>Document what "working" means before development starts</li>
-                        <li>Test your product on the oldest devices your users might have</li>
-                        <li>Try using your product with a poor internet connection</li>
-                        <li>Ask a non-team member to use your product without instructions</li>
-                        <li>Focus testing time on features that directly affect revenue</li>
-                    </ul>
+                    <div class="tips-container">
+                        <ul class="tips-list">
+                            <li>Always ask: "How do we know this is working?" for each new feature</li>
+                            <li>Document what "working" means before development starts</li>
+                            <li>Test your product on the oldest devices your users might have</li>
+                            <li>Try using your product with a poor internet connection</li>
+                            <li>Ask a non-team member to use your product without instructions</li>
+                            <li>Focus testing time on features that directly affect revenue</li>
+                        </ul>
+                    </div>
+                    <div class="expand-toggle">Show More ▼</div>
                 </div>
             </section>
             
@@ -854,6 +897,21 @@
                 <div class="form-section">
                     <h3 class="form-title">QA Template Generator</h3>
                     <p style="margin-bottom: 20px; color: #94a3b8;">Fill out the form below to generate a customized QA template for your project.</p>
+                    
+                    <!-- Branding Options -->
+                    <div class="branding-options" style="margin-bottom: 25px; padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 5px; background: rgba(15, 23, 42, 0.4);">
+                        <h4 style="color: #20C5C6; font-size: 18px; margin-bottom: 12px;">Customize Template Branding</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="business-name">Your Business Name</label>
+                                <input type="text" id="business-name" class="form-control" placeholder="Leave blank to use VelocityQA">
+                            </div>
+                            <div class="form-group">
+                                <label for="business-tagline">Your Business Tagline</label>
+                                <input type="text" id="business-tagline" class="form-control" placeholder="Optional tagline for your business">
+                            </div>
+                        </div>
+                    </div>
                     
                     <select class="template-selector" id="templateSelector">
                         <option value="">-- Select a template --</option>
@@ -1088,6 +1146,7 @@
         <footer class="footer">
             <div class="logo">Velocity<span>QA</span></div>
             <p class="tagline">Professional QA testing for startups. We break your software so your users won't.</p>
+            <p style="margin-top: 8px; font-size: 14px; color: #94a3b8;"><a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a></p>
         </footer>
     </div>
     
@@ -1134,6 +1193,23 @@
             const launchChecklistForm = document.getElementById('launch-checklist-form');
             const securityChecklistForm = document.getElementById('security-checklist-form');
             const testStrategyForm = document.getElementById('test-strategy-form');
+            
+            // Dictionary and Checklist expansion
+            const dictionaryContainer = document.querySelector('.qa-dict-container');
+            const dictionaryToggle = document.querySelector('.section:nth-child(1) .expand-toggle');
+            
+            dictionaryToggle.addEventListener('click', function() {
+                dictionaryContainer.classList.toggle('expanded');
+                this.textContent = dictionaryContainer.classList.contains('expanded') ? 'Show Less ▲' : 'Show More ▼';
+            });
+            
+            const tipsContainer = document.querySelector('.tips-container');
+            const tipsToggle = document.querySelector('.tips-section .expand-toggle');
+            
+            tipsToggle.addEventListener('click', function() {
+                tipsContainer.classList.toggle('expanded');
+                this.textContent = tipsContainer.classList.contains('expanded') ? 'Show Less ▲' : 'Show More ▼';
+            });
             
             // Modal close buttons
             const closeButtons = document.querySelectorAll('.modal-close, .modal-close-btn');
@@ -1313,6 +1389,15 @@
                 const actual = document.getElementById('bug-actual').value || 'Not specified';
                 const environment = document.getElementById('bug-environment').value || 'Not specified';
                 
+                // Get custom branding
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                const businessTagline = document.getElementById('business-tagline').value.trim();
+                let footerContent = businessName;
+                if (businessTagline) {
+                    footerContent += ` | ${businessTagline}`;
+                }
+                footerContent += ` | <a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a>`;
+                
                 // Get severity class for badge
                 const severityClass = severity.toLowerCase().replace(' ', '-');
                 
@@ -1348,7 +1433,7 @@
                     </div>
                     
                     <div class="footer">
-                        Generated with VelocityQA Toolkit
+                        ${footerContent}
                     </div>
                 </div>
                 `;
@@ -1360,6 +1445,15 @@
                 const exclusions = document.getElementById('plan-exclusions').value || 'None specified';
                 const approach = document.getElementById('plan-approach').value || 'No approach defined';
                 const schedule = document.getElementById('plan-schedule').value || 'TBD';
+                
+                // Get custom branding
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                const businessTagline = document.getElementById('business-tagline').value.trim();
+                let footerContent = businessName;
+                if (businessTagline) {
+                    footerContent += ` | ${businessTagline}`;
+                }
+                footerContent += ` | <a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a>`;
                 
                 return `
                 <div class="template-card">
@@ -1397,7 +1491,7 @@
                     </div>
                     
                     <div class="footer">
-                        Generated with VelocityQA Toolkit
+                        ${footerContent}
                     </div>
                 </div>
                 `;
@@ -1409,6 +1503,15 @@
                 const responsible = document.getElementById('launch-responsible').value || 'Not assigned';
                 const critical = document.getElementById('launch-critical').value || 'None specified';
                 const fallback = document.getElementById('launch-fallback').value || 'No fallback plan defined';
+                
+                // Get custom branding
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                const businessTagline = document.getElementById('business-tagline').value.trim();
+                let footerContent = businessName;
+                if (businessTagline) {
+                    footerContent += ` | ${businessTagline}`;
+                }
+                footerContent += ` | <a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a>`;
                 
                 return `
                 <div class="template-card">
@@ -1449,7 +1552,7 @@
                     </div>
                     
                     <div class="footer">
-                        Generated with VelocityQA Toolkit
+                        ${footerContent}
                     </div>
                 </div>
                 `;
@@ -1460,6 +1563,15 @@
                 const appType = document.getElementById('security-scope').value || 'Web Application';
                 const dataSensitivity = document.getElementById('security-data').value || 'Medium';
                 const securityPerson = document.getElementById('security-team').value || 'Not assigned';
+                
+                // Get custom branding
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                const businessTagline = document.getElementById('business-tagline').value.trim();
+                let footerContent = businessName;
+                if (businessTagline) {
+                    footerContent += ` | ${businessTagline}`;
+                }
+                footerContent += ` | <a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a>`;
                 
                 return `
                 <div class="template-card">
@@ -1511,7 +1623,7 @@
                     </div>
                     
                     <div class="footer">
-                        Generated with VelocityQA Toolkit
+                        ${footerContent}
                     </div>
                 </div>
                 `;
@@ -1523,6 +1635,15 @@
                 const risk = document.getElementById('strategy-risk').value || 'Not identified';
                 const constraints = document.getElementById('strategy-constraints').value || 'None specified';
                 const resources = document.getElementById('strategy-resources').value || 'Not specified';
+                
+                // Get custom branding
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                const businessTagline = document.getElementById('business-tagline').value.trim();
+                let footerContent = businessName;
+                if (businessTagline) {
+                    footerContent += ` | ${businessTagline}`;
+                }
+                footerContent += ` | <a href="https://www.velocityqa.com.au" target="_blank" style="color: #20C5C6; text-decoration: none;">www.velocityqa.com.au</a>`;
                 
                 return `
                 <div class="template-card">
@@ -1566,7 +1687,7 @@
                     </div>
                     
                     <div class="footer">
-                        Generated with VelocityQA Toolkit
+                        ${footerContent}
                     </div>
                 </div>
                 `;
@@ -1699,13 +1820,16 @@
                 pdfClone.className = 'template-card-pdf';
                 pdfClone.innerHTML = sourceElement.innerHTML;
                 
+                // Get business name for logo
+                const businessName = document.getElementById('business-name').value.trim() || 'VelocityQA';
+                
                 // Add logo
                 const logoDiv = document.createElement('div');
                 logoDiv.style.textAlign = 'center';
                 logoDiv.style.marginBottom = '20px';
                 logoDiv.innerHTML = `
                     <div style="font-size: 24px; font-weight: 700; color: #0f172a; margin-bottom: 5px;">
-                        Velocity<span style="color: #FF6B00;">QA</span>
+                        ${businessName.replace("Velocity<span>QA</span>", "Velocity<span style=\"color: #FF6B00;\">QA</span>")}
                     </div>
                     <div style="font-size: 12px; color: #64748b;">Professional QA testing for startups</div>
                 `;
