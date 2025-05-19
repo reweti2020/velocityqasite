@@ -92,7 +92,7 @@
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #FF6B00; /* Brand orange from AI toolkit */
+            color: #20C5C6; /* Changed to teal as requested */
         }
         
         /* QA Dictionary Section */
@@ -169,7 +169,7 @@
             font-weight: 600;
             font-size: 24px;
             margin-bottom: 30px;
-            color: #FF6B00; /* Brand orange from AI toolkit */
+            color: #20C5C6; /* Changed to teal as requested */
         }
         
         .flow-container {
@@ -197,15 +197,15 @@
         }
         
         .flow-step-2 {
-            border-color: #FF6B00; /* Brand orange */
+            border-color: #FF8533; /* Lighter orange */
         }
         
         .flow-step-3 {
-            border-color: #FF6B00; /* Brand orange */
+            border-color: #FF9F66; /* Even lighter orange */
         }
         
         .flow-step-4 {
-            border-color: #FF6B00; /* Brand orange */
+            border-color: #20C5C6; /* Teal for the last step */
         }
         
         .flow-step-title {
@@ -237,7 +237,7 @@
             left: 0;
             height: 100%;
             width: 0;
-            background: #00e0e0; /* Teal accent for animation */
+            background: linear-gradient(to right, #FF6B00, #20C5C6); /* Gradient from orange to teal */
             animation: flowLineAnimation 3s infinite;
         }
         
@@ -269,7 +269,7 @@
             font-weight: 600;
             font-size: 24px;
             margin-bottom: 20px;
-            color: #FF6B00; /* Brand orange */
+            color: #20C5C6; /* Changed to teal as requested */
         }
         
         .tips-list {
@@ -303,7 +303,7 @@
             font-weight: 600;
             font-size: 24px;
             margin-bottom: 20px;
-            color: #FF6B00; /* Brand orange */
+            color: #FF6B00; /* Keep orange for template generator as requested */
         }
         
         .template-selector {
@@ -1707,7 +1707,7 @@
             }
             
             function validateEmail(email) {
-                const re = /^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(String(email).toLowerCase());
             }
             
