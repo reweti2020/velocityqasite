@@ -48,11 +48,17 @@ h2.section{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.01
 .testgrid{grid-template-columns:1fr}
 
 @media (min-width:960px){.testgrid{grid-template-columns:repeat(2,1fr)}}
+.faq{border-bottom:1px solid #C9D1CD}
+.faq summary{color:var(--ink);font-weight:600;padding:14px 32px 14px 0;position:relative;width:100%}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;font-weight:400;color:var(--green)}
+.faq[open] summary::after{content:"\2212"}
+.faq p{color:var(--body);margin:0 0 16px;max-width:620px}
 .chip{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;background:#FFFFFF;border:1px solid #C9D1CD;font-size:14px;color:var(--body)}
 details summary{cursor:pointer;list-style:none;min-height:44px;display:inline-flex;align-items:center;font-weight:600;color:var(--green)}
 details summary::-webkit-details-marker{display:none}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}.rise{animation:none}.btn,.card{transition:none}.bugtrack{scroll-behavior:auto !important}html{scroll-behavior:auto}}
 </style>
+<script>window.$crisp=[];window.CRISP_WEBSITE_ID="a6f1a45b-ed39-4761-be48-976abe46df6b";$crisp.push(["safe",true]);$crisp.push(["config","color:theme",["teal"]]);$crisp.push(["config","sound:mute",[true]]);$crisp.push(["on","chat:opened",function(){var k="vqa-welcome",seen=false;try{seen=sessionStorage.getItem(k)==="1"}catch(e){}if(seen)return;try{sessionStorage.setItem(k,"1")}catch(e){}$crisp.push(["do","message:show",["text","Questions about testing your release? Ask here. If I\u2019m away, leave your email and I\u2019ll reply within one business day. Nina"]])}]);(function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
 <body class="no-js">
 
@@ -240,6 +246,26 @@ details summary::-webkit-details-marker{display:none}
 
 </div>
 <p style="font-size:15px;color:var(--muted)">No lock-in contracts. One week&#39;s notice either way. Payment and other details are in my <a href="terms.html">terms of engagement</a>.</p>
+</div>
+</div>
+</section>
+
+<section id="faq" aria-labelledby="faq-head" style="background:var(--soft);padding:88px 0">
+<div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 56px;align-items:start">
+<div class="reveal" style="display:flex;flex-direction:column;gap:10px">
+<p class="label kicker">QUESTIONS</p>
+<h2 id="faq-head" class="section" style="font-size:clamp(28px,3.4vw,38px)">Before you get in touch</h2>
+<p style="color:var(--body)">Something else on your mind? Use the chat in the corner. If I&#39;m away, leave your email and I&#39;ll reply within one business day.</p>
+</div>
+<div class="reveal d1" style="border-top:1.5px solid var(--ink)">
+<details class="faq"><summary>How quickly can you start?</summary><p>Check the availability calendar above. On open days I can start once the quote is agreed and I have access to your system.</p></details>
+<details class="faq"><summary>What do you need from us on day one?</summary><p>Access to the build, environments, tools and test accounts I&#39;ll need, a contact who can answer questions, and test data. Please don&#39;t send real customer data unless we&#39;ve agreed it in writing.</p></details>
+<details class="faq"><summary>Do you work in our time zone?</summary><p>I&#39;m in Perth and work remotely with teams across Australia. We agree working hours that overlap with your team.</p></details>
+<details class="faq"><summary>Will you sign our NDA?</summary><p>Yes. If you don&#39;t have one, my <a href="terms.html">terms of engagement</a> cover confidentiality.</p></details>
+<details class="faq"><summary>What devices and browsers do you test on?</summary><p>A real iPhone, Android emulators in Android Studio, Safari and Chrome. If your users rely on a specific device, tell me and we&#39;ll work out how to cover it.</p></details>
+<details class="faq"><summary>Do you write test plans?</summary><p>I work inside your process, so bugs go into your tracker as I find them. Test plans or sign-off notes are available when you want them.</p></details>
+<details class="faq"><summary>What if you find something serious just before release?</summary><p>I tell you straight away, with the steps to reproduce it and what it affects, so you can decide. The release decision stays with you.</p></details>
+<details class="faq"><summary>How does payment work?</summary><p>Invoiced weekly. The details are in my <a href="terms.html">terms of engagement</a>.</p></details>
 </div>
 </div>
 </section>
