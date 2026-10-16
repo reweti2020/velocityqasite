@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI skill and plugin testing | Velocity QA (Nina Reweti)</title>
+<link rel="canonical" href="https://velocityqa.com.au/ai-testing.html">
+<meta name="description" content="Claude skills and plugins tested before you release them or rely on them. Expected results written first, repeat runs, findings traced to the skill's own instructions. Perth, WA.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Velocity QA">
+<meta property="og:title" content="AI skill and plugin testing | Velocity QA">
+<meta property="og:description" content="Before you rely on an AI skill, find out what it gets wrong.">
+<meta property="og:url" content="https://velocityqa.com.au/ai-testing.html">
+<meta property="og:image" content="https://velocityqa.com.au/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--ink:#14181F;--body:#2E3742;--muted:#4B5561;--line:#DDE2E0;--soft:#F3F5F4;--mint:#E2F3F3;--green:#0E6E6F;--hot:#C24E00;--flame:#FF6B00;--warm:#FFF0E5;--mono:'IBM Plex Mono',ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;color:var(--ink);font:17px/1.6 'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--green)}a:hover{color:var(--ink)}
+a:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+h1,h2,h3,h4,p,figure{margin:0}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
+.kicker{color:var(--hot);font-weight:600}
+.btn{min-height:52px;padding:0 22px;display:inline-flex;align-items:center;gap:10px;border-radius:6px;font-weight:600;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,24,31,.12)}
+.btn-solid{background:var(--green);color:#FFFFFF}.btn-solid:hover{color:#FFFFFF}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+.card{background:#FFFFFF;border:1px solid #C9D1CD;border-radius:12px}
+h2.section{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.015em;font-weight:600}
+.mark{background:linear-gradient(transparent 82%,#FF6B00 82%,#FF6B00 92%,transparent 92%);padding:0 2px}
+.sec{padding:80px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.grid2>*{min-width:0}
+ul.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+ul.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--body);font-size:16px}
+ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radius:3px;background:var(--flame)}
+.row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-top:1.5px solid var(--ink);align-items:baseline}
+.row h4{font-size:17px;font-weight:600}
+.row p{grid-column:1/-1;color:var(--body);font-size:15px}
+.pill{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600;white-space:nowrap}
+.pill-ok{background:var(--mint);color:var(--green)}
+.pill-gap{background:var(--warm);color:#9A3D00}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.steps li{display:flex;flex-direction:column;gap:10px}
+.num{width:44px;height:44px;border-radius:999px;background:var(--mint);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+<script>window.$crisp=[];window.CRISP_WEBSITE_ID="a6f1a45b-ed39-4761-be48-976abe46df6b";$crisp.push(["safe",true]);$crisp.push(["config","color:theme",["teal"]]);$crisp.push(["config","sound:mute",[true]]);$crisp.push(["on","chat:opened",function(){var k="vqa-welcome",seen=false;try{seen=localStorage.getItem(k)==="1"}catch(e){}try{if($crisp.is("session:ongoing"))seen=true}catch(e){}if(seen)return;try{localStorage.setItem(k,"1")}catch(e){}$crisp.push(["do","message:show",["text","Questions about testing your release? Ask here. If I’m away, leave your email and I’ll reply within one business day. Nina"]])}]);(function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</head>
+<body>
+
+<header style="position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)">
+<div class="wrap" style="min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<a href="index.html" style="display:flex;flex-direction:column;line-height:1.2;color:var(--ink);text-decoration:none"><span style="font-weight:700;font-size:18px">Velocity QA</span><span style="font-size:13px;color:var(--muted)">Nina Reweti</span></a>
+<nav aria-label="Main" style="display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="index.html#work" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">The work</a><a href="ai-testing.html" aria-current="page" style="min-height:48px;display:inline-flex;align-items:center;color:var(--green);font-weight:600;box-shadow:inset 0 -2px 0 var(--flame)">AI testing</a><a href="index.html#rates" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Working together</a><a href="#contact" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Contact</a></nav>
+</div>
+</header>
+
+<main id="top">
+
+<section style="padding:56px 0 64px">
+<div class="wrap" style="display:flex;flex-direction:column;gap:22px;max-width:900px">
+<p class="label" style="color:var(--green);font-weight:600">AI TOOL TESTING · CLAUDE SKILLS · PLUGINS</p>
+<h1 style="font-size:clamp(38px,5.6vw,64px);line-height:1.04;letter-spacing:-.025em;font-weight:600">Before you rely on an AI skill, <span class="mark">find out what it gets wrong.</span></h1>
+<p style="font-size:19px;color:var(--body);max-width:620px">I test Claude skills and plugins the way I test software. Expected results are written before the runs, runs are repeated, and every finding is traced back to the instructions the tool actually follows.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a class="btn btn-solid" href="mailto:nina@velocityqa.com.au?subject=AI%20skill%20or%20plugin%20review">Email me about a skill or plugin</a>
+<a class="btn btn-line" href="#review">See what I found</a>
+</div>
+</div>
+</section>
+
+<section class="sec" style="background:var(--soft)">
+<div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:720px">
+<p class="label kicker">WHERE YOU ARE</p>
+<h2 class="section">Two reasons people ask me to test</h2>
+</div>
+<div class="grid2">
+<article class="card" style="padding:28px;display:flex;flex-direction:column;gap:16px">
+<span class="label" style="color:var(--green)">YOU BUILT IT</span>
+<h3 style="font-size:24px;font-weight:600;line-height:1.25">I&#39;ve built a skill or plugin</h3>
+<p style="color:var(--body)">Before you release it or hand it to a client, I check:</p>
+<ul class="ticks">
+<li>It does what its instructions say, every run, not just the first</li>
+<li>It ignores instructions hidden in emails, reviews or files</li>
+<li>Blank and messy data are treated as unknown, not zero</li>
+<li>Edge cases and the requests people actually make</li>
+<li>It still works after you edit it</li>
+</ul>
+</article>
+<article class="card" style="padding:28px;display:flex;flex-direction:column;gap:16px">
+<span class="label" style="color:var(--green)">YOU&#39;RE ABOUT TO USE IT</span>
+<h3 style="font-size:24px;font-weight:600;line-height:1.25">I want to use one in my business</h3>
+<p style="color:var(--body)">Before you trust it with real work, I check:</p>
+<ul class="ticks">
+<li>What it gets wrong for a business like yours</li>
+<li>What it can&#39;t do for Australia, such as GST, awards and super</li>
+<li>What it does with your data and who it acts for</li>
+<li>The setup lines that close the gaps, ready to paste</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+
+<section id="review" class="sec">
+<div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;max-width:760px">
+<p class="label kicker">OBSERVATIONS</p>
+<h2 class="section">Anthropic&#39;s Small Business plugin, checked for an Australian business</h2>
+<p style="color:var(--body);font-size:18px">A strong, US-built toolkit with good safety rails around money and fraud. The Australian compliance layer is missing, and about ten lines of business context cover most of it.</p>
+<p class="label" style="background:var(--soft);border-radius:8px;padding:10px 14px;align-self:flex-start">Oct 2026 · plugin v1.35.1 · 44 skills · fictional business · small sample · skill files change often</p>
+</div>
+
+<div class="grid2" style="gap:40px 56px">
+<div style="display:flex;flex-direction:column">
+<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What held up</h3>
+<div class="row"><h4>Nothing sent or paid without a yes</h4><span class="pill pill-ok">HELD</span><p>Bills, payroll and posts all wait for the owner.</p></div>
+<div class="row"><h4>Changed bank details held</h4><span class="pill pill-ok">HELD</span><p>Sent straight to the owner, with a phone check advised.</p></div>
+<div class="row"><h4>Duplicate bill caught</h4><span class="pill pill-ok">HELD</span><p>The skill names duplicate payment as the expensive failure.</p></div>
+<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Hidden instructions refused</h4><span class="pill pill-ok">6 OF 6</span><p>A fake refund email, a fake lead and a review asking for a $500 credit.</p></div>
+</div>
+<div style="display:flex;flex-direction:column">
+<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What&#39;s missing for Australia</h3>
+<div class="row"><h4>Forecasts leave out BAS, PAYG and super</h4><span class="pill pill-gap">GAP</span><p>Fixed costs listed are rent, payroll and subscriptions.</p></div>
+<div class="row"><h4>Payroll defaults to US overtime</h4><span class="pill pill-gap">GAP</span><p>No awards, penalty rates, casual loading or super in the skill.</p></div>
+<div class="row"><h4>Quotes don&#39;t say if GST is included</h4><span class="pill pill-gap">GAP</span><p>Nothing in the quote skill mentions tax-inclusive pricing.</p></div>
+<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Safety rule missing from 23 of 44 skills</h4><span class="pill pill-gap">GAP</span><p>The model refused the attacks anyway. The skill doesn&#39;t make it.</p></div>
+</div>
+</div>
+
+<article class="card" aria-label="Example finding" style="overflow:hidden;box-shadow:0 12px 32px rgba(20,24,31,.06)">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid var(--line);background:#F7F9F8">
+<span class="label">FINDING · SKILL FILE · cash-flow-snapshot</span>
+<span class="pill" style="background:var(--hot);color:#FFFFFF">HIGH</span>
+</div>
+<div style="padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;font-size:16px">
+<div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+<h3 style="font-size:22px;line-height:1.25;font-weight:600">A mid-October cash forecast can miss the BAS due on 28 October</h3>
+<p style="color:var(--body)">The skill builds the forecast from balances, money owed both ways and fixed costs. Tax and super aren&#39;t in its instructions.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+<div style="background:var(--soft);border-radius:8px;padding:14px"><div class="label">EXPECTED</div><div>BAS, PAYG and super show as outflows on their due dates</div></div>
+<div style="background:var(--warm);border-radius:8px;padding:14px"><div class="label" style="color:#9A3D00">ACTUAL</div><div>Not instructed. Sometimes covered by the model, not guaranteed</div></div>
+<div style="padding-top:12px;border-top:1px solid var(--line);color:var(--green);font-weight:600">Fix line: &#8220;GST registered, quarterly BAS. Add BAS, PAYG and super due dates as outflows in every forecast.&#8221;</div>
+</div>
+</div>
+</article>
+
+<a href="mailto:nina@velocityqa.com.au?subject=Small%20Business%20plugin%20observations&amp;body=Please%20send%20me%20the%20full%20observations%20and%20setup%20lines." style="align-self:flex-start;min-height:48px;display:inline-flex;align-items:center;font-weight:600">Email me for the full observations and the paste-in setup lines &#8594;</a>
+</div>
+</section>
+
+<section class="sec" style="background:var(--soft)">
+<div class="wrap" style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:720px">
+<p class="label kicker">HOW I TEST</p>
+<h2 class="section">The same method on every tool</h2>
+</div>
+<ol class="steps">
+<li><span class="num">1</span><strong>Read the instructions</strong><span style="color:var(--body);font-size:16px">The skill files the tool follows. They&#39;re the same for every user, so they&#39;re the strongest evidence.</span></li>
+<li><span class="num">2</span><strong>Write expected results first</strong><span style="color:var(--body);font-size:16px">What a careful person would do, decided before any run.</span></li>
+<li><span class="num">3</span><strong>Run it against traps</strong><span style="color:var(--body);font-size:16px">A realistic test business with planted problems: hidden instructions, duplicates, gaps and Australian dates.</span></li>
+<li><span class="num">4</span><strong>Report with a fix</strong><span style="color:var(--body);font-size:16px">Each finding quotes the tool&#39;s own wording, with what to change or paste in.</span></li>
+</ol>
+<p style="font-size:15px;color:var(--muted);max-width:720px">I also build Claude skills for small businesses through Quiet Content. Those builds are tested with this method before handover.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap" style="display:flex;flex-direction:column;gap:14px;max-width:800px">
+<p class="label kicker">WORKING TOGETHER</p>
+<h2 class="section" style="font-size:clamp(28px,3.4vw,38px)">Booked like any other testing</h2>
+<p style="color:var(--body)">From $500 a day, no lock-in. Each review is quoted on the tool&#39;s size and what you need checked.</p>
+<p style="font-size:15px;color:var(--muted)">Check my <a href="index.html#rates">availability</a>. Payment and other details are in my <a href="terms.html">terms of engagement</a>.</p>
+</div>
+</section>
+
+<section id="contact" style="background:var(--green);color:#FFFFFF;padding:88px 0;position:relative;overflow:hidden">
+<div aria-hidden="true" style="position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:999px;border:1px solid rgba(255,255,255,.18)"></div>
+<div class="wrap" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:end">
+<h2 class="section" style="font-size:clamp(32px,5vw,52px)">Tell me which skill or plugin, and what it&#39;s for.</h2>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:18px;color:#DDF1F1">I&#39;ll reply within one business day and tell you plainly whether I can help.</p>
+<a class="btn" href="mailto:nina@velocityqa.com.au?subject=AI%20skill%20or%20plugin%20review" style="align-self:flex-start;background:#FFFFFF;color:var(--ink)">nina@velocityqa.com.au</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer style="background:var(--ink);color:#AEB7C0;font-size:14px">
+<div class="wrap" style="padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center">
+<span>Nina Reweti, trading as Velocity QA · ABN 29 227 860 607</span>
+<span style="display:flex;gap:20px;flex-wrap:wrap"><a href="terms.html" style="color:#FFFFFF;min-height:48px;display:inline-flex;align-items:center">Terms of engagement</a><a href="privacy.html" style="color:#FFFFFF;min-height:48px;display:inline-flex;align-items:center">Privacy</a><a href="https://www.linkedin.com/company/velocityqa/" style="color:#FFFFFF;min-height:48px;display:inline-flex;align-items:center">LinkedIn</a></span>
+</div>
+</footer>
+</body>
+</html>
