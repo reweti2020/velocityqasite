@@ -51,6 +51,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 .steps li{display:flex;flex-direction:column;gap:10px}
 .num{width:44px;height:44px;border-radius:999px;background:var(--mint);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media (max-width:600px){.nav-contact{display:none !important}.nav-lg{display:none}}@media (min-width:601px){.nav-sm{display:none}}
 </style>
 <script>window.$crisp=[];window.CRISP_WEBSITE_ID="a6f1a45b-ed39-4761-be48-976abe46df6b";$crisp.push(["safe",true]);$crisp.push(["config","color:theme",["teal"]]);$crisp.push(["config","sound:mute",[true]]);$crisp.push(["on","chat:opened",function(){var k="vqa-welcome",seen=false;try{seen=localStorage.getItem(k)==="1"}catch(e){}try{if($crisp.is("session:ongoing"))seen=true}catch(e){}if(seen)return;try{localStorage.setItem(k,"1")}catch(e){}$crisp.push(["do","message:show",["text","Questions about testing your release? Ask here. If I’m away, leave your email and I’ll reply within one business day. Nina"]])}]);(function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
@@ -59,7 +60,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <header style="position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)">
 <div class="wrap" style="min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <a href="index.html" style="display:flex;flex-direction:column;line-height:1.2;color:var(--ink);text-decoration:none"><span style="font-weight:700;font-size:18px">Velocity QA</span><span style="font-size:13px;color:var(--muted)">Nina Reweti</span></a>
-<nav aria-label="Main" style="display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="index.html#work" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">The work</a><a href="ai-testing.html" aria-current="page" style="min-height:48px;display:inline-flex;align-items:center;color:var(--green);font-weight:600;box-shadow:inset 0 -2px 0 var(--flame)">AI testing</a><a href="index.html#rates" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Working together</a><a href="#contact" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Contact</a></nav>
+<nav aria-label="Main" style="display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="index.html#work" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">The work</a><a href="ai-testing.html" aria-current="page" style="min-height:48px;display:inline-flex;align-items:center;color:var(--green);font-weight:600;box-shadow:inset 0 -2px 0 var(--flame)">AI testing</a><a href="index.html#rates" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)"><span class="nav-lg">Working together</span><span class="nav-sm">Rates</span></a><a class="nav-contact" href="#contact" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Contact</a></nav>
 </div>
 </header>
 
@@ -69,7 +70,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <div class="wrap" style="display:flex;flex-direction:column;gap:22px;max-width:900px">
 <p class="label" style="color:var(--green);font-weight:600">AI TOOL TESTING · CLAUDE SKILLS · PLUGINS</p>
 <h1 style="font-size:clamp(38px,5.6vw,64px);line-height:1.04;letter-spacing:-.025em;font-weight:600">Before you rely on an AI skill, <span class="mark">find out what it gets wrong.</span></h1>
-<p style="font-size:19px;color:var(--body);max-width:620px">I test Claude skills and plugins the way I test software. Expected results are written before the runs, runs are repeated, and every finding is traced back to the instructions the tool actually follows.</p>
+<p style="font-size:19px;color:var(--body);max-width:620px">I test Claude skills and plugins the way I test software. Expected results are written before the runs, runs are repeated, and each finding is traced back to the instructions the tool actually follows.</p>
 <div style="display:flex;flex-wrap:wrap;gap:12px">
 <a class="btn btn-solid" href="mailto:nina@velocityqa.com.au?subject=AI%20skill%20or%20plugin%20review">Email me about a skill or plugin</a>
 <a class="btn btn-line" href="#review">See what I found</a>
@@ -80,7 +81,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <section class="sec" style="background:var(--soft)">
 <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:720px">
-<p class="label kicker">WHERE YOU ARE</p>
+<p class="label kicker">TWO WAYS I HELP</p>
 <h2 class="section">Two reasons people ask me to test</h2>
 </div>
 <div class="grid2">
@@ -89,7 +90,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <h3 style="font-size:24px;font-weight:600;line-height:1.25">I&#39;ve built a skill or plugin</h3>
 <p style="color:var(--body)">Before you release it or hand it to a client, I check:</p>
 <ul class="ticks">
-<li>It does what its instructions say, every run, not just the first</li>
+<li>It does what its instructions say run after run, not just the first time</li>
 <li>It ignores instructions hidden in emails, reviews or files</li>
 <li>Blank and messy data are treated as unknown, not zero</li>
 <li>Edge cases and the requests people actually make</li>
@@ -148,9 +149,9 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <p style="color:var(--body)">The skill builds the forecast from balances, money owed both ways and fixed costs. Tax and super aren&#39;t in its instructions.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
-<div style="background:var(--soft);border-radius:8px;padding:14px"><div class="label">EXPECTED</div><div>BAS, PAYG and super show as outflows on their due dates</div></div>
+<div style="background:var(--soft);border-radius:8px;padding:14px"><div class="label">EXPECTED</div><div>BAS and PAYG show on their due dates, and super with each pay run</div></div>
 <div style="background:var(--warm);border-radius:8px;padding:14px"><div class="label" style="color:#9A3D00">ACTUAL</div><div>Not instructed. Sometimes covered by the model, not guaranteed</div></div>
-<div style="padding-top:12px;border-top:1px solid var(--line);color:var(--green);font-weight:600">Fix line: &#8220;GST registered, quarterly BAS. Add BAS, PAYG and super due dates as outflows in every forecast.&#8221;</div>
+<div style="padding-top:12px;border-top:1px solid var(--line);color:var(--green);font-weight:600">Fix line: &#8220;GST registered, quarterly BAS. Show BAS and PAYG due dates, and super with each pay run, as outflows in every forecast.&#8221;</div>
 </div>
 </div>
 </article>
@@ -162,8 +163,8 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <section class="sec" style="background:var(--soft)">
 <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
 <div style="display:flex;flex-direction:column;gap:10px;max-width:720px">
-<p class="label kicker">HOW I TEST</p>
-<h2 class="section">The same method on every tool</h2>
+<p class="label kicker">METHOD</p>
+<h2 class="section">How I test</h2>
 </div>
 <ol class="steps">
 <li><span class="num">1</span><strong>Read the instructions</strong><span style="color:var(--body);font-size:16px">The skill files the tool follows. They&#39;re the same for every user, so they&#39;re the strongest evidence.</span></li>

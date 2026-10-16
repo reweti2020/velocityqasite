@@ -57,6 +57,7 @@ h2.section{font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-.01
 details summary{cursor:pointer;list-style:none;min-height:44px;display:inline-flex;align-items:center;font-weight:600;color:var(--green)}
 details summary::-webkit-details-marker{display:none}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}.rise{animation:none}.btn,.card{transition:none}.bugtrack{scroll-behavior:auto !important}html{scroll-behavior:auto}}
+@media (max-width:600px){.nav-contact{display:none !important}.nav-lg{display:none}}@media (min-width:601px){.nav-sm{display:none}}
 </style>
 <script>window.$crisp=[];window.CRISP_WEBSITE_ID="a6f1a45b-ed39-4761-be48-976abe46df6b";$crisp.push(["safe",true]);$crisp.push(["config","color:theme",["teal"]]);$crisp.push(["config","sound:mute",[true]]);$crisp.push(["on","chat:opened",function(){var k="vqa-welcome",seen=false;try{seen=localStorage.getItem(k)==="1"}catch(e){}try{if($crisp.is("session:ongoing"))seen=true}catch(e){}if(seen)return;try{localStorage.setItem(k,"1")}catch(e){}$crisp.push(["do","message:show",["text","Questions about testing your release? Ask here. If I\u2019m away, leave your email and I\u2019ll reply within one business day. Nina"]])}]);(function(){var d=document,s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
@@ -65,7 +66,7 @@ details summary::-webkit-details-marker{display:none}
 <header style="position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)">
 <div class="wrap" style="min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <a href="#top" style="display:flex;flex-direction:column;line-height:1.2;color:var(--ink);text-decoration:none"><span style="font-weight:700;font-size:18px">Velocity QA</span><span style="font-size:13px;color:var(--muted)">Nina Reweti</span></a>
-<nav aria-label="Main" style="display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="#work" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">The work</a><a href="ai-testing.html" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">AI testing</a><a href="#rates" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Working together</a><a href="#contact" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Contact</a></nav>
+<nav aria-label="Main" style="display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:500"><a href="#work" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">The work</a><a href="ai-testing.html" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">AI testing</a><a href="#rates" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)"><span class="nav-lg">Working together</span><span class="nav-sm">Rates</span></a><a class="nav-contact" href="#contact" style="min-height:48px;display:inline-flex;align-items:center;color:var(--ink)">Contact</a></nav>
 </div>
 </header>
 
