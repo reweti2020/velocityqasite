@@ -116,25 +116,25 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
 <div style="display:flex;flex-direction:column;gap:12px;max-width:760px">
 <p class="label kicker">OBSERVATIONS</p>
-<h2 class="section">Anthropic&#39;s Small Business plugin, checked for an Australian business</h2>
-<p style="color:var(--body);font-size:18px">A strong, US-built toolkit with good safety rails around money and fraud. The Australian compliance layer is missing, and about ten lines of business context cover most of it.</p>
-<p class="label" style="background:var(--soft);border-radius:8px;padding:10px 14px;align-self:flex-start">Oct 2026 · plugin v1.35.1 · 44 skills · fictional business · small sample · skill files change often</p>
+<h2 class="section">Anthropic&#39;s Small Business plugin, read for an Australian business</h2>
+<p style="color:var(--body);font-size:18px">A strong toolkit with good safety rails around money and fraud. It asks for your country rather than assuming it, but none of its 44 skills mentions GST, PAYG or super, so that detail has to come from you. About ten lines of business context cover most of it.</p>
+<p class="label" style="background:var(--soft);border-radius:8px;padding:10px 14px;align-self:flex-start">Oct 2026 · plugin v1.35.1 · 44 skills · read from the public skill files · skill files change often</p>
 </div>
 
 <div class="grid2" style="gap:40px 56px">
 <div style="display:flex;flex-direction:column">
-<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What held up</h3>
-<div class="row"><h4>Nothing sent or paid without a yes</h4><span class="pill pill-ok">HELD</span><p>Bills, payroll and posts wait for approval. The one exception is a team-channel post you approve once.</p></div>
-<div class="row"><h4>Changed bank details held</h4><span class="pill pill-ok">HELD</span><p>Sent straight to the owner, with a phone check advised.</p></div>
-<div class="row"><h4>Duplicate bill caught</h4><span class="pill pill-ok">HELD</span><p>The skill names duplicate payment as the expensive failure.</p></div>
-<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Hidden instructions refused in testing</h4><span class="pill pill-ok">6 OF 6</span><p>A fake refund email, a fake lead and a review asking for a $500 credit.</p></div>
+<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What the skill files get right</h3>
+<div class="row"><h4>Nothing sent or paid without a yes</h4><span class="pill pill-ok">IN THE FILES</span><p>Bills, payroll and posts are written to wait for approval. The one exception is a team-channel post you approve once.</p></div>
+<div class="row"><h4>Changed bank details go to the owner</h4><span class="pill pill-ok">IN THE FILES</span><p>The bill skill sends them straight to the owner and advises a phone check.</p></div>
+<div class="row"><h4>Duplicate bills flagged</h4><span class="pill pill-ok">IN THE FILES</span><p>The skill names duplicate payment as the expensive failure.</p></div>
+<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Asks for your country</h4><span class="pill pill-ok">IN THE FILES</span><p>Country, currency and financial year are asked for, not assumed: &#8220;A Xero org is not automatically Australian.&#8221;</p></div>
 </div>
 <div style="display:flex;flex-direction:column">
-<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What&#39;s missing for Australia</h3>
-<div class="row"><h4>Forecasts never mention BAS, PAYG or super</h4><span class="pill pill-gap">GAP</span><p>The fixed costs it lists are rent, payroll and subscriptions.</p></div>
-<div class="row"><h4>Payroll defaults to US-style overtime</h4><span class="pill pill-gap">GAP</span><p>With no policy on file it applies a weekly-overtime rule framed around US states. No awards, penalty rates, casual loading or super.</p></div>
-<div class="row"><h4>Quotes don&#39;t say if GST is included</h4><span class="pill pill-gap">GAP</span><p>Nothing in the quote skill mentions tax-inclusive pricing.</p></div>
-<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Untrusted-content rule linked from 21 of 44 skills</h4><span class="pill pill-gap">GAP</span><p>The 23 others include lead triage and outreach, which work with lead data. The model refused the attacks anyway, but those skills don&#39;t tell it to.</p></div>
+<h3 style="font-size:20px;font-weight:600;margin-bottom:8px">What the files don&#39;t cover for Australia</h3>
+<div class="row"><h4>The forecast skill doesn&#39;t mention BAS, PAYG or super</h4><span class="pill pill-gap">GAP</span><p>The fixed costs it lists are rent, payroll and subscriptions.</p></div>
+<div class="row"><h4>Payroll falls back to a weekly-overtime default</h4><span class="pill pill-gap">GAP</span><p>With no rule on file it uses &#8220;the plain weekly-overtime default&#8221;. No awards, penalty rates, casual loading or super.</p></div>
+<div class="row"><h4>Quotes don&#39;t say if GST is included</h4><span class="pill pill-gap">GAP</span><p>The quote skill doesn&#39;t mention tax-inclusive pricing.</p></div>
+<div class="row" style="border-bottom:1.5px solid var(--ink)"><h4>Untrusted-content rule linked from 21 of 44 skills</h4><span class="pill pill-gap">GAP</span><p>The 23 others include lead triage and outreach, which work with lead data. Those skills don&#39;t carry the rule.</p></div>
 </div>
 </div>
 
@@ -150,7 +150,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 </div>
 <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
 <div style="background:var(--soft);border-radius:8px;padding:14px"><div class="label">EXPECTED</div><div>BAS and PAYG show on their due dates, and super with each pay run</div></div>
-<div style="background:var(--warm);border-radius:8px;padding:14px"><div class="label" style="color:#9A3D00">ACTUAL</div><div>Not instructed. Sometimes covered by the model, not guaranteed</div></div>
+<div style="background:var(--warm);border-radius:8px;padding:14px"><div class="label" style="color:#9A3D00">ACTUAL</div><div>Not in the skill&#39;s instructions, so it&#39;s left to the model and not guaranteed</div></div>
 <div style="padding-top:12px;border-top:1px solid var(--line);color:var(--green);font-weight:600">Fix line: &#8220;GST registered, quarterly BAS. Show BAS and PAYG due dates, and super with each pay run, as outflows in every forecast.&#8221;</div>
 </div>
 </div>
@@ -172,7 +172,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <li><span class="num">3</span><strong>Run it against traps</strong><span style="color:var(--body);font-size:16px">A realistic test business with planted problems: hidden instructions, duplicates, gaps and Australian dates.</span></li>
 <li><span class="num">4</span><strong>Report with a fix</strong><span style="color:var(--body);font-size:16px">Each finding quotes the tool&#39;s own wording, with what to change or paste in.</span></li>
 </ol>
-<p style="font-size:15px;color:var(--muted);max-width:720px">I also build Claude skills for small businesses through Quiet Content. Those builds are tested with this method before handover.</p>
+<p style="font-size:15px;color:var(--muted);max-width:720px">I also build Claude skills for small businesses through Quiet Content.</p>
 </div>
 </section>
 
@@ -181,7 +181,7 @@ ul.ticks li::before{content:"";width:10px;height:10px;margin-top:8px;border-radi
 <p class="label kicker">WORKING TOGETHER</p>
 <h2 class="section" style="font-size:clamp(28px,3.4vw,38px)">Priced per skill</h2>
 <p style="color:var(--body)">Fixed prices, no GST, paid upfront.</p>
-<p style="font-size:15px;color:var(--muted)">These prices are for testing a skill someone else built. That means reading it cold, building the tests from scratch, and writing up suggested fixes for each gap I find.</p>
+<p style="font-size:15px;color:var(--muted)">These prices are for skills built by someone other than me. That means reading it cold, building the tests from scratch, and writing up suggested fixes for each gap I find.</p>
 <div class="card" style="padding:4px 20px">
 <div class="row" style="border-top:0"><h4>Check one skill in your setup</h4><span class="pill pill-ok">$350</span><p>Tested against your kind of data, with setup lines that work for your business.</p></div>
 <div class="row"><h4>Each extra skill in the same setup</h4><span class="pill pill-ok">$195</span><p>Example: cash flow, payroll and invoice reminders together cost $740.</p></div>
